@@ -1,0 +1,21 @@
+<%= form_for(@scool) do |f| %>
+  <% if @scool.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@scool.errors.count, "error") %> prohibited this scool from being saved:</h2>
+
+      <ul>
+      <% @scool.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :scool %><br />
+    <%= f.text_field :scool %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
