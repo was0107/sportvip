@@ -27,7 +27,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 
-gem 'mysql2', '< 0.3'
+gem 'mysql2', '> 0.3'
 
 gem 'awesome_print'
 gem 'awesome_nested_set'
