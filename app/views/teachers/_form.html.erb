@@ -12,8 +12,17 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :teacher %><br>
-    <%= f.text_field :teacher %>
+    
+    <%= f.text_field :teacher %><%= f.label :teacher %><br>
+
+    <%= f.text_field :name %><%= f.label :name %><br>
+    
+    <%= f.text_field :descration %><%= f.label :descration %><br>
+    
+    <%= f.text_field :profile_image_url %><%= f.label :profile_image_url %><br>
+    
+    <%= f.text_field :telephone %><%= f.label :telephone %><br>
+
   </div>
   <div class="actions">
     <%= f.submit %>
