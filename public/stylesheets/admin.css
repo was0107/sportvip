@@ -3,13 +3,13 @@ div.hmenu {
   float: left;
   background: #005b82;
   color: white;
-  height: 1000px; 
+  height: 800px; 
   /*margin-top: 1px;*/
 }
 div.hmenu ul {margin: 0;padding:0;}
 div.hmenu li {list-style: none;padding:5px;margin: 2px 0;text-align: center;}
 div.hmenu li.current,
-div.hmenu li:hover {background: #fff}
+div.hmenu li:hover {background: #f0f}
 
 div.hmenu li.current a,
 div.hmenu li:hover a {color: #005b82;}

@@ -14,7 +14,7 @@
         <td><%= teacher.name %></td>    
         <td><%= teacher.telephone %></td>
         <td><%= teacher.description %></td>
-        <td><%= teacher.profile_image_url %></td>
+        <td><%= image_tag(teacher.profile_image_url) if teacher.profile_image_url?%></td>
         <td><%= link_to 'Show', teacher %></td>
         <td><%= link_to 'Edit', edit_teacher_path(teacher) %></td>
         <td><%= link_to 'Destroy', teacher, method: :delete, data: { confirm: 'Are you sure?' } %></td>

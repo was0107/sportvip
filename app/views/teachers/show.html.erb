@@ -5,7 +5,7 @@
   <%= @teacher.name %>  
   <%= @teacher.telephone %>
   <%= @teacher.description %>
-  <%= @teacher.profile_image_url %>
+  <%=  image_tag(@teacher.profile_image_url)  if @teacher.profile_image_url? %>
 </p>
 
 <%= link_to 'Edit', edit_teacher_path(@teacher) %> |

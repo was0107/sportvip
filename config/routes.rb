@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   # match '/admin' => 'admin/items#index' 
 
-  root :to => 'home#index'
+  root :to => 'scools#index'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

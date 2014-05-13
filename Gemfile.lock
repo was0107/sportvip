@@ -32,6 +32,11 @@ GEM
       activerecord (>= 3.0.0)
     awesome_print (1.2.0)
     builder (3.2.2)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -82,6 +87,7 @@ GEM
     rake (10.3.1)
     rdoc (4.1.1)
       json (~> 1.4)
+    rmagick (2.13.2)
     sass (3.2.19)
     sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -121,12 +127,14 @@ PLATFORMS
 DEPENDENCIES
   awesome_nested_set
   awesome_print
+  carrierwave
   coffee-rails (~> 4.0.0)
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
   mysql2 (> 0.3)
   rails (= 4.1.1)
+  rmagick
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   spring
