@@ -1,9 +1,8 @@
 class CreateCourses < ActiveRecord::Migration
   def self.up
     create_table :courses do |t|
-      t.string :course
-	  t.string :name 
-      t.text :descration
+	    t.string :name 
+      t.text :description
       t.integer :price
       t.timestamps
     end

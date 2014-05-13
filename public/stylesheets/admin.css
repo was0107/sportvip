@@ -1,0 +1,109 @@
+div.hmenu {
+  width: 150px;
+  float: left;
+  background: #005b82;
+  color: white;
+  height: 1000px; 
+  /*margin-top: 1px;*/
+}
+div.hmenu ul {margin: 0;padding:0;}
+div.hmenu li {list-style: none;padding:5px;margin: 2px 0;text-align: center;}
+div.hmenu li.current,
+div.hmenu li:hover {background: #fff}
+
+div.hmenu li.current a,
+div.hmenu li:hover a {color: #005b82;}
+
+div.hmenu  a {color: white;font-size: 1.3em;}
+
+.admin_login {float: right;}
+
+.main { 
+  margin-left: 180px;
+  margin-right: 20px;
+}
+.main a {color: #005b82;}
+ 
+.header {
+  color: white;
+  padding: 5px;
+  background: #1e4e7c;
+  border-bottom: 2px solid #1e4e7c;
+  box-shadow: 2px 4px 5px #aaa;
+
+}
+.header a {
+  color: white; 
+}
+.header .title {
+  color: white;
+  height: 50px;
+  line-height: 50px;
+  font-size: 2em;
+}
+
+.header .title ul { 
+  font-size: 12px;
+}
+
+
+.form {border:1px solid #005b82;padding: 5px;}
+
+
+/* holin */
+h2 {font-size:1.5em;}
+ul.hmenu {margin:5px 0;padding:0;}
+ul.hmenu li {display:inline;margin-right:10px;}
+table.list {
+  border: 1px solid #005b82;
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+}
+
+/*table.list tr:nth-child(even) td, table.list tr.even td {background:#e5ecf9;}*/
+
+.row_hover td, .row_click td {background: #a0bbff;}
+th, td, caption {padding:4px 10px 4px 5px;white-space:nowrap;}
+table.list th {background: #005b82; color:#fff;border-bottom:0;}
+table.list td {border-top:1px solid #005b82;}
+
+
+.item_pic_bg {
+  display: inline-block;
+  width:285px;height: 285px;
+  background: #ccc;
+}
+.item_imgs {margin-bottom: 10px;}
+.item_imgs li {float: left;width:285px;height:300px;overflow: hidden;
+border:1px solid;}
+.item_imgs li img {width:285px;}
+
+
+input.smalltext {width:50px;}
+input.bigtext {width:500px;}
+input.mediumtext {width:180px;}
+
+.myhighlight {
+  border: 1px solid #005b82;
+  padding: 5px;
+}
+
+
+/* css for timepicker */
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+.ui-timepicker-rtl{ direction: rtl; }
+.ui-timepicker-rtl dl { text-align: right; }
+.ui-timepicker-rtl dl dd { margin: 0 65px 10px 10px; }
+
+
+/* batch audit */
+.batch_audit_item {list-style: none; float: left;width:300px;height:350px;border: 1px solid;margin:5px;padding: 3px;} 
+.batch_item_img_c {width: 290px;height: 290px;overflow: hidden;}
+.batch_audit_item ul {list-style: none; margin: 0;padding: 0;} 
+.batch_audit_item li {list-style: none; margin: 0;padding: 0;} 

@@ -1,12 +1,11 @@
 class CreateStudents < ActiveRecord::Migration
   def self.up
     create_table :students do |t|
-      t.string :student
- 	  t.string :name 
+ 	    t.string :name 
       t.string :telephone
+      t.integer :gender
       t.integer :parent
       t.integer :is_default_contact
-      t.integer :gender
       t.timestamps
     end
   end

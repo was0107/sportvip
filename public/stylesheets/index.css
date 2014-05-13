@@ -1,0 +1,289 @@
+/* CSS Document */
+@import url("public.css");
+@import url("foot.css");
+@import url("header.css");
+#box .rankNav {
+	clear: none;
+	float: none;
+	padding: 0px;
+	width: 980px;
+}
+#box .rankNav .nav ul li a:hover {
+	text-decoration: underline;
+}
+#box .rank .nav ul li a:hover {
+	color: #D63333;
+	text-decoration: underline;
+}
+
+.rankNav .nav ul {
+	padding: 0px;
+	height: 37px;
+	width: 980px;
+	margin-top: 15px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	float: none;
+	clear: both;
+}
+.rankNav .nav ul li {
+	float: left;
+	height: 35px;
+	width: 100px;
+	display: block;
+	line-height: 35px;
+	text-align: center;
+	border: 1px solid #DDD;
+	background-color: #EEE;
+}
+.rankNav .nav ul li a {
+	font-size: 14px;
+	color: #D63333;
+	font-weight: bold;
+	text-decoration: none;
+}
+.rankNav .nav ul .select {
+	width: 83px;
+	background-color: #D63333;
+	border: 1px solid #D63333;
+}
+.rankNav .nav ul .select a {
+	color: #FFF;
+}
+
+
+td {
+  width: 150px;
+}
+
+#box .rank  {
+	clear: none;
+	float: none;
+	background-image: url(../images/index_pic.png);
+	background-position: 0px -630px;
+	height: 71px;
+	width: 960px;
+	padding: 10px;
+}
+#box .rank .timeTag {
+	background-image: url(../images/index_pic.png);
+	background-position: 0px -570px;
+	height: 37px;
+	width: 173px;
+	font-family: "微软雅黑";
+	line-height: 33px;
+	font-size: 14px;
+	font-weight: bold;
+	font-style: normal;
+	font-variant: normal;
+	color: #FFF;
+	text-align: center;
+	position: relative;
+	z-index: 10;
+	left:780px;
+	top:-90px;
+	right: 0px;
+	bottom: 0px;
+	padding-top: 3px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+}
+
+#box .rank .nav ul {
+	margin: 0px;
+	padding: 0px;
+	height: 35px;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	line-height: 35px;
+	font-weight: normal;
+	width: 960px;
+}
+#box .rank .nav ul .select {
+	font-weight: bolder;
+}
+#box .rank .nav ul .select a {
+	color:#d63333;
+}
+
+#box .rank .nav ul a {
+	color: #444;
+	text-decoration: none;
+}
+#box .rank .nav ul li {
+	width: 50px;
+	text-align: center;
+	float: left;
+}
+#box .rank .nav .order {
+	margin: 0px;
+	padding-top: 5px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	color: #444;
+}
+
+#box .rank .nav .order li {
+	width: 80px;
+}
+
+
+
+
+#box .goods {
+	height: 390px;
+	width: 285px;
+
+
+
+	border: 1px solid
+#;
+	padding: 15px;
+	float: left;
+	margin-top: 20px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	border: 1px solid #DDD;
+	background-color: #FFF;
+}
+#goodsBox .goods:hover {
+	border: 1px solid #D63333;
+}
+
+#box .blank {
+	margin: 0px;
+	padding: 0px;
+	float: left;
+	width: 14px;
+	height: 100px;
+}
+#goodsBox .goods .title {
+	color: #444;
+	text-decoration: none;
+	font-family: "微软雅黑";
+	font-size: 16px;
+	font-style: normal;
+	font-weight: bold;
+}
+#goodsBox .goods .image {
+	height: 284px;
+	width: 284px;
+	overflow: hidden;
+	display: block;
+}
+#goodsBox .goods .image img {
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	display: block;
+	height: auto;
+	width: 284px;
+	padding: 0px;
+	float: none;
+	margin-top: 15px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+#goodsBox .goods .price {
+	background-image: url(../images/index_pic.png);
+	background-repeat: no-repeat;
+	background-position: 0px -300px;
+	display: block;
+	height: 50px;
+	width: 275px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #FFF;
+	text-decoration: none;
+	font-size: 30px;
+	font-style: normal;
+	line-height: 55px;
+	font-weight: bold;
+	padding-left: 10px;
+}
+#goodsBox .goods .price:hover {
+	background-image: url(../images/index_pic.png);
+	background-position: 0px -360px;
+}
+
+#goodsBox .goods .discountBg  {
+	position: relative;
+	z-index: 3;
+	left:0px;
+	top:-80px;
+	right: 0px;
+	bottom: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	background: black;
+	opacity:0.5;
+	height: 30px;
+	width: 284px;
+}
+#goodsBox .goods .discount  {
+	height: 30px;
+	width: 274px;
+	color: #FFF;
+	font-size: 12px;
+	line-height: 30px;
+	position: relative;
+	z-index: 4;
+	left:0px;
+	top:-110px;
+	right: 0px;
+	bottom: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 10px;
+}
+#goodsBox .goods .discount span {
+	display: block;
+	float: left;
+	padding-top: 0px;
+	padding-right: 10px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	font-family: "微软雅黑";
+	color: #FFF;
+	opacity:1;
+
+}
+#goodsBox .goods .discount span font {
+	font-weight: bold;
+}
+
+#goodsBox .goods .tag {
+	font-family: "微软雅黑";
+	color: #FFF;
+	background-image: url(../images/tag.png);
+	background-position: 0px -60px;
+	height: 47px;
+	width: 50px;
+	line-height: 50px;
+	text-align: center;
+	margin: 0px;
+	padding-top: 3px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	font-weight: bolder;
+	font-size: 16px;
+	position: relative;
+	z-index: 5;
+	left:220px;
+	top:-380px;
+	right: 0px;
+	bottom: 0px;
+	padding-top: 3px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+}

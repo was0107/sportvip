@@ -2,7 +2,14 @@
 
 <p>
   <strong>Scool:</strong>
-  <%= @scool.scool %>
+  <%= @scool.name %>
+  <%= @scool.telephone %>
+  <%= @scool.url %>
+  <%= @scool.profile_image_url %>
+  <%= @scool.description %>
+  <%= @scool.location %>
+  <%= @scool.latitude %>
+  <%= @scool.longitude %>
 </p>
 
 <%= link_to 'Edit', edit_scool_path(@scool) %> |

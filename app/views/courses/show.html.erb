@@ -2,7 +2,9 @@
 
 <p>
   <strong>Course:</strong>
-  <%= @course.course %>
+  <%= @course.name %>
+  <%= @course.description %>
+  <%= @course.price %>
 </p>
 
 <%= link_to 'Edit', edit_course_path(@course) %> |

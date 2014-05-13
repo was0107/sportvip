@@ -2,7 +2,11 @@
 
 <p>
   <strong>Student:</strong>
-  <%= @student.student %>
+  <%= @student.name %>
+  <%= @student.telephone %>
+  <%= @student.gender %>
+  <%= @student.parent %>
+  <%= @student.is_default_contact %>
 </p>
 
 <%= link_to 'Edit', edit_student_path(@student) %> |

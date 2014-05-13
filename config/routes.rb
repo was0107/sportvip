@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :scools
 
+  # match '/admin' => 'admin/items#index' 
 
   root :to => 'home#index'
 

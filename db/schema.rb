@@ -14,16 +14,14 @@
 ActiveRecord::Schema.define(version: 20140508101023) do
 
   create_table "courses", force: true do |t|
-    t.string   "course"
     t.string   "name"
-    t.text     "descration"
+    t.text     "description"
     t.integer  "price"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "orders", force: true do |t|
-    t.string   "order"
     t.string   "num"
     t.integer  "create_time"
     t.integer  "pay_time"
@@ -39,11 +37,11 @@ ActiveRecord::Schema.define(version: 20140508101023) do
 
   create_table "scools", force: true do |t|
     t.string   "name"
-    t.text     "descration"
+    t.string   "telephone"
     t.string   "url"
     t.string   "profile_image_url"
     t.string   "location"
-    t.string   "telephone"
+    t.text     "description"
     t.float    "latitude"
     t.float    "longitude"
     t.datetime "created_at"
@@ -56,20 +54,18 @@ ActiveRecord::Schema.define(version: 20140508101023) do
   end
 
   create_table "students", force: true do |t|
-    t.string   "student"
     t.string   "name"
     t.string   "telephone"
+    t.integer  "gender"
     t.integer  "parent"
     t.integer  "is_default_contact"
-    t.integer  "gender"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "teachers", force: true do |t|
-    t.string   "teacher"
     t.string   "name"
-    t.text     "descration"
+    t.text     "description"
     t.string   "profile_image_url"
     t.string   "telephone"
     t.datetime "created_at"

@@ -1,7 +1,7 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-  <title>admin</title>
+  <title>优品特惠后台</title>
 <link rel="stylesheet" href="/stylesheets/ui-lightness/jquery-ui.css" type="text/css" media="screen, projection"> 
 <link rel="stylesheet" href="/stylesheets/screen.css" type="text/css" media="screen, projection">
 <link rel="stylesheet" href="/stylesheets/print.css" type="text/css" media="print">
@@ -10,7 +10,6 @@
 <![endif]-->
 <link rel="stylesheet" href="/stylesheets/application.css" type="text/css" />
 <link rel="stylesheet" href="/stylesheets/admin.css" type="text/css" />
-<link rel="stylesheet" href="/stylesheets/index.css" type="text/css" />
 
 <script src="/javascripts/jquery.js?1360846276" type="text/javascript"></script>
 <script src="/javascripts/jquery-ui.js?1360846276" type="text/javascript"></script>
@@ -25,21 +24,42 @@
 <body>
   <div class="header">
     <div class="title">
-      admin
+      优品特惠后台
+
       <ul class="admin_login hmenu">
+      <%= render 'devise/menu/registration_items' %>
+      <%= render 'devise/menu/login_items' %>
       </ul>
     </div>
   </div>
 <div style="border-top:1px solid #005b82"> 
   <div class="hmenu">
     <ul>
-    	<li ><%= link_to('学校', "/scools") %> </li>
-    	<li ><%= link_to('课程', "/courses") %> </li>
-    	<li ><%= link_to('老师', "/teachers") %> </li>
-    	<li ><%= link_to('学生', "/students") %> </li>
-    	<li ><%= link_to('定单', "/orders") %> </li>
+      <li <%= current_me("admin/items?store_status=0") %>>
+        <%= link_to('商品审核', "/admin/items?store_status=0") %>
+      </li> 
+      <li <%= current_me("admin/items?batch_audit=true&store_status=0") %>>
+        <%= link_to('批量审核', "/admin/items?batch_audit=true&store_status=0") %>
+      </li> 
+      <li <%= current_me("admin/items?audit=true") %>>
+        <%= link_to('商品列表', "/admin/items?audit=true&date=today") %>
+      </li> 
+      <li <%= current_me("admin/items?store_status=1") %>>
+        <%= link_to('商品仓库', "/admin/items?store_status=1") %>
+      </li> 
+      <li <%= current_me("admin/items?store_status=-1") %>>
+        <%= link_to('商品回收站', "/admin/items?store_status=-1") %>
+      </li> 
+      <li <%= current_me("admin/items/new") %>>
+        <%= link_to('添加商品', "/admin/items/new") %>
+      </li> 
+      <li <%= current_me("admin/our_categories") %>>
+        <%= link_to('商品分类', "/admin/our_categories") %>
+      </li> 
     </ul>
+
   </div>
+
   <div class="main">
     <p style="color: green"><%= notice %></p>
     <p style="color: red"><%= alert %></p>

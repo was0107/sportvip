@@ -2,7 +2,10 @@
 
 <p>
   <strong>Order:</strong>
-  <%= @order.order %>
+  <%= @order.name %>
+  <%= @order.create_time %>
+  <%= @order.pay_time %>
+  <%= @order.status %>
 </p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |

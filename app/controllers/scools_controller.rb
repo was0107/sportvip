@@ -69,6 +69,6 @@ class ScoolsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def scool_params
-      params.require(:scool).permit(:scool)
+      params.require(:scool).permit(:name, :telephone, :url, :profile_image_url, :description, :location , :latitude, :longitude)
     end
 end
