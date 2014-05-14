@@ -1,20 +1,24 @@
-<h1>Listing teachers</h1>
 
-<table>
+<%= paginate @teachers %>
+<br>
+<table border=1 cellspacing="0" cellpadding="0">
   <thead>
     <tr>
-      <th>Teacher</th>
-      <th colspan="3"></th>
+      <th>name</th>
+      <th>telephone</th>
+      <th>description</th>
+      <th>profile_image_url</th>
+      <th colspan="3"> function</th>
     </tr>
   </thead>
 
   <tbody>
     <% @teachers.each do |teacher| %>
       <tr>
-        <td><%= teacher.name %></td>    
-        <td><%= teacher.telephone %></td>
-        <td><%= teacher.description %></td>
-        <td><%= image_tag(teacher.profile_image_url) if teacher.profile_image_url?%></td>
+        <td class="col1"><%= teacher.name %></td>    
+        <td class="col1"><%= teacher.telephone %></td>
+        <td class="col2"><%= teacher.description %></td>
+        <td class="col3"><%= image_tag(teacher.profile_image_url) if teacher.profile_image_url?%></td>
         <td><%= link_to 'Show', teacher %></td>
         <td><%= link_to 'Edit', edit_teacher_path(teacher) %></td>
         <td><%= link_to 'Destroy', teacher, method: :delete, data: { confirm: 'Are you sure?' } %></td>

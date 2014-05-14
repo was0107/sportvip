@@ -30,6 +30,9 @@ gem 'spring',        group: :development
 gem 'carrierwave'
 gem 'rmagick'
 
+gem 'kaminari' #paginate
+
+
 gem 'mysql2', '> 0.3'
 
 gem 'awesome_print'
