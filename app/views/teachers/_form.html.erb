@@ -17,11 +17,11 @@
 
     <%= f.label :telephone %> <%= f.text_field :telephone %><br>
 
-    <%= f.label :description %> <%= f.text_field :description %><br>
-    
-    <%= image_tag(@teacher.profile_image_url) if @teacher.profile_image_url? %>
-    <%= f.file_field :profile_image_url %>
-    <%= f.hidden_field :profile_image_url_cache %>
+    <%= f.label :description, :width => 800  %><br> <%= f.kindeditor :description, :width => 800, :height => 300 ,:window_onload => true %><br><br>
+
+    <%= image_tag(@teacher.profile_image_url) if @teacher.profile_image_url? %><br>
+
+    <%= f.file_field :profile_image_url %> <%= f.hidden_field :profile_image_url_cache %>
     
     <!-- # <%= f.label :profile_image_url %> <%= f.text_field :profile_image_url %><br> -->
 

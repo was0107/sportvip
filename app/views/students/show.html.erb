@@ -1,5 +1,4 @@
 <p id="notice"><%= notice %></p>
-
 <p>
   <strong>Student:</strong>
   <%= @student.name %>
@@ -9,5 +8,5 @@
   <%= @student.is_default_contact %>
 </p>
 
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>
+<%= link_to '编辑', edit_student_path(@student) %> |
+<%= link_to '返回', students_path %>

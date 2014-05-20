@@ -4,7 +4,7 @@ class ScoolsController < ApplicationController
   # GET /scools
   # GET /scools.json
   def index
-    @scools = Scool.all
+    @scools = Scool.order("id DESC").page(params[:page])
   end
 
   # GET /scools/1

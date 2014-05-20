@@ -4,9 +4,9 @@
   <strong>Teacher:</strong>
   <%= @teacher.name %>  
   <%= @teacher.telephone %>
-  <%= @teacher.description %>
-  <%=  image_tag(@teacher.profile_image_url)  if @teacher.profile_image_url? %>
+  <%= kindeditor_tag :content, @teacher.description  %>
+  <%= image_tag(@teacher.profile_image_url)  if @teacher.profile_image_url? %>
 </p>
 
-<%= link_to 'Edit', edit_teacher_path(@teacher) %> |
-<%= link_to 'Back', teachers_path %>
+<%= link_to '编辑', edit_teacher_path(@teacher) %> |
+<%= link_to '返回', teachers_path %>

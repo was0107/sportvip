@@ -32,6 +32,8 @@ gem 'rmagick'
 
 gem 'kaminari' #paginate
 
+#text editer
+gem 'rails_kindeditor'
 
 gem 'mysql2', '> 0.3'
 

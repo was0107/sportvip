@@ -54,7 +54,6 @@ class TeachersController < ApplicationController
   # DELETE /teachers/1
   # DELETE /teachers/1.json
   def destroy
-    @teacher.remove_profile_image_url
     @teacher.destroy
     respond_to do |format|
       format.html { redirect_to teachers_url, notice: 'Teacher was successfully destroyed.' }

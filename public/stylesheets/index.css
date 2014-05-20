@@ -5,6 +5,11 @@ table {
  	margin:2px 0 2px 0;
  	text-align:center;
  	border-collapse:collapse;
+  	-webkit-border-radius: 4px 4px 0 0;
+  	-moz-border-radius: 4px 4px 0 0;
+  	cellpadding : 0;
+  	width : 100%;
+  	TABLE-LAYOUT: fixed;
  }
 
 td,th {
@@ -20,6 +25,15 @@ th {
 	background-color:#F4F4F4;
 }
 
-.col1 {width:100px;}
-.col2 {width:200px;}
-.col3 {width:200px; height: 100px}
+td.col1 {
+	width:10%;
+	height: ;
+}
+
+td.col2 {
+	height: 20px;
+}
+td.col3 {
+	width:20%; 
+	height: 20px;
+}

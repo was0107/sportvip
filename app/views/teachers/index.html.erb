@@ -1,32 +1,33 @@
 
+<%= link_to '新建', new_teacher_path %>
 <%= paginate @teachers %>
 <br>
-<table border=1 cellspacing="0" cellpadding="0">
+<br>
+
+<table>
   <thead>
     <tr>
-      <th>name</th>
-      <th>telephone</th>
-      <th>description</th>
-      <th>profile_image_url</th>
-      <th colspan="3"> function</th>
+      <th>名称</th>
+      <th>电话</th>
+      <th>描述</th>
+      <th>图片</th>
+      <th colspan="3" width = "120px">编辑</th>
     </tr>
   </thead>
 
   <tbody>
     <% @teachers.each do |teacher| %>
       <tr>
-        <td class="col1"><%= teacher.name %></td>    
-        <td class="col1"><%= teacher.telephone %></td>
-        <td class="col2"><%= teacher.description %></td>
-        <td class="col3"><%= image_tag(teacher.profile_image_url) if teacher.profile_image_url?%></td>
-        <td><%= link_to 'Show', teacher %></td>
-        <td><%= link_to 'Edit', edit_teacher_path(teacher) %></td>
-        <td><%= link_to 'Destroy', teacher, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td ><%= teacher.name %></td>    
+        <td ><%= teacher.telephone %></td>
+        <td ><%= teacher.description %></td>
+        <td ><%= image_tag(teacher.profile_image_url) if teacher.profile_image_url?%></td>
+        <td><%= link_to '查看', teacher %></td>
+        <td><%= link_to '编辑', edit_teacher_path(teacher) %></td>
+        <td><%= link_to '删除', teacher, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
-
-<%= link_to 'New Teacher', new_teacher_path %>
+<%= paginate @teachers %>
