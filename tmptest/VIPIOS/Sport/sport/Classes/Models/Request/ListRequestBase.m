@@ -1,0 +1,130 @@
+//
+//  ListRequestBase.m
+//  b5mappsejieios
+//
+//  Created by allen.wang on 12/27/12.
+//  Copyright (c) 2012 allen.wang. All rights reserved.
+//
+
+#import "ListRequestBase.h"
+#import "UIDevice+extend.h"
+#import "UserDefaultsManager.h"
+
+@implementation ListRequestBase
+
+- (BOOL) checkArray:(NSMutableArray *) array
+{
+    if (array && [array count] > 0) {
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL) checkString:(NSString *) string
+{
+    if (string && [string length] > 0) {
+        return YES;
+    }
+    return NO;
+}
+
+- (NSMutableArray *) keyArrays
+{
+    return [NSMutableArray array];
+}
+
+- (NSMutableArray *) valueArrays
+{
+    return [NSMutableArray array];
+}
+
+- (NSString *) toJsonString
+{    
+    NSMutableArray *keys = [[[NSMutableArray alloc] initWithArray:[self commonKeysArray]] autorelease];
+    NSMutableArray *keysContent = [self keyArrays];
+    if (keysContent)
+        [keys addObjectsFromArray:keysContent];
+    
+    NSMutableArray *values = [[[NSMutableArray alloc] initWithArray:[self commonParamsArray]] autorelease];
+    NSMutableArray *valueContent = [self valueArrays];
+    if (valueContent)
+        [values addObjectsFromArray:valueContent];
+    
+    return [B5MUtility generateJsonWithKeys:keys withValues:values];
+}
+
+// Common参数
+- (NSArray *) commonKeysArray
+{
+    if ([UserDefaultsManager userGender] < 0) {
+        return [NSArray arrayWithObjects:kDeviceIMEI, kDeviceMOB, kDeviceOS, kDeviceDEV, kDeviceVER,
+                kDeviceCHNL, kDeviceTIME, kDid,nil];//,
+    }
+    return [NSArray arrayWithObjects:kDeviceIMEI, kDeviceMOB, kDeviceOS, kDeviceDEV, kDeviceVER,
+            kDeviceCHNL, kDeviceTIME, kDid,kGender, nil];
+}
+
+- (NSArray *) commonParamsArray
+{
+    UIDevice *device = [UIDevice currentDevice];
+    NSString *time   = device.t;
+    NSString *chnl   = [[NSUserDefaults standardUserDefaults] objectForKey:UDK_CHANNEL_ID];
+    if (!chnl) {
+        chnl = @"";
+    }
+    NSArray *values = nil;
+    if ([UserDefaultsManager userGender] < 0) {
+        values = [NSArray arrayWithObjects:device.imei, device.mob, device.os, device.dev, device.ver,
+                  chnl, time, [UserDefaultsManager deviceID],nil];
+    } else {
+        values = [NSArray arrayWithObjects:device.imei, device.mob, device.os, device.dev, device.ver,
+                  chnl, time, [UserDefaultsManager deviceID],kIntToString([UserDefaultsManager userGender]), nil];
+    }
+    return values;
+}
+
+- (NSString *) methodString
+{
+    return nil;
+}
+
+- (NSString *) hostString
+{
+    return kHostDomain;
+}
+
+- (NSString *) URLString
+{
+    return [NSString stringWithFormat:@"%@%@", [self hostString], [self methodString]];
+}
+@end
+
+
+@implementation ListRequestWithUserIDBase
+- (id) init {
+    self = [super init];
+    if (self) {
+        self.userID = [UserDefaultsManager userId];
+        self.token = [UserDefaultsManager token];
+    }
+    return self;
+}
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_userID);
+    TT_RELEASE_SAFELY(_token);
+    [super dealloc];
+}
+
+- (NSMutableArray *) keyArrays
+{
+    return [NSMutableArray arrayWithObjects:@"userId",@"token",nil];
+}
+
+- (NSMutableArray *) valueArrays
+{
+    return [NSMutableArray arrayWithObjects:self.userID,[UserDefaultsManager token], nil];
+}
+
+@end

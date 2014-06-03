@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>AA199899-2DCB-42F4-92EE-240346788F97</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Sport</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>6284040F-D72D-4861-84B1-1CA3E81A11FE</key>
+		<string>http://www.svnchina.com/svn/discount/Discount/Discount/Common/AKTabBarController/AKTabBarController.bundle</string>
+		<key>CB6845E8-9CC5-4330-B17D-585CBAE7D1C4</key>
+		<string>https://was-frame.googlecode.com/svn/trunk</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SportVIPIOS/Sport.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>6284040F-D72D-4861-84B1-1CA3E81A11FE</key>
+		<string>../sport/sport/Classes/Vendor/AKTabBarController/AKTabBarController.bundle</string>
+		<key>CB6845E8-9CC5-4330-B17D-585CBAE7D1C4</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>6284040F-D72D-4861-84B1-1CA3E81A11FE</key>
+		<string>http://www.svnchina.com/svn/discount</string>
+		<key>CB6845E8-9CC5-4330-B17D-585CBAE7D1C4</key>
+		<string>https://was-frame.googlecode.com/svn</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://was-frame.googlecode.com/svn/trunk/SportVIPIOS/Sport.xcworkspace</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CB6845E8-9CC5-4330-B17D-585CBAE7D1C4</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryBranchesRelativeLocationKey</key>
+			<string>branches</string>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlRepositoryTagsRelativeLocationKey</key>
+			<string>tags</string>
+			<key>IDESourceControlRepositoryTrunkRelativeLocationKey</key>
+			<string>trunk</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CB6845E8-9CC5-4330-B17D-585CBAE7D1C4</string>
+			<key>IDESourceControlWCCName</key>
+			<string>==WASMain</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>6284040F-D72D-4861-84B1-1CA3E81A11FE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>AKTabBarController.bundle</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -28,7 +28,8 @@ gem 'spring',        group: :development
 
 #file upload
 gem 'carrierwave'
-gem 'rmagick'
+# gem 'rmagick'
+gem 'mini_magick'
 
 gem 'kaminari' #paginate
 
@@ -52,4 +53,30 @@ gem 'kaminari'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+
+
+#rabel
+gem 'haml'
+gem 'devise'
+gem 'cancan'
+gem 'kaminari'
+gem 'carrierwave', "~> 0.6.2"
+gem 'carrierwave-upyun', '~> 0.1.6'
+gem 'rmagick'
+gem 'mime-types'
+gem 'redcarpet'
+gem 'coderay'
+gem 'kgio'
+gem 'dalli'
+gem 'acts_as_list'
+gem 'rails-settings-cached', '= 0.2.1'
+gem 'facebox-rails', '~> 0.1.3'
+gem 'default_value_for', '~> 2.0.2'
+gem 'bootstrap-sass', '~> 2.3.2.0'
+gem 'slim-rails', '~> 1.0.3'
+gem 'simple_form', '~> 2.0.4'
+gem 'foreman', '~> 0.61.0'
+gem 'thin', '~> 1.5.0'
+gem 'figaro'
 
