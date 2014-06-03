@@ -40,6 +40,8 @@
 		DD130FD118FD5CEF006FA005 /* icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = DD130FCB18FD5CEF006FA005 /* icon-120.png */; };
 		DD130FD218FD5CEF006FA005 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DD130FCC18FD5CEF006FA005 /* icon.png */; };
 		DD130FD318FD5CEF006FA005 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD130FCD18FD5CEF006FA005 /* icon@2x.png */; };
+		DD3A3E68193DF09B00043CA4 /* ErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3E67193DF09B00043CA4 /* ErrorResponse.m */; };
+		DD3A3E6B193DF56F00043CA4 /* ForgetPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3E6A193DF56F00043CA4 /* ForgetPWDViewController.m */; };
 		DD876CCB192C76DC002D2912 /* BaseSectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD876CCA192C76DC002D2912 /* BaseSectionTableViewController.m */; };
 		DD876CCE192CA7E1002D2912 /* OrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD876CCD192CA7E1002D2912 /* OrderTableViewCell.m */; };
 		DDB0D40A1924E08300490E35 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDB0D37B1924E08300490E35 /* AppDelegate.mm */; };
@@ -194,6 +196,10 @@
 		DD130FCB18FD5CEF006FA005 /* icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-120.png"; sourceTree = "<group>"; };
 		DD130FCC18FD5CEF006FA005 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		DD130FCD18FD5CEF006FA005 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		DD3A3E66193DF09B00043CA4 /* ErrorResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorResponse.h; sourceTree = "<group>"; };
+		DD3A3E67193DF09B00043CA4 /* ErrorResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorResponse.m; sourceTree = "<group>"; };
+		DD3A3E69193DF56F00043CA4 /* ForgetPWDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPWDViewController.h; sourceTree = "<group>"; };
+		DD3A3E6A193DF56F00043CA4 /* ForgetPWDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPWDViewController.m; sourceTree = "<group>"; };
 		DD876CC9192C76DC002D2912 /* BaseSectionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseSectionTableViewController.h; sourceTree = "<group>"; };
 		DD876CCA192C76DC002D2912 /* BaseSectionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseSectionTableViewController.m; sourceTree = "<group>"; };
 		DD876CCC192CA7E1002D2912 /* OrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTableViewCell.h; sourceTree = "<group>"; };
@@ -660,6 +666,8 @@
 		DDB0D3B11924E08300490E35 /* Response */ = {
 			isa = PBXGroup;
 			children = (
+				DD3A3E66193DF09B00043CA4 /* ErrorResponse.h */,
+				DD3A3E67193DF09B00043CA4 /* ErrorResponse.m */,
 				DDB0D3B21924E08300490E35 /* ListPaggingResponseBase.h */,
 				DDB0D3B31924E08300490E35 /* ListPaggingResponseBase.m */,
 				DDB0D3B41924E08300490E35 /* ListResponseBase.h */,
@@ -921,6 +929,8 @@
 				DDB0D43F1924E86000490E35 /* MyViewController.m */,
 				DDBAFA91192A3A8B00FBCE38 /* MyTableViewCell.h */,
 				DDBAFA92192A3A8B00FBCE38 /* MyTableViewCell.m */,
+				DD3A3E69193DF56F00043CA4 /* ForgetPWDViewController.h */,
+				DD3A3E6A193DF56F00043CA4 /* ForgetPWDViewController.m */,
 				DDBEFCB6192B25D100343738 /* ModifyPWDViewController.h */,
 				DDBEFCB7192B25D100343738 /* ModifyPWDViewController.m */,
 				DDBEFCB9192B25DF00343738 /* LoginViewController.h */,
@@ -1082,6 +1092,7 @@
 				DDB0D40C1924E08300490E35 /* BaseTableView.m in Sources */,
 				DDB0D4301924E08300490E35 /* MBProgressHUD.m in Sources */,
 				DDB0D4171924E08300490E35 /* ListPaggingRequestBase.m in Sources */,
+				DD3A3E6B193DF56F00043CA4 /* ForgetPWDViewController.m in Sources */,
 				DDB0D40A1924E08300490E35 /* AppDelegate.mm in Sources */,
 				DD876CCB192C76DC002D2912 /* BaseSectionTableViewController.m in Sources */,
 				DDB0D4391924E08300490E35 /* UIImageView+(ASI).m in Sources */,
@@ -1107,6 +1118,7 @@
 				DDB0D40E1924E08300490E35 /* BaseTableViewController.m in Sources */,
 				DDBD7574192B56CE00047A0D /* STLocationInstance.m in Sources */,
 				DDB0D4271924E08300490E35 /* AKTabBar.m in Sources */,
+				DD3A3E68193DF09B00043CA4 /* ErrorResponse.m in Sources */,
 				DDB0D42D1924E08300490E35 /* DataTracker.m in Sources */,
 				DDB0D4221924E08300490E35 /* CreateObject.m in Sources */,
 				DDB0D41B1924E08300490E35 /* ListPaggingResponseBase.m in Sources */,
@@ -1258,7 +1270,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Guoyan Geng (SGL9K9F566)";
@@ -1289,7 +1300,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Guoyan Geng (SGL9K9F566)";
