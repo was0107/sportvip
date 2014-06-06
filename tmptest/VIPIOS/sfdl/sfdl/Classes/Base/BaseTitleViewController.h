@@ -10,9 +10,10 @@
 #import "UIButton+extend.h"
 
 @interface BaseTitleViewController : BaseViewController
+@property (nonatomic, retain, readonly) UIView   *titleView;
 @property (nonatomic, retain, readonly) UIButton *leftButton;
 @property (nonatomic, retain, readonly) UIButton *rightButton;
-@property (nonatomic, retain) UILabel  *customTitleLable;
+@property (nonatomic, retain,         ) UILabel  *customTitleLable;
 
 
 - (id) showLeft;

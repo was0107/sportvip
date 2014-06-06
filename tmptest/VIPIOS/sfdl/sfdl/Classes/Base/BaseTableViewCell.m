@@ -27,7 +27,11 @@
     if (self) {
         // Initialization code
         self.backgroundColor = kWhiteColor;
-        self.selectionStyle = UITableViewCellSelectionStyleGray;
+        
+        UIView *SELVIEW = [[[UIView alloc] initWithFrame:self.bounds] autorelease];
+        SELVIEW.backgroundColor = KCellSelColor;
+        self.selectedBackgroundView = SELVIEW;
+//        self.selectionStyle = UITableViewCellSelectionStyleGray;
     }
     return self;
 }

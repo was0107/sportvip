@@ -32,7 +32,6 @@
 		DD3A3F9E193E029300043CA4 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3EC9193E029300043CA4 /* DataManager.m */; };
 		DD3A3F9F193E029300043CA4 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3ECB193E029300043CA4 /* HomeViewController.m */; };
 		DD3A3FA0193E029300043CA4 /* MapLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3ECD193E029300043CA4 /* MapLocation.m */; };
-		DD3A3FA1193E029300043CA4 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3ECF193E029300043CA4 /* SearchViewController.m */; };
 		DD3A3FA2193E029300043CA4 /* SurroundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3ED1193E029300043CA4 /* SurroundViewController.m */; };
 		DD3A3FA3193E029300043CA4 /* TeacherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3ED3193E029300043CA4 /* TeacherTableViewCell.m */; };
 		DD3A3FA4193E029300043CA4 /* CheckClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3ED6193E029300043CA4 /* CheckClassViewController.m */; };
@@ -140,6 +139,14 @@
 		DD3A401D193E037A00043CA4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3A401C193E037A00043CA4 /* CFNetwork.framework */; };
 		DD3A401F193E037F00043CA4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3A401E193E037F00043CA4 /* CoreData.framework */; };
 		DD3A4021193E038500043CA4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3A4020193E038500043CA4 /* QuartzCore.framework */; };
+		DD7737DA19409E04006239B2 /* CustomSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7737D919409E04006239B2 /* CustomSearchBar.m */; };
+		DD7737DF1940A162006239B2 /* icon_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD7737DC1940A162006239B2 /* icon_back@2x.png */; };
+		DD7737E01940A162006239B2 /* icon_search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD7737DD1940A162006239B2 /* icon_search@2x.png */; };
+		DD7737E11940A162006239B2 /* icon_share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD7737DE1940A162006239B2 /* icon_share@2x.png */; };
+		DD7737E41940A4DA006239B2 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7737E31940A4DA006239B2 /* SearchViewController.m */; };
+		DD7737E71940AA4D006239B2 /* BaseSecondTitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7737E61940AA4D006239B2 /* BaseSecondTitleViewController.m */; };
+		DDC5E427193F5D6400FE1973 /* CustomImageTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC5E426193F5D6400FE1973 /* CustomImageTitleButton.m */; };
+		DDC5E42A193F623100FE1973 /* UIImage+tintedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC5E428193F623100FE1973 /* UIImage+tintedImage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -195,8 +202,6 @@
 		DD3A3ECB193E029300043CA4 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		DD3A3ECC193E029300043CA4 /* MapLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapLocation.h; sourceTree = "<group>"; };
 		DD3A3ECD193E029300043CA4 /* MapLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapLocation.m; sourceTree = "<group>"; };
-		DD3A3ECE193E029300043CA4 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
-		DD3A3ECF193E029300043CA4 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		DD3A3ED0193E029300043CA4 /* SurroundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurroundViewController.h; sourceTree = "<group>"; };
 		DD3A3ED1193E029300043CA4 /* SurroundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurroundViewController.m; sourceTree = "<group>"; };
 		DD3A3ED2193E029300043CA4 /* TeacherTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherTableViewCell.h; sourceTree = "<group>"; };
@@ -382,6 +387,19 @@
 		DD3A401C193E037A00043CA4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DD3A401E193E037F00043CA4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DD3A4020193E038500043CA4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		DD7737D819409E04006239B2 /* CustomSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSearchBar.h; sourceTree = "<group>"; };
+		DD7737D919409E04006239B2 /* CustomSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSearchBar.m; sourceTree = "<group>"; };
+		DD7737DC1940A162006239B2 /* icon_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_back@2x.png"; sourceTree = "<group>"; };
+		DD7737DD1940A162006239B2 /* icon_search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_search@2x.png"; sourceTree = "<group>"; };
+		DD7737DE1940A162006239B2 /* icon_share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_share@2x.png"; sourceTree = "<group>"; };
+		DD7737E21940A4DA006239B2 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		DD7737E31940A4DA006239B2 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		DD7737E51940AA4D006239B2 /* BaseSecondTitleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseSecondTitleViewController.h; sourceTree = "<group>"; };
+		DD7737E61940AA4D006239B2 /* BaseSecondTitleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseSecondTitleViewController.m; sourceTree = "<group>"; };
+		DDC5E425193F5D6400FE1973 /* CustomImageTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomImageTitleButton.h; sourceTree = "<group>"; };
+		DDC5E426193F5D6400FE1973 /* CustomImageTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomImageTitleButton.m; sourceTree = "<group>"; };
+		DDC5E428193F623100FE1973 /* UIImage+tintedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+tintedImage.m"; sourceTree = "<group>"; };
+		DDC5E429193F623100FE1973 /* UIImage+tintedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+tintedImage.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -542,6 +560,8 @@
 			children = (
 				DD3A3EB2193E029300043CA4 /* BaseGroupTableView.h */,
 				DD3A3EB3193E029300043CA4 /* BaseGroupTableView.m */,
+				DD7737E51940AA4D006239B2 /* BaseSecondTitleViewController.h */,
+				DD7737E61940AA4D006239B2 /* BaseSecondTitleViewController.m */,
 				DD3A3EB4193E029300043CA4 /* BaseSectionTableViewController.h */,
 				DD3A3EB5193E029300043CA4 /* BaseSectionTableViewController.m */,
 				DD3A3EB6193E029300043CA4 /* BaseTableView.h */,
@@ -568,6 +588,8 @@
 				DD3A3EE9193E029300043CA4 /* Root */,
 				DD3A3EEC193E029300043CA4 /* Setting */,
 				DD3A3EF3193E029300043CA4 /* Splash */,
+				DD7737E21940A4DA006239B2 /* SearchViewController.h */,
+				DD7737E31940A4DA006239B2 /* SearchViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -585,8 +607,6 @@
 				DD3A3ECB193E029300043CA4 /* HomeViewController.m */,
 				DD3A3ECC193E029300043CA4 /* MapLocation.h */,
 				DD3A3ECD193E029300043CA4 /* MapLocation.m */,
-				DD3A3ECE193E029300043CA4 /* SearchViewController.h */,
-				DD3A3ECF193E029300043CA4 /* SearchViewController.m */,
 				DD3A3ED0193E029300043CA4 /* SurroundViewController.h */,
 				DD3A3ED1193E029300043CA4 /* SurroundViewController.m */,
 				DD3A3ED2193E029300043CA4 /* TeacherTableViewCell.h */,
@@ -741,6 +761,7 @@
 		DD3A3F23193E029300043CA4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DD7737DB1940A162006239B2 /* sfdl */,
 				DD3A3F24193E029300043CA4 /* bg_top.png */,
 				DD3A3F25193E029300043CA4 /* icon_back.png */,
 				DD3A3F26193E029300043CA4 /* icon_index_class_f@2x.png */,
@@ -791,6 +812,8 @@
 		DD3A3F49193E029300043CA4 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				DDC5E428193F623100FE1973 /* UIImage+tintedImage.m */,
+				DDC5E429193F623100FE1973 /* UIImage+tintedImage.h */,
 				DD3A3F4A193E029300043CA4 /* AKTabBarController */,
 				DD3A3F58193E029300043CA4 /* DataTracker */,
 				DD3A3F62193E029300043CA4 /* iRate */,
@@ -926,8 +949,22 @@
 				DD3A3F90193E029300043CA4 /* UITextField+DelegateBlocks.m */,
 				DD3A3F91193E029300043CA4 /* ZJSwitch.h */,
 				DD3A3F92193E029300043CA4 /* ZJSwitch.m */,
+				DDC5E425193F5D6400FE1973 /* CustomImageTitleButton.h */,
+				DDC5E426193F5D6400FE1973 /* CustomImageTitleButton.m */,
+				DD7737D819409E04006239B2 /* CustomSearchBar.h */,
+				DD7737D919409E04006239B2 /* CustomSearchBar.m */,
 			);
 			path = Widget;
+			sourceTree = "<group>";
+		};
+		DD7737DB1940A162006239B2 /* sfdl */ = {
+			isa = PBXGroup;
+			children = (
+				DD7737DC1940A162006239B2 /* icon_back@2x.png */,
+				DD7737DD1940A162006239B2 /* icon_search@2x.png */,
+				DD7737DE1940A162006239B2 /* icon_share@2x.png */,
+			);
+			path = sfdl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1019,7 +1056,9 @@
 				DD3A3FC9193E029300043CA4 /* icon_tabbar_hzxs_f.png in Resources */,
 				DD3A3FC6193E029300043CA4 /* icon_index_school_n@2x.png in Resources */,
 				DD3A3FC1193E029300043CA4 /* icon_back.png in Resources */,
+				DD7737E01940A162006239B2 /* icon_search@2x.png in Resources */,
 				DD3A4005193E02D100043CA4 /* Icon@2x.png in Resources */,
+				DD7737DF1940A162006239B2 /* icon_back@2x.png in Resources */,
 				DD3A3FCB193E029300043CA4 /* icon_tabbar_hzxs_n.png in Resources */,
 				DD3A4002193E02D100043CA4 /* Default@2x.png in Resources */,
 				DD3A3FD2193E029300043CA4 /* icon_tabbar_user_f@2x.png in Resources */,
@@ -1031,6 +1070,7 @@
 				DD3A4001193E02D100043CA4 /* Default.png in Resources */,
 				DD3A3FC5193E029300043CA4 /* icon_index_school_f@2x.png in Resources */,
 				DD3A3FC2193E029300043CA4 /* icon_index_class_f@2x.png in Resources */,
+				DD7737E11940A162006239B2 /* icon_share@2x.png in Resources */,
 				DD3A3FCF193E029300043CA4 /* icon_tabbar_setting_n.png in Resources */,
 				DD3A3FD1193E029300043CA4 /* icon_tabbar_user_f.png in Resources */,
 				DD3A3FD6193E029300043CA4 /* icon_user_order.png in Resources */,
@@ -1060,6 +1100,7 @@
 			files = (
 				DD3A3FDC193E029300043CA4 /* URLParser.m in Sources */,
 				DD3A3FA7193E029300043CA4 /* ModifyPWDViewController.m in Sources */,
+				DD7737E71940AA4D006239B2 /* BaseSecondTitleViewController.m in Sources */,
 				DD3A3F99193E029300043CA4 /* BaseTitleViewController.m in Sources */,
 				DD3A3FBF193E029300043CA4 /* UserItemBase.m in Sources */,
 				DD3A3F9A193E029300043CA4 /* BaseViewController.m in Sources */,
@@ -1077,9 +1118,9 @@
 				DD3A3FA5193E029300043CA4 /* ForgetPWDViewController.m in Sources */,
 				DD3A3F9F193E029300043CA4 /* HomeViewController.m in Sources */,
 				DD3A3FEA193E029300043CA4 /* WASASICacheAdapter.m in Sources */,
-				DD3A3FA1193E029300043CA4 /* SearchViewController.m in Sources */,
 				DD3A3FA4193E029300043CA4 /* CheckClassViewController.m in Sources */,
 				DD3A3FF3193E029300043CA4 /* IdentifierValidator.m in Sources */,
+				DD7737E41940A4DA006239B2 /* SearchViewController.m in Sources */,
 				DD3A3FAD193E029300043CA4 /* RegisterViewController.m in Sources */,
 				DD3A3FB4193E029300043CA4 /* ListPaggingRequestBase.m in Sources */,
 				DD3A3FA0193E029300043CA4 /* MapLocation.m in Sources */,
@@ -1101,10 +1142,12 @@
 				DD3A3F94193E029300043CA4 /* BaseGroupTableView.m in Sources */,
 				DD3A3FB6193E029300043CA4 /* LoginRequest.m in Sources */,
 				DD3A3FEE193E029300043CA4 /* WASBaseServiceFace.m in Sources */,
+				DDC5E42A193F623100FE1973 /* UIImage+tintedImage.m in Sources */,
 				DD3A3FF8193E029300043CA4 /* UITextField+DelegateBlocks.m in Sources */,
 				DD3A3FBA193E029300043CA4 /* ListResponseBase.m in Sources */,
 				DD3A3FAB193E029300043CA4 /* OrdersViewController.m in Sources */,
 				DD3A3FB7193E029300043CA4 /* ModifyArchiveRequest.m in Sources */,
+				DD7737DA19409E04006239B2 /* CustomSearchBar.m in Sources */,
 				DD3A3FDF193E029300043CA4 /* AKTabBar.m in Sources */,
 				DD3A3FB3193E029300043CA4 /* FeedBackRequest.m in Sources */,
 				DD3A3FBB193E029300043CA4 /* LoginResponse.m in Sources */,
@@ -1129,6 +1172,7 @@
 				DD3A3FBC193E029300043CA4 /* RegisterResponse.m in Sources */,
 				DD3A3FF5193E029300043CA4 /* PubTextField.m in Sources */,
 				DD3A3FA3193E029300043CA4 /* TeacherTableViewCell.m in Sources */,
+				DDC5E427193F5D6400FE1973 /* CustomImageTitleButton.m in Sources */,
 				DD3A3E85193E014D00043CA4 /* main.m in Sources */,
 				DD3A3F9C193E029300043CA4 /* CityTableViewController.m in Sources */,
 				DD3A3FBD193E029300043CA4 /* CategoryItem.m in Sources */,

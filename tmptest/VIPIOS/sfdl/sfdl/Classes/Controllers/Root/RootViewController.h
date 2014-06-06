@@ -6,11 +6,8 @@
 //  Copyright (c) 2014 allen.wang. All rights reserved.
 //
 
-#import "AKTabBarController.h"
+#import "BaseTitleViewController.h"
 
-@interface RootViewController : AKTabBarController<AKTabBarController,UIAlertViewDelegate>
+@interface RootViewController : BaseTitleViewController
 
-@property (nonatomic,assign)NSInteger currentFrom;
-
-- (id)initWithTabBarHeight:(NSUInteger)height;
 @end

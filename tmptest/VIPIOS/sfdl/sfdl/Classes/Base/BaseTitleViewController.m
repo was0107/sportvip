@@ -11,14 +11,17 @@
 #import "UIImage+extend.h"
 
 @implementation BaseTitleViewController
-@synthesize leftButton = _leftButton;
-@synthesize rightButton= _rightButton;
+@synthesize titleView        = _titleView;
+@synthesize leftButton       = _leftButton;
+@synthesize rightButton      = _rightButton;
 @synthesize customTitleLable = _customTitleLable;
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+//    [self.view addSubview:self.titleView];
+
     if (!IS_IOS_7_OR_GREATER)
         {
             UIImage *image = [[UIImage imageNamed:@"bg_top"] stretchableImageWithLeftCapWidth:4 topCapHeight:4];
@@ -44,6 +47,8 @@
 {
     TT_RELEASE_SAFELY(_leftButton);
     TT_RELEASE_SAFELY(_rightButton);
+    TT_RELEASE_SAFELY(_titleView);
+    TT_RELEASE_SAFELY(_customTitleLable);
     [super reduceMemory];
 }
 
@@ -58,6 +63,15 @@
 //    UIBarButtonItem *left = [[[UIBarButtonItem alloc] initWithCustomView:self.leftButton] autorelease];
 //    self.navigationItem.leftBarButtonItem  = left;
     return self;
+}
+
+- (UIView *) titleView
+{
+    if (!_titleView) {
+        _titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+        [_titleView addSubview:[self customTitleLable]];
+    }
+    return _titleView;
 }
 
 //-(id)showLeftView
@@ -120,21 +134,23 @@
     return _rightButton;
 }
 
-//-(UILabel *)customTitleLable
-//{
-//    if (!_customTitleLable) {
-//        _customTitleLable  = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, 44)];
-//        _customTitleLable.font = HTFONTSIZE(20);
-//        _customTitleLable.textColor = kBlackColor;
-//        _customTitleLable.backgroundColor = kClearColor;
-//        _customTitleLable.textAlignment = NSTextAlignmentCenter;
-//    }
-//    return _customTitleLable;
-//}
+-(UILabel *)customTitleLable
+{
+    if (!_customTitleLable) {
+        _customTitleLable  = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, 44)];
+        _customTitleLable.font = HTFONTSIZE(20);
+        _customTitleLable.textColor = kBlackColor;
+        _customTitleLable.backgroundColor = kClearColor;
+        _customTitleLable.textAlignment = NSTextAlignmentCenter;
+        _customTitleLable.text = @"mpmc";
+    }
+    return _customTitleLable;
+}
 
 - (void)setTitle:(NSString *)title
 {
     [super setTitle:title];
+//    self.customTitleLable.text = title;
     UILabel *titleView = (UILabel *)self.navigationItem.titleView;
     if (!titleView) {
         titleView = [[UILabel alloc] initWithFrame:CGRectZero];

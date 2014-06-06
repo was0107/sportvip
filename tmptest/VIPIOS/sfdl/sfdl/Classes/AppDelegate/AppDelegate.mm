@@ -30,15 +30,17 @@
     {
         self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     }
-    self.rootController = [[[RootViewController alloc] initWithTabBarHeight:48] autorelease];
+    self.rootController = [[[RootViewController alloc] init] autorelease];
+    UINavigationController *controller = [[[UINavigationController alloc] initWithRootViewController:self.rootController] autorelease];
+    [controller setNavigationBarHidden:NO];
     if(![[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"])
     {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
-        self.window.rootViewController = self.rootController;
+        self.window.rootViewController = controller;
     }
     else
     {
-        self.window.rootViewController = self.rootController;
+        self.window.rootViewController = controller;
     }
     [self.window makeKeyAndVisible];
 

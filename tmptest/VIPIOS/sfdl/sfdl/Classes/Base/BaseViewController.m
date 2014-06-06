@@ -16,7 +16,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor getColor:@"F3F2F2"];//[UIColor colorWithPatternImage:[UIImage imageNamed:@"main_background"]];
+//    self.view.backgroundColor = [UIColor getColor:@"F3F2F2"];//[UIColor colorWithPatternImage:[UIImage imageNamed:@"main_background"]];
+    self.view.backgroundColor = kWhiteColor;//[UIColor colorWithPatternImage:[UIImage imageNamed:@"main_background"]];
 //    [NSNotificationCenter addObserver:self selector:@selector(currentCityChanged) forNotification:KCURRENTCITYSTRING object:nil];】
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
     if(IS_IOS_7_OR_GREATER && [self enableExtendLayout])

@@ -23,6 +23,7 @@
 		DD3A0678169EA61A00CCFBC0 /* UIImageLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A0677169EA61A00CCFBC0 /* UIImageLabel.m */; };
 		DD3A0681169EAFA200CCFBC0 /* WASSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A067F169EAFA200CCFBC0 /* WASSegmentControl.m */; };
 		DD465FC2169C0D7B0027B4BC /* UIImageView+border.m in Sources */ = {isa = PBXBuildFile; fileRef = DD465FC1169C0D7B0027B4BC /* UIImageView+border.m */; };
+		DD7737D619402167006239B2 /* UIKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7737D519402167006239B2 /* UIKeyboardAvoidingScrollView.m */; };
 		DD792A1917A6756C00D52230 /* SRRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD792A1617A6756C00D52230 /* SRRefreshView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		DD792A1A17A6756C00D52230 /* SRSlimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD792A1817A6756C00D52230 /* SRSlimeView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		DD82C68F169AA53300F50D6F /* UIButton+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = DD82C68E169AA53300F50D6F /* UIButton+extend.m */; };
@@ -186,6 +187,8 @@
 		DD3A0680169EAFA200CCFBC0 /* WASSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WASSegmentControl.h; sourceTree = "<group>"; };
 		DD465FC0169C0D7B0027B4BC /* UIImageView+border.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+border.h"; sourceTree = "<group>"; };
 		DD465FC1169C0D7B0027B4BC /* UIImageView+border.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+border.m"; sourceTree = "<group>"; };
+		DD7737D419402167006239B2 /* UIKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
+		DD7737D519402167006239B2 /* UIKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		DD792A1517A6756C00D52230 /* SRRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRefreshView.h; sourceTree = "<group>"; };
 		DD792A1617A6756C00D52230 /* SRRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRefreshView.m; sourceTree = "<group>"; };
 		DD792A1717A6756C00D52230 /* SRSlimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSlimeView.h; sourceTree = "<group>"; };
@@ -479,6 +482,15 @@
 				DD0C4AF016B7A8E300CB9793 /* UISplashWindow.m */,
 			);
 			path = UIWindow;
+			sourceTree = "<group>";
+		};
+		DD7737D319402167006239B2 /* UIKeyboardAvoidingScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				DD7737D419402167006239B2 /* UIKeyboardAvoidingScrollView.h */,
+				DD7737D519402167006239B2 /* UIKeyboardAvoidingScrollView.m */,
+			);
+			path = UIKeyboardAvoidingScrollView;
 			sourceTree = "<group>";
 		};
 		DD792A1417A6756C00D52230 /* SlimeRefresh */ = {
@@ -965,6 +977,7 @@
 		DDFEA811168AA30500F632CF /* Widget */ = {
 			isa = PBXGroup;
 			children = (
+				DD7737D319402167006239B2 /* UIKeyboardAvoidingScrollView */,
 				DD0C4AED16B7A8CF00CB9793 /* UIWindow */,
 				DDFFD204168B02C80019B199 /* UILabelWidget */,
 				DDFEA850168AA75600F632CF /* UIViewWidget */,
@@ -1224,6 +1237,7 @@
 				445C748516B7FB9900EC0761 /* UITableView+ZGParallelView.m in Sources */,
 				DDE3CAEE171CFD49007F45AD /* ASIAuthenticationDialog.m in Sources */,
 				DDE3CAEF171CFD49007F45AD /* ASIDataCompressor.m in Sources */,
+				DD7737D619402167006239B2 /* UIKeyboardAvoidingScrollView.m in Sources */,
 				DDE3CAF0171CFD49007F45AD /* ASIDataDecompressor.m in Sources */,
 				DDE3CAF1171CFD49007F45AD /* ASIDownloadCache.m in Sources */,
 				DDE3CAF2171CFD49007F45AD /* ASIFormDataRequest.m in Sources */,

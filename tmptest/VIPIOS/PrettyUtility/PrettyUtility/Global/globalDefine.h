@@ -59,6 +59,13 @@
 #define kDarkTextColor              [UIColor darkTextColor]
 #define kDarkGrayColor              [UIColor darkGrayColor]
 
+
+#define KLineColor                  [UIColor getColor:@"414be5"]
+#define KTextColor                  [UIColor getColor:@"3A48D4"]
+#define KCellSelColor               [UIColor getColor:@"6D75F0"]
+#define KTitleColor                 [UIColor getColor:@"8086217"]
+#define KTitleSelColor              [UIColor getColor:@"6C73F4"]
+
 #define kRedExColor                  [UIColor getColor:@"c91941"]
 #define kSectionColor                [UIColor getColor:@"666666"]
 #define kTableViewColor              [UIColor getColor:@"606060"]

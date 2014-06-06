@@ -13,6 +13,7 @@
 #import "LoginResponse.h"
 #import "CustomSelectControl.h"
 #import "ZJSwitch.h"
+#import "UIKeyboardAvoidingScrollView.h"
 
 @interface RegisterViewController ()
 @property (nonatomic, retain) PubTextField            *nameTextField;
@@ -22,7 +23,7 @@
 @property (nonatomic, retain) PubTextField            *emailTextField;
 @property (nonatomic, retain) PubTextField            *pwdTextField;
 @property (nonatomic, retain) UIButton                *confirmButton;
-@property (nonatomic, retain) UIScrollView            *scrollView;
+@property (nonatomic, retain) UIKeyboardAvoidingScrollView            *scrollView;
 @property (nonatomic, retain) CustomDatePickerControl * datePicker;
 @property (nonatomic ,retain) UIButton                * birthdayButton;
 @property (nonatomic,copy   ) NSString                * gender;//状态设置
@@ -55,7 +56,7 @@
     
     [self setTitleContent:@"用户注册"];
     
-    self.scrollView = [[[UIScrollView alloc] initWithFrame:CGRectMake(0,  0, 320.0, kContentBoundsHeight)] autorelease];
+    self.scrollView = [[[UIKeyboardAvoidingScrollView alloc] initWithFrame:CGRectMake(0,  0, 320.0, kContentBoundsHeight)] autorelease];
     self.scrollView.backgroundColor = kClearColor;
     self.scrollView.contentSize = CGSizeMake(320, kContentBoundsHeight+1);
     [self.scrollView addSubview:self.nameTextField];

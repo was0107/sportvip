@@ -7,19 +7,18 @@
 //
 
 #import "RootViewController.h"
+#import "CustomSearchBar.h"
+#import "CustomImageTitleButton.h"
+#import "SearchViewController.h"
 
 @interface RootViewController ()
-
+@property (nonatomic, retain) UIImageView   *topImageView;
+@property (nonatomic, retain) CustomSearchBar *searchView;
 @end
 
 @implementation RootViewController
-@synthesize currentFrom = _currentFrom;
-
-- (id)initWithTabBarHeight:(NSUInteger)height
 {
-    self = [super initWithTabBarHeight:height];
-    [self setMinimumHeightToDisplayTitle:20.0];
-    return [self configControllers];
+    
 }
 
 - (void )dealloc
@@ -28,43 +27,63 @@
     [super dealloc];
 }
 
-- (id) configControllers
-{
-    NSMutableArray *arrayVC = [NSMutableArray array];
-    
-    [arrayVC addObject:[self createItem:@"HomeViewController" title:@"b5m"]];
-    [arrayVC addObject:[self createItem:@"MyViewController" title:@"个人中心"]];
-    [arrayVC addObject:[self createItem:@"SettingViewController" title:@"设置"]];
-    
-    self.tabEdgeColor = [UIColor getColor:@"bdbdbd"];
-    self.textColor = [UIColor getColor:@"9e9e9e"];
-    self.selectedTextColor = [UIColor getColor:KCustomGreenColor];
-    [self setViewControllers:arrayVC];
-    self.delegate = self;
-    return self;
-}
-
-- (id) createItem:(NSString *) controller title:(NSString *) title
-{
-    Class class = NSClassFromString(controller);
-    UIViewController *vc1 = [[[class alloc] init] autorelease];
-    vc1.title = title;
-    UINavigationController *nav1 = [[[UINavigationController alloc] initWithRootViewController:vc1] autorelease];
-    nav1.navigationBar.tintColor = [UIColor getColor:KCustomGreenColor];
-    nav1.navigationBar.backgroundColor = [UIColor getColor:@"F3F2F2"];
-    return nav1;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.frame = kFullFrame;
+    
+    [self configControllers];
+    [self.view addSubview:self.searchView];
+    [self.view addSubview:self.topImageView];
+    self.title = @"MPMC";
 }
 
-
-- (BOOL) canChangeToContoller:(UIViewController *)controller
+- (id) configControllers
 {
-    return YES;
+    int flag =  (iPhone5) ? 120 : 110;
+    for (int j = 2 ; j > 0; j--) {
+        for (int i = 0 ; i < 4; i++) {
+
+        CustomImageTitleButton *button = [[[CustomImageTitleButton alloc] initWithFrame:CGRectMake(4 + 79 * i, kContentBoundsHeight - flag * j, 75, 100)] autorelease];
+        [self.view addSubview:button];
+        }
+    }
+       return self;
+}
+
+- (id) createItem:(NSString *) controller title:(NSString *) title
+{
+
+    return self;
+}
+
+- (CustomSearchBar *) searchView
+{
+    if (!_searchView) {
+        __block RootViewController *blockSelf = self;
+        _searchView = [[CustomSearchBar alloc] initWithFrame:CGRectMake(0, 0.0,320,52.0)];
+        _searchView.backgroundColor = kGridTableViewColor;
+        _searchView.completeBlok = ^(NSString *result) {
+            SearchViewController *controller = [[[SearchViewController alloc] init] autorelease];
+            controller.secondTitleLabel.text = result;
+            [blockSelf.navigationController hidesBottomBarWhenPushed];
+            [blockSelf.navigationController pushViewController:controller animated:YES];
+        };
+    }
+    return _searchView;
+}
+
+- (UIImageView *) topImageView
+{
+    if (!_topImageView) {
+        int flag =  (iPhone5) ? 120 : 110;
+        int flag1 =  (iPhone5) ? 0 : 44;
+
+        _topImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 60.0,320, kContentBoundsHeight- kContentBoundsHeight + 2 * flag - 60.0f - flag1)];
+        
+        _topImageView.backgroundColor = kGridTableViewColor;
+    }
+    return _topImageView;
 }
 
 @end
