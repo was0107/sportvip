@@ -31,6 +31,12 @@
     lineLayer.backgroundColor = [KLineColor CGColor];
     lineLayer.frame = CGRectMake(10, 38, 300, 2);
     [self.view.layer addSublayer:lineLayer];
+    
+    if (![self useTablViewToShow]) {
+        [self.view addSubview:self.scrollView];
+    } else {
+        [self.view addSubview:self.tableView];
+    }
     // Do any additional setup after loading the view.
 }
 
@@ -55,6 +61,23 @@
         _secondTitleLabel.font = HTFONTBIGSIZE(kFontSize16);
     }
     return _secondTitleLabel;
+}
+
+- (UIKeyboardAvoidingScrollView *) scrollView
+{
+    if (!_scrollView) {
+        _scrollView = [[UIKeyboardAvoidingScrollView alloc] initWithFrame:[self tableViewFrame]];
+        _scrollView.backgroundColor = kClearColor;
+    }
+    return _scrollView;
+}
+
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_scrollView);
+    TT_RELEASE_SAFELY(_secondTitleLabel);
+    [super dealloc];
 }
 /*
 #pragma mark - Navigation

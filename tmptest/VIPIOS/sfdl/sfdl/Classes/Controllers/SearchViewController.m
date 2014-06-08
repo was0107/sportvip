@@ -7,7 +7,6 @@
 //
 
 #import "SearchViewController.h"
-#import "BaseTableViewCell.h"
 
 @interface SearchViewController ()
 
@@ -19,12 +18,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = self.result;
 }
 
 - (void) reduceMemory
 {
-    TT_RELEASE_SAFELY(_result);
     [super reduceMemory];
 }
 

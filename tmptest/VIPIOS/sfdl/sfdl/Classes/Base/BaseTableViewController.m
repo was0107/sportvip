@@ -18,19 +18,25 @@
     if (IS_IOS_7_OR_GREATER) {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-    [self configEmptyTipsView];
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
-    [self configTableView];
-    [self.view addSubview:self.tableView];
-    if (IS_IOS_7_OR_GREATER){
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    if ([self useTablViewToShow]) {
+        [self configEmptyTipsView];
+        self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
+        if (IS_IOS_7_OR_GREATER){
+            self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        }
+        else{
+            self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+            //        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        }
+        [self configTableView];
+        [self.view addSubview:self.tableView];
     }
-    else{
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-//        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    }
+}
 
 
+- (BOOL) useTablViewToShow
+{
+    return YES;
 }
 
 - (void) reduceMemory

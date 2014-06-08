@@ -12,33 +12,35 @@
 #import "RegisterViewController.h"
 #import "LoginRequest.h"
 #import "LoginResponse.h"
+#import "CreateObject.h"
+
 
 @interface LoginViewController ()
 @property (nonatomic, retain) PubTextField *phoneTextField;
 @property (nonatomic, retain) PubTextField *pwdTextField;
-@property (nonatomic, retain) UIButton     *confirmButton;
+@property (nonatomic, retain) UIButton     *confirmButton, *newButton;
 
 @end
 
 @implementation LoginViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self setTitleContent:@"登录"];
     [[[self showRight] rightButton] setTitle:@"注册" forState:UIControlStateNormal];
+    
+    UIImageView *imageVeiw = [[[UIImageView alloc] initWithFrame:CGRectMake(42, 20, 243, 30)] autorelease];
+    imageVeiw.backgroundColor = kClearColor;
+    imageVeiw.image = [UIImage imageNamed:@"icon"];
+    [self.view addSubview:imageVeiw];
+
+    
+    
     [self.view addSubview:self.phoneTextField];
     [self.view addSubview:self.pwdTextField];
     [self.view addSubview:self.confirmButton];
+    [self.view addSubview:self.newButton];
     
 #ifdef kUseSimulateData
     self.phoneTextField.pubTextField.text = @"13721117147";
@@ -63,8 +65,10 @@
 {
     if (!_phoneTextField) {
         __unsafe_unretained LoginViewController *safeSelf = self;
-        _phoneTextField = [[PubTextField alloc] initWithFrame:CGRectMake(8, 15, 304, 40) indexTitle:@"帐号" placeHolder:@"请输入手机号/邮箱" pubTextFieldStyle:PubTextFieldStyleTop];
+        _phoneTextField = [[PubTextField alloc] initWithFrame:CGRectMake(25, 15 + kImageStartAt, 255, 40) indexTitle:@"" placeHolder:@"Member ID or Email" pubTextFieldStyle:PubTextFieldStyleTop];
         _phoneTextField.pubTextField.returnKeyType = UIReturnKeyNext;
+        _phoneTextField.pubTextField.frame = CGRectMake(0, 0, 250, 40);
+        _phoneTextField.autoLayout = YES;
         _phoneTextField.pubTextField.keyboardType = UIKeyboardTypeNumberPad;
         [_phoneTextField.pubTextField onShouldReturn:^(UITextField *textField){
             [safeSelf.pwdTextField becomeFirstResponder];
@@ -78,9 +82,11 @@
 {
     if (!_pwdTextField) {
         __block LoginViewController *safeSelf = self;
-        _pwdTextField = [[PubTextField alloc] initWithFrame:CGRectMake(8, 62, 304, 40) indexTitle:@"密码" placeHolder:@"6-16位的字母和数字组成" pubTextFieldStyle:PubTextFieldStyleBottom];
+        _pwdTextField = [[PubTextField alloc] initWithFrame:CGRectMake(25, 62 + kImageStartAt, 255, 40) indexTitle:@"" placeHolder:@"Password" pubTextFieldStyle:PubTextFieldStyleBottom];
         _pwdTextField.pubTextField.returnKeyType = UIReturnKeyDone;
+        _pwdTextField.pubTextField.frame = CGRectMake(0, 0, 250, 40);
         _pwdTextField.pubTextField.secureTextEntry = YES;
+        _pwdTextField.autoLayout = YES;
         [_pwdTextField.pubTextField onShouldReturn:^(UITextField *textField){
             [_pwdTextField resignFirstResponder];
             return YES;
@@ -93,17 +99,43 @@
 {
     if (!_confirmButton) {
         _confirmButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
-        _confirmButton.frame = CGRectMake(8.0f, 120.0f, 304.0f, 40.0f);
+        _confirmButton.frame = CGRectMake(42.0f, 120.0f + kImageStartAt, 243.0f, 40.0f);
         _confirmButton.backgroundColor = kLightGrayColor;
         [_confirmButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18.0f]];
-        UIImage *image = [[UIImage imageNamed:@"button_login_normal"] stretchableImageWithLeftCapWidth:4 topCapHeight:4];
-        [_confirmButton setBackgroundImage:image forState:UIControlStateNormal];
-        [_confirmButton setTitle:@"登录" forState:UIControlStateNormal];
+        [CreateObject addTargetEfection:_confirmButton];
+        [_confirmButton setTitle:@"Sign in" forState:UIControlStateNormal];
         [_confirmButton addTarget:self action:@selector(confirmButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     
     return _confirmButton;
 }
+
+
+- (UIButton *)newButton
+{
+    if (!_newButton) {
+        _newButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+        _newButton.frame = CGRectMake(150.0f, 166.0f + kImageStartAt, 140.0f, 30.0f);
+        _newButton.backgroundColor = kClearColor;
+        [_newButton setTitleColor:kButtonNormalColor forState:UIControlStateNormal];
+        [_newButton.titleLabel setFont:[UIFont boldSystemFontOfSize:13.0f]];
+        [_newButton setTitle:@"New user? Join Now>" forState:UIControlStateNormal];
+        [_newButton addTarget:self action:@selector(newButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    return _newButton;
+}
+
+- (IBAction)newButtonAction:(id)sender
+{
+    [self.pwdTextField resignFirstResponder];
+    [self.phoneTextField resignFirstResponder];
+
+    RegisterViewController *controller = [[[RegisterViewController alloc] init] autorelease];
+    [controller setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
 
 - (IBAction)confirmButtonAction:(id)sender
 {

@@ -79,7 +79,8 @@
 
 
 - (BOOL)textFieldShouldClear:(UITextField *)textField {
-    
+    [textField resignFirstResponder];
+
     return YES;
 }
 

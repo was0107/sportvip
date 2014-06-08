@@ -4,6 +4,7 @@
 
 #import "PubTextField.h"
 #import "UITextField+DelegateBlocks.h"
+#import "UIView+extend.h"
 
 #define kIndexLabelWidth         40.0f
 #define kIndexLabelHeight        20.0f
@@ -17,7 +18,6 @@
 
 @interface PubTextField ()
 
-@property (nonatomic, retain) UILabel *indexLabel;
 @property (nonatomic, retain) UIImageView *fieldBackground;
 @property (nonatomic, assign) PubTextFieldStyle fieldStyle;
 
@@ -85,6 +85,8 @@
             
             _pubTextField = [[UITextField alloc] initWithFrame:CGRectMake(self.bounds.origin.x + kIndexLabelLeftPadding + kIndexLabelWidth + kIndexLabelRightPadding, self.bounds.origin.y + 10, kTextFieldWidth, 20)];
         }
+        _pubTextField.layer.borderWidth = 0.5f;
+        _pubTextField.layer.borderColor = [kGrayColor CGColor];
         _pubTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
         _pubTextField.autocorrectionType = UITextAutocorrectionTypeNo;
         _pubTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -95,6 +97,26 @@
     return _pubTextField;
 }
 
+- (void) setAutoLayout:(BOOL)autoLayout
+{
+    _autoLayout = autoLayout;
+    [self.indexLabel sizeToFit];
+    CGFloat max = self.indexLabel.width;
+    [self setMaxWidth:max];
+    
+}
+- (void) setMaxWidth:(CGFloat)maxWidth
+{
+    _maxWidth = maxWidth;
+    
+//    if (_maxWidth > self.indexLabel.frame.size.width)
+    {
+//        [self.indexLabel setFrameWidth:_maxWidth + 2];
+        [self.pubTextField setFrameX:self.indexLabel.width + self.indexLabel.x  + 5 ];
+        [self.pubTextField setFrameWidth:self.bounds.size.width - (self.indexLabel.width - self.indexLabel.x  + kIndexLabelLeftPadding  + kIndexLabelRightPadding) ];
+        [self.pubTextField setFrameWidth:self.bounds.size.width - self.pubTextField.x + 5 ];
+    }
+}
 - (UILabel *)indexLabel
 {
     if (!_indexLabel) {

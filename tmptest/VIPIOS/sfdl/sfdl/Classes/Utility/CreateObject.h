@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "UIColor+extend.h"
+#import "UIImage+tintedImage.h"
 #define createOBjectMarco(x)                        [[[NSClassFromString(x) alloc] init] autorelease]
 #define createOBjectWithFrameMarco(x,frame)         [[[NSClassFromString(x) alloc] initWithFrame:frame] autorelease]
 
@@ -50,6 +52,8 @@
 + (UILabel *) titleLabel;
 
 +(UIScrollView *) scrollView;
+
++ (UIButton *) addTargetEfection:(UIButton *) theButton;
 
 
 @end

@@ -17,7 +17,9 @@ typedef enum{
 
 
 @interface PubTextField : UIView
-
+@property (nonatomic, retain) UILabel *indexLabel;
+@property (nonatomic, assign) BOOL  autoLayout;
+@property (nonatomic, assign) CGFloat  maxWidth;
 @property (nonatomic, retain) UITextField *pubTextField;
 
 - (BOOL)becomeFirstResponder;
@@ -30,5 +32,6 @@ typedef enum{
          indexTitle:(NSString *)indexTile
         placeHolder:(NSString *)placeHolder
   pubTextFieldStyle:(PubTextFieldStyle)pubFieldStyle;
+
 
 @end

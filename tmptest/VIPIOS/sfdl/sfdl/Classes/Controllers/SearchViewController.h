@@ -9,6 +9,5 @@
 #import "BaseSecondTitleViewController.h"
 
 @interface SearchViewController : BaseSecondTitleViewController
-@property (nonatomic, copy) NSString     *result;
 
 @end

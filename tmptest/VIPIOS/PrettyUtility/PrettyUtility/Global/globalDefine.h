@@ -66,6 +66,9 @@
 #define KTitleColor                 [UIColor getColor:@"8086217"]
 #define KTitleSelColor              [UIColor getColor:@"6C73F4"]
 
+#define kButtonNormalColor          [UIColor getColor:@"4F57D8"]
+#define kButtonSelectColor          [UIColor getColor:@"3840BD"]
+
 #define kRedExColor                  [UIColor getColor:@"c91941"]
 #define kSectionColor                [UIColor getColor:@"666666"]
 #define kTableViewColor              [UIColor getColor:@"606060"]

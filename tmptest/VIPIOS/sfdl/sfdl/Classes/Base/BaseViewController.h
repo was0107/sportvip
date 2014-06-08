@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SVProgressHUD.h"
 #import "UIColor+extend.h"
+#import "UINavigationItem+Space.h"
 
 @interface BaseViewController : UIViewController
 @property (nonatomic, copy)     NSString    *trackViewId;

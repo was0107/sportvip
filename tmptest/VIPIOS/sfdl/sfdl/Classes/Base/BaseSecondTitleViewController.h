@@ -7,8 +7,11 @@
 //
 
 #import "BaseTableViewController.h"
+#import "UIKeyboardAvoidingScrollView.h"
 
 @interface BaseSecondTitleViewController : BaseTableViewController
 @property (nonatomic, retain) UILabel *secondTitleLabel;
+@property (nonatomic, retain) UIKeyboardAvoidingScrollView *scrollView;
+
 
 @end

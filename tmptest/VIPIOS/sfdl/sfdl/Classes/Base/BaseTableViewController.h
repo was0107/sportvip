@@ -15,5 +15,8 @@
 
 @property (nonatomic,retain) BaseTableView *tableView;
 
+
+- (BOOL) useTablViewToShow;
+
 -(void)refreshTableView;
 @end

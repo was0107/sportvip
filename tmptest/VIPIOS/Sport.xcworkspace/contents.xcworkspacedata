@@ -2,12 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Sport/sport.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:sfdl/sfdl.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:PrettyUtility/PrettyUtility.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Sport/sport.xcodeproj">
    </FileRef>
 </Workspace>

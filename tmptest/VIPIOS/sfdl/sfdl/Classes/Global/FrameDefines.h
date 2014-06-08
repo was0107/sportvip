@@ -10,6 +10,8 @@
 #ifndef  Gwm_FrameDefines_h
 #define  Gwm_FrameDefines_h
 
+#define kImageStartAt 50.0f
+
 
 #define kNavigationBarHeight    44
 #define kFilterViewWidth        187

@@ -32,6 +32,11 @@
     }
     self.rootController = [[[RootViewController alloc] init] autorelease];
     UINavigationController *controller = [[[UINavigationController alloc] initWithRootViewController:self.rootController] autorelease];
+    controller.navigationBar.backgroundColor = kButtonNormalColor;
+
+//    [UINavigationBar appearance].barTintColor = kButtonNormalColor;
+//    controller.navigationBar.barTintColor = kButtonNormalColor;
+//    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [controller setNavigationBarHidden:NO];
     if(![[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"])
     {
@@ -44,7 +49,7 @@
     }
     [self.window makeKeyAndVisible];
 
-    [STLocationInstance sharedInstance];
+//    [STLocationInstance sharedInstance];
     
     [iRate sharedInstance].daysUntilPrompt = 5;
     [iRate sharedInstance].usesUntilPrompt = 15;

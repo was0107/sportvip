@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CustomImageTitleButton : UIButton
+@interface CustomImageTitleButton : UIView
+@property(nonatomic, retain)UIButton * topButton;
 
+
+- (void) setText:(NSString *) text image:(NSString *)imageName;
 @end
