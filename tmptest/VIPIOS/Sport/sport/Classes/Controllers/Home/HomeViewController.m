@@ -14,6 +14,8 @@
 #import "DataManager.h"
 #import "SurroundViewController.h"
 #import "ZJSwitch.h"
+#import "YardViewController.h"
+#import "TeacherViewController.h"
 
 @interface HomeViewController ()
 @property (nonatomic, retain) UIButton *typeButton;
@@ -267,7 +269,7 @@
     };
     
     self.tableView.cellHeightBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
-        return  90.0f;
+        return  (0 == _type) ? 113.0f : 100.0f;
     };
     
     self.tableView.cellNumberBlock = ^( UITableView *tableView, NSInteger section) {
@@ -280,6 +282,16 @@
     
     self.tableView.cellSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        if (0 == _type) {
+            YardViewController *controller = [[[YardViewController alloc] init] autorelease];
+            [controller setHidesBottomBarWhenPushed:YES];
+            [blockSelf.navigationController pushViewController:controller animated:YES];
+        } else {
+            
+            TeacherViewController *controller = [[[TeacherViewController alloc] init] autorelease];
+            [controller setHidesBottomBarWhenPushed:YES];
+            [blockSelf.navigationController pushViewController:controller animated:YES];
+        }
     };
     
     self.tableView.refreshBlock = ^(id content) {

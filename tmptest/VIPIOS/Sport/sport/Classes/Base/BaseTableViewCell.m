@@ -558,3 +558,67 @@
 @end
 
 
+
+@implementation BaseSportTableViewCell
+
+
+- (UIImageLabelEx *) topLabelEx
+{
+    if (!_topLabelEx) {
+        _topLabelEx = [[UIImageLabelEx alloc] initWithFrame:CGRectZero];
+        _topLabelEx.backgroundColor = kClearColor;
+        _topLabelEx.textColor = kBlackColor;
+        _topLabelEx.highlightedTextColor = kBlackColor;
+        _topLabelEx.font = HTFONTSIZE(kFontSize17);
+        
+    }
+    return _topLabelEx;
+}
+
+
+- (UIImageLabelEx *) topRigithEx
+{
+    if (!_topRigithEx) {
+        _topRigithEx = [[UIImageLabelEx alloc] initWithFrame:CGRectZero];
+        _topRigithEx.backgroundColor = kClearColor;
+        _topRigithEx.textColor = kDarkTextColor;
+        _topRigithEx.numberOfLines = 2;
+        _topRigithEx.highlightedTextColor = kBlackColor;
+        _topRigithEx.font = HTFONTSIZE(kFontSize14);
+        
+    }
+    return _topRigithEx;
+}
+
+
+- (UIImageLabelEx *) middleLabelEx
+{
+    if (!_middleLabelEx) {
+        _middleLabelEx = [[UIImageLabelEx alloc] initWithFrame:CGRectZero];
+        _middleLabelEx.backgroundColor = kClearColor;
+        _middleLabelEx.textColor = kDarkTextColor;
+        _middleLabelEx.highlightedTextColor = kBlackColor;
+        _middleLabelEx.font = HTFONTSIZE(kFontSize14);
+        
+    }
+    return _middleLabelEx;
+}
+
+
+- (UIImageLabelEx *) subRightEx
+{
+    if (!_subRightEx) {
+        _subRightEx = [[UIImageLabelEx alloc] initWithFrame:CGRectZero];
+        _subRightEx.backgroundColor = kClearColor;
+        _subRightEx.textColor = kDarkTextColor;
+        _subRightEx.highlightedTextColor = kBlackColor;
+        _subRightEx.font = HTFONTSIZE(kFontSize14);
+        
+    }
+    return _subRightEx;
+}
+
+
+
+@end
+

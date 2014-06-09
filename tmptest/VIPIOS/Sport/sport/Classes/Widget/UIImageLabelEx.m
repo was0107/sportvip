@@ -9,7 +9,7 @@
 #import "UIImageLabelEx.h"
 #import "UIView+extend.h"
 
-#define kImageWidthHeight   10.0f
+#define kImageWidthHeight   15.0f
 #define kImageSpace         2.0f
 
 @interface UIImageLabelEx()
@@ -66,18 +66,17 @@
         if (superLayer) {
             for (int i = 0; i < total; i++) {
                 CALayer *layer = [CALayer layer];
-                layer.contents = [self.imageArray objectAtIndex:i];
-                [superLayer addSublayer:layer];
-                
+                layer.contents = (id)[UIImage imageNamed:[self.imageArray objectAtIndex:i]].CGImage;
                 if (0 == _origitation) {
-                    layer.frame = CGRectMake(rect.origin.x + i * kImageWidthHeight, rect.origin.y, kImageWidthHeight, kImageWidthHeight);
+                    layer.frame = CGRectMake(rect.origin.x + i * (kImageWidthHeight + kImageSpace), rect.origin.y + 4, kImageWidthHeight, kImageWidthHeight);
                 } else  if (1 == _origitation) {
-                    layer.frame = CGRectMake(rect.size.width - (total - i) * kImageWidthHeight, rect.origin.y, kImageWidthHeight, kImageWidthHeight);
+                    layer.frame = CGRectMake(rect.origin.x + rect.size.width - (total - i) *  (kImageWidthHeight + kImageSpace), rect.origin.y + 4, kImageWidthHeight, kImageWidthHeight);
                 } else  if (2 == _origitation) {
-//                    layer.frame = CGRectMake(0, 0, kImageWidthHeight, kImageWidthHeight);
+                    layer.frame = CGRectMake(rect.origin.x + 10 , rect.origin.y + rect.size.height  + kImageSpace, kImageWidthHeight, kImageWidthHeight);
                 } else  if (3 == _origitation) {
-//                    layer.frame = CGRectMake(0, 0, kImageWidthHeight, kImageWidthHeight);
+                    layer.frame = CGRectMake(0, 0, kImageWidthHeight, kImageWidthHeight);
                 }
+                [superLayer addSublayer:layer];
             }
         }
     }
@@ -89,10 +88,11 @@
 {
     self.imageArray = images;
     _origitation = flag;
+    [self setInternalImages];
     return self;
 }
 
-- (id) setImage:(UIImage *) image origitation:(int) flag
+- (id) setImage:(NSString *) image origitation:(int) flag
 {
     if (!image) {
         return self;

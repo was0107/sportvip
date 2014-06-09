@@ -8,6 +8,6 @@
 
 #import "BaseTableViewCell.h"
 
-@interface TeacherTableViewCell : BaseNewTableViewCell
+@interface TeacherTableViewCell : BaseSportTableViewCell
 
 @end

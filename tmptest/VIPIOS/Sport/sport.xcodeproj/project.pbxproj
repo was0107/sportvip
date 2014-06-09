@@ -140,6 +140,8 @@
 		DDBEFCC4192B29C900343738 /* UITextField+DelegateBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBEFCC2192B29C900343738 /* UITextField+DelegateBlocks.m */; };
 		DDC1685A19299D0300FA7758 /* ClassTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC1685919299D0300FA7758 /* ClassTableViewCell.m */; };
 		DDC1685D19299D1300FA7758 /* TeacherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC1685C19299D1300FA7758 /* TeacherTableViewCell.m */; };
+		DDC2E8F41945E6C700310745 /* YardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC2E8F31945E6C700310745 /* YardViewController.m */; };
+		DDC2E8F71945E6D600310745 /* TeacherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC2E8F61945E6D600310745 /* TeacherViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -391,6 +393,10 @@
 		DDC1685919299D0300FA7758 /* ClassTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassTableViewCell.m; sourceTree = "<group>"; };
 		DDC1685B19299D1300FA7758 /* TeacherTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherTableViewCell.h; sourceTree = "<group>"; };
 		DDC1685C19299D1300FA7758 /* TeacherTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherTableViewCell.m; sourceTree = "<group>"; };
+		DDC2E8F21945E6C700310745 /* YardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YardViewController.h; sourceTree = "<group>"; };
+		DDC2E8F31945E6C700310745 /* YardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YardViewController.m; sourceTree = "<group>"; };
+		DDC2E8F51945E6D600310745 /* TeacherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherViewController.h; sourceTree = "<group>"; };
+		DDC2E8F61945E6D600310745 /* TeacherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -918,6 +924,10 @@
 				DDBAFA7E192A135E00FBCE38 /* SearchViewController.m */,
 				DDBAFA83192A2BAB00FBCE38 /* DataManager.h */,
 				DDBAFA84192A2BAB00FBCE38 /* DataManager.m */,
+				DDC2E8F21945E6C700310745 /* YardViewController.h */,
+				DDC2E8F31945E6C700310745 /* YardViewController.m */,
+				DDC2E8F51945E6D600310745 /* TeacherViewController.h */,
+				DDC2E8F61945E6D600310745 /* TeacherViewController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1084,11 +1094,13 @@
 				DDB0D42A1924E08300490E35 /* AKTabBarView.m in Sources */,
 				DDB0D4251924E08300490E35 /* UserDefaultsManager.m in Sources */,
 				DDB0D4431924E86800490E35 /* HomeViewController.m in Sources */,
+				DDC2E8F41945E6C700310745 /* YardViewController.m in Sources */,
 				DDBAFA7F192A135E00FBCE38 /* SearchViewController.m in Sources */,
 				DDB0D40D1924E08300490E35 /* BaseTableViewCell.m in Sources */,
 				DDB0D4101924E08300490E35 /* BaseViewController.m in Sources */,
 				DDB0D4241924E08300490E35 /* URLParser.m in Sources */,
 				DDB0D41F1924E08300490E35 /* ListResponseItemBase.m in Sources */,
+				DDC2E8F71945E6D600310745 /* TeacherViewController.m in Sources */,
 				DDB0D40C1924E08300490E35 /* BaseTableView.m in Sources */,
 				DDB0D4301924E08300490E35 /* MBProgressHUD.m in Sources */,
 				DDB0D4171924E08300490E35 /* ListPaggingRequestBase.m in Sources */,

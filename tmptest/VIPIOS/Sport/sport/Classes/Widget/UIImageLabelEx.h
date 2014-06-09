@@ -12,6 +12,6 @@
 
 
 - (id) setImages:(NSArray *) images origitation:(int) flag;
-- (id) setImage:(UIImage *) image origitation:(int) flag;
+- (id) setImage:(NSString *) image origitation:(int) flag;
 
 @end

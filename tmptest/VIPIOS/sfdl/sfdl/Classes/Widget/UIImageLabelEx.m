@@ -40,8 +40,6 @@
 {
     
     [super setText:text];
-    [self setInternalImages];
-    
 }
 
 - (id) setInternalImages
@@ -66,7 +64,7 @@
         if (superLayer) {
             for (int i = 0; i < total; i++) {
                 CALayer *layer = [CALayer layer];
-                layer.contents = [self.imageArray objectAtIndex:i];
+                layer.contents = ((UIImage *)[self.imageArray objectAtIndex:i]).CGImage;
                 [superLayer addSublayer:layer];
                 
                 if (0 == _origitation) {
@@ -89,6 +87,7 @@
 {
     self.imageArray = images;
     _origitation = flag;
+    [self setInternalImages];
     return self;
 }
 

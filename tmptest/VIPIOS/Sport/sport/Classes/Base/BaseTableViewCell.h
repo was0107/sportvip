@@ -10,6 +10,8 @@
 #import "UIImageView+(ASI).h"
 #import "UIColor+extend.h"
 #import "UIImage+extend.h"
+#import "UIImageLabelEx.h"
+#import "UIView+extend.h"
 
 @interface BaseTableViewCornerCell : UITableViewCell
 
@@ -57,4 +59,11 @@
 
 
 - (id)setBgImageWithCount:(NSInteger ) number at:(NSIndexPath *)indexPath;
+@end
+
+
+@interface BaseSportTableViewCell : BaseNewTableViewCell
+
+@property (nonatomic, retain) UIImageLabelEx *topLabelEx, *topRigithEx;
+@property (nonatomic, retain) UIImageLabelEx *middleLabelEx, *subRightEx;
 @end
