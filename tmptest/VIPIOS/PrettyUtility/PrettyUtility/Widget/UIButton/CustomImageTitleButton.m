@@ -11,7 +11,6 @@
 #import "UIImage+tintedImage.h"
 
 @interface CustomImageTitleButton()
-@property(nonatomic, retain)UILabel     * bottomTitleLabel;
 
 @end
 

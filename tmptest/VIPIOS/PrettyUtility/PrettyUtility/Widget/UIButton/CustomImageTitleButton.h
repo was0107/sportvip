@@ -10,6 +10,7 @@
 
 @interface CustomImageTitleButton : UIView
 @property(nonatomic, retain)UIButton * topButton;
+@property(nonatomic, retain)UILabel     * bottomTitleLabel;
 
 
 - (void) setText:(NSString *) text image:(NSString *)imageName;

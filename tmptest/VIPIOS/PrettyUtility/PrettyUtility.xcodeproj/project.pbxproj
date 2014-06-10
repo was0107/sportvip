@@ -30,6 +30,10 @@
 		DD82C6ED169AF1C600F50D6F /* WASImageWithBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD82C6EC169AF1C600F50D6F /* WASImageWithBackgroundView.m */; };
 		DD8DF1DF168AAC60008148E3 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD8DF1DE168AAC60008148E3 /* CoreMotion.framework */; };
 		DD8DF1E4168AAE06008148E3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD8DF1E3168AAE06008148E3 /* MobileCoreServices.framework */; };
+		DD94574B1946E9A700F9D3B3 /* XLCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD94574A1946E9A700F9D3B3 /* XLCycleScrollView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		DD945770194742AF00F9D3B3 /* CustomImageTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DD94576F194742AF00F9D3B3 /* CustomImageTitleButton.m */; };
+		DD9457751947438A00F9D3B3 /* UIImage+tintedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9457721947438A00F9D3B3 /* UIImage+tintedImage.m */; };
+		DD9457761947438A00F9D3B3 /* UINavigationItem+Space.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9457741947438A00F9D3B3 /* UINavigationItem+Space.m */; };
 		DDB5839016A00FE100FEF128 /* UIImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB5838F16A00FE100FEF128 /* UIImageButton.m */; };
 		DDE3CAEE171CFD49007F45AD /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE3CA7A171CFD49007F45AD /* ASIAuthenticationDialog.m */; };
 		DDE3CAEF171CFD49007F45AD /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE3CA7D171CFD49007F45AD /* ASIDataCompressor.m */; };
@@ -199,6 +203,14 @@
 		DD82C6EC169AF1C600F50D6F /* WASImageWithBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WASImageWithBackgroundView.m; sourceTree = "<group>"; };
 		DD8DF1DE168AAC60008148E3 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		DD8DF1E3168AAE06008148E3 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		DD9457491946E9A700F9D3B3 /* XLCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLCycleScrollView.h; sourceTree = "<group>"; };
+		DD94574A1946E9A700F9D3B3 /* XLCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLCycleScrollView.m; sourceTree = "<group>"; };
+		DD94576E194742AF00F9D3B3 /* CustomImageTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomImageTitleButton.h; sourceTree = "<group>"; };
+		DD94576F194742AF00F9D3B3 /* CustomImageTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomImageTitleButton.m; sourceTree = "<group>"; };
+		DD9457711947438A00F9D3B3 /* UIImage+tintedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+tintedImage.h"; sourceTree = "<group>"; };
+		DD9457721947438A00F9D3B3 /* UIImage+tintedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+tintedImage.m"; sourceTree = "<group>"; };
+		DD9457731947438A00F9D3B3 /* UINavigationItem+Space.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+Space.h"; sourceTree = "<group>"; };
+		DD9457741947438A00F9D3B3 /* UINavigationItem+Space.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+Space.m"; sourceTree = "<group>"; };
 		DDB5838E16A00FE100FEF128 /* UIImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageButton.h; sourceTree = "<group>"; };
 		DDB5838F16A00FE100FEF128 /* UIImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageButton.m; sourceTree = "<group>"; };
 		DDE3CA79171CFD49007F45AD /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
@@ -502,6 +514,24 @@
 				DD792A1817A6756C00D52230 /* SRSlimeView.m */,
 			);
 			path = SlimeRefresh;
+			sourceTree = "<group>";
+		};
+		DD9457481946E9A700F9D3B3 /* UIScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				DD9457491946E9A700F9D3B3 /* XLCycleScrollView.h */,
+				DD94574A1946E9A700F9D3B3 /* XLCycleScrollView.m */,
+			);
+			path = UIScrollView;
+			sourceTree = "<group>";
+		};
+		DD94576D194742AF00F9D3B3 /* UIButton */ = {
+			isa = PBXGroup;
+			children = (
+				DD94576E194742AF00F9D3B3 /* CustomImageTitleButton.h */,
+				DD94576F194742AF00F9D3B3 /* CustomImageTitleButton.m */,
+			);
+			path = UIButton;
 			sourceTree = "<group>";
 		};
 		DDE3CA77171CFD48007F45AD /* Vendor */ = {
@@ -843,6 +873,10 @@
 		DDFEA79A168A9E5E00F632CF /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				DD9457711947438A00F9D3B3 /* UIImage+tintedImage.h */,
+				DD9457721947438A00F9D3B3 /* UIImage+tintedImage.m */,
+				DD9457731947438A00F9D3B3 /* UINavigationItem+Space.h */,
+				DD9457741947438A00F9D3B3 /* UINavigationItem+Space.m */,
 				DDFEA79B168A9E5F00F632CF /* CGContext+Extend.h */,
 				DDFEA79C168A9E5F00F632CF /* CGContext+Extend.m */,
 				DDFEA79D168A9E5F00F632CF /* NSDate+extend.h */,
@@ -977,6 +1011,8 @@
 		DDFEA811168AA30500F632CF /* Widget */ = {
 			isa = PBXGroup;
 			children = (
+				DD94576D194742AF00F9D3B3 /* UIButton */,
+				DD9457481946E9A700F9D3B3 /* UIScrollView */,
 				DD7737D319402167006239B2 /* UIKeyboardAvoidingScrollView */,
 				DD0C4AED16B7A8CF00CB9793 /* UIWindow */,
 				DDFFD204168B02C80019B199 /* UILabelWidget */,
@@ -1178,6 +1214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD130FC718FD5C8E006FA005 /* SBJSON.m in Sources */,
+				DD945770194742AF00F9D3B3 /* CustomImageTitleButton.m in Sources */,
 				DDFEA70F168A9B6500F632CF /* AnimateTime.m in Sources */,
 				DDFEA7E2168A9E5F00F632CF /* CGContext+Extend.m in Sources */,
 				DDFEA7E3168A9E5F00F632CF /* NSDate+extend.m in Sources */,
@@ -1235,6 +1272,7 @@
 				DD03834216AA463D00E16242 /* WASShareTipView.m in Sources */,
 				DD0C4AF116B7A8E300CB9793 /* UISplashWindow.m in Sources */,
 				445C748516B7FB9900EC0761 /* UITableView+ZGParallelView.m in Sources */,
+				DD9457751947438A00F9D3B3 /* UIImage+tintedImage.m in Sources */,
 				DDE3CAEE171CFD49007F45AD /* ASIAuthenticationDialog.m in Sources */,
 				DDE3CAEF171CFD49007F45AD /* ASIDataCompressor.m in Sources */,
 				DD7737D619402167006239B2 /* UIKeyboardAvoidingScrollView.m in Sources */,
@@ -1261,6 +1299,7 @@
 				DDE3CB04171CFD49007F45AD /* ASIS3ServiceRequest.m in Sources */,
 				DDE3CB05171CFD49007F45AD /* FMDatabase.m in Sources */,
 				DDE3CB06171CFD49007F45AD /* FMDatabaseAdditions.m in Sources */,
+				DD94574B1946E9A700F9D3B3 /* XLCycleScrollView.m in Sources */,
 				DDE3CB07171CFD49007F45AD /* FMDatabasePool.m in Sources */,
 				DDE3CB08171CFD49007F45AD /* FMDatabaseQueue.m in Sources */,
 				DDE3CB09171CFD49007F45AD /* FMResultSet.m in Sources */,
@@ -1274,6 +1313,7 @@
 				DDE3CB12171CFD49007F45AD /* SDImageCache.m in Sources */,
 				DDE3CB13171CFD49007F45AD /* SDWebImageDecoder.m in Sources */,
 				DDE3CB14171CFD49007F45AD /* SDWebImageDownloader.m in Sources */,
+				DD9457761947438A00F9D3B3 /* UINavigationItem+Space.m in Sources */,
 				DDE3CB15171CFD49007F45AD /* SDWebImageManager.m in Sources */,
 				DDE3CB16171CFD49007F45AD /* SDWebImagePrefetcher.m in Sources */,
 				DDE3CB17171CFD49007F45AD /* UIButton+WebCache.m in Sources */,

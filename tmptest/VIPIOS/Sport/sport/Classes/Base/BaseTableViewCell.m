@@ -104,11 +104,11 @@
 }
 - (id)setCellsCount:(NSInteger ) number at:(NSIndexPath *)indexPath
 {
-    if (IS_IOS_7_OR_GREATER) {
-//	self.backgroundView = nil;
-//    self.backgroundColor = kClearColor;
-	return self;
-    }
+//    if (IS_IOS_7_OR_GREATER) {
+////	self.backgroundView = nil;
+////    self.backgroundColor = kClearColor;
+//	return self;
+//    }
     if (1 == number) {
         self.backgroundView = self.oneBg;
         self.selectedBackgroundView = self.oneSelBg;
@@ -129,11 +129,11 @@
 
 - (id)setCellsGroupCount:(NSInteger ) number at:(NSIndexPath *)indexPath
 {
-    if (IS_IOS_7_OR_GREATER) {
-        self.backgroundView = nil;
-        //        self.backgroundColor = kClearColor;
-        return self;
-    }
+//    if (IS_IOS_7_OR_GREATER) {
+//        self.backgroundView = nil;
+//        //        self.backgroundColor = kClearColor;
+//        return self;
+//    }
     if (1 == number) {
         self.backgroundView = [[UIImageView alloc]initWithImage:[[UIImage imageNamed:@"list_alone_normal"] stretchableImageWithLeftCapWidth:4 topCapHeight:4]];
         self.selectedBackgroundView = [[UIImageView alloc]initWithImage:[[UIImage imageNamed:@"list_alone_selected"] stretchableImageWithLeftCapWidth:4 topCapHeight:4]];

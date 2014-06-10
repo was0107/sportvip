@@ -169,9 +169,6 @@
 		DD8EEB181944566900CACC22 /* KxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8EEB171944566900CACC22 /* KxMenu.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		DD8EEB1B19445E6900CACC22 /* SSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8EEB1A19445E6900CACC22 /* SSettingViewController.m */; };
 		DD8EEB1E19445E9100CACC22 /* LanguageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8EEB1D19445E9100CACC22 /* LanguageViewController.m */; };
-		DD8EEB2119446A0200CACC22 /* UINavigationItem+Space.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8EEB2019446A0200CACC22 /* UINavigationItem+Space.m */; };
-		DDC5E427193F5D6400FE1973 /* CustomImageTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC5E426193F5D6400FE1973 /* CustomImageTitleButton.m */; };
-		DDC5E42A193F623100FE1973 /* UIImage+tintedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC5E428193F623100FE1973 /* UIImage+tintedImage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -457,12 +454,6 @@
 		DD8EEB1A19445E6900CACC22 /* SSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSettingViewController.m; sourceTree = "<group>"; };
 		DD8EEB1C19445E9100CACC22 /* LanguageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageViewController.h; sourceTree = "<group>"; };
 		DD8EEB1D19445E9100CACC22 /* LanguageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageViewController.m; sourceTree = "<group>"; };
-		DD8EEB1F19446A0200CACC22 /* UINavigationItem+Space.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+Space.h"; sourceTree = "<group>"; };
-		DD8EEB2019446A0200CACC22 /* UINavigationItem+Space.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+Space.m"; sourceTree = "<group>"; };
-		DDC5E425193F5D6400FE1973 /* CustomImageTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomImageTitleButton.h; sourceTree = "<group>"; };
-		DDC5E426193F5D6400FE1973 /* CustomImageTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomImageTitleButton.m; sourceTree = "<group>"; };
-		DDC5E428193F623100FE1973 /* UIImage+tintedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+tintedImage.m"; sourceTree = "<group>"; };
-		DDC5E429193F623100FE1973 /* UIImage+tintedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+tintedImage.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -782,8 +773,6 @@
 		DD3A3F49193E029300043CA4 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				DDC5E428193F623100FE1973 /* UIImage+tintedImage.m */,
-				DDC5E429193F623100FE1973 /* UIImage+tintedImage.h */,
 				DD3A3F4A193E029300043CA4 /* AKTabBarController */,
 				DD3A3F58193E029300043CA4 /* DataTracker */,
 				DD3A3F62193E029300043CA4 /* iRate */,
@@ -795,8 +784,6 @@
 				DD3A3F7F193E029300043CA4 /* UIImageView+(ASI).m */,
 				DD3A3F80193E029300043CA4 /* Umeng */,
 				DD3A3F83193E029300043CA4 /* Validator */,
-				DD8EEB1F19446A0200CACC22 /* UINavigationItem+Space.h */,
-				DD8EEB2019446A0200CACC22 /* UINavigationItem+Space.m */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
@@ -923,8 +910,6 @@
 				DD3A3F90193E029300043CA4 /* UITextField+DelegateBlocks.m */,
 				DD3A3F91193E029300043CA4 /* ZJSwitch.h */,
 				DD3A3F92193E029300043CA4 /* ZJSwitch.m */,
-				DDC5E425193F5D6400FE1973 /* CustomImageTitleButton.h */,
-				DDC5E426193F5D6400FE1973 /* CustomImageTitleButton.m */,
 				DD7737D819409E04006239B2 /* CustomSearchBar.h */,
 				DD7737D919409E04006239B2 /* CustomSearchBar.m */,
 			);
@@ -1248,7 +1233,6 @@
 				DD8EEAD01944243000CACC22 /* LoginViewController.m in Sources */,
 				DD3A3FE2193E029300043CA4 /* AKTabBarView.m in Sources */,
 				DD3A3FDA193E029300043CA4 /* CreateObject.m in Sources */,
-				DD8EEB2119446A0200CACC22 /* UINavigationItem+Space.m in Sources */,
 				DD3A3F98193E029300043CA4 /* BaseTableViewController.m in Sources */,
 				DD3A3FF6193E029300043CA4 /* STLocationInstance.m in Sources */,
 				DD3A3FEF193E029300043CA4 /* WASBaseServiceManager.m in Sources */,
@@ -1259,7 +1243,6 @@
 				DD3A3FB6193E029300043CA4 /* LoginRequest.m in Sources */,
 				DD8EEB1B19445E6900CACC22 /* SSettingViewController.m in Sources */,
 				DD3A3FEE193E029300043CA4 /* WASBaseServiceFace.m in Sources */,
-				DDC5E42A193F623100FE1973 /* UIImage+tintedImage.m in Sources */,
 				DD3A3FF8193E029300043CA4 /* UITextField+DelegateBlocks.m in Sources */,
 				DD3A3FBA193E029300043CA4 /* ListResponseBase.m in Sources */,
 				DD3A3FB7193E029300043CA4 /* ModifyArchiveRequest.m in Sources */,
@@ -1297,7 +1280,6 @@
 				DD3A3FF1193E029300043CA4 /* UIImageView+(ASI).m in Sources */,
 				DD3A3FBC193E029300043CA4 /* RegisterResponse.m in Sources */,
 				DD3A3FF5193E029300043CA4 /* PubTextField.m in Sources */,
-				DDC5E427193F5D6400FE1973 /* CustomImageTitleButton.m in Sources */,
 				DD3A3E85193E014D00043CA4 /* main.m in Sources */,
 				DD3A3FBD193E029300043CA4 /* CategoryItem.m in Sources */,
 				DD3A3FE7193E029300043CA4 /* LaunchTransition.m in Sources */,
