@@ -264,6 +264,7 @@
             if (!cell1){
                 cell1 = [[TeacherTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier1];
             }
+            [cell1 configWithType:0];
             return (UITableViewCell *)cell1;
         }
     };

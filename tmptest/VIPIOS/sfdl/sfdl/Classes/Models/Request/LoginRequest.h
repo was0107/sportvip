@@ -10,29 +10,41 @@
 
 @interface LoginRequest : ListRequestBase
 
-/**
- * username*(String)：用户名
- * password*(String): 密码
- */
-@property (nonatomic, copy)     NSString    *email;
+@property (nonatomic, copy)     NSString    *username;
 @property (nonatomic, copy)     NSString    *password;
 
+@end
+
+
+@interface RegiseterRequest : LoginRequest
+
+@property (nonatomic, copy)     NSString    *email;
+@property (nonatomic, copy)     NSString    *title;
+@property (nonatomic, copy)     NSString    *fullName;
+@property (nonatomic, copy)     NSString    *userCompany;
+@property (nonatomic, copy)     NSString    *tel;
 @end
 
 
 
 @interface ForgetPasswordRequest : ListRequestBase
-@property (nonatomic, copy)     NSString    *email;
+@property (nonatomic, copy)     NSString    *username;
 
 @end
 
 
-@interface UpdatePasswordRequest : ListRequestWithUserIDBase
-@property (nonatomic, copy)     NSString    *password;
-@property (nonatomic, copy)     NSString    *theNewPassword;
+@interface SurportLangRequest : ListRequestBase
 
 @end
 
-@interface UpdateUserInfoRequest : ListRequestWithUserIDBase
-@property (nonatomic, retain) NSMutableArray *keys,*values;
+
+@interface SetSurportlangRequest : ForgetPasswordRequest
+
 @end
+
+
+
+@interface CompanyInfoRequest : ListRequestBase
+
+@end
+

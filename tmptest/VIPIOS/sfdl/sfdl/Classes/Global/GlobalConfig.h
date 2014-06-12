@@ -38,7 +38,7 @@
 // 测试环境
 #ifdef kUseSimulateData     
 
-#define kHostDomain         @"http://116.255.202.113:8080/"    // test stage
+#define kHostDomain         @"http://112.124.12.144/mcms/index.php/Mobile/"    // test stage
 
 
 // 正式环境

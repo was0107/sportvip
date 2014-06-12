@@ -15,8 +15,10 @@
 #import <objc/message.h>
 #import "CreateObject.H"
 #import "UINavigationItem+Space.h"
+#import "XLCycleScrollView.h"
 
-@interface RootViewController ()
+@interface RootViewController ()<XLCycleScrollViewDelegate, XLCycleScrollViewDatasource>
+@property (nonatomic, retain) XLCycleScrollView *cycleView;
 @property (nonatomic, retain) UIImageView   *topImageView;
 @property (nonatomic, retain) CustomSearchBar *searchView;
 @property (nonatomic, retain) UIView          *rightView;
@@ -78,7 +80,7 @@
 //    [[[self showRight] rightButton] setTitle:@"注册" forState:UIControlStateNormal];
     [self configControllers];
     [self.view addSubview:self.searchView];
-    [self.view addSubview:self.topImageView];
+    [self.view addSubview:self.cycleView];
     self.title = @"MPMC";
 }
 
@@ -134,7 +136,6 @@
 - (void) pushMenuItem3:(id)sender
 {
 }
-
 
 
 - (id) configControllers
@@ -203,6 +204,43 @@
         _topImageView.backgroundColor = kGridTableViewColor;
     }
     return _topImageView;
+}
+
+
+#pragma mark - XLCycleScrollViewDatasource
+
+- (XLCycleScrollView *)cycleView
+{
+    if (!_cycleView) {
+        
+        int flag =  (iPhone5) ? 120 : 110;
+        int flag1 =  (iPhone5) ? 0 : 44;
+        _cycleView = [[XLCycleScrollView alloc] initWithFrame:CGRectMake(0, 60.0,320, kContentBoundsHeight- kContentBoundsHeight + 2 * flag - 60.0f - flag1)];
+        _cycleView.delegate = self;
+        _cycleView.dataSource = self;
+        [_cycleView reloadData];
+    }
+    return _cycleView;
+}
+
+- (NSInteger)numberOfPages
+{
+    return 3;
+}
+
+- (UIView *)pageAtIndex:(NSInteger)index
+{
+    
+    int flag =  (iPhone5) ? 120 : 110;
+    int flag1 =  (iPhone5) ? 0 : 44;
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0.0,320, kContentBoundsHeight- kContentBoundsHeight + 2 * flag - 60.0f - flag1)];
+    imageView.image = [UIImage imageNamed:@"icon"];
+    return imageView;
+}
+
+- (void)didClickPage:(XLCycleScrollView *)csView atIndex:(NSInteger)index
+{
+    DEBUGLOG(@"selected index:%d", index);
 }
 
 @end

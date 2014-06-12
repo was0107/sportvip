@@ -116,7 +116,7 @@
     };
     
     ForgetPasswordRequest *request = [[[ForgetPasswordRequest alloc] init] autorelease];
-    request.email = _mailTextField.pubTextField.text;
+    request.username = _mailTextField.pubTextField.text;
     [WASBaseServiceFace serviceWithMethod:[request URLString] body:[request toJsonString] onSuc:succBlock onFailed:failedBlock];
 }
 @end

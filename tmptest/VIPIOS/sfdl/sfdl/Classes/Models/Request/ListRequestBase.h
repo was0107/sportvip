@@ -12,6 +12,9 @@
 
 
 @interface ListRequestBase : NSObject<ListRequestProtocol>
+@property (nonatomic, copy)  NSString *comapnyId;
+@property (nonatomic, copy)  NSString    *lang;
+
 
 @end
 

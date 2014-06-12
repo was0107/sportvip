@@ -122,6 +122,7 @@
 		DD7737E01940A162006239B2 /* icon_search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD7737DD1940A162006239B2 /* icon_search@2x.png */; };
 		DD7737E11940A162006239B2 /* icon_share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD7737DE1940A162006239B2 /* icon_share@2x.png */; };
 		DD7737E71940AA4D006239B2 /* BaseSecondTitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7737E61940AA4D006239B2 /* BaseSecondTitleViewController.m */; };
+		DD8C9E771949854600436209 /* ProductRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8C9E761949854600436209 /* ProductRequest.m */; };
 		DD8EEAC61944243000CACC22 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8EEA821944243000CACC22 /* AboutUsViewController.m */; };
 		DD8EEAC71944243000CACC22 /* ContactUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8EEA841944243000CACC22 /* ContactUsViewController.m */; };
 		DD8EEAC81944243000CACC22 /* CityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8EEA871944243000CACC22 /* CityTableViewController.m */; };
@@ -372,6 +373,8 @@
 		DD7737DE1940A162006239B2 /* icon_share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_share@2x.png"; sourceTree = "<group>"; };
 		DD7737E51940AA4D006239B2 /* BaseSecondTitleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseSecondTitleViewController.h; sourceTree = "<group>"; };
 		DD7737E61940AA4D006239B2 /* BaseSecondTitleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseSecondTitleViewController.m; sourceTree = "<group>"; };
+		DD8C9E751949854600436209 /* ProductRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductRequest.h; sourceTree = "<group>"; };
+		DD8C9E761949854600436209 /* ProductRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductRequest.m; sourceTree = "<group>"; };
 		DD8EEA811944243000CACC22 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
 		DD8EEA821944243000CACC22 /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
 		DD8EEA831944243000CACC22 /* ContactUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactUsViewController.h; sourceTree = "<group>"; };
@@ -677,6 +680,8 @@
 				DD3A3F0D193E029300043CA4 /* LoginRequest.m */,
 				DD3A3F0E193E029300043CA4 /* ModifyArchiveRequest.h */,
 				DD3A3F0F193E029300043CA4 /* ModifyArchiveRequest.m */,
+				DD8C9E751949854600436209 /* ProductRequest.h */,
+				DD8C9E761949854600436209 /* ProductRequest.m */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1270,6 +1275,7 @@
 				DD8EEADB1944243000CACC22 /* ProductCategoryViewController.m in Sources */,
 				DD3A3FE5193E029300043CA4 /* DataTracker.m in Sources */,
 				DD8EEAD21944243000CACC22 /* ForgetPWDViewController.m in Sources */,
+				DD8C9E771949854600436209 /* ProductRequest.m in Sources */,
 				DD3A3FF4193E029300043CA4 /* CustomSelectControl.m in Sources */,
 				DD8EEAC71944243000CACC22 /* ContactUsViewController.m in Sources */,
 				DD3A3FE1193E029300043CA4 /* AKTabBarController.m in Sources */,

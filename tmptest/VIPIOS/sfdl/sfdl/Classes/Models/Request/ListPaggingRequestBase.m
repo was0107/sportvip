@@ -23,12 +23,17 @@
 
 - (NSMutableArray *) keyArrays
 {
-    return [NSMutableArray arrayWithObjects:@"page",@"pageSize", nil];
+    NSMutableArray *array =  [NSMutableArray arrayWithObjects:@"page",@"rows", nil];
+    [array addObjectsFromArray: [super keyArrays]];
+    return array;
 }
 
 - (NSMutableArray *) valueArrays
 {
-    return [NSMutableArray arrayWithObjects:kIntToString(self.pageno),kIntToString(self.pagesize), nil];
+    NSMutableArray *array =  [NSMutableArray arrayWithObjects:kIntToString(self.pageno),kIntToString(self.pagesize), nil];
+    [array addObjectsFromArray: [super valueArrays]];
+    return array;
+
 }
 
 - (id) nextPage

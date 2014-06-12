@@ -10,4 +10,6 @@
 
 @interface TeacherTableViewCell : BaseSportTableViewCell
 
+- (void) configTeacherDetailHeader;
+
 @end

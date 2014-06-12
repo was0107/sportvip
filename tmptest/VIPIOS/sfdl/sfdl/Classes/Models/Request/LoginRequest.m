@@ -10,31 +10,69 @@
 
 @implementation LoginRequest
 
-@synthesize email = _email;
-@synthesize password = _password;
 
 - (void) dealloc
 {
-    TT_RELEASE_SAFELY(_email);
+    TT_RELEASE_SAFELY(_username);
     TT_RELEASE_SAFELY(_password);
     [super dealloc];
 }
 
 - (NSMutableArray *) keyArrays
 {
-    return [NSMutableArray arrayWithObjects:@"email", @"password", nil];
+    NSMutableArray *array = [NSMutableArray arrayWithObjects:@"username", @"password", nil];
+    [array addObjectsFromArray: [super keyArrays]];
+    return array;
 }
 
 - (NSMutableArray *) valueArrays
 {
-    return [NSMutableArray arrayWithObjects:self.email, self.password, nil];
+    NSMutableArray *array =  [NSMutableArray arrayWithObjects:self.username, self.password, nil];
+    [array addObjectsFromArray: [super valueArrays]];
+    return array;
 }
 
 
 - (NSString *) methodString
 {
-    return @"user/login";
+    return @"User/login";
 }
+
+@end
+
+@implementation RegiseterRequest
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_email);
+    TT_RELEASE_SAFELY(_title);
+    TT_RELEASE_SAFELY(_fullName);
+    TT_RELEASE_SAFELY(_userCompany);
+    TT_RELEASE_SAFELY(_tel);
+    [super dealloc];
+}
+
+- (NSMutableArray *) keyArrays
+{
+    NSMutableArray *array = [NSMutableArray arrayWithObjects:@"email", @"title", @"fullName", @"userCompany", @"tel",  nil];
+    [array addObjectsFromArray: [super keyArrays]];
+    return array;
+}
+
+- (NSMutableArray *) valueArrays
+{
+    NSMutableArray *array =  [NSMutableArray arrayWithObjects:self.email, self.title,self.fullName,self.userCompany,self.tel, nil];
+    [array addObjectsFromArray: [super valueArrays]];
+    return array;
+}
+
+
+- (NSString *) methodString
+{
+    return @"User/register";
+}
+
+
 
 @end
 
@@ -42,93 +80,60 @@
 
 - (void) dealloc
 {
-    TT_RELEASE_SAFELY(_email);
+    TT_RELEASE_SAFELY(_username);
     [super dealloc];
 }
 
 - (NSMutableArray *) keyArrays
 {
-    return [NSMutableArray arrayWithObjects:@"email", nil];
-}
-
-- (NSMutableArray *) valueArrays
-{
-    return [NSMutableArray arrayWithObjects:self.email, nil];
-}
-
-- (NSString *) methodString
-{
-    return @"user/forget-password";
-}
-
-@end
-
-
-@implementation UpdatePasswordRequest
-
-
-- (void) dealloc
-{
-    TT_RELEASE_SAFELY(_password);
-    TT_RELEASE_SAFELY(_theNewPassword);
-    [super dealloc];
-}
-
-- (NSMutableArray *) keyArrays
-{
-    NSMutableArray *array = [super keyArrays];
-    [array addObject:@"password"];
-    [array addObject:@"newPassword"];
+    NSMutableArray *array =  [NSMutableArray arrayWithObjects:@"username", nil];
+    [array addObjectsFromArray: [super keyArrays]];
     return array;
 }
 
 - (NSMutableArray *) valueArrays
 {
-    NSMutableArray *array = [super valueArrays];
-    [array addObject:self.password];
-    [array addObject:self.theNewPassword];
+    NSMutableArray *array =   [NSMutableArray arrayWithObjects:self.username, nil];
+    [array addObjectsFromArray: [super valueArrays]];
     return array;
 }
 
 - (NSString *) methodString
 {
-    return @"user/update-password";
+    return @"user/forgotPassword";
+}
+
+@end
+
+@implementation SurportLangRequest
+
+- (NSString *) methodString
+{
+    return @"Company/getSupportedLangList";
 }
 
 @end
 
 
+@implementation CompanyInfoRequest
 
-@implementation UpdateUserInfoRequest
+- (NSString *) methodString
+{
+    return @"Company/getCompanyInfo";
+}
+
+@end
+
+@implementation SetSurportlangRequest
 
 - (void) dealloc
 {
-    TT_RELEASE_SAFELY(_keys);
-    TT_RELEASE_SAFELY(_values);
     [super dealloc];
 }
 
-- (NSMutableArray *) keyArrays
+- (NSString *) methodString
 {
-    NSMutableArray * keys = [super keyArrays];
-    if (keys) {
-        [keys addObjectsFromArray:self.keys];
-    }
-    return keys;
+    return @"user/setPrefLang";
 }
 
-- (NSMutableArray *) valueArrays
-{
-    NSMutableArray * values = [super valueArrays];
-    if (values) {
-        [values addObjectsFromArray:self.values];
-    }
-    return values;
-}
-
--(NSString *)methodString
-{
-    return (self.userID.length > 0 ) ? @"user/updateUserInfo" : @"user/register";
-}
 @end
-

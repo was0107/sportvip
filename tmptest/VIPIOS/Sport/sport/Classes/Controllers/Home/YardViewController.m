@@ -10,6 +10,7 @@
 #import "XLCycleScrollView.h"
 #import "UIImageLabelEx.h"
 #import "CustomImageTitleButton.h"
+#import "CreateObject.h"
 
 @interface YardViewController()<XLCycleScrollViewDelegate, XLCycleScrollViewDatasource>
 @property (nonatomic, retain) XLCycleScrollView *cycleView;
@@ -41,12 +42,19 @@
     return CGRectMake(0, 0, 320.0, kContentBoundsHeight-0);
 }
 
+
+- (int) tableViewType
+{
+    return eTypeNone;
+}
+
 - (UIView *) footerView
 {
     UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 55)] autorelease];
     view.backgroundColor = kClearColor;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:@"联系教练" forState:UIControlStateNormal];
+    [CreateObject addTargetEfection:button];
     button.frame = CGRectMake(20, 5.5, 280, 44);
     [view addSubview:button];
     return view;
@@ -125,7 +133,7 @@
                 int flag =  (iPhone5) ? 120 : 110;
                 int tag = 1000;
                 for (int i = 0 ; i < 4; i++) {
-                    CustomImageTitleButton *button = [[[CustomImageTitleButton alloc] initWithFrame:CGRectMake(4 + 79 * i, 4, 75, 100)] autorelease];
+                    CustomImageTitleButton *button = [[[CustomImageTitleButton alloc] initWithFrame:CGRectMake(4 + 79 * i, 4, 75, 90)] autorelease];
                     button.topButton.tag =  tag+i;
                     button.bottomTitleLabel.font = HTFONTSIZE(kFontSize10);
                     [button.bottomTitleLabel setShiftVertical:-4];
@@ -164,7 +172,7 @@
             return 44.0f;
         }
         else  if (3 == indexPath.section) {
-            return 100.0f;
+            return 98.0f;
         }
         else  if (4 == indexPath.section) {
             return 44.0f;

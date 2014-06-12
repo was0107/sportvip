@@ -165,9 +165,9 @@
         [safeSelf.confirmButton setEnabled:YES];
     };
     
-    UpdatePasswordRequest *request = [[[UpdatePasswordRequest alloc] init] autorelease];
-    request.password = _oldTextField.pubTextField.text;
-    request.theNewPassword = _newTextField.pubTextField.text;
-    [WASBaseServiceFace serviceWithMethod:[request URLString] body:[request toJsonString] onSuc:succBlock onFailed:failedBlock];
+//    UpdatePasswordRequest *request = [[[UpdatePasswordRequest alloc] init] autorelease];
+//    request.password = _oldTextField.pubTextField.text;
+//    request.theNewPassword = _newTextField.pubTextField.text;
+//    [WASBaseServiceFace serviceWithMethod:[request URLString] body:[request toJsonString] onSuc:succBlock onFailed:failedBlock];
 }
 @end

@@ -15,10 +15,47 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        [self configWithType:1];
     }
     return self;
 }
+
+- (void) configTeacherDetailHeader
+{
+    self.topLabelEx.frame        = CGRectMake(120, 10, 190, 24);
+    self.topRigithEx.frame       = CGRectMake(120, 30, 190, 60);
+    self.leftImageView.frame     = CGRectMake(10, 10, 100, 90);
+    
+    self.topLabelEx.textColor    = kBlackColor;
+    self.topRigithEx.textColor   = kLightGrayColor;
+    
+    
+    [self.contentView addSubview:self.topLabelEx];
+    [self.contentView addSubview:self.topRigithEx];
+    [self.contentView addSubview:self.leftImageView];
+    
+    self.topLabelEx.text = @"国学培训课程（免费试听)";
+    [self.topLabelEx setImages:[NSArray arrayWithObjects:@"icon",@"icon",nil] origitation:1];
+    self.topRigithEx.text = @"国子学堂虹桥中心国子学堂虹桥中心国子学堂虹子学堂虹桥中心国子学堂虹子学堂虹桥中心国子学堂虹桥中心";
+    self.topRigithEx.numberOfLines = 0;
+    self.leftImageView.layer.cornerRadius = 4.0f;
+    self.leftImageView.layer.borderColor  = [[UIColor getColor:KCustomGreenColor] CGColor];
+    self.leftImageView.layer.borderWidth  = 0.8f;
+    
+    
+    TeacherTableViewCell *blockSelf = self;
+    [self.leftImageView setImageWithURL:[NSURL URLWithString:@"http://img.b5m.com/image/T1W8hjBCJj1RCvBVdK"]
+                       placeholderImage:[UIImage imageNamed:kImageDefault]
+                                success:^(UIImage *image){
+                                    UIImage * image1 = [image imageScaledToSizeEx:CGSizeMake(100, 80)];
+                                    blockSelf.leftImageView.image = image1;
+                                    
+                                }
+                                failure:^(NSError *error){
+                                    blockSelf.leftImageView.image = [UIImage imageNamed:kImageDefault];
+                                }];
+}
+
+
 - (void) configWithType:(int) type
 {
     self.topLabelEx.frame        = CGRectMake(112, 6, 140, 24);
