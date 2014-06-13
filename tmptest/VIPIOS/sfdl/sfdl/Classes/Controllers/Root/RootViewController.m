@@ -17,11 +17,22 @@
 #import "UINavigationItem+Space.h"
 #import "XLCycleScrollView.h"
 
+#import "ProductRequest.h"
+#import "ProductResponse.h"
+
+
 @interface RootViewController ()<XLCycleScrollViewDelegate, XLCycleScrollViewDatasource>
 @property (nonatomic, retain) XLCycleScrollView *cycleView;
 @property (nonatomic, retain) UIImageView   *topImageView;
 @property (nonatomic, retain) CustomSearchBar *searchView;
 @property (nonatomic, retain) UIView          *rightView;
+
+@property (nonatomic, retain) PictureResponse    *pictureResponse;
+@property (nonatomic, retain) PictureListRequest *pictureRequest;
+
+
+@property (nonatomic, retain) PictureResponse    *menuResponse;
+@property (nonatomic, retain) MenuListRequest    *menuRequest;
 @end
 
 @implementation RootViewController
@@ -37,9 +48,7 @@
 
 - (id) showRight
 {
-    UIBarButtonItem *right = [[[UIBarButtonItem alloc] initWithCustomView:self.rightView] autorelease];
-//    self.navigationItem.rightBarButtonItem = right;
-    
+    UIBarButtonItem *right = [[[UIBarButtonItem alloc] initWithCustomView:self.rightView] autorelease];    
     [self.navigationItem mySetRightBarButtonItem:right];
     return self;
 }
@@ -82,6 +91,7 @@
     [self.view addSubview:self.searchView];
     [self.view addSubview:self.cycleView];
     self.title = @"MPMC";
+    [self sendRequestToServer];
 }
 
 - (void) rightButtonAction:(id)sender
@@ -207,6 +217,36 @@
 }
 
 
+- (void) sendRequestToServer
+{
+    __weak RootViewController *blockSelf = self;
+    idBlock successedBlock = ^(id content){
+        DEBUGLOG(@"success conent %@", content);
+        if ([_pictureRequest isFristPage]) {
+            blockSelf.pictureResponse = [[PictureResponse alloc] initWithJsonString:content];
+        } else {
+            [blockSelf.pictureResponse appendPaggingFromJsonString:content];
+        }
+        [_pictureRequest nextPage];
+        [_cycleView reloadData];
+    };
+    
+    idBlock failedBlock = ^(id content){
+        DEBUGLOG(@"failed content %@", content);
+    };
+    
+    idBlock errBlock = ^(id content){
+        DEBUGLOG(@"error content %@", content);
+    };
+    if (!_pictureRequest) {
+        self.pictureRequest = [[[PictureListRequest alloc] init] autorelease];
+    }
+    
+    [WASBaseServiceFace serviceWithMethod:[self.pictureRequest URLString] body:[self.pictureRequest toJsonString] onSuc:successedBlock onFailed:failedBlock onError:errBlock];
+}
+
+
+
 #pragma mark - XLCycleScrollViewDatasource
 
 - (XLCycleScrollView *)cycleView
@@ -225,7 +265,7 @@
 
 - (NSInteger)numberOfPages
 {
-    return 3;
+    return [self.pictureResponse count];
 }
 
 - (UIView *)pageAtIndex:(NSInteger)index

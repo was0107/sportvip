@@ -9,5 +9,6 @@
 #import "BaseSecondTitleViewController.h"
 
 @interface ProductDetailViewController : BaseSecondTitleViewController
+@property (nonatomic, copy) NSString *productDetailId;
 
 @end

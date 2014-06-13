@@ -11,6 +11,13 @@
 #import "UIImageLabelEx.h"
 #import "CustomImageTitleButton.h"
 #import "CreateObject.h"
+#import <MapKit/MapKit.h>
+#import "ClassDetailViewController.h"
+
+@interface TeacherViewController()<MKMapViewDelegate>
+@property (nonatomic, retain) MKMapView *mapView;
+
+@end
 
 @implementation TeacherViewController
 
@@ -33,6 +40,18 @@
 - (CGRect)tableViewFrame
 {
     return CGRectMake(0, 0, 320.0, kContentBoundsHeight);
+}
+
+- (MKMapView *) mapView
+{
+    if (!_mapView) {
+        _mapView = [[MKMapView alloc]initWithFrame:CGRectMake(10, 10, 300, 120)];
+        _mapView.layer.borderColor = [kGrayColor CGColor];
+        _mapView.layer.cornerRadius = 3.0f;
+        _mapView.layer.borderWidth = 0.4f;
+        _mapView.delegate = self;
+    }
+    return _mapView;
 }
 
 - (UIView *) footerView
@@ -134,6 +153,7 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell){
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+            [cell.contentView addSubview:blockSelf.mapView];
         }
         return (UITableViewCell *)cell;
     };
@@ -179,6 +199,12 @@
     
     self.tableView.cellSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        if (2 == indexPath.section)
+        {
+            ClassDetailViewController *controller = [[[ClassDetailViewController alloc] init] autorelease];
+            [controller setHidesBottomBarWhenPushed:YES];
+            [blockSelf.navigationController pushViewController:controller animated:YES];
+        }
     };
     
     self.tableView.sectionNumberBlock = ^( UITableView *tableView){
@@ -219,6 +245,19 @@
     [self.view addSubview:self.tableView];
     
     [self dealWithData];
+    
+    CLLocationCoordinate2D center;
+    center.latitude=40.029915;
+    center.longitude=116.347082;
+    
+    MKCoordinateSpan span;
+    span.latitudeDelta=0.2;
+    span.longitudeDelta=0.2;
+    MKCoordinateRegion region={center,span};
+    
+     [self.mapView setRegion:region];
+    
+    
     
     //    [self.tableView doSendRequest:YES];
 }

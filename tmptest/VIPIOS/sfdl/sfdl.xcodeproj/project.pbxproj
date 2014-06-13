@@ -36,7 +36,6 @@
 		DD3A3FB9193E029300043CA4 /* ListPaggingResponseBase.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3F14193E029300043CA4 /* ListPaggingResponseBase.m */; };
 		DD3A3FBA193E029300043CA4 /* ListResponseBase.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3F16193E029300043CA4 /* ListResponseBase.m */; };
 		DD3A3FBB193E029300043CA4 /* LoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3F18193E029300043CA4 /* LoginResponse.m */; };
-		DD3A3FBC193E029300043CA4 /* RegisterResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3F1A193E029300043CA4 /* RegisterResponse.m */; };
 		DD3A3FBD193E029300043CA4 /* CategoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3F1D193E029300043CA4 /* CategoryItem.m */; };
 		DD3A3FBE193E029300043CA4 /* ListResponseItemBase.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3F1F193E029300043CA4 /* ListResponseItemBase.m */; };
 		DD3A3FBF193E029300043CA4 /* UserItemBase.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3F21193E029300043CA4 /* UserItemBase.m */; };
@@ -117,6 +116,7 @@
 		DD3A401D193E037A00043CA4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3A401C193E037A00043CA4 /* CFNetwork.framework */; };
 		DD3A401F193E037F00043CA4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3A401E193E037F00043CA4 /* CoreData.framework */; };
 		DD3A4021193E038500043CA4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3A4020193E038500043CA4 /* QuartzCore.framework */; };
+		DD3AF8A8194AD14200A964B7 /* ProductResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3AF8A7194AD14200A964B7 /* ProductResponse.m */; };
 		DD7737DA19409E04006239B2 /* CustomSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7737D919409E04006239B2 /* CustomSearchBar.m */; };
 		DD7737DF1940A162006239B2 /* icon_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD7737DC1940A162006239B2 /* icon_back@2x.png */; };
 		DD7737E01940A162006239B2 /* icon_search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD7737DD1940A162006239B2 /* icon_search@2x.png */; };
@@ -246,8 +246,6 @@
 		DD3A3F16193E029300043CA4 /* ListResponseBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListResponseBase.m; sourceTree = "<group>"; };
 		DD3A3F17193E029300043CA4 /* LoginResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginResponse.h; sourceTree = "<group>"; };
 		DD3A3F18193E029300043CA4 /* LoginResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginResponse.m; sourceTree = "<group>"; };
-		DD3A3F19193E029300043CA4 /* RegisterResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterResponse.h; sourceTree = "<group>"; };
-		DD3A3F1A193E029300043CA4 /* RegisterResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterResponse.m; sourceTree = "<group>"; };
 		DD3A3F1C193E029300043CA4 /* CategoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryItem.h; sourceTree = "<group>"; };
 		DD3A3F1D193E029300043CA4 /* CategoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryItem.m; sourceTree = "<group>"; };
 		DD3A3F1E193E029300043CA4 /* ListResponseItemBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListResponseItemBase.h; sourceTree = "<group>"; };
@@ -366,6 +364,8 @@
 		DD3A401C193E037A00043CA4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DD3A401E193E037F00043CA4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DD3A4020193E038500043CA4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		DD3AF8A6194AD14200A964B7 /* ProductResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductResponse.h; sourceTree = "<group>"; };
+		DD3AF8A7194AD14200A964B7 /* ProductResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductResponse.m; sourceTree = "<group>"; };
 		DD7737D819409E04006239B2 /* CustomSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSearchBar.h; sourceTree = "<group>"; };
 		DD7737D919409E04006239B2 /* CustomSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSearchBar.m; sourceTree = "<group>"; };
 		DD7737DC1940A162006239B2 /* icon_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_back@2x.png"; sourceTree = "<group>"; };
@@ -697,8 +697,8 @@
 				DD3A3F16193E029300043CA4 /* ListResponseBase.m */,
 				DD3A3F17193E029300043CA4 /* LoginResponse.h */,
 				DD3A3F18193E029300043CA4 /* LoginResponse.m */,
-				DD3A3F19193E029300043CA4 /* RegisterResponse.h */,
-				DD3A3F1A193E029300043CA4 /* RegisterResponse.m */,
+				DD3AF8A6194AD14200A964B7 /* ProductResponse.h */,
+				DD3AF8A7194AD14200A964B7 /* ProductResponse.m */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1105,6 +1105,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = allen.wang;
 				TargetAttributes = {
+					DD3A3E74193E014D00043CA4 = {
+						DevelopmentTeam = 39LQDHGK3Z;
+					};
 					DD3A3E95193E014D00043CA4 = {
 						TestTargetID = DD3A3E74193E014D00043CA4;
 					};
@@ -1267,6 +1270,7 @@
 				DD3A3F96193E029300043CA4 /* BaseTableView.m in Sources */,
 				DD8EEAD31944243000CACC22 /* ModifyPWDViewController.m in Sources */,
 				DD3A3FE3193E029300043CA4 /* UINavigationController+AKTabBarController.m in Sources */,
+				DD3AF8A8194AD14200A964B7 /* ProductResponse.m in Sources */,
 				DD3A3FE9193E029300043CA4 /* WASASIAdapter.m in Sources */,
 				DD3A3FBE193E029300043CA4 /* ListResponseItemBase.m in Sources */,
 				DD8EEB181944566900CACC22 /* KxMenu.m in Sources */,
@@ -1284,7 +1288,6 @@
 				DD8EEACA1944243000CACC22 /* DataManager.m in Sources */,
 				DD3A3FF0193E029300043CA4 /* NSDate+Helper.m in Sources */,
 				DD3A3FF1193E029300043CA4 /* UIImageView+(ASI).m in Sources */,
-				DD3A3FBC193E029300043CA4 /* RegisterResponse.m in Sources */,
 				DD3A3FF5193E029300043CA4 /* PubTextField.m in Sources */,
 				DD3A3E85193E014D00043CA4 /* main.m in Sources */,
 				DD3A3FBD193E029300043CA4 /* CategoryItem.m in Sources */,
@@ -1406,7 +1409,10 @@
 		DD3A3EA8193E014D00043CA4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Guoyan Geng (SGL9K9F566)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sfdl/sfdl-Prefix.pch";
 				INFOPLIST_FILE = "sfdl/sfdl-Info.plist";
@@ -1424,7 +1430,10 @@
 		DD3A3EA9193E014D00043CA4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Guoyan Geng (SGL9K9F566)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sfdl/sfdl-Prefix.pch";
 				INFOPLIST_FILE = "sfdl/sfdl-Info.plist";

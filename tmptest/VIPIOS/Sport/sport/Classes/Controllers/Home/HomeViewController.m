@@ -270,15 +270,15 @@
     };
     
     self.tableView.cellHeightBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
-        return  (0 == _type) ? 113.0f : 100.0f;
+        return  (CGFloat)((0 == _type) ? 113.0f : 100.0f);
     };
     
     self.tableView.cellNumberBlock = ^( UITableView *tableView, NSInteger section) {
-        return 11;
+        return (NSInteger)11;
     };
     
     self.tableView.sectionHeaderHeightBlock = ^( UITableView *tableView, NSInteger section){
-        return 0.0f;
+        return (CGFloat)0.0f;
     };
     
     self.tableView.cellSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
@@ -345,22 +345,22 @@
 
         _selectControl.componetBlock = ^(id content) {
             if (0 == _currentType) {
-                return 2;
+                return (NSInteger)2;
             } else if (1 == _currentType) {
-                return 3;
+                return (NSInteger)3;
             }
-            return 1;
+            return (NSInteger)1;
         };
         _selectControl.widthBlock = ^(id content, NSInteger positon) {
             if (0 == _currentType) {
-                return 100.0f;
+                return (CGFloat)100.0f;
             } else if (1 == _currentType) {
-                return (1 != positon ) ? 100.0f : 60.0f;
+                return (CGFloat)((1 != positon ) ? 100.0f : 60.0f);
             }
-            return 100.0f;
+            return (CGFloat)100.0f;
         };
         _selectControl.componetRowsBlock = ^(id content, NSInteger positon) {
-            return (1 == positon && 1 == _currentType ) ? 1 : 4;
+            return (NSInteger)((1 == positon && 1 == _currentType ) ? 1 : 4);
         };
         _selectControl.block = ^(id content) {
 //            [blockSelf setButtonTitle:content];

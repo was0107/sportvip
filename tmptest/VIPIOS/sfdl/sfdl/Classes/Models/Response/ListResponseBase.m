@@ -32,8 +32,8 @@
 {
     self = [super init];
     if (self) {
-        self.succ       = [[dictionary objectForKey:@"succ"] integerValue];
-        self.msg        = [dictionary objectForKey:@"msg"];
+        self.succ       = [[dictionary objectForKey:@"code"] integerValue];
+        self.msg        = [dictionary objectForKey:@"message"];
         self.token      = [dictionary objectForKey:@"token"];
         self.exception  = [dictionary objectForKey:@"exception"];
     }

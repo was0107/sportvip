@@ -10,6 +10,8 @@
 #import "JSON.h"
 #import "ErrorResponse.h"
 
+
+
 @interface ListResponseBase : NSObject
 
 @property (nonatomic, assign) NSInteger       succ;                     // *(Int) ：操作状态，1表示成功，0表示失败

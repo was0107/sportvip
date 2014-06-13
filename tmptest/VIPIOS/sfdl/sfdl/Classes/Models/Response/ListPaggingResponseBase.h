@@ -12,6 +12,7 @@
 
 @property (nonatomic, retain) NSMutableArray * result;                  //结果集
 @property (nonatomic, assign) NSInteger       count;                    // *(int): 结果集总数
+@property (nonatomic, assign) NSInteger       totalPages;                    // *(int): 结果集总数
 @property (nonatomic, assign) NSInteger       arrayCount;               // (int)：搜索结果组合列表计数
 
 - (NSString *) resultKey;

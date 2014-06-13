@@ -7,6 +7,7 @@
 //
 
 #import "ListPaggingRequestBase.h"
+#import "ProductResponse.h"
 
 
 

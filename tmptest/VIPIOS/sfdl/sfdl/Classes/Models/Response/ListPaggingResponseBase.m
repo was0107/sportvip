@@ -18,7 +18,8 @@
     self = [super initWithDictionary:dictionary];
     if (self) {
         self.result = [self getResultFrom:dictionary];
-        self.count  = [[dictionary objectForKey:@"count"] integerValue];
+        self.count  = [[dictionary objectForKey:@"records"] integerValue];
+        self.totalPages  = [[dictionary objectForKey:@"totalPages"] integerValue];
         self.arrayCount = [self.result count];
         [self translateFrom:dictionary];
     }

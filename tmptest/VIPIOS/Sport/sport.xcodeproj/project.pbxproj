@@ -42,6 +42,7 @@
 		DD130FD318FD5CEF006FA005 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD130FCD18FD5CEF006FA005 /* icon@2x.png */; };
 		DD3A3E68193DF09B00043CA4 /* ErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3E67193DF09B00043CA4 /* ErrorResponse.m */; };
 		DD3A3E6B193DF56F00043CA4 /* ForgetPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3E6A193DF56F00043CA4 /* ForgetPWDViewController.m */; };
+		DD3AF8B0194B21C800A964B7 /* ClassDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3AF8AF194B21C800A964B7 /* ClassDetailViewController.m */; };
 		DD876CCB192C76DC002D2912 /* BaseSectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD876CCA192C76DC002D2912 /* BaseSectionTableViewController.m */; };
 		DD876CCE192CA7E1002D2912 /* OrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD876CCD192CA7E1002D2912 /* OrderTableViewCell.m */; };
 		DD945765194737CE00F9D3B3 /* cell_bottom_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD94575D194737CE00F9D3B3 /* cell_bottom_normal@2x.png */; };
@@ -210,6 +211,8 @@
 		DD3A3E67193DF09B00043CA4 /* ErrorResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorResponse.m; sourceTree = "<group>"; };
 		DD3A3E69193DF56F00043CA4 /* ForgetPWDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPWDViewController.h; sourceTree = "<group>"; };
 		DD3A3E6A193DF56F00043CA4 /* ForgetPWDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPWDViewController.m; sourceTree = "<group>"; };
+		DD3AF8AE194B21C800A964B7 /* ClassDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassDetailViewController.h; sourceTree = "<group>"; };
+		DD3AF8AF194B21C800A964B7 /* ClassDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassDetailViewController.m; sourceTree = "<group>"; };
 		DD876CC9192C76DC002D2912 /* BaseSectionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseSectionTableViewController.h; sourceTree = "<group>"; };
 		DD876CCA192C76DC002D2912 /* BaseSectionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseSectionTableViewController.m; sourceTree = "<group>"; };
 		DD876CCC192CA7E1002D2912 /* OrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTableViewCell.h; sourceTree = "<group>"; };
@@ -952,6 +955,8 @@
 				DDC2E8F31945E6C700310745 /* YardViewController.m */,
 				DDC2E8F51945E6D600310745 /* TeacherViewController.h */,
 				DDC2E8F61945E6D600310745 /* TeacherViewController.m */,
+				DD3AF8AE194B21C800A964B7 /* ClassDetailViewController.h */,
+				DD3AF8AF194B21C800A964B7 /* ClassDetailViewController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1163,6 +1168,7 @@
 				DDBD7574192B56CE00047A0D /* STLocationInstance.m in Sources */,
 				DDB0D4271924E08300490E35 /* AKTabBar.m in Sources */,
 				DD3A3E68193DF09B00043CA4 /* ErrorResponse.m in Sources */,
+				DD3AF8B0194B21C800A964B7 /* ClassDetailViewController.m in Sources */,
 				DDB0D42D1924E08300490E35 /* DataTracker.m in Sources */,
 				DDB0D4221924E08300490E35 /* CreateObject.m in Sources */,
 				DDB0D41B1924E08300490E35 /* ListPaggingResponseBase.m in Sources */,
@@ -1316,7 +1322,8 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Guoyan Geng (SGL9K9F566)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: allen wang (9HB27QZ53G)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: allen wang (9HB27QZ53G)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sport/sport-Prefix.pch";
@@ -1335,7 +1342,9 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "02A26387-DBD4-4243-B96E-B4EC298759E0";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../PrettyUtility/\"/**";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1346,7 +1355,8 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Guoyan Geng (SGL9K9F566)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: allen wang (9HB27QZ53G)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: allen wang (9HB27QZ53G)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sport/sport-Prefix.pch";
@@ -1365,7 +1375,9 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "02A26387-DBD4-4243-B96E-B4EC298759E0";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../PrettyUtility/\"/**";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

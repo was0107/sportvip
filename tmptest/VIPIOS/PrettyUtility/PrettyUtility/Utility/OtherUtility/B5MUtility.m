@@ -13,7 +13,7 @@
 #define kTipServerErrorString            @"服务器数据错误！"
 
 
-#define kSuccessValue                  1    //1表示成功，0表示失败
+#define kSuccessValue                  0    //0表示成功，1表示失败
 
 #define kErrorCodeMax                  1000 //服务端定义最大错误码
 
@@ -79,14 +79,14 @@ static NSInteger gNetWorkStatus = 2;
     BOOL result = NO;
     NSDictionary *deserializedData = [self stringToDictionary:rspString];
     //[B5MUtility showAlertView:rspString];
-    NSNumber *resultCode = [deserializedData objectForKey:@"succ"];
+    NSNumber *resultCode = [deserializedData objectForKey:@"code"];
     if (kSuccessValue == [resultCode integerValue]) {
         return YES;
     }
     ERRLOG(@"\nreturn: %@ \n",deserializedData);
     NSNumber *errorCode = [deserializedData objectForKey:@"errorcode"];
     if ([errorCode integerValue] > 0 && [errorCode integerValue] < kErrorCodeMax) {
-        NSString *errMsg = [deserializedData objectForKey:@"msg"];
+        NSString *errMsg = [deserializedData objectForKey:@"message"];
         if (errMsg.length > 0) {
             [SVProgressHUD showErrorWithStatus:errMsg];
         }

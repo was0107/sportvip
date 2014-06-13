@@ -12,6 +12,7 @@
 #import "UserDefaultsManager.h"
 #import "ModuleURLDef.h"
 #import "UserDefaultsKeys.h"
+#import "JSON.h"
 
 @interface WASASIAdapter()
 @property (nonatomic, copy)  NSString *linkURL;
@@ -81,7 +82,7 @@
 - (id) initRequest
 {
     self.statusCode = 0;
-    NSURL *url = [NSURL URLWithString:self.linkURL];            
+    NSURL *url = [NSURL URLWithString:self.linkURL];
     _request = [[ASIHTTPRequest requestWithURL:url] retain];
     _request.delegate = nil;
     _request.allowCompressedResponse = YES;
@@ -89,34 +90,46 @@
 #ifdef kUseSimulateData
     _request.shouldCompressRequestBody = NO;
 #endif
-    NSData *postBody = [self.body dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
+    SBJSON *json = [[[SBJSON alloc]init] autorelease];
+    NSMutableString *stringCode = [[[NSMutableString alloc] initWithCapacity:12] autorelease];
+    NSDictionary *dictionary = [json fragmentWithString:self.body error:nil];
+    for (NSString *key in [dictionary allKeys]) {
+       [stringCode appendFormat:@"%@=%@&",key , [dictionary objectForKey:key]];
+    }
+    NSString *resultPost = @"";
+    if ([stringCode length] > 1) {
+        resultPost = [stringCode substringToIndex:[stringCode length] - 1];
+    }
+
+    [_request addRequestHeader:@"Content-Type" value:@"application/x-www-form-urlencoded; charset = UTF-8"];
+    NSData *postBody = [resultPost dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
     [_request appendPostData:postBody];
     
-    INFOLOG(@"\nrequest URL  = %@ \nrequest BODY = %@", url,self.body);
+    INFOLOG(@"\nrequest URL  = %@ \nrequest BODY = %@", url,resultPost);
     return self;
 }
 
 - (id) addRequestHeaderInfo
 {
-    UIDevice *device = [UIDevice currentDevice];    
-    NSString *time   = device.t;
-    NSString *chnl   = [[NSUserDefaults standardUserDefaults] objectForKey:UDK_CHANNEL_ID];
-    if (!chnl) {
-        chnl = @"";
-    }
-    
-    static NSString *keys[] = {kDeviceIMEI,kDeviceMOB,kDeviceOS,kDeviceDEV,kDeviceVER,
-        kDeviceCHNL, kDeviceTIME,kDid,kGender,kAge,kApp_key};
-    NSArray *values = [NSArray arrayWithObjects:device.imei,device.mob,device.os,device.dev,device.ver,
-                       chnl,time,[UserDefaultsManager deviceID],kIntToString([UserDefaultsManager userGender]),kIntToString(18),
-                       kApp_key_value,nil];
-    
-    for (int i = 0 , total = 11; i< total; i++) {
-        [_request addRequestHeader:keys[i] value:[values objectAtIndex:i]];  
-    }
-    
-    [_request addRequestHeader:kDeviceSIGN  value:[self requestHeaderHash:@"psearch"]];
-    [_request addRequestHeader:@"Content-Type" value:@"application/json; charset = UTF-8"];
+//    UIDevice *device = [UIDevice currentDevice];    
+//    NSString *time   = device.t;
+//    NSString *chnl   = [[NSUserDefaults standardUserDefaults] objectForKey:UDK_CHANNEL_ID];
+//    if (!chnl) {
+//        chnl = @"";
+//    }
+//    
+//    static NSString *keys[] = {kDeviceIMEI,kDeviceMOB,kDeviceOS,kDeviceDEV,kDeviceVER,
+//        kDeviceCHNL, kDeviceTIME,kDid,kGender,kAge,kApp_key};
+//    NSArray *values = [NSArray arrayWithObjects:device.imei,device.mob,device.os,device.dev,device.ver,
+//                       chnl,time,[UserDefaultsManager deviceID],kIntToString([UserDefaultsManager userGender]),kIntToString(18),
+//                       kApp_key_value,nil];
+//    
+//    for (int i = 0 , total = 11; i< total; i++) {
+//        [_request addRequestHeader:keys[i] value:[values objectAtIndex:i]];  
+//    }
+//    
+//    [_request addRequestHeader:kDeviceSIGN  value:[self requestHeaderHash:@"psearch"]];
+//    [_request addRequestHeader:@"Content-Type" value:@"application/json; charset = UTF-8"];
     
     return self;
 }
