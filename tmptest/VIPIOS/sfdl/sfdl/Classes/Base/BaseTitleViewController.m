@@ -9,6 +9,7 @@
 #import "BaseTitleViewController.h"
 #import "UIImageView+WebCache.h"
 #import "UIImage+extend.h"
+#import "UIImage+tintedImage.h"
 
 @implementation BaseTitleViewController
 @synthesize titleView        = _titleView;
@@ -21,24 +22,26 @@
 {
     [super viewDidLoad];
 //    [self.view addSubview:self.titleView];
-    if (!IS_IOS_7_OR_GREATER)
-        {
-            UIImage *image = [[UIImage imageNamed:@"bg_top"] stretchableImageWithLeftCapWidth:4 topCapHeight:4];
-            [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+//    if (!IS_IOS_7_OR_GREATER)
+//        {
+//            UIImage *image = [[UIImage imageNamed:@"bg_top"] stretchableImageWithLeftCapWidth:4 topCapHeight:4];
+//            [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
 //            self.navigationController.navigationBar.tintColor = kButtonNormalColor;
 //            self.navigationItem.titleView = self.customTitleLable;
-        }
-    else
-        {
-            UIImage *image = [[UIImage imageNamed:@"bg_top"] stretchableImageWithLeftCapWidth:4 topCapHeight:4];
-            [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
-            self.navigationController.navigationBar.tintColor = kButtonNormalColor;
-        }
-       if ([self.navigationController.viewControllers count] > 1 )
-        {
-          [[self showLeft] enableBackGesture];
-        }
-    
+//        }
+//    else
+//        {
+//            UIImage *image = [[UIImage imageNamed:@"bg_top"] stretchableImageWithLeftCapWidth:4 topCapHeight:4];
+//            [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+//            self.navigationController.navigationBar.tintColor = kButtonNormalColor;
+//        }
+    if ([self.navigationController.viewControllers count] > 1 )
+    {
+      [[self showLeft] enableBackGesture];
+    }
+    self.navigationController.navigationBar.tintColor = kWhiteColor;
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:kButtonNormalColor size:CGSizeMake(10, 10)] forBarMetrics:UIBarMetricsDefault];
+
 //     self.navigationItem.titleView = self.customTitleLable;
 }
 

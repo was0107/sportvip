@@ -14,6 +14,7 @@
 
 @interface UIImageLabelEx()
 @property (nonatomic, retain) NSArray *imageArray;
+@property (nonatomic, retain) NSMutableArray *layerArray;
 @end
 
 @implementation UIImageLabelEx
@@ -24,6 +25,7 @@
 - (void) dealloc
 {
     TT_RELEASE_SAFELY(_imageArray);
+    TT_RELEASE_SAFELY(_layerArray);
     [super dealloc];
 }
 
@@ -61,12 +63,18 @@
             [self setFrameWidth:self.width - space];
         }
         
+        if (!self.layerArray) {
+            self.layerArray = [NSMutableArray array];
+        }
+        
+        [self.layerArray makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
+        
         if (superLayer) {
             for (int i = 0; i < total; i++) {
                 CALayer *layer = [CALayer layer];
                 layer.contents = ((UIImage *)[self.imageArray objectAtIndex:i]).CGImage;
                 [superLayer addSublayer:layer];
-                
+                [self.layerArray addObject:layer];
                 if (0 == _origitation) {
                     layer.frame = CGRectMake(rect.origin.x + i * kImageWidthHeight, rect.origin.y, kImageWidthHeight, kImageWidthHeight);
                 } else  if (1 == _origitation) {

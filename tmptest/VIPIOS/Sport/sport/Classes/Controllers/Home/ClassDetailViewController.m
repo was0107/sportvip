@@ -91,7 +91,7 @@
             
             return (UITableViewCell *)cell;
         } else if (5 == indexPath.section) {
-            static NSString *identifier = @"TEACHER_TABLEVIEW_CELL_IDENTIFIER15";
+            static NSString *identifier = @"TEACHER_TABLEVIEW_CELL_IDENTIFIER25";
             BaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
             if (!cell){
                 cell = [[[BaseTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
@@ -108,16 +108,16 @@
             return (UITableViewCell *)cell;
         }
     
-        static NSString *identifier = @"TEACHER_TABLEVIEW_CELL_IDENTIFIER11";
+        static NSString *identifier = @"TEACHER_TABLEVIEW_CELL_IDENTIFIER15";
         BaseSportTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell){
             cell = [[[BaseSportTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
             cell.topLabelEx.textColor = kBlackColor;
             cell.backgroundColor = kClearColor;
-            cell.topLabelEx.frame = CGRectMake(10, 4, 300, 20);
             cell.topLabelEx.numberOfLines = 0;
             [cell.contentView addSubview:cell.topLabelEx];
         }
+        cell.topLabelEx.frame = CGRectMake(10, 4, 300, 20);
         NSString *title = [titleArray objectAtIndex:indexPath.section];
         cell.topLabelEx.text = title;
         if (0 == indexPath.section) {

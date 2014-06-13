@@ -11,6 +11,7 @@
 #import "UIImageLabelEx.h"
 #import "CustomImageTitleButton.h"
 #import "CreateObject.h"
+#import "ClassDetailViewController.h"
 
 @interface YardViewController()<XLCycleScrollViewDelegate, XLCycleScrollViewDatasource>
 @property (nonatomic, retain) XLCycleScrollView *cycleView;
@@ -226,6 +227,12 @@
     
     self.tableView.cellSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        if (2 == indexPath.section)
+        {
+            ClassDetailViewController *controller = [[[ClassDetailViewController alloc] init] autorelease];
+            [controller setHidesBottomBarWhenPushed:YES];
+            [blockSelf.navigationController pushViewController:controller animated:YES];
+        }
     };
     
     self.tableView.refreshBlock = ^(id content) {
