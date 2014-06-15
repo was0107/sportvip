@@ -177,15 +177,7 @@
     idBlock succBlock = ^(id content){
         DEBUGLOG(@"succ content %@", content);
         LoginResponse *response = [[[LoginResponse alloc] initWithJsonString:content] autorelease];
-        
-        [UserDefaultsManager saveUserName:response.userItem.nickName];
-        [UserDefaultsManager saveUserId:response.userItem.userId];
-        [UserDefaultsManager saveUserEmail:response.userItem.email];
-        [UserDefaultsManager saveUserIcon:response.userItem.avatar];
-        [UserDefaultsManager saveUserBirthDay:response.userItem.birthday];
-        [UserDefaultsManager saveUserGender:response.userItem.gender];
-        
-        [UserDefaultsManager saveUserLogin:YES];
+        [UserDefaultsManager saveUserId:response.key];
         [safeSelf.confirmButton setEnabled:YES];
         [SVProgressHUD dismiss];
         [safeSelf.navigationController popToRootViewControllerAnimated:YES];

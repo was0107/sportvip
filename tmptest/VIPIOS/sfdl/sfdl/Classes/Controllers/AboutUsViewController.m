@@ -7,8 +7,17 @@
 //
 
 #import "AboutUsViewController.h"
+#import "LoginRequest.h"
+#import "LoginResponse.h"
+#import "RTLabel.h"
+
 
 @interface AboutUsViewController ()
+@property (nonatomic, retain) CompanyInfoRequest *request;
+@property (nonatomic, retain) AboutUsResponse    *response;
+@property(nonatomic, retain)UIImageView * iconImageView;
+@property(nonatomic, retain)UILabel *labelOne;
+@property(nonatomic, retain)UIWebView *labelTwo;
 
 @end
 
@@ -27,6 +36,11 @@
 {
     [super viewDidLoad];
     self.secondTitleLabel.text = @"About Us";
+    [self.tableView removeFromSuperview];
+    [self.view addSubview:self.iconImageView];
+    [self.view addSubview:self.labelOne];
+    [self.view addSubview:self.labelTwo];
+    [self sendRequestToServer];
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,15 +49,78 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)sendRequestToServer
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    __unsafe_unretained AboutUsViewController *safeSelf = self;
+    
+    idBlock succBlock = ^(id content){
+        DEBUGLOG(@"succ content %@", content);
+         safeSelf.response = [[[AboutUsResponse alloc] initWithJsonString:content] autorelease];
+        safeSelf.labelOne.text = safeSelf.response.companyName;
+//        safeSelf.labelTwo.text = safeSelf.response.companyDes;
+        [safeSelf.labelTwo loadHTMLString:safeSelf.response.companyDes baseURL:nil];
+    };
+    
+    idBlock failedBlock = ^(id content){
+        DEBUGLOG(@"failed content %@", content);
+        [[[[ErrorResponse alloc] initWithJsonString:content] autorelease] show];
+    };
+    idBlock errBlock = ^(id content){
+        DEBUGLOG(@"failed content %@", content);
+    };
+    
+    CompanyInfoRequest *request = [[[CompanyInfoRequest alloc] init] autorelease];
+    [WASBaseServiceFace serviceWithMethod:[request URLString] body:[request toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
 }
-*/
+
+-(UIImageView *)iconImageView
+{
+    if (!_iconImageView) {
+        _iconImageView = [[UIImageView alloc]initWithFrame:kAboutLogoFrame];
+        _iconImageView.image = [UIImage imageNamed:@"icon"];
+    }
+    return _iconImageView;
+}
+
+-(UILabel *)labelOne
+{
+    if (!_labelOne)
+    {
+        _labelOne = [[UILabel alloc]initWithFrame:kAboutLabelOneFrame];
+        _labelOne.textColor  = [UIColor getColor:kCellLeftColor];
+        _labelOne.textAlignment = NSTextAlignmentCenter;
+        _labelOne.backgroundColor = kClearColor;
+        _labelOne.font = HTFONTSIZE(kSystemFontSize15);
+//        NSString *version = [NSString stringWithFormat:kAboutItemStringVersion,[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
+//        _labelOne.text = version;
+    }
+    return _labelOne;
+}
+
+-(UIWebView *)labelTwo
+{
+    if (!_labelTwo)
+    {
+        _labelTwo = [[UIWebView alloc]initWithFrame:CGRectMake(0, 160+kHeightIncrease, 320, 260)];
+//        _labelTwo.textColor  = [UIColor getColor:kCellLeftColor];
+//        _labelTwo.textAlignment = NSTextAlignmentCenter;
+        _labelTwo.backgroundColor = kClearColor;
+//        _labelTwo.font = HTFONTSIZE(kSystemFontSize14);
+//        _labelTwo.text = lLabelTwoString;
+//        _labelTwo.numberOfLines = 0;
+        
+    }
+    return _labelTwo;
+}
+
+-(void)reduceMemory
+{
+    TT_RELEASE_SAFELY(_iconImageView);
+    TT_RELEASE_SAFELY(_labelOne);
+    TT_RELEASE_SAFELY(_labelTwo);
+    [super reduceMemory];
+}
+
 
 @end

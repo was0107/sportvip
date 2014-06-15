@@ -56,3 +56,9 @@
 @interface CommentsResponse : ListPaggingResponseBase
 
 @end
+
+
+@interface NewsDetailResponse : ListResponseBase
+@property (nonatomic, retain) NewsItem *item;
+
+@end

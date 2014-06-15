@@ -39,9 +39,9 @@
 #define kHeaderRightFrame2      CGRectMake(270, 7, 70, 33)
 
 //关于
-#define kAboutLogoFrame         CGRectMake(102, 104+kHeightIncrease/2, 115, 115)
-#define kAboutLabelOneFrame        CGRectMake(0, 225+kHeightIncrease/2, 320, 20)
-#define kAboutLabelTwoFrame      CGRectMake(0, 325+kHeightIncrease, 320, 80)
+#define kAboutLogoFrame         CGRectMake(102, 14+kHeightIncrease/2, 115, 115)
+#define kAboutLabelOneFrame        CGRectMake(0, 130+kHeightIncrease/2, 320, 20)
+#define kAboutLabelTwoFrame      CGRectMake(0, 260+kHeightIncrease, 320, 300)
 
 #define kToolBarFrame           CGRectMake(0,kBoundsHeight-20-40,320,44)
 

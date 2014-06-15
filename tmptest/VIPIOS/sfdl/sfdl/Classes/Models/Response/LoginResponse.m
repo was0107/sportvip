@@ -14,6 +14,7 @@
 - (void)dealloc{
     
     TT_RELEASE_SAFELY(_userItem);
+    TT_RELEASE_SAFELY(_key)
     
     [super dealloc];
 }
@@ -21,7 +22,7 @@
 - (id)initWithDictionary:(const NSDictionary *)dictionary{
     self = [super init];
     if (self) {
-        
+        self.key = [dictionary objectForKey:@"key"];
         self.userItem = [[[UserItemBase alloc] initWithDictionary:dictionary] autorelease];
     }
     return self;
@@ -55,6 +56,30 @@
 
 @end
 
+@implementation AboutUsResponse
+
+- (void)dealloc{
+    
+    TT_RELEASE_SAFELY(_companyName);
+    TT_RELEASE_SAFELY(_companyDes);
+    
+    [super dealloc];
+}
+
+- (id)initWithDictionary:(const NSDictionary *)dictionary{
+    self = [super init];
+    if (self) {
+        NSDictionary *company = [dictionary objectForKey:@"company_info"];
+        self.companyName = [company objectForKey:@"company_name"];
+        self.companyDes = [company objectForKey:@"company_desc"];
+    }
+    
+    return self;
+}
+
+
+
+@end
 
 
 @implementation ProductTypeItem
@@ -139,6 +164,7 @@
         self.subTitle = [dictionary objectForKey:@"subTitle"];
         self.keyWords = [dictionary objectForKey:@"keyWords"];
         self.abstract = [dictionary objectForKey:@"abstract"];
+        self.content = [dictionary objectForKey:@"content"];
     }
     
     return self;

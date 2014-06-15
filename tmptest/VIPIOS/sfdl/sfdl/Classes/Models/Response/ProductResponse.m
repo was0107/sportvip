@@ -141,3 +141,13 @@
 
 @end
 
+@implementation NewsDetailResponse
+
+- (id) initWithDictionary:(const NSDictionary *) dictionary
+{
+    self = [super initWithDictionary:dictionary];
+    self.item = [[[NewsItem alloc] initWithDictionary:dictionary] autorelease];
+    return self;
+}
+
+@end

@@ -12,7 +12,7 @@
 #pragma mark
 #pragma mark 用户基本资料
 @interface LoginResponse : ListResponseBase
-
+@property (nonatomic, copy) NSString *key;
 @property (nonatomic, retain) UserItemBase *userItem;
 
 @end
@@ -22,6 +22,12 @@
 
 @property (nonatomic, copy) NSString *userId;
 
+@end
+
+
+
+@interface AboutUsResponse : ListResponseBase
+@property (nonatomic, copy) NSString *companyName, *companyDes;
 @end
 
 
@@ -49,7 +55,7 @@
 
 @interface NewsItem : ListResponseItemBase
 @property (nonatomic, copy) NSString *newsId, *creationTime, *status;
-@property (nonatomic, copy) NSString *newsTitle, *subTitle, *keyWords, *abstract;
+@property (nonatomic, copy) NSString *newsTitle, *subTitle, *keyWords, *abstract, *content;
 @end
 
 

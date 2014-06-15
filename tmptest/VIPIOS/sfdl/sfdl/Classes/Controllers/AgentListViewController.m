@@ -1,27 +1,38 @@
 //
-//  NewsViewController.m
+//  AgentListViewController.m
 //  sfdl
 //
-//  Created by allen.wang on 6/8/14.
-//  Copyright (c) 2014 allen.wang. All rights reserved.
+//  Created by Erlang on 14-6-15.
+//  Copyright (c) 2014年 allen.wang. All rights reserved.
 //
 
-#import "NewsViewController.h"
-#import "NewsDetailViewController.h"
+#import "AgentListViewController.h"
+#import "AgentDetailViewController.h"
 #import "ProductRequest.h"
 #import "ProductResponse.h"
 
-@interface NewsViewController ()
-@property (nonatomic, retain) NewsListRequest *request;
-@property (nonatomic, retain) NewsResponse    *response;
+@interface AgentListViewController ()
+@property (nonatomic, retain) AgentListRequest *request;
+@property (nonatomic, retain) AgentResponse    *response;
+
 @end
 
-@implementation NewsViewController
+@implementation AgentListViewController
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.secondTitleLabel.text = @"News";
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
@@ -30,6 +41,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 - (int) tableViewType
 {
     return  eTypeRefreshHeader | eTypeFooter;
@@ -37,7 +49,7 @@
 
 - (void) configTableView
 {
-    __block NewsViewController *blockSelf = self;
+    __block AgentListViewController *blockSelf = self;
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
     self.tableView.cellCreateBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
@@ -66,7 +78,7 @@
         }
         
         NewsItem *item = [blockSelf.response at:indexPath.row ];
-
+        
         cell.topLabel.text = item.newsTitle;
         cell.subLabel.text = item.abstract;
         cell.subRightLabel.text = item.creationTime;
@@ -89,7 +101,7 @@
     self.tableView.cellSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         NewsItem *item = [blockSelf.response at:indexPath.row ];
-        NewsDetailViewController *controller = [[[NewsDetailViewController alloc] init] autorelease];
+        AgentDetailViewController *controller = [[[AgentDetailViewController alloc] init] autorelease];
         controller.newItem = item;
         [blockSelf.navigationController hidesBottomBarWhenPushed];
         [blockSelf.navigationController pushViewController:controller animated:YES];
@@ -105,10 +117,10 @@
     
     [self.view addSubview:self.tableView];
     
-//    [self dealWithData];
+    //    [self dealWithData];
     [self sendRequestToServer];
     
-//       [self.tableView doSendRequest:YES];
+    //       [self.tableView doSendRequest:YES];
 }
 
 
@@ -127,11 +139,11 @@
 
 - (void) sendRequestToServer
 {
-    __weak NewsViewController *blockSelf = self;
+    __weak AgentListViewController *blockSelf = self;
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
         if ([_request isFristPage]) {
-            blockSelf.response = [[NewsResponse alloc] initWithJsonString:content];
+            blockSelf.response = [[AgentResponse alloc] initWithJsonString:content];
         } else {
             [blockSelf.response appendPaggingFromJsonString:content];
         }
@@ -151,11 +163,12 @@
         [blockSelf.tableView tableViewDidFinishedLoading];
     };
     if (!_request) {
-        self.request = [[[NewsListRequest alloc] init] autorelease];
+        self.request = [[[AgentListRequest alloc] init] autorelease];
     }
     
     [WASBaseServiceFace serviceWithMethod:[self.request URLString] body:[self.request toJsonString] onSuc:successedBlock onFailed:failedBlock onError:errBlock];
 }
+
 
 
 @end

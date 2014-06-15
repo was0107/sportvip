@@ -7,7 +7,8 @@
 //
 
 #import "BaseSecondTitleViewController.h"
+#import "LoginResponse.h"
 
 @interface NewsDetailViewController : BaseSecondTitleViewController
-
+@property (nonatomic, assign) NewsItem *newItem;
 @end

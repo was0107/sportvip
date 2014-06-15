@@ -53,6 +53,8 @@
     return self;
 }
 
+
+
 - (UIView *) rightView
 {
     if (!_rightView) {
@@ -85,12 +87,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self showRight];
+    [[self showRight] showLeft];
 //    [[[self showRight] rightButton] setTitle:@"注册" forState:UIControlStateNormal];
     [self configControllers];
     [self.view addSubview:self.searchView];
     [self.view addSubview:self.cycleView];
-    self.title = @"MPMC";
+
     [self sendRequestToServer];
 }
 
@@ -151,7 +153,7 @@
 - (id) configControllers
 {
     
-    NSArray *titleIndexArray = @[@"Solution",@"Genuine Parts",@"Download",@"Exhibition",@"About Us",@"Products",@"News",@"Contact Us"];
+    NSArray *titleIndexArray = @[@"Solution",@"Genuine Parts",@"Download",@"Agent",@"About Us",@"Products",@"News",@"Contact Us"];
     
     NSArray *imageIndexArray = @[@"home9",@"home10",@"home11",@"home12",@"home5",@"home6",@"home7",@"home8"];
     int flag =  (iPhone5) ? 120 : 110;
@@ -159,11 +161,11 @@
     for (int j = 2 ; j > 0; j--) {
         for (int i = 0 ; i < 4; i++) {
             tag =4 * (j - 1) + i;
-        CustomImageTitleButton *button = [[[CustomImageTitleButton alloc] initWithFrame:CGRectMake(4 + 79 * i, kContentBoundsHeight - flag * j, 75, 100)] autorelease];
-        button.topButton.tag =  1000+tag;
-        [button.topButton addTarget:self action:@selector(didTaped:) forControlEvents:UIControlEventTouchUpInside];
-        [button setText:titleIndexArray[tag] image:imageIndexArray[tag]];
-        [self.view addSubview:button];
+            CustomImageTitleButton *button = [[[CustomImageTitleButton alloc] initWithFrame:CGRectMake(4 + 79 * i, kContentBoundsHeight - flag * j, 75, 100)] autorelease];
+            button.topButton.tag =  1000+tag;
+            [button.topButton addTarget:self action:@selector(didTaped:) forControlEvents:UIControlEventTouchUpInside];
+            [button setText:titleIndexArray[tag] image:imageIndexArray[tag]];
+            [self.view addSubview:button];
         }
     }
        return self;

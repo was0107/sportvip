@@ -11,6 +11,13 @@
 #import "UIImage+extend.h"
 #import "UIImage+tintedImage.h"
 
+
+@interface BaseTitleViewController()
+@property (nonatomic, retain) UIView  *leftView;
+
+@end
+
+
 @implementation BaseTitleViewController
 @synthesize titleView        = _titleView;
 @synthesize leftButton       = _leftButton;
@@ -60,12 +67,12 @@
     [self.navigationItem.rightBarButtonItem setEnabled:flag];
 }
 
-- (id) showLeft
-{
-//    UIBarButtonItem *left = [[[UIBarButtonItem alloc] initWithCustomView:self.leftButton] autorelease];
-//    self.navigationItem.leftBarButtonItem  = left;
-    return self;
-}
+//- (id) showLeft
+//{
+////    UIBarButtonItem *left = [[[UIBarButtonItem alloc] initWithCustomView:self.leftButton] autorelease];
+////    self.navigationItem.leftBarButtonItem  = left;
+//    return self;
+//}
 
 - (UIView *) titleView
 {
@@ -82,6 +89,37 @@
 //    self.navigationItem.leftBarButtonItem  = left;
 //    return self;
 //}
+
+- (id) showLeft
+{
+    
+    UIBarButtonItem *right = [[[UIBarButtonItem alloc] initWithCustomView:self.leftView] autorelease];
+    [self.navigationItem mySetLeftBarButtonItem:right];
+    return self;
+}
+
+
+- (UIView *) leftView
+{
+    if (!_leftView) {
+        _leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 132, 44)];
+        
+        UIImageView *bgView = [[[UIImageView alloc] initWithFrame:CGRectMake(20, 0, 60, 44)] autorelease];
+        bgView.image = [UIImage imageNamed:@"icon"];
+        
+        UITapGestureRecognizer *gesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(leftViewAction:)] autorelease];
+        
+        [_leftView addGestureRecognizer:gesture];
+        [_leftView addSubview:bgView];
+    }
+    return _leftView;
+}
+
+- (void) leftViewAction:(UIGestureRecognizer *)recognizer
+{
+    [self leftButtonAction:nil];
+}
+
 
 - (id) showRight
 {
