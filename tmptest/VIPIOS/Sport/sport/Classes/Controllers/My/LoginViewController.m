@@ -153,7 +153,7 @@
         [UserDefaultsManager saveUserBirthDay:response.userItem.birthday];
         [UserDefaultsManager saveUserGender:response.userItem.gender];
         
-        [UserDefaultsManager saveUserLogin:YES];
+//        [UserDefaultsManager saveUserLogin:YES];
         [safeSelf.confirmButton setEnabled:YES];
         [SVProgressHUD dismiss];
         [safeSelf.navigationController popToRootViewControllerAnimated:YES];

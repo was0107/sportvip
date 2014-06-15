@@ -134,7 +134,8 @@
 
 - (void)setTitle:(NSString *)title
 {
-    [super setTitle:title];
+//    [super setTitle:title];
+    [super setTitle:@"返回"];
     UILabel *titleView = (UILabel *)self.navigationItem.titleView;
     if (!titleView) {
         titleView = [[UILabel alloc] initWithFrame:CGRectZero];

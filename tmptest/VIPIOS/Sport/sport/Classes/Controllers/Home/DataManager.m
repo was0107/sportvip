@@ -47,16 +47,25 @@ static DataManager * sharedInstance = nil;
 {
     CategoryItem *item1 = [[[CategoryItem alloc] init] autorelease];
     item1.categoryId = @"1";
-    item1.categoryName = @"热门度优先";
+    item1.categoryName = @"乒乓";
     
     CategoryItem *item2 = [[[CategoryItem alloc] init] autorelease];
     item2.categoryId = @"2";
-    item2.categoryName = @"距离优先";
+    item2.categoryName = @"篮球";
     
     CategoryItem *item3 = [[[CategoryItem alloc] init] autorelease];
     item3.categoryId = @"3";
-    item3.categoryName = @"折扣券优先";
-    self.sortArray = [NSMutableArray arrayWithObjects:item1, item2, item3, nil];
+    item3.categoryName = @"网球";
+    
+    CategoryItem *item4 = [[[CategoryItem alloc] init] autorelease];
+    item3.categoryId = @"4";
+    item3.categoryName = @"游泳";
+    
+    CategoryItem *item5 = [[[CategoryItem alloc] init] autorelease];
+    item3.categoryId = @"5";
+    item3.categoryName = @"羽毛";
+    
+    self.sortArray = [NSMutableArray arrayWithObjects:item1, item2, item3,item4, item5, nil];
 }
 
 - (void) createDistance
@@ -64,15 +73,15 @@ static DataManager * sharedInstance = nil;
     CategoryItem *item1 = [[[CategoryItem alloc] init] autorelease];
     item1.categoryId = @"1000";
     item1.categoryName = @"1000米";
-    
+
     CategoryItem *item2 = [[[CategoryItem alloc] init] autorelease];
     item2.categoryId = @"2000";
     item2.categoryName = @"2000米";
-    
+
     CategoryItem *item3 = [[[CategoryItem alloc] init] autorelease];
     item3.categoryId = @"5000";
     item3.categoryName = @"5000米";
-    
+
     CategoryItem *item4 = [[[CategoryItem alloc] init] autorelease];
     item4.categoryId = @"-1";
     item4.categoryName = @"全城";
@@ -96,22 +105,30 @@ static DataManager * sharedInstance = nil;
 
 -(void)configCategoryAndSub
 {
-    CategoryItem *item = [[[CategoryItem alloc] init] autorelease];
-    item.categoryId = @"-1";
-    item.categoryName = @"分类";
+//    CategoryItem *item = [[[CategoryItem alloc] init] autorelease];
+//    item.categoryId = @"-1";
+//    item.categoryName = @"分类";
+//    
+//    SubCategoryItem *subItem = [[[SubCategoryItem alloc] init] autorelease];
+//    subItem.categoryId = @"";
+//    subItem.subcategoryName = @"分类";
+//    subItem.subcategoryId = @"-1";
+//    
+//    NSMutableArray *array = [NSMutableArray arrayWithObject:subItem];
+//    
+//    CategoryAndSubCategoryItem * cateItem = [[[CategoryAndSubCategoryItem alloc] init] autorelease];
+//    cateItem.categoryItem = item;
+//    cateItem.subCategoryArray = array;
+//    
+//    self.categoryAndsubArray = [NSMutableArray arrayWithObject:cateItem];
     
-    SubCategoryItem *subItem = [[[SubCategoryItem alloc] init] autorelease];
-    subItem.categoryId = @"";
-    subItem.subcategoryName = @"分类";
-    subItem.subcategoryId = @"-1";
-    
-    NSMutableArray *array = [NSMutableArray arrayWithObject:subItem];
-    
-    CategoryAndSubCategoryItem * cateItem = [[[CategoryAndSubCategoryItem alloc] init] autorelease];
-    cateItem.categoryItem = item;
-    cateItem.subCategoryArray = array;
-    
-    self.categoryAndsubArray = [NSMutableArray arrayWithObject:cateItem];
+    self.categoryAndsubArray = [NSMutableArray array];
+    for (int i = 0 ; i < 20; i++) {
+        CategoryItem *item4 = [[[CategoryItem alloc] init] autorelease];
+        item4.categoryId = kIntToString(i);
+        item4.categoryName = [NSString stringWithFormat:@"%d岁", i ];
+        [self.categoryAndsubArray addObject:item4];
+    }
 }
 
 -(void)configAreaAndLandmark

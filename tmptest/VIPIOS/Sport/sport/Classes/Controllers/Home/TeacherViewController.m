@@ -24,6 +24,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"网球";
 }
 
 - (void)didReceiveMemoryWarning

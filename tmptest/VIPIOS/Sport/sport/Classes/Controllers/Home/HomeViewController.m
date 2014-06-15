@@ -169,7 +169,7 @@
     
     
     CALayer *layer = [CALayer layer];
-    layer.backgroundColor = [kLightGrayColor CGColor];
+    layer.backgroundColor = [kBlueColor CGColor];
     layer.frame = CGRectMake(0, 43.8f, 320, 0.2f);
     [self.sectionView.layer addSublayer:layer];
     
@@ -181,20 +181,22 @@
     UIButton *button = (UIButton *)sender;
     if (button == self.button1) {
         _currentType = 0;
-        self.selectControl.contentArray = [DataManager sharedInstance].distanceArray;
+        self.selectControl.contentArray = [DataManager sharedInstance].sortArray;
         self.selectControl.currentIndex = _distanceIndex;
+        self.selectControl.tipLabel.text = @"注：项目是按照字母进行排序";
     }
     else if (button == self.button2) {
         _currentType = 1;
-        self.selectControl.contentArray = [DataManager sharedInstance].distanceArray;//cateArray;
+        self.selectControl.contentArray = [DataManager sharedInstance].categoryAndsubArray;//cateArray;
         self.selectControl.currentIndex = _cateIndex;
+        self.selectControl.tipLabel.text = @"";
     }
     else {
         _currentType = 2;
         self.selectControl.contentArray = [DataManager sharedInstance].distanceArray;//;
         self.selectControl.currentIndex = _sortIndex;
+        self.selectControl.tipLabel.text = @"";
     }
-    self.selectControl.tipLabel.text = @"fdjofjdofdojfo";
     [self.selectControl showContent:YES];
 }
 
@@ -344,23 +346,19 @@
         };
 
         _selectControl.componetBlock = ^(id content) {
-            if (0 == _currentType) {
-                return (NSInteger)2;
-            } else if (1 == _currentType) {
+            if (1 == _currentType) {
                 return (NSInteger)3;
             }
             return (NSInteger)1;
         };
         _selectControl.widthBlock = ^(id content, NSInteger positon) {
-            if (0 == _currentType) {
-                return (CGFloat)100.0f;
-            } else if (1 == _currentType) {
+            if (1 == _currentType) {
                 return (CGFloat)((1 != positon ) ? 100.0f : 60.0f);
             }
             return (CGFloat)100.0f;
         };
         _selectControl.componetRowsBlock = ^(id content, NSInteger positon) {
-            return (NSInteger)((1 == positon && 1 == _currentType ) ? 1 : 4);
+            return (NSInteger)((1 == positon && 1 == _currentType ) ? 1 : [_selectControl.contentArray count]);
         };
         _selectControl.block = ^(id content) {
 //            [blockSelf setButtonTitle:content];

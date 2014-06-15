@@ -14,11 +14,13 @@
 
 @interface UIImageLabelEx()
 @property (nonatomic, retain) NSArray *imageArray;
+@property (nonatomic, retain) NSMutableArray *layerArray;
 @end
 
 @implementation UIImageLabelEx
 {
     int _origitation;
+    BOOL    _didSet;
 }
 
 - (void) dealloc
@@ -32,6 +34,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        _didSet = NO;
     }
     return self;
 }
@@ -47,6 +50,9 @@
 - (id) setInternalImages
 {
     int total  =  [self.imageArray count];
+    if (!self.layerArray) {
+        self.layerArray = [NSMutableArray array];
+    }
     if (total > 0) {
         
         float space = total * (kImageWidthHeight + kImageSpace);
@@ -57,13 +63,16 @@
         }
         
         CGRect rect = self.frame;
-        if (0 == _origitation) {
+        if (0 == _origitation && !_didSet) {
             [self setExtendWidth:space];
-        } else  if (1 == _origitation) {
+            _didSet = YES;
+        } else  if (1 == _origitation && _didSet) {
             [self setFrameWidth:self.width - space];
+            _didSet = YES;
         }
         
         if (superLayer) {
+            [self.layerArray makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
             for (int i = 0; i < total; i++) {
                 CALayer *layer = [CALayer layer];
                 layer.contents = (id)[UIImage imageNamed:[self.imageArray objectAtIndex:i]].CGImage;
@@ -77,6 +86,7 @@
                     layer.frame = CGRectMake(0, 0, kImageWidthHeight, kImageWidthHeight);
                 }
                 [superLayer addSublayer:layer];
+                [self.layerArray addObject:layer];
             }
         }
     }

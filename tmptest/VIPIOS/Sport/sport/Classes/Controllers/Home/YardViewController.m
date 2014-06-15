@@ -19,11 +19,11 @@
 @end
 @implementation YardViewController
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-//    [self.cycleView startCycle];
+    self.title = @"上海龙翔体育馆";
 }
 
 

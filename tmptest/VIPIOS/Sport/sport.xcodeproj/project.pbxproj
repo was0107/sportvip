@@ -151,6 +151,8 @@
 		DDC1685D19299D1300FA7758 /* TeacherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC1685C19299D1300FA7758 /* TeacherTableViewCell.m */; };
 		DDC2E8F41945E6C700310745 /* YardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC2E8F31945E6C700310745 /* YardViewController.m */; };
 		DDC2E8F71945E6D600310745 /* TeacherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC2E8F61945E6D600310745 /* TeacherViewController.m */; };
+		DDFFF0C6194D509C00ACBC66 /* DidCheckClassesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFFF0C5194D509C00ACBC66 /* DidCheckClassesViewController.m */; };
+		DDFFF0C9194D516600ACBC66 /* DidContactClassesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFFF0C8194D516600ACBC66 /* DidContactClassesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -416,6 +418,10 @@
 		DDC2E8F31945E6C700310745 /* YardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YardViewController.m; sourceTree = "<group>"; };
 		DDC2E8F51945E6D600310745 /* TeacherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherViewController.h; sourceTree = "<group>"; };
 		DDC2E8F61945E6D600310745 /* TeacherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherViewController.m; sourceTree = "<group>"; };
+		DDFFF0C4194D509C00ACBC66 /* DidCheckClassesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DidCheckClassesViewController.h; sourceTree = "<group>"; };
+		DDFFF0C5194D509C00ACBC66 /* DidCheckClassesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DidCheckClassesViewController.m; sourceTree = "<group>"; };
+		DDFFF0C7194D516600ACBC66 /* DidContactClassesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DidContactClassesViewController.h; sourceTree = "<group>"; };
+		DDFFF0C8194D516600ACBC66 /* DidContactClassesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DidContactClassesViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -984,6 +990,10 @@
 				DDBD7567192B3EA800047A0D /* OrderDetailViewController.m */,
 				DD876CCC192CA7E1002D2912 /* OrderTableViewCell.h */,
 				DD876CCD192CA7E1002D2912 /* OrderTableViewCell.m */,
+				DDFFF0C4194D509C00ACBC66 /* DidCheckClassesViewController.h */,
+				DDFFF0C5194D509C00ACBC66 /* DidCheckClassesViewController.m */,
+				DDFFF0C7194D516600ACBC66 /* DidContactClassesViewController.h */,
+				DDFFF0C8194D516600ACBC66 /* DidContactClassesViewController.m */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -1148,6 +1158,8 @@
 				DDB0D4371924E08300490E35 /* WASBaseServiceManager.m in Sources */,
 				DDB0D4121924E08300490E35 /* RootViewController.m in Sources */,
 				DDB0D41A1924E08300490E35 /* ModifyArchiveRequest.m in Sources */,
+				DDFFF0C6194D509C00ACBC66 /* DidCheckClassesViewController.m in Sources */,
+				DDFFF0C9194D516600ACBC66 /* DidContactClassesViewController.m in Sources */,
 				DDB0D4381924E08300490E35 /* NSDate+Helper.m in Sources */,
 				DDB0D41D1924E08300490E35 /* LoginResponse.m in Sources */,
 				DDB0D4291924E08300490E35 /* AKTabBarController.m in Sources */,
@@ -1322,8 +1334,8 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: allen wang (9HB27QZ53G)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: allen wang (9HB27QZ53G)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sport/sport-Prefix.pch";
@@ -1342,7 +1354,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "02A26387-DBD4-4243-B96E-B4EC298759E0";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../PrettyUtility/\"/**";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -1355,8 +1367,8 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: allen wang (9HB27QZ53G)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: allen wang (9HB27QZ53G)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sport/sport-Prefix.pch";
@@ -1375,7 +1387,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "02A26387-DBD4-4243-B96E-B4EC298759E0";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../PrettyUtility/\"/**";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;

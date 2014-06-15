@@ -30,6 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"课程详情";
     // Do any additional setup after loading the view.
 }
 
@@ -116,6 +117,12 @@
             cell.backgroundColor = kClearColor;
             cell.topLabelEx.numberOfLines = 0;
             [cell.contentView addSubview:cell.topLabelEx];
+            
+            cell.topLabelEx.font = HTFONTSIZE(kFontSize18);
+            cell.subRightEx.font = HTFONTSIZE(kFontSize18);
+            cell.subRightEx.textColor = [UIColor getColor:KCustomGreenColor];
+            cell.subRightEx.textAlignment = UITextAlignmentRight;
+            [cell.contentView addSubview:cell.subRightEx];
         }
         cell.topLabelEx.frame = CGRectMake(10, 4, 300, 20);
         NSString *title = [titleArray objectAtIndex:indexPath.section];
@@ -125,12 +132,17 @@
             CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 2000)];
             [[cell.topLabelEx setFrameHeight:size.height + 4] setFrameWidth:size.width + 35];
             [cell.topLabelEx setImages:[NSArray arrayWithObjects:@"icon",@"icon",nil] origitation:1];
+            cell.subRightEx.text = @"￥2290";
+            CGFloat width = [cell.subRightEx.text sizeWithFont:HTFONTSIZE(kFontSize17)].width ;
+            [cell.subRightEx setFrame:CGRectMake(310 - (width + 22),4, (width + 22), 20)];
+            [cell.subRightEx setImages:[NSArray arrayWithObjects:@"icon",nil] origitation:0];
 
         } else {
             cell.topLabelEx.font = HTFONTSIZE(kFontSize14);
             CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize14) constrainedToSize:CGSizeMake(300, 2000)];
             [cell.topLabelEx setFrameHeight:size.height+6];
             [cell.topLabelEx setImage:@"icon" origitation:0];
+            [cell.subRightEx setFrame:CGRectZero];
         }
         return (UITableViewCell *)cell;
     };

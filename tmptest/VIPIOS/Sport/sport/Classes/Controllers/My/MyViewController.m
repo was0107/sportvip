@@ -13,6 +13,8 @@
 #import "OrdersViewController.h"
 #import "RegisterViewController.h"
 #import "CheckClassViewController.h"
+#import "DidCheckClassesViewController.h"
+#import "DidContactClassesViewController.h"
 
 @interface MyViewController ()
 
@@ -105,14 +107,24 @@
             [controller setTitleContent:[titleIndexArray objectAtIndex:0]];
             [blockSelf.navigationController pushViewController:controller animated:YES];
         } else if (1 == indexPath.section) {
-            
+            if (0 == indexPath.row) {
+                DidCheckClassesViewController *controller = [[[DidCheckClassesViewController alloc] init] autorelease];
+                [controller setTitleContent:[titleIndexArray objectAtIndex:indexPath.row + 1]];
+                [controller setHidesBottomBarWhenPushed:YES];
+                [blockSelf.navigationController pushViewController:controller animated:YES];
+            } else {
+                DidContactClassesViewController *controller = [[[DidContactClassesViewController alloc] init] autorelease];
+                [controller setTitleContent:[titleIndexArray objectAtIndex:indexPath.row + 1]];
+                [controller setHidesBottomBarWhenPushed:YES];
+                [blockSelf.navigationController pushViewController:controller animated:YES];
+            }
             
 //            OrdersViewController *controller = [[[OrdersViewController alloc] init] autorelease];
-            CheckClassViewController *controller = [[[CheckClassViewController alloc] init] autorelease];
-            controller.isFinished = (1 == indexPath.row);
-            [controller setTitleContent:[titleIndexArray objectAtIndex:indexPath.row + 1]];
-            [controller setHidesBottomBarWhenPushed:YES];
-            [blockSelf.navigationController pushViewController:controller animated:YES];
+//            CheckClassViewController *controller = [[[CheckClassViewController alloc] init] autorelease];
+//            controller.isFinished = (1 == indexPath.row);
+//            [controller setTitleContent:[titleIndexArray objectAtIndex:indexPath.row + 1]];
+//            [controller setHidesBottomBarWhenPushed:YES];
+//            [blockSelf.navigationController pushViewController:controller animated:YES];
             
         } else  {
             ModifyPWDViewController *controller = [[[ModifyPWDViewController alloc] init] autorelease];
