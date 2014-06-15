@@ -31,7 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.secondTitleLabel.text = @"News";
+    self.secondTitleLabel.text = @"Agent";
     // Do any additional setup after loading the view.
 }
 

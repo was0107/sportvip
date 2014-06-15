@@ -174,7 +174,7 @@
 - (IBAction)didTaped:(id)sender
 {
     UIButton *button = (UIButton *) sender;
-    NSArray *controllersArray = @[@"ProductSearchViewController",@"LeaveMessageViewController",@"LoginViewController",@"NewsViewController", \
+    NSArray *controllersArray = @[@"ProductSearchViewController",@"LeaveMessageViewController",@"LoginViewController",@"AgentListViewController", \
                                   @"AboutUsViewController",@"ProductCategoryViewController",@"NewsViewController",@"ContactUsViewController"];
     Class class = NSClassFromString(controllersArray[button.tag - 1000]);
     UIViewController *vc1 = [[[class alloc] init] autorelease];

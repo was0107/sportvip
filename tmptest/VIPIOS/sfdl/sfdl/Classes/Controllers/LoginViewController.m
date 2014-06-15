@@ -69,7 +69,6 @@
         _phoneTextField.pubTextField.returnKeyType = UIReturnKeyNext;
         _phoneTextField.pubTextField.frame = CGRectMake(0, 0, 250, 40);
         _phoneTextField.autoLayout = YES;
-        _phoneTextField.pubTextField.keyboardType = UIKeyboardTypeNumberPad;
         [_phoneTextField.pubTextField onShouldReturn:^(UITextField *textField){
             [safeSelf.pwdTextField becomeFirstResponder];
             return YES;

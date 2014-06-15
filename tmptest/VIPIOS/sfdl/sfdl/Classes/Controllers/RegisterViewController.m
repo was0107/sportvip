@@ -27,6 +27,9 @@
 @property (nonatomic, retain) UIButton                *confirmButton;
 @property (nonatomic, retain) UIKeyboardAvoidingScrollView            *scrollView;
 
+@property (nonatomic, retain) RegiseterRequest        *request;
+@property (nonatomic, retain) RegisterResponse        *response;
+
 @end
 
 @implementation RegisterViewController
@@ -70,6 +73,17 @@
     [self.scrollView addSubview:self.telephoneTextField];
     [self.scrollView addSubview:self.codePub];
     [self.scrollView addSubview:self.confirmButton];
+    
+#ifdef kUseSimulateData
+    self.cuntryTextField.pubTextField.text = @"cuntry";
+    self.emailTextField.pubTextField.text = @"hr@163.com";
+    self.memberIDTextField.pubTextField.text = @"111111";
+    self.pwdTextField.pubTextField.text = @"111111";
+    self.titleTextField.pubTextField.text = @"title";
+    self.fullNameTextField.pubTextField.text = @"fullname";
+    self.companyTextField.pubTextField.text = @"msmc";
+    self.telephoneTextField.pubTextField.text = @"13611111111";
+#endif
     
     [self.scrollView setContentSize:CGSizeMake(320, 50 + 10 * kPubTextFieldHeight2  + kImageStartAt)];
 
@@ -140,11 +154,11 @@
         __block RegisterViewController *safeSelf = self;
         _pwdTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  30 + 3 * kPubTextFieldHeight2  + kImageStartAt, 300, kPubTextFieldHeight) indexTitle:@"" placeHolder:@"Password" pubTextFieldStyle:PubTextFieldStyleBottom];
         _pwdTextField.autoLayout = YES;
-        _pwdTextField.pubTextField.returnKeyType = UIReturnKeyDone;
+        _pwdTextField.pubTextField.returnKeyType = UIReturnKeyNext;
         _pwdTextField.pubTextField.secureTextEntry = YES;
         _pwdTextField.pubTextField.keyboardType = UIKeyboardTypeDefault;
         [_pwdTextField.pubTextField onShouldReturn:^(UITextField *textField){
-            [_pwdTextField resignFirstResponder];
+            [_titleTextField becomeFirstResponder];
             return YES;
         }];
     }
@@ -158,10 +172,10 @@
         __block RegisterViewController *safeSelf = self;
         _titleTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  45 + 4 * kPubTextFieldHeight2  + kImageStartAt, 300, kPubTextFieldHeight) indexTitle:@"" placeHolder:@"Title" pubTextFieldStyle:PubTextFieldStyleBottom];
         _titleTextField.autoLayout = YES;
-        _titleTextField.pubTextField.returnKeyType = UIReturnKeyDone;
+        _titleTextField.pubTextField.returnKeyType = UIReturnKeyNext;
         _titleTextField.pubTextField.keyboardType = UIKeyboardTypeDefault;
         [_titleTextField.pubTextField onShouldReturn:^(UITextField *textField){
-            [_fullNameTextField resignFirstResponder];
+            [_fullNameTextField becomeFirstResponder];
             return YES;
         }];
     }
@@ -176,10 +190,10 @@
         __block RegisterViewController *safeSelf = self;
         _fullNameTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  45 + 5 * kPubTextFieldHeight2  + kImageStartAt, 300, kPubTextFieldHeight) indexTitle:@"" placeHolder:@"Full Name" pubTextFieldStyle:PubTextFieldStyleBottom];
         _fullNameTextField.autoLayout = YES;
-        _fullNameTextField.pubTextField.returnKeyType = UIReturnKeyDone;
+        _fullNameTextField.pubTextField.returnKeyType = UIReturnKeyNext;
         _fullNameTextField.pubTextField.keyboardType = UIKeyboardTypeDefault;
         [_fullNameTextField.pubTextField onShouldReturn:^(UITextField *textField){
-            [_pwdTextField resignFirstResponder];
+            [_companyTextField becomeFirstResponder];
             return YES;
         }];
     }
@@ -194,11 +208,11 @@
         __block RegisterViewController *safeSelf = self;
         _companyTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  45 + 6 * kPubTextFieldHeight2  + kImageStartAt, 300, kPubTextFieldHeight) indexTitle:@"" placeHolder:@"Company Name" pubTextFieldStyle:PubTextFieldStyleBottom];
         _companyTextField.autoLayout = YES;
-        _companyTextField.pubTextField.returnKeyType = UIReturnKeyDone;
+        _companyTextField.pubTextField.returnKeyType = UIReturnKeyNext;
         _companyTextField.pubTextField.secureTextEntry = YES;
         _companyTextField.pubTextField.keyboardType = UIKeyboardTypeDefault;
         [_companyTextField.pubTextField onShouldReturn:^(UITextField *textField){
-            [_telephoneTextField resignFirstResponder];
+            [_telephoneTextField becomeFirstResponder];
             return YES;
         }];
     }
@@ -213,10 +227,10 @@
         __block RegisterViewController *safeSelf = self;
         _telephoneTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  45 + 7 * kPubTextFieldHeight2  + kImageStartAt, 300, kPubTextFieldHeight) indexTitle:@"" placeHolder:@"Telephone" pubTextFieldStyle:PubTextFieldStyleBottom];
         _telephoneTextField.autoLayout = YES;
-        _telephoneTextField.pubTextField.returnKeyType = UIReturnKeyDone;
+        _telephoneTextField.pubTextField.returnKeyType = UIReturnKeyNext;
         _telephoneTextField.pubTextField.keyboardType = UIKeyboardTypeDefault;
         [_telephoneTextField.pubTextField onShouldReturn:^(UITextField *textField){
-            [_pwdTextField resignFirstResponder];
+            [_codePub becomeFirstResponder];
             return YES;
         }];
     }
@@ -285,6 +299,12 @@
         return NO;
     }
     
+    if (![IdentifierValidator isValid:IdentifierTypePassword value:_memberIDTextField.pubTextField.text]) {
+        [SVProgressHUD showErrorWithStatus:@"请输入正确的用户名"];
+        [_telephoneTextField becomeFirstResponder];
+        return NO;
+    }
+    
     
     return YES;
 }
@@ -302,20 +322,46 @@
     __unsafe_unretained RegisterViewController *safeSelf = self;
     
     idBlock succBlock = ^(id content){
+        DEBUGLOG(@"succ content %@", content);        
+        [safeSelf requestServerForLogin];
+    };
+    
+    idBlock failedBlock = ^(id content){
+        DEBUGLOG(@"failed content %@", content);
+        [[[[ErrorResponse alloc] initWithJsonString:content] autorelease] show];
+        [safeSelf.confirmButton setEnabled:YES];
+    };
+    idBlock errBlock = ^(id content){
+        DEBUGLOG(@"failed content %@", content);
+        [SVProgressHUD showErrorWithStatus:@"注册失败"];
+        [safeSelf.confirmButton setEnabled:YES];
+    };
+
+    if (!self.request) {
+        self.request = [[[RegiseterRequest alloc] init] autorelease];
+    }
+    
+    self.request.email    = self.emailTextField.pubTextField.text;
+    self.request.title    = self.titleTextField.pubTextField.text;
+    self.request.fullName    = self.fullNameTextField.pubTextField.text;
+    self.request.userCompany    = self.companyTextField.pubTextField.text;
+    self.request.tel    = self.telephoneTextField.pubTextField.text;
+    self.request.username    = self.memberIDTextField.pubTextField.text;
+    self.request.password = self.pwdTextField.pubTextField.text;
+    [WASBaseServiceFace serviceWithMethod:[self.request URLString] body:[self.request toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
+}
+
+- (void)requestServerForLogin
+{
+    __unsafe_unretained RegisterViewController *safeSelf = self;
+    
+    idBlock succBlock = ^(id content){
         DEBUGLOG(@"succ content %@", content);
         LoginResponse *response = [[[LoginResponse alloc] initWithJsonString:content] autorelease];
-        
-        [UserDefaultsManager saveUserName:response.userItem.nickName];
-        [UserDefaultsManager saveUserId:response.userItem.userId];
-        [UserDefaultsManager saveUserEmail:response.userItem.email];
-        [UserDefaultsManager saveUserIcon:response.userItem.avatar];
-        [UserDefaultsManager saveUserBirthDay:response.userItem.birthday];
-        [UserDefaultsManager saveUserGender:response.userItem.gender];
-        
-        [UserDefaultsManager saveUserLogin:YES];
-        [SVProgressHUD dismiss];
-        [safeSelf.navigationController dismissViewControllerAnimated:YES completion:nil];
+        [UserDefaultsManager saveUserId:response.key];
         [safeSelf.confirmButton setEnabled:YES];
+        [SVProgressHUD dismiss];
+        [safeSelf.navigationController popToRootViewControllerAnimated:YES];
     };
     
     idBlock failedBlock = ^(id content){
@@ -329,13 +375,13 @@
         [safeSelf.confirmButton setEnabled:YES];
     };
     
-//    UpdateUserInfoRequest *request = [[[UpdateUserInfoRequest alloc] init] autorelease];
-//    NSMutableArray * keys = [NSMutableArray arrayWithObjects:@"userId",@"gender",@"avatar",@"nickName",@"birthday",@"phone",@"email",@"password", nil];
-//    NSMutableArray * values = [NSMutableArray arrayWithObjects:[UserDefaultsManager userId],self.gender,@"",self.nickName,[NSNumber numberWithDouble:self.birthdayDate], self.phone,self.email,self.password,nil];
-//    request.keys = keys;
-//    request.values = values;
-    
+    LoginRequest *request = [[[LoginRequest alloc] init] autorelease];
+    request.username    = _memberIDTextField.pubTextField.text;
+    request.password = _pwdTextField.pubTextField.text;
+    [WASBaseServiceFace serviceWithMethod:[request URLString] body:[request toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
 }
+
+
 
 
 

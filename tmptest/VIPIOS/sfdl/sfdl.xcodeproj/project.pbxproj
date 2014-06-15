@@ -10,6 +10,7 @@
 		47DF7397194D83A80004CC63 /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 47DF7396194D83A80004CC63 /* RTLabel.m */; };
 		47DF739A194D952B0004CC63 /* AgentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47DF7399194D952B0004CC63 /* AgentListViewController.m */; };
 		47DF739D194D954E0004CC63 /* AgentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47DF739C194D954E0004CC63 /* AgentDetailViewController.m */; };
+		DD06522F194DAABD00EECCBE /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DD06522E194DAABD00EECCBE /* SVProgressHUD.bundle */; };
 		DD3A3E79193E014D00043CA4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3A3E78193E014D00043CA4 /* Foundation.framework */; };
 		DD3A3E7B193E014D00043CA4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3A3E7A193E014D00043CA4 /* CoreGraphics.framework */; };
 		DD3A3E7D193E014D00043CA4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3A3E7C193E014D00043CA4 /* UIKit.framework */; };
@@ -192,6 +193,7 @@
 		47DF7399194D952B0004CC63 /* AgentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgentListViewController.m; sourceTree = "<group>"; };
 		47DF739B194D954E0004CC63 /* AgentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgentDetailViewController.h; sourceTree = "<group>"; };
 		47DF739C194D954E0004CC63 /* AgentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgentDetailViewController.m; sourceTree = "<group>"; };
+		DD06522E194DAABD00EECCBE /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		DD3A3E75193E014D00043CA4 /* sfdl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sfdl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD3A3E78193E014D00043CA4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DD3A3E7A193E014D00043CA4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -728,6 +730,7 @@
 		DD3A3F22193E029300043CA4 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				DD06522E194DAABD00EECCBE /* SVProgressHUD.bundle */,
 				DD3A3F23193E029300043CA4 /* Images */,
 			);
 			path = Resource;
@@ -1177,6 +1180,7 @@
 				DD3A3FCB193E029300043CA4 /* icon_tabbar_hzxs_n.png in Resources */,
 				DD3A4002193E02D100043CA4 /* Default@2x.png in Resources */,
 				DD3A3FD2193E029300043CA4 /* icon_tabbar_user_f@2x.png in Resources */,
+				DD06522F194DAABD00EECCBE /* SVProgressHUD.bundle in Resources */,
 				DD8EEB0A194428FB00CACC22 /* home1@2x.png in Resources */,
 				DD3A3FC8193E029300043CA4 /* icon_search.png in Resources */,
 				DD3A3FD4193E029300043CA4 /* icon_tabbar_user_n@2x.png in Resources */,

@@ -315,7 +315,7 @@ BOOL isNumber (char ch)
         return FALSE;
     }
     
-    NSString *emailRegex = @"[A-Z0-9a-z]{6,16}";
+    NSString *emailRegex = @"[A-Z0-9a-z]{3,16}";
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [emailTest evaluateWithObject:password];
 }
