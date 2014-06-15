@@ -151,7 +151,12 @@
 
 - (void)setTitle:(NSString *)title
 {
-//    [super setTitle:title];
+    if ([self.navigationController.viewControllers count] > 1 )
+    {
+        [super setTitle:@"返回"];
+    } else {
+        [super setTitle:title];
+    }
 ////    self.customTitleLable.text = title;
 //    UILabel *titleView = (UILabel *)self.navigationItem.titleView;
 //    if (!titleView) {

@@ -43,8 +43,8 @@
     [self.view addSubview:self.newButton];
     
 #ifdef kUseSimulateData
-    self.phoneTextField.pubTextField.text = @"13721117147";
-    self.pwdTextField.pubTextField.text = @"123456";
+    self.phoneTextField.pubTextField.text = @"Username";
+    self.pwdTextField.pubTextField.text = @"Password";
 #endif
 }
 
@@ -146,12 +146,12 @@
 
 - (BOOL)checkTextField
 {
-    if (![IdentifierValidator isValid:IdentifierTypePhone value:_phoneTextField.pubTextField.text] &&
-        ![IdentifierValidator isValid:IdentifierTypeEmail value:_phoneTextField.pubTextField.text]) {
-        [SVProgressHUD showErrorWithStatus:@"请输入正确的手机号/邮箱"];
-        [_phoneTextField becomeFirstResponder];
-        return NO;
-    }
+//    if (![IdentifierValidator isValid:IdentifierTypePhone value:_phoneTextField.pubTextField.text] &&
+//        ![IdentifierValidator isValid:IdentifierTypeEmail value:_phoneTextField.pubTextField.text]) {
+//        [SVProgressHUD showErrorWithStatus:@"请输入正确的手机号/邮箱"];
+//        [_phoneTextField becomeFirstResponder];
+//        return NO;
+//    }
     
     if (![IdentifierValidator isValid:IdentifierTypePassword value:_pwdTextField.pubTextField.text]) {
         [SVProgressHUD showErrorWithStatus:@"密码为6-16位的字母、数字组成"];
