@@ -19,13 +19,6 @@
 @property(nonatomic, assign)long birthday;
 @property(nonatomic, assign)long createTime;
 
-//avatar: http://s0.hao123img.com/res/img/logo/souju-24.png
-//birthday: 1392188785133
-//createTime: 1401790692000
-//gender: "MALE"
-//id: 1
-//nickName: "昵称"
-
 
 @end
 

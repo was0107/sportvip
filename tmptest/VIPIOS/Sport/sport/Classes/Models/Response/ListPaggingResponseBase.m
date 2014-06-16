@@ -17,8 +17,10 @@
 {
     self = [super initWithDictionary:dictionary];
     if (self) {
+        self.lastPage = NO;
         self.result = [self getResultFrom:dictionary];
-        self.count  = [[dictionary objectForKey:@"count"] integerValue];
+        self.count  = [[dictionary objectForKey:@"totalElements"] integerValue];
+        self.lastPage = [[dictionary objectForKey:@"lastPage"] boolValue];
         self.arrayCount = [self.result count];
         [self translateFrom:dictionary];
     }
@@ -56,15 +58,16 @@
     SBJSON *json = [[[SBJSON alloc] init] autorelease];
     NSDictionary *dictionary = [json fragmentWithString:jsonString error:nil];
     [self.result addObjectsFromArray:[self getResultFrom:dictionary]];
+    self.lastPage = [[dictionary objectForKey:@"lastPage"] boolValue];
     self.arrayCount = [self.result count];
 }
 
 - (BOOL) reachTheEnd
 {
-    if (self.result) {
-        return self.arrayCount >= self.count;
-    }
-    return NO;
+//    if (self.result) {
+//        return self.arrayCount >= self.count;
+//    }
+    return self.lastPage;
 }
 
 - (BOOL) isEmpty
@@ -75,7 +78,7 @@
 
 - (NSString *) resultKey
 {
-    return @"result";
+    return @"content";
 }
 
 

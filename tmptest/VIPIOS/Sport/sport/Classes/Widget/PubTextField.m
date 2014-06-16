@@ -100,7 +100,7 @@
     if (!_indexLabel) {
         _indexLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.bounds.origin.x + kIndexLabelLeftPadding, self.bounds.origin.y + 10, kIndexLabelWidth + 20, kIndexLabelHeight)];
         _indexLabel.backgroundColor = kClearColor;
-        _indexLabel.font = HTFONTSIZE(kFontSize15);
+        _indexLabel.font = HTFONTSIZE(kFontSize16);
         _indexLabel.textColor = [UIColor getColor:kTitleFontColor];
     }
     

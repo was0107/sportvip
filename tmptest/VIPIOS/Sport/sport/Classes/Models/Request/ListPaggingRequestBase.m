@@ -16,14 +16,14 @@
     self = [super init];
     if (self) {
         self.pageno     = 1;
-        self.pagesize   = 24;
+        self.pagesize   = 20;
     }
     return self;
 }
 
 - (NSMutableArray *) keyArrays
 {
-    return [NSMutableArray arrayWithObjects:@"page",@"pageSize", nil];
+    return [NSMutableArray arrayWithObjects:@"pageNo",@"pageSize", nil];
 }
 
 - (NSMutableArray *) valueArrays

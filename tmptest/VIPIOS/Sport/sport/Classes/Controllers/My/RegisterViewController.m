@@ -69,6 +69,15 @@
     [self.scrollView addSubview:self.pwdTextField];
     [self.scrollView addSubview:self.confirmButton];
     [self.view addSubview:self.scrollView];
+    
+    
+    
+#ifdef kUseSimulateData
+    self.nameTextField.pubTextField.text = @"was0107";
+    self.emailTextField.pubTextField.text = @"hr@163.com";
+    self.phoneTextField.pubTextField.text = @"13611111111";
+    self.pwdTextField.pubTextField.text = @"111111";
+#endif
     // Do any additional setup after loading the view.
 }
 
@@ -108,6 +117,8 @@
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd"];
         NSDate * forwardDate = [NSDate dateWithTimeIntervalSinceNow:-18*365*24*60*60];
+        
+        self.birthday = [NSString stringWithFormat:@"%f",[forwardDate timeIntervalSince1970] ];
         NSString *currentDate = [dateFormatter stringFromDate:forwardDate];
         [dateFormatter release];
         
@@ -132,6 +143,7 @@
     NSDate *date = [dateFormatter dateFromString:currentDateStr];
     if (date) {
         self.datePicker.pickerView.date = date;
+        self.birthday = [NSString stringWithFormat:@"%f",[date timeIntervalSince1970] ];
     }
     [self.datePicker showContent:YES];
     [self.view endEditing:YES];
@@ -313,12 +325,6 @@
 
         [UserDefaultsManager saveUserName:response.userItem.nickName];
         [UserDefaultsManager saveUserId:response.userItem.userId];
-        [UserDefaultsManager saveUserEmail:response.userItem.email];
-        [UserDefaultsManager saveUserIcon:response.userItem.avatar];
-        [UserDefaultsManager saveUserBirthDay:response.userItem.birthday];
-        [UserDefaultsManager saveUserGender:response.userItem.gender];
-
-        [UserDefaultsManager saveUserLogin:YES];
         [SVProgressHUD dismiss];
         [safeSelf.navigationController dismissViewControllerAnimated:YES completion:nil];
         [safeSelf.confirmButton setEnabled:YES];
@@ -335,11 +341,17 @@
         [safeSelf.confirmButton setEnabled:YES];
     };
     
+    self.gender = ![self.zjWwitch isOn] ? @"MALE": @"FEMALE";
+    self.nickName = self.nameTextField.pubTextField.text;
+    self.phone = self.phoneTextField.pubTextField.text;
+    self.email = self.emailTextField.pubTextField.text;
+    self.password = self.pwdTextField.pubTextField.text;
     UpdateUserInfoRequest *request = [[[UpdateUserInfoRequest alloc] init] autorelease];
     NSMutableArray * keys = [NSMutableArray arrayWithObjects:@"userId",@"gender",@"avatar",@"nickName",@"birthday",@"phone",@"email",@"password", nil];
-    NSMutableArray * values = [NSMutableArray arrayWithObjects:[UserDefaultsManager userId],self.gender,@"",self.nickName,[NSNumber numberWithDouble:self.birthdayDate], self.phone,self.email,self.password,nil];
+    NSMutableArray * values = [NSMutableArray arrayWithObjects:@"",self.gender,@"",self.nickName,[NSNumber numberWithDouble:self.birthdayDate], self.phone,self.email,self.password,nil];
     request.keys = keys;
     request.values = values;
+    [WASBaseServiceFace serviceWithMethod:[request URLString] body:[request toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
 
 }
 

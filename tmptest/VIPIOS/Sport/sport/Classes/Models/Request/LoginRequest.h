@@ -27,12 +27,12 @@
 @end
 
 
-@interface UpdatePasswordRequest : ListRequestWithUserIDBase
+@interface UpdatePasswordRequest : ForgetPasswordRequest
 @property (nonatomic, copy)     NSString    *password;
 @property (nonatomic, copy)     NSString    *theNewPassword;
 
 @end
 
-@interface UpdateUserInfoRequest : ListRequestWithUserIDBase
+@interface UpdateUserInfoRequest : ListRequestBase
 @property (nonatomic, retain) NSMutableArray *keys,*values;
 @end

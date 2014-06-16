@@ -28,6 +28,7 @@
         [self showRight];
         [self.rightButton setTitle:@"取消" forState:UIControlStateNormal];
     }
+    [NSNumber numberWith];
     [self.view addSubview:self.currentCity];
     [self sendRequestToServer];
     [self startLocation];

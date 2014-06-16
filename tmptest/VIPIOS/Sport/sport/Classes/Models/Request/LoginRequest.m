@@ -22,7 +22,7 @@
 
 - (NSMutableArray *) keyArrays
 {
-    return [NSMutableArray arrayWithObjects:@"email", @"password", nil];
+    return [NSMutableArray arrayWithObjects:@"emailOrPhone", @"password", nil];
 }
 
 - (NSMutableArray *) valueArrays
@@ -77,8 +77,8 @@
 - (NSMutableArray *) keyArrays
 {
     NSMutableArray *array = [super keyArrays];
+    [array addObject:@"oldPassword"];
     [array addObject:@"password"];
-    [array addObject:@"newPassword"];
     return array;
 }
 
@@ -128,7 +128,7 @@
 
 -(NSString *)methodString
 {
-    return (self.userID.length > 0 ) ? @"user/updateUserInfo" : @"user/register";
+    return  @"user/register";
 }
 @end
 

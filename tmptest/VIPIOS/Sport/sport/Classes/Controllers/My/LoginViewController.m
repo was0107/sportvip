@@ -41,9 +41,10 @@
     [self.view addSubview:self.confirmButton];
     
 #ifdef kUseSimulateData
-    self.phoneTextField.pubTextField.text = @"13721117147";
-    self.pwdTextField.pubTextField.text = @"123456";
+    self.phoneTextField.pubTextField.text = @"13611111111";
+    self.pwdTextField.pubTextField.text = @"111111";
 #endif
+
 }
 
 - (void)didReceiveMemoryWarning

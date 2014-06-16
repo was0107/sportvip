@@ -43,6 +43,9 @@
 		DD3A3E68193DF09B00043CA4 /* ErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3E67193DF09B00043CA4 /* ErrorResponse.m */; };
 		DD3A3E6B193DF56F00043CA4 /* ForgetPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3E6A193DF56F00043CA4 /* ForgetPWDViewController.m */; };
 		DD3AF8B0194B21C800A964B7 /* ClassDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3AF8AF194B21C800A964B7 /* ClassDetailViewController.m */; };
+		DD703D5A194EB592008A226B /* PaggingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DD703D59194EB592008A226B /* PaggingRequest.m */; };
+		DD703D5D194EB5A4008A226B /* PaggingResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = DD703D5C194EB5A4008A226B /* PaggingResponse.m */; };
+		DD703D60194F186C008A226B /* PaggingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DD703D5F194F186C008A226B /* PaggingItem.m */; };
 		DD876CCB192C76DC002D2912 /* BaseSectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD876CCA192C76DC002D2912 /* BaseSectionTableViewController.m */; };
 		DD876CCE192CA7E1002D2912 /* OrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD876CCD192CA7E1002D2912 /* OrderTableViewCell.m */; };
 		DD945765194737CE00F9D3B3 /* cell_bottom_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD94575D194737CE00F9D3B3 /* cell_bottom_normal@2x.png */; };
@@ -215,6 +218,12 @@
 		DD3A3E6A193DF56F00043CA4 /* ForgetPWDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPWDViewController.m; sourceTree = "<group>"; };
 		DD3AF8AE194B21C800A964B7 /* ClassDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassDetailViewController.h; sourceTree = "<group>"; };
 		DD3AF8AF194B21C800A964B7 /* ClassDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassDetailViewController.m; sourceTree = "<group>"; };
+		DD703D58194EB592008A226B /* PaggingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaggingRequest.h; sourceTree = "<group>"; };
+		DD703D59194EB592008A226B /* PaggingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaggingRequest.m; sourceTree = "<group>"; };
+		DD703D5B194EB5A4008A226B /* PaggingResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaggingResponse.h; sourceTree = "<group>"; };
+		DD703D5C194EB5A4008A226B /* PaggingResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaggingResponse.m; sourceTree = "<group>"; };
+		DD703D5E194F186C008A226B /* PaggingItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaggingItem.h; sourceTree = "<group>"; };
+		DD703D5F194F186C008A226B /* PaggingItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaggingItem.m; sourceTree = "<group>"; };
 		DD876CC9192C76DC002D2912 /* BaseSectionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseSectionTableViewController.h; sourceTree = "<group>"; };
 		DD876CCA192C76DC002D2912 /* BaseSectionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseSectionTableViewController.m; sourceTree = "<group>"; };
 		DD876CCC192CA7E1002D2912 /* OrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTableViewCell.h; sourceTree = "<group>"; };
@@ -690,6 +699,8 @@
 				DDB0D3AE1924E08300490E35 /* LoginRequest.m */,
 				DDB0D3AF1924E08300490E35 /* ModifyArchiveRequest.h */,
 				DDB0D3B01924E08300490E35 /* ModifyArchiveRequest.m */,
+				DD703D58194EB592008A226B /* PaggingRequest.h */,
+				DD703D59194EB592008A226B /* PaggingRequest.m */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -707,6 +718,8 @@
 				DDB0D3B71924E08300490E35 /* LoginResponse.m */,
 				DDB0D3B81924E08300490E35 /* RegisterResponse.h */,
 				DDB0D3B91924E08300490E35 /* RegisterResponse.m */,
+				DD703D5B194EB5A4008A226B /* PaggingResponse.h */,
+				DD703D5C194EB5A4008A226B /* PaggingResponse.m */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -720,6 +733,8 @@
 				DDB0D3BE1924E08300490E35 /* UserItemBase.m */,
 				DDBAFA86192A2CBE00FBCE38 /* CategoryItem.h */,
 				DDBAFA87192A2CBE00FBCE38 /* CategoryItem.m */,
+				DD703D5E194F186C008A226B /* PaggingItem.h */,
+				DD703D5F194F186C008A226B /* PaggingItem.m */,
 			);
 			path = ResponseItem;
 			sourceTree = "<group>";
@@ -1162,9 +1177,11 @@
 				DDFFF0C9194D516600ACBC66 /* DidContactClassesViewController.m in Sources */,
 				DDB0D4381924E08300490E35 /* NSDate+Helper.m in Sources */,
 				DDB0D41D1924E08300490E35 /* LoginResponse.m in Sources */,
+				DD703D5D194EB5A4008A226B /* PaggingResponse.m in Sources */,
 				DDB0D4291924E08300490E35 /* AKTabBarController.m in Sources */,
 				DDBAFA88192A2CBE00FBCE38 /* CategoryItem.m in Sources */,
 				DDB0D42F1924E08300490E35 /* LaunchTransition.m in Sources */,
+				DD703D5A194EB592008A226B /* PaggingRequest.m in Sources */,
 				DDB0D40B1924E08300490E35 /* BaseGroupTableView.m in Sources */,
 				DDB0D4351924E08300490E35 /* WASBaseAdapter.m in Sources */,
 				DDB0D4211924E08300490E35 /* CreateObject+CustomControl.m in Sources */,
@@ -1214,6 +1231,7 @@
 				DDB0D4331924E08300490E35 /* WASASILogAdatper.m in Sources */,
 				DD130E6D18FD1D4B006FA005 /* main.m in Sources */,
 				DDB0D42C1924E08300490E35 /* UIViewController+AKTabBarController.m in Sources */,
+				DD703D60194F186C008A226B /* PaggingItem.m in Sources */,
 				DDBAFA93192A3A8B00FBCE38 /* MyTableViewCell.m in Sources */,
 				DDB0D4141924E08300490E35 /* SplashViewController.m in Sources */,
 				DDB0D4611924F2E300490E35 /* FeedbackViewController.m in Sources */,
