@@ -18,34 +18,39 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        [self configWithType:1];
     }
     return self;
 }
 
 - (void) configWithType:(int) type
 {
+    self.leftImageView.frame     = CGRectMake(6, 5, 100, 90);
     self.topLabelEx.frame        = CGRectMake(112, 6, 140, 24);
     self.topRigithEx.frame       = CGRectMake(112, 30, 202, 34);
     self.middleLabelEx.frame     = CGRectMake(112, 66, 12, 24);
     self.subRightEx.frame        = CGRectMake(254, 6, 60, 24);
     self.subRightLabel.frame     = CGRectMake(244, 86, 70, 24);
-    self.leftImageView.frame     = CGRectMake(6, 5, 100, 90);
+    
+    if (!self.topLabelEx.superview) {
+        self.subRightLabel.font               = HTFONTSIZE(kFontSize17);
+        self.topLabelEx.textColor             = kBlackColor;
+        self.topRigithEx.textColor            = kLightGrayColor;
+        self.middleLabelEx.textColor          = kLightGrayColor;
+        self.subRightLabel.textColor          = [UIColor getColor:KCustomGreenColor];
+        self.subRightLabel.textAlignment      = UITextAlignmentRight;
+        self.leftImageView.layer.cornerRadius = 4.0f;
+        self.leftImageView.layer.borderWidth  = 0.8f;
+        self.leftImageView.layer.borderColor  = [[UIColor getColor:KCustomGreenColor] CGColor];
 
-    self.subRightLabel.font = HTFONTSIZE(kFontSize17);
-    self.topLabelEx.textColor    = kBlackColor;
-    self.topRigithEx.textColor   = kLightGrayColor;
-    self.middleLabelEx.textColor = kLightGrayColor;
-    self.subRightLabel.textColor = [UIColor getColor:KCustomGreenColor];
-    
-    self.subRightLabel.textAlignment = UITextAlignmentRight;
-    
-    [self.contentView addSubview:self.topLabelEx];
-    [self.contentView addSubview:self.topRigithEx];
-    [self.contentView addSubview:self.middleLabelEx];
-    [self.contentView addSubview:self.subRightEx];
-    [self.contentView addSubview:self.subRightLabel];
-    [self.contentView addSubview:self.leftImageView];
+        
+        [self.contentView addSubview:self.topLabelEx];
+        [self.contentView addSubview:self.topRigithEx];
+        [self.contentView addSubview:self.middleLabelEx];
+        [self.contentView addSubview:self.subRightEx];
+        [self.contentView addSubview:self.subRightLabel];
+        [self.contentView addSubview:self.leftImageView];
+    }
+
     
     self.topLabelEx.text = @"国学培训课程（免费试听)";
     [self.topLabelEx setImages:[NSArray arrayWithObjects:@"icon",@"icon",nil] origitation:1];
@@ -56,7 +61,6 @@
     self.subRightEx.text = @"245km";
     [self.subRightEx setImages:[NSArray arrayWithObjects:@"icon",nil] origitation:0];
 
-//    self.middleLabelEx.text = @"张鸿宇老师|05.19 10：30";
     [self.middleLabelEx setImage:@"icon" origitation:0];
     
     for (int i = 0 ; i < 3; i++) {
@@ -66,17 +70,14 @@
         labelEx.highlightedTextColor = kBlackColor;
         labelEx.font = HTFONTSIZE(kFontSize13);
         labelEx.textAlignment = UITextAlignmentCenter;
-        labelEx.text = @"篮球";
         [self.contentView addSubview:labelEx];
+        labelEx.text = @"篮球";
         [labelEx setImage:@"icon" origitation:2];
 
     }
 
     self.subRightLabel.text = @"￥2290";
     self.leftImageView.image = [UIImage imageNamed:@"icon"];
-    self.leftImageView.layer.cornerRadius = 4.0f;
-    self.leftImageView.layer.borderColor  = [[UIColor getColor:KCustomGreenColor] CGColor];
-    self.leftImageView.layer.borderWidth  = 0.8f;
     
     
     ClassTableViewCell *blockSelf = self;
@@ -85,7 +86,6 @@
                              success:^(UIImage *image){
                                  UIImage * image1 = [image imageScaledToSizeEx:CGSizeMake(100, 80)];
                                  blockSelf.leftImageView.image = image1;
-                                 
                              }
                              failure:^(NSError *error){
                                  blockSelf.leftImageView.image = [UIImage imageNamed:kImageDefault];

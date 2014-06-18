@@ -25,21 +25,24 @@
     self.topRigithEx.frame       = CGRectMake(120, 30, 190, 60);
     self.leftImageView.frame     = CGRectMake(10, 10, 100, 90);
     
-    self.topLabelEx.textColor    = kBlackColor;
-    self.topRigithEx.textColor   = kLightGrayColor;
-    
-    
-    [self.contentView addSubview:self.topLabelEx];
-    [self.contentView addSubview:self.topRigithEx];
-    [self.contentView addSubview:self.leftImageView];
+    if (!self.topLabelEx.superview) {
+        self.topLabelEx.textColor    = kBlackColor;
+        self.topRigithEx.textColor   = kLightGrayColor;
+        self.topRigithEx.numberOfLines = 0;
+        self.leftImageView.layer.cornerRadius = 4.0f;
+        self.leftImageView.layer.borderColor  = [[UIColor getColor:KCustomGreenColor] CGColor];
+        self.leftImageView.layer.borderWidth  = 0.8f;
+        
+        [self.contentView addSubview:self.topLabelEx];
+        [self.contentView addSubview:self.topRigithEx];
+        [self.contentView addSubview:self.leftImageView];
+    }
+   
     
     self.topLabelEx.text = @"国学培训课程（免费试听)";
     [self.topLabelEx setImages:[NSArray arrayWithObjects:@"icon",@"icon",nil] origitation:1];
     self.topRigithEx.text = @"国子学堂虹桥中心国子学堂虹桥中心国子学堂虹子学堂虹桥中心国子学堂虹子学堂虹桥中心国子学堂虹桥中心";
-    self.topRigithEx.numberOfLines = 0;
-    self.leftImageView.layer.cornerRadius = 4.0f;
-    self.leftImageView.layer.borderColor  = [[UIColor getColor:KCustomGreenColor] CGColor];
-    self.leftImageView.layer.borderWidth  = 0.8f;
+    
     
     
     TeacherTableViewCell *blockSelf = self;
@@ -65,20 +68,25 @@
     self.subRightLabel.frame     = CGRectMake(244, 65, 70, 24);
     self.leftImageView.frame     = CGRectMake(6, 5, 100, 90);
     
-    self.subRightLabel.font = HTFONTSIZE(kFontSize17);
-    self.topLabelEx.textColor    = kBlackColor;
-    self.topRigithEx.textColor   = kLightGrayColor;
-    self.middleLabelEx.textColor = kLightGrayColor;
-    self.subRightLabel.textColor = [UIColor getColor:KCustomGreenColor];
-    
-    self.subRightLabel.textAlignment = UITextAlignmentRight;
-    
-    [self.contentView addSubview:self.topLabelEx];
-    [self.contentView addSubview:self.topRigithEx];
-    [self.contentView addSubview:self.middleLabelEx];
-    [self.contentView addSubview:self.subRightEx];
-    [self.contentView addSubview:self.subRightLabel];
-    [self.contentView addSubview:self.leftImageView];
+    if (!self.topLabelEx.superview) {
+        self.subRightLabel.font               = HTFONTSIZE(kFontSize17);
+        self.topLabelEx.textColor             = kBlackColor;
+        self.topRigithEx.textColor            = kLightGrayColor;
+        self.middleLabelEx.textColor          = kLightGrayColor;
+        self.subRightLabel.textColor          = [UIColor getColor:KCustomGreenColor];
+        self.subRightLabel.textAlignment      = UITextAlignmentRight;
+        self.leftImageView.layer.cornerRadius = 4.0f;
+        self.leftImageView.layer.borderColor  = [[UIColor getColor:KCustomGreenColor] CGColor];
+        self.leftImageView.layer.borderWidth  = 0.8f;
+        
+        [self.contentView addSubview:self.topLabelEx];
+        [self.contentView addSubview:self.topRigithEx];
+        [self.contentView addSubview:self.middleLabelEx];
+        [self.contentView addSubview:self.subRightEx];
+        [self.contentView addSubview:self.subRightLabel];
+        [self.contentView addSubview:self.leftImageView];
+
+    }
     
     self.topLabelEx.text = @"国学培训课程（免费试听)";
     [self.topLabelEx setImages:[NSArray arrayWithObjects:@"icon",@"icon",nil] origitation:1];
@@ -108,9 +116,6 @@
     
     self.subRightLabel.text = @"￥2290";
     self.leftImageView.image = [UIImage imageNamed:@"icon"];
-    self.leftImageView.layer.cornerRadius = 4.0f;
-    self.leftImageView.layer.borderColor  = [[UIColor getColor:KCustomGreenColor] CGColor];
-    self.leftImageView.layer.borderWidth  = 0.8f;
     
     
     TeacherTableViewCell *blockSelf = self;

@@ -20,7 +20,6 @@
 @implementation UIImageLabelEx
 {
     int _origitation;
-    BOOL    _didSet;
 }
 
 - (void) dealloc
@@ -34,17 +33,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        _didSet = NO;
     }
     return self;
-}
-
-- (void) setText:(NSString *)text
-{
-    
-    [super setText:text];
-    [self setInternalImages];
-    
 }
 
 - (id) setInternalImages
@@ -63,16 +53,16 @@
         }
         
         CGRect rect = self.frame;
-        if (0 == _origitation && !_didSet) {
+        if (0 == _origitation) {
             [self setExtendWidth:space];
-            _didSet = YES;
-        } else  if (1 == _origitation && _didSet) {
+        }
+        else  if (1 == _origitation) {
             [self setFrameWidth:self.width - space];
-            _didSet = YES;
         }
         
         if (superLayer) {
             [self.layerArray makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
+            
             for (int i = 0; i < total; i++) {
                 CALayer *layer = [CALayer layer];
                 layer.contents = (id)[UIImage imageNamed:[self.imageArray objectAtIndex:i]].CGImage;

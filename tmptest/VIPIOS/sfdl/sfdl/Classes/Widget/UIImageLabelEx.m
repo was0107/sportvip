@@ -38,12 +38,6 @@
     return self;
 }
 
-- (void) setText:(NSString *)text
-{
-    
-    [super setText:text];
-}
-
 - (id) setInternalImages
 {
     int total  =  [self.imageArray count];

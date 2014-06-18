@@ -16,6 +16,24 @@
     if (self) {
         // Initialization code
         [self configWithType:1];
+        
+        [self.contentView addSubview:self.topLabel];
+        [self.contentView addSubview:self.subLabel];
+        [self.contentView addSubview:self.rightLabel];
+        [self.contentView addSubview:self.subRightLabel];
+        [self.contentView addSubview:self.leftImageView];
+        
+        self.topLabel.font           = HTFONTSIZE(kFontSize17);
+        self.subLabel.font           = HTFONTSIZE(kFontSize14);
+        self.rightLabel.font         = HTFONTSIZE(kFontSize14);
+        self.subRightLabel.font      = HTFONTSIZE(kFontSize18);
+        
+        self.topLabel.textColor      = kBlackColor;
+        self.subLabel.textColor      = kLightGrayColor;
+        self.rightLabel.textColor    = kLightGrayColor;
+        self.subRightLabel.textColor = [UIColor getColor:KCustomGreenColor];
+        
+        self.subRightLabel.textAlignment = UITextAlignmentRight;
     }
     return self;
 }
@@ -28,24 +46,7 @@
     self.rightLabel.frame        = CGRectMake(92, 60, 148, 24);
     self.subRightLabel.frame     = CGRectMake(244, 60, 70, 24);
     self.leftImageView.frame     = CGRectMake(6, 5, 80, 80);
-    
-    self.topLabel.font           = HTFONTSIZE(kFontSize17);
-    self.subLabel.font           = HTFONTSIZE(kFontSize14);
-    self.rightLabel.font         = HTFONTSIZE(kFontSize14);
-    self.subRightLabel.font      = HTFONTSIZE(kFontSize18);
-    
-    self.topLabel.textColor      = kBlackColor;
-    self.subLabel.textColor      = kLightGrayColor;
-    self.rightLabel.textColor    = kLightGrayColor;
-    self.subRightLabel.textColor = [UIColor getColor:KCustomGreenColor];
-    
-    self.subRightLabel.textAlignment = UITextAlignmentRight;
-    
-    [self.contentView addSubview:self.topLabel];
-    [self.contentView addSubview:self.subLabel];
-    [self.contentView addSubview:self.rightLabel];
-    [self.contentView addSubview:self.subRightLabel];
-    [self.contentView addSubview:self.leftImageView];
+
     
     self.topLabel.text = @"国学培训课程（免费试听)";
     self.subLabel.text = @"国子学堂虹桥中心";

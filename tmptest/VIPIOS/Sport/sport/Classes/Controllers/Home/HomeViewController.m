@@ -263,15 +263,16 @@
             static NSString *identifier = @"HOME_TABLEVIEW_CELL_IDENTIFIER0";
             ClassTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
             if (!cell){
-                cell = [[ClassTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+                cell = [[[ClassTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
             }
+            [cell configWithType:1];
             return (UITableViewCell *)cell;
         }
         else {
             static NSString *identifier1 = @"HOME_TABLEVIEW_CELL_IDENTIFIER1";
             TeacherTableViewCell *cell1 = [tableView dequeueReusableCellWithIdentifier:identifier1];
             if (!cell1){
-                cell1 = [[TeacherTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier1];
+                cell1 = [[[TeacherTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier1] autorelease];
             }
             [cell1 configWithType:0];
             return (UITableViewCell *)cell1;
@@ -283,7 +284,7 @@
     };
     
     self.tableView.cellNumberBlock = ^( UITableView *tableView, NSInteger section) {
-        return (NSInteger)11;
+        return (NSInteger)1;
     };
     
     self.tableView.sectionHeaderHeightBlock = ^( UITableView *tableView, NSInteger section){

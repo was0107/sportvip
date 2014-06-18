@@ -45,6 +45,11 @@
     [super dealloc];
 }
 
+- (void) configWithType:(int) type
+{
+    
+}
+
 - (UIImageView *) topBg
 {
     if (!_topBg) {
