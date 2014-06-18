@@ -58,7 +58,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.frame = kFullFrame;
+//    self.view.frame = CGRectMake(0, 0, 320, 568);
+//    self.view.frame = kFullFrame;
 }
 
 

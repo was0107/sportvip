@@ -13,7 +13,7 @@
 
 @property (nonatomic, assign) double langtitude,latitude;
 
-@property (nonatomic, copy) NSString *age,*eventId,distance;
+@property (nonatomic, copy) NSString *age,*eventId,*distance;
 
 @end
 

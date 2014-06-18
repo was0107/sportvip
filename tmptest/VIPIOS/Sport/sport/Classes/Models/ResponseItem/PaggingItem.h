@@ -14,7 +14,7 @@
 
 
 
-@interface EventTagItem : List
+@interface EventTagItem : ListResponseItemBase
 @property (nonatomic, copy) NSString *itemId, *icon,*name;
 @end
 
@@ -31,8 +31,8 @@
 @interface CoacheItem : ListResponseItemBase
 
 @property (nonatomic, copy) NSString *address,*name,*avatar,*certificate, *priceString, *distanceString;
-@property (nonatomic, retain) NSMutableArray *phones, *tags, *honors;
-@property (nonatomic, assign) float distance, minPrice *lantitude,*longtitude;
+@property (nonatomic, retain) NSMutableArray *phones, *tags, *hornors;
+@property (nonatomic, assign) float distance, minPrice, lantitude, longtitude;
 @property (nonatomic, assign) int zan, age;
 @end
 

@@ -67,6 +67,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    DEBUGLOG(@"self.nav= %@", self.navigationController.view);
+}
+
 - (void) configTitleView
 {
 //    self.typeButton                     = [UIButton buttonWithType:UIButtonTypeCustom];

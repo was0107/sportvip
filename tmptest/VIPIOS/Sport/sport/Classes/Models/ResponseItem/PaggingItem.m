@@ -59,15 +59,15 @@
         self.name = [self stringObjectFrom:dictionary withKey:@"name"];
         self.distance = [self floatValueFrom:dictionary withKey:@"distance"];
         self.maxPrice = [self floatValueFrom:dictionary withKey:@"maxPrice"];
-        self.minPirce = [self floatValueFrom:dictionary withKey:@"minPirce"];
+        self.minPrice = [self floatValueFrom:dictionary withKey:@"minPirce"];
         
-        if (self.minPirce < 1) {
+        if (self.minPrice < 1) {
             self.priceString = [NSString stringWithFormat:@"%d",self.maxPrice];
         } else {
-            self.priceString = [NSString stringWithFormat:@"%d-%d",self.minPirce,self.maxPrice];
+            self.priceString = [NSString stringWithFormat:@"%d-%d",self.minPrice,self.maxPrice];
         }
         
-        self.distanceString = [NSString stringWithFormat:@"%d",self.distance]
+        self.distanceString = [NSString stringWithFormat:@"%d",self.distance];
         
         NSMutableArray *array = [dictionary objectForKey:@"tags"];
         NSMutableArray *arrayResult = [NSMutableArray array];
@@ -109,13 +109,13 @@
 
 
 
-@interface CoacheItem : ListResponseItemBase
-
-@property (nonatomic, copy) NSString *address,*name,*avatar,*certificate, *priceString, *distanceString;
-@property (nonatomic, retain) NSMutableArray *phones, *tags, *honors;
-@property (nonatomic, assign) float distance, minPrice *lantitude,*longtitude;
-@property (nonatomic, assign) int zan, age;
-@end
+//@interface CoacheItem : ListResponseItemBase
+//
+//@property (nonatomic, copy) NSString *address,*name,*avatar,*certificate, *priceString, *distanceString;
+//@property (nonatomic, retain) NSMutableArray *phones, *tags, *honors;
+//@property (nonatomic, assign) float distance, minPrice *lantitude,*longtitude;
+//@property (nonatomic, assign) int zan, age;
+//@end
 
 @implementation CoacheItem
 
@@ -141,14 +141,14 @@
         self.address = [self stringObjectFrom:dictionary withKey:@"address"];
         self.name = [self stringObjectFrom:dictionary withKey:@"name"];
         self.distance = [self floatValueFrom:dictionary withKey:@"distance"];
-        self.minPirce = [self floatValueFrom:dictionary withKey:@"minPirce"];
-        self.avatar = [self floatValueFrom:dictionary withKey:@"avatar"];
-        self.certificate = [self floatValueFrom:dictionary withKey:@"certificate"];
+        self.minPrice = [self floatValueFrom:dictionary withKey:@"minPirce"];
+        self.avatar = [self stringObjectFrom:dictionary withKey:@"avatar"];
+        self.certificate = [self stringObjectFrom:dictionary withKey:@"certificate"];
         self.zan = [[self integerValueFrom:dictionary withKey:@"zan"] intValue];
         self.age = [[self integerValueFrom:dictionary withKey:@"age"] intValue];
 
-        self.priceString = [NSString stringWithFormat:@"%d",self.minPirce];
-        self.distanceString = [NSString stringWithFormat:@"%d",self.distance]
+        self.priceString = [NSString stringWithFormat:@"%d",self.minPrice];
+        self.distanceString = [NSString stringWithFormat:@"%d",self.distance];
         
         NSDictionary *location = [dictionary objectForKey:@"location"];
         self.longtitude = [self floatValueFrom:location withKey:@"x"];
@@ -184,7 +184,7 @@
             for ( int i = 0 , total = [array count]; i < total; ++i) {
                 [arrayResult addObject:[array objectAtIndex:i]];
             }
-            self.honors = arrayResult;
+            self.hornors = arrayResult;
         }
             }
     return self;

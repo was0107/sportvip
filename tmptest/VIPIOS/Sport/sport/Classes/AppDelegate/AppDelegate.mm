@@ -31,6 +31,8 @@
         self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     }
     self.rootController = [[[RootViewController alloc] initWithTabBarHeight:48] autorelease];
+    self.rootController.view.frame = _window.bounds;
+
     if(![[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"])
     {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
@@ -39,20 +41,13 @@
     else
     {
         self.window.rootViewController = self.rootController;
+
     }
     [self.window makeKeyAndVisible];
-
     [STLocationInstance sharedInstance];
-    
     [iRate sharedInstance].daysUntilPrompt = 5;
     [iRate sharedInstance].usesUntilPrompt = 15;
-    
-//    if ([[NSUserDefaults standardUserDefaults] stringForKey:UDK_SHOW_CITY].length == 0) {
-//        [self showCitySelect];
-//    }
-//    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(needToShowCitySelector:) name:UDK_SHOW_CITY object:nil];
-        
     return YES;
 }
 
@@ -72,7 +67,6 @@
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     [delegate.rootController presentModalViewController:navController animated:YES];
 }
-
 
 
 - (void)dealloc

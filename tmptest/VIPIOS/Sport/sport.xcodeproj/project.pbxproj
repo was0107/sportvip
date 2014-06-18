@@ -43,6 +43,7 @@
 		DD3A3E68193DF09B00043CA4 /* ErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3E67193DF09B00043CA4 /* ErrorResponse.m */; };
 		DD3A3E6B193DF56F00043CA4 /* ForgetPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3E6A193DF56F00043CA4 /* ForgetPWDViewController.m */; };
 		DD3AF8B0194B21C800A964B7 /* ClassDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3AF8AF194B21C800A964B7 /* ClassDetailViewController.m */; };
+		DD4F44991951893A0042F722 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD4F44981951893A0042F722 /* Images.xcassets */; };
 		DD703D5A194EB592008A226B /* PaggingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DD703D59194EB592008A226B /* PaggingRequest.m */; };
 		DD703D5D194EB5A4008A226B /* PaggingResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = DD703D5C194EB5A4008A226B /* PaggingResponse.m */; };
 		DD703D60194F186C008A226B /* PaggingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DD703D5F194F186C008A226B /* PaggingItem.m */; };
@@ -218,6 +219,7 @@
 		DD3A3E6A193DF56F00043CA4 /* ForgetPWDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPWDViewController.m; sourceTree = "<group>"; };
 		DD3AF8AE194B21C800A964B7 /* ClassDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassDetailViewController.h; sourceTree = "<group>"; };
 		DD3AF8AF194B21C800A964B7 /* ClassDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassDetailViewController.m; sourceTree = "<group>"; };
+		DD4F44981951893A0042F722 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DD703D58194EB592008A226B /* PaggingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaggingRequest.h; sourceTree = "<group>"; };
 		DD703D59194EB592008A226B /* PaggingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaggingRequest.m; sourceTree = "<group>"; };
 		DD703D5B194EB5A4008A226B /* PaggingResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaggingResponse.h; sourceTree = "<group>"; };
@@ -525,6 +527,7 @@
 			isa = PBXGroup;
 			children = (
 				DD130EB018FD2836006FA005 /* Classes */,
+				DD4F44981951893A0042F722 /* Images.xcassets */,
 				DD130E6718FD1D4B006FA005 /* Supporting Files */,
 			);
 			path = sport;
@@ -1101,6 +1104,7 @@
 				DDB0D4531924EA5900490E35 /* icon_tabbar_hzxs_n@2x.png in Resources */,
 				DDB0D4591924EA5900490E35 /* icon_tabbar_user_f@2x.png in Resources */,
 				DDBAFA711929CA3E00FBCE38 /* icon_index_class_n@2x.png in Resources */,
+				DD4F44991951893A0042F722 /* Images.xcassets in Resources */,
 				DDBAFA8F192A39E900FBCE38 /* icon_user_order.png in Resources */,
 				DD130E6B18FD1D4B006FA005 /* InfoPlist.strings in Resources */,
 				DDBAFA701929CA3E00FBCE38 /* icon_index_class_f@2x.png in Resources */,
@@ -1350,6 +1354,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1383,6 +1388,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
