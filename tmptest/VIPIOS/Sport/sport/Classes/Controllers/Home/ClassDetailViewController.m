@@ -47,13 +47,14 @@
 
 - (UIView *) footerView
 {
-    UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 55)] autorelease];
+    UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 64)] autorelease];
     view.backgroundColor = kClearColor;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:@"联系教练" forState:UIControlStateNormal];
     [CreateObject addTargetEfection:button];
-    button.frame = CGRectMake(20, 5.5, 280, 44);
+    button.frame = CGRectMake(20, 10, 280, 44);
     [view addSubview:button];
+
     return view;
 }
 
@@ -79,14 +80,14 @@
             if (!cell){
                 cell = [[BaseTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier1];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                cell.backgroundColor = kClearColor;
+//                cell.backgroundColor = kClearColor;
                 cell.topLabel.frame = CGRectMake(10, 2, 300, 20);
-                cell.topLabel.font = HTFONTSIZE(kFontSize16);
+                cell.topLabel.font = HTFONTSIZE(kFontSize14);
                 cell.topLabel.numberOfLines = 0;
                 [cell.contentView addSubview:cell.topLabel];
             }
             NSString *title = [titleArray1 objectAtIndex:indexPath.row];
-            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 2000)];
+            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize14) constrainedToSize:CGSizeMake(300, 2000)];
             [cell.topLabel setFrameHeight:size.height+10];
             cell.topLabel.text = [titleArray1 objectAtIndex:indexPath.row];
             
@@ -97,7 +98,7 @@
             if (!cell){
                 cell = [[[BaseTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
                 cell.topLabel.textColor = kBlackColor;
-                cell.backgroundColor = kClearColor;
+//                cell.backgroundColor = kClearColor;
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.topLabel.frame = CGRectMake(10, 10, 300, 120);
                 cell.topLabel.layer.borderColor = [kTipsTitleColor CGColor];
@@ -108,13 +109,13 @@
             cell.topLabel.text = @"网球基础班";
             return (UITableViewCell *)cell;
         }
-    
+        
         static NSString *identifier = @"TEACHER_TABLEVIEW_CELL_IDENTIFIER15";
         BaseSportTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell){
             cell = [[[BaseSportTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
             cell.topLabelEx.textColor = kBlackColor;
-            cell.backgroundColor = kClearColor;
+//            cell.backgroundColor = kClearColor;
             cell.topLabelEx.numberOfLines = 0;
             [cell.contentView addSubview:cell.topLabelEx];
             
@@ -124,7 +125,10 @@
             cell.subRightEx.textAlignment = UITextAlignmentRight;
             [cell.contentView addSubview:cell.subRightEx];
         }
-        cell.topLabelEx.frame = CGRectMake(10, 4, 300, 20);
+
+        cell.selectionStyle = (2 == indexPath.section) ? UITableViewCellSelectionStyleGray :  UITableViewCellSelectionStyleNone;
+
+        cell.topLabelEx.frame = CGRectMake(10, 8, 300, 24);
         NSString *title = [titleArray objectAtIndex:indexPath.section];
         cell.topLabelEx.text = title;
         if (0 == indexPath.section) {
@@ -134,12 +138,12 @@
             [cell.topLabelEx setImages:[NSArray arrayWithObjects:@"icon",@"icon",nil] origitation:1];
             cell.subRightEx.text = @"￥2290";
             CGFloat width = [cell.subRightEx.text sizeWithFont:HTFONTSIZE(kFontSize17)].width ;
-            [cell.subRightEx setFrame:CGRectMake(310 - (width + 22),4, (width + 22), 20)];
+            [cell.subRightEx setFrame:CGRectMake(310 - (width + 22),8, (width + 22), 24)];
             [cell.subRightEx setImages:[NSArray arrayWithObjects:@"icon",nil] origitation:0];
 
         } else {
-            cell.topLabelEx.font = HTFONTSIZE(kFontSize14);
-            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize14) constrainedToSize:CGSizeMake(300, 2000)];
+            cell.topLabelEx.font = HTFONTSIZE(kFontSize16);
+            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 2000)];
             [cell.topLabelEx setFrameHeight:size.height+6];
             [cell.topLabelEx setImage:@"icon" origitation:0];
             [cell.subRightEx setFrame:CGRectZero];
@@ -150,15 +154,15 @@
     self.tableView.cellHeightBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
         if (4 == indexPath.section) {
             NSString *title = [titleArray1 objectAtIndex:indexPath.row];
-            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 2000)];
+            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize14) constrainedToSize:CGSizeMake(300, 2000)];
             return size.height + 16;
         }
         else  if (5 == indexPath.section) {
             return 140.0f;
         }
         NSString *string = [titleArray objectAtIndex:indexPath.section];
-        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize14) constrainedToSize:CGSizeMake(300, 20000)];
-        return size.height + 16;
+        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 20000)];
+        return size.height + 20;
     };
     
     self.tableView.cellNumberBlock = ^( UITableView *tableView, NSInteger section) {
@@ -171,7 +175,7 @@
     self.tableView.sectionHeaderHeightBlock = ^( UITableView *tableView, NSInteger section){
         NSString *string = [titleArray objectAtIndex:section];
         CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize14) constrainedToSize:CGSizeMake(300, 20000)];
-        return size.height + 10;
+        return size.height + 20;
     };
     
     self.tableView.cellSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
@@ -187,8 +191,8 @@
             return 0.0f;
         }
         NSString *string = [titleArray objectAtIndex:section];
-        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize14) constrainedToSize:CGSizeMake(300, 20000)];
-        return size.height + 16;
+        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 20000)];
+        return size.height + 20;
     };
     
     self.tableView.sectionHeaderBlock = ^( UITableView *tableView, NSInteger section){
@@ -198,12 +202,12 @@
             return nilView;
         }
         NSString *string = [titleArray objectAtIndex:section];
-        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize14) constrainedToSize:CGSizeMake(300, 20000)];
-        UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, size.height + 5)] autorelease];
-        
-        UIImageLabelEx *imageLabelEx = [[[UIImageLabelEx alloc] initWithFrame:CGRectMake(10, 3, 300, size.height+8)] autorelease];
+        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 20000)];
+        UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, size.height + 20)] autorelease];
+        view.backgroundColor = kWhiteColor;
+        UIImageLabelEx *imageLabelEx = [[[UIImageLabelEx alloc] initWithFrame:CGRectMake(10, 6, 300, size.height+8)] autorelease];
         imageLabelEx.numberOfLines = 0;
-        imageLabelEx.font = HTFONTSIZE(kFontSize14);
+        imageLabelEx.font = HTFONTSIZE(kFontSize16);
         [view addSubview:imageLabelEx];
         imageLabelEx.text = string;//@"上海闵行区什么路";
         if (0 == section) {
@@ -214,6 +218,7 @@
         } else {
             [imageLabelEx setImage:@"icon" origitation:0];
         }
+        [imageLabelEx shiftPositionY:1];
         return (UIView *)view;
     };
     

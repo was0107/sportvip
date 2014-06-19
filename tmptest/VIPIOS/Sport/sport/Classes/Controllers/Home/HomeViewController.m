@@ -284,7 +284,7 @@
     };
     
     self.tableView.cellNumberBlock = ^( UITableView *tableView, NSInteger section) {
-        return (NSInteger)1;
+        return (NSInteger)11;
     };
     
     self.tableView.sectionHeaderHeightBlock = ^( UITableView *tableView, NSInteger section){

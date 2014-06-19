@@ -100,4 +100,25 @@
     return [self setImages:[NSArray arrayWithObject:image] origitation:flag];
 }
 
+
+- (id) shiftPositionY:(CGFloat) flag
+{
+    for (CALayer *layer in self.layerArray) {
+        CGRect rect = [layer frame];
+        rect.origin.y += flag;
+        layer.frame = rect;
+    }
+    return self;
+}
+
+- (id) shiftPositionX:(CGFloat) flag
+{
+    for (CALayer *layer in self.layerArray) {
+        CGRect rect = [layer frame];
+        rect.origin.x += flag;
+        layer.frame = rect;
+    }
+    return self;
+}
+
 @end

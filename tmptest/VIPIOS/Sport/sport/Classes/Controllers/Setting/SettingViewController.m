@@ -77,7 +77,7 @@
         MyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell){
             cell = [[[MyTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
-            [cell.topLabel setFrame:CGRectMake(20, 10, 200, 24)];
+            [cell.topLabel setFrame:CGRectMake(15, 10, 200, 24)];
         }
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 

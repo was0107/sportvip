@@ -26,7 +26,6 @@
     self.title = @"上海龙翔体育馆";
 }
 
-
 - (XLCycleScrollView *)cycleView
 {
     if (!_cycleView) {
@@ -51,12 +50,12 @@
 
 - (UIView *) footerView
 {
-    UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 55)] autorelease];
+    UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 64)] autorelease];
     view.backgroundColor = kClearColor;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:@"联系教练" forState:UIControlStateNormal];
     [CreateObject addTargetEfection:button];
-    button.frame = CGRectMake(20, 5.5, 280, 44);
+    button.frame = CGRectMake(20, 10, 280, 44);
     [view addSubview:button];
     return view;
 }
@@ -84,8 +83,8 @@
                 BaseSportTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
                 if (!cell){
                     cell = [[[BaseSportTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
-                    cell.backgroundColor = kClearColor;
-                    cell.contentView.backgroundColor = kClearColor;
+//                    cell.backgroundColor = kClearColor;
+//                    cell.contentView.backgroundColor = kClearColor;
                 }
                 [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
                 for (int i = 0 ; i < 8; i++) {
@@ -108,7 +107,7 @@
                 if (!cell){
                     cell = [[[BaseTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
                     cell.topLabel.textColor = kBlackColor;
-                    cell.backgroundColor = kClearColor;
+//                    cell.backgroundColor = kClearColor;
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
                     cell.topLabel.frame = CGRectMake(10, 10, 200, 24);
                     cell.subLabel.frame = CGRectMake(210, 10, 100, 24);
@@ -116,7 +115,7 @@
                     [cell.contentView addSubview:cell.topLabel];
                     [cell.contentView addSubview:cell.subLabel];
                 }
-                [cell setCellsCount:3 at:indexPath];
+//                [cell setCellsCount:3 at:indexPath];
                 cell.topLabel.text = @"篮球基础班";
                 cell.subLabel.text = @"王学新";
                 
@@ -201,8 +200,8 @@
     self.tableView.sectionHeaderHeightBlock = ^( UITableView *tableView, NSInteger section){
         
         NSString *string = [titleArray objectAtIndex:section];
-        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize14) constrainedToSize:CGSizeMake(300, 20000)];
-        return size.height + 10;
+        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 20000)];
+        return size.height + 20;
     };
     
     self.tableView.sectionNumberBlock = ^( UITableView *tableView){
@@ -212,15 +211,21 @@
     self.tableView.sectionHeaderBlock = ^( UITableView *tableView, NSInteger section){
         
         NSString *string = [titleArray objectAtIndex:section];
-        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize14) constrainedToSize:CGSizeMake(300, 20000)];
-        UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, size.height + 5)] autorelease];
-
-        UIImageLabelEx *imageLabelEx = [[[UIImageLabelEx alloc] initWithFrame:CGRectMake(10, 1, 300, size.height+8)] autorelease];
+        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 20000)];
+        UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, size.height + 20)] autorelease];
+        view.backgroundColor = kWhiteColor;
+        UIImageLabelEx *imageLabelEx = [[[UIImageLabelEx alloc] initWithFrame:CGRectMake(10, 6, 300, size.height+8)] autorelease];
         imageLabelEx.numberOfLines = 0;
-        imageLabelEx.font = HTFONTSIZE(kFontSize14);
+        imageLabelEx.font = HTFONTSIZE(kFontSize16);
         [view addSubview:imageLabelEx];
         imageLabelEx.text = string;//@"上海闵行区什么路";
         [imageLabelEx setImage:@"icon" origitation:0];
+        [imageLabelEx shiftPositionY:1];
+        if (0 == section) {
+            UIView *lineView = [[[UIView alloc] initWithFrame:CGRectMake(0, view.bounds.size.height-0.5f, 320, 0.5f)] autorelease];
+            lineView.backgroundColor = kLightGrayColor;
+            [view addSubview:lineView];
+        }
         return (UIView *)view;
     };
     

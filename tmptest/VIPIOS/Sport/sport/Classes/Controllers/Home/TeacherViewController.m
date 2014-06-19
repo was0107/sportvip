@@ -57,12 +57,12 @@
 
 - (UIView *) footerView
 {
-    UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 55)] autorelease];
+    UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 64)] autorelease];
     view.backgroundColor = kClearColor;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:@"联系教练" forState:UIControlStateNormal];
     [CreateObject addTargetEfection:button];
-    button.frame = CGRectMake(20, 5.5, 280, 44);
+    button.frame = CGRectMake(20, 10, 280, 44);
     [view addSubview:button];
     return view;
 }
@@ -82,7 +82,6 @@
             if (!cell1){
                 cell1 = [[TeacherTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier1];
                 cell1.selectionStyle = UITableViewCellSelectionStyleNone;
-                cell1.backgroundColor = kClearColor;
             }
             [cell1 configTeacherDetailHeader];
             return (UITableViewCell *)cell1;
@@ -95,7 +94,6 @@
                 if (!cell){
                     cell = [[[BaseTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
                     cell.topLabel.textColor = kBlackColor;
-                    cell.backgroundColor = kClearColor;
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
                     cell.topLabel.frame = CGRectMake(10, 5, 300, 44);
                     cell.subLabel.textAlignment = UITextAlignmentRight;
@@ -111,7 +109,6 @@
             if (!cell){
                 cell = [[[BaseTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
                 cell.topLabel.textColor = kBlackColor;
-                cell.backgroundColor = kClearColor;
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.topLabel.frame = CGRectMake(10, 10, 80, 24);
                 cell.subLabel.frame = CGRectMake(100, 10, 210, 24);
@@ -119,7 +116,6 @@
                 [cell.contentView addSubview:cell.topLabel];
                 [cell.contentView addSubview:cell.subLabel];
             }
-            [cell setCellsCount:3 at:indexPath];
             cell.topLabel.text = @"2013";
             cell.subLabel.text = @"荣获优秀教师的称号";
             return (UITableViewCell *)cell;
@@ -127,19 +123,19 @@
         }
         else if (2 == indexPath.section) {
             
-            static NSString *identifier = @"TEACHER_TABLEVIEW_CELL_IDENTIFIER11";
+            static NSString *identifier = @"TEACHER_TABLEVIEW_CELL_IDENTIFIER12";
             BaseNewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
             if (!cell){
                 cell = [[[BaseNewTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
-                cell.topLabel.textColor = kBlackColor;
-                cell.backgroundColor = kClearColor;
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.selectionStyle = UITableViewCellSelectionStyleGray;
                 cell.topLabel.frame = CGRectMake(10, 10, 90, 24);
                 cell.rightLabel.frame = CGRectMake(100, 10, 150, 24);
                 cell.subRightLabel.frame = CGRectMake(250, 10, 60, 24);
-                cell.topLabel.textColor = kTableViewColor;
+                cell.topLabel.textColor = kBlackColor;
                 cell.rightLabel.textAlignment = UITextAlignmentRight;
                 cell.subRightLabel.textAlignment = UITextAlignmentRight;
+                cell.subRightLabel.textColor = [UIColor getColor:KCustomGreenColor];
+                cell.subRightLabel.font = HTFONTSIZE(kFontSize18);
                 [cell.contentView addSubview:cell.topLabel];
                 [cell.contentView addSubview:cell.rightLabel];
                 [cell.contentView addSubview:cell.subRightLabel];
@@ -150,10 +146,11 @@
             cell.subRightLabel.text = @"￥168";
             return (UITableViewCell *)cell;
         }
-        static NSString *identifier = @"TEACHER_TABLEVIEW_CELL_IDENTIFIER3";
+        static NSString *identifier = @"TEACHER_TABLEVIEW_CELL_IDENTIFIER13";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell){
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             [cell.contentView addSubview:blockSelf.mapView];
         }
         return (UITableViewCell *)cell;
@@ -217,22 +214,23 @@
             return 0.0f;
         }
         NSString *string = [titleArray objectAtIndex:section];
-        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize14) constrainedToSize:CGSizeMake(300, 20000)];
-        return size.height + 10;
+        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 20000)];
+        return size.height + 20;
     };
     
     self.tableView.sectionHeaderBlock = ^( UITableView *tableView, NSInteger section){
         
         NSString *string = [titleArray objectAtIndex:section];
-        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize14) constrainedToSize:CGSizeMake(300, 20000)];
+        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 20000)];
         UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, size.height + 5)] autorelease];
-        
-        UIImageLabelEx *imageLabelEx = [[[UIImageLabelEx alloc] initWithFrame:CGRectMake(10, 1, 300, size.height+8)] autorelease];
+        view.backgroundColor = kWhiteColor;
+        UIImageLabelEx *imageLabelEx = [[[UIImageLabelEx alloc] initWithFrame:CGRectMake(10, 6, 300, size.height+8)] autorelease];
         imageLabelEx.numberOfLines = 0;
-        imageLabelEx.font = HTFONTSIZE(kFontSize14);
+        imageLabelEx.font = HTFONTSIZE(kFontSize16);
         [view addSubview:imageLabelEx];
         imageLabelEx.text = string;//@"上海闵行区什么路";
         [imageLabelEx setImage:@"icon" origitation:0];
+        [imageLabelEx shiftPositionY:1];
         return (UIView *)view;
     };
 

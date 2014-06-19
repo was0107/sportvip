@@ -185,7 +185,7 @@
         _topLabel.backgroundColor = kClearColor;
         _topLabel.textColor = kDarkTextColor;
         _topLabel.highlightedTextColor = kWhiteColor;
-        _topLabel.font = HTFONTSIZE(kFontSize14);
+        _topLabel.font = HTFONTSIZE(kFontSize15);
     }
     return _topLabel;
 }

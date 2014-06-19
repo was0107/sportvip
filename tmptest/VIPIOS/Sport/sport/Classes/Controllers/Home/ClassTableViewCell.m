@@ -8,7 +8,7 @@
 
 #import "ClassTableViewCell.h"
 @interface ClassTableViewCell()
-
+@property (nonatomic, retain) NSMutableArray *categories;
 @end
 
 @implementation ClassTableViewCell
@@ -18,6 +18,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+        self.categories = [NSMutableArray array];
     }
     return self;
 }
@@ -63,6 +64,11 @@
 
     [self.middleLabelEx setImage:@"icon" origitation:0];
     
+    self.subRightLabel.text = @"￥2290";
+    self.leftImageView.image = [UIImage imageNamed:@"icon"];
+    
+    
+    [self.categories makeObjectsPerformSelector:@selector(removeFromSuperview)];
     for (int i = 0 ; i < 3; i++) {
         UIImageLabelEx *labelEx = [[[UIImageLabelEx alloc] initWithFrame:CGRectMake(130 + 36 *i, 68, 36, 20)] autorelease];
         labelEx.backgroundColor = kClearColor;
@@ -73,12 +79,9 @@
         [self.contentView addSubview:labelEx];
         labelEx.text = @"篮球";
         [labelEx setImage:@"icon" origitation:2];
-
+        [self.categories addObject:labelEx];
     }
 
-    self.subRightLabel.text = @"￥2290";
-    self.leftImageView.image = [UIImage imageNamed:@"icon"];
-    
     
     ClassTableViewCell *blockSelf = self;
     [self.leftImageView setImageWithURL:[NSURL URLWithString:@"http://img.b5m.com/image/T1W8hjBCJj1RCvBVdK"]
