@@ -51,12 +51,19 @@
     view.backgroundColor = kClearColor;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:@"联系教练" forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(showTeachers:) forControlEvents:UIControlEventTouchUpInside];
     [CreateObject addTargetEfection:button];
     button.frame = CGRectMake(20, 10, 280, 44);
     [view addSubview:button];
-
     return view;
 }
+
+- (IBAction)showTeachers:(id)sender
+{
+    [self.poplistview show];
+}
+
+
 
 
 - (void) configTableView

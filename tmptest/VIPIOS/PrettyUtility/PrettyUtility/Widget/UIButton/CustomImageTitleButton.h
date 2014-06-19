@@ -15,3 +15,13 @@
 
 - (void) setText:(NSString *) text image:(NSString *)imageName;
 @end
+
+
+@interface CustomRoundImageTitle : UIButton
+
+@property(nonatomic, retain)UIImageView * topImage;
+@property(nonatomic, retain)UILabel     * bottomTitleLabel;
+
+
+- (void) setText:(NSString *) text image:(NSString *)imageName;
+@end

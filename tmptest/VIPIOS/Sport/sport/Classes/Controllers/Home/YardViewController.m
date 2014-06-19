@@ -54,11 +54,18 @@
     view.backgroundColor = kClearColor;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:@"联系教练" forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(showTeachers:) forControlEvents:UIControlEventTouchUpInside];
     [CreateObject addTargetEfection:button];
     button.frame = CGRectMake(20, 10, 280, 44);
     [view addSubview:button];
     return view;
 }
+
+- (IBAction)showTeachers:(id)sender
+{
+    [self.poplistview show];
+}
+
 
 - (void) configTableView
 {
@@ -74,6 +81,7 @@
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
                 if (!cell) {
                     cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 }
                 return (UITableViewCell *)cell;
             }
@@ -85,6 +93,7 @@
                     cell = [[[BaseSportTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
 //                    cell.backgroundColor = kClearColor;
 //                    cell.contentView.backgroundColor = kClearColor;
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 }
                 [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
                 for (int i = 0 ; i < 8; i++) {
@@ -108,7 +117,7 @@
                     cell = [[[BaseTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
                     cell.topLabel.textColor = kBlackColor;
 //                    cell.backgroundColor = kClearColor;
-                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    cell.selectionStyle = UITableViewCellSelectionStyleGray;
                     cell.topLabel.frame = CGRectMake(10, 10, 200, 24);
                     cell.subLabel.frame = CGRectMake(210, 10, 100, 24);
                     cell.subLabel.textAlignment = UITextAlignmentRight;
@@ -127,17 +136,18 @@
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
                 if (!cell){
                     cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 }
                 NSArray *titleIndexArray = @[@"Solution",@"Genuine Parts",@"Download",@"Download"];
                 NSArray *imageIndexArray = @[@"home9",@"home10",@"home11",@"home12"];
                 int flag =  (iPhone5) ? 120 : 110;
                 int tag = 1000;
                 for (int i = 0 ; i < 4; i++) {
-                    CustomImageTitleButton *button = [[[CustomImageTitleButton alloc] initWithFrame:CGRectMake(4 + 79 * i, 4, 75, 90)] autorelease];
-                    button.topButton.tag =  tag+i;
+                    CustomRoundImageTitle *button = [[[CustomRoundImageTitle alloc] initWithFrame:CGRectMake(4 + 79 * i, 4, 75, 90)] autorelease];
+                    button.tag =  tag+i;
                     button.bottomTitleLabel.font = HTFONTSIZE(kFontSize10);
                     [button.bottomTitleLabel setShiftVertical:-4];
-                    [button.topButton addTarget:blockSelf action:@selector(didTaped:) forControlEvents:UIControlEventTouchUpInside];
+                    [button addTarget:blockSelf action:@selector(didTaped:) forControlEvents:UIControlEventTouchUpInside];
                     [button setText:titleIndexArray[i] image:@"icon"];
                     [cell.contentView addSubview:button];
                 }

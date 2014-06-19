@@ -9,11 +9,12 @@
 #import "BaseTitleViewController.h"
 #import "BaseTableView.h"
 #import "BaseTableViewCell.h"
+#import "UIPopoverListView.h"
 
 
 @interface BaseTableViewController : BaseTitleViewController
-
 @property (nonatomic,retain) BaseTableView *tableView;
+@property (nonatomic, retain) UIPopoverListView *poplistview ;
 
 -(void)refreshTableView;
 @end

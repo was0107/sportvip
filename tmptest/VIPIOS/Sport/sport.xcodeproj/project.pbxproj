@@ -43,6 +43,7 @@
 		DD3A3E68193DF09B00043CA4 /* ErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3E67193DF09B00043CA4 /* ErrorResponse.m */; };
 		DD3A3E6B193DF56F00043CA4 /* ForgetPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3E6A193DF56F00043CA4 /* ForgetPWDViewController.m */; };
 		DD3AF8B0194B21C800A964B7 /* ClassDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3AF8AF194B21C800A964B7 /* ClassDetailViewController.m */; };
+		DD3FBBED1952AE9F0084C6EA /* UIPopoverListView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3FBBEC1952AE9F0084C6EA /* UIPopoverListView.m */; };
 		DD4F44991951893A0042F722 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD4F44981951893A0042F722 /* Images.xcassets */; };
 		DD703D5A194EB592008A226B /* PaggingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DD703D59194EB592008A226B /* PaggingRequest.m */; };
 		DD703D5D194EB5A4008A226B /* PaggingResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = DD703D5C194EB5A4008A226B /* PaggingResponse.m */; };
@@ -219,6 +220,8 @@
 		DD3A3E6A193DF56F00043CA4 /* ForgetPWDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPWDViewController.m; sourceTree = "<group>"; };
 		DD3AF8AE194B21C800A964B7 /* ClassDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassDetailViewController.h; sourceTree = "<group>"; };
 		DD3AF8AF194B21C800A964B7 /* ClassDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassDetailViewController.m; sourceTree = "<group>"; };
+		DD3FBBEB1952AE9F0084C6EA /* UIPopoverListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPopoverListView.h; sourceTree = "<group>"; };
+		DD3FBBEC1952AE9F0084C6EA /* UIPopoverListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPopoverListView.m; sourceTree = "<group>"; };
 		DD4F44981951893A0042F722 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DD703D58194EB592008A226B /* PaggingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaggingRequest.h; sourceTree = "<group>"; };
 		DD703D59194EB592008A226B /* PaggingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaggingRequest.m; sourceTree = "<group>"; };
@@ -940,6 +943,8 @@
 		DDB0D4091924E08300490E35 /* Widget */ = {
 			isa = PBXGroup;
 			children = (
+				DD3FBBEB1952AE9F0084C6EA /* UIPopoverListView.h */,
+				DD3FBBEC1952AE9F0084C6EA /* UIPopoverListView.m */,
 				47A8962D1939D80E00B3FC3D /* ZJSwitch.h */,
 				47A8962E1939D80E00B3FC3D /* ZJSwitch.m */,
 				DDBD7572192B56CE00047A0D /* STLocationInstance.h */,
@@ -1215,6 +1220,7 @@
 				DDB0D4601924F2E300490E35 /* AboutViewController.m in Sources */,
 				DDB0D41C1924E08300490E35 /* ListResponseBase.m in Sources */,
 				DDBEFCC3192B29C900343738 /* PubTextField.m in Sources */,
+				DD3FBBED1952AE9F0084C6EA /* UIPopoverListView.m in Sources */,
 				DDB0D4201924E08300490E35 /* UserItemBase.m in Sources */,
 				DDB0D4181924E08300490E35 /* ListRequestBase.m in Sources */,
 				DDBEFCBB192B25DF00343738 /* LoginViewController.m in Sources */,

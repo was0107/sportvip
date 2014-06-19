@@ -67,3 +67,60 @@
 }
 
 @end
+
+
+@implementation CustomRoundImageTitle
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code
+        [self setBackgroundImage:[[UIImage imageWithColor:kLightGrayColor size:CGSizeMake(10, 10)] stretchableImageWithLeftCapWidth:5 topCapHeight:5] forState:UIControlStateHighlighted];
+        [self addSubview:self.bottomTitleLabel];
+        [self addSubview:self.topImage];
+    }
+    return self;
+}
+-(void)dealloc
+{
+    TT_RELEASE_SAFELY(_topImage);
+    TT_RELEASE_SAFELY(_bottomTitleLabel);
+    [super dealloc];
+}
+
+
+-(UIImageView *)topImage
+{
+    if (!_topImage) {
+        _topImage = [[UIImageView alloc] initWithFrame:CGRectMake(3, 3, 70, 70)];
+        _topImage.layer.borderWidth = 2.0f;
+        _topImage.layer.cornerRadius = 35;
+        _topImage.layer.masksToBounds = YES;
+        _topImage.layer.borderColor = [kWhiteColor CGColor];
+    }
+    return _topImage;
+}
+
+
+-(UILabel *)bottomTitleLabel
+{
+    if (!_bottomTitleLabel) {
+        _bottomTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(2, 76, 71, 20)];
+        _bottomTitleLabel.textColor  = kGrayColor;
+        _bottomTitleLabel.textAlignment = NSTextAlignmentCenter;
+        _bottomTitleLabel.backgroundColor = kClearColor;
+        _bottomTitleLabel.font = SYSTEMFONT(kSystemFontSize10);
+        _bottomTitleLabel.numberOfLines = 0;
+    }
+    return _bottomTitleLabel;
+}
+
+- (void) setText:(NSString *) text image:(NSString *)imageName
+{
+    self.bottomTitleLabel.text = text;
+    [self.topImage setImage:[UIImage imageNamed:imageName]];
+}
+
+
+@end

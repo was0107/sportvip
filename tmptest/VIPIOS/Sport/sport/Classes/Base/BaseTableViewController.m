@@ -8,6 +8,10 @@
 
 #import "BaseTableViewController.h"
 
+@interface BaseTableViewController()<UIPopoverListViewDataSource, UIPopoverListViewDelegate>
+
+@end
+
 @implementation BaseTableViewController
 @synthesize tableView = _tableView;
 
@@ -36,6 +40,7 @@
 - (void) reduceMemory
 {
     TT_RELEASE_SAFELY(_tableView);
+    TT_RELEASE_SAFELY(_poplistview);
     [super reduceMemory];
 }
 
@@ -118,5 +123,85 @@
 -(void)refreshTableView
 {
     self.tableView.refreshBlock(nil);
+}
+
+
+#pragma mark - UIPopoverListViewDataSource
+
+
+- (UIPopoverListView *) poplistview
+{
+    if (!_poplistview) {
+        {
+            CGFloat xWidth = self.view.bounds.size.width - 20.0f;
+            CGFloat yHeight = 272.0f;
+            CGFloat yOffset = (self.view.bounds.size.height - yHeight)/2.0f;
+            _poplistview = [[UIPopoverListView alloc] initWithFrame:CGRectMake(10, yOffset, xWidth, yHeight)];
+            _poplistview.delegate = self;
+            _poplistview.datasource = self;
+            _poplistview.listView.scrollEnabled = TRUE;
+            [_poplistview setTitle:@"联系教练"];
+            [_poplistview.listView setTableFooterView:[self footerTipView]];
+        }
+    }
+    return _poplistview;
+}
+- (UIView *) footerTipView
+{
+    UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 44)] autorelease];
+    view.backgroundColor = kClearColor;
+    UILabel *tipLabel = [[[UILabel alloc] initWithFrame:CGRectMake(10, 2, 280, 40)] autorelease];
+    tipLabel.text = @"*注：如果您联系不上教练，可以拨打我们的客服电话，我们会帮您安排。";
+    tipLabel.font = HTFONTSIZE(kFontSize15);
+    tipLabel.backgroundColor = kClearColor;
+    tipLabel.textColor = kGrayColor;
+    tipLabel.numberOfLines = 0;
+    [view addSubview:tipLabel];
+    return view;
+}
+
+- (UITableViewCell *)popoverListView:(UIPopoverListView *)popoverListView
+                    cellForIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *identifier = @"HOME_TABLEVIEW_CELL_IDENTIFIER0";
+    BaseNewTableViewCell *cell = [popoverListView.listView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell){
+        cell = [[[BaseNewTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
+        cell.topLabel.frame = CGRectMake(60, 10, 100, 30);
+        cell.subLabel.frame = CGRectMake(150, 10, 140, 30);
+        cell.subLabel.textAlignment = UITextAlignmentRight;
+        cell.topLabel.font = cell.subLabel.font = HTFONTSIZE(kFontSize18);
+        cell.leftImageView.frame = CGRectMake(8, 3, 44, 44);
+        cell.leftImageView.layer.borderColor = [kWhiteColor CGColor];
+        cell.leftImageView.layer.cornerRadius = 22.0f;
+        cell.leftImageView.layer.borderWidth = 2.0f;
+        [cell.contentView addSubview:cell.topLabel];
+        [cell.contentView addSubview:cell.subLabel];
+        [cell.contentView addSubview:cell.leftImageView];
+    }
+    
+    cell.topLabel.text = @"王老师";
+    cell.subLabel.text = @"136000000";
+    cell.leftImageView.image = [UIImage imageNamed:@"icon"];
+    return (UITableViewCell *)cell;
+}
+
+- (NSInteger)popoverListView:(UIPopoverListView *)popoverListView
+       numberOfRowsInSection:(NSInteger)section
+{
+    return 3;
+}
+
+#pragma mark - UIPopoverListViewDelegate
+- (void)popoverListView:(UIPopoverListView *)popoverListView didSelectIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"%s : %d", __func__, indexPath.row);
+
+}
+
+- (CGFloat)popoverListView:(UIPopoverListView *)popoverListView
+   heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50.0f;
 }
 @end
