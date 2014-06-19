@@ -10,6 +10,17 @@
 
 @implementation PaggingRequest
 
+- (id) init
+{
+    self = [super init];
+    if (self) {
+        self.longitude = 0.0f;
+        self.longitude = 0.0f;
+        self.age = self.distance = self.eventId = @"";
+    }
+    return self;
+}
+
 - (void) dealloc
 {
     TT_RELEASE_SAFELY(_age);

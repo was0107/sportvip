@@ -148,9 +148,6 @@
             blockSelf.response = nil;
         }
     };
-    
-  
-    
     [WASBaseServiceFace serviceWithMethod:[_request URLString] body:[_request toJsonString] onSuc:succBlock onFailed:failedBlock onError:failedBlock];
 }
 

@@ -16,6 +16,9 @@
 #import "ZJSwitch.h"
 #import "YardViewController.h"
 #import "TeacherViewController.h"
+#import "PaggingRequest.h"
+#import "PaggingResponse.h"
+#import "STLocationInstance.h"
 
 @interface HomeViewController ()
 @property (nonatomic, retain) UIButton *typeButton;
@@ -29,6 +32,8 @@
 @property (nonatomic, retain) UIButton *button1, *button2, *button3;
 @property (nonatomic, retain) UIView   *sectionView;
 @property (nonatomic, retain) ZJSwitch *zjWwitch;
+@property (nonatomic, retain) GymnasiumsRequest *request;
+@property (nonatomic, retain) GymnasiumsResponse *response;
 
 @end
 
@@ -196,7 +201,7 @@
         _currentType = 1;
         self.selectControl.contentArray = [DataManager sharedInstance].categoryAndsubArray;//cateArray;
         self.selectControl.currentIndex = _cateIndex;
-        self.selectControl.tipLabel.text = @"";
+        self.selectControl.tipLabel.text = @"注：请选择合适的年龄段";
     }
     else {
         _currentType = 2;
@@ -306,35 +311,87 @@
     };
     
     self.tableView.refreshBlock = ^(id content) {
+        [blockSelf.request firstPage];
+        [blockSelf sendRequestToServer];
     };
     
     self.tableView.loadMoreBlock = ^(id content) {
         [blockSelf sendRequestToServer];
     };
-    
+
     [self.view addSubview:self.tableView];
     
-    [self dealWithData];
+    [self sendRequestToServer];
     
+//    [self dealWithData];
 //    [self.tableView doSendRequest:YES];
 }
 
 - (void) dealWithData
 {
-//    self.tableView.didReachTheEnd = [_response lastPage];
-//    if ([self.response isEmpty]) {
-//        [self.tableView showEmptyView:YES];
-//    }
-//    else {
-//        [self.tableView showEmptyView:NO];
-//    }
+    self.tableView.didReachTheEnd = [_response lastPage];
+    if ([self.response isEmpty]) {
+        [self.tableView showEmptyView:YES];
+    }
+    else {
+        [self.tableView showEmptyView:NO];
+    }
     [self.tableView reloadData];
+}
+
+- (GymnasiumsRequest *) request
+{
+    if (!_request) {
+        _request = [[GymnasiumsRequest alloc] init];
+    }
+    return _request;
+}
+
+
+- (void) startLocation
+{
+    __block HomeViewController *blockSelf = self;
+    [STLocationInstance sharedInstance].placeBlock = ^(id place) {
+        CLPlacemark *placemark = (CLPlacemark *) place;
+        blockSelf.request.longitude = placemark.location.coordinate.longitude;
+        blockSelf.request.latitude = placemark.location.coordinate.latitude;
+        [SVProgressHUD showSuccessWithStatus:@"定位成功"];
+        [blockSelf sendRequestToServer];
+    };
 }
 
 
 - (void) sendRequestToServer
 {
-    [self dealWithData];
+    if (![STLocationInstance sharedInstance].checkinLocation) {
+        [SVProgressHUD showWithOnlyStatus:@"正在定位..." duration:30];
+        [self startLocation];
+        return;
+    }
+    __block HomeViewController *blockSelf = self;
+
+    idBlock succBlock = ^(id content){
+        DEBUGLOG(@"succeed content %@", content);
+        [blockSelf.tableView tableViewDidFinishedLoading];
+        if ([_request isFristPage]) {
+            blockSelf.response = [[[GymnasiumsResponse alloc] initWithJsonString:content] autorelease];
+        } else {
+            [blockSelf.response appendPaggingFromJsonString:content];
+        }
+        [_request nextPage];
+        [blockSelf dealWithData];
+    };
+    
+    idBlock failedBlock = ^(id content) {
+        DEBUGLOG(@"failed content %@", content);
+        [blockSelf.tableView tableViewDidFinishedLoading];
+
+    };
+    idBlock errBlock = ^(id content){
+        DEBUGLOG(@"error content %@", content);
+        [blockSelf.tableView tableViewDidFinishedLoading];
+    };
+    [WASBaseServiceFace serviceWithMethod:[_request URLString] body:[_request toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
 }
 
 

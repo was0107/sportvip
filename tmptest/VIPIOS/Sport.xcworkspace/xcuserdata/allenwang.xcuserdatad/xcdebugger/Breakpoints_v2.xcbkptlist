@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sport/sport/Classes/Controllers/Home/HomeViewController.m"
-            timestampString = "424773086.995479"
+            timestampString = "424875751.834526"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "-viewDidAppear:"
             landmarkType = "5">
          </BreakpointContent>

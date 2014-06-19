@@ -22,11 +22,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
     if (IS_IOS_7_OR_GREATER) {
         self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
 	    [application setStatusBarStyle:UIStatusBarStyleDefault];
-    } else
+    }
+    else
     {
         self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     }
@@ -41,10 +41,8 @@
     else
     {
         self.window.rootViewController = self.rootController;
-
     }
     [self.window makeKeyAndVisible];
-    [STLocationInstance sharedInstance];
     [iRate sharedInstance].daysUntilPrompt = 5;
     [iRate sharedInstance].usesUntilPrompt = 15;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(needToShowCitySelector:) name:UDK_SHOW_CITY object:nil];

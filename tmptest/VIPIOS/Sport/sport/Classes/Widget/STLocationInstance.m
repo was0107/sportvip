@@ -161,7 +161,8 @@ static STLocationInstance * sharedInstance = nil;
                 if (blockSelf.cityBlock) {
                     blockSelf.cityBlock([blockSelf.city cityName]);
                     blockSelf.cityBlock = nil;
-                } else if (blockSelf.placeBlock) {
+                }
+                if (blockSelf.placeBlock) {
                     blockSelf.placeBlock(placemark);
                     blockSelf.placeBlock = nil;
                 }
