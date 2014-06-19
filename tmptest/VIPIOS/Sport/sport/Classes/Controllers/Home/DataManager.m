@@ -45,6 +45,7 @@ static DataManager * sharedInstance = nil;
 
 - (void) createSort
 {
+    
     CategoryItem *item1 = [[[CategoryItem alloc] init] autorelease];
     item1.categoryId = @"1";
     item1.categoryName = @"乒乓";
@@ -58,18 +59,27 @@ static DataManager * sharedInstance = nil;
     item3.categoryName = @"网球";
     
     CategoryItem *item4 = [[[CategoryItem alloc] init] autorelease];
-    item3.categoryId = @"4";
-    item3.categoryName = @"游泳";
+    item4.categoryId = @"4";
+    item4.categoryName = @"游泳";
     
     CategoryItem *item5 = [[[CategoryItem alloc] init] autorelease];
-    item3.categoryId = @"5";
-    item3.categoryName = @"羽毛";
+    item5.categoryId = @"5";
+    item5.categoryName = @"羽毛";
     
-    self.sortArray = [NSMutableArray arrayWithObjects:item1, item2, item3,item4, item5, nil];
+    CategoryItem *item6 = [[[CategoryItem alloc] init] autorelease];
+    item6.categoryId = @"";
+    item6.categoryName = @"全部";
+
+    self.sortArray = [NSMutableArray arrayWithObjects:item1, item2, item3,item4, item5,item6, nil];
 }
 
 - (void) createDistance
 {
+    
+    CategoryItem *item4 = [[[CategoryItem alloc] init] autorelease];
+    item4.categoryId = @"";
+    item4.categoryName = @"全城";
+    
     CategoryItem *item1 = [[[CategoryItem alloc] init] autorelease];
     item1.categoryId = @"1000";
     item1.categoryName = @"1000米";
@@ -82,9 +92,6 @@ static DataManager * sharedInstance = nil;
     item3.categoryId = @"5000";
     item3.categoryName = @"5000米";
 
-    CategoryItem *item4 = [[[CategoryItem alloc] init] autorelease];
-    item4.categoryId = @"-1";
-    item4.categoryName = @"全城";
     self.distanceArray = [NSMutableArray arrayWithObjects:item1, item2, item3, item4, nil];
 }
 
@@ -105,29 +112,14 @@ static DataManager * sharedInstance = nil;
 
 -(void)configCategoryAndSub
 {
-//    CategoryItem *item = [[[CategoryItem alloc] init] autorelease];
-//    item.categoryId = @"-1";
-//    item.categoryName = @"分类";
-//    
-//    SubCategoryItem *subItem = [[[SubCategoryItem alloc] init] autorelease];
-//    subItem.categoryId = @"";
-//    subItem.subcategoryName = @"分类";
-//    subItem.subcategoryId = @"-1";
-//    
-//    NSMutableArray *array = [NSMutableArray arrayWithObject:subItem];
-//    
-//    CategoryAndSubCategoryItem * cateItem = [[[CategoryAndSubCategoryItem alloc] init] autorelease];
-//    cateItem.categoryItem = item;
-//    cateItem.subCategoryArray = array;
-//    
-//    self.categoryAndsubArray = [NSMutableArray arrayWithObject:cateItem];
-    
+    NSArray *keyArray = [NSArray arrayWithObjects:@"YOUER",@"XIAOXUE",@"CHUZHONG",@"GAOZHONG",@"CHENGREN",@"",nil];
+    NSArray *titleArray = [NSArray arrayWithObjects:@"幼儿",@"小学",@"初中",@"高中",@"成人",@"全部",nil];
     self.categoryAndsubArray = [NSMutableArray array];
-    for (int i = 0 ; i < 20; i++) {
-        CategoryItem *item4 = [[[CategoryItem alloc] init] autorelease];
-        item4.categoryId = kIntToString(i);
-        item4.categoryName = [NSString stringWithFormat:@"%d岁", i ];
-        [self.categoryAndsubArray addObject:item4];
+    for (int i = 0 ; i < 6; i++) {
+        CategoryItem *item = [[[CategoryItem alloc] init] autorelease];
+        item.categoryId = [keyArray objectAtIndex:i];
+        item.categoryName = [titleArray objectAtIndex:i];
+        [self.categoryAndsubArray addObject:item];
     }
 }
 

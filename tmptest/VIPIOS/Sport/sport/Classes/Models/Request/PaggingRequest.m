@@ -32,7 +32,7 @@
 - (NSMutableArray *) valueArrays
 {
     NSMutableArray *array = [super valueArrays];
-    [array addObject:[NSNumber numberWithDouble:self.langtitude]];
+    [array addObject:[NSNumber numberWithDouble:self.longitude]];
     [array addObject:[NSNumber numberWithDouble:self.latitude]];
     [array addObject:self.age];
     [array addObject:self.distance];

@@ -11,7 +11,7 @@
 
 @interface PaggingRequest : ListPaggingRequestBase
 
-@property (nonatomic, assign) double langtitude,latitude;
+@property (nonatomic, assign) double longitude,latitude;
 
 @property (nonatomic, copy) NSString *age,*eventId,*distance;
 

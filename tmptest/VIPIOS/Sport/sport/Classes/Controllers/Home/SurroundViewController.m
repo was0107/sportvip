@@ -7,12 +7,16 @@
 //
 
 #import "SurroundViewController.h"
+#import "YardViewController.h"
 #import "MapLocation.h"
-
+#import "PaggingRequest.h"
+#import "PaggingResponse.h"
 
 @interface SurroundViewController ()
 @property (nonatomic,retain) MKMapView* mapView;
 @property (nonatomic,retain) MapLocation *currentAnnotation;
+@property (nonatomic, retain) GymnasiumsRequest *request;
+@property (nonatomic, retain) GymnasiumsResponse *response;
 
 @end
 
@@ -34,6 +38,12 @@
         imageview.tag = 1000;
         [self.view addSubview:imageview];
     }
+    if (!self.request) {
+        self.request = [[[GymnasiumsRequest alloc] init] autorelease];
+        self.request.age = @"";
+        self.request.distance = @"";
+        self.request.eventId = @"";
+    }
 }
 
 - (void) reduceMemory
@@ -54,30 +64,96 @@
     return _mapView;
 }
 
-
--(void)sendRequestToServer
-{
-   
-}
-
-
 - (IBAction)showCurrentAction:(id)sender
 {
     if (_mapView.userLocation) {
-       
         [_mapView setCenterCoordinate:_mapView.userLocation.location.coordinate animated:YES];
-        _mapView.showsUserLocation = NO;
+//        _mapView.showsUserLocation = NO;
         [self resetRegion];
+        self.request.longitude = _mapView.userLocation.location.coordinate.longitude;
+        self.request.latitude= _mapView.userLocation.location.coordinate.latitude;
+        [self sendRequestToServer];
+
     }
 }
 
 - (id) resetRegion
 {
-//    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(_mapView.userLocation.location.coordinate, _request.distance, _request.distance);
-//    MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
-//    [_mapView setRegion:adjustedRegion animated:YES];
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(_mapView.userLocation.location.coordinate, 5000, 5000);
+    MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
+    [_mapView setRegion:adjustedRegion animated:YES];
     return self;
 }
+
+- (void) setResponse:(GymnasiumsResponse *)response
+{
+    if (_response != response) {
+        [_response release];
+        _response = [response retain];
+    }
+    
+    [_mapView removeAnnotations:[_mapView annotations]];
+    double minLat = 90,minLng = 180,maxLat = -90,maxLng = -180;
+    
+    for (int i = 0 ; i < _response.arrayCount ; i++)
+    {
+        
+        GymnasiumItem *item = [_response.result objectAtIndex:i];
+        MapLocation *location = [[[MapLocation alloc] init] autorelease];
+        location.coordinate = CLLocationCoordinate2DMake(31.228509f,121.526728f);
+        location.theTitle = @"bubub";
+        location.theSubTitle = @"bubub";
+        location.content = item;
+        
+//        
+//        location.coordinate = CLLocationCoordinate2DMake([item.storeLatitude floatValue],[item.storeLongitude floatValue]);
+//        location.theTitle = item.storeName;
+//        location.theSubTitle = item.storeAddress;
+//        location.content = item;
+//        
+        [self.mapView addAnnotation:location];
+        if (location.coordinate.latitude > maxLat) {
+            maxLat = location.coordinate.latitude;
+        }
+        if (location.coordinate.longitude>maxLng) {
+            maxLng = location.coordinate.longitude;
+        }
+        if (location.coordinate.latitude<minLat) {
+            minLat = location.coordinate.latitude;
+        }
+        if (location.coordinate.longitude<minLng) {
+            minLng = location.coordinate.longitude;
+        }
+    }
+    
+    if (_response.arrayCount == 0) {
+        return;
+    }
+    
+    [_mapView setRegion:MKCoordinateRegionMake(CLLocationCoordinate2DMake((minLat+maxLat)/2, (minLng+maxLng)/2), MKCoordinateSpanMake((maxLat-minLat)+0.01, (maxLng-minLng)+0.01)) animated:YES];
+    
+}
+
+
+-(void)sendRequestToServer
+{
+    __block SurroundViewController *blockSelf = self;
+    [_request firstPage];
+    idBlock succBlock = ^(id content){
+        blockSelf.response = [[[GymnasiumsResponse alloc] initWithJsonString:content] autorelease];
+    };
+    
+    idBlock failedBlock = ^(id content){
+        if ([_request isFristPage]) {
+            blockSelf.response = nil;
+        }
+    };
+    
+  
+    
+    [WASBaseServiceFace serviceWithMethod:[_request URLString] body:[_request toJsonString] onSuc:succBlock onFailed:failedBlock onError:failedBlock];
+}
+
 
 
 #pragma mark =
@@ -100,13 +176,11 @@
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     [self showCurrentAction:nil];
-
 }
 
 - (void)mapView:(MKMapView *)mapView didFailToLocateUserWithError:(NSError *)error
 {
-    _mapView.showsUserLocation = NO;
-
+//    _mapView.showsUserLocation = NO;
 }
 
 #pragma mark - mapView回调
@@ -117,9 +191,9 @@
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
-//    CLLocationCoordinate2D cord = [mapView convertPoint:mapView.center toCoordinateFromView:mapView];
-//    self.request.latitude = cord.latitude;
-//    self.request.longitude = cord.longitude;
+    CLLocationCoordinate2D cord = [mapView convertPoint:mapView.center toCoordinateFromView:mapView];
+    self.request.latitude = cord.latitude;
+    self.request.longitude = cord.longitude;
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
@@ -140,16 +214,12 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
-//    MapLocation *location = (MapLocation *)view.annotation;
-//    [mapView deselectAnnotation:location animated:YES];
-//    if (self.item) {
-//        [self.navigationController popViewControllerAnimated:YES];
-//        return;
-//    }
-//    FoodDetailViewController * detailViewController = [[[FoodDetailViewController alloc]init]autorelease];
-//    detailViewController.storeItem = location.content;
-//    [detailViewController setHidesBottomBarWhenPushed:YES];
-//    [self.navigationController pushViewController:detailViewController animated:YES];
+    MapLocation *location = (MapLocation *)view.annotation;
+    YardViewController * detailViewController = [[[YardViewController alloc]init]autorelease];
+    [detailViewController setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    [mapView deselectAnnotation:location animated:YES];
+
 }
 
 

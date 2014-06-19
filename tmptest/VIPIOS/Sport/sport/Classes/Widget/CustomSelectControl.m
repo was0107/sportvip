@@ -74,18 +74,16 @@
         _selectItemView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 260+44)];
         _selectItemView.backgroundColor = kWhiteColor;
         
-        
-        
         MyToolbar * toolbar = [[[MyToolbar alloc]initWithFrame:CGRectMake(0, 220, 320, 44)] autorelease];
         toolbar.barStyle = UIBarStyleBlack;
-        toolbar.backgroundColor = kLightGrayColor;
+        toolbar.backgroundColor = [UIColor getColor:@"F3F2F2"];
         UIBarButtonItem *flexibleButton  = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemFlexibleSpace target: nil action: nil] autorelease];
         UIBarButtonItem *rightButton  = [[[UIBarButtonItem alloc] initWithTitle:@"完成" style: UIBarButtonItemStyleDone target: self action: @selector(selectDone:)] autorelease];
         UIBarButtonItem *fixedButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil]  autorelease];
         fixedButton.width = 50;
         
         rightButton.tintColor = [UIColor getColor:KCustomGreenColor];
-        toolbar.tintColor = kLightGrayColor;
+        toolbar.tintColor = [UIColor getColor:KCustomGreenColor];
         [toolbar setItems: @[fixedButton,flexibleButton,rightButton, flexibleButton,fixedButton]];
         [_selectItemView addSubview:toolbar];
         [_selectItemView addSubview:self.tipLabel];
@@ -271,10 +269,11 @@
         }
         content = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, width, 40)] autorelease];
         content.backgroundColor = kClearColor;
-        labelContent = [[[UILabel alloc] initWithFrame:CGRectMake(15, 0, width, 40)] autorelease];
+        labelContent = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, 40)] autorelease];
         labelContent.backgroundColor = kClearColor;
         labelContent.font = HTFONTSIZE(kFontSize18);
         labelContent.textColor = kBlackColor;
+        labelContent.textAlignment = UITextAlignmentCenter;
         labelContent.highlightedTextColor = kWhiteColor;
         labelContent.tag = 100;
         [content addSubview:labelContent];

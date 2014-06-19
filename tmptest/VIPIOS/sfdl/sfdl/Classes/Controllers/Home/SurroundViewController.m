@@ -66,6 +66,8 @@
     if (_mapView.userLocation) {
        
         [_mapView setCenterCoordinate:_mapView.userLocation.location.coordinate animated:YES];
+        
+        
         _mapView.showsUserLocation = NO;
         [self resetRegion];
     }

@@ -345,28 +345,18 @@
         _selectControl = [[CustomSelectControl alloc] initWithController:self];
         _selectControl.belowView = self.sectionView;
         _selectControl.cellBlock = ^(UIPickerView *pickerView, NSInteger row, NSInteger component) {
-            
-            if ((1 == component && 0 == row && 1 == _currentType)) {
-                return @"至";
-            }
             CategoryItem *item = [_selectControl.contentArray objectAtIndex:row];
             return item.categoryName;
         };
 
         _selectControl.componetBlock = ^(id content) {
-            if (1 == _currentType) {
-                return (NSInteger)3;
-            }
             return (NSInteger)1;
         };
         _selectControl.widthBlock = ^(id content, NSInteger positon) {
-            if (1 == _currentType) {
-                return (CGFloat)((1 != positon ) ? 100.0f : 60.0f);
-            }
             return (CGFloat)100.0f;
         };
         _selectControl.componetRowsBlock = ^(id content, NSInteger positon) {
-            return (NSInteger)((1 == positon && 1 == _currentType ) ? 1 : [_selectControl.contentArray count]);
+            return (NSInteger)[_selectControl.contentArray count];
         };
         _selectControl.block = ^(id content) {
 //            [blockSelf setButtonTitle:content];
