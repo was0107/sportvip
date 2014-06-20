@@ -7,6 +7,7 @@
 //
 
 #import "TeacherTableViewCell.h"
+#import "PaggingItem.h"
 
 @implementation TeacherTableViewCell
 
@@ -88,49 +89,48 @@
 
     }
     
-    self.topLabelEx.text = @"国学培训课程（免费试听)";
-    [self.topLabelEx setImages:[NSArray arrayWithObjects:@"icon",@"icon",nil] origitation:1];
-    
-    self.subRightEx.text = @"245km";
-    [self.subRightEx setImages:[NSArray arrayWithObjects:@"icon",nil] origitation:0];
-    
-    
-    self.topRigithEx.text = @"国子学堂虹桥中心国子学堂虹桥中心国子学堂虹桥中心";
-    [self.topRigithEx setImages:[NSArray arrayWithObjects:@"icon",nil] origitation:0];
-    
-    self.middleLabelEx.text = @"张鸿宇老师|05.19 10：30";
-    [self.middleLabelEx setImage:@"icon" origitation:0];
-//    
-//    for (int i = 0 ; i < 3; i++) {
-//        UIImageLabelEx *labelEx = [[[UIImageLabelEx alloc] initWithFrame:CGRectMake(130 + 36 *i, 68, 36, 20)] autorelease];
-//        labelEx.backgroundColor = kClearColor;
-//        labelEx.textColor = kDarkTextColor;
-//        labelEx.highlightedTextColor = kBlackColor;
-//        labelEx.font = HTFONTSIZE(kFontSize13);
-//        labelEx.textAlignment = UITextAlignmentCenter;
-//        labelEx.text = @"篮球";
-//        [self.contentView addSubview:labelEx];
-//        [labelEx setImage:@"icon" origitation:2];
-//        
-//    }
-    
-    self.subRightLabel.text = @"￥2290";
-    self.leftImageView.image = [UIImage imageNamed:@"icon"];
-    
-    
-    TeacherTableViewCell *blockSelf = self;
-    [self.leftImageView setImageWithURL:[NSURL URLWithString:@"http://img.b5m.com/image/T1W8hjBCJj1RCvBVdK"]
-                       placeholderImage:[UIImage imageNamed:kImageDefault]
-                                success:^(UIImage *image){
-                                    UIImage * image1 = [image imageScaledToSizeEx:CGSizeMake(100, 80)];
-                                    blockSelf.leftImageView.image = image1;
-                                    
-                                }
-                                failure:^(NSError *error){
-                                    blockSelf.leftImageView.image = [UIImage imageNamed:kImageDefault];
-                                }];
     
 }
+
+- (void) configWithData:(id) content
+{
+    if (self.content != content) {
+        self.content = content;
+        CoacheItem *item = (CoacheItem *) self.content;
+        
+        self.topLabelEx.text = item.name;
+        [self.topLabelEx setImages:[NSArray arrayWithObjects:@"icon",@"icon",nil] origitation:1];
+        
+        self.subRightEx.text = item.distanceString;
+        [self.subRightEx setImages:[NSArray arrayWithObjects:@"icon",nil] origitation:0];
+        
+        
+        self.topRigithEx.text = item.address;
+        [self.topRigithEx setImages:[NSArray arrayWithObjects:@"icon",nil] origitation:0];
+        
+        self.middleLabelEx.text = item.certificate;
+        [self.middleLabelEx setImage:@"icon" origitation:0];
+        
+        self.subRightLabel.text = item.priceString;
+        self.leftImageView.image = [UIImage imageNamed:@"icon"];
+        
+        
+        TeacherTableViewCell *blockSelf = self;
+        [self.leftImageView setImageWithURL:[NSURL URLWithString:item.avatar]
+                           placeholderImage:[UIImage imageNamed:kImageDefault]
+                                    success:^(UIImage *image){
+                                        UIImage * image1 = [image imageScaledToSizeEx:CGSizeMake(100, 80)];
+                                        blockSelf.leftImageView.image = image1;
+                                        
+                                    }
+                                    failure:^(NSError *error){
+                                        blockSelf.leftImageView.image = [UIImage imageNamed:kImageDefault];
+                                    }];
+
+    }
+}
+
+
 
 //- (void) configWithType:(int) type
 //{

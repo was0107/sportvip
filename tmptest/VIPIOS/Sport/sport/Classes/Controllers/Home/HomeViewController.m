@@ -35,6 +35,9 @@
 @property (nonatomic, retain) GymnasiumsRequest *request;
 @property (nonatomic, retain) GymnasiumsResponse *response;
 
+@property (nonatomic, retain) CoachesRequest *coachesRequest;
+@property (nonatomic, retain) CoachsResponse *coachesResponse;
+
 @end
 
 @implementation HomeViewController
@@ -64,19 +67,6 @@
     [self configTitleView];
     [self configSectionView];
     self.navigationItem.titleView = self.titleView;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void) viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    DEBUGLOG(@"self.nav= %@", self.navigationController.view);
 }
 
 - (void) configTitleView
@@ -220,7 +210,9 @@
     } else {
         [self.typeButton setNormalImage:@"icon_index_school_n" selectedImage:@"icon_index_school_f"];
     }
-    [self dealWithData];
+    [self.request firstPage];
+    [self.coachesRequest firstPage];
+    [self sendRequestToServer];
 }
 
 - (IBAction)cityButtonAction:(id)sender
@@ -271,16 +263,20 @@
                 cell = [[[ClassTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
             }
             [cell configWithType:1];
+            GymnasiumItem *item = [blockSelf.response at:indexPath.row];
+            [cell configWithData:item];
             return (UITableViewCell *)cell;
         }
         else {
             static NSString *identifier1 = @"HOME_TABLEVIEW_CELL_IDENTIFIER1";
-            TeacherTableViewCell *cell1 = [tableView dequeueReusableCellWithIdentifier:identifier1];
-            if (!cell1){
-                cell1 = [[[TeacherTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier1] autorelease];
+            TeacherTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier1];
+            if (!cell){
+                cell = [[[TeacherTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier1] autorelease];
             }
-            [cell1 configWithType:0];
-            return (UITableViewCell *)cell1;
+            [cell configWithType:0];
+            CoacheItem *item = [blockSelf.coachesResponse at:indexPath.row];
+            [cell configWithData:item];
+            return (UITableViewCell *)cell;
         }
     };
     
@@ -289,7 +285,7 @@
     };
     
     self.tableView.cellNumberBlock = ^( UITableView *tableView, NSInteger section) {
-        return (NSInteger)11;
+        return (NSInteger)(0 == _type) ? [blockSelf.response count] : [blockSelf.coachesResponse count];
     };
     
     self.tableView.sectionHeaderHeightBlock = ^( UITableView *tableView, NSInteger section){
@@ -300,18 +296,22 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         if (0 == _type) {
             YardViewController *controller = [[[YardViewController alloc] init] autorelease];
+            GymnasiumItem *item = [blockSelf.response at:indexPath.row];
+            controller.item = item;
             [controller setHidesBottomBarWhenPushed:YES];
             [blockSelf.navigationController pushViewController:controller animated:YES];
         } else {
             
             TeacherViewController *controller = [[[TeacherViewController alloc] init] autorelease];
+            CoacheItem *item = [blockSelf.response at:indexPath.row];
+            controller.item = item;
             [controller setHidesBottomBarWhenPushed:YES];
             [blockSelf.navigationController pushViewController:controller animated:YES];
         }
     };
     
     self.tableView.refreshBlock = ^(id content) {
-        [blockSelf.request firstPage];
+        (0 == _type) ? [blockSelf.request firstPage] : [blockSelf.coachesRequest firstPage];
         [blockSelf sendRequestToServer];
     };
     
@@ -321,10 +321,10 @@
 
     [self.view addSubview:self.tableView];
     
-    [self sendRequestToServer];
+//    [self sendRequestToServer];
     
 //    [self dealWithData];
-//    [self.tableView doSendRequest:YES];
+    [self.tableView doSendRequest:YES];
 }
 
 - (void) dealWithData
@@ -345,6 +345,14 @@
         _request = [[GymnasiumsRequest alloc] init];
     }
     return _request;
+}
+
+- (CoachesRequest *) coachesRequest
+{
+    if (!_coachesRequest) {
+        _coachesRequest = [[CoachesRequest alloc] init];
+    }
+    return _coachesRequest;
 }
 
 
@@ -369,29 +377,55 @@
         return;
     }
     __block HomeViewController *blockSelf = self;
-
-    idBlock succBlock = ^(id content){
-        DEBUGLOG(@"succeed content %@", content);
-        [blockSelf.tableView tableViewDidFinishedLoading];
-        if ([_request isFristPage]) {
-            blockSelf.response = [[[GymnasiumsResponse alloc] initWithJsonString:content] autorelease];
-        } else {
-            [blockSelf.response appendPaggingFromJsonString:content];
-        }
-        [_request nextPage];
-        [blockSelf dealWithData];
-    };
     
-    idBlock failedBlock = ^(id content) {
-        DEBUGLOG(@"failed content %@", content);
-        [blockSelf.tableView tableViewDidFinishedLoading];
-
-    };
-    idBlock errBlock = ^(id content){
-        DEBUGLOG(@"error content %@", content);
-        [blockSelf.tableView tableViewDidFinishedLoading];
-    };
-    [WASBaseServiceFace serviceWithMethod:[_request URLString] body:[_request toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
+     if (0 == _type) {
+         idBlock succBlock = ^(id content){
+             DEBUGLOG(@"succeed content %@", content);
+             [blockSelf.tableView tableViewDidFinishedLoading];
+             if ([_request isFristPage]) {
+                 blockSelf.response = [[[GymnasiumsResponse alloc] initWithJsonString:content] autorelease];
+             } else {
+                 [blockSelf.response appendPaggingFromJsonString:content];
+             }
+             [_request nextPage];
+             [blockSelf dealWithData];
+         };
+         
+         idBlock failedBlock = ^(id content) {
+             DEBUGLOG(@"failed content %@", content);
+             [blockSelf.tableView tableViewDidFinishedLoading];
+             
+         };
+         idBlock errBlock = ^(id content){
+             DEBUGLOG(@"error content %@", content);
+             [blockSelf.tableView tableViewDidFinishedLoading];
+         };
+         [WASBaseServiceFace serviceWithMethod:[_request URLString] body:[_request toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
+     }
+     else {
+         idBlock succBlock = ^(id content){
+             DEBUGLOG(@"succeed content %@", content);
+             [blockSelf.tableView tableViewDidFinishedLoading];
+             if ([_coachesRequest isFristPage]) {
+                 blockSelf.coachesResponse = [[[CoachsResponse alloc] initWithJsonString:content] autorelease];
+             } else {
+                 [blockSelf.coachesResponse appendPaggingFromJsonString:content];
+             }
+             [_coachesRequest nextPage];
+             [blockSelf dealWithData];
+         };
+         
+         idBlock failedBlock = ^(id content) {
+             DEBUGLOG(@"failed content %@", content);
+             [blockSelf.tableView tableViewDidFinishedLoading];
+             
+         };
+         idBlock errBlock = ^(id content){
+             DEBUGLOG(@"error content %@", content);
+             [blockSelf.tableView tableViewDidFinishedLoading];
+         };
+         [WASBaseServiceFace serviceWithMethod:[self.coachesRequest URLString] body:[self.coachesRequest toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
+     }
 }
 
 

@@ -50,6 +50,11 @@
     
 }
 
+- (void) configWithData:(id) content
+{
+    
+}
+
 - (UIImageView *) topBg
 {
     if (!_topBg) {

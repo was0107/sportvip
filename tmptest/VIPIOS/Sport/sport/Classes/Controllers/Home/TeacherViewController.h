@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseTableViewController.h"
+#import "PaggingItem.h"
 
 @interface TeacherViewController : BaseTableViewController
-
+@property (nonatomic, assign) CoacheItem *item;
 @end

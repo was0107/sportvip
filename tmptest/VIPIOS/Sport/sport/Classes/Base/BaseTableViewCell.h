@@ -14,6 +14,7 @@
 #import "UIView+extend.h"
 
 @interface BaseTableViewCornerCell : UITableViewCell
+@property (nonatomic, assign) id content;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 
@@ -22,6 +23,8 @@
 - (id)setCellsGroupCount:(NSInteger ) number at:(NSIndexPath *)indexPath;
 
 - (void) configWithType:(int) type;
+
+- (void) configWithData:(id) content;
 
 @end
 

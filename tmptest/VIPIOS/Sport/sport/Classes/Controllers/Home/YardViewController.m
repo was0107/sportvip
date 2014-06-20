@@ -279,7 +279,30 @@
 
 - (void) sendRequestToServer
 {
-    [self dealWithData];
+    __block YardViewController *blockSelf = self;
+    
+    idBlock succBlock = ^(id content){
+        DEBUGLOG(@"succeed content %@", content);
+        [blockSelf.tableView tableViewDidFinishedLoading];
+        if ([_request isFristPage]) {
+            blockSelf.response = [[[GymnasiumsResponse alloc] initWithJsonString:content] autorelease];
+        } else {
+            [blockSelf.response appendPaggingFromJsonString:content];
+        }
+        [_request nextPage];
+        [blockSelf dealWithData];
+    };
+    
+    idBlock failedBlock = ^(id content) {
+        DEBUGLOG(@"failed content %@", content);
+        [blockSelf.tableView tableViewDidFinishedLoading];
+        
+    };
+    idBlock errBlock = ^(id content){
+        DEBUGLOG(@"error content %@", content);
+        [blockSelf.tableView tableViewDidFinishedLoading];
+    };
+    [WASBaseServiceFace serviceWithMethod:[_request URLString] body:[_request toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
 }
 
 - (IBAction)didTaped:(id)sender

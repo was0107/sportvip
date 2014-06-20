@@ -8,18 +8,35 @@
 
 #import "ListResponseItemBase.h"
 
+//
+//advantage: ""
+//age: [ ]
+//coachId: 1
+//description: ""
+//name: ""
+//price: 123
+//schoolTime: "每周六周日下午"
+
+
+@interface CourseItem : ListResponseItemBase
+@property (nonatomic, copy) NSString *advantage,*coachId,*description,*name,*schoolTime,*priceString;
+@end
+
+
+
+
 @interface PaggingItem : ListResponseItemBase
-
+@property (nonatomic, copy) NSString *itemId;
 @end
 
 
 
-@interface EventTagItem : ListResponseItemBase
-@property (nonatomic, copy) NSString *itemId, *icon,*name;
+@interface EventTagItem : PaggingItem
+@property (nonatomic, copy) NSString *icon,*name;
 @end
 
 
-@interface GymnasiumItem : ListResponseItemBase
+@interface GymnasiumItem : PaggingItem
 @property (nonatomic, copy) NSString *address,*name, *priceString, *distanceString;
 @property (nonatomic, retain) NSMutableArray *pictures, *tags, *events;
 @property (nonatomic, assign) float distance, minPrice, maxPrice;
@@ -28,12 +45,16 @@
 
 
 
-@interface CoacheItem : ListResponseItemBase
+@interface CoacheItem : PaggingItem
 
 @property (nonatomic, copy) NSString *address,*name,*avatar,*certificate, *priceString, *distanceString;
 @property (nonatomic, retain) NSMutableArray *phones, *tags, *hornors;
 @property (nonatomic, assign) float distance, minPrice, lantitude, longtitude;
 @property (nonatomic, assign) int zan, age;
+
+//detail item
+@property (nonatomic, copy) NSString *resume,*introduction;
+@property (nonatomic, retain) NSMutableArray *courses;
 @end
 
 /*
