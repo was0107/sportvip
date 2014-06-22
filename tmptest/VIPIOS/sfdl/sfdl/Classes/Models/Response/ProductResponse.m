@@ -151,3 +151,35 @@
 }
 
 @end
+
+@implementation MenuResponse
+
+
+- (id) translateItemFrom:(const NSDictionary *) dictionary
+{
+    return [[[MenuItem alloc] initWithDictionary:dictionary] autorelease];
+}
+
+- (NSString *) resultKey
+{
+    return @"items";
+}
+
+@end
+
+
+
+@implementation ProductPropertySearchResponse
+
+
+- (id) translateItemFrom:(const NSDictionary *) dictionary
+{
+    return [[[ProperItem alloc] initWithDictionary:dictionary] autorelease];
+}
+
+- (NSString *) resultKey
+{
+    return @"items";
+}
+
+@end

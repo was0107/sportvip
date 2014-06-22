@@ -9,10 +9,16 @@
 #import "ProductSearchViewController.h"
 #import "PubTextField.h"
 #import "CreateObject.h"
+#import "ProductRequest.h"
+#import "ProductResponse.h"
+#import "ProductListViewController.h"
 
 @interface ProductSearchViewController ()
 @property (nonatomic, retain) PubTextField *geneset, *prime, *standby, *cummins, *stamford;
 @property (nonatomic, retain) UIButton     *confirmButton;
+@property (nonatomic, retain) ProductPropertySearchConditions *condictionRequest;
+@property (nonatomic, retain) ProductResponse    *response;
+@property (nonatomic, retain) SearchProductRequest *request;
 
 @end
 
@@ -29,6 +35,9 @@
     [self.scrollView addSubview:self.stamford];
     [self.scrollView addSubview:self.confirmButton];
     [self.scrollView setContentSize:CGSizeMake(320, self.view.bounds.size.height + 1)];
+    
+    
+    [self sendRequestToGetCondictionServer];
     // Do any additional setup after loading the view.
 }
 
@@ -157,6 +166,68 @@
 - (IBAction)confirmButtonAction:(id)sender
 {
     [self.view resignFirstResponder];
+    [self sendRequestToServer];
+}
+
+- (void) sendRequestToGetCondictionServer
+{
+    __block ProductSearchViewController *blockSelf = self;
+    [SVProgressHUD showWithStatus:@"正在提交..."];
+    idBlock successedBlock = ^(id content){
+        DEBUGLOG(@"success conent %@", content);
+        ProductPropertySearchResponse *searchResponse = [[[ProductPropertySearchResponse alloc] initWithJsonString:content] autorelease];
+        
+        
+    };
+    
+    idBlock failedBlock = ^(id content){
+        DEBUGLOG(@"failed content %@", content);
+    };
+    
+    idBlock errBlock = ^(id content){
+        DEBUGLOG(@"error content %@", content);
+    };
+    if (!_condictionRequest) {
+        self.condictionRequest = [[[ProductPropertySearchConditions alloc] init] autorelease];
+    }
+    
+    [WASBaseServiceFace serviceWithMethod:[self.condictionRequest URLString] body:[self.condictionRequest toJsonString] onSuc:successedBlock onFailed:failedBlock onError:errBlock];
+}
+
+
+- (void) sendRequestToServer
+{
+    __block ProductSearchViewController *blockSelf = self;
+    [SVProgressHUD showWithStatus:@"正在提交..."];
+    idBlock successedBlock = ^(id content){
+        DEBUGLOG(@"success conent %@", content);
+        if ([_request isFristPage]) {
+            blockSelf.response = [[ProductResponse alloc] initWithJsonString:content];
+        } else {
+            [blockSelf.response appendPaggingFromJsonString:content];
+        }
+        ProductListViewController *controller = [[[ProductListViewController alloc] init] autorelease];
+        controller.secondTitleLabel.text = @"Product Search";
+        controller.response = blockSelf.response;
+        [blockSelf.navigationController hidesBottomBarWhenPushed];
+        [blockSelf.navigationController pushViewController:controller animated:YES];
+    };
+    
+    idBlock failedBlock = ^(id content){
+        DEBUGLOG(@"failed content %@", content);
+        [blockSelf.tableView tableViewDidFinishedLoading];
+    };
+    
+    idBlock errBlock = ^(id content){
+        DEBUGLOG(@"error content %@", content);
+        [blockSelf.tableView tableViewDidFinishedLoading];
+    };
+    if (!_request) {
+        self.request = [[[SearchProductRequest alloc] init] autorelease];
+    }
+    self.request.productName = self.secondTitleLabel.text;
+    
+    [WASBaseServiceFace serviceWithMethod:[self.request URLString] body:[self.request toJsonString] onSuc:successedBlock onFailed:failedBlock onError:errBlock];
 }
 
 @end

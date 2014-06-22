@@ -10,11 +10,13 @@
 
 #import "PubTextField.h"
 #import "CreateObject.h"
-
+#import "ProductRequest.h"
 
 @interface LeaveMessageViewController ()
 @property (nonatomic, retain) PubTextField *geneset, *prime, *standby, *cummins, *stamford, *codePub;
 @property (nonatomic, retain) UIButton     *confirmButton;
+@property (nonatomic, retain) SendMessageRequest *request;
+
 
 @end
 
@@ -23,13 +25,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.secondTitleLabel.text = @"Product Search";
+    self.secondTitleLabel.text = @"Leave Message";
     [self.scrollView addSubview:self.geneset];
     [self.scrollView addSubview:self.prime];
     [self.scrollView addSubview:self.standby];
     [self.scrollView addSubview:self.cummins];
     [self.scrollView addSubview:self.stamford];
-    [self.scrollView addSubview:self.codePub];
+//    [self.scrollView addSubview:self.codePub];
     [self.scrollView addSubview:self.confirmButton];
     
     [self.scrollView setContentSize:CGSizeMake(320, self.view.bounds.size.height + 1)];
@@ -56,6 +58,7 @@
     TT_RELEASE_SAFELY(_standby);
     TT_RELEASE_SAFELY(_codePub);
     TT_RELEASE_SAFELY(_confirmButton);
+    TT_RELEASE_SAFELY(_request);
     [super reduceMemory];
 }
 
@@ -184,6 +187,40 @@
 - (IBAction)confirmButtonAction:(id)sender
 {
     [self.view resignFirstResponder];
+    [self sendRequestToServer];
+}
+
+
+- (void) sendRequestToServer
+{
+    [SVProgressHUD showWithStatus:@"正在提交..."];
+    __weak LeaveMessageViewController *blockSelf = self;
+    idBlock successedBlock = ^(id content){
+        DEBUGLOG(@"success conent %@", content);
+        
+        [SVProgressHUD showSuccessWithStatus:@"提交成功！"];
+    };
+    
+    idBlock failedBlock = ^(id content){
+        DEBUGLOG(@"failed content %@", content);        [SVProgressHUD showSuccessWithStatus:@"提交失败！"];
+
+    };
+    
+    idBlock errBlock = ^(id content){
+        DEBUGLOG(@"error content %@", content);        [SVProgressHUD showSuccessWithStatus:@"提交失败！"];
+
+    };
+    if (!_request) {
+        self.request = [[[SendMessageRequest alloc] init] autorelease];
+    }
+
+    self.request.from = self.geneset.pubTextField.text;
+    self.request.email = self.prime.pubTextField.text;;
+    self.request.fromCompany = self.standby.pubTextField.text;;
+    self.request.tel = self.cummins.pubTextField.text;;
+    self.request.message = self.stamford.pubTextField.text;
+    
+    [WASBaseServiceFace serviceWithMethod:[self.request URLString] body:[self.request toJsonString] onSuc:successedBlock onFailed:failedBlock onError:errBlock];
 }
 
 

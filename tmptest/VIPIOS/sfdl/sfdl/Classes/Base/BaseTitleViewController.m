@@ -102,14 +102,21 @@
 - (UIView *) leftView
 {
     if (!_leftView) {
-        _leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 132, 44)];
+        _leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
         
-        UIImageView *bgView = [[[UIImageView alloc] initWithFrame:CGRectMake(20, 0, 60, 44)] autorelease];
+        UIImageView *back = [[[UIImageView alloc] initWithFrame:CGRectMake(2, 7, 30, 30)] autorelease];
+        back.image = [UIImage imageNamed:@"icon_back"];
+
+        
+        UIImageView *bgView = [[[UIImageView alloc] initWithFrame:CGRectMake(30, 0, 60, 44)] autorelease];
         bgView.image = [UIImage imageNamed:@"icon"];
         
         UITapGestureRecognizer *gesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(leftViewAction:)] autorelease];
         
         [_leftView addGestureRecognizer:gesture];
+        if ([self.navigationController.viewControllers count] > 1 )
+            [_leftView addSubview:back];
+
         [_leftView addSubview:bgView];
     }
     return _leftView;
@@ -174,36 +181,36 @@
     return _rightButton;
 }
 
--(UILabel *)customTitleLable
-{
-    if (!_customTitleLable) {
-        _customTitleLable  = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, 44)];
-        _customTitleLable.font = HTFONTSIZE(20);
-        _customTitleLable.textColor = kBlackColor;
-        _customTitleLable.backgroundColor = kClearColor;
-        _customTitleLable.textAlignment = NSTextAlignmentCenter;
-        _customTitleLable.text = @"mpmc";
-    }
-    return _customTitleLable;
-}
+//-(UILabel *)customTitleLable
+//{
+//    if (!_customTitleLable) {
+//        _customTitleLable  = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, 44)];
+//        _customTitleLable.font = HTFONTSIZE(20);
+//        _customTitleLable.textColor = kBlackColor;
+//        _customTitleLable.backgroundColor = kClearColor;
+//        _customTitleLable.textAlignment = NSTextAlignmentCenter;
+//        _customTitleLable.text = @"mpmc";
+//    }
+//    return _customTitleLable;
+//}
 
-- (void)setTitle:(NSString *)title
-{
-    if ([self.navigationController.viewControllers count] > 1 )
-    {
-        [super setTitle:@"返回"];
-    } else {
-        [super setTitle:title];
-    }
+//- (void)setTitle:(NSString *)title
+//{
+//    if ([self.navigationController.viewControllers count] > 1 )
+//    {
+//        [super setTitle:@"返回"];
+//    } else {
+////        [super setTitle:title];
+//    }
 ////    self.customTitleLable.text = title;
 //    UILabel *titleView = (UILabel *)self.navigationItem.titleView;
 //    if (!titleView) {
 //        titleView = [[UILabel alloc] initWithFrame:CGRectZero];
 //        titleView.backgroundColor = [UIColor clearColor];
 //        titleView.font = HTFONTSIZE(20);
-////        titleView.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+//        titleView.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
 //        
-//        titleView.textColor = kBlackColor; // Change to desired color
+//        titleView.textColor = kWhiteColor; // Change to desired color
 //        
 //        self.navigationItem.titleView = titleView;
 //        self.customTitleLable = titleView;
@@ -211,7 +218,7 @@
 //    }
 //    titleView.text = title;
 //    [titleView sizeToFit];
-}
+//}
 
 - (void) setTitleContent:(NSString *) title
 {

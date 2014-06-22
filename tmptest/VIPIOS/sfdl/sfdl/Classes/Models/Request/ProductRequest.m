@@ -390,7 +390,6 @@
     return array;
 }
 
-
 - (NSString *) methodString
 {
     return @"Enquiry/createOrder";
@@ -487,4 +486,16 @@
 {
     return @"Menu/getMenuList";
 }
+@end
+
+
+
+@implementation ProductPropertySearchConditions
+
+- (NSString *) methodString
+{
+    return @"Product/getProductPropertySearchConditions";
+}
+
+
 @end

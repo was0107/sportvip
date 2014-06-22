@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "RootViewController.h"
 #import "STLocationInstance.h"
-#import "CityTableViewController.h"
 #import "iRate.h"
 
 @interface AppDelegate()
@@ -48,36 +47,7 @@
         self.window.rootViewController = controller;
     }
     [self.window makeKeyAndVisible];
-
-//    [STLocationInstance sharedInstance];
-    
-    [iRate sharedInstance].daysUntilPrompt = 5;
-    [iRate sharedInstance].usesUntilPrompt = 15;
-    
-//    if ([[NSUserDefaults standardUserDefaults] stringForKey:UDK_SHOW_CITY].length == 0) {
-//        [self showCitySelect];
-//    }
-//    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(needToShowCitySelector:) name:UDK_SHOW_CITY object:nil];
-        
     return YES;
-}
-
-- (void) needToShowCitySelector: (NSNotification *) notification
-{
-    [self showCitySelect];
-}
-
-- (void) showCitySelect
-{
-    CityTableViewController *controller = [[[CityTableViewController alloc] init] autorelease];
-    [controller setModalPresentationStyle:UIModalPresentationCurrentContext];
-    [controller.navigationController setNavigationBarHidden:NO animated:YES];
-    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:controller] autorelease];
-    navController.navigationBar.backgroundColor = [UIColor getColor:@"F3F2F2"];
-
-    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
-    [delegate.rootController presentModalViewController:navController animated:YES];
 }
 
 

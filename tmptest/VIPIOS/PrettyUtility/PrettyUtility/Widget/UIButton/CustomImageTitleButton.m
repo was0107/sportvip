@@ -9,6 +9,8 @@
 #import "CustomImageTitleButton.h"
 #import "UIColor+extend.h"
 #import "UIImage+tintedImage.h"
+#import "UIButton+WebCache.h"
+
 
 @interface CustomImageTitleButton()
 
@@ -63,7 +65,13 @@
 - (void) setText:(NSString *) text image:(NSString *)imageName
 {
     self.bottomTitleLabel.text = text;
-    [self.topButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    if (imageName && [imageName hasPrefix:@"http"]) {
+        
+        [self.topButton setImageWithURL:[NSURL URLWithString:imageName]  ];
+        _topButton.contentMode = UIViewContentModeCenter;
+    } else {
+        [self.topButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    }
 }
 
 @end

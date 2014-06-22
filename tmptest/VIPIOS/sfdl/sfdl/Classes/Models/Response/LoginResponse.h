@@ -77,3 +77,19 @@
 @property (nonatomic, copy) NSString *username, *createTime;
 @end
 
+@interface MenuItem : ListResponseItemBase
+@property (nonatomic, copy) NSString *menu_url, *orderby, *icon;
+@property (nonatomic, copy) NSString *menu_alias, *menu_name;
+- (BOOL) isNULL;
+@end
+
+@interface ProperListItem: ListResponseItemBase
+
+@property (nonatomic, copy) NSString *propertyListId, *propertyListValue;
+@end
+
+@interface ProperItem : ListResponseItemBase
+@property (nonatomic, copy) NSString *propertyId, *propertyName, *productTypeId, *productTypeName;
+@property (nonatomic, retain) NSMutableArray *valueList;
+@end
+

@@ -10,11 +10,9 @@
 #import "ProductDetailViewController.h"
 
 #import "ProductRequest.h"
-#import "ProductResponse.h"
 
 @interface ProductListViewController ()
 
-@property (nonatomic, retain) ProductResponse    *response;
 @property (nonatomic, retain) ProductListRequest *request;
 @end
 
@@ -32,6 +30,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if (!self.productTypeId) {
+        [self dealWithData];
+        [self.tableView tableViewDidFinishedLoading];
+    }
     // Do any additional setup after loading the view.
 }
 
@@ -39,6 +42,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (int) tableViewType
+{
+    return (self.productTypeId) ? [super tableViewType] : eTypeNone;
 }
 
 
@@ -92,6 +100,8 @@
     };
     
     [self.view addSubview:self.tableView];
+    
+    
     [self.tableView doSendRequest:YES];
 }
 

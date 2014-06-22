@@ -63,7 +63,7 @@
             cell.topLabel.numberOfLines = 1;
             cell.topLabel.font = HTFONTSIZE(kFontSize17);
             
-            cell.subLabel.frame = CGRectMake(10, 24, 300, 40);
+            cell.subLabel.frame = CGRectMake(10, 24, 300, 20);
             cell.subLabel.textColor = kBlackColor;
             cell.subLabel.numberOfLines = 2;
             cell.subLabel.font = HTFONTSIZE(kFontSize15);
@@ -74,20 +74,19 @@
             cell.subRightLabel.font = HTFONTSIZE(kFontSize13);
             [cell.contentView addSubview:cell.topLabel];
             [cell.contentView addSubview:cell.subLabel];
-            [cell.contentView addSubview:cell.subRightLabel];
+//            [cell.contentView addSubview:cell.subRightLabel];
         }
         
-        NewsItem *item = [blockSelf.response at:indexPath.row ];
+        AgentItem *item = [blockSelf.response at:indexPath.row ];
         
-        cell.topLabel.text = item.newsTitle;
-        cell.subLabel.text = item.abstract;
-        cell.subRightLabel.text = item.creationTime;
-        [cell.subRightLabel sizeThatFits:CGSizeMake(300, 40)];
+        cell.topLabel.text = item.name;
+        cell.subLabel.text = item.desc;
+//        [cell.subRightLabel sizeThatFits:CGSizeMake(300, 40)];
         return cell;
     };
     
     self.tableView.cellHeightBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
-        return  80.0f;
+        return  44.0f;
     };
     
     self.tableView.cellNumberBlock = ^( UITableView *tableView, NSInteger section) {

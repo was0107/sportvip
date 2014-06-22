@@ -9,10 +9,7 @@
 #import "ListPaggingRequestBase.h"
 #import "ProductResponse.h"
 
-
-
 @interface ProductTypeRequest : ListPaggingRequestBase
-
 @end
 
 @interface ProductListRequest : ListPaggingRequestBase
@@ -122,6 +119,10 @@
 
 @end
 
+
+@interface ProductPropertySearchConditions : ListRequestBase
+
+@end
 
 
 

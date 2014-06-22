@@ -62,3 +62,14 @@
 @property (nonatomic, retain) NewsItem *item;
 
 @end
+
+
+@interface MenuResponse : ListPaggingResponseBase
+
+@end
+
+
+
+@interface ProductPropertySearchResponse : ListPaggingResponseBase
+
+@end

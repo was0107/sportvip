@@ -7,7 +7,10 @@
 //
 
 #import "BaseSecondTitleViewController.h"
+#import "ProductResponse.h"
 
 @interface ProductListViewController : BaseSecondTitleViewController
 @property (nonatomic, copy) NSString *productTypeId;
+@property (nonatomic, retain) ProductResponse    *response;
+
 @end

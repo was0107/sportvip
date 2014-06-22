@@ -102,7 +102,7 @@
 
 - (void) sendRequestToServer
 {
-    __weak SearchViewController *blockSelf = self;
+    __block SearchViewController *blockSelf = self;
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
         if ([_request isFristPage]) {

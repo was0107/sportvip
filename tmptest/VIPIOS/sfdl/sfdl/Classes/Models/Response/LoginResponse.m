@@ -163,7 +163,7 @@
         self.newsTitle = [dictionary objectForKey:@"newsTitle"];
         self.subTitle = [dictionary objectForKey:@"subTitle"];
         self.keyWords = [dictionary objectForKey:@"keyWords"];
-        self.abstract = [dictionary objectForKey:@"abstract"];
+        self.abstract = [dictionary objectForKey:@"newsAbstract"];
         self.content = [dictionary objectForKey:@"content"];
     }
     
@@ -225,6 +225,98 @@
     return self;
 }
 @end
+
+
+
+@implementation MenuItem
+
+- (id) initWithDictionary:(const NSDictionary *) dictionary
+{
+    self = [super init];
+    if (self) {
+        self.menu_url = [dictionary objectForKey:@"menu_url"];
+        self.menu_alias = [self stringObjectFrom:dictionary withKey:@"menu_alias"];
+        self.menu_name = [dictionary objectForKey:@"menu_name"];
+        self.orderby = [dictionary objectForKey:@"orderby"];
+        self.icon = [dictionary objectForKey:@"icon"];
+    }
+    
+    return self;
+}
+- (BOOL) isNULL
+{
+    if (!self.menu_alias) {
+        return YES;
+    }
+    if ([self.menu_alias length] == 0) {
+        return YES;
+    }
+    if ([self.menu_alias isEqualToString:@"null"]) {
+        return YES;
+    }
+    return NO;
+}
+@end
+
+
+@implementation ProperListItem
+
+- (id) initWithDictionary:(const NSDictionary *) dictionary
+{
+    self = [super init];
+    if (self) {
+        self.propertyListId = [dictionary objectForKey:@"propertyListId"];
+        self.propertyListValue = [self stringObjectFrom:dictionary withKey:@"propertyListValue"];
+    }
+    
+    return self;
+}
+
+@end
+
+
+@implementation ProperItem
+
+- (id) initWithDictionary:(const NSDictionary *) dictionary
+{
+    self = [super init];
+    if (self) {
+        self.propertyId = [self stringObjectFrom:dictionary withKey:@"propertyId"];
+        self.propertyName = [self stringObjectFrom:dictionary withKey:@"propertyName"];
+        self.productTypeId = [self stringObjectFrom:dictionary withKey:@"productTypeId"];
+        self.productTypeName = [self stringObjectFrom:dictionary withKey:@"productTypeName"];
+        
+        
+        
+        NSMutableArray *array = [dictionary objectForKey:@"valueList"];
+        NSMutableArray *arrayResult = [NSMutableArray array];
+        @autoreleasepool {
+            for ( int i = 0 , total = [array count]; i < total; ++i) {
+                NSDictionary *dictionary = (NSDictionary *) [array objectAtIndex:i];
+                ProperListItem *lisetItem = [[[ProperListItem alloc] initWithDictionary:dictionary] autorelease];
+                    [arrayResult addObject:lisetItem];
+            }
+        }
+        
+        self.valueList = arrayResult;
+    }
+    
+    return self;
+}
+
+@end
+
+
+@interface ProperListItem: ListResponseItemBase
+
+@property (nonatomic, copy) NSString *propertyListId, *propertyListValue;
+@end
+
+@interface ProperItem : ListResponseItemBase
+@property (nonatomic, copy) NSString *propertyId, *propertyName, *productTypeId, *productTypeName;
+@property (nonatomic, retain) NSMutableArray *valueList;
+@end
+
 
 
 
