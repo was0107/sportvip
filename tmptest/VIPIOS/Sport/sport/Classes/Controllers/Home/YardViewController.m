@@ -17,8 +17,9 @@
 
 @interface YardViewController()<XLCycleScrollViewDelegate, XLCycleScrollViewDatasource>
 @property (nonatomic, retain) XLCycleScrollView *cycleView;
-@property (nonatomic, retain) GymnasiumsResponse *response;
+@property (nonatomic, retain) GymnasiumDetailResponse *response;
 @property (nonatomic, retain) GymnasiumDetailRequest *request;
+@property (nonatomic, retain) NSMutableArray *titleArray;
 
 @end
 @implementation YardViewController
@@ -27,7 +28,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"上海龙翔体育馆";
+    self.title = self.item.name;
+    [self.tableView removeFromSuperview];
+    [self sendRequestToServer];
 }
 
 - (XLCycleScrollView *)cycleView
@@ -76,8 +79,8 @@
     __block YardViewController *blockSelf = self;
     self.tableView.tableHeaderView = self.cycleView;
     self.tableView.tableFooterView = [self footerView];
-    NSArray *titleArray = [NSArray arrayWithObjects:@"上海闵行区什么路(飞来路对面)276号",@"支持运动项目",@"热门课程",\
-                           @"驻点教练",@"上海体育馆通称万人体育馆,在徐汇区中南二路漕溪北路。1975年建成。占地10.6万平方米。建筑面积四点平方米。正门内大道两旁", nil];
+    
+   
     self.tableView.cellCreateBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
         
             if (0 == indexPath.section) {
@@ -99,17 +102,25 @@
 //                    cell.contentView.backgroundColor = kClearColor;
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 }
+                
+                int total =  MIN([blockSelf.response.events count], 6 * (indexPath.section + 1));
                 [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-                for (int i = 0 ; i < 8; i++) {
-                    UIImageLabelEx *labelEx = [[[UIImageLabelEx alloc] initWithFrame:CGRectMake(10 + 44 *i, 4, 44, 20)] autorelease];
+                for (int i = 6 * indexPath.section ; i < total; i++) {
+                    EventTagItem *tagItem = [blockSelf.response.events objectAtIndex:0];
+                    UIImageLabelEx *labelEx = [[[UIImageLabelEx alloc] initWithFrame:CGRectMake(15 + 50 * (i % 6), 4, 49, 20)] autorelease];
                     labelEx.backgroundColor = kClearColor;
                     labelEx.textColor = kDarkTextColor;
                     labelEx.highlightedTextColor = kBlackColor;
                     labelEx.font = HTFONTSIZE(kFontSize13);
                     labelEx.textAlignment = UITextAlignmentCenter;
-                    labelEx.text = @"篮球球";
+                    labelEx.text = tagItem.name;
                     [cell.contentView addSubview:labelEx];
-                    [labelEx setImage:@"icon" origitation:2];
+                    [labelEx setImage:tagItem.icon origitation:2];
+                    if (labelEx.text.length > 2) {
+                        [labelEx shiftPositionX:2];
+                    } else {
+                        [labelEx shiftPositionX:2];
+                    }
                 }
                 return (UITableViewCell *)cell;
             }
@@ -120,7 +131,6 @@
                 if (!cell){
                     cell = [[[BaseTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
                     cell.topLabel.textColor = kBlackColor;
-//                    cell.backgroundColor = kClearColor;
                     cell.selectionStyle = UITableViewCellSelectionStyleGray;
                     cell.topLabel.frame = CGRectMake(10, 10, 200, 24);
                     cell.subLabel.frame = CGRectMake(210, 10, 100, 24);
@@ -128,7 +138,8 @@
                     [cell.contentView addSubview:cell.topLabel];
                     [cell.contentView addSubview:cell.subLabel];
                 }
-//                [cell setCellsCount:3 at:indexPath];
+                CourseItem *courseItem = [[blockSelf.response courses] objectAtIndex:indexPath.row];
+//                cell.topLabel.text = courseItem.name;
                 cell.topLabel.text = @"篮球基础班";
                 cell.subLabel.text = @"王学新";
                 
@@ -199,13 +210,13 @@
             return 0;
         }
         else  if (1 == section) {
-            return 1;
+            return (NSInteger)([[blockSelf.response events] count] + 5)/ 6 ;
         }
         else if (2 == section) {
-            return 3;
+            return (NSInteger)[[blockSelf.response courses] count];
         }
         else  if (3 == section) {
-            return 1;
+            return (NSInteger)([[blockSelf.response coaches] count] + 3)/4;
         }
 
         return 0;
@@ -213,7 +224,7 @@
     
     self.tableView.sectionHeaderHeightBlock = ^( UITableView *tableView, NSInteger section){
         
-        NSString *string = [titleArray objectAtIndex:section];
+        NSString *string = [_titleArray objectAtIndex:section];
         CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 20000)];
         return size.height + 20;
     };
@@ -222,9 +233,10 @@
         return 5;
     };
     
+    NSArray *imageArray = [NSArray arrayWithObjects:@"map",@"sport",@"course",@"coach",@"desc",nil];
     self.tableView.sectionHeaderBlock = ^( UITableView *tableView, NSInteger section){
         
-        NSString *string = [titleArray objectAtIndex:section];
+        NSString *string = [_titleArray objectAtIndex:section];
         CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 20000)];
         UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, size.height + 20)] autorelease];
         view.backgroundColor = kWhiteColor;
@@ -233,12 +245,15 @@
         imageLabelEx.font = HTFONTSIZE(kFontSize16);
         [view addSubview:imageLabelEx];
         imageLabelEx.text = string;//@"上海闵行区什么路";
-        [imageLabelEx setImage:@"icon" origitation:0];
-        [imageLabelEx shiftPositionY:1];
+        [imageLabelEx setImage:[imageArray objectAtIndex:section] origitation:0];
+        [[imageLabelEx shiftPositionY:1] shiftPositionX:-1];
         if (0 == section) {
             UIView *lineView = [[[UIView alloc] initWithFrame:CGRectMake(0, view.bounds.size.height-0.5f, 320, 0.5f)] autorelease];
             lineView.backgroundColor = kLightGrayColor;
             [view addSubview:lineView];
+        }
+        if (0 == 4) {
+            imageLabelEx.textColor = kTableViewColor;
         }
         return (UIView *)view;
     };
@@ -261,23 +276,22 @@
         [blockSelf sendRequestToServer];
     };
     
-    [self.view addSubview:self.tableView];
     
-    [self dealWithData];
-    
-    //    [self.tableView doSendRequest:YES];
 }
 
 - (void) dealWithData
 {
-    //    self.tableView.didReachTheEnd = [_response lastPage];
-    //    if ([self.response isEmpty]) {
-    //        [self.tableView showEmptyView:YES];
-    //    }
-    //    else {
-    //        [self.tableView showEmptyView:NO];
-    //    }
+    if (!self.response.address) {
+        self.response.address = @"";
+    }
+    if ([self.response.pictures count] == 0) {
+        self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];;
+    } else {
+        self.tableView.tableHeaderView = self.cycleView;
+    }
+    self.titleArray = [NSMutableArray arrayWithObjects:self.response.address,@"支持运动项目",@"热门课程",@"驻点教练",self.response.descriptionString, nil];;
     [self.tableView reloadData];
+    [self.view addSubview:self.tableView];
 }
 
 
@@ -288,12 +302,7 @@
     idBlock succBlock = ^(id content){
         DEBUGLOG(@"succeed content %@", content);
         [blockSelf.tableView tableViewDidFinishedLoading];
-        if ([_request isFristPage]) {
-            blockSelf.response = [[[GymnasiumsResponse alloc] initWithJsonString:content] autorelease];
-        } else {
-            [blockSelf.response appendPaggingFromJsonString:content];
-        }
-        [_request nextPage];
+        blockSelf.response = [[[GymnasiumDetailResponse alloc] initWithJsonString:content] autorelease];
         [blockSelf dealWithData];
     };
     
@@ -306,6 +315,10 @@
         DEBUGLOG(@"error content %@", content);
         [blockSelf.tableView tableViewDidFinishedLoading];
     };
+    if (!_request) {
+        _request = [[GymnasiumDetailRequest alloc] init];
+        _request.itemId = self.item.itemId;
+    }
     [WASBaseServiceFace serviceWithMethod:[_request URLString] body:[_request toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
 }
 
@@ -318,13 +331,23 @@
 #pragma mark - XLCycleScrollViewDatasource
 - (NSInteger)numberOfPages
 {
-    return 3;
+    return [self.response.pictures count];
 }
 
 - (UIView *)pageAtIndex:(NSInteger)index
 {
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 160)];
-    imageView.image = [UIImage imageNamed:@"icon"];
+    
+    NSString *picture = [self.response.pictures objectAtIndex:index];
+    [imageView setImageWithURL:[NSURL URLWithString:picture]
+                       placeholderImage:[UIImage imageNamed:kImageDefault]
+                                success:^(UIImage *image){
+                                    UIImage * image1 = [image imageScaledToSizeEx:CGSizeMake(320, 160)];
+                                    imageView.image = image1;
+                                }
+                                failure:^(NSError *error){
+                                   imageView.image = [UIImage imageNamed:kImageDefault];
+                                }];
     return imageView;
 }
 

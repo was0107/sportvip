@@ -11,9 +11,12 @@
 #import "STLocationInstance.h"
 #import "CityTableViewController.h"
 #import "iRate.h"
+#import "SplashViewController.h"
+
 
 @interface AppDelegate()
 @property (nonatomic, retain) RootViewController *rootController;
+@property (nonatomic, retain) CityTableViewController *cityController;
 
 @end
 
@@ -37,16 +40,27 @@
     {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
         self.window.rootViewController = self.rootController;
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:@"FirstLaunch"]) {
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FirstLaunch"];
+            [[UIApplication sharedApplication] setStatusBarHidden:YES];
+            SplashViewController *splashController = [[[SplashViewController alloc] init] autorelease];
+            self.window.rootViewController = splashController;
+        }
     }
     else
     {
-        self.window.rootViewController = self.rootController;
+        [self goToRootController];
     }
     [self.window makeKeyAndVisible];
     [iRate sharedInstance].daysUntilPrompt = 5;
     [iRate sharedInstance].usesUntilPrompt = 15;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(needToShowCitySelector:) name:UDK_SHOW_CITY object:nil];
     return YES;
+}
+
+- (void) goToRootController
+{
+    self.window.rootViewController = self.rootController;
 }
 
 - (void) needToShowCitySelector: (NSNotification *) notification
@@ -56,10 +70,12 @@
 
 - (void) showCitySelect
 {
-    CityTableViewController *controller = [[[CityTableViewController alloc] init] autorelease];
-    [controller setModalPresentationStyle:UIModalPresentationCurrentContext];
-    [controller.navigationController setNavigationBarHidden:NO animated:YES];
-    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:controller] autorelease];
+    if (!_cityController) {
+        _cityController = [[CityTableViewController alloc] init];
+        [_cityController setModalPresentationStyle:UIModalPresentationCurrentContext];
+        [_cityController.navigationController setNavigationBarHidden:NO animated:YES];
+    }
+    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:_cityController] autorelease];
     navController.navigationBar.backgroundColor = [UIColor getColor:@"F3F2F2"];
 
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
@@ -69,8 +85,8 @@
 
 - (void)dealloc
 {
-    
     TT_RELEASE_SAFELY(_rootController);
+    TT_RELEASE_SAFELY(_cityController);
     TT_RELEASE_SAFELY(_window);
     [super dealloc];
 }

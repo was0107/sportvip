@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIImageView+WebCache.h"
 
 @interface UIImageLabelEx : UILabel
 
+@property (nonatomic, assign) CGSize imageSize;
 
 - (id) setImages:(NSArray *) images origitation:(int) flag;
 - (id) setImage:(NSString *) image origitation:(int) flag;

@@ -196,7 +196,7 @@
 - (void)popoverListView:(UIPopoverListView *)popoverListView didSelectIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"%s : %d", __func__, indexPath.row);
-
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://13600000000"]];
 }
 
 - (CGFloat)popoverListView:(UIPopoverListView *)popoverListView

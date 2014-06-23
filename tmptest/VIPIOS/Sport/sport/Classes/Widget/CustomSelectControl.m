@@ -76,7 +76,7 @@
         
         MyToolbar * toolbar = [[[MyToolbar alloc]initWithFrame:CGRectMake(0, 220, 320, 44)] autorelease];
         toolbar.barStyle = UIBarStyleBlack;
-        toolbar.backgroundColor = [UIColor getColor:@"F3F2F2"];
+        toolbar.backgroundColor = kGrayColor;// [UIColor getColor:@"F3F2F2"];
         UIBarButtonItem *flexibleButton  = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemFlexibleSpace target: nil action: nil] autorelease];
         UIBarButtonItem *rightButton  = [[[UIBarButtonItem alloc] initWithTitle:@"完成" style: UIBarButtonItemStyleDone target: self action: @selector(selectDone:)] autorelease];
         UIBarButtonItem *fixedButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil]  autorelease];

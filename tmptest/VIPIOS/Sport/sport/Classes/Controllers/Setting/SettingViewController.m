@@ -71,20 +71,22 @@
     __unsafe_unretained SettingViewController *blockSelf = self;
     self.tableView.tableHeaderView = TABLE_VIEW_HEADERVIEW(20.1f);
     NSArray *titleIndexArray = @[@"意见反馈",@"给我评分",@"检查更新",@"关于我们"];
-    
+    NSArray *imageIndexArray = @[@"feedback",@"charge",@"update",@"about_us"];
+
     self.tableView.cellCreateBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
         static NSString *identifier = @"SETTING_TABLEVIEW_CELL_IDENTIFIER";
         MyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell){
             cell = [[[MyTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
-            [cell.topLabel setFrame:CGRectMake(15, 10, 200, 24)];
+//            [cell.topLabel setFrame:CGRectMake(15, 10, 200, 24)];
         }
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-
         if (eSectionIndex01 == indexPath.section) {
             cell.topLabel.text = [titleIndexArray objectAtIndex:3];
+            cell.leftImageView.image = [UIImage imageNamed:[imageIndexArray objectAtIndex:3]];
         } else {
             cell.topLabel.text = [titleIndexArray objectAtIndex:indexPath.row];
+            cell.leftImageView.image = [UIImage imageNamed:[imageIndexArray objectAtIndex:indexPath.row ]];
             if (indexPath.row == eTableViewRowIndex02) {
                 [cell.contentView addSubview:self.currentVersionLabel];
                 cell.accessoryType = UITableViewCellAccessoryNone;

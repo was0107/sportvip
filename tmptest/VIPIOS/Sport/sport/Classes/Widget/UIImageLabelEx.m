@@ -9,7 +9,7 @@
 #import "UIImageLabelEx.h"
 #import "UIView+extend.h"
 
-#define kImageWidthHeight   18.0f
+#define kImageWidthHeight   20.0f
 #define kImageWidthHeight2  20.0f
 #define kImageSpace         2.0f
 
@@ -34,6 +34,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        self.imageSize = CGSizeMake(kImageWidthHeight, kImageWidthHeight2);
     }
     return self;
 }
@@ -46,12 +47,8 @@
     }
     if (total > 0) {
         
-        float space = total * (kImageWidthHeight + kImageSpace);
+        float space = total * (self.imageSize.width + kImageSpace);
         UIView *superView = self.superview;
-        CALayer *superLayer = nil;
-        if (superView) {
-            superLayer = superView.layer;
-        }
         
         CGRect rect = self.frame;
         if (0 == _origitation) {
@@ -61,22 +58,28 @@
             [self setFrameWidth:self.width - space];
         }
         
-        if (superLayer) {
-            [self.layerArray makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
+        if (superView) {
+            [self.layerArray makeObjectsPerformSelector:@selector(removeFromSuperview)];
             
             for (int i = 0; i < total; i++) {
-                CALayer *layer = [CALayer layer];
-                layer.contents = (id)[UIImage imageNamed:[self.imageArray objectAtIndex:i]].CGImage;
-                if (0 == _origitation) {
-                    layer.frame = CGRectMake(rect.origin.x + i * (kImageWidthHeight + kImageSpace), rect.origin.y + 4, kImageWidthHeight, kImageWidthHeight2);
-                } else  if (1 == _origitation) {
-                    layer.frame = CGRectMake(rect.origin.x + rect.size.width - (total - i) *  (kImageWidthHeight + kImageSpace), rect.origin.y + 4, kImageWidthHeight, kImageWidthHeight2);
-                } else  if (2 == _origitation) {
-                    layer.frame = CGRectMake(rect.origin.x + 10 , rect.origin.y + rect.size.height  + kImageSpace, kImageWidthHeight, kImageWidthHeight2);
-                } else  if (3 == _origitation) {
-                    layer.frame = CGRectMake(0, 0, kImageWidthHeight, kImageWidthHeight2);
+                UIImageView *layer = [[[UIImageView alloc] init] autorelease];
+                NSString *imageName = [self.imageArray objectAtIndex:i];
+                if ([imageName hasPrefix:@"http"]) {
+                    [layer setImageWithURL:[NSURL URLWithString:imageName] placeholderImage:[UIImage imageNamed:@"icon"]];
+                } else {
+                    layer.image = [UIImage imageNamed:imageName];
                 }
-                [superLayer addSublayer:layer];
+                
+                if (0 == _origitation) {
+                    layer.frame = CGRectMake(rect.origin.x + i * (self.imageSize.width + kImageSpace), rect.origin.y + 2, self.imageSize.width,  self.imageSize.height);
+                } else  if (1 == _origitation) {
+                    layer.frame = CGRectMake(rect.origin.x + rect.size.width - (total - i) *  (self.imageSize.width + kImageSpace), rect.origin.y + 2,  self.imageSize.width,  self.imageSize.height);
+                } else  if (2 == _origitation) {
+                    layer.frame = CGRectMake(rect.origin.x + 10 , rect.origin.y + rect.size.height  + kImageSpace,  self.imageSize.width,  self.imageSize.height);
+                } else  if (3 == _origitation) {
+                    layer.frame = CGRectMake(0, 0,  self.imageSize.width,  self.imageSize.height);
+                }
+                [superView addSubview:layer];
                 [self.layerArray addObject:layer];
             }
         }
@@ -104,7 +107,7 @@
 
 - (id) shiftPositionY:(CGFloat) flag
 {
-    for (CALayer *layer in self.layerArray) {
+    for (UIView *layer in self.layerArray) {
         CGRect rect = [layer frame];
         rect.origin.y += flag;
         layer.frame = rect;

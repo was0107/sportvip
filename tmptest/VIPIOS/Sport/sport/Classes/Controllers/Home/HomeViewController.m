@@ -43,7 +43,7 @@
 @implementation HomeViewController
 {
     __block int  _type;
-    __block int _currentType,_distanceIndex,_cateIndex,_sortIndex;
+    __block int _currentType,_distanceIndex,_cateIndex,_ageIndex;
 
 }
 
@@ -184,19 +184,19 @@
     if (button == self.button1) {
         _currentType = 0;
         self.selectControl.contentArray = [DataManager sharedInstance].sortArray;
-        self.selectControl.currentIndex = _distanceIndex;
+        self.selectControl.currentIndex = _cateIndex;
         self.selectControl.tipLabel.text = @"注：项目是按照字母进行排序";
     }
     else if (button == self.button2) {
         _currentType = 1;
         self.selectControl.contentArray = [DataManager sharedInstance].categoryAndsubArray;//cateArray;
-        self.selectControl.currentIndex = _cateIndex;
+        self.selectControl.currentIndex = _ageIndex;
         self.selectControl.tipLabel.text = @"注：请选择合适的年龄段";
     }
     else {
         _currentType = 2;
         self.selectControl.contentArray = [DataManager sharedInstance].distanceArray;//;
-        self.selectControl.currentIndex = _sortIndex;
+        self.selectControl.currentIndex = _distanceIndex;
         self.selectControl.tipLabel.text = @"";
     }
     [self.selectControl showContent:YES];
@@ -337,6 +337,7 @@
         [self.tableView showEmptyView:NO];
     }
     [self.tableView reloadData];
+    [SVProgressHUD dismiss];
 }
 
 - (GymnasiumsRequest *) request
@@ -394,11 +395,13 @@
          idBlock failedBlock = ^(id content) {
              DEBUGLOG(@"failed content %@", content);
              [blockSelf.tableView tableViewDidFinishedLoading];
+             [SVProgressHUD dismiss];
              
          };
          idBlock errBlock = ^(id content){
              DEBUGLOG(@"error content %@", content);
              [blockSelf.tableView tableViewDidFinishedLoading];
+             [SVProgressHUD dismiss];
          };
          [WASBaseServiceFace serviceWithMethod:[_request URLString] body:[_request toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
      }
@@ -413,16 +416,18 @@
              }
              [_coachesRequest nextPage];
              [blockSelf dealWithData];
+             [SVProgressHUD dismiss];
          };
          
          idBlock failedBlock = ^(id content) {
              DEBUGLOG(@"failed content %@", content);
              [blockSelf.tableView tableViewDidFinishedLoading];
-             
+             [SVProgressHUD dismiss];
          };
          idBlock errBlock = ^(id content){
              DEBUGLOG(@"error content %@", content);
              [blockSelf.tableView tableViewDidFinishedLoading];
+             [SVProgressHUD dismiss];
          };
          [WASBaseServiceFace serviceWithMethod:[self.coachesRequest URLString] body:[self.coachesRequest toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
      }
@@ -432,7 +437,7 @@
 - (CustomSelectControl *) selectControl
 {
     if (!_selectControl) {
-        __weak HomeViewController *blockSelf = self;
+        __block HomeViewController *blockSelf = self;
         _selectControl = [[CustomSelectControl alloc] initWithController:self];
         _selectControl.belowView = self.sectionView;
         _selectControl.cellBlock = ^(UIPickerView *pickerView, NSInteger row, NSInteger component) {
@@ -450,8 +455,34 @@
             return (NSInteger)[_selectControl.contentArray count];
         };
         _selectControl.block = ^(id content) {
-//            [blockSelf setButtonTitle:content];
+            CategoryItem *cagetoryItem = (CategoryItem *) content;
+            switch (_currentType) {
+                case 0:
+                    blockSelf.request.eventId = cagetoryItem.categoryId;
+                    blockSelf.coachesRequest.eventId = cagetoryItem.categoryId;
+                    _cateIndex = [[_selectControl contentArray] indexOfObject:content];
+                    break;
+                case 1:
+                    blockSelf.request.age = cagetoryItem.categoryId;
+                    blockSelf.coachesRequest.age = cagetoryItem.categoryId;
+                    _ageIndex = [[_selectControl contentArray] indexOfObject:content];
+                    break;
+                case 2:
+                    blockSelf.request.distance = cagetoryItem.categoryId;
+                    blockSelf.coachesRequest.distance = cagetoryItem.categoryId;
+                    _distanceIndex = [[_selectControl contentArray] indexOfObject:content];
+                    break;
+                default:
+                    break;
+            }
+            [blockSelf.request firstPage];
+            [blockSelf.coachesRequest firstPage];
+            [SVProgressHUD showWithOnlyStatus:@"正在查询..." duration:30];
+            [blockSelf sendRequestToServer];
         };
+        _cateIndex = [[DataManager sharedInstance].sortArray count] - 1;
+        _ageIndex = [[DataManager sharedInstance].categoryAndsubArray count] - 1;
+        _distanceIndex = [[DataManager sharedInstance].distanceArray count] - 1;
     }
     return _selectControl;
 }

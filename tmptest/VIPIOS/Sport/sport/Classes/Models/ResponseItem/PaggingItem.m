@@ -103,14 +103,19 @@
         self.distance = [self floatValueFrom:dictionary withKey:@"distance"];
         self.maxPrice = [self floatValueFrom:dictionary withKey:@"maxPrice"];
         self.minPrice = [self floatValueFrom:dictionary withKey:@"minPirce"];
-        
         if (self.minPrice < 1) {
-            self.priceString = [NSString stringWithFormat:@"%.0f",self.maxPrice];
+            self.priceString = [NSString stringWithFormat:@"￥%.0f",self.maxPrice];
         } else {
-            self.priceString = [NSString stringWithFormat:@"%.0f-%.0f",self.minPrice,self.maxPrice];
+            self.priceString = [NSString stringWithFormat:@"￥%.0f-%.0f",self.minPrice,self.maxPrice];
         }
-        
-        self.distanceString = [NSString stringWithFormat:@"%.0f",self.distance];
+        if (self.distance < 1000) {
+            self.distanceString = [NSString stringWithFormat:@"%.0fm",self.distance];
+        }
+        else if (self.distance < 1000000) {
+            self.distanceString = [NSString stringWithFormat:@"%.0fkm",self.distance];
+        } else {
+            self.distanceString = [NSString stringWithFormat:@"很远"];
+        }
         
         NSMutableArray *array = [dictionary objectForKey:@"tags"];
         NSMutableArray *arrayResult = [NSMutableArray array];
@@ -151,6 +156,117 @@
 @end
 
 
+@implementation GymnasiumDetailResponse
+- (void)dealloc{
+    
+    TT_RELEASE_SAFELY(_address);
+    TT_RELEASE_SAFELY(_resume);
+    TT_RELEASE_SAFELY(_descriptionString);
+    TT_RELEASE_SAFELY(_name);
+    TT_RELEASE_SAFELY(_introduction);
+    TT_RELEASE_SAFELY(_pictures);
+    TT_RELEASE_SAFELY(_tags);
+    TT_RELEASE_SAFELY(_events);
+    TT_RELEASE_SAFELY(_phones);
+    TT_RELEASE_SAFELY(_hornors);
+    TT_RELEASE_SAFELY(_coaches);
+    TT_RELEASE_SAFELY(_courses);
+    
+    [super dealloc];
+}
+
+- (id) initWithDictionary:(const NSDictionary *) dictionary
+{
+    self = [super initWithDictionary:dictionary];
+    if (self) {
+        
+        self.itemId            = [dictionary objectForKey:@"id"];
+        self.address           = [dictionary objectForKey:@"address"];
+        self.name              = [dictionary objectForKey:@"name"];
+        self.descriptionString = [dictionary objectForKey:@"description"];
+        self.resume            = [dictionary objectForKey:@"resume"];
+        
+        NSMutableArray *array = [dictionary objectForKey:@"tags"];
+        NSMutableArray *arrayResult = [NSMutableArray array];
+        @autoreleasepool {
+            for ( int i = 0 , total = [array count]; i < total; ++i) {
+                NSDictionary *dictionaryItem = (NSDictionary *) [array objectAtIndex:i];
+                EventTagItem *item = [[[EventTagItem alloc] initWithDictionary:dictionaryItem] autorelease];
+                [arrayResult addObject:item];
+            }
+            
+            self.tags = arrayResult;
+        }
+        
+        array = [dictionary objectForKey:@"events"];
+        arrayResult = [NSMutableArray array];
+        @autoreleasepool {
+            for ( int i = 0 , total = [array count]; i < total; ++i) {
+                NSDictionary *dictionaryItem = (NSDictionary *) [array objectAtIndex:i];
+                EventTagItem *item = [[[EventTagItem alloc] initWithDictionary:dictionaryItem] autorelease];
+                [arrayResult addObject:item];
+            }
+            
+            self.events = arrayResult;
+        }
+        
+        array = [dictionary objectForKey:@"pics"];
+        arrayResult = [NSMutableArray array];
+        @autoreleasepool {
+            for ( int i = 0 , total = [array count]; i < total; ++i) {
+                [arrayResult addObject:[array objectAtIndex:i]];
+            }
+            self.pictures = arrayResult;
+        }
+        
+        
+        array = [dictionary objectForKey:@"phones"];
+        arrayResult = [NSMutableArray array];
+        @autoreleasepool {
+            for ( int i = 0 , total = [array count]; i < total; ++i) {
+                [arrayResult addObject:[array objectAtIndex:i]];
+            }
+            self.phones = arrayResult;
+        }
+        
+        array = [dictionary objectForKey:@"hornors"];
+        arrayResult = [NSMutableArray array];
+        @autoreleasepool {
+            for ( int i = 0 , total = [array count]; i < total; ++i) {
+                [arrayResult addObject:[array objectAtIndex:i]];
+            }
+            self.hornors = arrayResult;
+        }
+        
+        
+        array = [dictionary objectForKey:@"coaches"];
+        arrayResult = [NSMutableArray array];
+        @autoreleasepool {
+            for ( int i = 0 , total = [array count]; i < total; ++i) {
+                NSDictionary *dictionaryItem = (NSDictionary *) [array objectAtIndex:i];
+                CoacheItem *item = [[[CoacheItem alloc] initWithDictionary:dictionaryItem] autorelease];
+                [arrayResult addObject:item];
+            }
+            self.coaches = arrayResult;
+        }
+        array = [dictionary objectForKey:@"courses"];
+        arrayResult = [NSMutableArray array];
+        @autoreleasepool {
+            for ( int i = 0 , total = [array count]; i < total; ++i) {
+                NSDictionary *dictionaryItem = (NSDictionary *) [array objectAtIndex:i];
+                CourseItem *item = [[[CourseItem alloc] initWithDictionary:dictionaryItem] autorelease];
+                [arrayResult addObject:item];
+            }
+            self.courses = arrayResult;
+        }
+        
+    }
+    return self;
+}
+
+
+@end
+
 
 @implementation CoacheItem
 
@@ -181,9 +297,17 @@
         self.certificate            = [self stringObjectFrom:dictionary withKey:@"certificate"];
         self.zan                    = (int)[self integerValueFrom:dictionary withKey:@"zan"];
         self.age                    = (int)[self integerValueFrom:dictionary withKey:@"age"];
-
-        self.priceString            = [NSString stringWithFormat:@"%.0f",self.minPrice];
+       
+        self.priceString            = [NSString stringWithFormat:@"￥%.0f",self.minPrice];
         self.distanceString         = [NSString stringWithFormat:@"%.0f",self.distance];
+        if (self.distance < 1000) {
+            self.distanceString = [NSString stringWithFormat:@"%.0fm",self.distance];
+        }
+        else if (self.distance < 1000000) {
+            self.distanceString = [NSString stringWithFormat:@"%.0fkm",self.distance];
+        } else {
+            self.distanceString = [NSString stringWithFormat:@"很远"];
+        }
 
         NSDictionary *location      = [dictionary objectForKey:@"location"];
         self.longtitude             = [self floatValueFrom:location withKey:@"x"];

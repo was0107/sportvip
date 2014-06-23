@@ -80,6 +80,13 @@
         self.leftImageView.layer.borderColor  = [[UIColor getColor:KCustomGreenColor] CGColor];
         self.leftImageView.layer.borderWidth  = 0.8f;
         
+        
+        [self.topLabelEx setImageSize:CGSizeMake(18, 20)];
+        [self.subRightEx setImageSize:CGSizeMake(18, 18)];
+        [self.topRigithEx setImageSize:CGSizeMake(16, 18)];
+        [self.middleLabelEx setImageSize:CGSizeMake(16, 18)];
+        
+        
         [self.contentView addSubview:self.topLabelEx];
         [self.contentView addSubview:self.topRigithEx];
         [self.contentView addSubview:self.middleLabelEx];
@@ -106,14 +113,14 @@
         [self.topLabelEx setImages:[NSArray arrayWithObjects:@"hot",@"xin",nil] origitation:1];
         
         self.subRightEx.text = item.distanceString;
-        [self.subRightEx setImages:[NSArray arrayWithObjects:@"icon",nil] origitation:0];
+        [self.subRightEx setImages:[NSArray arrayWithObjects:@"cell_distance",nil] origitation:0];
         
         
         self.topRigithEx.text = item.address;
-        [self.topRigithEx setImages:[NSArray arrayWithObjects:@"icon",nil] origitation:0];
+        [self.topRigithEx setImages:[NSArray arrayWithObjects:@"cell_map",nil] origitation:0];
         
         self.middleLabelEx.text = item.certificate;
-        [self.middleLabelEx setImage:@"icon" origitation:0];
+        [self.middleLabelEx setImage:@"cell_hornor" origitation:0];
         
         self.subRightLabel.text = item.priceString;
         self.leftImageView.image = [UIImage imageNamed:@"icon"];

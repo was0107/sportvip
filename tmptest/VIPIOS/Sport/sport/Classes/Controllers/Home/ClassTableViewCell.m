@@ -32,7 +32,7 @@
     self.topRigithEx.frame       = CGRectMake(112, 30, 202, 34);
     self.middleLabelEx.frame     = CGRectMake(112, 66, 12, 24);
     self.subRightEx.frame        = CGRectMake(254, 6, 60, 24);
-    self.subRightLabel.frame     = CGRectMake(244, 86, 70, 24);
+    self.subRightLabel.frame     = CGRectMake(204, 86, 110, 24);
     
     if (!self.topLabelEx.superview) {
         self.subRightLabel.font               = HTFONTSIZE(kFontSize17);
@@ -45,6 +45,12 @@
         self.leftImageView.layer.borderWidth  = 0.8f;
         self.leftImageView.layer.borderColor  = [[UIColor getColor:KCustomGreenColor] CGColor];
 
+        
+        [self.topLabelEx setImageSize:CGSizeMake(18, 20)];
+        [self.subRightEx setImageSize:CGSizeMake(18, 18)];
+        [self.topRigithEx setImageSize:CGSizeMake(16, 18)];
+        [self.middleLabelEx setImageSize:CGSizeMake(16, 18)];
+        
         
         [self.contentView addSubview:self.topLabelEx];
         [self.contentView addSubview:self.topRigithEx];
@@ -113,19 +119,19 @@
         [self.topLabelEx setImages:[NSArray arrayWithObjects:@"hot",@"xin",nil] origitation:1];
         
         self.topRigithEx.text = item.address;
-        [self.topRigithEx setImages:[NSArray arrayWithObjects:@"icon",nil] origitation:0];
+        [self.topRigithEx setImages:[NSArray arrayWithObjects:@"cell_map",nil] origitation:0];
         
         self.subRightEx.text = item.distanceString;
-        [self.subRightEx setImages:[NSArray arrayWithObjects:@"icon",nil] origitation:0];
-        
-        [self.middleLabelEx setImage:@"icon" origitation:0];
+        [self.subRightEx setImages:[NSArray arrayWithObjects:@"cell_distance",nil] origitation:0];
+        [self.middleLabelEx setImage:@"cell_coach" origitation:0];
         
         self.subRightLabel.text = item.priceString;
         self.leftImageView.image = [UIImage imageNamed:@"icon"];
         
         
         [self.categories makeObjectsPerformSelector:@selector(removeFromSuperview)];
-        for (int i = 0 ; i < [item.events count]; i++) {
+        int total = MIN(3, [item.events count]);
+        for (int i = 0 ; i < total; i++) {
             UIImageLabelEx *labelEx = [[[UIImageLabelEx alloc] initWithFrame:CGRectMake(130 + 36 *i, 68, 36, 20)] autorelease];
             labelEx.backgroundColor = kClearColor;
             labelEx.textColor = kDarkTextColor;
