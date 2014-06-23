@@ -113,6 +113,7 @@ typedef enum {
         [[tabBarView tabBar] setEdgeColor:[self tabEdgeColor]];
         
         AKTab *tab = [[AKTab alloc] init];
+        tab.titleIsHidden = YES;
         [tab setTabImageWithName:[vc tabImageName]];
         [tab setTabSelectedImageWithName:[vc tabSelectedImageName]];
         [tab setBackgroundImageName:[self backgroundImageName]];

@@ -237,12 +237,12 @@
 
 - (NSString *)tabImageName
 {
-    return @"icon_tabbar_hzxs_f";
+    return @"1-1";
 }
 
 - (NSString *)tabSelectedImageName
 {
-    return @"icon_tabbar_hzxs_n";
+    return @"1-2";
 }
 
 - (CGRect)tableViewFrame

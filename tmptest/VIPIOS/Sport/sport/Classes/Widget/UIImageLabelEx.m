@@ -9,7 +9,8 @@
 #import "UIImageLabelEx.h"
 #import "UIView+extend.h"
 
-#define kImageWidthHeight   15.0f
+#define kImageWidthHeight   18.0f
+#define kImageWidthHeight2  20.0f
 #define kImageSpace         2.0f
 
 @interface UIImageLabelEx()
@@ -67,13 +68,13 @@
                 CALayer *layer = [CALayer layer];
                 layer.contents = (id)[UIImage imageNamed:[self.imageArray objectAtIndex:i]].CGImage;
                 if (0 == _origitation) {
-                    layer.frame = CGRectMake(rect.origin.x + i * (kImageWidthHeight + kImageSpace), rect.origin.y + 4, kImageWidthHeight, kImageWidthHeight);
+                    layer.frame = CGRectMake(rect.origin.x + i * (kImageWidthHeight + kImageSpace), rect.origin.y + 4, kImageWidthHeight, kImageWidthHeight2);
                 } else  if (1 == _origitation) {
-                    layer.frame = CGRectMake(rect.origin.x + rect.size.width - (total - i) *  (kImageWidthHeight + kImageSpace), rect.origin.y + 4, kImageWidthHeight, kImageWidthHeight);
+                    layer.frame = CGRectMake(rect.origin.x + rect.size.width - (total - i) *  (kImageWidthHeight + kImageSpace), rect.origin.y + 4, kImageWidthHeight, kImageWidthHeight2);
                 } else  if (2 == _origitation) {
-                    layer.frame = CGRectMake(rect.origin.x + 10 , rect.origin.y + rect.size.height  + kImageSpace, kImageWidthHeight, kImageWidthHeight);
+                    layer.frame = CGRectMake(rect.origin.x + 10 , rect.origin.y + rect.size.height  + kImageSpace, kImageWidthHeight, kImageWidthHeight2);
                 } else  if (3 == _origitation) {
-                    layer.frame = CGRectMake(0, 0, kImageWidthHeight, kImageWidthHeight);
+                    layer.frame = CGRectMake(0, 0, kImageWidthHeight, kImageWidthHeight2);
                 }
                 [superLayer addSublayer:layer];
                 [self.layerArray addObject:layer];

@@ -12,9 +12,13 @@
 #import "CustomImageTitleButton.h"
 #import "CreateObject.h"
 #import "ClassDetailViewController.h"
+#import "PaggingRequest.h"
+#import "PaggingResponse.h"
 
 @interface YardViewController()<XLCycleScrollViewDelegate, XLCycleScrollViewDatasource>
 @property (nonatomic, retain) XLCycleScrollView *cycleView;
+@property (nonatomic, retain) GymnasiumsResponse *response;
+@property (nonatomic, retain) GymnasiumDetailRequest *request;
 
 @end
 @implementation YardViewController

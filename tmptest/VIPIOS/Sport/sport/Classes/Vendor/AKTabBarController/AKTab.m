@@ -107,6 +107,7 @@ static const float kTopMargin = 1.0;
     // Setting the imageContainer's size.
     CGRect imageRect = CGRectZero;
     imageRect.size = image.size;
+    imageRect.size = CGSizeMake(30, 30);
     
     // Title label
     UILabel *tabTitleLabel = [[UILabel alloc] init];

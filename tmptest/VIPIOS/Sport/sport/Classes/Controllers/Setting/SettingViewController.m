@@ -48,12 +48,12 @@
 
 - (NSString *)tabImageName
 {
-    return @"icon_tabbar_setting_f";
+    return @"3-1";
 }
 
 - (NSString *)tabSelectedImageName
 {
-    return @"icon_tabbar_setting_n";
+    return @"3-2";
 }
 
 - (CGRect)tableViewFrame

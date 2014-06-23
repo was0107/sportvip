@@ -104,8 +104,13 @@
         self.content = content;
         GymnasiumItem *item = (GymnasiumItem *) self.content;
         
+        CGSize size = [item.name sizeWithFont:self.topLabelEx.font constrainedToSize:CGSizeMake(140, 24)];
+        if (size.width + 40 < 140) {
+            [self.topLabelEx setFrameSize:CGSizeMake(size.width + 40, 24)];
+        }
+        
         self.topLabelEx.text = item.name;
-        [self.topLabelEx setImages:[NSArray arrayWithObjects:@"icon",@"icon",nil] origitation:1];
+        [self.topLabelEx setImages:[NSArray arrayWithObjects:@"hot",@"xin",nil] origitation:1];
         
         self.topRigithEx.text = item.address;
         [self.topRigithEx setImages:[NSArray arrayWithObjects:@"icon",nil] origitation:0];

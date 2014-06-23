@@ -88,8 +88,6 @@
         [self.contentView addSubview:self.leftImageView];
 
     }
-    
-    
 }
 
 - (void) configWithData:(id) content
@@ -98,8 +96,14 @@
         self.content = content;
         CoacheItem *item = (CoacheItem *) self.content;
         
+        CGSize size = [item.name sizeWithFont:self.topLabelEx.font constrainedToSize:CGSizeMake(140, 24)];
+        if (size.width + 40 < 140) {
+            [self.topLabelEx setFrameSize:CGSizeMake(size.width + 40, 24)];
+            [self.subRightEx setFrameWidth:100 - size.width + self.subRightEx.width-10 ];
+        }
+        
         self.topLabelEx.text = item.name;
-        [self.topLabelEx setImages:[NSArray arrayWithObjects:@"icon",@"icon",nil] origitation:1];
+        [self.topLabelEx setImages:[NSArray arrayWithObjects:@"hot",@"xin",nil] origitation:1];
         
         self.subRightEx.text = item.distanceString;
         [self.subRightEx setImages:[NSArray arrayWithObjects:@"icon",nil] origitation:0];
