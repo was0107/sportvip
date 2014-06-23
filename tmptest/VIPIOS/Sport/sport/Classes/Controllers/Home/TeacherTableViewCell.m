@@ -41,7 +41,7 @@
    
     
     self.topLabelEx.text = @"国学培训课程（免费试听)";
-    [self.topLabelEx setImages:[NSArray arrayWithObjects:@"icon",@"icon",nil] origitation:1];
+    [self.topLabelEx setImages:[NSArray arrayWithObjects:@"hot",@"xin",nil] origitation:1];
     self.topRigithEx.text = @"国子学堂虹桥中心国子学堂虹桥中心国子学堂虹子学堂虹桥中心国子学堂虹子学堂虹桥中心国子学堂虹桥中心";
     
     
@@ -57,6 +57,11 @@
                                 failure:^(NSError *error){
                                     blockSelf.leftImageView.image = [UIImage imageNamed:kImageDefault];
                                 }];
+}
+
+- (void) configWithDetail:(id) content
+{
+    
 }
 
 

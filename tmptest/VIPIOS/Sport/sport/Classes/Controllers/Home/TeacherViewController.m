@@ -13,9 +13,15 @@
 #import "CreateObject.h"
 #import <MapKit/MapKit.h>
 #import "ClassDetailViewController.h"
+#import "PaggingRequest.h"
+#import "UIView+extend.h"
+#import "PaggingResponse.h"
 
 @interface TeacherViewController()<MKMapViewDelegate>
 @property (nonatomic, retain) MKMapView *mapView;
+@property (nonatomic, retain) CoacheDetailResponse *response;
+@property (nonatomic, retain) CoachDetailRequest *request;
+@property (nonatomic, retain) NSMutableArray *titleArray;
 
 @end
 
@@ -25,6 +31,9 @@
 {
     [super viewDidLoad];
     self.title = @"网球";
+    self.title = self.item.name;
+    [self.tableView removeFromSuperview];
+    [self sendRequestToServer];
 }
 
 - (void)didReceiveMemoryWarning
@@ -90,6 +99,27 @@
                 cell1.selectionStyle = UITableViewCellSelectionStyleNone;
             }
             [cell1 configTeacherDetailHeader];
+            
+            cell1.topLabelEx.text = blockSelf.response.name;
+            CGSize size = [blockSelf.response.name sizeWithFont:cell1.topLabelEx.font constrainedToSize:CGSizeMake(190, 24)];
+            if (size.width + 45 < 190) {
+                [cell1.topLabelEx setFrameSize:CGSizeMake(size.width + 45, 24)];
+            }
+            [cell1.topLabelEx setImages:[NSArray arrayWithObjects:@"hot",@"xin",nil] origitation:1];
+            
+            cell1.topRigithEx.text = blockSelf.response.introduction;
+            [cell1.leftImageView setImageWithURL:[NSURL URLWithString:blockSelf.response.avatar]
+                               placeholderImage:[UIImage imageNamed:kImageDefault]
+                                        success:^(UIImage *image){
+                                            UIImage * image1 = [image imageScaledToSizeEx:CGSizeMake(100, 80)];
+                                            cell1.leftImageView.image = image1;
+                                            
+                                        }
+                                        failure:^(NSError *error){
+                                            cell1.leftImageView.image = [UIImage imageNamed:kImageDefault];
+                                        }];
+            
+            
             return (UITableViewCell *)cell1;
         }
         else if (1 == indexPath.section) {
@@ -101,12 +131,15 @@
                     cell = [[[BaseTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
                     cell.topLabel.textColor = kBlackColor;
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                    cell.topLabel.frame = CGRectMake(10, 5, 300, 44);
-                    cell.subLabel.textAlignment = UITextAlignmentRight;
+                    cell.topLabel.frame = CGRectMake(10, 5, 300, 34);
                     cell.topLabel.numberOfLines = 0;
                     [cell.contentView addSubview:cell.topLabel];
                 }
-                cell.topLabel.text = @"从事青少年网球教育数十载，学生多次获得国内外网球比赛冠亚军";
+                
+                CGSize size = [blockSelf.response.resume sizeWithFont:HTFONTSIZE(kFontSize14) constrainedToSize:CGSizeMake(300, 20000)];
+                CGFloat height = MAX(size.height, 24);
+                [cell.topLabel setFrameHeight:height];
+                cell.topLabel.text = blockSelf.response.resume;
                 return (UITableViewCell *)cell;
             }
             
@@ -147,9 +180,10 @@
                 [cell.contentView addSubview:cell.subRightLabel];
                 cell.subRightLabel.font = cell.topLabel.font;
             }
-            cell.topLabel.text = @"网球基础班";
-            cell.rightLabel.text = @"周六14：00-17：00";
-            cell.subRightLabel.text = @"￥168";
+            CourseItem *courseItem = [[[blockSelf response] courses] objectAtIndex:indexPath.row];
+            cell.topLabel.text = courseItem.name;
+            cell.rightLabel.text = courseItem.schoolTime;
+            cell.subRightLabel.text = courseItem.priceString;
             return (UITableViewCell *)cell;
         }
         static NSString *identifier = @"TEACHER_TABLEVIEW_CELL_IDENTIFIER13";
@@ -168,7 +202,9 @@
         }
         else  if (1 == indexPath.section) {
             if (0 == indexPath.row) {
-                return 60.0f;
+                CGSize size = [blockSelf.response.resume sizeWithFont:HTFONTSIZE(kFontSize14) constrainedToSize:CGSizeMake(300, 20000)];
+                CGFloat height = MAX(size.height, 24);
+                return height+15;
             }
             return 44.0f;
         }
@@ -186,10 +222,10 @@
             return 1;
         }
         else  if (1 == section) {
-            return 4;
+            return (NSInteger)(1 + [[blockSelf.response hornors] count]);
         }
         else if (2 == section) {
-            return 4;
+            return (NSInteger)(0 + [[blockSelf.response courses] count]);
         }
         else  if (3 == section) {
             return 1;
@@ -226,6 +262,7 @@
     
     self.tableView.sectionHeaderBlock = ^( UITableView *tableView, NSInteger section){
         
+        NSArray *imageArray = [NSArray arrayWithObjects:@"map",@"sport",@"course",@"coach",@"desc",nil];
         NSString *string = [titleArray objectAtIndex:section];
         CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 20000)];
         UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, size.height + 5)] autorelease];
@@ -235,7 +272,7 @@
         imageLabelEx.font = HTFONTSIZE(kFontSize16);
         [view addSubview:imageLabelEx];
         imageLabelEx.text = string;//@"上海闵行区什么路";
-        [imageLabelEx setImage:@"icon" origitation:0];
+        [imageLabelEx setImage:[imageArray objectAtIndex:section] origitation:0];
         [imageLabelEx shiftPositionY:1];
         return (UIView *)view;
     };
@@ -246,43 +283,50 @@
     self.tableView.loadMoreBlock = ^(id content) {
         [blockSelf sendRequestToServer];
     };
-    
-    [self.view addSubview:self.tableView];
-    
-    [self dealWithData];
-    
+}
+
+- (void) dealWithData
+{
     CLLocationCoordinate2D center;
-    center.latitude=40.029915;
-    center.longitude=116.347082;
+    center.latitude=self.response.lantitude;
+    center.longitude=self.response.longtitude;
     
     MKCoordinateSpan span;
     span.latitudeDelta=0.2;
     span.longitudeDelta=0.2;
     MKCoordinateRegion region={center,span};
     
-     [self.mapView setRegion:region];
-    
-    
-    
-    //    [self.tableView doSendRequest:YES];
-}
-
-- (void) dealWithData
-{
-    //    self.tableView.didReachTheEnd = [_response lastPage];
-    //    if ([self.response isEmpty]) {
-    //        [self.tableView showEmptyView:YES];
-    //    }
-    //    else {
-    //        [self.tableView showEmptyView:NO];
-    //    }
+    [self.mapView setRegion:region];
+    [self.mapView setExclusiveTouch:YES];
     [self.tableView reloadData];
-}
+    [self.view addSubview:self.tableView];}
 
 
 - (void) sendRequestToServer
 {
-    [self dealWithData];
+    __block TeacherViewController *blockSelf = self;
+    
+    idBlock succBlock = ^(id content){
+        DEBUGLOG(@"succeed content %@", content);
+        [blockSelf.tableView tableViewDidFinishedLoading];
+        blockSelf.response = [[[CoacheDetailResponse alloc] initWithJsonString:content] autorelease];
+        [blockSelf dealWithData];
+    };
+    
+    idBlock failedBlock = ^(id content) {
+        DEBUGLOG(@"failed content %@", content);
+        [blockSelf.tableView tableViewDidFinishedLoading];
+        
+    };
+    idBlock errBlock = ^(id content){
+        DEBUGLOG(@"error content %@", content);
+        [blockSelf.tableView tableViewDidFinishedLoading];
+    };
+    if (!_request) {
+        _request = [[CoachDetailRequest alloc] init];
+        _request.itemId = self.item.itemId;
+    }
+    [WASBaseServiceFace serviceWithMethod:[_request URLString] body:[_request toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
 }
 
 

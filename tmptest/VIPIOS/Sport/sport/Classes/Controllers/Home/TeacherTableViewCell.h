@@ -12,4 +12,6 @@
 
 - (void) configTeacherDetailHeader;
 
+- (void) configWithDetail:(id) content;
+
 @end

@@ -76,15 +76,22 @@
         
         MyToolbar * toolbar = [[[MyToolbar alloc]initWithFrame:CGRectMake(0, 220, 320, 44)] autorelease];
         toolbar.barStyle = UIBarStyleBlack;
-        toolbar.backgroundColor = kGrayColor;// [UIColor getColor:@"F3F2F2"];
+        toolbar.backgroundColor = [UIColor getColor:KCustomGreenColor];
+        
+        
+        UIBarButtonItem *leftButton  = [[[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleDone target: self action: @selector(selectCancel:)] autorelease];
         UIBarButtonItem *flexibleButton  = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemFlexibleSpace target: nil action: nil] autorelease];
         UIBarButtonItem *rightButton  = [[[UIBarButtonItem alloc] initWithTitle:@"完成" style: UIBarButtonItemStyleDone target: self action: @selector(selectDone:)] autorelease];
-        UIBarButtonItem *fixedButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil]  autorelease];
-        fixedButton.width = 50;
+//        UIBarButtonItem *flexibleButton  = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemFlexibleSpace target: nil action: nil] autorelease];
+//        UIBarButtonItem *rightButton  = [[[UIBarButtonItem alloc] initWithTitle:@"完成" style: UIBarButtonItemStyleDone target: self action: @selector(selectDone:)] autorelease];
+//        UIBarButtonItem *fixedButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil]  autorelease];
+//        fixedButton.width = 50;
         
-        rightButton.tintColor = [UIColor getColor:KCustomGreenColor];
-        toolbar.tintColor = [UIColor getColor:KCustomGreenColor];
-        [toolbar setItems: @[fixedButton,flexibleButton,rightButton, flexibleButton,fixedButton]];
+        leftButton.tintColor = kWhiteColor;
+        rightButton.tintColor = kWhiteColor;
+        toolbar.tintColor = kWhiteColor;
+//        [toolbar setItems: @[fixedButton,flexibleButton,rightButton, flexibleButton,fixedButton]];
+        [toolbar setItems: @[leftButton,flexibleButton, rightButton]];
         [_selectItemView addSubview:toolbar];
         [_selectItemView addSubview:self.tipLabel];
         [_selectItemView addSubview:self.pickerView];
@@ -340,14 +347,16 @@
 //        [toolbar addSubview:toolbarBGview];
 //        toolbar.barStyle = UIBarStyleBlackOpaque;
 //        toolbar.backgroundColor = kLightGrayColor;
- 
+        toolbar.backgroundColor = [UIColor getColor:KCustomGreenColor];
         toolbar.opaque = NO;
-        toolbar.backgroundColor = [UIColor clearColor];
         toolbar.clearsContextBeforeDrawing = YES;
         UIBarButtonItem *leftButton  = [[[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleDone target: self action: @selector(selectCancel:)] autorelease];
         UIBarButtonItem *flexibleButton  = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemFlexibleSpace target: nil action: nil] autorelease];
         UIBarButtonItem *rightButton  = [[[UIBarButtonItem alloc] initWithTitle:@"完成" style: UIBarButtonItemStyleDone target: self action: @selector(selectDone:)] autorelease];
-//        leftButton.tintColor = kGrayColor;
+        leftButton.tintColor = kWhiteColor;
+        rightButton.tintColor = kWhiteColor;
+//        toolbar.tintColor = kWhiteColor;
+
 //        rightButton.tintColor = kGrayColor;
         [toolbar setItems: @[leftButton,flexibleButton, rightButton]];
         [_selectItemView addSubview:toolbar];

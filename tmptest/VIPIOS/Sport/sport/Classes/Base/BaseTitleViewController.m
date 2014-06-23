@@ -134,8 +134,12 @@
 
 - (void)setTitle:(NSString *)title
 {
-//    [super setTitle:title];
-    [super setTitle:@"返回"];
+    [super setTitle:title];
+    if ([self.navigationController.viewControllers count] > 1 )
+        [super setTitle:@"返回"];
+    else
+        [super setTitle:title];
+
     UILabel *titleView = (UILabel *)self.navigationItem.titleView;
     if (!titleView) {
         titleView = [[UILabel alloc] initWithFrame:CGRectZero];

@@ -45,10 +45,7 @@
     
     _titleView = [[UILabel alloc] initWithFrame:CGRectZero];
     _titleView.font = [UIFont systemFontOfSize:17.0f];
-    _titleView.backgroundColor = [UIColor colorWithRed:59./255.
-                                                 green:89./255.
-                                                  blue:152./255.
-                                                 alpha:1.0f];
+    _titleView.backgroundColor = [UIColor getColor:KCustomGreenColor];
     
     _titleView.textAlignment = UITextAlignmentCenter;
     _titleView.textColor = [UIColor whiteColor];

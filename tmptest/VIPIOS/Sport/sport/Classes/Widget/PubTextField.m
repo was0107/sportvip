@@ -89,7 +89,7 @@
         _pubTextField.autocorrectionType = UITextAutocorrectionTypeNo;
         _pubTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
         _pubTextField.textColor = kDarkGrayColor;
-        _pubTextField.font = HTFONTSIZE(kSystemFontSize16);
+        _pubTextField.font = HTFONTSIZE(kSystemFontSize15);
     }
     
     return _pubTextField;
@@ -100,7 +100,7 @@
     if (!_indexLabel) {
         _indexLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.bounds.origin.x + kIndexLabelLeftPadding, self.bounds.origin.y + 10, kIndexLabelWidth + 20, kIndexLabelHeight)];
         _indexLabel.backgroundColor = kClearColor;
-        _indexLabel.font = HTFONTSIZE(kFontSize16);
+        _indexLabel.font = HTFONTSIZE(kFontSize15);
         _indexLabel.textColor = [UIColor getColor:kTitleFontColor];
     }
     

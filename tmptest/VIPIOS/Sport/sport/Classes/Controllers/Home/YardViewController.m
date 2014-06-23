@@ -139,7 +139,8 @@
                     [cell.contentView addSubview:cell.subLabel];
                 }
                 CourseItem *courseItem = [[blockSelf.response courses] objectAtIndex:indexPath.row];
-//                cell.topLabel.text = courseItem.name;
+                cell.topLabel.text = courseItem.name;
+                cell.subLabel.text = courseItem.coachName;
                 cell.topLabel.text = @"篮球基础班";
                 cell.subLabel.text = @"王学新";
                 

@@ -17,6 +17,7 @@
     TT_RELEASE_SAFELY(_description);
     TT_RELEASE_SAFELY(_name);
     TT_RELEASE_SAFELY(_schoolTime);
+    TT_RELEASE_SAFELY(_coachName)
     TT_RELEASE_SAFELY(_priceString);
     [super dealloc];
 }
@@ -31,8 +32,14 @@
         self.name        = [self stringObjectFrom:dictionary withKey:@"name"];
         self.schoolTime  = [self stringObjectFrom:dictionary withKey:@"schoolTime"];
         self.coachId     = [self stringObjectFrom:dictionary withKey:@"coachId"];
+        self.coachName     = [self stringObjectFrom:dictionary withKey:@"coachName"];
         float price      = [self floatValueFrom:dictionary withKey:@"price"];
-        self.priceString = [NSString stringWithFormat:@"%.0f",price];
+        self.priceString = [NSString stringWithFormat:@"￥%.0f",price];
+        
+        
+        if ([self.name length] == 0) {
+            self.name = @"篮球课程";
+        }
 
     }
     return self;
@@ -157,6 +164,7 @@
 
 
 @implementation GymnasiumDetailResponse
+
 - (void)dealloc{
     
     TT_RELEASE_SAFELY(_address);
@@ -361,6 +369,88 @@
             
             self.courses = arrayResult;
         }
+    }
+    return self;
+}
+@end
+
+
+@implementation CoacheDetailResponse
+
+- (void)dealloc{
+    
+    TT_RELEASE_SAFELY(_itemId);
+    TT_RELEASE_SAFELY(_resume);
+    TT_RELEASE_SAFELY(_name);
+    TT_RELEASE_SAFELY(_introduction);
+    TT_RELEASE_SAFELY(_avatar);
+    TT_RELEASE_SAFELY(_tags);
+    TT_RELEASE_SAFELY(_phones);
+    TT_RELEASE_SAFELY(_hornors);
+    TT_RELEASE_SAFELY(_courses);
+    
+    [super dealloc];
+}
+
+- (id) initWithDictionary:(const NSDictionary *) dictionary
+{
+    self = [super initWithDictionary:dictionary];
+    if (self) {
+        
+        self.itemId       = [dictionary objectForKey:@"id"];
+        self.age          = [[dictionary objectForKey:@"age"] intValue];
+        self.name         = [dictionary objectForKey:@"name"];
+        self.avatar       = [dictionary objectForKey:@"avatar"];
+        self.resume       = [dictionary objectForKey:@"resume"];
+        self.introduction = [dictionary objectForKey:@"introduction"];
+        
+        
+        NSDictionary *location      = [dictionary objectForKey:@"location"];
+        self.longtitude             = [[location objectForKey:@"x"] floatValue];
+        self.lantitude              = [[location objectForKey:@"y"] floatValue];
+        
+        NSMutableArray *array = [dictionary objectForKey:@"tags"];
+        NSMutableArray *arrayResult = [NSMutableArray array];
+        @autoreleasepool {
+            for ( int i = 0 , total = [array count]; i < total; ++i) {
+                NSDictionary *dictionaryItem = (NSDictionary *) [array objectAtIndex:i];
+                EventTagItem *item = [[[EventTagItem alloc] initWithDictionary:dictionaryItem] autorelease];
+                [arrayResult addObject:item];
+            }
+            
+            self.tags = arrayResult;
+        }
+        
+        array = [dictionary objectForKey:@"phones"];
+        arrayResult = [NSMutableArray array];
+        @autoreleasepool {
+            for ( int i = 0 , total = [array count]; i < total; ++i) {
+                [arrayResult addObject:[array objectAtIndex:i]];
+            }
+            self.phones = arrayResult;
+        }
+        
+        array = [dictionary objectForKey:@"hornors"];
+        arrayResult = [NSMutableArray array];
+        @autoreleasepool {
+            for ( int i = 0 , total = [array count]; i < total; ++i) {
+                [arrayResult addObject:[array objectAtIndex:i]];
+            }
+            self.hornors = arrayResult;
+        }
+        
+        
+        array = [dictionary objectForKey:@"courses"];
+        arrayResult = [NSMutableArray array];
+        @autoreleasepool {
+            for ( int i = 0 , total = [array count]; i < total; ++i) {
+                NSDictionary *dictionaryItem = (NSDictionary *) [array objectAtIndex:i];
+                CourseItem *item = [[[CourseItem alloc] initWithDictionary:dictionaryItem] autorelease];
+                [arrayResult addObject:item];
+            }
+            self.courses = arrayResult;
+        }
+        
     }
     return self;
 }

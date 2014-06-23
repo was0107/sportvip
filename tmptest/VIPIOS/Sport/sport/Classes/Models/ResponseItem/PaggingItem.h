@@ -20,7 +20,7 @@
 
 
 @interface CourseItem : ListResponseItemBase
-@property (nonatomic, copy) NSString *advantage,*coachId,*description,*name,*schoolTime,*priceString;
+@property (nonatomic, copy) NSString *advantage,*coachId,*description,*name,*schoolTime,*priceString,*coachName;
 @end
 
 
@@ -55,6 +55,8 @@
 
 
 
+
+
 @interface CoacheItem : PaggingItem
 
 @property (nonatomic, copy) NSString *address,*name,*avatar,*certificate, *priceString, *distanceString;
@@ -66,6 +68,16 @@
 @property (nonatomic, copy) NSString *resume,*introduction;
 @property (nonatomic, retain) NSMutableArray *courses;
 @end
+
+
+@interface CoacheDetailResponse : ListResponseBase
+
+@property (nonatomic, copy) NSString *itemId,*avatar,*name,*introduction,*resume;
+@property (nonatomic, retain) NSMutableArray *tags,*phones,*hornors,*courses;
+@property (nonatomic, assign) float lantitude, longtitude;
+@property (nonatomic, assign) int age;
+@end
+
 
 /*
 address: ""

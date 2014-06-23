@@ -20,7 +20,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.view.backgroundColor = kWhiteColor;
     [self setTitleContent:kTitleAboutString];
     [self.view addSubview:self.iconImageView];
     [self.view addSubview:self.labelOne];
