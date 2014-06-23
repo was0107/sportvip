@@ -8,7 +8,7 @@
 
 #import "SplashViewController.h"
 
-#define kNumberOfPages 2
+#define kNumberOfPages 1
 
 #define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
 #define IS_IPHONE_5 (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 568.0f)
@@ -47,6 +47,12 @@
         imageNames = @[@"Default-568h", @"guide_iphone5_2"];
     }else{
         imageNames = @[@"Default", @"guide_iphone4_2"];
+    }
+    
+    if (IS_IPHONE_5) {
+        imageNames = @[@"guide_iphone5_2"];
+    }else{
+        imageNames = @[@"guide_iphone4_2"];
     }
     
     UIImageView *guideImage;
