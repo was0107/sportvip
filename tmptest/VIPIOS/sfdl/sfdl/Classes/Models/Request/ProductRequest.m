@@ -62,17 +62,14 @@
 {
     NSMutableArray *array =  [NSMutableArray arrayWithObjects:@"productName", nil];
     [array addObjectsFromArray: [super keyArrays]];
-    if (self.propertyId) {
-        [array addObject:@"propertyId"];
-    }
-    if (self.propertyListId) {
-        [array addObject:@"propertyListId"];
-    }
+    if ([self.propertyId count] > 0) {
+        for (int i = 0 ; i < [self.propertyId count]; i++) {
+            [array addObject:[NSString stringWithFormat:@"propertyId[%d]",i]];
+            [array addObject:[NSString stringWithFormat:@"propertyListId[%d]",i]];
+            [array addObject:[NSString stringWithFormat:@"propertyListValue[%d]",i]];
 
-    if (self.propertyListValues) {
-        [array addObject:@"propertyListValues"];
+        }
     }
-
     return array;
 }
 
@@ -80,16 +77,13 @@
 {
     NSMutableArray *array =   [NSMutableArray arrayWithObjects:self.productName ? self.productName : @"", nil];
     [array addObjectsFromArray: [super valueArrays]];
-    if (self.propertyId) {
-        [array addObject:self.propertyId];
+    if ([self.propertyId count] > 0) {
+        for (int i = 0 ; i < [self.propertyId count]; i++) {
+            [array addObject:[self.propertyId objectAtIndex:i]];
+            [array addObject:[self.propertyListId objectAtIndex:i]];
+            [array addObject:[self.propertyListValues objectAtIndex:i]];
+        }
     }
-    if (self.propertyListId) {
-        [array addObject:self.propertyListId];
-    }
-    if (self.propertyListValues) {
-        [array addObject:self.propertyListValues];
-    }
-
     return array;
 }
 

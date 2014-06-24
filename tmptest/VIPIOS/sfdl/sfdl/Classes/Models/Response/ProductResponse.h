@@ -30,7 +30,6 @@
 
 @end
 
-
 @interface PictureResponse : ListPaggingResponseBase
 
 @end

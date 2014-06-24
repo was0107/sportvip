@@ -76,7 +76,7 @@
                            @"上课时间：每周六 14：00-17：00",\
                            @"适合年龄",\
                            @"课程特色",nil];
-    NSArray *imageArray = [NSArray arrayWithObjects:@"map",@"cell_map",@"course",@"coach",@"age",@"special",nil];
+    NSArray *imageArray = [NSArray arrayWithObjects:@"map",@"cell_map",@"cell_teacher",@"cell_time",@"age",@"special",nil];
     
     self.tableView.cellCreateBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
         if (4 == indexPath.section) {
@@ -87,12 +87,12 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
 //                cell.backgroundColor = kClearColor;
                 cell.topLabel.frame = CGRectMake(10, 2, 300, 20);
-                cell.topLabel.font = HTFONTSIZE(kFontSize14);
+                cell.topLabel.font = HTFONTSIZE(kFontSize16);
                 cell.topLabel.numberOfLines = 0;
                 [cell.contentView addSubview:cell.topLabel];
             }
             NSString *title = [titleArray1 objectAtIndex:indexPath.row];
-            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize14) constrainedToSize:CGSizeMake(300, 2000)];
+            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 2000)];
             [cell.topLabel setFrameHeight:size.height+10];
             cell.topLabel.text = [titleArray1 objectAtIndex:indexPath.row];
             
@@ -124,8 +124,8 @@
             cell.topLabelEx.numberOfLines = 0;
             [cell.contentView addSubview:cell.topLabelEx];
             
-            cell.topLabelEx.font = HTFONTSIZE(kFontSize18);
-            cell.subRightEx.font = HTFONTSIZE(kFontSize18);
+            cell.topLabelEx.font = HTFONTSIZE(kFontSize16);
+            cell.subRightEx.font = HTFONTSIZE(kFontSize16);
             cell.subRightEx.textColor = [UIColor getColor:KCustomGreenColor];
             cell.subRightEx.textAlignment = UITextAlignmentRight;
             [cell.contentView addSubview:cell.subRightEx];
@@ -140,10 +140,10 @@
             cell.topLabelEx.font = HTFONTSIZE(kFontSize16);
             CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 2000)];
             [[cell.topLabelEx setFrameHeight:size.height + 4] setFrameWidth:size.width + 45];
-            cell.topLabelEx.imageSize = CGSizeMake(18, 20);
+//            cell.topLabelEx.imageSize = CGSizeMake(18, 20);
             [cell.topLabelEx setImages:[NSArray arrayWithObjects:@"hot",@"xin",nil] origitation:1];
             cell.subRightEx.text = @"￥2290";
-            CGFloat width = [cell.subRightEx.text sizeWithFont:HTFONTSIZE(kFontSize17)].width ;
+            CGFloat width = [cell.subRightEx.text sizeWithFont:HTFONTSIZE(kFontSize16)].width ;
             [cell.subRightEx setFrame:CGRectMake(310 - (width + 22),8, (width + 22), 24)];
 //            [cell.subRightEx setImages:[NSArray arrayWithObjects:@"icon",nil] origitation:0];
 
@@ -160,7 +160,7 @@
     self.tableView.cellHeightBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
         if (4 == indexPath.section) {
             NSString *title = [titleArray1 objectAtIndex:indexPath.row];
-            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize14) constrainedToSize:CGSizeMake(300, 2000)];
+            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 2000)];
             return size.height + 16;
         }
         else  if (5 == indexPath.section) {
@@ -180,7 +180,7 @@
     
     self.tableView.sectionHeaderHeightBlock = ^( UITableView *tableView, NSInteger section){
         NSString *string = [titleArray objectAtIndex:section];
-        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize14) constrainedToSize:CGSizeMake(300, 20000)];
+        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 20000)];
         return size.height + 20;
     };
     
@@ -207,7 +207,7 @@
             UIView *nilView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0)] autorelease];
             return nilView;
         }
-        NSArray *imageArray = [NSArray arrayWithObjects:@"map",@"cell_map",@"course",@"coach",@"age",@"special",nil];
+        NSArray *imageArray = [NSArray arrayWithObjects:@"map",@"cell_map",@"cell_teacher",@"cell_time",@"age",@"special",nil];
 
         NSString *string = [titleArray objectAtIndex:section];
         CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 20000)];

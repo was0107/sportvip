@@ -41,8 +41,8 @@
         [self.layer addSublayer:iconbg];
         
         UIImageView *icon = [[[UIImageView alloc] initWithFrame:CGRectMake(14, 14, 24, 24)] autorelease];;
-        [icon setImage:[UIImage imageNamed:@"icon_search"]];
-        icon.backgroundColor = kGrayColor;
+        [icon setImage:[UIImage imageNamed:@"ic_search_icon"]];
+        icon.backgroundColor = kClearColor;
         [self addSubview:_searchField];
         [self  addSubview:icon];
     }

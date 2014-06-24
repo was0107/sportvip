@@ -9,6 +9,7 @@
 #import "BaseTitleViewController.h"
 #import "UIImageView+WebCache.h"
 #import "UIImage+extend.h"
+#import "UIView+extend.h"
 #import "UIImage+tintedImage.h"
 
 
@@ -109,14 +110,15 @@
 
         
         UIImageView *bgView = [[[UIImageView alloc] initWithFrame:CGRectMake(30, 0, 60, 44)] autorelease];
-        bgView.image = [UIImage imageNamed:@"icon"];
+        bgView.image = [UIImage imageNamed:@"icon_default"];
         
         UITapGestureRecognizer *gesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(leftViewAction:)] autorelease];
         
         [_leftView addGestureRecognizer:gesture];
         if ([self.navigationController.viewControllers count] > 1 )
             [_leftView addSubview:back];
-
+        else
+            [_leftView setShiftHorizon:-15.0f];
         [_leftView addSubview:bgView];
     }
     return _leftView;

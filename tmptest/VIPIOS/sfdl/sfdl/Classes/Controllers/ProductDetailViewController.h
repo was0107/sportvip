@@ -6,9 +6,33 @@
 //  Copyright (c) 2014 allen.wang. All rights reserved.
 //
 
-#import "BaseSecondTitleViewController.h"
+#import "BaseTableViewController.h"
+#import "ViewPagerController.h"
+#import "ProductRequest.h"
+#import "ProductResponse.h"
 
-@interface ProductDetailViewController : BaseSecondTitleViewController
-@property (nonatomic, copy) NSString *productDetailId;
+@interface ProductDetailViewController : ViewPagerController
+@property (nonatomic, retain) ProductItem *productItem;
 
+@end
+
+
+
+@interface ProductDetailIntroController : BaseViewController
+
+@property(nonatomic, retain)UILabel *labelOne;
+@property(nonatomic, retain)UILabel *labelTwo;
+@property(nonatomic, retain)UIWebView *webView;
+
+@property (nonatomic, retain) ProductItem *productItem;
+@property (nonatomic, retain) ViewProductRequest        *request;
+@property (nonatomic, retain) ProductDetailResponse     *response;
+@end
+
+
+
+@interface ProductDetailCommentController : BaseTableViewController
+@property (nonatomic, retain) ProductItem *productItem;
+@property (nonatomic, retain) CommentListRequest    *request;
+@property (nonatomic, retain) CommentsResponse      *response;
 @end

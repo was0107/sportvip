@@ -57,9 +57,9 @@
     idBlock succBlock = ^(id content){
         DEBUGLOG(@"succ content %@", content);
         safeSelf.response = [[[AboutUsResponse alloc] initWithJsonString:content] autorelease];
-        safeSelf.labelOne.text = safeSelf.response.companyName;
+        safeSelf.labelOne.text = [NSString stringWithFormat:@"公司名称：%@",safeSelf.response.companyName];
         //        safeSelf.labelTwo.text = safeSelf.response.companyDes;
-        [safeSelf.labelTwo loadHTMLString:safeSelf.response.companyDes baseURL:nil];
+        [safeSelf.labelTwo loadHTMLString:safeSelf.response.contactus baseURL:nil];
     };
     
     idBlock failedBlock = ^(id content){
@@ -89,7 +89,6 @@
     {
         _labelOne = [[UILabel alloc]initWithFrame:CGRectMake(8, 44, 304, 20)];
         _labelOne.textColor  = [UIColor getColor:kCellLeftColor];
-        _labelOne.textAlignment = NSTextAlignmentCenter;
         _labelOne.backgroundColor = kClearColor;
         _labelOne.font = HTFONTSIZE(kSystemFontSize15);
         //        NSString *version = [NSString stringWithFormat:kAboutItemStringVersion,[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];

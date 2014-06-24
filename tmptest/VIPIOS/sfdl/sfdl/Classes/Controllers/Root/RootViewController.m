@@ -67,7 +67,7 @@
 
         [button0 setImage:[UIImage imageNamed:@"icon_search"] forState:UIControlStateNormal];
         [button1 setImage:[UIImage imageNamed:@"icon_share"] forState:UIControlStateNormal];
-        [button2 setImage:[UIImage imageNamed:@"icon_search"] forState:UIControlStateNormal];
+        [button2 setImage:[UIImage imageNamed:@"ic_more"] forState:UIControlStateNormal];
         [CreateObject addTargetEfection:button0];
         [CreateObject addTargetEfection:button1];
         [CreateObject addTargetEfection:button2];

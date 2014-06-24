@@ -227,6 +227,9 @@
         
         NSString *string = [_titleArray objectAtIndex:section];
         CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 20000)];
+        if (4== section) {
+            size.height += 20;
+        }
         return size.height + 20;
     };
     
@@ -239,6 +242,9 @@
         
         NSString *string = [_titleArray objectAtIndex:section];
         CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 20000)];
+        if (4== section) {
+            size.height += 20;
+        }
         UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, size.height + 20)] autorelease];
         view.backgroundColor = kWhiteColor;
         UIImageLabelEx *imageLabelEx = [[[UIImageLabelEx alloc] initWithFrame:CGRectMake(10, 6, 300, size.height+8)] autorelease];

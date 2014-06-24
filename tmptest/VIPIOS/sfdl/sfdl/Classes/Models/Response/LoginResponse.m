@@ -62,7 +62,7 @@
     
     TT_RELEASE_SAFELY(_companyName);
     TT_RELEASE_SAFELY(_companyDes);
-    
+    TT_RELEASE_SAFELY(_contactus);
     [super dealloc];
 }
 
@@ -72,6 +72,7 @@
         NSDictionary *company = [dictionary objectForKey:@"company_info"];
         self.companyName = [company objectForKey:@"company_name"];
         self.companyDes = [company objectForKey:@"company_desc"];
+        self.contactus = [company objectForKey:@"contactus"];
     }
     
     return self;

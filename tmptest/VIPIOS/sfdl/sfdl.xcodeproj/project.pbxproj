@@ -13,12 +13,18 @@
 		DD06522F194DAABD00EECCBE /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DD06522E194DAABD00EECCBE /* SVProgressHUD.bundle */; };
 		DD13AD6719592D33005D4222 /* ProductSearchExViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD13AD6619592D33005D4222 /* ProductSearchExViewController.m */; };
 		DD13AD6A19592E73005D4222 /* UIPopoverListView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD13AD6919592E73005D4222 /* UIPopoverListView.m */; };
+		DD13AD771959A5D6005D4222 /* ic_more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD13AD751959A5D6005D4222 /* ic_more@2x.png */; };
+		DD13AD781959A5D6005D4222 /* ic_search_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD13AD761959A5D6005D4222 /* ic_search_icon@2x.png */; };
+		DD13AD7D1959A831005D4222 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DD13AD7B1959A831005D4222 /* icon.png */; };
+		DD13AD7E1959A831005D4222 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD13AD7C1959A831005D4222 /* icon@2x.png */; };
+		DD13AD801959A83F005D4222 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD13AD7F1959A83F005D4222 /* Images.xcassets */; };
+		DD13AD821959A8AB005D4222 /* icon_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD13AD811959A8AB005D4222 /* icon_default@2x.png */; };
+		DD13AD861959ACA9005D4222 /* ViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD13AD851959ACA9005D4222 /* ViewPagerController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		DD3A3E79193E014D00043CA4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3A3E78193E014D00043CA4 /* Foundation.framework */; };
 		DD3A3E7B193E014D00043CA4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3A3E7A193E014D00043CA4 /* CoreGraphics.framework */; };
 		DD3A3E7D193E014D00043CA4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3A3E7C193E014D00043CA4 /* UIKit.framework */; };
 		DD3A3E83193E014D00043CA4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DD3A3E81193E014D00043CA4 /* InfoPlist.strings */; };
 		DD3A3E85193E014D00043CA4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3E84193E014D00043CA4 /* main.m */; };
-		DD3A3E91193E014D00043CA4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD3A3E90193E014D00043CA4 /* Images.xcassets */; };
 		DD3A3E98193E014D00043CA4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3A3E97193E014D00043CA4 /* XCTest.framework */; };
 		DD3A3E99193E014D00043CA4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3A3E78193E014D00043CA4 /* Foundation.framework */; };
 		DD3A3E9A193E014D00043CA4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3A3E7C193E014D00043CA4 /* UIKit.framework */; };
@@ -101,8 +107,6 @@
 		DD3A4001193E02D100043CA4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DD3A3FFB193E02D100043CA4 /* Default.png */; };
 		DD3A4002193E02D100043CA4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD3A3FFC193E02D100043CA4 /* Default@2x.png */; };
 		DD3A4003193E02D100043CA4 /* icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = DD3A3FFD193E02D100043CA4 /* icon-120.png */; };
-		DD3A4004193E02D100043CA4 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DD3A3FFE193E02D100043CA4 /* Icon.png */; };
-		DD3A4005193E02D100043CA4 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD3A3FFF193E02D100043CA4 /* Icon@2x.png */; };
 		DD3A4007193E032B00043CA4 /* libPrettyUtility.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3A4006193E032B00043CA4 /* libPrettyUtility.a */; };
 		DD3A4009193E033400043CA4 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3A4008193E033400043CA4 /* libz.dylib */; };
 		DD3A400B193E033F00043CA4 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3A400A193E033F00043CA4 /* libsqlite3.dylib */; };
@@ -176,6 +180,14 @@
 		DD13AD6619592D33005D4222 /* ProductSearchExViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductSearchExViewController.m; sourceTree = "<group>"; };
 		DD13AD6819592E73005D4222 /* UIPopoverListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPopoverListView.h; sourceTree = "<group>"; };
 		DD13AD6919592E73005D4222 /* UIPopoverListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPopoverListView.m; sourceTree = "<group>"; };
+		DD13AD751959A5D6005D4222 /* ic_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_more@2x.png"; sourceTree = "<group>"; };
+		DD13AD761959A5D6005D4222 /* ic_search_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_search_icon@2x.png"; sourceTree = "<group>"; };
+		DD13AD7B1959A831005D4222 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		DD13AD7C1959A831005D4222 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		DD13AD7F1959A83F005D4222 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		DD13AD811959A8AB005D4222 /* icon_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_default@2x.png"; sourceTree = "<group>"; };
+		DD13AD841959ACA9005D4222 /* ViewPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewPagerController.h; sourceTree = "<group>"; };
+		DD13AD851959ACA9005D4222 /* ViewPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewPagerController.m; sourceTree = "<group>"; };
 		DD3A3E75193E014D00043CA4 /* sfdl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sfdl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD3A3E78193E014D00043CA4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DD3A3E7A193E014D00043CA4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -184,7 +196,6 @@
 		DD3A3E82193E014D00043CA4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DD3A3E84193E014D00043CA4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DD3A3E86193E014D00043CA4 /* sfdl-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "sfdl-Prefix.pch"; sourceTree = "<group>"; };
-		DD3A3E90193E014D00043CA4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DD3A3E96193E014D00043CA4 /* sfdlTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sfdlTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD3A3E97193E014D00043CA4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		DD3A3E9F193E014D00043CA4 /* sfdlTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "sfdlTests-Info.plist"; sourceTree = "<group>"; };
@@ -336,8 +347,6 @@
 		DD3A3FFB193E02D100043CA4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		DD3A3FFC193E02D100043CA4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		DD3A3FFD193E02D100043CA4 /* icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-120.png"; sourceTree = "<group>"; };
-		DD3A3FFE193E02D100043CA4 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		DD3A3FFF193E02D100043CA4 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		DD3A4006193E032B00043CA4 /* libPrettyUtility.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPrettyUtility.a; path = "../PrettyUtility/build/Debug-iphoneos/libPrettyUtility.a"; sourceTree = "<group>"; };
 		DD3A4008193E033400043CA4 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DD3A400A193E033F00043CA4 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -448,6 +457,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DD13AD831959ACA9005D4222 /* ICViewPager */ = {
+			isa = PBXGroup;
+			children = (
+				DD13AD841959ACA9005D4222 /* ViewPagerController.h */,
+				DD13AD851959ACA9005D4222 /* ViewPagerController.m */,
+			);
+			path = ICViewPager;
+			sourceTree = "<group>";
+		};
 		DD3A3E6C193E014D00043CA4 = {
 			isa = PBXGroup;
 			children = (
@@ -496,7 +514,7 @@
 			isa = PBXGroup;
 			children = (
 				DD3A3EAD193E029300043CA4 /* Classes */,
-				DD3A3E90193E014D00043CA4 /* Images.xcassets */,
+				DD13AD7F1959A83F005D4222 /* Images.xcassets */,
 				DD3A3E7F193E014D00043CA4 /* Supporting Files */,
 			);
 			path = sfdl;
@@ -505,12 +523,12 @@
 		DD3A3E7F193E014D00043CA4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DD13AD7B1959A831005D4222 /* icon.png */,
+				DD13AD7C1959A831005D4222 /* icon@2x.png */,
 				DD3A3FFA193E02D100043CA4 /* Default-568h@2x.png */,
 				DD3A3FFB193E02D100043CA4 /* Default.png */,
 				DD3A3FFC193E02D100043CA4 /* Default@2x.png */,
 				DD3A3FFD193E02D100043CA4 /* icon-120.png */,
-				DD3A3FFE193E02D100043CA4 /* Icon.png */,
-				DD3A3FFF193E02D100043CA4 /* Icon@2x.png */,
 				DD3A3E80193E014D00043CA4 /* sfdl-Info.plist */,
 				DD3A3E81193E014D00043CA4 /* InfoPlist.strings */,
 				DD3A3E84193E014D00043CA4 /* main.m */,
@@ -724,6 +742,7 @@
 		DD3A3F49193E029300043CA4 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				DD13AD831959ACA9005D4222 /* ICViewPager */,
 				DD3A3F4A193E029300043CA4 /* AKTabBarController */,
 				DD3A3F58193E029300043CA4 /* DataTracker */,
 				DD3A3F62193E029300043CA4 /* iRate */,
@@ -874,6 +893,9 @@
 		DD7737DB1940A162006239B2 /* sfdl */ = {
 			isa = PBXGroup;
 			children = (
+				DD13AD811959A8AB005D4222 /* icon_default@2x.png */,
+				DD13AD751959A5D6005D4222 /* ic_more@2x.png */,
+				DD13AD761959A5D6005D4222 /* ic_search_icon@2x.png */,
 				DD8EEAFE194428FB00CACC22 /* home1@2x.png */,
 				DD8EEAFF194428FB00CACC22 /* home2@2x.png */,
 				DD8EEB00194428FB00CACC22 /* home3@2x.png */,
@@ -1024,7 +1046,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD3A3FCE193E029300043CA4 /* icon_tabbar_setting_f@2x.png in Resources */,
-				DD3A3E91193E014D00043CA4 /* Images.xcassets in Resources */,
+				DD13AD7D1959A831005D4222 /* icon.png in Resources */,
 				DD3A3FCA193E029300043CA4 /* icon_tabbar_hzxs_f@2x.png in Resources */,
 				DD8EEB11194428FB00CACC22 /* home8@2x.png in Resources */,
 				DD3A3FD0193E029300043CA4 /* icon_tabbar_setting_n@2x.png in Resources */,
@@ -1036,13 +1058,14 @@
 				DD8EEB12194428FB00CACC22 /* home9@2x.png in Resources */,
 				DD3A4000193E02D100043CA4 /* Default-568h@2x.png in Resources */,
 				DD3A3FCC193E029300043CA4 /* icon_tabbar_hzxs_n@2x.png in Resources */,
+				DD13AD821959A8AB005D4222 /* icon_default@2x.png in Resources */,
 				DD3A4003193E02D100043CA4 /* icon-120.png in Resources */,
 				DD3A3FD7193E029300043CA4 /* icon_user_paid.png in Resources */,
 				DD3A3FC9193E029300043CA4 /* icon_tabbar_hzxs_f.png in Resources */,
+				DD13AD7E1959A831005D4222 /* icon@2x.png in Resources */,
 				DD8EEB0E194428FB00CACC22 /* home5@2x.png in Resources */,
 				DD3A3FC1193E029300043CA4 /* icon_back.png in Resources */,
 				DD7737E01940A162006239B2 /* icon_search@2x.png in Resources */,
-				DD3A4005193E02D100043CA4 /* Icon@2x.png in Resources */,
 				DD7737DF1940A162006239B2 /* icon_back@2x.png in Resources */,
 				DD3A3FCB193E029300043CA4 /* icon_tabbar_hzxs_n.png in Resources */,
 				DD3A4002193E02D100043CA4 /* Default@2x.png in Resources */,
@@ -1052,20 +1075,22 @@
 				DD3A3FC8193E029300043CA4 /* icon_search.png in Resources */,
 				DD3A3FD4193E029300043CA4 /* icon_tabbar_user_n@2x.png in Resources */,
 				DD3A3E83193E014D00043CA4 /* InfoPlist.strings in Resources */,
+				DD13AD771959A5D6005D4222 /* ic_more@2x.png in Resources */,
 				DD8EEB0B194428FB00CACC22 /* home2@2x.png in Resources */,
 				DD3A3FD8193E029300043CA4 /* icontop_location_n.png in Resources */,
 				DD3A3FE0193E029300043CA4 /* AKTabBarController.bundle in Resources */,
+				DD13AD801959A83F005D4222 /* Images.xcassets in Resources */,
 				DD3A4001193E02D100043CA4 /* Default.png in Resources */,
 				DD8EEB15194428FB00CACC22 /* home12@2x.png in Resources */,
 				DD8EEB13194428FB00CACC22 /* home10@2x.png in Resources */,
 				DD7737E11940A162006239B2 /* icon_share@2x.png in Resources */,
 				DD3A3FCF193E029300043CA4 /* icon_tabbar_setting_n.png in Resources */,
 				DD3A3FD1193E029300043CA4 /* icon_tabbar_user_f.png in Resources */,
+				DD13AD781959A5D6005D4222 /* ic_search_icon@2x.png in Resources */,
 				DD8EEB0D194428FB00CACC22 /* home4@2x.png in Resources */,
 				DD3A3FD6193E029300043CA4 /* icon_user_order.png in Resources */,
 				DD8EEB10194428FB00CACC22 /* home7@2x.png in Resources */,
 				DD3A3FD3193E029300043CA4 /* icon_tabbar_user_n.png in Resources */,
-				DD3A4004193E02D100043CA4 /* Icon.png in Resources */,
 				DD3A3FC0193E029300043CA4 /* bg_top.png in Resources */,
 				DD3A3FD5193E029300043CA4 /* icon_user_info.png in Resources */,
 			);
@@ -1156,6 +1181,7 @@
 				DD3A3F9B193E029300043CA4 /* BaseWebViewController.m in Sources */,
 				DD13AD6A19592E73005D4222 /* UIPopoverListView.m in Sources */,
 				DD8EEADF1944243000CACC22 /* RegisterViewController.m in Sources */,
+				DD13AD861959ACA9005D4222 /* ViewPagerController.m in Sources */,
 				DD3A3FF0193E029300043CA4 /* NSDate+Helper.m in Sources */,
 				DD3A3FF1193E029300043CA4 /* UIImageView+(ASI).m in Sources */,
 				DD3A3FF5193E029300043CA4 /* PubTextField.m in Sources */,
@@ -1277,8 +1303,8 @@
 		DD3A3EA8193E014D00043CA4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Guoyan Geng (SGL9K9F566)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1298,8 +1324,8 @@
 		DD3A3EA9193E014D00043CA4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Guoyan Geng (SGL9K9F566)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

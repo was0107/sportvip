@@ -67,7 +67,7 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         ProductItem *item = [blockSelf.response at:indexPath.row ];
         ProductDetailViewController *controller = [[[ProductDetailViewController alloc] init] autorelease];
-        controller.secondTitleLabel.text = item.productName;
+        controller.productItem = item;
         [blockSelf.navigationController hidesBottomBarWhenPushed];
         [blockSelf.navigationController pushViewController:controller animated:YES];
         

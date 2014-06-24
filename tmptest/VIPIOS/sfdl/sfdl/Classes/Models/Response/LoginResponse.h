@@ -27,7 +27,7 @@
 
 
 @interface AboutUsResponse : ListResponseBase
-@property (nonatomic, copy) NSString *companyName, *companyDes;
+@property (nonatomic, copy) NSString *companyName, *companyDes,*contactus;
 @end
 
 
