@@ -7,9 +7,14 @@
 //
 
 #import "LanguageViewController.h"
+#import "LoginRequest.h"
+#import "LoginResponse.h"
+#import "ProductResponse.h"
 
 @interface LanguageViewController ()
-
+@property (nonatomic, retain) SetSurportlangRequest *setLanguageRequest;
+@property (nonatomic, retain) SurportLangRequest    *request;
+@property (nonatomic, retain) SurportLangResponse   *response;
 @end
 
 @implementation LanguageViewController
@@ -26,6 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.secondTitleLabel.text = @"Languages";
     // Do any additional setup after loading the view.
 }
 
@@ -35,15 +41,105 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (int) tableViewType
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    return  eTypeNone;
 }
-*/
+
+- (void) configTableView
+{
+    __block LanguageViewController *blockSelf = self;
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
+    self.tableView.cellCreateBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
+        static NSString *identifier = @"ProductCategoryViewController_IDENTIFIER0";
+        BaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        if (!cell){
+            cell = [[BaseTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+            
+            cell.topLabel.frame = CGRectMake(15, 10, 290, 24);
+            cell.topLabel.textColor = kBlackColor;
+            cell.topLabel.font = HTFONTSIZE(kFontSize15);
+            [cell.contentView addSubview:cell.topLabel];
+        }
+        LanguageItem *item = [blockSelf.response at:indexPath.row ];
+        cell.topLabel.text = item.lang_name;
+        return cell;
+    };
+    
+    self.tableView.cellNumberBlock = ^( UITableView *tableView, NSInteger section) {
+        return [blockSelf.response arrayCount];
+    };
+    
+    self.tableView.sectionHeaderHeightBlock = ^( UITableView *tableView, NSInteger section){
+        return 0.0f;
+    };
+    
+    self.tableView.cellSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        LanguageItem *item = [blockSelf.response at:indexPath.row ];
+        [self sendRequestToSetLanguase:item.lang];
+    };
+    
+    [self.view addSubview:self.tableView];
+    
+    [self sendRequestToServer];
+}
+
+- (void) dealWithData
+{
+    [self.tableView reloadData];
+}
+
+- (void) sendRequestToSetLanguase:(NSString *)lang
+{
+    if ([[UserDefaultsManager userName] length] == 0) {
+        [SVProgressHUD showWithOnlyStatus:@"登录之后才能设置"];
+        return;
+    }
+    idBlock successedBlock = ^(id content){
+        DEBUGLOG(@"success conent %@", content);
+        [SVProgressHUD showSuccessWithStatus:@"设置成功"];
+        [UserDefaultsManager saveLang:lang];
+    };
+    
+    idBlock failedBlock = ^(id content){
+        DEBUGLOG(@"failed content %@", content);
+    };
+    
+    idBlock errBlock = ^(id content){
+        DEBUGLOG(@"error content %@", content);
+    };
+    if (!_setLanguageRequest) {
+        self.setLanguageRequest = [[[SetSurportlangRequest alloc] init] autorelease];
+    }
+    self.setLanguageRequest.lang = lang;
+    self.setLanguageRequest.username = [UserDefaultsManager userName];
+    [WASBaseServiceFace serviceWithMethod:[self.setLanguageRequest URLString] body:[self.setLanguageRequest toJsonString] onSuc:successedBlock onFailed:failedBlock onError:errBlock];
+ 
+}
+
+- (void) sendRequestToServer
+{
+    __block LanguageViewController *blockSelf = self;
+    idBlock successedBlock = ^(id content){
+        DEBUGLOG(@"success conent %@", content);
+        blockSelf.response = [[SurportLangResponse alloc] initWithJsonString:content];
+        [blockSelf dealWithData];
+        
+    };
+    
+    idBlock failedBlock = ^(id content){
+        DEBUGLOG(@"failed content %@", content);
+    };
+    
+    idBlock errBlock = ^(id content){
+        DEBUGLOG(@"error content %@", content);
+    };
+    if (!_request) {
+        self.request = [[[SurportLangRequest alloc] init] autorelease];
+    }    
+    [WASBaseServiceFace serviceWithMethod:[self.request URLString] body:[self.request toJsonString] onSuc:successedBlock onFailed:failedBlock onError:errBlock];
+}
 
 @end

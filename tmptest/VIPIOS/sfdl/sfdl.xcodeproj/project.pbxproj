@@ -11,6 +11,8 @@
 		47DF739A194D952B0004CC63 /* AgentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47DF7399194D952B0004CC63 /* AgentListViewController.m */; };
 		47DF739D194D954E0004CC63 /* AgentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47DF739C194D954E0004CC63 /* AgentDetailViewController.m */; };
 		DD06522F194DAABD00EECCBE /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DD06522E194DAABD00EECCBE /* SVProgressHUD.bundle */; };
+		DD13AD6719592D33005D4222 /* ProductSearchExViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD13AD6619592D33005D4222 /* ProductSearchExViewController.m */; };
+		DD13AD6A19592E73005D4222 /* UIPopoverListView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD13AD6919592E73005D4222 /* UIPopoverListView.m */; };
 		DD3A3E79193E014D00043CA4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3A3E78193E014D00043CA4 /* Foundation.framework */; };
 		DD3A3E7B193E014D00043CA4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3A3E7A193E014D00043CA4 /* CoreGraphics.framework */; };
 		DD3A3E7D193E014D00043CA4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3A3E7C193E014D00043CA4 /* UIKit.framework */; };
@@ -135,7 +137,6 @@
 		DD8EEADF1944243000CACC22 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8EEAB61944243000CACC22 /* RegisterViewController.m */; };
 		DD8EEAE01944243000CACC22 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8EEAB91944243000CACC22 /* RootViewController.m */; };
 		DD8EEAE11944243000CACC22 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8EEABB1944243000CACC22 /* SearchViewController.m */; };
-		DD8EEAE51944243000CACC22 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8EEAC51944243000CACC22 /* SplashViewController.m */; };
 		DD8EEB0A194428FB00CACC22 /* home1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD8EEAFE194428FB00CACC22 /* home1@2x.png */; };
 		DD8EEB0B194428FB00CACC22 /* home2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD8EEAFF194428FB00CACC22 /* home2@2x.png */; };
 		DD8EEB0C194428FB00CACC22 /* home3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD8EEB00194428FB00CACC22 /* home3@2x.png */; };
@@ -171,6 +172,10 @@
 		47DF739B194D954E0004CC63 /* AgentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgentDetailViewController.h; sourceTree = "<group>"; };
 		47DF739C194D954E0004CC63 /* AgentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgentDetailViewController.m; sourceTree = "<group>"; };
 		DD06522E194DAABD00EECCBE /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		DD13AD6519592D33005D4222 /* ProductSearchExViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductSearchExViewController.h; sourceTree = "<group>"; };
+		DD13AD6619592D33005D4222 /* ProductSearchExViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductSearchExViewController.m; sourceTree = "<group>"; };
+		DD13AD6819592E73005D4222 /* UIPopoverListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPopoverListView.h; sourceTree = "<group>"; };
+		DD13AD6919592E73005D4222 /* UIPopoverListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPopoverListView.m; sourceTree = "<group>"; };
 		DD3A3E75193E014D00043CA4 /* sfdl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sfdl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD3A3E78193E014D00043CA4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DD3A3E7A193E014D00043CA4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -384,8 +389,6 @@
 		DD8EEAB91944243000CACC22 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		DD8EEABA1944243000CACC22 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		DD8EEABB1944243000CACC22 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
-		DD8EEAC41944243000CACC22 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
-		DD8EEAC51944243000CACC22 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		DD8EEAFE194428FB00CACC22 /* home1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home1@2x.png"; sourceTree = "<group>"; };
 		DD8EEAFF194428FB00CACC22 /* home2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home2@2x.png"; sourceTree = "<group>"; };
 		DD8EEB00194428FB00CACC22 /* home3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home3@2x.png"; sourceTree = "<group>"; };
@@ -844,6 +847,8 @@
 		DD3A3F86193E029300043CA4 /* Widget */ = {
 			isa = PBXGroup;
 			children = (
+				DD13AD6819592E73005D4222 /* UIPopoverListView.h */,
+				DD13AD6919592E73005D4222 /* UIPopoverListView.m */,
 				47DF7395194D83A80004CC63 /* RTLabel.h */,
 				47DF7396194D83A80004CC63 /* RTLabel.m */,
 				DD8EEB161944566900CACC22 /* KxMenu.h */,
@@ -911,6 +916,8 @@
 				DD8EEAB01944243000CACC22 /* ProductDetailViewController.m */,
 				DD8EEAB31944243000CACC22 /* ProductSearchViewController.h */,
 				DD8EEAB41944243000CACC22 /* ProductSearchViewController.m */,
+				DD13AD6519592D33005D4222 /* ProductSearchExViewController.h */,
+				DD13AD6619592D33005D4222 /* ProductSearchExViewController.m */,
 				DD8EEAB51944243000CACC22 /* RegisterViewController.h */,
 				DD8EEAB61944243000CACC22 /* RegisterViewController.m */,
 				DD8EEABA1944243000CACC22 /* SearchViewController.h */,
@@ -924,7 +931,6 @@
 				47DF739B194D954E0004CC63 /* AgentDetailViewController.h */,
 				47DF739C194D954E0004CC63 /* AgentDetailViewController.m */,
 				DD8EEAB71944243000CACC22 /* Root */,
-				DD8EEAC31944243000CACC22 /* Splash */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -936,15 +942,6 @@
 				DD8EEAB91944243000CACC22 /* RootViewController.m */,
 			);
 			path = Root;
-			sourceTree = "<group>";
-		};
-		DD8EEAC31944243000CACC22 /* Splash */ = {
-			isa = PBXGroup;
-			children = (
-				DD8EEAC41944243000CACC22 /* SplashViewController.h */,
-				DD8EEAC51944243000CACC22 /* SplashViewController.m */,
-			);
-			path = Splash;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1094,6 +1091,7 @@
 				DD8EEB1E19445E9100CACC22 /* LanguageViewController.m in Sources */,
 				DD7737E71940AA4D006239B2 /* BaseSecondTitleViewController.m in Sources */,
 				DD8EEADE1944243000CACC22 /* ProductSearchViewController.m in Sources */,
+				DD13AD6719592D33005D4222 /* ProductSearchExViewController.m in Sources */,
 				DD3A3F99193E029300043CA4 /* BaseTitleViewController.m in Sources */,
 				DD3A3FBF193E029300043CA4 /* UserItemBase.m in Sources */,
 				DD3A3F9A193E029300043CA4 /* BaseViewController.m in Sources */,
@@ -1132,7 +1130,6 @@
 				DD3A3FF8193E029300043CA4 /* UITextField+DelegateBlocks.m in Sources */,
 				DD3A3FBA193E029300043CA4 /* ListResponseBase.m in Sources */,
 				DD3A3FB7193E029300043CA4 /* ModifyArchiveRequest.m in Sources */,
-				DD8EEAE51944243000CACC22 /* SplashViewController.m in Sources */,
 				DD8EEADA1944243000CACC22 /* NewsViewController.m in Sources */,
 				DD7737DA19409E04006239B2 /* CustomSearchBar.m in Sources */,
 				DD8EEAE01944243000CACC22 /* RootViewController.m in Sources */,
@@ -1157,6 +1154,7 @@
 				DD8EEAC71944243000CACC22 /* ContactUsViewController.m in Sources */,
 				DD3A3FE1193E029300043CA4 /* AKTabBarController.m in Sources */,
 				DD3A3F9B193E029300043CA4 /* BaseWebViewController.m in Sources */,
+				DD13AD6A19592E73005D4222 /* UIPopoverListView.m in Sources */,
 				DD8EEADF1944243000CACC22 /* RegisterViewController.m in Sources */,
 				DD3A3FF0193E029300043CA4 /* NSDate+Helper.m in Sources */,
 				DD3A3FF1193E029300043CA4 /* UIImageView+(ASI).m in Sources */,

@@ -101,8 +101,9 @@
     
     [self.view addSubview:self.tableView];
     
-    
-    [self.tableView doSendRequest:YES];
+    if (self.productTypeId) {
+        [self.tableView doSendRequest:YES];
+    }
 }
 
 - (void) dealWithData
@@ -131,7 +132,6 @@
         [_request nextPage];
         [blockSelf dealWithData];
         [blockSelf.tableView tableViewDidFinishedLoading];
-        
     };
     
     idBlock failedBlock = ^(id content){

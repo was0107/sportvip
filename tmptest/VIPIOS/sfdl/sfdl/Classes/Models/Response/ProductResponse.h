@@ -20,6 +20,10 @@
 
 @end
 
+@interface SurportLangResponse : ListPaggingResponseBase
+
+@end
+
 
 @interface ProductDetailResponse : ListPaggingResponseBase
 
@@ -67,7 +71,6 @@
 @interface MenuResponse : ListPaggingResponseBase
 
 @end
-
 
 
 @interface ProductPropertySearchResponse : ListPaggingResponseBase

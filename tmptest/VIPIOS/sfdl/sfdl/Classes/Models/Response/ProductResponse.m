@@ -39,6 +39,20 @@
 
 @end
 
+@implementation SurportLangResponse
+
+- (id) translateItemFrom:(const NSDictionary *) dictionary
+{
+    return [[[LanguageItem alloc] initWithDictionary:dictionary] autorelease];
+}
+
+- (NSString *) resultKey
+{
+    return @"langs";
+}
+
+@end
+
 @implementation ProductDetailResponse
 
 - (id) translateItemFrom:(const NSDictionary *) dictionary
@@ -179,7 +193,7 @@
 
 - (NSString *) resultKey
 {
-    return @"items";
+    return @"propertyList";
 }
 
 @end

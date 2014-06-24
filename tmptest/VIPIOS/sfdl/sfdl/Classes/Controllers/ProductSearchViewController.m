@@ -175,9 +175,7 @@
     [SVProgressHUD showWithStatus:@"正在提交..."];
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
-        ProductPropertySearchResponse *searchResponse = [[[ProductPropertySearchResponse alloc] initWithJsonString:content] autorelease];
-        
-        
+        ProductPropertySearchResponse *searchResponse = [[[ProductPropertySearchResponse alloc] initWithJsonString:content] autorelease];        
     };
     
     idBlock failedBlock = ^(id content){

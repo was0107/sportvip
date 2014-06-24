@@ -47,8 +47,8 @@
 
 - (NSString *) toJsonString
 {
-    self.comapnyId = @"1";
-    self.lang = @"zh";
+    self.comapnyId = [UserDefaultsManager currentCompanyId];
+    self.lang = [UserDefaultsManager currentLang];
     NSMutableArray *keys = [[[NSMutableArray alloc] initWithArray:[self commonKeysArray]] autorelease];
     NSMutableArray *keysContent = [self keyArrays];
     if (keysContent)

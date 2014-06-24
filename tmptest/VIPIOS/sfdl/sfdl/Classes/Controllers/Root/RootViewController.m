@@ -20,6 +20,7 @@
 #import "ProductRequest.h"
 #import "ProductResponse.h"
 #import "BaseWebViewController.h"
+#import "ProductSearchExViewController.h"
 
 @interface RootViewController ()<XLCycleScrollViewDelegate, XLCycleScrollViewDatasource>
 @property (nonatomic, retain) XLCycleScrollView *cycleView;
@@ -79,9 +80,16 @@
         [_rightView addSubview:button1];
         [_rightView addSubview:button2];
         
+        [button0 addTarget:self action:@selector(searchButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         [button2 addTarget:self action:@selector(rightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _rightView;
+}
+
+- (void) searchButtonAction:(id) sender
+{
+    ProductSearchExViewController *controller = [[[ProductSearchExViewController alloc] init] autorelease];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)viewDidLoad
@@ -179,7 +187,7 @@
     UIButton *button = (UIButton *) sender;
     CustomImageTitleButton *titleButton = (CustomImageTitleButton *)button.superview;
     NSArray *controllersArray = @[@"AboutUsViewController",@"ProductCategoryViewController",@"NewsViewController",@"ContactUsViewController",\
-                                  @"ProductSearchViewController",@"LeaveMessageViewController",@"LoginViewController",@"AgentListViewController",
+                                  @"ProductSearchExViewController",@"LeaveMessageViewController",@"LoginViewController",@"AgentListViewController",
                                   ];
     int position = titleButton.tag - 1000;
 //    if (self.menuResponse) {

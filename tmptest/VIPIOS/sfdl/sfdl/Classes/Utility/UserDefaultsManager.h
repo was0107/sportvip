@@ -120,4 +120,14 @@
 + (void) saveGuidePicture:(id) picture;
 + (id) guidePicture;
 
++ (void) saveLang:(NSString *)lang;
++ (NSString *) currentLang;
+
+
++ (void) saveCompanyId:(NSString *)lang;
++ (NSString *) currentCompanyId;
+
++ (void) saveKey:(NSString *)key;
++ (NSString *) currentKey;
+
 @end

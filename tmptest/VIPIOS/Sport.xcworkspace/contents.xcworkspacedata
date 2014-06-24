@@ -5,6 +5,9 @@
       location = "group:Sport/sport.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:sfdl/sfdl.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:PrettyUtility/PrettyUtility.xcodeproj">
    </FileRef>
 </Workspace>

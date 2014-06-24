@@ -13,13 +13,28 @@
 @synthesize count       = _count;
 @synthesize arrayCount  = _arrayCount;
 
+-(NSInteger)integerValueFrom:(const NSDictionary *)dictionary withKey:(NSString *)key
+{
+    NSNumber *num = [dictionary objectForKey:key];
+    NSInteger value;
+    if (num == (NSNumber *)[NSNull null]) {
+        value = 0;
+    }
+    else
+    {
+        value = [num integerValue];
+    }
+    return value;
+}
+
+
 - (id) initWithDictionary:(NSDictionary *) dictionary
 {
     self = [super initWithDictionary:dictionary];
     if (self) {
         self.result = [self getResultFrom:dictionary];
-        self.count  = [[dictionary objectForKey:@"records"] integerValue];
-        self.totalPages  = [[dictionary objectForKey:@"totalPages"] integerValue];
+        self.count = [self integerValueFrom:dictionary withKey:@"records"];
+        self.totalPages = [self integerValueFrom:dictionary withKey:@"totalPages"];
         self.arrayCount = [self.result count];
         [self translateFrom:dictionary];
     }

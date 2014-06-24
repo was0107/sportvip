@@ -37,7 +37,7 @@
     [super viewDidLoad];
     self.secondTitleLabel.text = @"About Us";
     [self.tableView removeFromSuperview];
-    [self.view addSubview:self.iconImageView];
+//    [self.view addSubview:self.iconImageView];
     [self.view addSubview:self.labelOne];
     [self.view addSubview:self.labelTwo];
     [self sendRequestToServer];
@@ -57,7 +57,7 @@
     idBlock succBlock = ^(id content){
         DEBUGLOG(@"succ content %@", content);
          safeSelf.response = [[[AboutUsResponse alloc] initWithJsonString:content] autorelease];
-        safeSelf.labelOne.text = safeSelf.response.companyName;
+        safeSelf.labelOne.text = [NSString stringWithFormat:@"公司名称：%@",safeSelf.response.companyName];
 //        safeSelf.labelTwo.text = safeSelf.response.companyDes;
         [safeSelf.labelTwo loadHTMLString:safeSelf.response.companyDes baseURL:nil];
     };
@@ -87,9 +87,8 @@
 {
     if (!_labelOne)
     {
-        _labelOne = [[UILabel alloc]initWithFrame:kAboutLabelOneFrame];
+        _labelOne = [[UILabel alloc]initWithFrame:CGRectMake(8, 44, 304, 20)];
         _labelOne.textColor  = [UIColor getColor:kCellLeftColor];
-        _labelOne.textAlignment = NSTextAlignmentCenter;
         _labelOne.backgroundColor = kClearColor;
         _labelOne.font = HTFONTSIZE(kSystemFontSize15);
 //        NSString *version = [NSString stringWithFormat:kAboutItemStringVersion,[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
@@ -102,7 +101,7 @@
 {
     if (!_labelTwo)
     {
-        _labelTwo = [[UIWebView alloc]initWithFrame:CGRectMake(0, 160+kHeightIncrease, 320, 260)];
+        _labelTwo = [[UIWebView alloc]initWithFrame:CGRectMake(0, 64, 320, kContentBoundsHeight-64)];
 //        _labelTwo.textColor  = [UIColor getColor:kCellLeftColor];
 //        _labelTwo.textAlignment = NSTextAlignmentCenter;
         _labelTwo.backgroundColor = kClearColor;

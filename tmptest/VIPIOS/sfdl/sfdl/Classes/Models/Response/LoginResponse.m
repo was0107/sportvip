@@ -82,6 +82,31 @@
 @end
 
 
+@implementation LanguageItem
+
+
+- (void)dealloc{
+    
+    TT_RELEASE_SAFELY(_lang);
+    TT_RELEASE_SAFELY(_lang_name);
+    
+    [super dealloc];
+}
+
+- (id)initWithDictionary:(const NSDictionary *)dictionary{
+    self = [super init];
+    if (self) {
+        self.lang = [dictionary objectForKey:@"lang"];
+        self.lang_name = [dictionary objectForKey:@"lang_name"];
+    }
+    
+    return self;
+}
+
+
+@end
+
+
 @implementation ProductTypeItem
 
 - (id) initWithDictionary:(const NSDictionary *) dictionary
@@ -104,12 +129,13 @@
 {
     self = [super init];
     if (self) {
-        self.productId = [dictionary objectForKey:@"productId"];
-        self.productName = [dictionary objectForKey:@"productName"];
-        self.productType = [dictionary objectForKey:@"productType"];
-        self.productTypeName = [dictionary objectForKey:@"productTypeName"];
-        self.productDesc = [dictionary objectForKey:@"productDesc"];
-        self.productImg = [dictionary objectForKey:@"productImg"];
+        
+        self.productId = [self stringObjectFrom:dictionary withKey:@"productId"];
+        self.productName = [self stringObjectFrom:dictionary withKey:@"productName"];
+        self.productType = [self stringObjectFrom:dictionary withKey:@"productType"];
+        self.productTypeName = [self stringObjectFrom:dictionary withKey:@"productTypeName"];
+        self.productDesc = [self stringObjectFrom:dictionary withKey:@"productDesc"];
+        self.productImg = [self stringObjectFrom:dictionary withKey:@"productImg"];
     }
     
     return self;
@@ -306,16 +332,6 @@
 
 @end
 
-
-@interface ProperListItem: ListResponseItemBase
-
-@property (nonatomic, copy) NSString *propertyListId, *propertyListValue;
-@end
-
-@interface ProperItem : ListResponseItemBase
-@property (nonatomic, copy) NSString *propertyId, *propertyName, *productTypeId, *productTypeName;
-@property (nonatomic, retain) NSMutableArray *valueList;
-@end
 
 
 

@@ -31,9 +31,15 @@
 @end
 
 
+@interface LanguageItem : ListResponseItemBase
+@property (nonatomic, copy) NSString *lang, *lang_name;
+
+@end
+
 @interface ProductTypeItem : ListResponseItemBase
 @property (nonatomic, copy) NSString *productTypeId, *productTypeName, *parent;
 @end
+
 
 
 @interface ProductItem : ListResponseItemBase
@@ -84,7 +90,6 @@
 @end
 
 @interface ProperListItem: ListResponseItemBase
-
 @property (nonatomic, copy) NSString *propertyListId, *propertyListValue;
 @end
 

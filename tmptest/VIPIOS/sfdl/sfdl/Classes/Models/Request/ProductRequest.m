@@ -52,6 +52,9 @@
 - (void) dealloc
 {
     TT_RELEASE_SAFELY(_productName);
+    TT_RELEASE_SAFELY(_propertyId);
+    TT_RELEASE_SAFELY(_propertyListId);
+    TT_RELEASE_SAFELY(_propertyListValues);
     [super dealloc];
 }
 
@@ -59,19 +62,40 @@
 {
     NSMutableArray *array =  [NSMutableArray arrayWithObjects:@"productName", nil];
     [array addObjectsFromArray: [super keyArrays]];
+    if (self.propertyId) {
+        [array addObject:@"propertyId"];
+    }
+    if (self.propertyListId) {
+        [array addObject:@"propertyListId"];
+    }
+
+    if (self.propertyListValues) {
+        [array addObject:@"propertyListValues"];
+    }
+
     return array;
 }
 
 - (NSMutableArray *) valueArrays
 {
-    NSMutableArray *array =   [NSMutableArray arrayWithObjects:self.productName, nil];
+    NSMutableArray *array =   [NSMutableArray arrayWithObjects:self.productName ? self.productName : @"", nil];
     [array addObjectsFromArray: [super valueArrays]];
+    if (self.propertyId) {
+        [array addObject:self.propertyId];
+    }
+    if (self.propertyListId) {
+        [array addObject:self.propertyListId];
+    }
+    if (self.propertyListValues) {
+        [array addObject:self.propertyListValues];
+    }
+
     return array;
 }
 
 - (NSString *) methodString
 {
-    return @"Product/getProductList";
+    return @"Product/searchProduct";
 }
 
 @end

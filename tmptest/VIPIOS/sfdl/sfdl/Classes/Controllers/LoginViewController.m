@@ -177,6 +177,7 @@
         DEBUGLOG(@"succ content %@", content);
         LoginResponse *response = [[[LoginResponse alloc] initWithJsonString:content] autorelease];
         [UserDefaultsManager saveUserId:response.key];
+        [UserDefaultsManager saveUserName:_phoneTextField.pubTextField.text];
         [safeSelf.confirmButton setEnabled:YES];
         [SVProgressHUD dismiss];
         [safeSelf.navigationController popToRootViewControllerAnimated:YES];

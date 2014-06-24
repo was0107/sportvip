@@ -259,4 +259,53 @@
 }
 
 
++ (void) saveLang:(NSString *)lang
+{
+    [[NSUserDefaults standardUserDefaults] setObject:lang
+                                              forKey:@"LANG"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (NSString *) currentLang
+{
+    NSString *lang = [[NSUserDefaults standardUserDefaults] objectForKey:@"LANG"];
+    if (!lang || [lang length] == 0) {
+        return @"zh";
+    }
+    return lang;
+}
+
++ (void) saveCompanyId:(NSString *)lang
+{
+    [[NSUserDefaults standardUserDefaults] setObject:lang
+                                              forKey:@"COMPANY_ID"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+}
++ (NSString *) currentCompanyId
+{
+    NSString *lang = [[NSUserDefaults standardUserDefaults] objectForKey:@"COMPANY_ID"];
+    if (!lang || [lang length] == 0) {
+        return @"1";
+    }
+    return lang;
+}
+
++ (void) saveKey:(NSString *)key
+{
+    [[NSUserDefaults standardUserDefaults] setObject:key
+                                              forKey:@"USER_KEY"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (NSString *) currentKey
+{
+    NSString *key = [[NSUserDefaults standardUserDefaults] objectForKey:@"USER_KEY"];
+    if (!key || [key length] == 0) {
+        return @"";
+    }
+    return key;
+}
+
+
 @end

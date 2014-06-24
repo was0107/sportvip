@@ -19,6 +19,7 @@
 
 @interface SearchProductRequest : ListPaggingRequestBase
 @property (nonatomic, copy) NSString *productName;
+@property (nonatomic, retain) NSMutableArray *propertyId,*propertyListId,*propertyListValues;
 @end
 
 

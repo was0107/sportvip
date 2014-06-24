@@ -37,7 +37,7 @@
     [super viewDidLoad];
     self.secondTitleLabel.text = @"Contact Us";
     [self.tableView removeFromSuperview];
-    [self.view addSubview:self.iconImageView];
+//    [self.view addSubview:self.iconImageView];
     [self.view addSubview:self.labelOne];
     [self.view addSubview:self.labelTwo];
     [self sendRequestToServer];
@@ -87,7 +87,7 @@
 {
     if (!_labelOne)
     {
-        _labelOne = [[UILabel alloc]initWithFrame:kAboutLabelOneFrame];
+        _labelOne = [[UILabel alloc]initWithFrame:CGRectMake(8, 44, 304, 20)];
         _labelOne.textColor  = [UIColor getColor:kCellLeftColor];
         _labelOne.textAlignment = NSTextAlignmentCenter;
         _labelOne.backgroundColor = kClearColor;
@@ -102,7 +102,7 @@
 {
     if (!_labelTwo)
     {
-        _labelTwo = [[UIWebView alloc]initWithFrame:CGRectMake(0, 160+kHeightIncrease, 320, 260)];
+        _labelTwo = [[UIWebView alloc]initWithFrame:CGRectMake(0, 64, 320, kContentBoundsHeight-64)];
         //        _labelTwo.textColor  = [UIColor getColor:kCellLeftColor];
         //        _labelTwo.textAlignment = NSTextAlignmentCenter;
         _labelTwo.backgroundColor = kClearColor;
