@@ -92,7 +92,7 @@
     
     switch (component) {
         case ViewPagerIndicator:
-            return [[UIColor redColor] colorWithAlphaComponent:0.64];
+            return [kBlueColor colorWithAlphaComponent:0.64];
             break;
         default:
             break;

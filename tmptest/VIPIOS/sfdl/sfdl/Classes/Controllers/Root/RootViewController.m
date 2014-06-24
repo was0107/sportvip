@@ -190,18 +190,18 @@
                                   @"ProductSearchExViewController",@"LeaveMessageViewController",@"LoginViewController",@"AgentListViewController",
                                   ];
     int position = titleButton.tag - 1000;
-//    if (self.menuResponse) {
-//        MenuItem  *menuItem = [self.menuResponse at:position];
-//        if (menuItem) {
-//            if ([menuItem isNULL]) {
-//                BaseWebViewController *webController = [[[BaseWebViewController alloc] init] autorelease];
-//                webController.title = menuItem.menu_name;
-//                webController.requestURL = menuItem.menu_url;
-//                [self.navigationController pushViewController:webController animated:YES];
-//                return;
-//            }
-//        }
-//    }
+    if (self.menuResponse) {
+        MenuItem  *menuItem = [self.menuResponse at:position];
+        if (menuItem) {
+            if ([menuItem isNULL]) {
+                BaseWebViewController *webController = [[[BaseWebViewController alloc] init] autorelease];
+                webController.title = menuItem.menu_name;
+                webController.requestURL = menuItem.menu_url;
+                [self.navigationController pushViewController:webController animated:YES];
+                return;
+            }
+        }
+    }
     Class class = NSClassFromString(controllersArray[position]);
     UIViewController *vc1 = [[[class alloc] init] autorelease];
     [self.navigationController pushViewController:vc1 animated:YES];

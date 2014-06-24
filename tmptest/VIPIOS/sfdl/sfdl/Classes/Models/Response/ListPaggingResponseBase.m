@@ -53,6 +53,9 @@
 //    DEBUGLOG(@"dictionary = %@",dictionary);
     NSMutableArray *array = [dictionary objectForKey:[self resultKey]];
     NSMutableArray *arrayResult = [NSMutableArray array];
+    if ([array isKindOfClass:[NSNull class]]) {
+        return arrayResult;
+    }
     @autoreleasepool {
         for ( int i = 0 , total = [array count]; i < total; ++i) {
             NSDictionary *dictionary = (NSDictionary *) [array objectAtIndex:i];
