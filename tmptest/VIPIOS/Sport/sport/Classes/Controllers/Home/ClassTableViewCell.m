@@ -143,7 +143,7 @@
             
             EventTagItem *tagItem = [item.events objectAtIndex:i];
             labelEx.text = tagItem.name;
-            [labelEx setImage:@"icon" origitation:2];
+            [labelEx setImage:tagItem.icon origitation:2];
         }
         
         

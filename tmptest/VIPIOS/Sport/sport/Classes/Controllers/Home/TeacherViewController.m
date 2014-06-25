@@ -79,6 +79,8 @@
 
 - (IBAction)showTeachers:(id)sender
 {
+    self.telArray = self.response.phones;
+    [self.poplistview.listView reloadData];
     [self.poplistview show];
 }
 
@@ -285,18 +287,20 @@
     };
 }
 
+
+
 - (void) dealWithData
 {
     CLLocationCoordinate2D center;
     center.latitude=self.response.lantitude;
     center.longitude=self.response.longtitude;
     
-    MKCoordinateSpan span;
-    span.latitudeDelta=0.2;
-    span.longitudeDelta=0.2;
-    MKCoordinateRegion region={center,span};
-    
-    [self.mapView setRegion:region];
+//    MKCoordinateSpan span;
+//    span.latitudeDelta=0.2;
+//    span.longitudeDelta=0.2;
+//    MKCoordinateRegion region={center,span};
+//    
+//    [self.mapView setRegion:region];
     [self.mapView setExclusiveTouch:YES];
     [self.tableView reloadData];
     [self.view addSubview:self.tableView];}

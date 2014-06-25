@@ -35,15 +35,55 @@
         self.coachName     = [self stringObjectFrom:dictionary withKey:@"coachName"];
         float price      = [self floatValueFrom:dictionary withKey:@"price"];
         self.priceString = [NSString stringWithFormat:@"￥%.0f",price];
-        
-        
-        if ([self.name length] == 0) {
-            self.name = @"篮球课程";
-        }
+//        if ([self.name length] == 0) {
+//            self.name = @"篮球课程";
+//        }
 
     }
     return self;
 }
+@end
+@implementation TelItem
+
+- (void)dealloc{
+    
+    TT_RELEASE_SAFELY(_name);
+    TT_RELEASE_SAFELY(_avatar);
+    TT_RELEASE_SAFELY(_tel);
+    [super dealloc];
+}
+
+
++(TelItem *) hotItem
+{
+    TelItem *item = [[[TelItem alloc] init] autorelease];
+    item.name = @"";
+    item.avatar = kImageDefault;
+    item.tel = @"13600000000";
+    return item;
+}
+
+@end
+
+@implementation HornorItem
+
+- (void)dealloc{
+    
+    TT_RELEASE_SAFELY(_year);
+    TT_RELEASE_SAFELY(_honor);
+    [super dealloc];
+}
+
+- (id) initWithDictionary:(const NSDictionary *) dictionary
+{
+    self = [super init];
+    if (self) {
+        self.year = [self stringObjectFrom:dictionary withKey:@"year"];
+        self.honor = [self stringObjectFrom:dictionary withKey:@"honor"];
+    }
+    return self;
+}
+
 @end
 
 
@@ -228,25 +268,27 @@
         }
         
         
-        array = [dictionary objectForKey:@"phones"];
-        arrayResult = [NSMutableArray array];
-        @autoreleasepool {
-            for ( int i = 0 , total = [array count]; i < total; ++i) {
-                [arrayResult addObject:[array objectAtIndex:i]];
-            }
-            self.phones = arrayResult;
-        }
-        
+//        array = [dictionary objectForKey:@"phones"];
+//        arrayResult = [NSMutableArray array];
+//        @autoreleasepool {
+//            for ( int i = 0 , total = [array count]; i < total; ++i) {
+//                [arrayResult addObject:[array objectAtIndex:i]];
+//            }
+//            self.phones = arrayResult;
+//        }
+//        
         array = [dictionary objectForKey:@"hornors"];
         arrayResult = [NSMutableArray array];
         @autoreleasepool {
             for ( int i = 0 , total = [array count]; i < total; ++i) {
-                [arrayResult addObject:[array objectAtIndex:i]];
+                NSDictionary *dictionaryItem = (NSDictionary *) [array objectAtIndex:i];
+                HornorItem *item           = [[[HornorItem alloc] initWithDictionary:dictionaryItem] autorelease];
+                [arrayResult addObject:item];
             }
             self.hornors = arrayResult;
         }
         
-        
+        self.phones = [NSMutableArray array];
         array = [dictionary objectForKey:@"coaches"];
         arrayResult = [NSMutableArray array];
         @autoreleasepool {
@@ -254,9 +296,14 @@
                 NSDictionary *dictionaryItem = (NSDictionary *) [array objectAtIndex:i];
                 CoacheItem *item = [[[CoacheItem alloc] initWithDictionary:dictionaryItem] autorelease];
                 [arrayResult addObject:item];
+                
+                [self.phones addObjectsFromArray:item.phones];
             }
             self.coaches = arrayResult;
+            
+            
         }
+        
         array = [dictionary objectForKey:@"courses"];
         arrayResult = [NSMutableArray array];
         @autoreleasepool {
@@ -333,12 +380,14 @@
             self.tags = arrayResult;
         }
         
-        array = [dictionary objectForKey:@"phones"];
+        array = [dictionary objectForKey:@"phoneNum"];
         arrayResult = [NSMutableArray array];
         @autoreleasepool {
             for ( int i = 0 , total = [array count]; i < total; ++i) {
-                NSDictionary *dictionaryItem = (NSDictionary *) [array objectAtIndex:i];
-                EventTagItem *item           = [[[EventTagItem alloc] initWithDictionary:dictionaryItem] autorelease];
+                TelItem *item = [[[TelItem alloc] init] autorelease];
+                item.name     = self.name;
+                item.avatar   = self.avatar;
+                item.tel      = [array objectAtIndex:i];
                 [arrayResult addObject:item];
             }
             
@@ -349,7 +398,9 @@
         arrayResult = [NSMutableArray array];
         @autoreleasepool {
             for ( int i = 0 , total = [array count]; i < total; ++i) {
-                [arrayResult addObject:[array objectAtIndex:i]];
+                NSDictionary *dictionaryItem = (NSDictionary *) [array objectAtIndex:i];
+                HornorItem *item           = [[[HornorItem alloc] initWithDictionary:dictionaryItem] autorelease];
+                [arrayResult addObject:item];
             }
             self.hornors = arrayResult;
         }
@@ -421,20 +472,27 @@
             self.tags = arrayResult;
         }
         
-        array = [dictionary objectForKey:@"phones"];
+        array = [dictionary objectForKey:@"phoneNum"];
         arrayResult = [NSMutableArray array];
         @autoreleasepool {
             for ( int i = 0 , total = [array count]; i < total; ++i) {
-                [arrayResult addObject:[array objectAtIndex:i]];
+                TelItem *hornorItem = [[[TelItem alloc] init] autorelease];
+                hornorItem.name = self.name;
+                hornorItem.avatar = self.avatar;
+                hornorItem.tel =[array objectAtIndex:i];
+                [arrayResult addObject:hornorItem];
             }
             self.phones = arrayResult;
         }
         
-        array = [dictionary objectForKey:@"hornors"];
+        array = [dictionary objectForKey:@"honors"];
         arrayResult = [NSMutableArray array];
         @autoreleasepool {
             for ( int i = 0 , total = [array count]; i < total; ++i) {
-                [arrayResult addObject:[array objectAtIndex:i]];
+                NSDictionary *dictionaryItem = (NSDictionary *) [array objectAtIndex:i];
+                EventTagItem *item = [[[EventTagItem alloc] initWithDictionary:dictionaryItem] autorelease];
+                [arrayResult addObject:item];
+
             }
             self.hornors = arrayResult;
         }
@@ -455,4 +513,26 @@
     return self;
 }
 @end
+
+
+
+@implementation CityItem
+- (void)dealloc{
+    
+    TT_RELEASE_SAFELY(_cityCode);
+    TT_RELEASE_SAFELY(_cityName);
+    [super dealloc];
+}
+
+- (id) initWithDictionary:(const NSDictionary *) dictionary
+{
+    self = [super init];
+    if (self) {
+        self.cityCode     = [self stringObjectFrom:dictionary withKey:@"cityCode"];
+        self.cityName   = [self stringObjectFrom:dictionary withKey:@"cityName"];
+    }
+    return self;
+}
+@end
+
 

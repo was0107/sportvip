@@ -120,3 +120,26 @@
     return @"sport/coach";
 }
 @end
+
+
+@implementation EventsRequest
+
+- (NSString *) methodString
+{
+    return @"sport/events";
+}
+
+@end
+
+
+@implementation CitysRequest
+
+- (NSString *) methodString
+{
+    return @"sport/cities";
+}
+
+@end
+
+
+

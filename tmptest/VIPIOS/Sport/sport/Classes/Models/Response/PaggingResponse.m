@@ -28,3 +28,33 @@
 
 @end
 
+@implementation EventsResponse
+
+- (id) translateItemFrom:(const NSDictionary *) dictionary
+{
+    return [[[EventTagItem alloc] initWithDictionary:dictionary] autorelease];
+}
+@end
+
+@implementation CitysResponse
+
+
+- (id) translateFrom:(const NSDictionary *) dictionary
+{
+    NSArray *array = (NSArray *) dictionary;
+    self.result = [NSMutableArray array];
+    for (int i = 0 ; i < [array count]; i++) {
+            CityItem *item = [[[CityItem alloc] initWithDictionary:[array objectAtIndex:i]] autorelease];
+        [self.result addObject:item];
+    }
+    self.count = [self.result count];
+
+    return self;
+}
+
+
+- (id) translateItemFrom:(const NSDictionary *) dictionary
+{
+    return [[[CityItem alloc] initWithDictionary:dictionary] autorelease];
+}
+@end

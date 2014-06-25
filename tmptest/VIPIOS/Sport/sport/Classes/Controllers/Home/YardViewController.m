@@ -14,6 +14,7 @@
 #import "ClassDetailViewController.h"
 #import "PaggingRequest.h"
 #import "PaggingResponse.h"
+#import "TeacherViewController.h"
 
 @interface YardViewController()<XLCycleScrollViewDelegate, XLCycleScrollViewDatasource>
 @property (nonatomic, retain) XLCycleScrollView *cycleView;
@@ -70,6 +71,8 @@
 
 - (IBAction)showTeachers:(id)sender
 {
+    self.telArray = self.response.phones;
+    [self.poplistview.listView reloadData];
     [self.poplistview show];
 }
 
@@ -103,10 +106,10 @@
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 }
                 
-                int total =  MIN([blockSelf.response.events count], 6 * (indexPath.section + 1));
+                int total =  MIN([blockSelf.response.events count], 6 * (indexPath.section));
                 [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-                for (int i = 6 * indexPath.section ; i < total; i++) {
-                    EventTagItem *tagItem = [blockSelf.response.events objectAtIndex:0];
+                for (int i = 6 * (indexPath.section - 1) ; i < total; i++) {
+                    EventTagItem *tagItem = [blockSelf.response.events objectAtIndex:i];
                     UIImageLabelEx *labelEx = [[[UIImageLabelEx alloc] initWithFrame:CGRectMake(15 + 50 * (i % 6), 4, 49, 20)] autorelease];
                     labelEx.backgroundColor = kClearColor;
                     labelEx.textColor = kDarkTextColor;
@@ -141,8 +144,6 @@
                 CourseItem *courseItem = [[blockSelf.response courses] objectAtIndex:indexPath.row];
                 cell.topLabel.text = courseItem.name;
                 cell.subLabel.text = courseItem.coachName;
-                cell.topLabel.text = @"篮球基础班";
-                cell.subLabel.text = @"王学新";
                 
                 return (UITableViewCell *)cell;
 
@@ -154,24 +155,23 @@
                     cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 }
-                NSArray *titleIndexArray = @[@"Solution",@"Genuine Parts",@"Download",@"Download"];
-                NSArray *imageIndexArray = @[@"home9",@"home10",@"home11",@"home12"];
-                int flag =  (iPhone5) ? 120 : 110;
+//                NSArray *titleIndexArray = @[@"Solution",@"Genuine Parts",@"Download",@"Download"];
+//                NSArray *imageIndexArray = @[@"home9",@"home10",@"home11",@"home12"];
+//                int flag =  (iPhone5) ? 120 : 110;
                 int tag = 1000;
-                for (int i = 0 ; i < 4; i++) {
-                    CustomRoundImageTitle *button = [[[CustomRoundImageTitle alloc] initWithFrame:CGRectMake(4 + 79 * i, 4, 75, 90)] autorelease];
+                int total =  MIN([blockSelf.response.events count], 4 * (indexPath.section-2));
+                [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+                for (int i = 4 * (indexPath.section - 3) ; i < total; i++) {
+                    CoacheItem *item = [[blockSelf.response coaches] objectAtIndex:i];
+                    CustomRoundImageTitle *button = [[[CustomRoundImageTitle alloc] initWithFrame:CGRectMake(4 + 79 * (i%4), 4, 75, 90)] autorelease];
                     button.tag =  tag+i;
                     button.bottomTitleLabel.font = HTFONTSIZE(kFontSize10);
                     [button.bottomTitleLabel setShiftVertical:-4];
                     [button addTarget:blockSelf action:@selector(didTaped:) forControlEvents:UIControlEventTouchUpInside];
-                    [button setText:titleIndexArray[i] image:@"icon"];
+                    [button setText:item.name image:item.avatar];
                     [cell.contentView addSubview:button];
                 }
-
-                
                 return (UITableViewCell *)cell;
-
-
             }
             else {
                 static NSString *identifier = @"YARD_TABLEVIEW_CELL_IDENTIFIER4";
@@ -181,8 +181,6 @@
                     [cell.contentView addSubview:cell.topLabel];
                     [cell.contentView addSubview:cell.subLabel];
                 }
-                cell.topLabel.text = @"篮球基础班";
-                cell.subLabel.text = @"王学新";
                 return (UITableViewCell *)cell;
             }
     };
@@ -295,6 +293,7 @@
         self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];;
     } else {
         self.tableView.tableHeaderView = self.cycleView;
+        [self.cycleView reloadData];
     }
     self.titleArray = [NSMutableArray arrayWithObjects:self.response.address,@"支持运动项目",@"热门课程",@"驻点教练",self.response.descriptionString, nil];;
     [self.tableView reloadData];
@@ -331,7 +330,12 @@
 
 - (IBAction)didTaped:(id)sender
 {
-    
+    CustomRoundImageTitle *button = (CustomRoundImageTitle *) sender;
+    CoacheItem *item = [[self.response coaches] objectAtIndex:(button.tag - 1000)];
+    TeacherViewController *controller = [[[TeacherViewController alloc] init] autorelease];
+    controller.item = item;
+    [controller setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 

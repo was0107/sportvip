@@ -179,17 +179,30 @@
         [cell.contentView addSubview:cell.subLabel];
         [cell.contentView addSubview:cell.leftImageView];
     }
-    
-    cell.topLabel.text = @"王老师";
-    cell.subLabel.text = @"136000000";
-    cell.leftImageView.image = [UIImage imageNamed:@"icon"];
+    TelItem *telItem = [self.telArray objectAtIndex:indexPath.row];
+    cell.topLabel.text = telItem.name;
+    cell.subLabel.text = telItem.tel;
+    if ([telItem.avatar hasPrefix:@"http"]) {
+        [cell.leftImageView setImageWithURL:[NSURL URLWithString:telItem.avatar]
+                           placeholderImage:[UIImage imageNamed:kImageDefault]
+                                    success:^(UIImage *image){
+                                        UIImage * image1 = [image imageScaledToSizeEx:CGSizeMake(100, 80)];
+                                        cell.leftImageView.image = image1;
+                                    }
+                                    failure:^(NSError *error){
+                                        cell.leftImageView.image = [UIImage imageNamed:kImageDefault];
+                                    }];
+    } else {
+        cell.leftImageView.image = [UIImage imageNamed:telItem.avatar];
+    }
+
     return (UITableViewCell *)cell;
 }
 
 - (NSInteger)popoverListView:(UIPopoverListView *)popoverListView
        numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return [self.telArray count];
 }
 
 #pragma mark - UIPopoverListViewDelegate

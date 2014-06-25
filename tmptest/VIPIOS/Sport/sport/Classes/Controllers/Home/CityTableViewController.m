@@ -9,10 +9,16 @@
 #import "CityTableViewController.h"
 #import "BaseTableViewCell.h"
 #import "STLocationInstance.h"
+#import "PaggingRequest.h"
+#import "PaggingResponse.h"
+
 //#import "DataManager.h"
 
 @interface CityTableViewController ()
 //@property (nonatomic, retain) ListCityResponse *response;
+
+@property (nonatomic, retain) CitysRequest *request;
+@property (nonatomic, retain) CitysResponse *response;
 @property (nonatomic, retain) UILabel *currentCity;
 
 @end
@@ -74,7 +80,7 @@
 - (CGRect) tableViewFrame
 {
     CGRect rect = kContentNoBtmFrame;
-    rect.origin.y += 44.0f;
+    rect.origin.y = 44.0f;
     rect.size.height -= 44.0f;
     return rect;
 }
@@ -93,54 +99,52 @@
 
 - (void)sendRequestToServer
 {
-//    __block CityTableViewController *safeSelf = self;
-//    idBlock successBlock = ^(id content){
-//        [safeSelf.tableView tableViewDidFinishedLoading];
-//        safeSelf.response = [[[ListCityResponse alloc] initWithJsonString:content] autorelease];
-//        DEBUGLOG(@"success content %@", _response.result);
-//        [safeSelf.tableView reloadData];
-//    };
-//    
-//    idBlock failedBlock = ^(id content){
-//        DEBUGLOG(@"failed content %@", content);
-//        [safeSelf.tableView tableViewDidFinishedLoading];
-//    };
-//    
-//    ListCityRequest *request = [[[ListCityRequest alloc] init] autorelease];
-//    [WASBaseServiceFace serviceWithMethod:[request methodString] body:[request toURLString] onSuc:successBlock onFailed:failedBlock onError:failedBlock];
+    __block CityTableViewController *safeSelf = self;
+    idBlock successBlock = ^(id content){
+        [safeSelf.tableView tableViewDidFinishedLoading];
+        safeSelf.response = [[[CitysResponse alloc] initWithJsonString:content] autorelease];
+        DEBUGLOG(@"success content %@", _response.result);
+        [safeSelf.tableView reloadData];
+    };
+    
+    idBlock failedBlock = ^(id content){
+        DEBUGLOG(@"failed content %@", content);
+        [safeSelf.tableView tableViewDidFinishedLoading];
+    };
+    
+    CitysRequest *request = [[[CitysRequest alloc] init] autorelease];
+    [WASBaseServiceFace serviceWithMethod:[request URLString] body:[request toJsonString] onSuc:successBlock onFailed:failedBlock onError:failedBlock];
     
 }
 
 - (void) configTableView
 {
-//    __block CityTableViewController *safeSelf = self;
-//
-//    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-//    self.tableView.cellCreateBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
-//        static NSString *identifier = @"MORE_CELL_IDENTIFIER";
-//        BaseSingleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-//        if (!cell){
-//            cell = [[[BaseSingleTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
-//            cell.contentView.clipsToBounds = YES;
-//        }
-//        ListCityItem *item = [_response.result objectAtIndex:indexPath.row];
-//        cell.accessoryType = ([[DefaultsManager city] isEqualToString:item.cityName]) ? UITableViewCellAccessoryCheckmark: UITableViewCellAccessoryNone;
-//        cell.contentView.backgroundColor = (indexPath.row %2 == 0) ? [UIColor getColor:@"f1f1f1"]: [UIColor getColor:@"e8e8e8"];
-//        cell.topLabel.text = item.cityName;
-//        return cell;
-//    };
-//    
-//    self.tableView.cellNumberBlock = ^(UITableView *tableView, NSInteger section){
-//        return (NSInteger)[_response.result count];
-//    };
-//    
-//    self.tableView.cellSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
-//        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//        ListCityItem *item = [_response.result objectAtIndex:indexPath.row];
-//        [DefaultsManager saveCity:item.cityName];
-//        [tableView reloadData];
-//        [safeSelf leftButtonAction:nil];
-//    };
+    __block CityTableViewController *safeSelf = self;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
+    self.tableView.cellCreateBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
+        static NSString *identifier = @"MORE_CELL_IDENTIFIER";
+        BaseSingleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        if (!cell){
+            cell = [[[BaseSingleTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
+            cell.contentView.clipsToBounds = YES;
+            cell.topLabel.textColor = kBlackColor;
+            [cell.contentView addSubview:cell.topLabel];
+        }
+        CityItem *item = [_response.result objectAtIndex:indexPath.row];
+        cell.topLabel.text = item.cityName;
+        return cell;
+    };
+    
+    self.tableView.cellNumberBlock = ^(UITableView *tableView, NSInteger section){
+        return (NSInteger)[_response.result count];
+    };
+    
+    self.tableView.cellSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    };
+    [self.view addSubview:self.tableView];
 }
 
 

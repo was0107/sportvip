@@ -39,3 +39,13 @@
 
 @interface CoachDetailRequest : DetailRequest
 @end
+
+
+@interface EventsRequest : ListPaggingRequestBase
+
+@end
+
+@interface CitysRequest : ListRequestBase
+
+@end
+

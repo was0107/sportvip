@@ -18,3 +18,12 @@
 @interface CoachsResponse : ListPaggingResponseBase
 
 @end
+
+
+@interface EventsResponse : ListPaggingResponseBase
+
+@end
+
+@interface CitysResponse : ListPaggingResponseBase
+
+@end

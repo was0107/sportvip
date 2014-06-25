@@ -10,11 +10,14 @@
 #import "BaseTableView.h"
 #import "BaseTableViewCell.h"
 #import "UIPopoverListView.h"
+#import "PaggingItem.h"
 
 
 @interface BaseTableViewController : BaseTitleViewController
 @property (nonatomic,retain) BaseTableView *tableView;
 @property (nonatomic, retain) UIPopoverListView *poplistview ;
+
+@property (nonatomic, assign) NSMutableArray *telArray;
 
 -(void)refreshTableView;
 @end

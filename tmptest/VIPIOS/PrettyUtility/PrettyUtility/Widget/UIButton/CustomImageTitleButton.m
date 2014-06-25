@@ -10,6 +10,7 @@
 #import "UIColor+extend.h"
 #import "UIImage+tintedImage.h"
 #import "UIButton+WebCache.h"
+#import "UIImageView+WebCache.h"
 
 
 @interface CustomImageTitleButton()
@@ -127,7 +128,11 @@
 - (void) setText:(NSString *) text image:(NSString *)imageName
 {
     self.bottomTitleLabel.text = text;
-    [self.topImage setImage:[UIImage imageNamed:imageName]];
+    if ([imageName hasPrefix:@"http"]) {
+        [self.topImage setImageWithURL:[NSURL URLWithString:imageName] placeholderImage:[UIImage imageNamed:@"icon"]];
+    } else {
+        self.topImage.image = [UIImage imageNamed:imageName];
+    }
 }
 
 

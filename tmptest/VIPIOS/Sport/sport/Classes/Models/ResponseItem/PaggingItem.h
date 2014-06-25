@@ -23,8 +23,17 @@
 @property (nonatomic, copy) NSString *advantage,*coachId,*description,*name,*schoolTime,*priceString,*coachName;
 @end
 
+@interface TelItem : ListResponseItemBase
+@property (nonatomic, copy) NSString *name,*avatar,*tel;
 
++(TelItem *) hotItem;
 
+@end
+
+@interface HornorItem : ListResponseItemBase
+@property (nonatomic, copy) NSString *year,*honor;
+
+@end
 
 @interface PaggingItem : ListResponseItemBase
 @property (nonatomic, copy) NSString *itemId;
@@ -76,6 +85,10 @@
 @property (nonatomic, retain) NSMutableArray *tags,*phones,*hornors,*courses;
 @property (nonatomic, assign) float lantitude, longtitude;
 @property (nonatomic, assign) int age;
+@end
+
+@interface CityItem : ListResponseItemBase
+@property (nonatomic, copy) NSString *cityCode,*cityName;
 @end
 
 

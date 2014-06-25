@@ -38,7 +38,8 @@
 // 测试环境
 #ifdef kUseSimulateData     
 
-#define kHostDomain         @"http://116.255.202.113:8080/"    // test stage
+//#define kHostDomain         @"http://116.255.202.113:8080/"    // test stage
+#define kHostDomain         @"http://172.16.6.14:8180/sportvip/"    // test stage
 
 
 // 正式环境
