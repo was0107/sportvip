@@ -128,6 +128,9 @@
 
 -(NSString *)methodString
 {
+    if (self.isUpdate) {
+        return @"user/updateUserInfo";
+    }
     return  @"user/register";
 }
 @end

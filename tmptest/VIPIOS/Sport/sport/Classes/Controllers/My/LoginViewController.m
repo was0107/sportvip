@@ -12,6 +12,8 @@
 #import "RegisterViewController.h"
 #import "LoginRequest.h"
 #import "LoginResponse.h"
+#import "CreateObject.h"
+#import "CustomAnimation.h"
 
 @interface LoginViewController ()
 @property (nonatomic, retain) PubTextField *phoneTextField;
@@ -100,6 +102,7 @@
         UIImage *image = [[UIImage imageNamed:@"button_login_normal"] stretchableImageWithLeftCapWidth:4 topCapHeight:4];
         [_confirmButton setBackgroundImage:image forState:UIControlStateNormal];
         [_confirmButton setTitle:@"登录" forState:UIControlStateNormal];
+        [CreateObject addTargetEfection:_confirmButton];
         [_confirmButton addTarget:self action:@selector(confirmButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     
@@ -118,12 +121,14 @@
     if (![IdentifierValidator isValid:IdentifierTypePhone value:_phoneTextField.pubTextField.text] &&
         ![IdentifierValidator isValid:IdentifierTypeEmail value:_phoneTextField.pubTextField.text]) {
         [SVProgressHUD showErrorWithStatus:@"请输入正确的手机号/邮箱"];
+        [CustomAnimation shakeAnimation:_phoneTextField duration:0.2 vigour:0.01 number:5  direction:1];
         [_phoneTextField becomeFirstResponder];
         return NO;
     }
     
     if (![IdentifierValidator isValid:IdentifierTypePassword value:_pwdTextField.pubTextField.text]) {
         [SVProgressHUD showErrorWithStatus:@"密码为6-16位的字母、数字组成"];
+        [CustomAnimation shakeAnimation:_pwdTextField duration:0.2 vigour:0.01 number:5  direction:1];
         [_pwdTextField becomeFirstResponder];
         return NO;
     }
@@ -164,6 +169,7 @@
         DEBUGLOG(@"failed content %@", content);
         [[[[ErrorResponse alloc] initWithJsonString:content] autorelease] show];
         [safeSelf.confirmButton setEnabled:YES];
+        [SVProgressHUD showErrorWithStatus:@"登录失败"];
     };
     idBlock errBlock = ^(id content){
         DEBUGLOG(@"failed content %@", content);

@@ -34,5 +34,7 @@
 @end
 
 @interface UpdateUserInfoRequest : ListRequestBase
+@property (nonatomic, assign) BOOL isUpdate;
 @property (nonatomic, retain) NSMutableArray *keys,*values;
 @end
+

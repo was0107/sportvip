@@ -1,12 +1,13 @@
 //
-//  RegisterViewController.m
+//  PersonInfoViewController.m
 //  sport
 //
-//  Created by allen.wang on 5/20/14.
+//  Created by allen.wang on 6/25/14.
 //  Copyright (c) 2014 allen.wang. All rights reserved.
 //
 
-#import "RegisterViewController.h"
+#import "PersonInfoViewController.h"
+
 #import "PubTextField.h"
 #import "IdentifierValidator.h"
 #import "LoginRequest.h"
@@ -15,9 +16,8 @@
 #import "ZJSwitch.h"
 #import "UIKeyboardAvoidingScrollView.h"
 #import "CreateObject.h"
-#import "CustomAnimation.h"
+@interface PersonInfoViewController ()
 
-@interface RegisterViewController ()
 @property (nonatomic, retain) PubTextField            *nameTextField;
 @property (nonatomic, retain) PubTextField            *sexTextField;
 @property (nonatomic, retain) PubTextField            *birthTextField;
@@ -35,28 +35,18 @@
 @property (nonatomic,copy   ) NSString                * phone, *email, *password;
 @property (nonatomic,assign ) double                  birthdayDate;
 @property (nonatomic, retain) ZJSwitch               *zjWwitch;
-
 @end
 
-@implementation RegisterViewController
+@implementation PersonInfoViewController
 {
     int _type;
-}
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [self setTitleContent:@"用户注册"];
+    [self setTitleContent:@"用户资料"];
     self.scrollView = [[[UIKeyboardAvoidingScrollView alloc] initWithFrame:CGRectMake(0,  0, 320.0, kContentBoundsHeight)] autorelease];
     self.scrollView.backgroundColor = kClearColor;
     self.scrollView.contentSize = CGSizeMake(320, kContentBoundsHeight+1);
@@ -67,11 +57,15 @@
     [self.scrollView addSubview:self.birthdayButton];
     [self.scrollView addSubview:self.phoneTextField];
     [self.scrollView addSubview:self.emailTextField];
-    [self.scrollView addSubview:self.pwdTextField];
+    [self.emailTextField.pubTextField setEnabled:NO];
+    [self.phoneTextField.pubTextField setEnabled:NO];
+    [self.nameTextField.pubTextField setEnabled:NO];
+
     [self.scrollView addSubview:self.confirmButton];
     [self.view addSubview:self.scrollView];
     
-    
+    [self showRight];
+    [self.rightButton setTitle:@"退出" forState:UIControlStateNormal];
     
 #ifdef kUseSimulateData
     self.nameTextField.pubTextField.text = @"was0107";
@@ -82,10 +76,13 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning
+
+#pragma mark - Actions
+
+- (IBAction)rightButtonAction:(id)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [UserDefaultsManager saveUserId:@""];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (ZJSwitch *) zjWwitch
@@ -172,7 +169,7 @@
 - (PubTextField *)nameTextField
 {
     if (!_nameTextField) {
-        __unsafe_unretained RegisterViewController *safeSelf = self;
+        __unsafe_unretained PersonInfoViewController *safeSelf = self;
         _nameTextField = [[PubTextField alloc] initWithFrame:CGRectMake(8, 15 , 304, kPubTextFieldHeight) indexTitle:@"姓名" placeHolder:@"(必填)" pubTextFieldStyle:PubTextFieldStyleTop];
         _nameTextField.pubTextField.returnKeyType = UIReturnKeyNext;
         _nameTextField.pubTextField.keyboardType = UIKeyboardTypeDefault;
@@ -187,7 +184,7 @@
 - (PubTextField *)sexTextField
 {
     if (!_sexTextField) {
-        __unsafe_unretained RegisterViewController *safeSelf = self;
+        __unsafe_unretained PersonInfoViewController *safeSelf = self;
         _sexTextField = [[PubTextField alloc] initWithFrame:CGRectMake(8, 15 + 1 * kPubTextFieldHeight2, 304, kPubTextFieldHeight) indexTitle:@"性别" placeHolder:@"" pubTextFieldStyle:PubTextFieldStyleTop];
         _sexTextField.pubTextField.returnKeyType = UIReturnKeyNext;
         [_sexTextField.pubTextField setEnabled:NO];
@@ -203,7 +200,7 @@
 - (PubTextField *)birthTextField
 {
     if (!_birthTextField) {
-        __unsafe_unretained RegisterViewController *safeSelf = self;
+        __unsafe_unretained PersonInfoViewController *safeSelf = self;
         _birthTextField = [[PubTextField alloc] initWithFrame:CGRectMake(8,15 + 2 * kPubTextFieldHeight2, 304, kPubTextFieldHeight) indexTitle:@"生日" placeHolder:@"" pubTextFieldStyle:PubTextFieldStyleTop];
         [_birthTextField.pubTextField setEnabled:NO];
         _birthTextField.pubTextField.returnKeyType = UIReturnKeyNext;
@@ -220,7 +217,7 @@
 - (PubTextField *)phoneTextField
 {
     if (!_phoneTextField) {
-        __unsafe_unretained RegisterViewController *safeSelf = self;
+        __unsafe_unretained PersonInfoViewController *safeSelf = self;
         _phoneTextField = [[PubTextField alloc] initWithFrame:CGRectMake(8, 30 + 3 * kPubTextFieldHeight2, 304, kPubTextFieldHeight) indexTitle:@"联系电话" placeHolder:@"(必填，可用于登录)" pubTextFieldStyle:PubTextFieldStyleTop];
         _phoneTextField.pubTextField.returnKeyType = UIReturnKeyNext;
         _phoneTextField.pubTextField.keyboardType = UIKeyboardTypeNumberPad;
@@ -235,7 +232,7 @@
 - (PubTextField *)emailTextField
 {
     if (!_emailTextField) {
-        __unsafe_unretained RegisterViewController *safeSelf = self;
+        __unsafe_unretained PersonInfoViewController *safeSelf = self;
         _emailTextField = [[PubTextField alloc] initWithFrame:CGRectMake(8,  30 + 4 * kPubTextFieldHeight2, 304, kPubTextFieldHeight) indexTitle:@"邮箱" placeHolder:@"(必填，可用于登录)" pubTextFieldStyle:PubTextFieldStyleTop];
         _emailTextField.pubTextField.returnKeyType = UIReturnKeyNext;
         _emailTextField.pubTextField.keyboardType = UIKeyboardTypeEmailAddress;
@@ -250,7 +247,7 @@
 - (PubTextField *)pwdTextField
 {
     if (!_pwdTextField) {
-        __block RegisterViewController *safeSelf = self;
+        __block PersonInfoViewController *safeSelf = self;
         _pwdTextField = [[PubTextField alloc] initWithFrame:CGRectMake(8,  30 + 5 * kPubTextFieldHeight2, 304, kPubTextFieldHeight) indexTitle:@"密码" placeHolder:@"6-16位的字母和数字组成" pubTextFieldStyle:PubTextFieldStyleBottom];
         _pwdTextField.pubTextField.returnKeyType = UIReturnKeyDone;
         _pwdTextField.pubTextField.secureTextEntry = YES;
@@ -272,7 +269,7 @@
         [_confirmButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18.0f]];
         UIImage *image = [[UIImage imageNamed:@"button_login_normal"] stretchableImageWithLeftCapWidth:4 topCapHeight:4];
         [_confirmButton setBackgroundImage:image forState:UIControlStateNormal];
-        [_confirmButton setTitle:@"注册" forState:UIControlStateNormal];
+        [_confirmButton setTitle:@"修改" forState:UIControlStateNormal];
         [CreateObject addTargetEfection:_confirmButton];
         [_confirmButton addTarget:self action:@selector(confirmButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -292,21 +289,18 @@
     if (![IdentifierValidator isValid:IdentifierTypeEmail value:_emailTextField.pubTextField.text]) {
         [SVProgressHUD showErrorWithStatus:@"请输入正确的邮箱"];
         [_phoneTextField becomeFirstResponder];
-        [CustomAnimation shakeAnimation:_emailTextField duration:0.2 vigour:0.01 number:5  direction:1];
-
         return NO;
     }
+    
     if (![IdentifierValidator isValid:IdentifierTypePhone value:_phoneTextField.pubTextField.text]) {
         [SVProgressHUD showErrorWithStatus:@"请输入正确的手机号码"];
         [_phoneTextField becomeFirstResponder];
-        [CustomAnimation shakeAnimation:_phoneTextField duration:0.2 vigour:0.01 number:5  direction:1];
-
         return NO;
     }
     if (![IdentifierValidator isValid:IdentifierTypePassword value:_pwdTextField.pubTextField.text]) {
         [SVProgressHUD showErrorWithStatus:@"密码为6-16位的字母、数字组成"];
         [_pwdTextField becomeFirstResponder];
-        [CustomAnimation shakeAnimation:_pwdTextField duration:0.2 vigour:0.01 number:5  direction:1];
+        
         return NO;
     }
     
@@ -321,30 +315,31 @@
         DEBUGLOG(@"check failed.");
         return;
     }
-    [SVProgressHUD showWithStatus:@"正在注册..."];
-
+    [SVProgressHUD showWithStatus:@"正在更新..."];
+    
     [self.confirmButton setEnabled:NO];
-    __unsafe_unretained RegisterViewController *safeSelf = self;
-
+    __unsafe_unretained PersonInfoViewController *safeSelf = self;
+    
     idBlock succBlock = ^(id content){
         DEBUGLOG(@"succ content %@", content);
         LoginResponse *response = [[[LoginResponse alloc] initWithJsonString:content] autorelease];
+        
         [UserDefaultsManager saveUserName:response.userItem.nickName];
         [UserDefaultsManager saveUserId:response.userItem.userId];
         [SVProgressHUD dismiss];
         [safeSelf.navigationController dismissViewControllerAnimated:YES completion:nil];
         [safeSelf.confirmButton setEnabled:YES];
     };
-
+    
     idBlock failedBlock = ^(id content){
         DEBUGLOG(@"failed content %@", content);
         [[[[ErrorResponse alloc] initWithJsonString:content] autorelease] show];
+        [SVProgressHUD showErrorWithStatus:@"更新失败"];
         [safeSelf.confirmButton setEnabled:YES];
-        [SVProgressHUD showErrorWithStatus:@"注册失败"];
     };
     idBlock errBlock = ^(id content){
         DEBUGLOG(@"failed content %@", content);
-        [SVProgressHUD showErrorWithStatus:@"注册失败"];
+        [SVProgressHUD showErrorWithStatus:@"更新失败"];
         [safeSelf.confirmButton setEnabled:YES];
     };
     
@@ -354,15 +349,13 @@
     self.email = self.emailTextField.pubTextField.text;
     self.password = self.pwdTextField.pubTextField.text;
     UpdateUserInfoRequest *request = [[[UpdateUserInfoRequest alloc] init] autorelease];
-    NSMutableArray * keys = [NSMutableArray arrayWithObjects:@"gender",@"avatar",@"nickName",@"birthday",@"phone",@"email",@"password", nil];
-    NSMutableArray * values = [NSMutableArray arrayWithObjects:self.gender,@"",self.nickName,[NSNumber numberWithDouble:self.birthdayDate], self.phone,self.email,self.password,nil];
+    NSMutableArray * keys = [NSMutableArray arrayWithObjects:@"userId",@"gender",@"avatar",@"nickName",@"birthday",nil];
+    NSMutableArray * values = [NSMutableArray arrayWithObjects:[self currentUserId],self.gender,@"",self.nickName,[NSNumber numberWithDouble:self.birthdayDate], nil];
     request.keys = keys;
     request.values = values;
-    request.isUpdate = NO;
+    request.isUpdate = YES;
     [WASBaseServiceFace serviceWithMethod:[request URLString] body:[request toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
-
+    
 }
-
-
 
 @end

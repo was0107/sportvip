@@ -37,8 +37,7 @@
     self = [super initWithDictionary:dictionary];
     if (self) {
         
-        
-        self.userId     = [self stringObjectFrom:dictionary withKey:@"id"];
+        self.userId     = kIntToString([self integerValueFrom:dictionary withKey:@"id"]);
         self.nickName   = [self stringObjectFrom:dictionary withKey:@"nickName"];
         self.gender     = [self stringObjectFrom:dictionary withKey:@"gender"];
         self.avatar     = [self stringObjectFrom:dictionary withKey:@"avatar"];

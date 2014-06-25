@@ -15,6 +15,7 @@
 #import "CheckClassViewController.h"
 #import "DidCheckClassesViewController.h"
 #import "DidContactClassesViewController.h"
+#import "PersonInfoViewController.h"
 
 @interface MyViewController ()
 
@@ -102,9 +103,13 @@
     self.tableView.cellSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         if (0 == indexPath.section) {
-            LoginViewController *controller = [[[LoginViewController alloc] init] autorelease];
+            BaseTitleViewController *controller = nil;
+            if ([[blockSelf currentUserId] length] != 0) {
+                controller = [[[PersonInfoViewController alloc] init] autorelease];
+            } else {
+                controller = [[[LoginViewController alloc] init] autorelease];
+            }
             [controller setHidesBottomBarWhenPushed:YES];
-            [controller setTitleContent:[titleIndexArray objectAtIndex:0]];
             [blockSelf.navigationController pushViewController:controller animated:YES];
         } else if (1 == indexPath.section) {
             if (0 == indexPath.row) {
@@ -127,9 +132,14 @@
 //            [blockSelf.navigationController pushViewController:controller animated:YES];
             
         } else  {
-            ModifyPWDViewController *controller = [[[ModifyPWDViewController alloc] init] autorelease];
+            BaseTitleViewController *controller = nil;
+            if ([[blockSelf currentUserId] length] != 0) {
+                controller = [[[ModifyPWDViewController alloc] init] autorelease];
+                [controller setTitleContent:[titleIndexArray objectAtIndex:3]];
+            } else {
+                controller = [[[LoginViewController alloc] init] autorelease];
+            }
             [controller setHidesBottomBarWhenPushed:YES];
-            [controller setTitleContent:[titleIndexArray objectAtIndex:3]];
             [blockSelf.navigationController pushViewController:controller animated:YES];
         }
     };

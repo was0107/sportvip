@@ -12,6 +12,7 @@
 #import "LoginRequest.h"
 #import "LoginResponse.h"
 #import "UIKeyboardAvoidingScrollView.h"
+#import "CustomAnimation.h"
 
 @interface ModifyPWDViewController ()
 @property (nonatomic, retain) PubTextField *phoneTextField;
@@ -144,29 +145,34 @@
         ![IdentifierValidator isValid:IdentifierTypeEmail value:_phoneTextField.pubTextField.text]) {
         [SVProgressHUD showErrorWithStatus:@"请输入正确的手机号/邮箱"];
         [_phoneTextField becomeFirstResponder];
+        [CustomAnimation shakeAnimation:_phoneTextField duration:0.2 vigour:0.01 number:5  direction:1];
         return NO;
     }
     
     if (![IdentifierValidator isValid:IdentifierTypePassword value:_oldTextField.pubTextField.text]) {
         [SVProgressHUD showErrorWithStatus:@"密码为6-16位的字母、数字组成"];
         [_oldTextField becomeFirstResponder];
+        [CustomAnimation shakeAnimation:_oldTextField duration:0.2 vigour:0.01 number:5  direction:1];
         return NO;
     }
     
     if (![IdentifierValidator isValid:IdentifierTypePassword value:_newTextField.pubTextField.text]) {
         [SVProgressHUD showErrorWithStatus:@"密码为6-16位的字母、数字组成"];
         [_newTextField becomeFirstResponder];
+        [CustomAnimation shakeAnimation:_newTextField duration:0.2 vigour:0.01 number:5  direction:1];
         return NO;
     }
     if (![IdentifierValidator isValid:IdentifierTypePassword value:_confirmTextField.pubTextField.text]) {
         [SVProgressHUD showErrorWithStatus:@"密码为6-16位的字母、数字组成"];
         [_confirmTextField becomeFirstResponder];
+        [CustomAnimation shakeAnimation:_confirmTextField duration:0.2 vigour:0.01 number:5  direction:1];
         return NO;
     }
     
     if (![_confirmTextField.pubTextField.text isEqualToString:_newTextField.pubTextField.text]) {
         [SVProgressHUD showErrorWithStatus:@"两次输入密码不匹配"];
         [_confirmTextField becomeFirstResponder];
+        [CustomAnimation shakeAnimation:_confirmTextField duration:0.2 vigour:0.01 number:5  direction:1];
         return NO;
     }
     

@@ -16,7 +16,7 @@
 #define kAboutItemStringVersion         @"版本：V%@"
 
 #define kLabelOneString                 @""
-#define lLabelTwoString                 @"版权所有 © 2011-2014 micker.cn \n 想了解更多信息，请访问 \n http://www.micker.cn"
+#define lLabelTwoString                 @"版权所有 © 2011-2014 yundongvip.cn \n 想了解更多信息，请访问 \n http://yundongvip.cn"
 #define kAboutSelfTipString             @"是什么让您与众不同？添加更多信息，彰显您真实有趣。"
 
 

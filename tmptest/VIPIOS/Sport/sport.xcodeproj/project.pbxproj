@@ -48,6 +48,7 @@
 		DD3A3E6B193DF56F00043CA4 /* ForgetPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3E6A193DF56F00043CA4 /* ForgetPWDViewController.m */; };
 		DD3AF8B0194B21C800A964B7 /* ClassDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3AF8AF194B21C800A964B7 /* ClassDetailViewController.m */; };
 		DD3FBBED1952AE9F0084C6EA /* UIPopoverListView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3FBBEC1952AE9F0084C6EA /* UIPopoverListView.m */; };
+		DD4C2AF9195AEA9700F0C678 /* PersonInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4C2AF8195AEA9700F0C678 /* PersonInfoViewController.m */; };
 		DD703D5A194EB592008A226B /* PaggingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DD703D59194EB592008A226B /* PaggingRequest.m */; };
 		DD703D5D194EB5A4008A226B /* PaggingResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = DD703D5C194EB5A4008A226B /* PaggingResponse.m */; };
 		DD703D60194F186C008A226B /* PaggingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DD703D5F194F186C008A226B /* PaggingItem.m */; };
@@ -237,6 +238,8 @@
 		DD3AF8AF194B21C800A964B7 /* ClassDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassDetailViewController.m; sourceTree = "<group>"; };
 		DD3FBBEB1952AE9F0084C6EA /* UIPopoverListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPopoverListView.h; sourceTree = "<group>"; };
 		DD3FBBEC1952AE9F0084C6EA /* UIPopoverListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPopoverListView.m; sourceTree = "<group>"; };
+		DD4C2AF7195AEA9700F0C678 /* PersonInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonInfoViewController.h; sourceTree = "<group>"; };
+		DD4C2AF8195AEA9700F0C678 /* PersonInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonInfoViewController.m; sourceTree = "<group>"; };
 		DD703D58194EB592008A226B /* PaggingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaggingRequest.h; sourceTree = "<group>"; };
 		DD703D59194EB592008A226B /* PaggingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaggingRequest.m; sourceTree = "<group>"; };
 		DD703D5B194EB5A4008A226B /* PaggingResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaggingResponse.h; sourceTree = "<group>"; };
@@ -1038,6 +1041,8 @@
 				DDBEFCBA192B25DF00343738 /* LoginViewController.m */,
 				DDBEFCBC192B28E300343738 /* RegisterViewController.h */,
 				DDBEFCBD192B28E300343738 /* RegisterViewController.m */,
+				DD4C2AF7195AEA9700F0C678 /* PersonInfoViewController.h */,
+				DD4C2AF8195AEA9700F0C678 /* PersonInfoViewController.m */,
 				47A896301939E63000B3FC3D /* CheckClassViewController.h */,
 				47A896311939E63000B3FC3D /* CheckClassViewController.m */,
 				DDBD7563192B3E8A00047A0D /* OrdersViewController.h */,
@@ -1245,6 +1250,7 @@
 				DDBEFCB8192B25D100343738 /* ModifyPWDViewController.m in Sources */,
 				DDB0D4401924E86000490E35 /* MyViewController.m in Sources */,
 				DDBD7565192B3E8A00047A0D /* OrdersViewController.m in Sources */,
+				DD4C2AF9195AEA9700F0C678 /* PersonInfoViewController.m in Sources */,
 				DDB0D40F1924E08300490E35 /* BaseTitleViewController.m in Sources */,
 				DDB0D40E1924E08300490E35 /* BaseTableViewController.m in Sources */,
 				DDBD7574192B56CE00047A0D /* STLocationInstance.m in Sources */,

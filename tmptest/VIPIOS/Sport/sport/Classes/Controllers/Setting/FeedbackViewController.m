@@ -79,26 +79,26 @@
         return;
     }
     __block FeedbackViewController *blockSelf = self;
-//    idBlock successedBlock = ^(id content)
-//    {
-//        // 提交成功
-//        [SVProgressHUD showSuccessWithStatus:kTipFeedbackCommitSuccString];
-//        [blockSelf.navigationController popViewControllerAnimated:YES];
-//    };
-//    
-//    idBlock failedBlock = ^(id content)
-//    {
-//        [SVProgressHUD showErrorWithStatus:kTipFeedbackFaildString];
-//    };
-//    
-//    FeedBackRequest *request = [[[FeedBackRequest alloc] init] autorelease];
+    idBlock successedBlock = ^(id content)
+    {
+        // 提交成功
+        [SVProgressHUD showSuccessWithStatus:@"提交成功!"];
+        [blockSelf.navigationController popViewControllerAnimated:YES];
+    };
+    
+    idBlock failedBlock = ^(id content)
+    {
+        [SVProgressHUD showErrorWithStatus:@"反馈失败！"];
+    };
+    
+    FeedBackRequest *request = [[[FeedBackRequest alloc] init] autorelease];
 //    request.userId = [UserDefaultsManager userId];
-//    request.description = _contentTextView.text;
-//    [WASBaseServiceFace serviceWithMethod:[request URLString]
-//                                     body:[request toJsonString]
-//                                    onSuc:successedBlock
-//                                 onFailed:failedBlock
-//                                  onError:failedBlock];
+    request.description = _contentTextView.text;
+    [WASBaseServiceFace serviceWithMethod:[request URLString]
+                                     body:[request toJsonString]
+                                    onSuc:successedBlock
+                                 onFailed:failedBlock
+                                  onError:failedBlock];
     
 }
 
