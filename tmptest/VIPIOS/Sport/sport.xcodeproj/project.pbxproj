@@ -143,6 +143,7 @@
 		DDC1685D19299D1300FA7758 /* TeacherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC1685C19299D1300FA7758 /* TeacherTableViewCell.m */; };
 		DDC2E8F41945E6C700310745 /* YardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC2E8F31945E6C700310745 /* YardViewController.m */; };
 		DDC2E8F71945E6D600310745 /* TeacherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC2E8F61945E6D600310745 /* TeacherViewController.m */; };
+		DDD62B1E195C060600FE2C6B /* ChineseToPinyin.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD62B1D195C060600FE2C6B /* ChineseToPinyin.m */; };
 		DDF91D141957C610009145A6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDF91D131957C610009145A6 /* Images.xcassets */; };
 		DDF91D1D1957CB96009145A6 /* 1-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDF91D151957CB96009145A6 /* 1-1@2x.png */; };
 		DDF91D1E1957CB96009145A6 /* 1-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDF91D161957CB96009145A6 /* 1-2@2x.png */; };
@@ -432,6 +433,8 @@
 		DDC2E8F31945E6C700310745 /* YardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YardViewController.m; sourceTree = "<group>"; };
 		DDC2E8F51945E6D600310745 /* TeacherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherViewController.h; sourceTree = "<group>"; };
 		DDC2E8F61945E6D600310745 /* TeacherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherViewController.m; sourceTree = "<group>"; };
+		DDD62B1C195C060600FE2C6B /* ChineseToPinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseToPinyin.h; sourceTree = "<group>"; };
+		DDD62B1D195C060600FE2C6B /* ChineseToPinyin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseToPinyin.m; sourceTree = "<group>"; };
 		DDF91D131957C610009145A6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DDF91D151957CB96009145A6 /* 1-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-1@2x.png"; sourceTree = "<group>"; };
 		DDF91D161957CB96009145A6 /* 1-2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-2@2x.png"; sourceTree = "<group>"; };
@@ -832,6 +835,8 @@
 		DDB0D3C11924E08300490E35 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				DDD62B1C195C060600FE2C6B /* ChineseToPinyin.h */,
+				DDD62B1D195C060600FE2C6B /* ChineseToPinyin.m */,
 				DDB0D3C21924E08300490E35 /* CreateObject+CustomControl.h */,
 				DDB0D3C31924E08300490E35 /* CreateObject+CustomControl.m */,
 				DDB0D3C41924E08300490E35 /* CreateObject.h */,
@@ -1236,6 +1241,7 @@
 				DDB0D4381924E08300490E35 /* NSDate+Helper.m in Sources */,
 				DDB0D41D1924E08300490E35 /* LoginResponse.m in Sources */,
 				DD703D5D194EB5A4008A226B /* PaggingResponse.m in Sources */,
+				DDD62B1E195C060600FE2C6B /* ChineseToPinyin.m in Sources */,
 				DDB0D4291924E08300490E35 /* AKTabBarController.m in Sources */,
 				DDBAFA88192A2CBE00FBCE38 /* CategoryItem.m in Sources */,
 				DDB0D42F1924E08300490E35 /* LaunchTransition.m in Sources */,

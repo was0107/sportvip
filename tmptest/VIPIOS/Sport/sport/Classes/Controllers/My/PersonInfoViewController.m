@@ -72,8 +72,18 @@
     self.emailTextField.pubTextField.text = @"hr@163.com";
     self.phoneTextField.pubTextField.text = @"13611111111";
     self.pwdTextField.pubTextField.text = @"111111";
+#else
 #endif
+    
+    [self initData];
     // Do any additional setup after loading the view.
+}
+
+- (void) initData
+{
+    self.nameTextField.pubTextField.text = [UserDefaultsManager userName];
+    self.emailTextField.pubTextField.text = [UserDefaultsManager userEmail];
+    self.phoneTextField.pubTextField.text = [UserDefaultsManager userTel];
 }
 
 

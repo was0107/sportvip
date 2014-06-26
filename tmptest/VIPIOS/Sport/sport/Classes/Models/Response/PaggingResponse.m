@@ -30,10 +30,20 @@
 
 @implementation EventsResponse
 
-- (id) translateItemFrom:(const NSDictionary *) dictionary
+- (id) translateFrom:(const NSDictionary *) dictionary
 {
-    return [[[EventTagItem alloc] initWithDictionary:dictionary] autorelease];
+    NSArray *array = (NSArray *) dictionary;
+    self.result = [NSMutableArray array];
+    for (int i = 0 ; i < [array count]; i++) {
+        EventTagItem *item = [[[EventTagItem alloc] initWithDictionary:[array objectAtIndex:i]] autorelease];
+        [self.result addObject:item];
+    }
+    self.count = [self.result count];
+    
+    return self;
 }
+
+
 @end
 
 @implementation CitysResponse

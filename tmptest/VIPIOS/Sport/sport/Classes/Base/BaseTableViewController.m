@@ -134,7 +134,7 @@
     if (!_poplistview) {
         {
             CGFloat xWidth = self.view.bounds.size.width - 20.0f;
-            CGFloat yHeight = 272.0f;
+            CGFloat yHeight = 350.0f;
             CGFloat yOffset = (self.view.bounds.size.height - yHeight)/2.0f;
             _poplistview = [[UIPopoverListView alloc] initWithFrame:CGRectMake(10, yOffset, xWidth, yHeight)];
             _poplistview.delegate = self;
@@ -148,7 +148,7 @@
 }
 - (UIView *) footerTipView
 {
-    UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 44)] autorelease];
+    UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 54)] autorelease];
     view.backgroundColor = kClearColor;
     UILabel *tipLabel = [[[UILabel alloc] initWithFrame:CGRectMake(10, 2, 280, 40)] autorelease];
     tipLabel.text = @"*注：如果您联系不上教练，可以拨打我们的客服电话，我们会帮您安排。";
@@ -186,7 +186,7 @@
         [cell.leftImageView setImageWithURL:[NSURL URLWithString:telItem.avatar]
                            placeholderImage:[UIImage imageNamed:kImageDefault]
                                     success:^(UIImage *image){
-                                        UIImage * image1 = [image imageScaledToSizeEx:CGSizeMake(100, 80)];
+                                        UIImage * image1 = [image imageScaledToSizeEx:CGSizeMake(50, 50)];
                                         cell.leftImageView.image = image1;
                                     }
                                     failure:^(NSError *error){

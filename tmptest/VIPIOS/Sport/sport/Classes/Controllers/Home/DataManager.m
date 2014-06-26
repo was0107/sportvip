@@ -7,6 +7,7 @@
 //
 
 #import "DataManager.h"
+#import "ChineseToPinyin.h"
 
 static DataManager * sharedInstance = nil;
 
@@ -45,32 +46,36 @@ static DataManager * sharedInstance = nil;
 
 - (void) createSort
 {
+    CategoryItem *item6 = [[[CategoryItem alloc] init] autorelease];
+    item6.categoryId = @"";
+    item6.categoryName = @"全部";
+    self.sortArray = [NSMutableArray arrayWithObjects:item6, nil];
+}
+
+- (void) resetSortArray:(EventsResponse *) response
+{
+    NSMutableArray *array = [NSMutableArray array];
     
-    CategoryItem *item1 = [[[CategoryItem alloc] init] autorelease];
-    item1.categoryId = @"1";
-    item1.categoryName = @"乒乓";
-    
-    CategoryItem *item2 = [[[CategoryItem alloc] init] autorelease];
-    item2.categoryId = @"2";
-    item2.categoryName = @"篮球";
-    
-    CategoryItem *item3 = [[[CategoryItem alloc] init] autorelease];
-    item3.categoryId = @"3";
-    item3.categoryName = @"网球";
-    
-    CategoryItem *item4 = [[[CategoryItem alloc] init] autorelease];
-    item4.categoryId = @"4";
-    item4.categoryName = @"游泳";
-    
-    CategoryItem *item5 = [[[CategoryItem alloc] init] autorelease];
-    item5.categoryId = @"5";
-    item5.categoryName = @"羽毛";
+    for (int i = 0, total = response.count; i < total; i++) {
+        EventTagItem * tagItem = [response at:i];
+        CategoryItem *item1 = [[[CategoryItem alloc] init] autorelease];
+        item1.categoryId = tagItem.itemId;
+        item1.categoryName = tagItem.name;
+        [array addObject:item1];
+    }
+    [array sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        CategoryItem *test1 = obj1;
+        CategoryItem *test2 = obj2;
+        NSString *name1 = [ChineseToPinyin pinyinFromChiniseString:test1.categoryName ];
+        NSString *name2 = [ChineseToPinyin pinyinFromChiniseString:test2.categoryName ];
+        return [name1 compare:name2];
+    }];
     
     CategoryItem *item6 = [[[CategoryItem alloc] init] autorelease];
     item6.categoryId = @"";
     item6.categoryName = @"全部";
-
-    self.sortArray = [NSMutableArray arrayWithObjects:item1, item2, item3,item4, item5,item6, nil];
+    [array addObject:item6];
+    self.sortArray = array;
 }
 
 - (void) createDistance

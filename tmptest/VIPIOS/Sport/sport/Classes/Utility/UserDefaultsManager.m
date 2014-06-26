@@ -173,6 +173,27 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
++(NSString *)userTel
+{
+    NSString *userEmail = [[NSUserDefaults standardUserDefaults] objectForKey:UDK_UserTel];
+    if (!userEmail) {
+        return kEmptyString;
+    }
+    return userEmail;
+}
+
++ (void)saveUserTel:(NSString *)userEmail
+{
+    if (!userEmail) {
+        return;
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:userEmail
+                                              forKey:UDK_UserTel];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+
+
 +(BOOL) isFirstUse
 {
     NSNumber *gender = [[NSUserDefaults standardUserDefaults] objectForKey:UDK_UserGender];

@@ -36,6 +36,9 @@
 +(NSString *)userEmail;
 + (void)saveUserEmail:(NSString *)userEmail;
 
++(NSString *)userTel;
++ (void)saveUserTel:(NSString *)userEmail;
+
 + (NSString *) userIcon;
 + (void)saveUserIcon:(NSString *)userIcon;
 

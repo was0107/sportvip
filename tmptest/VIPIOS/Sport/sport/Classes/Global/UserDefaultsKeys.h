@@ -21,6 +21,7 @@
 #define UDK_UserBirthDay        @"UDK_UserBirthDay"         //
 
 #define UDK_UserEmail           @"UDK_UserEmail"             //NSString
+#define UDK_UserTel             @"UDK_UserTel"             //NSString
 #define UDK_UserType            @"UDK_UserType"             //NSString
 #define UDK_UserGender          @"UDK_UserGender"           //NSInteger
 #define UDK_UserAge             @"UDK_UserAge"              //NSInteger

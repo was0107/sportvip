@@ -157,8 +157,9 @@
                 [cell.contentView addSubview:cell.topLabel];
                 [cell.contentView addSubview:cell.subLabel];
             }
-            cell.topLabel.text = @"2013";
-            cell.subLabel.text = @"荣获优秀教师的称号";
+            HornorItem *hornorItem = [[blockSelf.response hornors] objectAtIndex:indexPath.row-1];
+            cell.topLabel.text = hornorItem.year;
+            cell.subLabel.text = hornorItem.honor;
             return (UITableViewCell *)cell;
 
         }
@@ -169,9 +170,10 @@
             if (!cell){
                 cell = [[[BaseNewTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
                 cell.selectionStyle = UITableViewCellSelectionStyleGray;
-                cell.topLabel.frame = CGRectMake(10, 10, 90, 24);
-                cell.rightLabel.frame = CGRectMake(100, 10, 150, 24);
-                cell.subRightLabel.frame = CGRectMake(250, 10, 60, 24);
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                cell.topLabel.frame = CGRectMake(10, 10, 100, 24);
+                cell.rightLabel.frame = CGRectMake(110, 10, 110, 24);
+                cell.subRightLabel.frame = CGRectMake(220, 10, 70, 24);
                 cell.topLabel.textColor = kBlackColor;
                 cell.rightLabel.textAlignment = UITextAlignmentRight;
                 cell.subRightLabel.textAlignment = UITextAlignmentRight;
@@ -180,7 +182,6 @@
                 [cell.contentView addSubview:cell.topLabel];
                 [cell.contentView addSubview:cell.rightLabel];
                 [cell.contentView addSubview:cell.subRightLabel];
-                cell.subRightLabel.font = cell.topLabel.font;
             }
             CourseItem *courseItem = [[[blockSelf response] courses] objectAtIndex:indexPath.row];
             cell.topLabel.text = courseItem.name;

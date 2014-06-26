@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CategoryItem.h"
+#import "PaggingResponse.h"
 
 @interface DataManager : NSObject
 @property (nonatomic, retain) NSMutableArray *cateArray;
@@ -23,4 +24,6 @@
 
 - (void) emptyData;
 
+
+- (void) resetSortArray:(EventsResponse *) response;
 @end

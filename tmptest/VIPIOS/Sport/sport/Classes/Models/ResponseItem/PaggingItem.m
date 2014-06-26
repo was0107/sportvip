@@ -501,7 +501,7 @@
         @autoreleasepool {
             for ( int i = 0 , total = [array count]; i < total; ++i) {
                 NSDictionary *dictionaryItem = (NSDictionary *) [array objectAtIndex:i];
-                EventTagItem *item = [[[EventTagItem alloc] initWithDictionary:dictionaryItem] autorelease];
+                HornorItem *item = [[[HornorItem alloc] initWithDictionary:dictionaryItem] autorelease];
                 [arrayResult addObject:item];
 
             }

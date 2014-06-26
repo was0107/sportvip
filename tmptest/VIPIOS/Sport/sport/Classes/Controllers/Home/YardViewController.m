@@ -135,8 +135,9 @@
                     cell = [[[BaseTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
                     cell.topLabel.textColor = kBlackColor;
                     cell.selectionStyle = UITableViewCellSelectionStyleGray;
-                    cell.topLabel.frame = CGRectMake(10, 10, 200, 24);
-                    cell.subLabel.frame = CGRectMake(210, 10, 100, 24);
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    cell.topLabel.frame = CGRectMake(10, 10, 180, 24);
+                    cell.subLabel.frame = CGRectMake(190, 10, 100, 24);
                     cell.subLabel.textAlignment = UITextAlignmentRight;
                     [cell.contentView addSubview:cell.topLabel];
                     [cell.contentView addSubview:cell.subLabel];

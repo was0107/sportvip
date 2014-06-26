@@ -66,6 +66,7 @@
     self.titleView.backgroundColor = kClearColor;
     [self configTitleView];
     [self configSectionView];
+    [self sendToGetEvents];
     self.navigationItem.titleView = self.titleView;
 }
 
@@ -361,6 +362,28 @@
         _coachesRequest = [[CoachesRequest alloc] init];
     }
     return _coachesRequest;
+}
+
+- (void) sendToGetEvents
+{
+    __block HomeViewController *blockSelf = self;
+    idBlock succBlock = ^(id content){
+        DEBUGLOG(@"succeed content %@", content);
+        [blockSelf.tableView tableViewDidFinishedLoading];
+        EventsResponse *eventResponse = [[[EventsResponse alloc] initWithJsonString:content] autorelease];
+        [[DataManager sharedInstance] resetSortArray:eventResponse];
+    };
+    
+    idBlock failedBlock = ^(id content) {
+        DEBUGLOG(@"failed content %@", content);
+        [SVProgressHUD dismiss];
+        
+    };
+    idBlock errBlock = ^(id content){
+        DEBUGLOG(@"error content %@", content);
+    };
+    EventsRequest *eventRequest = [[[EventsRequest alloc] init] autorelease];
+    [WASBaseServiceFace serviceWithMethod:[eventRequest URLString] body:[eventRequest toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
 }
 
 
