@@ -40,9 +40,6 @@
     }
     if (!self.request) {
         self.request = [[[GymnasiumsRequest alloc] init] autorelease];
-        self.request.age = @"";
-        self.request.distance = @"";
-        self.request.eventId = @"";
     }
 }
 
@@ -73,13 +70,13 @@
         self.request.longitude = _mapView.userLocation.location.coordinate.longitude;
         self.request.latitude= _mapView.userLocation.location.coordinate.latitude;
         [self sendRequestToServer];
-
     }
+    [SVProgressHUD dismiss];
 }
 
 - (id) resetRegion
 {
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(_mapView.userLocation.location.coordinate, 5000, 5000);
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(_mapView.userLocation.location.coordinate, 50000, 50000);
     MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
     [_mapView setRegion:adjustedRegion animated:YES];
     return self;
@@ -100,9 +97,9 @@
         
         GymnasiumItem *item = [_response.result objectAtIndex:i];
         MapLocation *location = [[[MapLocation alloc] init] autorelease];
-        location.coordinate = CLLocationCoordinate2DMake(31.228509f,121.526728f);
-        location.theTitle = @"bubub";
-        location.theSubTitle = @"bubub";
+        location.coordinate = CLLocationCoordinate2DMake(item.longtitude,item.lantitude);
+        location.theTitle =item.name;
+        location.theSubTitle = item.address;
         location.content = item;
         
 //        
@@ -161,7 +158,7 @@
 
 - (void)mapViewWillStartLocatingUser:(MKMapView *)mapView
 {
-
+    [SVProgressHUD showWithOnlyStatus:@"正在定位..." duration:30];
 }
 
 - (void)mapViewDidStopLocatingUser:(MKMapView *)mapView
@@ -178,6 +175,8 @@
 - (void)mapView:(MKMapView *)mapView didFailToLocateUserWithError:(NSError *)error
 {
 //    _mapView.showsUserLocation = NO;
+//    [SVProgressHUD showErrorWithStatus:@""];
+
 }
 
 #pragma mark - mapView回调
@@ -212,11 +211,13 @@
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
     MapLocation *location = (MapLocation *)view.annotation;
-    YardViewController * detailViewController = [[[YardViewController alloc]init]autorelease];
-    [detailViewController setHidesBottomBarWhenPushed:YES];
-    [self.navigationController pushViewController:detailViewController animated:YES];
     [mapView deselectAnnotation:location animated:YES];
-
+    if ([view.annotation isKindOfClass:[MapLocation class]]) {
+        YardViewController * detailViewController = [[[YardViewController alloc]init]autorelease];
+        detailViewController.item = location.content;
+        [detailViewController setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:detailViewController animated:YES];
+    }
 }
 
 

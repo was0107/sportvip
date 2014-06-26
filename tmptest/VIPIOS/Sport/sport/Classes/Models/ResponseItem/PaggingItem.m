@@ -158,11 +158,19 @@
         if (self.distance < 1000) {
             self.distanceString = [NSString stringWithFormat:@"%.0fm",self.distance];
         }
+        else if (self.distance < 100000) {
+            self.distanceString = [NSString stringWithFormat:@"%.1fkm",self.distance/1000];
+        }
         else if (self.distance < 1000000) {
-            self.distanceString = [NSString stringWithFormat:@"%.0fkm",self.distance];
+            self.distanceString = [NSString stringWithFormat:@"%.0fkm",self.distance/1000];
         } else {
             self.distanceString = [NSString stringWithFormat:@"很远"];
         }
+        
+        NSDictionary *location      = [dictionary objectForKey:@"location"];
+        self.longtitude             = [self floatValueFrom:location withKey:@"x"];
+        self.lantitude              = [self floatValueFrom:location withKey:@"y"];
+
         
         NSMutableArray *array = [dictionary objectForKey:@"tags"];
         NSMutableArray *arrayResult = [NSMutableArray array];
@@ -358,8 +366,11 @@
         if (self.distance < 1000) {
             self.distanceString = [NSString stringWithFormat:@"%.0fm",self.distance];
         }
+        else if (self.distance < 100000) {
+            self.distanceString = [NSString stringWithFormat:@"%.1fkm",self.distance/1000];
+        }
         else if (self.distance < 1000000) {
-            self.distanceString = [NSString stringWithFormat:@"%.0fkm",self.distance];
+            self.distanceString = [NSString stringWithFormat:@"%.0fkm",self.distance/1000];
         } else {
             self.distanceString = [NSString stringWithFormat:@"很远"];
         }

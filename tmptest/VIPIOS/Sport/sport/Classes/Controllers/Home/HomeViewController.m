@@ -303,7 +303,7 @@
         } else {
             
             TeacherViewController *controller = [[[TeacherViewController alloc] init] autorelease];
-            CoacheItem *item = [blockSelf.response at:indexPath.row];
+            CoacheItem *item = [blockSelf.coachesResponse at:indexPath.row];
             controller.item = item;
             [controller setHidesBottomBarWhenPushed:YES];
             [blockSelf.navigationController pushViewController:controller animated:YES];
@@ -320,22 +320,29 @@
     };
 
     [self.view addSubview:self.tableView];
-    
-//    [self sendRequestToServer];
-    
-//    [self dealWithData];
     [self.tableView doSendRequest:YES];
 }
 
 - (void) dealWithData
 {
-    self.tableView.didReachTheEnd = [_response lastPage];
-    if ([self.response isEmpty]) {
-        [self.tableView showEmptyView:YES];
+    if (0 == _type) {
+        self.tableView.didReachTheEnd = [_response lastPage];
+        if ([self.response isEmpty]) {
+            [self.tableView showEmptyView:YES];
+        }
+        else {
+            [self.tableView showEmptyView:NO];
+        }
+    } else {
+        self.tableView.didReachTheEnd = [_coachesResponse lastPage];
+        if ([self.coachesResponse isEmpty]) {
+            [self.tableView showEmptyView:YES];
+        }
+        else {
+            [self.tableView showEmptyView:NO];
+        }
     }
-    else {
-        [self.tableView showEmptyView:NO];
-    }
+    
     [self.tableView reloadData];
     [SVProgressHUD dismiss];
 }
@@ -364,6 +371,8 @@
         CLPlacemark *placemark = (CLPlacemark *) place;
         blockSelf.request.longitude = placemark.location.coordinate.longitude;
         blockSelf.request.latitude = placemark.location.coordinate.latitude;
+        blockSelf.coachesRequest.longitude = placemark.location.coordinate.longitude;
+        blockSelf.coachesRequest.latitude = placemark.location.coordinate.latitude;
         [SVProgressHUD showSuccessWithStatus:@"定位成功"];
         [blockSelf sendRequestToServer];
     };

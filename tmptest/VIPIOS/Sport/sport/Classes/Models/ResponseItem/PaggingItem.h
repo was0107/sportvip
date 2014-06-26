@@ -49,7 +49,7 @@
 @interface GymnasiumItem : PaggingItem
 @property (nonatomic, copy) NSString *address,*name, *priceString, *distanceString;
 @property (nonatomic, retain) NSMutableArray *pictures, *tags, *events;
-@property (nonatomic, assign) float distance, minPrice, maxPrice;
+@property (nonatomic, assign) float distance, minPrice, maxPrice, lantitude, longtitude;
 
 @end
 
@@ -59,7 +59,7 @@
 
 @property (nonatomic, copy) NSString *itemId,*address,*name,*descriptionString,*introduction,*resume;
 @property (nonatomic, retain) NSMutableArray *pictures, *tags, *events,*phones,*hornors,*coaches,*courses;
-@property (nonatomic, assign) float distance, lantitude, longtitudee;
+@property (nonatomic, assign) float distance, lantitude, longtitude;
 @end
 
 

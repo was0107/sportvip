@@ -47,9 +47,9 @@
 
         
         [self.topLabelEx setImageSize:CGSizeMake(18, 20)];
-        [self.subRightEx setImageSize:CGSizeMake(18, 18)];
-        [self.topRigithEx setImageSize:CGSizeMake(16, 18)];
-        [self.middleLabelEx setImageSize:CGSizeMake(16, 18)];
+//        [self.subRightEx setImageSize:CGSizeMake(18, 18)];
+//        [self.topRigithEx setImageSize:CGSizeMake(16, 18)];
+//        [self.middleLabelEx setImageSize:CGSizeMake(16, 18)];
         
         
         [self.contentView addSubview:self.topLabelEx];

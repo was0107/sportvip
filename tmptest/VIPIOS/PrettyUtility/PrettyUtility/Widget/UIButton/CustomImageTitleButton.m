@@ -11,7 +11,9 @@
 #import "UIImage+tintedImage.h"
 #import "UIButton+WebCache.h"
 #import "UIImageView+WebCache.h"
-
+#import "UIColor+extend.h"
+#import "UIImage+extend.h"
+#import "UIView+extend.h"
 
 @interface CustomImageTitleButton()
 
@@ -68,7 +70,7 @@
     self.bottomTitleLabel.text = text;
     if (imageName && [imageName hasPrefix:@"http"]) {
         
-        [self.topButton setImageWithURL:[NSURL URLWithString:imageName]  ];
+        [self.topButton setImageWithURL:[NSURL URLWithString:imageName]];
         _topButton.contentMode = UIViewContentModeCenter;
     } else {
         [self.topButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
@@ -129,7 +131,15 @@
 {
     self.bottomTitleLabel.text = text;
     if ([imageName hasPrefix:@"http"]) {
-        [self.topImage setImageWithURL:[NSURL URLWithString:imageName] placeholderImage:[UIImage imageNamed:@"icon"]];
+        [self.topImage setImageWithURL:[NSURL URLWithString:imageName]
+                      placeholderImage:[UIImage imageNamed:@"icon_default"]
+                               success:^(UIImage *image){
+                                   UIImage * image1 = [image imageScaledToSizeEx:CGSizeMake(70, 70)];
+                                   _topImage.image = image1;
+                               }
+                               failure:^(NSError *error){
+                                   _topImage.image = [UIImage imageNamed:@"icon_default"];
+                               }];
     } else {
         self.topImage.image = [UIImage imageNamed:imageName];
     }

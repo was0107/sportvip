@@ -50,8 +50,7 @@ static const CGFloat kTimerInteveral = 6.0f;
         _pageControl = [[UIPageControl alloc] initWithFrame:rect];
         _pageControl.userInteractionEnabled = YES;
         _pageControl.pageIndicatorTintColor = kLightGrayColor;
-        _pageControl.currentPageIndicatorTintColor = kOrangeColor;
-        
+        _pageControl.currentPageIndicatorTintColor = [UIColor getColor:@"1EA897"];
         [self addSubview:_pageControl];
         
         _curPage = 0;

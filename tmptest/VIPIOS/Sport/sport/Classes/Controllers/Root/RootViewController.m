@@ -32,7 +32,7 @@
 {
     NSMutableArray *arrayVC = [NSMutableArray array];
     
-    [arrayVC addObject:[self createItem:@"HomeViewController" title:@"b5m"]];
+    [arrayVC addObject:[self createItem:@"HomeViewController" title:@"运动VIP"]];
     [arrayVC addObject:[self createItem:@"MyViewController" title:@"个人中心"]];
     [arrayVC addObject:[self createItem:@"SettingViewController" title:@"设置"]];
     

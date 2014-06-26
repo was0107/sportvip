@@ -159,7 +159,7 @@
 //                NSArray *imageIndexArray = @[@"home9",@"home10",@"home11",@"home12"];
 //                int flag =  (iPhone5) ? 120 : 110;
                 int tag = 1000;
-                int total =  MIN([blockSelf.response.events count], 4 * (indexPath.section-2));
+                int total =  MIN([blockSelf.response.coaches count], 4 * (indexPath.section-2));
                 [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
                 for (int i = 4 * (indexPath.section - 3) ; i < total; i++) {
                     CoacheItem *item = [[blockSelf.response coaches] objectAtIndex:i];
@@ -224,10 +224,7 @@
     self.tableView.sectionHeaderHeightBlock = ^( UITableView *tableView, NSInteger section){
         
         NSString *string = [_titleArray objectAtIndex:section];
-        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 20000)];
-        if (4== section) {
-            size.height += 20;
-        }
+        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(280, 20000)];
         return size.height + 20;
     };
     
@@ -239,10 +236,7 @@
     self.tableView.sectionHeaderBlock = ^( UITableView *tableView, NSInteger section){
         
         NSString *string = [_titleArray objectAtIndex:section];
-        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 20000)];
-        if (4== section) {
-            size.height += 20;
-        }
+        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(280, 20000)];
         UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, size.height + 20)] autorelease];
         view.backgroundColor = kWhiteColor;
         UIImageLabelEx *imageLabelEx = [[[UIImageLabelEx alloc] initWithFrame:CGRectMake(10, 6, 300, size.height+8)] autorelease];

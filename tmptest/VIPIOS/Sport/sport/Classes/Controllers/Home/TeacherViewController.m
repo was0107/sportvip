@@ -16,6 +16,7 @@
 #import "PaggingRequest.h"
 #import "UIView+extend.h"
 #import "PaggingResponse.h"
+#import "MapLocation.h"
 
 @interface TeacherViewController()<MKMapViewDelegate>
 @property (nonatomic, retain) MKMapView *mapView;
@@ -30,7 +31,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"网球";
     self.title = self.item.name;
     [self.tableView removeFromSuperview];
     [self sendRequestToServer];
@@ -138,9 +138,9 @@
                     [cell.contentView addSubview:cell.topLabel];
                 }
                 
-                CGSize size = [blockSelf.response.resume sizeWithFont:HTFONTSIZE(kFontSize14) constrainedToSize:CGSizeMake(300, 20000)];
+                CGSize size = [blockSelf.response.resume sizeWithFont:HTFONTSIZE(kFontSize14) constrainedToSize:CGSizeMake(280, 20000)];
                 CGFloat height = MAX(size.height, 24);
-                [cell.topLabel setFrameHeight:height];
+                [cell.topLabel setFrameHeight:height+10];
                 cell.topLabel.text = blockSelf.response.resume;
                 return (UITableViewCell *)cell;
             }
@@ -204,9 +204,9 @@
         }
         else  if (1 == indexPath.section) {
             if (0 == indexPath.row) {
-                CGSize size = [blockSelf.response.resume sizeWithFont:HTFONTSIZE(kFontSize14) constrainedToSize:CGSizeMake(300, 20000)];
+                CGSize size = [blockSelf.response.resume sizeWithFont:HTFONTSIZE(kFontSize14) constrainedToSize:CGSizeMake(280, 20000)];
                 CGFloat height = MAX(size.height, 24);
-                return height+15;
+                return height+20;
             }
             return 44.0f;
         }
@@ -258,7 +258,7 @@
             return 0.0f;
         }
         NSString *string = [titleArray objectAtIndex:section];
-        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 20000)];
+        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(280, 20000)];
         return size.height + 20;
     };
     
@@ -266,7 +266,7 @@
         
         NSArray *imageArray = [NSArray arrayWithObjects:@"map",@"sport",@"course",@"coach",@"desc",nil];
         NSString *string = [titleArray objectAtIndex:section];
-        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 20000)];
+        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(280, 20000)];
         UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, size.height + 5)] autorelease];
         view.backgroundColor = kWhiteColor;
         UIImageLabelEx *imageLabelEx = [[[UIImageLabelEx alloc] initWithFrame:CGRectMake(10, 6, 300, size.height+8)] autorelease];
@@ -292,15 +292,17 @@
 - (void) dealWithData
 {
     CLLocationCoordinate2D center;
-    center.latitude=self.response.lantitude;
-    center.longitude=self.response.longtitude;
+    center.latitude=self.response.longtitude;
+    center.longitude=self.response.lantitude;
+    [_mapView removeAnnotations:[_mapView annotations]];
+    MapLocation *location = [[[MapLocation alloc] init] autorelease];
+    location.coordinate = center;
+    location.theTitle = self.response.name;
+    [self.mapView addAnnotation:location];
     
-//    MKCoordinateSpan span;
-//    span.latitudeDelta=0.2;
-//    span.longitudeDelta=0.2;
-//    MKCoordinateRegion region={center,span};
-//    
-//    [self.mapView setRegion:region];
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(center, 5000, 5000);
+    MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
+    [_mapView setRegion:adjustedRegion animated:YES];
     [self.mapView setExclusiveTouch:YES];
     [self.tableView reloadData];
     [self.view addSubview:self.tableView];}
@@ -333,5 +335,22 @@
     [WASBaseServiceFace serviceWithMethod:[_request URLString] body:[_request toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
 }
 
+#pragma mark ==
+#pragma mark == MKAnnotationView
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    MKPinAnnotationView *annotationView = (MKPinAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:@"PIN_ANNOTATION"];
+    if(annotationView == nil) {
+        annotationView = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"PIN_ANNOTATION"] autorelease];
+        annotationView.canShowCallout = YES;
+        annotationView.pinColor = MKPinAnnotationColorRed;
+        annotationView.animatesDrop = YES;
+        annotationView.highlighted = YES;
+        [annotationView setSelected:YES animated:YES];
+    }
+    
+    return annotationView;
+}
 
 @end
