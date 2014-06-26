@@ -9,18 +9,8 @@
 #import "ListResponseItemBase.h"
 #import "ListResponseBase.h"
 
-//
-//advantage: ""
-//age: [ ]
-//coachId: 1
-//description: ""
-//name: ""
-//price: 123
-//schoolTime: "每周六周日下午"
-
-
 @interface CourseItem : ListResponseItemBase
-@property (nonatomic, copy) NSString *advantage,*coachId,*description,*name,*schoolTime,*priceString,*coachName;
+@property (nonatomic, copy) NSString *advantage,*courseId,*coachId,*description,*name,*schoolTime,*priceString,*coachName;
 @end
 
 @interface TelItem : ListResponseItemBase

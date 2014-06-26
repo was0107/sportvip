@@ -288,6 +288,12 @@
 
 - (BOOL)checkTextField
 {
+    if ([_nameTextField.pubTextField.text length] == 0) {
+        [SVProgressHUD showErrorWithStatus:@"请输入正确的名称"];
+        [_nameTextField becomeFirstResponder];
+        [CustomAnimation shakeAnimation:_nameTextField duration:0.2 vigour:0.01 number:5  direction:1];
+        return NO;
+    }
     if (![IdentifierValidator isValid:IdentifierTypeEmail value:_emailTextField.pubTextField.text]) {
         [SVProgressHUD showErrorWithStatus:@"请输入正确的邮箱"];
         [_phoneTextField becomeFirstResponder];

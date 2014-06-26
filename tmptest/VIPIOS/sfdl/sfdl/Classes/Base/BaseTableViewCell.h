@@ -12,6 +12,7 @@
 #import "UIImage+extend.h"
 
 @interface BaseTableViewCornerCell : UITableViewCell
+@property (nonatomic, assign) id content;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 
@@ -26,7 +27,8 @@
 @property (nonatomic, retain) UILabel *subLabel;
 @property (nonatomic, retain) UIImageView *leftImageView;
 @property (nonatomic, retain) UITextField *textField;
-
+@property (nonatomic, retain) UIButton * rightButton;
+@property (nonatomic, copy) idBlock block;
 - (void) configWithType:(int) type;
 
 @end

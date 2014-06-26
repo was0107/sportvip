@@ -11,9 +11,14 @@
 #import "UIImageLabelEx.h"
 #import "CustomImageTitleButton.h"
 #import "CreateObject.h"
+#import "LoginRequest.h"
+#import "LoginResponse.h"
+#import "PaggingRequest.h"
+#import "PaggingResponse.h"
 
 @interface ClassDetailViewController ()
-
+@property (nonatomic, retain) ClassDetailResponse *response;
+@property (nonatomic, retain) NSMutableArray *titleArray1,*titleArray2;
 @end
 
 @implementation ClassDetailViewController
@@ -31,6 +36,8 @@
 {
     [super viewDidLoad];
     self.title = @"课程详情";
+    [self.tableView removeFromSuperview];
+    [self sendRequestToServer];
     // Do any additional setup after loading the view.
 }
 
@@ -68,14 +75,6 @@
     __block ClassDetailViewController *blockSelf = self;
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
     self.tableView.tableFooterView = [self footerView];
-    NSArray *titleArray1 = [NSArray arrayWithObjects:@"12-17岁青少年",\
-                           @"操作式教学课程特色，通过丰富、好玩的教具、搭配故事的情景，吸引孩子喜欢网球，培养孩子的兴趣爱好，同时通过网球训练，培养孩子的交际能力，身体素质和自信心，为孩子的未来打下坚实的基础",nil];
-    NSArray *titleArray = [NSArray arrayWithObjects:@"网球基础班",\
-                           @"上课地点：上海闵行区飞来峰体育馆，凤起路230号（大铁棍子医院斜对面）",\
-                           @"教练：王学新教练详情",\
-                           @"上课时间：每周六 14：00-17：00",\
-                           @"适合年龄",\
-                           @"课程特色",nil];
     NSArray *imageArray = [NSArray arrayWithObjects:@"map",@"cell_map",@"cell_teacher",@"cell_time",@"age",@"special",nil];
     
     self.tableView.cellCreateBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
@@ -91,10 +90,10 @@
                 cell.topLabel.numberOfLines = 0;
                 [cell.contentView addSubview:cell.topLabel];
             }
-            NSString *title = [titleArray1 objectAtIndex:indexPath.row];
+            NSString *title = [_titleArray1 objectAtIndex:indexPath.row];
             CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 2000)];
             [cell.topLabel setFrameHeight:size.height+10];
-            cell.topLabel.text = [titleArray1 objectAtIndex:indexPath.row];
+            cell.topLabel.text = [_titleArray1 objectAtIndex:indexPath.row];
             
             return (UITableViewCell *)cell;
         } else if (5 == indexPath.section) {
@@ -108,10 +107,14 @@
                 cell.topLabel.frame = CGRectMake(10, 10, 300, 120);
                 cell.topLabel.layer.borderColor = [kTipsTitleColor CGColor];
                 cell.topLabel.layer.borderWidth = 1.0f;
+                cell.topLabel.numberOfLines = 0;
                 cell.topLabel.layer.cornerRadius = 3.0f;
                 [cell.contentView addSubview:cell.topLabel];
             }
-            cell.topLabel.text = @"网球基础班";
+            NSString *title = blockSelf.response.advantage;
+            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(295, 2000)];
+            [cell.topLabel setFrameHeight:size.height];
+            cell.topLabel.text = title;
             return (UITableViewCell *)cell;
         }
         
@@ -132,9 +135,10 @@
         }
 
         cell.selectionStyle = (2 == indexPath.section) ? UITableViewCellSelectionStyleGray :  UITableViewCellSelectionStyleNone;
+        cell.accessoryType = (2 == indexPath.section) ? UITableViewCellAccessoryDisclosureIndicator :  UITableViewCellAccessoryNone;
 
         cell.topLabelEx.frame = CGRectMake(10, 8, 300, 24);
-        NSString *title = [titleArray objectAtIndex:indexPath.section];
+        NSString *title = [_titleArray2 objectAtIndex:indexPath.section];
         cell.topLabelEx.text = title;
         if (0 == indexPath.section) {
             cell.topLabelEx.font = HTFONTSIZE(kFontSize16);
@@ -142,7 +146,7 @@
             [[cell.topLabelEx setFrameHeight:size.height + 4] setFrameWidth:size.width + 45];
 //            cell.topLabelEx.imageSize = CGSizeMake(18, 20);
             [cell.topLabelEx setImages:[NSArray arrayWithObjects:@"hot",@"xin",nil] origitation:1];
-            cell.subRightEx.text = @"￥2290";
+            cell.subRightEx.text = blockSelf.response.price;
             CGFloat width = [cell.subRightEx.text sizeWithFont:HTFONTSIZE(kFontSize16)].width ;
             [cell.subRightEx setFrame:CGRectMake(310 - (width + 22),8, (width + 22), 24)];
 //            [cell.subRightEx setImages:[NSArray arrayWithObjects:@"icon",nil] origitation:0];
@@ -159,15 +163,17 @@
     
     self.tableView.cellHeightBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
         if (4 == indexPath.section) {
-            NSString *title = [titleArray1 objectAtIndex:indexPath.row];
-            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 2000)];
+            NSString *title = [_titleArray1 objectAtIndex:indexPath.row];
+            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(280, 2000)];
             return size.height + 16;
         }
         else  if (5 == indexPath.section) {
-            return 140.0f;
+            NSString *title = blockSelf.response.advantage;
+            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(295, 2000)];
+            return size.height + 16;
         }
-        NSString *string = [titleArray objectAtIndex:indexPath.section];
-        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 20000)];
+        NSString *string = [_titleArray2 objectAtIndex:indexPath.section];
+        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(280, 20000)];
         return size.height + 20;
     };
     
@@ -179,8 +185,8 @@
     };
     
     self.tableView.sectionHeaderHeightBlock = ^( UITableView *tableView, NSInteger section){
-        NSString *string = [titleArray objectAtIndex:section];
-        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 20000)];
+        NSString *string = [_titleArray2 objectAtIndex:section];
+        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(280, 20000)];
         return size.height + 20;
     };
     
@@ -196,8 +202,8 @@
         if (section < 4) {
             return 0.0f;
         }
-        NSString *string = [titleArray objectAtIndex:section];
-        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 20000)];
+        NSString *string = [_titleArray2 objectAtIndex:section];
+        CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(280, 20000)];
         return size.height + 20;
     };
     
@@ -209,7 +215,7 @@
         }
         NSArray *imageArray = [NSArray arrayWithObjects:@"map",@"cell_map",@"cell_teacher",@"cell_time",@"age",@"special",nil];
 
-        NSString *string = [titleArray objectAtIndex:section];
+        NSString *string = [_titleArray2 objectAtIndex:section];
         CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 20000)];
         UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, size.height + 20)] autorelease];
         view.backgroundColor = kWhiteColor;
@@ -229,39 +235,61 @@
         [imageLabelEx shiftPositionY:1];
         return (UIView *)view;
     };
-    
-    self.tableView.refreshBlock = ^(id content) {
-    };
-    
-    self.tableView.loadMoreBlock = ^(id content) {
-        [blockSelf sendRequestToServer];
-    };
-    
-    [self.view addSubview:self.tableView];
-    
-    [self dealWithData];
-    
-    //    [self.tableView doSendRequest:YES];
 }
 
 - (void) dealWithData
 {
-    //    self.tableView.didReachTheEnd = [_response lastPage];
-    //    if ([self.response isEmpty]) {
-    //        [self.tableView showEmptyView:YES];
-    //    }
-    //    else {
-    //        [self.tableView showEmptyView:NO];
-    //    }
-    [self.tableView reloadData];
-}
+    self.titleArray1 = [NSMutableArray arrayWithObjects:self.response.age,self.response.description,nil];
+    self.titleArray2 = [NSMutableArray arrayWithObjects:self.response.name,\
+                        [NSString stringWithFormat:@"上课地点：%@",self.response.name],\
+                        [NSString stringWithFormat:@"教练：%@",self.response.coachName],
+                        [NSString stringWithFormat:@"上课时间：：%@",self.response.schoolTime],
+                        @"适合年龄",\
+                        @"课程特色",nil];
 
+    [self.tableView reloadData];
+    [self.view addSubview:self.tableView];
+    [self addClassesToServer];
+}
 
 - (void) sendRequestToServer
 {
-    [self dealWithData];
+    __block ClassDetailViewController *blockSelf = self;
+    
+    idBlock succBlock = ^(id content){
+        DEBUGLOG(@"succeed content %@", content);
+        [blockSelf.tableView tableViewDidFinishedLoading];
+        blockSelf.response = [[[ClassDetailResponse alloc] initWithJsonString:content] autorelease];
+        [blockSelf dealWithData];
+    };
+    
+    idBlock failedBlock = ^(id content) {
+        DEBUGLOG(@"failed content %@", content);
+        [blockSelf.tableView tableViewDidFinishedLoading];
+        
+    };
+    idBlock errBlock = ^(id content){
+        DEBUGLOG(@"error content %@", content);
+        [blockSelf.tableView tableViewDidFinishedLoading];
+    };
+    ClassDetailRequest *request = [[[ClassDetailRequest alloc] init] autorelease];
+    request.courseId = @"1";//self.courseId;
+    [WASBaseServiceFace serviceWithMethod:[request URLString] body:[request toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
 }
 
 
-
+- (void) addClassesToServer
+{
+    idBlock succBlock = ^(id content){
+        DEBUGLOG(@"succeed content %@", content);
+    };
+    
+    idBlock failedBlock = ^(id content) {
+        DEBUGLOG(@"failed content %@", content);
+    };
+    AddClassCoachRequest *addRequest = [[[AddClassCoachRequest alloc] init] autorelease];
+    addRequest.userId = [self currentUserId];
+    addRequest.courseId = @"1";//self.courseId;
+    [WASBaseServiceFace serviceWithMethod:[addRequest URLString] body:[addRequest toJsonString] onSuc:succBlock onFailed:failedBlock onError:failedBlock];
+}
 @end

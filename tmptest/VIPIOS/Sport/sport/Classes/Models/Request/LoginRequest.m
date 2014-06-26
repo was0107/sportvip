@@ -135,3 +135,73 @@
 }
 @end
 
+
+
+@implementation ClassDetailRequest
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_courseId);
+    [super dealloc];
+}
+
+- (NSMutableArray *) keyArrays
+{
+    return [NSMutableArray arrayWithObjects:@"courseId", nil];
+}
+
+- (NSMutableArray *) valueArrays
+{
+    return [NSMutableArray arrayWithObjects:self.courseId, nil];
+}
+
+-(NSString *)methodString
+{
+    return  @"sport/course";
+}
+@end
+
+
+
+
+@implementation AddClassCoachRequest
+
+
+- (id) init
+{
+    self = [super init];
+    if (self) {
+        self.userId = self.courseId = @"";
+        self.type = @"VIEW";//CONTACT
+    }
+    return self;
+}
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_userId);
+    TT_RELEASE_SAFELY(_courseId);
+    TT_RELEASE_SAFELY(_type);
+    [super dealloc];
+}
+
+- (NSMutableArray *) keyArrays
+{
+    NSMutableArray *array = [super keyArrays];
+    [array addObject:@"type"];
+    [array addObject:@"userId"];
+    [array addObject:@"courseId"];
+    return array;
+}
+
+- (NSMutableArray *) valueArrays
+{
+    NSMutableArray *array = [super valueArrays];
+    [array addObject:self.type];
+    [array addObject:self.userId];
+    [array addObject:self.courseId];
+    return array;
+}
+
+@end
+

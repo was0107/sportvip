@@ -9,5 +9,6 @@
 #import "BaseTableViewController.h"
 
 @interface ClassDetailViewController : BaseTableViewController
+@property (nonatomic, assign)     NSString    *courseId;
 
 @end

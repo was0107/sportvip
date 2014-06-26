@@ -48,6 +48,7 @@
 
 
 
+
 @interface ProductPropsItem : ListResponseItemBase
 @property (nonatomic, copy) NSString *propId, *propName, *proValue;
 @end

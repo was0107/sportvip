@@ -49,3 +49,15 @@
 
 @end
 
+
+
+@interface CheckClassesRequest : ListPaggingRequestBase
+@property (nonatomic, copy) NSString *userId;
+
+@end
+
+
+@interface CheckCoachesRequest : ListPaggingRequestBase
+@property (nonatomic, copy) NSString *userId;
+
+@end

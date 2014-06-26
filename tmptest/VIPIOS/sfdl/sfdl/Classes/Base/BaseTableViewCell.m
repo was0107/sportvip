@@ -174,6 +174,8 @@
     TT_RELEASE_SAFELY(_subLabel);
     TT_RELEASE_SAFELY(_leftImageView);
     TT_RELEASE_SAFELY(_textField);
+    TT_RELEASE_SAFELY(_rightButton);
+    TT_RELEASE_SAFELY(_block);
     [super dealloc];
 }
 
@@ -226,6 +228,29 @@
         _leftImageView.image = [UIImage imageNamed:@"btn_tab2"];
     }
     return _leftImageView;
+}
+
+
+
+-(UIButton *)rightButton
+{
+    if (!_rightButton) {
+        _rightButton = [[UIButton alloc]initWithFrame:CGRectZero];
+        [_rightButton setTitleColor:kWhiteColor forState:UIControlStateNormal];
+        [_rightButton setTitleColor:kBlackColor forState:UIControlStateSelected];
+        _rightButton.titleLabel.font = HTFONTSIZE(kSystemFontSize14);
+        _rightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        [_rightButton addTarget:self action:@selector(buttonOneAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _rightButton;
+}
+
+
+-(IBAction)buttonOneAction:(id)sender
+{
+    if (self.block && self.content) {
+        self.block(self.content);
+    }
 }
 
 - (void) configWithType:(int) type

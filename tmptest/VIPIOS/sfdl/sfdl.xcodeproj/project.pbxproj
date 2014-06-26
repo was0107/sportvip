@@ -156,6 +156,8 @@
 		DD8EEB181944566900CACC22 /* KxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8EEB171944566900CACC22 /* KxMenu.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		DD8EEB1B19445E6900CACC22 /* SSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8EEB1A19445E6900CACC22 /* SSettingViewController.m */; };
 		DD8EEB1E19445E9100CACC22 /* LanguageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8EEB1D19445E9100CACC22 /* LanguageViewController.m */; };
+		DDD62B22195C215B00FE2C6B /* ProductCart.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD62B21195C215B00FE2C6B /* ProductCart.m */; };
+		DDD62B25195C276D00FE2C6B /* ProductCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD62B24195C276D00FE2C6B /* ProductCartViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -416,6 +418,10 @@
 		DD8EEB1A19445E6900CACC22 /* SSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSettingViewController.m; sourceTree = "<group>"; };
 		DD8EEB1C19445E9100CACC22 /* LanguageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageViewController.h; sourceTree = "<group>"; };
 		DD8EEB1D19445E9100CACC22 /* LanguageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageViewController.m; sourceTree = "<group>"; };
+		DDD62B20195C215B00FE2C6B /* ProductCart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCart.h; sourceTree = "<group>"; };
+		DDD62B21195C215B00FE2C6B /* ProductCart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCart.m; sourceTree = "<group>"; };
+		DDD62B23195C276D00FE2C6B /* ProductCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCartViewController.h; sourceTree = "<group>"; };
+		DDD62B24195C276D00FE2C6B /* ProductCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCartViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -940,6 +946,8 @@
 				DD8EEAB41944243000CACC22 /* ProductSearchViewController.m */,
 				DD13AD6519592D33005D4222 /* ProductSearchExViewController.h */,
 				DD13AD6619592D33005D4222 /* ProductSearchExViewController.m */,
+				DDD62B23195C276D00FE2C6B /* ProductCartViewController.h */,
+				DDD62B24195C276D00FE2C6B /* ProductCartViewController.m */,
 				DD8EEAB51944243000CACC22 /* RegisterViewController.h */,
 				DD8EEAB61944243000CACC22 /* RegisterViewController.m */,
 				DD8EEABA1944243000CACC22 /* SearchViewController.h */,
@@ -953,6 +961,8 @@
 				47DF739B194D954E0004CC63 /* AgentDetailViewController.h */,
 				47DF739C194D954E0004CC63 /* AgentDetailViewController.m */,
 				DD8EEAB71944243000CACC22 /* Root */,
+				DDD62B20195C215B00FE2C6B /* ProductCart.h */,
+				DDD62B21195C215B00FE2C6B /* ProductCart.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1111,6 +1121,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDD62B25195C276D00FE2C6B /* ProductCartViewController.m in Sources */,
 				DD3A3FDC193E029300043CA4 /* URLParser.m in Sources */,
 				DD8EEAD91944243000CACC22 /* NewsDetailViewController.m in Sources */,
 				DD8EEB1E19445E9100CACC22 /* LanguageViewController.m in Sources */,
@@ -1120,6 +1131,7 @@
 				DD3A3F99193E029300043CA4 /* BaseTitleViewController.m in Sources */,
 				DD3A3FBF193E029300043CA4 /* UserItemBase.m in Sources */,
 				DD3A3F9A193E029300043CA4 /* BaseViewController.m in Sources */,
+				DDD62B22195C215B00FE2C6B /* ProductCart.m in Sources */,
 				DD3A3FEB193E029300043CA4 /* WASASILogAdatper.m in Sources */,
 				DD3A3FDD193E029300043CA4 /* UserDefaultsManager.m in Sources */,
 				DD8EEADC1944243000CACC22 /* ProductDetailViewController.m in Sources */,

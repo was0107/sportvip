@@ -29,6 +29,3 @@ typedef CGFloat     (^PickerWidthBlock)(id content, NSInteger positon);
 typedef void        (^PickerselectBlock)(id content, NSInteger row, NSInteger positon);
 
 #endif
-
-
-

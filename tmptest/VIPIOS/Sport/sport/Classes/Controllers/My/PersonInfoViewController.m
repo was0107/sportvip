@@ -16,6 +16,8 @@
 #import "ZJSwitch.h"
 #import "UIKeyboardAvoidingScrollView.h"
 #import "CreateObject.h"
+#import "CustomAnimation.h"
+
 @interface PersonInfoViewController ()
 
 @property (nonatomic, retain) PubTextField            *nameTextField;
@@ -296,25 +298,25 @@
 
 - (BOOL)checkTextField
 {
+    
+    if ([_nameTextField.pubTextField.text length] == 0) {
+        [SVProgressHUD showErrorWithStatus:@"请输入正确的名称"];
+        [_nameTextField becomeFirstResponder];
+        [CustomAnimation shakeAnimation:_nameTextField duration:0.2 vigour:0.01 number:5  direction:1];
+        return NO;
+    }
     if (![IdentifierValidator isValid:IdentifierTypeEmail value:_emailTextField.pubTextField.text]) {
         [SVProgressHUD showErrorWithStatus:@"请输入正确的邮箱"];
         [_phoneTextField becomeFirstResponder];
+        [CustomAnimation shakeAnimation:_emailTextField duration:0.2 vigour:0.01 number:5  direction:1];
         return NO;
     }
-    
     if (![IdentifierValidator isValid:IdentifierTypePhone value:_phoneTextField.pubTextField.text]) {
         [SVProgressHUD showErrorWithStatus:@"请输入正确的手机号码"];
         [_phoneTextField becomeFirstResponder];
+        [CustomAnimation shakeAnimation:_phoneTextField duration:0.2 vigour:0.01 number:5  direction:1];
         return NO;
     }
-    if (![IdentifierValidator isValid:IdentifierTypePassword value:_pwdTextField.pubTextField.text]) {
-        [SVProgressHUD showErrorWithStatus:@"密码为6-16位的字母、数字组成"];
-        [_pwdTextField becomeFirstResponder];
-        
-        return NO;
-    }
-    
-    
     return YES;
 }
 

@@ -68,7 +68,6 @@
         __unsafe_unretained LoginViewController *safeSelf = self;
         _phoneTextField = [[PubTextField alloc] initWithFrame:CGRectMake(8, 15, 304, 40) indexTitle:@"帐号" placeHolder:@"请输入手机号/邮箱" pubTextFieldStyle:PubTextFieldStyleTop];
         _phoneTextField.pubTextField.returnKeyType = UIReturnKeyNext;
-        _phoneTextField.pubTextField.keyboardType = UIKeyboardTypeNumberPad;
         [_phoneTextField.pubTextField onShouldReturn:^(UITextField *textField){
             [safeSelf.pwdTextField becomeFirstResponder];
             return YES;

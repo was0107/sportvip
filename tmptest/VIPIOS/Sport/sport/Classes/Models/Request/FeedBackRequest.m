@@ -32,7 +32,7 @@
     NSMutableArray * keys = [super keyArrays];
     if (keys) {
         [keys addObject:@"type"];
-        [keys addObject:@"description"];
+        [keys addObject:@"content"];
     }
     return keys;
 }

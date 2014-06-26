@@ -53,7 +53,7 @@
 {
     __unsafe_unretained MyViewController *blockSelf = self;
     self.tableView.tableHeaderView = TABLE_VIEW_HEADERVIEW(20.1f);
-    NSArray *titleIndexArray = @[@"个人信息",@"查看过的课程",@"联系过的课程",@"修改帐户密码"];
+    NSArray *titleIndexArray = @[@"个人信息",@"查看过的课程",@"联系过的教练",@"修改帐户密码"];
     NSArray *imageIndexArray = @[@"icon_user_info",@"icon_user_order",@"icon_user_paid",@"icon_login_password"];
     self.tableView.cellCreateBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
         static NSString *identifier = @"SETTING_TABLEVIEW_CELL_IDENTIFIER";
@@ -102,13 +102,16 @@
     
     self.tableView.cellSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+        if ([[blockSelf currentUserId] length] == 0) {
+            BaseTitleViewController *controller =  [[[LoginViewController alloc] init] autorelease];
+            [controller setHidesBottomBarWhenPushed:YES];
+            [blockSelf.navigationController pushViewController:controller animated:YES];
+            return ;
+        }
+        
         if (0 == indexPath.section) {
-            BaseTitleViewController *controller = nil;
-            if ([[blockSelf currentUserId] length] != 0) {
-                controller = [[[PersonInfoViewController alloc] init] autorelease];
-            } else {
-                controller = [[[LoginViewController alloc] init] autorelease];
-            }
+            BaseTitleViewController *controller = [[[PersonInfoViewController alloc] init] autorelease];;
             [controller setHidesBottomBarWhenPushed:YES];
             [blockSelf.navigationController pushViewController:controller animated:YES];
         } else if (1 == indexPath.section) {
@@ -132,13 +135,8 @@
 //            [blockSelf.navigationController pushViewController:controller animated:YES];
             
         } else  {
-            BaseTitleViewController *controller = nil;
-            if ([[blockSelf currentUserId] length] != 0) {
-                controller = [[[ModifyPWDViewController alloc] init] autorelease];
-                [controller setTitleContent:[titleIndexArray objectAtIndex:3]];
-            } else {
-                controller = [[[LoginViewController alloc] init] autorelease];
-            }
+            BaseTitleViewController *controller = [[[ModifyPWDViewController alloc] init] autorelease];
+            [controller setTitleContent:[titleIndexArray objectAtIndex:3]];
             [controller setHidesBottomBarWhenPushed:YES];
             [blockSelf.navigationController pushViewController:controller animated:YES];
         }

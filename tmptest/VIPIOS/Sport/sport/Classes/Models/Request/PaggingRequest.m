@@ -141,5 +141,71 @@
 
 @end
 
+@implementation CheckClassesRequest
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_userId);
+    [super dealloc];
+}
+
+- (NSMutableArray *) keyArrays
+{
+    NSMutableArray *array = [super keyArrays];
+    [array addObject:@"userId"];
+    [array addObject:@"type"];
+    return array;
+}
+
+- (NSMutableArray *) valueArrays
+{
+    NSMutableArray *array = [super valueArrays];
+    [array addObject:self.userId];
+    [array addObject:@"VIEW"];
+    return array;
+}
+
+
+- (NSString *) methodString
+{
+    return @"sport/findcoursehistory";
+}
+
+@end
+
+
+@implementation CheckCoachesRequest
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_userId);
+    [super dealloc];
+}
+
+- (NSMutableArray *) keyArrays
+{
+    NSMutableArray *array = [super keyArrays];
+    [array addObject:@"userId"];
+    [array addObject:@"type"];
+    return array;
+}
+
+- (NSMutableArray *) valueArrays
+{
+    NSMutableArray *array = [super valueArrays];
+    [array addObject:self.userId];
+    [array addObject:@"CONTACT"];
+    return array;
+}
+
+
+- (NSString *) methodString
+{
+    return @"sport/findcoursehistory";
+}
+
+@end
+
+
 
 

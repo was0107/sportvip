@@ -16,3 +16,11 @@
 @property (nonatomic, retain) UserItemBase *userItem;
 
 @end
+
+
+@interface ClassDetailResponse : ListResponseBase
+@property (nonatomic, copy)   NSString  *advantage,*age,*coachName,*description,*name,*price,*schoolTime;                     // *(String)：操作中文信息描述
+
+
+
+@end

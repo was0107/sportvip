@@ -20,7 +20,7 @@
     
     self.dataSource = self;
     self.delegate = self;
-
+    self.tabWidth = 160.0f;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -49,6 +49,7 @@
 - (NSUInteger)numberOfTabsForViewPager:(ViewPagerController *)viewPager {
     return 2;
 }
+
 - (UIView *)viewPager:(ViewPagerController *)viewPager viewForTabAtIndex:(NSUInteger)index {
     
     UILabel *label = [UILabel new];

@@ -18,6 +18,7 @@
     TT_RELEASE_SAFELY(_name);
     TT_RELEASE_SAFELY(_schoolTime);
     TT_RELEASE_SAFELY(_coachName)
+    TT_RELEASE_SAFELY(_courseId);
     TT_RELEASE_SAFELY(_priceString);
     [super dealloc];
 }
@@ -27,12 +28,13 @@
     self = [super init];
     if (self) {
         self.coachId     = [self stringObjectFrom:dictionary withKey:@"coachId"];
+        self.courseId    = [self stringObjectFrom:dictionary withKey:@"courseId"];
         self.advantage   = [self stringObjectFrom:dictionary withKey:@"advantage"];
         self.description = [self stringObjectFrom:dictionary withKey:@"description"];
         self.name        = [self stringObjectFrom:dictionary withKey:@"name"];
         self.schoolTime  = [self stringObjectFrom:dictionary withKey:@"schoolTime"];
         self.coachId     = [self stringObjectFrom:dictionary withKey:@"coachId"];
-        self.coachName     = [self stringObjectFrom:dictionary withKey:@"coachName"];
+        self.coachName   = [self stringObjectFrom:dictionary withKey:@"coachName"];
         float price      = [self floatValueFrom:dictionary withKey:@"price"];
         self.priceString = [NSString stringWithFormat:@"￥%.0f",price];
 //        if ([self.name length] == 0) {

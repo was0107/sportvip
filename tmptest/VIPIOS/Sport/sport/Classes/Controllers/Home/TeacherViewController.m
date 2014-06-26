@@ -245,6 +245,8 @@
         if (2 == indexPath.section)
         {
             ClassDetailViewController *controller = [[[ClassDetailViewController alloc] init] autorelease];
+            CourseItem *item = [[blockSelf.response courses] objectAtIndex:indexPath.row];
+            controller.courseId = item.courseId;
             [controller setHidesBottomBarWhenPushed:YES];
             [blockSelf.navigationController pushViewController:controller animated:YES];
         }

@@ -38,3 +38,16 @@
 @property (nonatomic, retain) NSMutableArray *keys,*values;
 @end
 
+
+
+@interface ClassDetailRequest : ListRequestBase
+@property (nonatomic, copy)     NSString    *courseId;
+
+@end
+
+
+@interface AddClassCoachRequest : ListRequestBase
+@property (nonatomic, copy) NSString *userId,*courseId,*type;
+
+@end
+
