@@ -14,11 +14,12 @@
 #import "LoginResponse.h"
 #import "CreateObject.h"
 #import "CustomAnimation.h"
+#import "ForgetPWDViewController.h"
 
 @interface LoginViewController ()
 @property (nonatomic, retain) PubTextField *phoneTextField;
 @property (nonatomic, retain) PubTextField *pwdTextField;
-@property (nonatomic, retain) UIButton     *confirmButton;
+@property (nonatomic, retain) UIButton     *confirmButton,*forgetButton;
 
 @end
 
@@ -41,18 +42,13 @@
     [self.view addSubview:self.phoneTextField];
     [self.view addSubview:self.pwdTextField];
     [self.view addSubview:self.confirmButton];
+    [self.view addSubview:self.forgetButton];
     
 #ifdef kUseSimulateData
     self.phoneTextField.pubTextField.text = @"13611111111";
     self.pwdTextField.pubTextField.text = @"111111";
 #endif
 
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void) rightButtonAction:(id)sender
@@ -108,10 +104,34 @@
     return _confirmButton;
 }
 
+- (UIButton *)forgetButton
+{
+    if (!_forgetButton) {
+        _forgetButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+        _forgetButton.frame = CGRectMake(210.0f, 165.0f, 100.0f, 40.0f);
+        _forgetButton.backgroundColor = kLightGrayColor;
+        [_forgetButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18.0f]];
+        UIImage *image = [[UIImage imageNamed:@"button_login_normal"] stretchableImageWithLeftCapWidth:4 topCapHeight:4];
+        [_forgetButton setBackgroundImage:image forState:UIControlStateNormal];
+        [_forgetButton setTitle:@"忘记密码" forState:UIControlStateNormal];
+        [CreateObject addTargetEfection:_forgetButton];
+        [_forgetButton addTarget:self action:@selector(forgetButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    return _confirmButton;
+}
+
 - (IBAction)confirmButtonAction:(id)sender
 {
     [self.pwdTextField resignFirstResponder];
     [self requestServerForLogin:sender];
+}
+
+- (IBAction)forgetButtonAction:(id)sender
+{
+    ForgetPWDViewController *controller = [[[ForgetPWDViewController alloc] init] autorelease];
+    [controller setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 
@@ -154,6 +174,7 @@
         [UserDefaultsManager saveUserName:response.userItem.nickName];
         [UserDefaultsManager saveUserId:response.userItem.userId];
         [UserDefaultsManager saveUserEmail:response.userItem.email];
+        [UserDefaultsManager saveUserTel:response.userItem.phone];
         [UserDefaultsManager saveUserIcon:response.userItem.avatar];
         [UserDefaultsManager saveUserBirthDay:response.userItem.birthday];
         [UserDefaultsManager saveUserGender:response.userItem.gender];

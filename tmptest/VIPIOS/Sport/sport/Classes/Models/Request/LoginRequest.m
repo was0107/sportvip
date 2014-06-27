@@ -58,7 +58,7 @@
 
 - (NSString *) methodString
 {
-    return @"user/forget-password";
+    return @"user/forgotPassword";
 }
 
 @end

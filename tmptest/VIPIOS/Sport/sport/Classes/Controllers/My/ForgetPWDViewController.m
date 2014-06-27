@@ -43,6 +43,7 @@
     
     [self.view addSubview:[self mailTextField]];
     [self.view addSubview:[self resetPwdButton]];
+    self.mailTextField.pubTextField.text = [UserDefaultsManager userEmail];
 }
 
 - (void)didReceiveMemoryWarning

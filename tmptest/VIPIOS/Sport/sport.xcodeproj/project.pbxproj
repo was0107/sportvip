@@ -388,6 +388,8 @@
 		DDB0D45F1924F2E300490E35 /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
 		DDB9DCE1195D1CEA009CA9BC /* CheckClassTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckClassTableViewCell.h; sourceTree = "<group>"; };
 		DDB9DCE2195D1CEA009CA9BC /* CheckClassTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckClassTableViewCell.m; sourceTree = "<group>"; };
+		DDB9DCE4195D54D0009CA9BC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		DDB9DCE5195D54D0009CA9BC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		DDBAFA6E1929CA3E00FBCE38 /* icon_search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_search.png; sourceTree = "<group>"; };
 		DDBAFA6F1929CA3E00FBCE38 /* icontop_location_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icontop_location_n.png; sourceTree = "<group>"; };
 		DDBAFA771929CA6A00FBCE38 /* icon_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_back.png; sourceTree = "<group>"; };
@@ -1131,6 +1133,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = DD130E5418FD1D4B006FA005;
 			productRefGroup = DD130E5E18FD1D4B006FA005 /* Products */;
@@ -1333,6 +1336,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				DD130E6A18FD1D4B006FA005 /* en */,
+				DDB9DCE4195D54D0009CA9BC /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1341,6 +1345,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				DD130E8918FD1D4B006FA005 /* en */,
+				DDB9DCE5195D54D0009CA9BC /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

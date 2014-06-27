@@ -83,14 +83,6 @@
 
 - (void) configTitleView
 {
-//    self.typeButton                     = [UIButton buttonWithType:UIButtonTypeCustom];
-//    self.typeButton.frame               = CGRectMake(0, 0, 44, 44);
-//    self.typeButton.backgroundColor     = kClearColor;
-//    [self.typeButton addTarget:self action:@selector(typeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-//    [self.typeButton setNormalImage:@"icon_index_class_n" selectedImage:@"icon_index_class_f"];
-//    [self.titleView addSubview:self.typeButton];
-
-
     self.cityButton                     = [UIButton buttonWithType:UIButtonTypeCustom];
     self.cityButton.frame               = CGRectMake(0, 0, 44, 44);
     self.cityButton.backgroundColor     = kClearColor;
@@ -119,15 +111,6 @@
 
     UIImageView *searchIcon             = [[[UIImageView  alloc] initWithFrame:CGRectMake(5, 5, 20, 20)] autorelease];
     searchIcon.image                    = [UIImage imageNamed:@"icon_search"];
-//    [bottomView addSubview:searchIcon];
-
-//    self.searchTextView                 = [[[UITextField alloc] initWithFrame:CGRectMake(34, 0, 125, 30)] autorelease];
-//    self.searchTextView.font            = HTFONTSIZE(kFontSize14);
-//    self.searchTextView.backgroundColor = kClearColor;
-//    self.searchTextView.textColor       = kLightGrayColor;
-//    self.searchTextView.placeholder     = @"搜索课程";
-//    self.searchTextView.enabled         = NO;
-//    [bottomView addSubview:self.searchTextView];
 
     self.zjWwitch = [[ZJSwitch alloc] initWithFrame:CGRectMake(230, 4, 75, 34)];
     self.zjWwitch.backgroundColor = [UIColor clearColor];
@@ -138,9 +121,6 @@
     
     [self.zjWwitch addTarget:self action:@selector(typeButtonAction:) forControlEvents:UIControlEventValueChanged];
     [self.titleView addSubview:self.zjWwitch];
-
-    
-//    [self.titleView addSubview:bottomView];
 }
 
 - (void) configSectionView
@@ -332,7 +312,7 @@
     };
 
     [self.view addSubview:self.tableView];
-    [self.tableView doSendRequest:YES];
+    [self sendRequestToServer];
 }
 
 - (void) dealWithData

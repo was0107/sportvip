@@ -348,8 +348,11 @@
         LoginResponse *response = [[[LoginResponse alloc] initWithJsonString:content] autorelease];
         [UserDefaultsManager saveUserName:response.userItem.nickName];
         [UserDefaultsManager saveUserId:response.userItem.userId];
+        [UserDefaultsManager saveUserEmail:response.userItem.email];
+        [UserDefaultsManager saveUserTel:response.userItem.phone];
+        [UserDefaultsManager saveUserIcon:response.userItem.avatar];
+        [UserDefaultsManager saveUserBirthDay:response.userItem.birthday];
         [UserDefaultsManager saveUserGender:response.userItem.gender];
-        [UserDefaultsManager saveUserTel:_phoneTextField.pubTextField.text];
         [SVProgressHUD dismiss];
         [safeSelf.navigationController dismissViewControllerAnimated:YES completion:nil];
         [safeSelf.confirmButton setEnabled:YES];

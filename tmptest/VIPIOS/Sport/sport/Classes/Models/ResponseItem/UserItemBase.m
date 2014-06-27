@@ -42,6 +42,7 @@
         self.gender     = [self stringObjectFrom:dictionary withKey:@"gender"];
         self.avatar     = [self stringObjectFrom:dictionary withKey:@"avatar"];
         self.email      = [self stringObjectFrom:dictionary withKey:@"email"];
+        self.phone      = [self stringObjectFrom:dictionary withKey:@"phone"];
         self.birthday   = [self integerValueFrom:dictionary withKey:@"birthday"];
         self.createTime = [self integerValueFrom:dictionary withKey:@"createTime"];
     }
