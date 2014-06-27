@@ -15,14 +15,11 @@
 
 @implementation ClassTableViewCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+
+- (void) dealloc
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-        self.categories = [NSMutableArray array];
-    }
-    return self;
+    TT_RELEASE_SAFELY(_categories);
+    [super dealloc];
 }
 
 - (void) configWithType:(int) type

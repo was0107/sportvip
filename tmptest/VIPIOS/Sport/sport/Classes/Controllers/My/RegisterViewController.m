@@ -42,13 +42,26 @@
     int _type;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (void) reduceMemory
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    TT_RELEASE_SAFELY(_nameTextField);
+    TT_RELEASE_SAFELY(_sexTextField);
+    TT_RELEASE_SAFELY(_birthTextField);
+    TT_RELEASE_SAFELY(_phoneTextField);
+    TT_RELEASE_SAFELY(_emailTextField);
+    TT_RELEASE_SAFELY(_pwdTextField);
+    TT_RELEASE_SAFELY(_confirmButton);
+    TT_RELEASE_SAFELY(_scrollView);
+    TT_RELEASE_SAFELY(_datePicker);
+    TT_RELEASE_SAFELY(_birthTextField);
+    TT_RELEASE_SAFELY(_gender);
+    TT_RELEASE_SAFELY(_nickName);
+    TT_RELEASE_SAFELY(_birthday);
+    TT_RELEASE_SAFELY(_phone);
+    TT_RELEASE_SAFELY(_email);
+    TT_RELEASE_SAFELY(_password);
+    TT_RELEASE_SAFELY(_zjWwitch);
+    [super reduceMemory];
 }
 
 - (void)viewDidLoad

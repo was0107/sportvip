@@ -7,6 +7,7 @@
 //
 
 #import "BaseTableViewController.h"
+#import "LoginRequest.h"    
 
 @interface BaseTableViewController()<UIPopoverListViewDataSource, UIPopoverListViewDelegate>
 
@@ -208,8 +209,10 @@
 #pragma mark - UIPopoverListViewDelegate
 - (void)popoverListView:(UIPopoverListView *)popoverListView didSelectIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%s : %d", __func__, indexPath.row);
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://13600000000"]];
+    DEBUGLOG(@"%s : %d", __func__, indexPath.row);
+    TelItem *telItem = [self.telArray objectAtIndex:indexPath.row];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telItem.tel]];
+    [self sendTelRequestToServer:telItem.coachId];
 }
 
 - (CGFloat)popoverListView:(UIPopoverListView *)popoverListView
@@ -217,4 +220,26 @@
 {
     return 50.0f;
 }
+
+- (void) sendTelRequestToServer:(NSString *) coachId;
+{
+    if ([coachId length] == 0 || [[self currentUserId] length] == 0 ) {
+        return;
+    }
+    __block BaseTableViewController *blockSelf = self;
+    idBlock succBlock = ^(id content){
+        DEBUGLOG(@"succeed content %@", content);
+        [blockSelf.tableView tableViewDidFinishedLoading];
+    };
+    idBlock failedBlock = ^(id content) {
+        DEBUGLOG(@"failed content %@", content);
+        [blockSelf.tableView tableViewDidFinishedLoading];
+    };
+    AddClassCoachRequest *addTelRequest = [[[AddClassCoachRequest alloc] init] autorelease];
+    addTelRequest.isContact             = YES;
+    addTelRequest.userId                = [self currentUserId];
+    addTelRequest.courseId              = coachId;
+    [WASBaseServiceFace serviceWithMethod:[addTelRequest URLString] body:[addTelRequest toJsonString] onSuc:succBlock onFailed:failedBlock onError:failedBlock];
+}
+
 @end

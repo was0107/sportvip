@@ -22,6 +22,7 @@
 @end
 
 @implementation ForgetPWDViewController
+
 - (void) reduceMemory {
     TT_RELEASE_SAFELY(_resetPwdButton);
     TT_RELEASE_SAFELY(_backButton);

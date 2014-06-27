@@ -115,6 +115,7 @@
 		DDB0D4431924E86800490E35 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB0D4421924E86800490E35 /* HomeViewController.m */; };
 		DDB0D4601924F2E300490E35 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB0D45D1924F2E300490E35 /* AboutViewController.m */; };
 		DDB0D4611924F2E300490E35 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB0D45F1924F2E300490E35 /* FeedbackViewController.m */; };
+		DDB9DCE3195D1CEA009CA9BC /* CheckClassTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB9DCE2195D1CEA009CA9BC /* CheckClassTableViewCell.m */; };
 		DDBAFA751929CA3E00FBCE38 /* icon_search.png in Resources */ = {isa = PBXBuildFile; fileRef = DDBAFA6E1929CA3E00FBCE38 /* icon_search.png */; };
 		DDBAFA761929CA3E00FBCE38 /* icontop_location_n.png in Resources */ = {isa = PBXBuildFile; fileRef = DDBAFA6F1929CA3E00FBCE38 /* icontop_location_n.png */; };
 		DDBAFA781929CA6A00FBCE38 /* icon_back.png in Resources */ = {isa = PBXBuildFile; fileRef = DDBAFA771929CA6A00FBCE38 /* icon_back.png */; };
@@ -385,6 +386,8 @@
 		DDB0D45D1924F2E300490E35 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		DDB0D45E1924F2E300490E35 /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
 		DDB0D45F1924F2E300490E35 /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
+		DDB9DCE1195D1CEA009CA9BC /* CheckClassTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckClassTableViewCell.h; sourceTree = "<group>"; };
+		DDB9DCE2195D1CEA009CA9BC /* CheckClassTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckClassTableViewCell.m; sourceTree = "<group>"; };
 		DDBAFA6E1929CA3E00FBCE38 /* icon_search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_search.png; sourceTree = "<group>"; };
 		DDBAFA6F1929CA3E00FBCE38 /* icontop_location_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icontop_location_n.png; sourceTree = "<group>"; };
 		DDBAFA771929CA6A00FBCE38 /* icon_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_back.png; sourceTree = "<group>"; };
@@ -1060,6 +1063,8 @@
 				DDFFF0C5194D509C00ACBC66 /* DidCheckClassesViewController.m */,
 				DDFFF0C7194D516600ACBC66 /* DidContactClassesViewController.h */,
 				DDFFF0C8194D516600ACBC66 /* DidContactClassesViewController.m */,
+				DDB9DCE1195D1CEA009CA9BC /* CheckClassTableViewCell.h */,
+				DDB9DCE2195D1CEA009CA9BC /* CheckClassTableViewCell.m */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -1249,6 +1254,7 @@
 				DDB0D40B1924E08300490E35 /* BaseGroupTableView.m in Sources */,
 				DDB0D4351924E08300490E35 /* WASBaseAdapter.m in Sources */,
 				DDB0D4211924E08300490E35 /* CreateObject+CustomControl.m in Sources */,
+				DDB9DCE3195D1CEA009CA9BC /* CheckClassTableViewCell.m in Sources */,
 				DDB0D4161924E08300490E35 /* FeedBackRequest.m in Sources */,
 				DDB0D4311924E08300490E35 /* WASASIAdapter.m in Sources */,
 				DDB0D4231924E08300490E35 /* URLMethod.m in Sources */,

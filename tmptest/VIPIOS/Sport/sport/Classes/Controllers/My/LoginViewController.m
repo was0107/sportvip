@@ -24,13 +24,13 @@
 
 @implementation LoginViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+
+- (void) reduceMemory
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    TT_RELEASE_SAFELY(_phoneTextField);
+    TT_RELEASE_SAFELY(_pwdTextField);
+    TT_RELEASE_SAFELY(_confirmButton);
+    [super reduceMemory];
 }
 
 - (void)viewDidLoad

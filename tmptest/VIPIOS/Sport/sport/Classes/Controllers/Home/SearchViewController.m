@@ -16,13 +16,12 @@
 
 @implementation SearchViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (void) reduceMemory
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    TT_RELEASE_SAFELY(_titleView);
+    TT_RELEASE_SAFELY(_mapButton);
+    TT_RELEASE_SAFELY(_searchTextView);
+    [super reduceMemory];
 }
 
 - (void)viewDidLoad

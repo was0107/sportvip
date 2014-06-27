@@ -15,13 +15,10 @@
 
 @implementation OrdersViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+
+- (void) reduceMemory
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    [super reduceMemory];
 }
 
 - (void)viewDidLoad

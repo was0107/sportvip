@@ -47,15 +47,26 @@
 
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (void) reduceMemory
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    TT_RELEASE_SAFELY(_typeButton);
+    TT_RELEASE_SAFELY(_cityButton);
+    TT_RELEASE_SAFELY(_mapButton);
+    TT_RELEASE_SAFELY(_titleView);
+    TT_RELEASE_SAFELY(_searchView);
+    TT_RELEASE_SAFELY(_searchTextView);
+    TT_RELEASE_SAFELY(_selectControl);
+    TT_RELEASE_SAFELY(_button1);
+    TT_RELEASE_SAFELY(_button2);
+    TT_RELEASE_SAFELY(_button3);
+    TT_RELEASE_SAFELY(_sectionView);
+    TT_RELEASE_SAFELY(_zjWwitch);
+    TT_RELEASE_SAFELY(_request);
+    TT_RELEASE_SAFELY(_response);
+    TT_RELEASE_SAFELY(_coachesRequest);
+    TT_RELEASE_SAFELY(_coachesResponse);
+    [super reduceMemory];
 }
-
 
 - (void)viewDidLoad
 {

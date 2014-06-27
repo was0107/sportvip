@@ -46,6 +46,8 @@
 - (void) reduceMemory
 {
     TT_RELEASE_SAFELY(_mapView);
+    TT_RELEASE_SAFELY(_request);
+    TT_RELEASE_SAFELY(_response);
     TT_RELEASE_SAFELY(_currentAnnotation);
     [super reduceMemory];
 }

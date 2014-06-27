@@ -15,6 +15,7 @@
 #import "LoginResponse.h"
 #import "PaggingRequest.h"
 #import "PaggingResponse.h"
+#import "TeacherViewController.h"
 
 @interface ClassDetailViewController ()
 @property (nonatomic, retain) ClassDetailResponse *response;
@@ -23,13 +24,12 @@
 
 @implementation ClassDetailViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (void) dealloc
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    TT_RELEASE_SAFELY(_response);
+    TT_RELEASE_SAFELY(_titleArray1);
+    TT_RELEASE_SAFELY(_titleArray2);
+    [super dealloc];
 }
 
 - (void)viewDidLoad
@@ -192,6 +192,11 @@
     
     self.tableView.cellSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        if (2 == indexPath.section) {
+            TeacherViewController *controller = [[[TeacherViewController alloc] init] autorelease];
+            [controller setHidesBottomBarWhenPushed:YES];
+            [blockSelf.navigationController pushViewController:controller animated:YES];
+        }
     };
     
     self.tableView.sectionNumberBlock = ^( UITableView *tableView){
@@ -241,9 +246,9 @@
 {
     self.titleArray1 = [NSMutableArray arrayWithObjects:self.response.age,self.response.description,nil];
     self.titleArray2 = [NSMutableArray arrayWithObjects:self.response.name,\
-                        [NSString stringWithFormat:@"上课地点：%@",self.response.name],\
-                        [NSString stringWithFormat:@"教练：%@",self.response.coachName],
-                        [NSString stringWithFormat:@"上课时间：：%@",self.response.schoolTime],
+                        [NSString stringWithFormat:@"上课地点:%@",self.response.name],\
+                        [NSString stringWithFormat:@"教练:%@",self.response.coachName],
+                        [NSString stringWithFormat:@"上课时间:%@",self.response.schoolTime],
                         @"适合年龄",\
                         @"课程特色",nil];
 

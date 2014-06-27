@@ -15,25 +15,29 @@
 #import "CustomAnimation.h"
 
 @interface ModifyPWDViewController ()
-@property (nonatomic, retain) PubTextField *phoneTextField;
-@property (nonatomic, retain) PubTextField *oldTextField;
-@property (nonatomic, retain) PubTextField *newTextField;
-@property (nonatomic, retain) PubTextField *confirmTextField;
-@property (nonatomic, retain) UIButton     *confirmButton;
-@property (nonatomic, retain) UIKeyboardAvoidingScrollView            *scrollView;
+@property (nonatomic, retain) PubTextField                 *phoneTextField;
+@property (nonatomic, retain) PubTextField                 *oldTextField;
+@property (nonatomic, retain) PubTextField                 *newTextField;
+@property (nonatomic, retain) PubTextField                 *confirmTextField;
+@property (nonatomic, retain) UIButton                     *confirmButton;
+@property (nonatomic, retain) UIKeyboardAvoidingScrollView *scrollView;
 
 @end
 
 @implementation ModifyPWDViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+
+- (void) reduceMemory
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    TT_RELEASE_SAFELY(_phoneTextField);
+    TT_RELEASE_SAFELY(_oldTextField);
+    TT_RELEASE_SAFELY(_newTextField);
+    TT_RELEASE_SAFELY(_confirmButton);
+    TT_RELEASE_SAFELY(_confirmTextField);
+    TT_RELEASE_SAFELY(_scrollView);
+    [super reduceMemory];
 }
+
 
 - (void)viewDidLoad
 {

@@ -25,10 +25,10 @@
     // Do any additional setup after loading the view.
 }
 
-- (void) dealloc
+- (void) reduceMemory
 {
     TT_RELEASE_SAFELY(_currentVersionLabel);
-    [super dealloc];
+    [super reduceMemory];
 }
 
 - (UILabel *) currentVersionLabel

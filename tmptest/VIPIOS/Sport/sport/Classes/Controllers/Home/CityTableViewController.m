@@ -24,8 +24,15 @@
 @end
 
 @implementation CityTableViewController
-//@synthesize response = _response;
-@synthesize currentCity = _currentCity;
+
+- (void) reduceMemory
+{
+    TT_RELEASE_SAFELY(_currentCity);
+    TT_RELEASE_SAFELY(_request);
+    TT_RELEASE_SAFELY(_response);
+    [super reduceMemory];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

@@ -14,7 +14,7 @@
 @end
 
 @interface TelItem : ListResponseItemBase
-@property (nonatomic, copy) NSString *name,*avatar,*tel;
+@property (nonatomic, copy) NSString *coachId,*name,*avatar,*tel;
 
 +(TelItem *) hotItem;
 

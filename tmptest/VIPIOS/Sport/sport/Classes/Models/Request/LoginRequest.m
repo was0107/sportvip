@@ -172,7 +172,7 @@
     self = [super init];
     if (self) {
         self.userId = self.courseId = @"";
-        self.type = @"VIEW";//CONTACT
+        self.isContact = NO;
     }
     return self;
 }
@@ -181,7 +181,6 @@
 {
     TT_RELEASE_SAFELY(_userId);
     TT_RELEASE_SAFELY(_courseId);
-    TT_RELEASE_SAFELY(_type);
     [super dealloc];
 }
 
@@ -197,11 +196,15 @@
 - (NSMutableArray *) valueArrays
 {
     NSMutableArray *array = [super valueArrays];
-    [array addObject:self.type];
+    [array addObject:(self.isContact) ? @"CONTACT": @"VIEW"];
     [array addObject:self.userId];
     [array addObject:self.courseId];
     return array;
 }
 
+-(NSString *)methodString
+{
+    return  @"sport/coursehistory";
+}
 @end
 

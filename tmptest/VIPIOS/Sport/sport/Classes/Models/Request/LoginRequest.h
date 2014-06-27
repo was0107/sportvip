@@ -47,7 +47,8 @@
 
 
 @interface AddClassCoachRequest : ListRequestBase
-@property (nonatomic, copy) NSString *userId,*courseId,*type;
+@property (nonatomic, copy) NSString *userId,*courseId;
+@property (nonatomic, assign) BOOL   isContact;
 
 @end
 

@@ -130,21 +130,6 @@ static DataManager * sharedInstance = nil;
 
 -(void)configAreaAndLandmark
 {
-//    AreaItem *item = [[[AreaItem alloc] init] autorelease];
-//    item.cityAreaId = @"-1";
-//    item.cityAreaName = @"区域";
-//    item.cityId = @"";
-//    
-//    LandmarkItem *subItem = [[[LandmarkItem alloc] init] autorelease];
-//    subItem.landmarkId = @"-1";
-//    subItem.landmarkName = @"区域";
-//    
-//    NSMutableArray *array = [NSMutableArray arrayWithObject:subItem];
-//    
-//    AreaAndLandmarkItem  * cateItem = [[[AreaAndLandmarkItem alloc] init] autorelease];
-//    cateItem.cityArea = item;
-//    cateItem.landmarkArray = array;
-//    self.areaAndLandmarkArray = [NSMutableArray arrayWithObject:cateItem];
 }
 
 - (void) dealloc

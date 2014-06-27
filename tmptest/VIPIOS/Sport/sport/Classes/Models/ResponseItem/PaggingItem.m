@@ -49,6 +49,7 @@
 
 - (void)dealloc{
     
+    TT_RELEASE_SAFELY(_coachId);
     TT_RELEASE_SAFELY(_name);
     TT_RELEASE_SAFELY(_avatar);
     TT_RELEASE_SAFELY(_tel);
@@ -59,6 +60,7 @@
 +(TelItem *) hotItem
 {
     TelItem *item = [[[TelItem alloc] init] autorelease];
+    item.coachId = @"";
     item.name = @"";
     item.avatar = kImageDefault;
     item.tel = @"13600000000";
@@ -100,7 +102,7 @@
 {
     self = [super init];
     if (self) {
-        self.itemId = [self stringObjectFrom:dictionary withKey:@"id"];
+        self.itemId = [[dictionary objectForKey:@"id" ] stringValue];
     }
     return self;
 }
@@ -238,7 +240,7 @@
     self = [super initWithDictionary:dictionary];
     if (self) {
         
-        self.itemId            = [dictionary objectForKey:@"id"];
+        self.itemId            = [[dictionary objectForKey:@"id"] stringValue];
         self.address           = [dictionary objectForKey:@"address"];
         self.name              = [dictionary objectForKey:@"name"];
         self.descriptionString = [dictionary objectForKey:@"description"];
@@ -398,6 +400,7 @@
         @autoreleasepool {
             for ( int i = 0 , total = [array count]; i < total; ++i) {
                 TelItem *item = [[[TelItem alloc] init] autorelease];
+                item.coachId     = self.itemId;
                 item.name     = self.name;
                 item.avatar   = self.avatar;
                 item.tel      = [array objectAtIndex:i];
@@ -461,7 +464,7 @@
     self = [super initWithDictionary:dictionary];
     if (self) {
         
-        self.itemId       = [dictionary objectForKey:@"id"];
+        self.itemId       = [[dictionary objectForKey:@"id"] stringValue];
         self.age          = [[dictionary objectForKey:@"age"] intValue];
         self.name         = [dictionary objectForKey:@"name"];
         self.avatar       = [dictionary objectForKey:@"avatar"];
@@ -490,8 +493,9 @@
         @autoreleasepool {
             for ( int i = 0 , total = [array count]; i < total; ++i) {
                 TelItem *hornorItem = [[[TelItem alloc] init] autorelease];
-                hornorItem.name = self.name;
-                hornorItem.avatar = self.avatar;
+                hornorItem.coachId  = self.itemId;
+                hornorItem.name     = self.name;
+                hornorItem.avatar   = self.avatar;
                 hornorItem.tel =[array objectAtIndex:i];
                 [arrayResult addObject:hornorItem];
             }
