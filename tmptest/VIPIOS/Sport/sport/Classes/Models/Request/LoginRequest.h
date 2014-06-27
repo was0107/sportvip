@@ -52,3 +52,7 @@
 
 @end
 
+
+@interface ServicePhoneRequest : ListRequestBase
+
+@end

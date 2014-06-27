@@ -208,3 +208,12 @@
 }
 @end
 
+@implementation ServicePhoneRequest
+
+-(NSString *)methodString
+{
+    return  @"sport/servicephone";
+}
+
+@end
+

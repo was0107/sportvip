@@ -19,6 +19,8 @@
 #import "PaggingRequest.h"
 #import "PaggingResponse.h"
 #import "STLocationInstance.h"
+#import "LoginRequest.h"
+#import "LoginResponse.h"
 
 @interface HomeViewController ()
 @property (nonatomic, retain) UIButton *typeButton;
@@ -78,6 +80,7 @@
     [self configTitleView];
     [self configSectionView];
     [self sendToGetEvents];
+    [self sendToGetServicePhone];
     self.navigationItem.titleView = self.titleView;
 }
 
@@ -374,6 +377,30 @@
         DEBUGLOG(@"error content %@", content);
     };
     EventsRequest *eventRequest = [[[EventsRequest alloc] init] autorelease];
+    [WASBaseServiceFace serviceWithMethod:[eventRequest URLString] body:[eventRequest toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
+}
+
+- (void) sendToGetServicePhone
+{
+    __block HomeViewController *blockSelf = self;
+    idBlock succBlock = ^(id content){
+        DEBUGLOG(@"succeed content %@", content);
+        [blockSelf.tableView tableViewDidFinishedLoading];
+        ServicePhoneResponse *serviceResponse = [[[ServicePhoneResponse alloc] initWithJsonString:content] autorelease];
+        if ([serviceResponse.phone length] > 0) {
+            [DataManager sharedInstance].serviceTel = serviceResponse.phone;
+        }
+    };
+    
+    idBlock failedBlock = ^(id content) {
+        DEBUGLOG(@"failed content %@", content);
+        [SVProgressHUD dismiss];
+        
+    };
+    idBlock errBlock = ^(id content){
+        DEBUGLOG(@"error content %@", content);
+    };
+    ServicePhoneRequest *eventRequest = [[[ServicePhoneRequest alloc] init] autorelease];
     [WASBaseServiceFace serviceWithMethod:[eventRequest URLString] body:[eventRequest toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
 }
 

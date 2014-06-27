@@ -28,7 +28,7 @@
     self = [super init];
     if (self) {
         self.coachId     = [self stringObjectFrom:dictionary withKey:@"coachId"];
-        self.courseId    = [self stringObjectFrom:dictionary withKey:@"courseId"];
+        self.courseId    = [self stringObjectFrom:dictionary withKey:@"id"];
         self.advantage   = [self stringObjectFrom:dictionary withKey:@"advantage"];
         self.description = [self stringObjectFrom:dictionary withKey:@"description"];
         self.name        = [self stringObjectFrom:dictionary withKey:@"name"];
@@ -57,13 +57,16 @@
 }
 
 
-+(TelItem *) hotItem
++(TelItem *) hotItem:(NSString *)tel
 {
+    if (!tel || [tel length] == 0) {
+        return nil;
+    }
     TelItem *item = [[[TelItem alloc] init] autorelease];
     item.coachId = @"";
     item.name = @"";
     item.avatar = kImageDefault;
-    item.tel = @"13600000000";
+    item.tel = tel;
     return item;
 }
 

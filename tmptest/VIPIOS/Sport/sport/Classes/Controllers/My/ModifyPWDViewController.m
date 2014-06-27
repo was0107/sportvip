@@ -13,6 +13,7 @@
 #import "LoginResponse.h"
 #import "UIKeyboardAvoidingScrollView.h"
 #import "CustomAnimation.h"
+#import "CreateObject.h"
 
 @interface ModifyPWDViewController ()
 @property (nonatomic, retain) PubTextField                 *phoneTextField;
@@ -69,7 +70,6 @@
         __unsafe_unretained ModifyPWDViewController *safeSelf = self;
         _phoneTextField = [[PubTextField alloc] initWithFrame:CGRectMake(8, 15, 304, 40) indexTitle:@"帐号" placeHolder:@"请输入手机号/邮箱" pubTextFieldStyle:PubTextFieldStyleTop];
         _phoneTextField.pubTextField.returnKeyType = UIReturnKeyNext;
-        _phoneTextField.pubTextField.keyboardType = UIKeyboardTypeNumberPad;
         [_phoneTextField.pubTextField onShouldReturn:^(UITextField *textField){
             [safeSelf.oldTextField becomeFirstResponder];
             return YES;
@@ -84,6 +84,7 @@
         __unsafe_unretained ModifyPWDViewController *safeSelf = self;
         _oldTextField = [[PubTextField alloc] initWithFrame:CGRectMake(8, 62, 304, 40) indexTitle:@"旧密码" placeHolder:@"6-16位的字母、数字组成" pubTextFieldStyle:PubTextFieldStyleTop];
         _oldTextField.pubTextField.returnKeyType = UIReturnKeyNext;
+        _oldTextField.pubTextField.secureTextEntry = YES;
         [_oldTextField.pubTextField onShouldReturn:^(UITextField *textField){
             [safeSelf.newTextField becomeFirstResponder];
             return YES;
@@ -98,6 +99,7 @@
         __unsafe_unretained ModifyPWDViewController *safeSelf = self;
         _newTextField = [[PubTextField alloc] initWithFrame:CGRectMake(8, 109, 304, 40) indexTitle:@"新密码" placeHolder:@"6-16位的字母、数字组成" pubTextFieldStyle:PubTextFieldStyleBottom];
         _newTextField.pubTextField.returnKeyType = UIReturnKeyNext;
+        _newTextField.pubTextField.secureTextEntry = YES;
         [_newTextField.pubTextField onShouldReturn:^(UITextField *textField){
             [safeSelf.confirmTextField becomeFirstResponder];
             return YES;
@@ -112,6 +114,7 @@
         __unsafe_unretained ModifyPWDViewController *safeSelf = self;
         _confirmTextField = [[PubTextField alloc] initWithFrame:CGRectMake(8, 157, 304, 40) indexTitle:@"再确认" placeHolder:@"6-16位的字母、数字组成" pubTextFieldStyle:PubTextFieldStyleTop];
         _confirmTextField.pubTextField.returnKeyType = UIReturnKeyDone;
+        _confirmTextField.pubTextField.secureTextEntry = YES;
         [_confirmTextField.pubTextField onShouldReturn:^(UITextField *textField){
             [_confirmTextField resignFirstResponder];
             return YES;
@@ -130,6 +133,7 @@
         UIImage *image = [[UIImage imageNamed:@"button_login_normal"] stretchableImageWithLeftCapWidth:4 topCapHeight:4];
         [_confirmButton setBackgroundImage:image forState:UIControlStateNormal];
         [_confirmButton setTitle:@"确认提交" forState:UIControlStateNormal];
+        [CreateObject addTargetEfection:_confirmButton];
         [_confirmButton addTarget:self action:@selector(confirmButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     

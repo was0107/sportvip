@@ -11,6 +11,7 @@
 #import "BaseTableViewCell.h"
 #import "UIPopoverListView.h"
 #import "PaggingItem.h"
+#import "DataManager.h"
 
 
 @interface BaseTableViewController : BaseTitleViewController

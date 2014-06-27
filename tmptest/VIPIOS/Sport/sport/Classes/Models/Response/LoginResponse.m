@@ -7,6 +7,7 @@
 //
 
 #import "LoginResponse.h"
+#import "PaggingItem.h"
 
 @implementation LoginResponse
 @synthesize userItem = _userItem;
@@ -42,7 +43,10 @@
     TT_RELEASE_SAFELY(_name);
     TT_RELEASE_SAFELY(_price);
     TT_RELEASE_SAFELY(_schoolTime);
-    
+    TT_RELEASE_SAFELY(_coachId);
+    TT_RELEASE_SAFELY(_phones);
+    TT_RELEASE_SAFELY(_address);
+    TT_RELEASE_SAFELY(_coachAvatar)
     [super dealloc];
 }
 
@@ -51,8 +55,10 @@
     if (self) {
         self.advantage = [dictionary objectForKey:@"advantage"];
         self.coachName = [dictionary objectForKey:@"coachName"];
+        self.coachId = [dictionary objectForKey:@"coachId"];
         self.description = [dictionary objectForKey:@"description"];
         self.name = [dictionary objectForKey:@"name"];
+        self.address = [dictionary objectForKey:@"address"];
         self.schoolTime = [dictionary objectForKey:@"schoolTime"];
         NSString *priceTemp = [dictionary objectForKey:@"price"];
         self.price = [NSString stringWithFormat:@"￥%@",priceTemp];
@@ -66,10 +72,50 @@
                 self.age = [titleArray objectAtIndex:i];
             }
         }
+        
+        array = [dictionary objectForKey:@"phones"];
+        NSMutableArray *arrayResult = [NSMutableArray array];
+        @autoreleasepool {
+            for ( int i = 0 , total = [array count]; i < total; ++i) {
+                TelItem *item = [[[TelItem alloc] init] autorelease];
+                item.coachId     = self.coachId;
+                item.name     = self.name;
+                item.avatar   = self.coachAvatar;
+                item.tel      = [array objectAtIndex:i];
+                [arrayResult addObject:item];
+            }
+            
+            self.phones = arrayResult;
+        }
+
     }
     return self;
 }
 
+@end
+
+
+@implementation ServicePhoneResponse
+
+- (void)dealloc{
+    
+    TT_RELEASE_SAFELY(_phone);
+    [super dealloc];
+}
+
+- (id)initWithDictionary:(const NSDictionary *)dictionary{
+    self = [super init];
+    if (self) {
+        NSArray *array = (NSArray *) dictionary;
+        if ([array count] > 0) {
+            self.phone = [array objectAtIndex:0];
+        } else {
+            self.phone = @"";
+        }
+        
+    }
+    return self;
+}
 
 
 

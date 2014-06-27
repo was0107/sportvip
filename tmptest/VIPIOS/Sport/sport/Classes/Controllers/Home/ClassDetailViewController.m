@@ -67,6 +67,11 @@
 
 - (IBAction)showTeachers:(id)sender
 {
+    self.telArray = self.response;
+    if ([[DataManager sharedInstance].serviceTel length] > 0) {
+        [self.telArray addObject:[TelItem hotItem:[DataManager sharedInstance].serviceTel]];
+    }
+    [self.poplistview.listView reloadData];
     [self.poplistview show];
 }
 
@@ -194,6 +199,10 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         if (2 == indexPath.section) {
             TeacherViewController *controller = [[[TeacherViewController alloc] init] autorelease];
+            CoacheItem *coachItem = [[[CoacheItem alloc] init] autorelease];
+            coachItem.itemId = blockSelf.response.coachId;
+            coachItem.name = blockSelf.response.coachName;
+            controller.item = coachItem;
             [controller setHidesBottomBarWhenPushed:YES];
             [blockSelf.navigationController pushViewController:controller animated:YES];
         }
@@ -246,7 +255,7 @@
 {
     self.titleArray1 = [NSMutableArray arrayWithObjects:self.response.age,self.response.description,nil];
     self.titleArray2 = [NSMutableArray arrayWithObjects:self.response.name,\
-                        [NSString stringWithFormat:@"上课地点:%@",self.response.name],\
+                        [NSString stringWithFormat:@"上课地点:%@",self.response.address],\
                         [NSString stringWithFormat:@"教练:%@",self.response.coachName],
                         [NSString stringWithFormat:@"上课时间:%@",self.response.schoolTime],
                         @"适合年龄",\
@@ -278,13 +287,16 @@
         [blockSelf.tableView tableViewDidFinishedLoading];
     };
     ClassDetailRequest *request = [[[ClassDetailRequest alloc] init] autorelease];
-    request.courseId = @"1";//self.courseId;
+    request.courseId = self.courseId;
     [WASBaseServiceFace serviceWithMethod:[request URLString] body:[request toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
 }
 
 
 - (void) addClassesToServer
 {
+    if ([self currentUserId].length == 0) {
+        return;
+    }
     idBlock succBlock = ^(id content){
         DEBUGLOG(@"succeed content %@", content);
     };
@@ -294,7 +306,7 @@
     };
     AddClassCoachRequest *addRequest = [[[AddClassCoachRequest alloc] init] autorelease];
     addRequest.userId = [self currentUserId];
-    addRequest.courseId = @"1";//self.courseId;
+    addRequest.courseId = self.courseId;
     [WASBaseServiceFace serviceWithMethod:[addRequest URLString] body:[addRequest toJsonString] onSuc:succBlock onFailed:failedBlock onError:failedBlock];
 }
 @end

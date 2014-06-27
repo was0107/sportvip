@@ -16,12 +16,11 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        [self configTeacherDetailHeader];
     }
     return self;
 }
 
-- (void) configTeacherDetailHeader
+- (void) configWithType:(int) type
 {
     self.leftImageView.frame     = CGRectMake(10, 10, 100, 90);
     self.topLabelEx.frame        = CGRectMake(120, 10, 190, 24);
@@ -46,8 +45,7 @@
         [self.contentView addSubview:self.middleLabelEx];
         [self.contentView addSubview:self.leftImageView];
     }
-    
-    }
+}
 
 - (void) configWithData:(id) content
 {

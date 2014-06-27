@@ -20,7 +20,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = kWhiteColor;
     [self setTitleContent:kTitleAboutString];
     [self.view addSubview:self.iconImageView];
     [self.view addSubview:self.labelOne];
@@ -32,7 +31,7 @@
 {
     if (!_iconImageView) {
         _iconImageView = [[UIImageView alloc]initWithFrame:kAboutLogoFrame];
-        _iconImageView.image = [UIImage imageNamed:@"icon"];
+        _iconImageView.image = [UIImage imageNamed:kImageDefault];
     }
     return _iconImageView;
 }

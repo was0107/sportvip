@@ -89,6 +89,9 @@
 - (IBAction)showTeachers:(id)sender
 {
     self.telArray = self.response.phones;
+    if ([[DataManager sharedInstance].serviceTel length] > 0) {
+        [self.telArray addObject:[TelItem hotItem:[DataManager sharedInstance].serviceTel]];
+    }
     [self.poplistview.listView reloadData];
     [self.poplistview show];
 }
@@ -292,6 +295,7 @@
     };
 
     self.tableView.refreshBlock = ^(id content) {
+        [blockSelf sendRequestToServer];
     };
     
     self.tableView.loadMoreBlock = ^(id content) {

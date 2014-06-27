@@ -36,7 +36,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setTitleContent:@"选择城市"];
+    [self setTitleContent:@"支持城市列表"];
     if ([[self.navigationController viewControllers] count] == 1) {
         [self showRight];
         [self.rightButton setTitle:@"取消" forState:UIControlStateNormal];
