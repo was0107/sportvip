@@ -35,7 +35,6 @@
 @property (nonatomic,copy   ) NSString                * nickName;
 @property (nonatomic,copy   ) NSString                * birthday;
 @property (nonatomic,copy   ) NSString                * phone, *email, *password;
-@property (nonatomic,assign ) double                  birthdayDate;
 @property (nonatomic, retain) ZJSwitch               *zjWwitch;
 @end
 
@@ -93,13 +92,13 @@
     [self showRight];
     [self.rightButton setTitle:@"退出" forState:UIControlStateNormal];
     
-#ifdef kUseSimulateData
-    self.nameTextField.pubTextField.text = @"was0107";
-    self.emailTextField.pubTextField.text = @"hr@163.com";
-    self.phoneTextField.pubTextField.text = @"13611111111";
-    self.pwdTextField.pubTextField.text = @"111111";
-#else
-#endif
+//#ifdef kUseSimulateData
+//    self.nameTextField.pubTextField.text = @"was0107";
+//    self.emailTextField.pubTextField.text = @"hr@163.com";
+//    self.phoneTextField.pubTextField.text = @"13611111111";
+//    self.pwdTextField.pubTextField.text = @"111111";
+//#else
+//#endif
     
     [self initData];
     // Do any additional setup after loading the view.
@@ -110,6 +109,10 @@
     self.nameTextField.pubTextField.text = [UserDefaultsManager userName];
     self.emailTextField.pubTextField.text = [UserDefaultsManager userEmail];
     self.phoneTextField.pubTextField.text = [UserDefaultsManager userTel];
+    
+    if ([@"MALE" isEqualToString:[UserDefaultsManager userGender]]) {
+        [self.zjWwitch setOn:YES animated:YES];
+    }
 }
 
 
@@ -383,14 +386,14 @@
         [safeSelf.confirmButton setEnabled:YES];
     };
     
-    self.gender = ![self.zjWwitch isOn] ? @"MALE": @"FEMALE";
+    self.gender = [self.zjWwitch isOn] ? @"MALE": @"FEMALE";
     self.nickName = self.nameTextField.pubTextField.text;
     self.phone = self.phoneTextField.pubTextField.text;
     self.email = self.emailTextField.pubTextField.text;
     self.password = self.pwdTextField.pubTextField.text;
     UpdateUserInfoRequest *request = [[[UpdateUserInfoRequest alloc] init] autorelease];
-    NSMutableArray * keys = [NSMutableArray arrayWithObjects:@"userId",@"gender",@"avatar",@"nickName",@"birthday",nil];
-    NSMutableArray * values = [NSMutableArray arrayWithObjects:[self currentUserId],self.gender,@"",self.nickName,[NSNumber numberWithDouble:self.birthdayDate], nil];
+    NSMutableArray * keys = [NSMutableArray arrayWithObjects:@"id",@"gender",@"avatar",@"nickName",@"birthday",@"phone",@"email",nil];
+    NSMutableArray * values = [NSMutableArray arrayWithObjects:[self currentUserId],self.gender,@"",self.nickName,[NSNumber numberWithDouble:[self.birthday doubleValue]], self.phone,self.email,nil];
     request.keys = keys;
     request.values = values;
     request.isUpdate = YES;

@@ -7,6 +7,7 @@
 //
 
 #import "CheckClassTableViewCell.h"
+#import "PaggingItem.h"
 
 @implementation CheckClassTableViewCell
 
@@ -46,19 +47,25 @@
         [self.contentView addSubview:self.leftImageView];
     }
     
-    self.topLabelEx.text = @"网球基础班";
-    CGSize size = [@"网球基础班" sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(280, 2000)];
+    }
+
+- (void) configWithData:(id) content
+{
+    CheckClassItem *classItem = (CheckClassItem *) content;
+    
+    self.topLabelEx.text = classItem.name;
+    CGSize size = [classItem.name sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(280, 2000)];
     [[self.topLabelEx setFrameHeight:size.height + 4] setFrameWidth:size.width + 45];
     [self.topLabelEx setImages:[NSArray arrayWithObjects:@"hot",@"xin",nil] origitation:1];
-    self.subRightEx.text = @"￥299";
-    self.topRigithEx.text = @"教练：马文广";
-    self.middleLabelEx.text = @"上课时间：每周时间";
+    self.subRightEx.text = [NSString stringWithFormat:@"¥%@", classItem.price];
+    self.topRigithEx.text = [NSString stringWithFormat:@"教练：%@", classItem.coachName];
+    self.middleLabelEx.text = [NSString stringWithFormat:@"上课时间：%@", classItem.schoolTime];
     [self.topRigithEx setImages:[NSArray arrayWithObjects:@"cell_teacher",nil] origitation:0];
     [self.middleLabelEx setImages:[NSArray arrayWithObjects:@"cell_time",nil] origitation:0];
-
+    
     
     CheckClassTableViewCell *blockSelf = self;
-    [self.leftImageView setImageWithURL:[NSURL URLWithString:@"http://img.b5m.com/image/T1W8hjBCJj1RCvBVdK"]
+    [self.leftImageView setImageWithURL:[NSURL URLWithString:classItem.coachAvatar]
                        placeholderImage:[UIImage imageNamed:kImageDefault]
                                 success:^(UIImage *image){
                                     UIImage * image1 = [image imageScaledToSizeEx:CGSizeMake(100, 90)];
@@ -68,11 +75,7 @@
                                 failure:^(NSError *error){
                                     blockSelf.leftImageView.image = [UIImage imageNamed:kImageDefault];
                                 }];
-}
 
-- (void) configWithDetail:(id) content
-{
-    
 }
 
 

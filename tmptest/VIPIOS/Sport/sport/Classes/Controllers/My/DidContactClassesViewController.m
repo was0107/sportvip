@@ -10,7 +10,7 @@
 #import "PaggingRequest.h"
 #import "PaggingResponse.h"
 #import "STLocationInstance.h"
-#import "ClassTableViewCell.h"
+#import "TeacherTableViewCell.h"
 #import "CheckClassTableViewCell.h"
 #import "TeacherViewController.h"
 
@@ -47,10 +47,11 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
     self.tableView.cellCreateBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
         static NSString *identifier1 = @"HOME_TABLEVIEW_CELL_IDENTIFIER1";
-        ClassTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier1];
+        TeacherTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier1];
         if (!cell){
-            cell = [[[ClassTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier1] autorelease];
+            cell = [[[TeacherTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier1] autorelease];
         }
+        [cell configWithType:0];
         CoacheItem *item = [blockSelf.coachesResponse at:indexPath.row];
         [cell configWithData:item];
         return (UITableViewCell *)cell;
@@ -61,7 +62,7 @@
     };
     
     self.tableView.cellNumberBlock = ^( UITableView *tableView, NSInteger section) {
-        return 11;//(NSInteger)[blockSelf.coachesResponse count];
+        return (NSInteger)[blockSelf.coachesResponse count];
     };
     
     self.tableView.sectionHeaderHeightBlock = ^( UITableView *tableView, NSInteger section){
@@ -70,11 +71,11 @@
     
     self.tableView.cellSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//        TeacherViewController *controller = [[[TeacherViewController alloc] init] autorelease];
-//        CoacheItem *item = [blockSelf.coachesResponse at:indexPath.row];
-//        controller.item = item;
-//        [controller setHidesBottomBarWhenPushed:YES];
-//        [blockSelf.navigationController pushViewController:controller animated:YES];
+        TeacherViewController *controller = [[[TeacherViewController alloc] init] autorelease];
+        CoacheItem *item = [blockSelf.coachesResponse at:indexPath.row];
+        controller.item = item;
+        [controller setHidesBottomBarWhenPushed:YES];
+        [blockSelf.navigationController pushViewController:controller animated:YES];
     };
     
     self.tableView.refreshBlock = ^(id content) {
@@ -87,7 +88,7 @@
     };
     
     [self.view addSubview:self.tableView];
-    [self.tableView doSendRequest:YES];
+    [self sendRequestToServer];
 }
 
 - (void) dealWithData

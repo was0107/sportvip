@@ -28,6 +28,14 @@
 
 @end
 
+@implementation CheckClassesResponse
+
+- (id) translateItemFrom:(const NSDictionary *) dictionary
+{
+    return [[[CheckClassItem alloc] initWithDictionary:dictionary] autorelease];
+}
+@end
+
 @implementation EventsResponse
 
 - (id) translateFrom:(const NSDictionary *) dictionary

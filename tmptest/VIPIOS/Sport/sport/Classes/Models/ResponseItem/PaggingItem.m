@@ -552,4 +552,41 @@
 }
 @end
 
+@implementation CheckClassItem
+- (void)dealloc{
+    
+    TT_RELEASE_SAFELY(_itemId);
+    TT_RELEASE_SAFELY(_coachId);
+    TT_RELEASE_SAFELY(_address);
+    TT_RELEASE_SAFELY(_name);
+    TT_RELEASE_SAFELY(_advantage);
+    TT_RELEASE_SAFELY(_introduction);
+    TT_RELEASE_SAFELY(_price);
+    TT_RELEASE_SAFELY(_schoolTime);
+    TT_RELEASE_SAFELY(_coachName);
+    TT_RELEASE_SAFELY(_coachAvatar);
+    [super dealloc];
+}
+
+- (id) initWithDictionary:(const NSDictionary *) dictionary
+{
+    self = [super init];
+    if (self) {
+        self.itemId = [[dictionary objectForKey:@"id"]  stringValue];
+        self.coachId = [dictionary objectForKey:@"coachId"];
+        self.address = [dictionary objectForKey:@"address"] ;
+        self.name = [dictionary objectForKey:@"name"] ;
+        self.advantage = [dictionary objectForKey:@"advantage"];
+        self.coachName = [dictionary objectForKey:@"coachName"];
+        self.coachAvatar = [dictionary objectForKey:@"coachAvatar"];
+        self.price = [dictionary objectForKey:@"price"];
+        self.introduction = [dictionary objectForKey:@"introduction"];
+        self.schoolTime = [dictionary objectForKey:@"schoolTime"];
+    }
+    return self;
+}
+
+
+@end
+
 

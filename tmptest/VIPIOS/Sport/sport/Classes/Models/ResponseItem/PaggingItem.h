@@ -82,28 +82,9 @@
 @end
 
 
-/*
-address: ""
-age: 32
-ageRange: [ ]
-avatar: http://www.baidu.com/favicon.ico
-certificate: "国家二级"
-distance: 7106905.87
-honors: [ ]
-id: 1
--location: {
-x: 116.12
-y: 35.3
-}
-minPrice: 0
-name: "王教练"
-phones: [ ]
--tags: [
-        -{
-        icon: http://www.baidu.com/favicon.ico
-            id: 23
-        name: "新"
-        }
-        ]
-zan: 12
-*/
+@interface CheckClassItem : ListResponseItemBase
+@property (nonatomic, copy) NSString *itemId,*coachId,*address,*name,*coachName,*coachAvatar;
+@property (nonatomic, copy) NSString *advantage,*introduction,*price,*schoolTime;
+
+
+@end

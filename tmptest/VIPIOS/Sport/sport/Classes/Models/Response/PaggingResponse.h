@@ -20,6 +20,11 @@
 @end
 
 
+@interface CheckClassesResponse : ListPaggingResponseBase
+
+@end
+
+
 @interface EventsResponse : ListPaggingResponseBase
 
 @end

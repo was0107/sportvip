@@ -44,10 +44,10 @@
     [self.view addSubview:self.confirmButton];
     [self.view addSubview:self.forgetButton];
     
-#ifdef kUseSimulateData
-    self.phoneTextField.pubTextField.text = @"13611111111";
-    self.pwdTextField.pubTextField.text = @"111111";
-#endif
+//#ifdef kUseSimulateData
+//    self.phoneTextField.pubTextField.text = @"13611111111";
+//    self.pwdTextField.pubTextField.text = @"111111";
+//#endif
 
 }
 

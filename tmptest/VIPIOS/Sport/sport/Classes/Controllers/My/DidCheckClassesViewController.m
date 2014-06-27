@@ -17,7 +17,7 @@
 @interface DidCheckClassesViewController ()
 
 @property (nonatomic, retain) CheckClassesRequest *request;
-@property (nonatomic, retain) CoachsResponse *response;
+@property (nonatomic, retain) CheckClassesResponse *response;
 @end
 
 @implementation DidCheckClassesViewController
@@ -56,6 +56,8 @@
             cell1 = [[CheckClassTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier1];
         }
         [cell1 configWithType:0];
+        CheckClassItem *classItem = [blockSelf.response at:indexPath.row];
+        [cell1 configWithData:classItem];
         return (UITableViewCell *)cell1;
 
     };
@@ -65,7 +67,7 @@
     };
     
     self.tableView.cellNumberBlock = ^( UITableView *tableView, NSInteger section) {
-        return 10;//(NSInteger)0;
+        return (NSInteger)[blockSelf.response count];
     };
     
     self.tableView.sectionHeaderHeightBlock = ^( UITableView *tableView, NSInteger section){
@@ -75,12 +77,18 @@
     self.tableView.cellSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         TeacherViewController *controller = [[[TeacherViewController alloc] init] autorelease];
+        CheckClassItem *classItem = [blockSelf.response at:indexPath.row];
+        CoacheItem *coachItem = [[[CoacheItem alloc] init] autorelease];
+        coachItem.itemId = classItem.coachId;
+        coachItem.name = classItem.coachName;
+        controller.item = coachItem;
         [controller setHidesBottomBarWhenPushed:YES];
         [blockSelf.navigationController pushViewController:controller animated:YES];
 
     };
     
     self.tableView.refreshBlock = ^(id content) {
+        [blockSelf.request firstPage];
         [blockSelf sendRequestToServer];
     };
     
@@ -90,7 +98,7 @@
     
     [self.view addSubview:self.tableView];
     
-    [self.tableView doSendRequest:YES];
+    [self sendRequestToServer];
 }
 
 
@@ -123,7 +131,7 @@
         DEBUGLOG(@"succeed content %@", content);
         [blockSelf.tableView tableViewDidFinishedLoading];
         if ([_request isFristPage]) {
-            blockSelf.response = [[[CoachsResponse alloc] initWithJsonString:content] autorelease];
+            blockSelf.response = [[[CheckClassesResponse alloc] initWithJsonString:content] autorelease];
         } else {
             [blockSelf.response appendPaggingFromJsonString:content];
         }

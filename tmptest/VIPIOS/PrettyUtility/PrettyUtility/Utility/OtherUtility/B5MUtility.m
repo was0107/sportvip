@@ -79,7 +79,7 @@ static NSInteger gNetWorkStatus = 2;
     BOOL result = NO;
     NSDictionary *deserializedData = [self stringToDictionary:rspString];
     //[B5MUtility showAlertView:rspString];
-    NSNumber *resultCode = [deserializedData objectForKey:@"code"];
+    NSNumber *resultCode = [deserializedData objectForKey:@"errorcode"];
     if (kSuccessValue == [resultCode integerValue]) {
         return YES;
     }

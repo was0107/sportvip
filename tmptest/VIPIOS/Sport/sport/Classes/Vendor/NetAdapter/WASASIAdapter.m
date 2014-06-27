@@ -130,7 +130,7 @@
             return ;
         }
         [blockself setValue:_request.responseString forKey:kKeyValueContents];
-        [B5MUtility checkResultCode:_request.responseString] ? [blockself success] : ([blockself failed] ,  ERRLOG(@"FAILED MSG = %@",_request.responseString));
+        (200 == [_request responseStatusCode]) ? [blockself success] : ([blockself failed] ,  ERRLOG(@"FAILED MSG = %@",_request.responseString));
         
         [_adapter release], _adapter = nil;
         [_request release], _request = nil;
