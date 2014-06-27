@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		47B6E3BB195DF3C00025D71D /* GrowAndDownControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B6E3BA195DF3C00025D71D /* GrowAndDownControl.m */; };
+		47B6E3BE195DFA530025D71D /* CustomLeftImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B6E3BD195DFA530025D71D /* CustomLeftImageButton.m */; };
 		47DF7397194D83A80004CC63 /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 47DF7396194D83A80004CC63 /* RTLabel.m */; };
 		47DF739A194D952B0004CC63 /* AgentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47DF7399194D952B0004CC63 /* AgentListViewController.m */; };
 		47DF739D194D954E0004CC63 /* AgentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47DF739C194D954E0004CC63 /* AgentDetailViewController.m */; };
@@ -171,6 +173,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		47B6E3B9195DF3C00025D71D /* GrowAndDownControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrowAndDownControl.h; sourceTree = "<group>"; };
+		47B6E3BA195DF3C00025D71D /* GrowAndDownControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrowAndDownControl.m; sourceTree = "<group>"; };
+		47B6E3BC195DFA530025D71D /* CustomLeftImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLeftImageButton.h; sourceTree = "<group>"; };
+		47B6E3BD195DFA530025D71D /* CustomLeftImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLeftImageButton.m; sourceTree = "<group>"; };
 		47DF7395194D83A80004CC63 /* RTLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTLabel.h; sourceTree = "<group>"; };
 		47DF7396194D83A80004CC63 /* RTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTLabel.m; sourceTree = "<group>"; };
 		47DF7398194D952B0004CC63 /* AgentListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgentListViewController.h; sourceTree = "<group>"; };
@@ -892,6 +898,10 @@
 				DD3A3F92193E029300043CA4 /* ZJSwitch.m */,
 				DD7737D819409E04006239B2 /* CustomSearchBar.h */,
 				DD7737D919409E04006239B2 /* CustomSearchBar.m */,
+				47B6E3B9195DF3C00025D71D /* GrowAndDownControl.h */,
+				47B6E3BA195DF3C00025D71D /* GrowAndDownControl.m */,
+				47B6E3BC195DFA530025D71D /* CustomLeftImageButton.h */,
+				47B6E3BD195DFA530025D71D /* CustomLeftImageButton.m */,
 			);
 			path = Widget;
 			sourceTree = "<group>";
@@ -1130,6 +1140,7 @@
 				DD13AD6719592D33005D4222 /* ProductSearchExViewController.m in Sources */,
 				DD3A3F99193E029300043CA4 /* BaseTitleViewController.m in Sources */,
 				DD3A3FBF193E029300043CA4 /* UserItemBase.m in Sources */,
+				47B6E3BE195DFA530025D71D /* CustomLeftImageButton.m in Sources */,
 				DD3A3F9A193E029300043CA4 /* BaseViewController.m in Sources */,
 				DDD62B22195C215B00FE2C6B /* ProductCart.m in Sources */,
 				DD3A3FEB193E029300043CA4 /* WASASILogAdatper.m in Sources */,
@@ -1149,6 +1160,7 @@
 				DD3A3FB4193E029300043CA4 /* ListPaggingRequestBase.m in Sources */,
 				DD3A3FE4193E029300043CA4 /* UIViewController+AKTabBarController.m in Sources */,
 				DD3A3FB9193E029300043CA4 /* ListPaggingResponseBase.m in Sources */,
+				47B6E3BB195DF3C00025D71D /* GrowAndDownControl.m in Sources */,
 				DD3A3FD9193E029300043CA4 /* CreateObject+CustomControl.m in Sources */,
 				DD8EEACF1944243000CACC22 /* LeaveMessageViewController.m in Sources */,
 				DD8EEAD01944243000CACC22 /* LoginViewController.m in Sources */,

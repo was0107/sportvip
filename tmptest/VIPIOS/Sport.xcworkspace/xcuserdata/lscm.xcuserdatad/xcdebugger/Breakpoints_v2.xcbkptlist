@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "240"
             endingLineNumber = "240"
-            landmarkName = "-sendRequestToServer"
+            landmarkName = "-topImageView"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -48,22 +48,6 @@
             startingLineNumber = "40"
             endingLineNumber = "40"
             landmarkName = "-viewDidLoad"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PrettyUtility/PrettyUtility/Utility/OtherUtility/B5MUtility.m"
-            timestampString = "425578591.526445"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "+checkResultCode:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

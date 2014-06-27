@@ -7,8 +7,15 @@
 //
 
 #import "ProductCartViewController.h"
+#import "LoginResponse.h"
+#import "LoginRequest.h"
+#import "ProductResponse.h"
+#import "ProductRequest.h"
+#import "ProductCart.h"
 
 @interface ProductCartViewController ()
+@property (nonatomic, retain) ProductListRequest *request;
+@property (nonatomic, retain) ProductResponse    *response;
 
 @end
 

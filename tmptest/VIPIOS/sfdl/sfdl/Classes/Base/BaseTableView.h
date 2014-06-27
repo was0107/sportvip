@@ -14,6 +14,12 @@
 {
     int currentMaxDisplayedCell; //keep track of the maximum cell index that has been displayed (for the animation, so as we move down the table the cells are animated when they're viewed for the first time - if index is greated than currentMaxDisplayedCell - but then as you scroll back up they're not re-animated.
     int currentMaxDisplayedSection;
+    
+    //adjust keyboard
+    UIEdgeInsets    _priorInset;
+    BOOL            _priorInsetSaved;
+    BOOL            _keyboardVisible;
+    CGRect          _keyboardRect;
 }
 
 
@@ -95,6 +101,9 @@
  Resets the view counter. The animation effect doesnt repeat when you've already seen a cell once, for example if you scroll down past cell #5, then scroll back to the top and down again, the animation won't repeat as you scroll back down past #5. This is by design to make only "new" cells animate as they appear. Call this method to reset the count of which cells have been seen (e.g when you call reload on the table's data)
  */
 -(void)resetViewedCells;
+
+
+- (void)adjustOffsetToIdealIfNeeded;
 
 
 @end

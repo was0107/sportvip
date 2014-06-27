@@ -225,6 +225,9 @@
         _leftImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 5, 35,35)];
         _leftImageView.backgroundColor = kClearColor;
         _leftImageView.userInteractionEnabled = YES;
+        _leftImageView.layer.borderColor = [kButtonNormalColor CGColor];;
+        _leftImageView.layer.borderWidth = 2.0f;
+        _leftImageView.layer.cornerRadius = 2.0f;
         _leftImageView.image = [UIImage imageNamed:@"btn_tab2"];
     }
     return _leftImageView;

@@ -7,6 +7,13 @@
 //
 
 #import "ProductDetailViewController.h"
+#import "CreateObject.h"
+#import "CustomLeftImageButton.h"
+#import "LeaveMessageViewController.h"
+#import "BaseWebViewController.h"
+#import "ContactUsViewController.h"
+#import "UIView+extend.h"
+
 
 @interface ProductDetailViewController ()<ViewPagerDataSource, ViewPagerDelegate>
 @property (nonatomic, retain) ProductDetailIntroController *introController;
@@ -29,6 +36,7 @@
 {
     if (!_introController) {
         _introController = [[ProductDetailIntroController alloc] init];
+        _introController.parentNavigationController = self.navigationController;
         _introController.productItem = self.productItem;
     }
     return _introController;
@@ -39,6 +47,7 @@
 {
     if (!_commentController) {
         _commentController = [[ProductDetailCommentController alloc] init];
+        _commentController.parentNavigationController = self.navigationController;
         _commentController.productItem = self.productItem;
     }
     return _commentController;
@@ -55,7 +64,7 @@
     UILabel *label = [UILabel new];
     label.backgroundColor = [UIColor clearColor];
     label.font = [UIFont systemFontOfSize:15.0];
-    label.text = (0 == index) ? @"Product Detail" : @"Comments";
+    label.text = (0 == index) ? @"Product Details" : @"Comments";
     label.textAlignment = NSTextAlignmentCenter;
     label.textColor = [UIColor blackColor];
     [label sizeToFit];
@@ -75,7 +84,7 @@
     
     switch (option) {
         case ViewPagerOptionStartFromSecondTab:
-            return 1.0;
+            return 0.0;
             break;
         case ViewPagerOptionCenterCurrentTab:
             return 0.0;
@@ -108,64 +117,145 @@
 
 @implementation ProductDetailIntroController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self.view addSubview:self.leftImageView];
+    [self.view addSubview:self.labelOne];
+    
+    UILabel *quantityLabel = [[[UILabel alloc] initWithFrame:CGRectMake(84, 24, 50, 40)] autorelease];
+    quantityLabel.text = @"Quantity:";
+    quantityLabel.adjustsFontSizeToFitWidth = YES;
+    [self.view addSubview:quantityLabel];
+    [self.view addSubview:self.labelTwo];
+    [self.view addSubview:self.rightButton];
+    [self.view addSubview:self.webView];
+    
+    CGFloat yPosition = self.webView.y + self.webView.height;
+    
+    NSString *image[] = {@"icon",@"icon",@"icon"};
+    NSString *names[] = {@"Video",@"Leave Messages",@"Contact Us"};
+    for (int i = 0; i< 3; i++) {
+        CustomLeftImageButton *imageButton = [[[CustomLeftImageButton alloc] initWithFrame:CGRectMake(i * 320 / 3, yPosition, 318/3, 44)] autorelease];
+        imageButton.tag = 1000+i;
+        imageButton.backgroundColor = kBlackColor;
+        imageButton.leftImageView.image = [UIImage imageNamed:image[i]];
+        imageButton.rightLabel.text = names[i];
+        imageButton.rightLabel.textColor = kWhiteColor;
+        [imageButton addTarget:self action:@selector(bottomAction:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:imageButton];
+    }
+    [self sendRequestToServer];
+    // Do any additional setup after loading the view.
+}
+
+- (UIImageView *) leftImageView
+{
+    if (!_leftImageView) {
+        _leftImageView = [[UIImageView alloc] initWithFrame:CGRectMake(4, 4, 78, 78)];
+        _leftImageView.backgroundColor = kClearColor;
+        _leftImageView.userInteractionEnabled = YES;
+        _leftImageView.layer.borderColor = [kButtonNormalColor CGColor];;
+        _leftImageView.layer.borderWidth = 2.0f;
+        _leftImageView.layer.cornerRadius = 2.0f;
+        _leftImageView.image = [UIImage imageNamed:@"btn_tab2"];
+    }
+    return _leftImageView;
+}
+
+-(UIButton *)rightButton
+{
+    if (!_rightButton) {
+        _rightButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+        _rightButton.frame =CGRectMake(88, 60, 90,24);
+        [_rightButton setTitleColor:kWhiteColor forState:UIControlStateNormal];
+        [_rightButton setTitleColor:kBlackColor forState:UIControlStateSelected];
+        _rightButton.titleLabel.font = HTFONTSIZE(kSystemFontSize14);
+        [_rightButton setTitle:@" Add To Cart" forState:UIControlStateNormal];
+        [CreateObject addTargetEfection:_rightButton];
+        _rightButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+        _rightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        [_rightButton addTarget:self action:@selector(buttonOneAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _rightButton;
+}
+
 -(UILabel *)labelOne
 {
     if (!_labelOne)
     {
-        _labelOne = [[UILabel alloc]initWithFrame:CGRectMake(8, 0, 304, 20)];
+        _labelOne = [[UILabel alloc]initWithFrame:CGRectMake(88, 2, 224, 20)];
         _labelOne.textColor  = [UIColor getColor:kCellLeftColor];
         _labelOne.backgroundColor = kClearColor;
         _labelOne.font = HTFONTSIZE(kSystemFontSize15);
-        //        NSString *version = [NSString stringWithFormat:kAboutItemStringVersion,[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
-        //        _labelOne.text = version;
     }
     return _labelOne;
 }
 
-
--(UILabel *)labelTwo
+-(GrowAndDownControl *)labelTwo
 {
     if (!_labelTwo)
     {
-        _labelTwo = [[UILabel alloc]initWithFrame:CGRectMake(8, 24, 304, 20)];
-        _labelTwo.textColor  = [UIColor getColor:kCellLeftColor];
-        _labelTwo.backgroundColor = kClearColor;
-        _labelTwo.font = HTFONTSIZE(kSystemFontSize15);
-        //        NSString *version = [NSString stringWithFormat:kAboutItemStringVersion,[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
-        //        _labelOne.text = version;
+        _labelTwo = [[GrowAndDownControl alloc]initWithFrame:CGRectMake(134, 24, 180, 40)];
     }
     return _labelTwo;
 }
+
 -(UIWebView *)webView
 {
     if (!_webView)
     {
-        _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 44, 320, kContentBoundsHeight-84)];
-        //        _labelTwo.textColor  = [UIColor getColor:kCellLeftColor];
-        //        _labelTwo.textAlignment = NSTextAlignmentCenter;
+        _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 84, 320, kContentBoundsHeight-84-40-44)];
         _webView.backgroundColor = kClearColor;
-        //        _labelTwo.font = HTFONTSIZE(kSystemFontSize14);
-        //        _labelTwo.text = lLabelTwoString;
-        //        _labelTwo.numberOfLines = 0;
-        
     }
     return _webView;
 }
 
-- (void)viewDidLoad
+-(IBAction)buttonOneAction:(id)sender
 {
-    [super viewDidLoad];
-    [self.view addSubview:self.labelOne];
-    [self.view addSubview:self.labelTwo];
-    [self.view addSubview:self.webView];
-    [self sendRequestToServer];
-    // Do any additional setup after loading the view.
+    
 }
+
+-(IBAction)bottomAction:(id)sender
+{
+    CustomLeftImageButton *button = (CustomLeftImageButton *) sender;
+    int position = button.tag - 1000;
+    if (0 == position) {
+        BaseWebViewController *webController = [[[BaseWebViewController alloc] init] autorelease];
+        webController.title = @"Video";
+        webController.requestURL = @"http://m.b5m.com";
+        [self.parentNavigationController hidesBottomBarWhenPushed];
+        [self.parentNavigationController pushViewController:webController animated:YES];
+
+    } else if (1 == position) {
+        LeaveMessageViewController *controller = [[[LeaveMessageViewController alloc] init] autorelease];
+        [self.parentNavigationController hidesBottomBarWhenPushed];
+        [self.parentNavigationController pushViewController:controller animated:YES];
+        
+    } else {
+        ContactUsViewController *controller = [[[ContactUsViewController alloc] init] autorelease];
+        [self.parentNavigationController hidesBottomBarWhenPushed];
+        [self.parentNavigationController pushViewController:controller animated:YES];
+    }
+}
+
+
+
 - (void) sendRequestToServer
 {
-     self.labelOne.text = [NSString stringWithFormat:@"产品类型：%@",self.productItem.productTypeName];
-     self.labelTwo.text = [NSString stringWithFormat:@"产品名称：%@",self.productItem.productName];
+    __block ProductDetailIntroController *blockSelf = self;
+     self.labelOne.text = [NSString stringWithFormat:@"%@",self.productItem.productName];
     [self.webView loadHTMLString:self.productItem.productDesc baseURL:nil];
+    [self.leftImageView setImageWithURL:[NSURL URLWithString:self.productItem.productImg]
+                       placeholderImage:[UIImage imageNamed:kImageDefault]
+                                success:^(UIImage *image){
+                                    UIImage * image1 = [image imageScaledToSizeEx:CGSizeMake(100, 100)];
+                                    blockSelf.leftImageView.image = image1;
+                                }
+                                failure:^(NSError *error){
+                                    blockSelf.leftImageView.image = [UIImage imageNamed:kImageDefault];
+                                }];
+
 //    __weak ProductDetailIntroController *blockSelf = self;
 //    idBlock successedBlock = ^(id content){
 //        DEBUGLOG(@"success conent %@", content);

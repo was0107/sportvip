@@ -10,6 +10,7 @@
 #import "ProductDetailViewController.h"
 #import "ProductCart.h"
 #import "ProductRequest.h"
+#import "CreateObject.H"
 
 @interface ProductListViewController ()
 
@@ -61,10 +62,12 @@
         if (!cell){
             cell = [[BaseTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
             
-            cell.topLabel.frame = CGRectMake(70, 10, 220, 25);
-            cell.subLabel.frame = CGRectMake(70, 35, 220, 25);
-            cell.leftImageView .frame = CGRectMake(10, 10, 50, 50);
-            cell.rightButton.frame = CGRectMake(250, 35, 60,35);
+            cell.topLabel.frame = CGRectMake(70, 10, 140, 25);
+            cell.subLabel.frame = CGRectMake(70, 35, 140, 25);
+            cell.leftImageView .frame = CGRectMake(4, 6, 55, 55);
+            cell.rightButton.frame = CGRectMake(220, 15, 90,44);
+            [cell.rightButton setTitle:@" Add To Cart" forState:UIControlStateNormal];
+            [CreateObject addTargetEfection:cell.rightButton];
             cell.topLabel.numberOfLines = 2;
             cell.topLabel.textColor = kBlackColor;
             cell.topLabel.font = HTFONTSIZE(kFontSize15);

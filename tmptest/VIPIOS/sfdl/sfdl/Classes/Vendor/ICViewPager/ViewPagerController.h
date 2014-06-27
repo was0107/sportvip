@@ -29,6 +29,7 @@ typedef NS_ENUM(NSUInteger, ViewPagerComponent) {
 @protocol ViewPagerDelegate;
 
 @interface ViewPagerController : BaseTitleViewController
+@property (nonatomic) NSUInteger activeTabIndex;
 
 @property id<ViewPagerDataSource> dataSource;
 @property id<ViewPagerDelegate> delegate;

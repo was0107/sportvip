@@ -96,7 +96,6 @@
 @property NSUInteger tabCount;
 @property (getter = isAnimatingToTab, assign) BOOL animatingToTab;
 
-@property (nonatomic) NSUInteger activeTabIndex;
 
 @end
 
@@ -269,7 +268,7 @@
     
     _startFromSecondTab = kDefaultStartFromSecondTab;
     
-    _centerCurrentTab = kDefaultCenterCurrentTab;
+    _centerCurrentTab = 1.0;//kDefaultCenterCurrentTab;
     
     // Default colors
     _indicatorColor = kDefaultIndicatorColor;

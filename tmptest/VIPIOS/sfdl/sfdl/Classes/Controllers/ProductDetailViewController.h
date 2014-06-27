@@ -10,6 +10,7 @@
 #import "ViewPagerController.h"
 #import "ProductRequest.h"
 #import "ProductResponse.h"
+#import "GrowAndDownControl.h"
 
 @interface ProductDetailViewController : ViewPagerController
 @property (nonatomic, retain) ProductItem *productItem;
@@ -19,10 +20,12 @@
 
 
 @interface ProductDetailIntroController : BaseViewController
-
+@property (nonatomic, assign)  UINavigationController *parentNavigationController;
 @property(nonatomic, retain)UILabel *labelOne;
-@property(nonatomic, retain)UILabel *labelTwo;
+@property(nonatomic, retain)GrowAndDownControl *labelTwo;
+@property(nonatomic, retain)UIImageView *leftImageView;
 @property(nonatomic, retain)UIWebView *webView;
+@property(nonatomic, retain)UIButton  *rightButton;
 
 @property (nonatomic, retain) ProductItem *productItem;
 @property (nonatomic, retain) ViewProductRequest        *request;
@@ -32,6 +35,7 @@
 
 
 @interface ProductDetailCommentController : BaseTableViewController
+@property (nonatomic, assign)  UINavigationController *parentNavigationController;
 @property (nonatomic, retain) ProductItem *productItem;
 @property (nonatomic, retain) CommentListRequest    *request;
 @property (nonatomic, retain) CommentsResponse      *response;
