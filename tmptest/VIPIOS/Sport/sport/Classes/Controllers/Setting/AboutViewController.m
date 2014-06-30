@@ -21,6 +21,7 @@
 {
     [super viewDidLoad];
     [self setTitleContent:kTitleAboutString];
+    self.trackViewId = @"关于我们的页面";
     [self.view addSubview:self.iconImageView];
     [self.view addSubview:self.labelOne];
     [self.view addSubview:self.labelTwo];

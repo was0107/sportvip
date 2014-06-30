@@ -32,6 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.trackViewId = @"已经联系过的教练页面";
     // Do any additional setup after loading the view.
 }
 

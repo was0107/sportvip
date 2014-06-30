@@ -36,6 +36,7 @@
 {
     [super viewDidLoad];
     self.title = @"课程详情";
+    self.trackViewId = @"课程详情页面";
     [self.tableView removeFromSuperview];
     [self sendRequestToServer];
     // Do any additional setup after loading the view.
@@ -67,7 +68,7 @@
 
 - (IBAction)showTeachers:(id)sender
 {
-    self.telArray = self.response;
+    self.telArray = self.response.phones;
     if ([[DataManager sharedInstance].serviceTel length] > 0) {
         [self.telArray addObject:[TelItem hotItem:[DataManager sharedInstance].serviceTel]];
     }
@@ -109,15 +110,15 @@
                 cell.topLabel.textColor = kBlackColor;
 //                cell.backgroundColor = kClearColor;
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                cell.topLabel.frame = CGRectMake(10, 10, 300, 120);
-                cell.topLabel.layer.borderColor = [kTipsTitleColor CGColor];
-                cell.topLabel.layer.borderWidth = 1.0f;
+                cell.topLabel.frame = CGRectMake(10, 4, 300, 120);
+//                cell.topLabel.layer.borderColor = [kTipsTitleColor CGColor];
+//                cell.topLabel.layer.borderWidth = 1.0f;
                 cell.topLabel.numberOfLines = 0;
-                cell.topLabel.layer.cornerRadius = 3.0f;
+//                cell.topLabel.layer.cornerRadius = 3.0f;
                 [cell.contentView addSubview:cell.topLabel];
             }
             NSString *title = blockSelf.response.advantage;
-            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(295, 2000)];
+            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 2000)];
             [cell.topLabel setFrameHeight:size.height];
             cell.topLabel.text = title;
             return (UITableViewCell *)cell;
@@ -174,8 +175,8 @@
         }
         else  if (5 == indexPath.section) {
             NSString *title = blockSelf.response.advantage;
-            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(295, 2000)];
-            return size.height + 16;
+            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 2000)];
+            return size.height +4;
         }
         NSString *string = [_titleArray2 objectAtIndex:indexPath.section];
         CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(280, 20000)];

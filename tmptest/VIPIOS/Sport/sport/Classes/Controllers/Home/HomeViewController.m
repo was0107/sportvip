@@ -75,6 +75,7 @@
     [super viewDidLoad];
     _type = 0;
     self.title = @"首页";
+    self.trackViewId = @"首页";
     self.titleView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)] autorelease];
     self.titleView.backgroundColor = kClearColor;
     [self configTitleView];

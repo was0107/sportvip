@@ -26,6 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.trackViewId = @"个人资料";
     // Do any additional setup after loading the view.
 }
 

@@ -34,6 +34,7 @@
 {
     [super viewDidLoad];
     [self setTitleContent:@"忘记密码"];
+    self.trackViewId = @"忘记密码页面";
     self.navigationController.navigationBarHidden = NO;
     if (IS_IOS_7_OR_GREATER) {
         UIView *bgView = [[[UIView alloc] initWithFrame:CGRectMake(0, 10, 320, 45)] autorelease];

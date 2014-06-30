@@ -33,6 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.trackViewId = @"意见反馈的页面";
     CGRect rect = CGRectMake(10, 10, 300, 180);
     UIImageView *topImageView = [[[UIImageView alloc] initWithFrame: rect] autorelease];
     topImageView.backgroundColor = kWhiteColor;

@@ -33,6 +33,7 @@
     
     if (self.comeFrom == 0) {
         [self setTitleContent:@"地图查找"];
+        self.trackViewId = @"地图查找页面";
         UIImageView *imageview = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ico_mapCenter"]] autorelease ];
         imageview.center = self.mapView.center;
         imageview.tag = 1000;

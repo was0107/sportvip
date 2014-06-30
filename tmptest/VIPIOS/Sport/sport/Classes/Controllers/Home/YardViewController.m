@@ -37,6 +37,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.trackViewId = @"场馆详情页面";
     self.title = self.item.name;
     [self.tableView removeFromSuperview];
     [self sendRequestToServer];

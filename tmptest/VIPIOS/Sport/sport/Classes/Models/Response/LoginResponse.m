@@ -66,12 +66,19 @@
         NSArray *keyArray = [NSArray arrayWithObjects:@"YOUER",@"XIAOXUE",@"CHUZHONG",@"GAOZHONG",@"CHENGREN",@"",nil];
         NSArray *titleArray = [NSArray arrayWithObjects:@"幼儿",@"小学",@"初中",@"高中",@"成人",@"全部",nil];
         NSString *keyTemp = [array objectAtIndex:0];
+        NSMutableString *ageString = [NSMutableString string];
         for (int i = 0 ; i < [keyArray count]; i++) {
             NSString *key = [keyArray objectAtIndex:i];
             if ([key isEqualToString:keyTemp]) {
-                self.age = [titleArray objectAtIndex:i];
+                [ageString appendFormat:@"%@、",[titleArray objectAtIndex:i] ];
             }
         }
+        if ([ageString length] > 0) {
+            self.age = [ageString substringToIndex:ageString.length-1];
+        } else {
+            self.age = @"";
+        }
+        
         
         array = [dictionary objectForKey:@"phones"];
         NSMutableArray *arrayResult = [NSMutableArray array];

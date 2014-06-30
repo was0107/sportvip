@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 
 //#define kUsingTalkingData
-//#define kUsingUMeng
-#define kUsingGoogleAnalytics
+#define kUsingUMeng
+//#define kUsingGoogleAnalytics
 
 #pragma mark - import header
 
@@ -18,7 +18,7 @@
 // UMeng
 #import "MobClick.h"        
 // Umeng Track Define
-#define UMENG_APPKEY        @"51de620356240b2fc0005b77" //NOT USED
+#define UMENG_APPKEY        @"53b0f56f56240b135f01b2b2" //运动VIP
 #endif
 
 #ifdef kUsingGoogleAnalytics
@@ -36,34 +36,8 @@
 #endif
 
 #pragma mark - constants define
-
-// page id
-#define TD_PAGE_SPLASH              @"启动页面"
-#define TD_PAGE_DETAIL_SELF         @"个人主页"
-#define TD_PAGE_DETAIL_OTHER        @"他人主页"
-#define TD_PAGE_404_PV              @"tao_404_pv"
-
-
 // event id
-#define TD_EVENT_Category                       @"GWMAPP"
-// GA
-
-//#define TD_EVENT_INDEX_MAIN_FILTER_HOME_PV      @"特惠游首页"
-//#define TD_EVENT_INDEX_MAIN_FILTER_TEN_PV       @"9.9包邮"
-//#define TD_EVENT_INDEX_MAIN_FILTER_TWENTY_PV    @"19.9包邮"
-//#define TD_EVENT_INDEX_MAIN_FILTER_ABOUT_PV     @"关于首页"
-
-
-#define TD_EVENT_INDEX_SUB_CATEGORY_ITEM_PV     @"tao_category"
-#define TD_EVENT_INDEX_SUB_SORT_ITEM_PV         @"tao_sort"
-
-#define TD_EVENT_INDEX_MAIN_NEXT_PAGE_PV        @"tao_page_pv"
-#define TD_EVENT_INDEX_DETAIL_CPS               @"tao_mc"
-
-//#define TD_EVENT_INDEX_DATA_ERROR_PV            @"数据错误"
-//#define TD_EVENT_JIFEN_ADD_PV                   @"添加积分"
-//#define TD_EVENT_JIFEN_SEARCH_PV                @"查询积分"
-//#define TD_EVENT_404_PV                         @"tao_404_pv"
+#define TD_EVENT_Category                       @"YUNDONGVIP"
 
 
 #pragma mark - DataTracker

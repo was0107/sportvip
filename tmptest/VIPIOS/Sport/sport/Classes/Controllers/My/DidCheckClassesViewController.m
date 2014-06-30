@@ -34,6 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.trackViewId = @"已经查看课程的页面";
     // Do any additional setup after loading the view.
 }
 

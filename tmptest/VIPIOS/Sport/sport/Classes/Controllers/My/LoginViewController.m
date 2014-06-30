@@ -38,6 +38,7 @@
 {
     [super viewDidLoad];
     [self setTitleContent:@"登录"];
+    self.trackViewId = @"登录页面";
     [[[self showRight] rightButton] setTitle:@"注册" forState:UIControlStateNormal];
     [self.view addSubview:self.phoneTextField];
     [self.view addSubview:self.pwdTextField];

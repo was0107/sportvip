@@ -179,6 +179,7 @@
 #pragma mark - GoogleAnalytics
 - (void) GATracker
 {
+#ifdef kUsingGoogleAnalytics
     // Initialize Google Analytics
     [GAI sharedInstance].debug = NO;
     [GAI sharedInstance].dispatchInterval = GA_DISPATCH_PERIOD;
@@ -196,6 +197,8 @@
     [[[GAI sharedInstance] defaultTracker] setReferrerUrl:channelId];
 
     [[GAI sharedInstance] trackerWithTrackingId:GA_TRACK_APPID];
+    
+#endif
 }
 
 

@@ -37,6 +37,7 @@
 {
     [super viewDidLoad];
     [self setTitleContent:@"支持城市列表"];
+    self.trackViewId = @"城市列表页面";
     if ([[self.navigationController viewControllers] count] == 1) {
         [self showRight];
         [self.rightButton setTitle:@"取消" forState:UIControlStateNormal];

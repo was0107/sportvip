@@ -72,6 +72,7 @@
     [super viewDidLoad];
     
     [self setTitleContent:@"用户资料"];
+    self.trackViewId = @"用户资料页面";
     self.scrollView = [[[UIKeyboardAvoidingScrollView alloc] initWithFrame:CGRectMake(0,  0, 320.0, kContentBoundsHeight)] autorelease];
     self.scrollView.backgroundColor = kClearColor;
     self.scrollView.contentSize = CGSizeMake(320, kContentBoundsHeight+1);

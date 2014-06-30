@@ -41,6 +41,7 @@
 {
     [super viewDidLoad];
     self.title = self.item.name;
+    self.trackViewId = @"教练详情页面";
     [self.tableView removeFromSuperview];
     [self sendRequestToServer];
 }

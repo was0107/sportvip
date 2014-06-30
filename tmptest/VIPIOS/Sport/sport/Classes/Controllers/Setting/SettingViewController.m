@@ -22,6 +22,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.trackViewId = @"个人设置页面";
     // Do any additional setup after loading the view.
 }
 
