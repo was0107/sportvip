@@ -51,6 +51,11 @@
 @end
 
 
+@interface RegionResponse : ListPaggingResponseBase
+
+@end
+
+
 @interface OrdersResponse : ListPaggingResponseBase
 
 @end

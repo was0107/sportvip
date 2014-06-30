@@ -126,6 +126,20 @@
 
 @end
 
+@implementation RegionResponse
+
+- (id) translateItemFrom:(const NSDictionary *) dictionary
+{
+    return [[[RegionItem alloc] initWithDictionary:dictionary] autorelease];
+}
+
+- (NSString *) resultKey
+{
+    return @"regionList";
+}
+
+@end
+
 
 @implementation OrdersResponse
 

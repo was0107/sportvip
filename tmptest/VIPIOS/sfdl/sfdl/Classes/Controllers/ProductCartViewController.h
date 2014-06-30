@@ -7,7 +7,12 @@
 //
 
 #import "BaseSecondTitleViewController.h"
+#import "ProductCart.h"
 
-@interface ProductCartViewController : BaseSecondTitleViewController
+@interface ProductCartViewController : BaseSecondTitleViewController  <UITextViewDelegate>
 
+@property (nonatomic, retain) UITextView *commentView;
+@property (nonatomic, retain) UIButton   *submitButton,*goBackShoppingButton;
+@property (nonatomic, retain) UIView     *footerView;
+@property (nonatomic, retain) UILabel    *tipLabel;
 @end

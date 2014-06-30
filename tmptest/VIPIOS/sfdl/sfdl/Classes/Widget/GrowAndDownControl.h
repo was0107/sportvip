@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface GrowAndDownControl : UIView
-
+@property (nonatomic, copy) idBlock block;
+@property (nonatomic, assign) id content;
 @property (nonatomic, assign) NSInteger value;
+
+
 
 @end

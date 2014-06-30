@@ -7,7 +7,13 @@
 //
 
 #import "BaseSecondTitleViewController.h"
+#import "ProductRequest.h"
+#import "ProductResponse.h"
 
 @interface AgentListViewController : BaseSecondTitleViewController
+
+@property (nonatomic, assign) ProductTypeItem    *typeItem;
+@property (nonatomic, assign) RegionItem         *regionItem;
+@property (nonatomic, copy)  NSString            *name;
 
 @end

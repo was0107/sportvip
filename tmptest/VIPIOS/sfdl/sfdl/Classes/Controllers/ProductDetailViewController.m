@@ -13,6 +13,7 @@
 #import "BaseWebViewController.h"
 #import "ContactUsViewController.h"
 #import "UIView+extend.h"
+#import "ProductCartViewController.h"
 
 
 @interface ProductDetailViewController ()<ViewPagerDataSource, ViewPagerDelegate>
@@ -123,9 +124,10 @@
     [self.view addSubview:self.leftImageView];
     [self.view addSubview:self.labelOne];
     
-    UILabel *quantityLabel = [[[UILabel alloc] initWithFrame:CGRectMake(84, 24, 50, 40)] autorelease];
+    UILabel *quantityLabel = [[[UILabel alloc] initWithFrame:CGRectMake(108, 14, 100, 40)] autorelease];
     quantityLabel.text = @"Quantity:";
-    quantityLabel.adjustsFontSizeToFitWidth = YES;
+    quantityLabel.textColor  = [UIColor getColor:kCellLeftColor];
+    quantityLabel.font = HTFONTSIZE(kSystemFontSize15);
     [self.view addSubview:quantityLabel];
     [self.view addSubview:self.labelTwo];
     [self.view addSubview:self.rightButton];
@@ -136,7 +138,7 @@
     NSString *image[] = {@"icon",@"icon",@"icon"};
     NSString *names[] = {@"Video",@"Leave Messages",@"Contact Us"};
     for (int i = 0; i< 3; i++) {
-        CustomLeftImageButton *imageButton = [[[CustomLeftImageButton alloc] initWithFrame:CGRectMake(i * 320 / 3, yPosition, 318/3, 44)] autorelease];
+        CustomLeftImageButton *imageButton = [[[CustomLeftImageButton alloc] initWithFrame:CGRectMake(i * 105 + 1, yPosition, 104, 44)] autorelease];
         imageButton.tag = 1000+i;
         imageButton.backgroundColor = kBlackColor;
         imageButton.leftImageView.image = [UIImage imageNamed:image[i]];
@@ -146,13 +148,12 @@
         [self.view addSubview:imageButton];
     }
     [self sendRequestToServer];
-    // Do any additional setup after loading the view.
 }
 
 - (UIImageView *) leftImageView
 {
     if (!_leftImageView) {
-        _leftImageView = [[UIImageView alloc] initWithFrame:CGRectMake(4, 4, 78, 78)];
+        _leftImageView = [[UIImageView alloc] initWithFrame:CGRectMake(4, 4, 100, 100)];
         _leftImageView.backgroundColor = kClearColor;
         _leftImageView.userInteractionEnabled = YES;
         _leftImageView.layer.borderColor = [kButtonNormalColor CGColor];;
@@ -167,7 +168,7 @@
 {
     if (!_rightButton) {
         _rightButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
-        _rightButton.frame =CGRectMake(88, 60, 90,24);
+        _rightButton.frame =CGRectMake(108, 60+24, 90,24);
         [_rightButton setTitleColor:kWhiteColor forState:UIControlStateNormal];
         [_rightButton setTitleColor:kBlackColor forState:UIControlStateSelected];
         _rightButton.titleLabel.font = HTFONTSIZE(kSystemFontSize14);
@@ -184,7 +185,7 @@
 {
     if (!_labelOne)
     {
-        _labelOne = [[UILabel alloc]initWithFrame:CGRectMake(88, 2, 224, 20)];
+        _labelOne = [[UILabel alloc]initWithFrame:CGRectMake(108, 2, 200, 20)];
         _labelOne.textColor  = [UIColor getColor:kCellLeftColor];
         _labelOne.backgroundColor = kClearColor;
         _labelOne.font = HTFONTSIZE(kSystemFontSize15);
@@ -196,7 +197,14 @@
 {
     if (!_labelTwo)
     {
-        _labelTwo = [[GrowAndDownControl alloc]initWithFrame:CGRectMake(134, 24, 180, 40)];
+        _labelTwo = [[GrowAndDownControl alloc]initWithFrame:CGRectMake(104, 44, 180, 40)];
+        _labelTwo.content = self.productItem;
+        _labelTwo.value = self.productItem.buyCount;
+        _labelTwo.block = ^(id content){
+            GrowAndDownControl *labelTwo = (GrowAndDownControl *) content;
+            ProductItem *item = labelTwo.content;
+            item.buyCount = labelTwo.value;
+        };
     }
     return _labelTwo;
 }
@@ -205,7 +213,7 @@
 {
     if (!_webView)
     {
-        _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 84, 320, kContentBoundsHeight-84-40-44)];
+        _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 108, 320, kContentBoundsHeight-84-40-44-24)];
         _webView.backgroundColor = kClearColor;
     }
     return _webView;
@@ -213,7 +221,10 @@
 
 -(IBAction)buttonOneAction:(id)sender
 {
-    
+    [[ProductCart sharedInstance] addProductItem:self.productItem];
+    ProductCartViewController *controller = [[[ProductCartViewController alloc] init] autorelease];
+    controller.hidesBottomBarWhenPushed = YES;
+    [self.parentNavigationController pushViewController:controller animated:YES];
 }
 
 -(IBAction)bottomAction:(id)sender
@@ -283,24 +294,93 @@
 
 @implementation ProductDetailCommentController
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.tableView reloadData];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.tableView setup];
     [self sendRequestToServer];
     // Do any additional setup after loading the view.
 }
 
 - (int) tableViewType
 {
-    return eTypeNone;
+    return eTypeRefreshHeader;
 }
 
+- (UITextView *) commentView
+{
+    if (!_commentView) {
+        _commentView = [[UITextView alloc] initWithFrame:CGRectMake(10, 10, 300, 60)];
+        _commentView.layer.cornerRadius = 2.0f;
+        _commentView.layer.borderColor = [kBlueColor CGColor];
+        _commentView.layer.borderWidth = 1.0f;
+        _commentView.delegate = self;
+    }
+    return _commentView ;
+}
+
+- (UIButton *) submitButton
+{
+    if (!_submitButton) {
+        _submitButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+        _submitButton.frame = CGRectMake(10, 75, 80, 30);
+        [CreateObject addTargetEfection:_submitButton];
+        [_submitButton setTitle:@"submit" forState:UIControlStateNormal];
+        [_submitButton addTarget:self action:@selector(submitButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _submitButton;
+}
+
+- (UIView *) footerView
+{
+    if (!_footerView) {
+        _footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 110)];
+        [_footerView addSubview:self.commentView];
+        [_footerView addSubview:self.submitButton];
+        _footerView.backgroundColor = kClearColor;
+    }
+    return _footerView;
+}
+
+- (IBAction)submitButtonAction:(id)sender
+{
+    if ([self.commentView.text length] == 0) {
+        return;
+    }
+    [self.commentView resignFirstResponder];
+    __block ProductDetailCommentController *blockSelf = self;
+    idBlock successedBlock = ^(id content){
+        DEBUGLOG(@"success conent %@", content);
+        blockSelf.commentView.text = @"";
+        [blockSelf sendRequestToServer];
+    };
+    
+    idBlock failedBlock = ^(id content){
+        DEBUGLOG(@"failed content %@", content);
+    };
+    
+    idBlock errBlock = ^(id content){
+        DEBUGLOG(@"error content %@", content);
+    };
+    AddCommentRequest *addCommentRequest = [[[AddCommentRequest alloc] init] autorelease];
+    addCommentRequest.productId = self.productItem.productId;
+    addCommentRequest.username = [UserDefaultsManager userName];
+    addCommentRequest.comments = self.commentView.text;
+    [WASBaseServiceFace serviceWithMethod:[addCommentRequest URLString] body:[addCommentRequest toJsonString] onSuc:successedBlock onFailed:failedBlock onError:errBlock];
+
+}
 
 - (void) configTableView
 {
     __block ProductDetailCommentController *blockSelf = self;
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
+    self.tableView.tableFooterView = [self footerView];//[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
     self.tableView.cellCreateBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
         static NSString *identifier = @"ProductCategoryViewController_IDENTIFIER0";
         BaseNewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -337,6 +417,13 @@
         return 0.0f;
     };
     
+    self.tableView.refreshBlock = ^(id content) {
+//        [blockSelf.request firstPage];
+        [blockSelf sendRequestToServer];
+    };
+    
+
+    
     self.tableView.cellSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     };
@@ -359,7 +446,7 @@
 
 - (void) sendRequestToServer
 {
-    __weak ProductDetailCommentController *blockSelf = self;
+    __block ProductDetailCommentController *blockSelf = self;
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
         blockSelf.response = [[CommentsResponse alloc] initWithJsonString:content];

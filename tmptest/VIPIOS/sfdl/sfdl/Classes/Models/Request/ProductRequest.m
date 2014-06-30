@@ -279,9 +279,50 @@
 
 @implementation AgentListRequest
 
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_productTypeId);
+    TT_RELEASE_SAFELY(_name);
+    TT_RELEASE_SAFELY(_regionId);
+    [super dealloc];
+}
+
+- (NSMutableArray *) keyArrays
+{
+    NSMutableArray *array =  [NSMutableArray arrayWithObjects:@"productTypeId",@"regionId",@"name", nil];
+    [array addObjectsFromArray: [super keyArrays]];
+    return array;
+}
+
+- (NSMutableArray *) valueArrays
+{
+    if (!self.name) {
+        self.name = @"";
+    }
+    if (!self.productTypeId) {
+        self.productTypeId = @"";
+    }
+    if (!self.regionId) {
+        self.regionId = @"";
+    }
+    
+    NSMutableArray *array =   [NSMutableArray arrayWithObjects:self.productTypeId,self.regionId,self.name, nil];
+    [array addObjectsFromArray: [super valueArrays]];
+    return array;
+}
+
 - (NSString *) methodString
 {
     return @"Agent/getAgentList";
+}
+
+@end
+
+@implementation RegionListRequest
+
+- (NSString *) methodString
+{
+    return @"Agent/getRegionList";
 }
 
 @end
@@ -321,7 +362,6 @@
 
 - (void) dealloc
 {
-    TT_RELEASE_SAFELY(_orderId);
     TT_RELEASE_SAFELY(_username);
     TT_RELEASE_SAFELY(_sign);
     
@@ -330,14 +370,18 @@
 
 - (NSMutableArray *) keyArrays
 {
-    NSMutableArray *array =  [NSMutableArray arrayWithObjects:@"username",@"orderId",@"sign", nil];
+    NSMutableArray *array =  [NSMutableArray arrayWithObjects:@"username",@"sign", nil];
     [array addObjectsFromArray: [super keyArrays]];
     return array;
 }
 
 - (NSMutableArray *) valueArrays
 {
-    NSMutableArray *array =   [NSMutableArray arrayWithObjects:self.username,self.orderId,self.sign, nil];
+    NSMutableString *computeSign = [NSMutableString string];
+    [computeSign appendFormat:@"companyId%@key%@page%@rows%@username%@",self.comapnyId,[UserDefaultsManager currentKey],kIntToString(self.pageno),kIntToString(self.pagesize),self.username];
+    self.sign = [computeSign md5String];
+    
+    NSMutableArray *array =   [NSMutableArray arrayWithObjects:self.username,self.sign, nil];
     [array addObjectsFromArray: [super valueArrays]];
     return array;
 }
@@ -369,6 +413,9 @@
 
 - (NSMutableArray *) valueArrays
 {
+    NSMutableString *computeSign = [NSMutableString string];
+    [computeSign appendFormat:@"companyId%@key%@orderId%@username%@",self.comapnyId,[UserDefaultsManager currentKey],self.orderId,self.username];
+    self.sign = [computeSign md5String];
     NSMutableArray *array =   [NSMutableArray arrayWithObjects:self.username,self.orderId,self.sign, nil];
     [array addObjectsFromArray: [super valueArrays]];
     return array;
@@ -391,19 +438,27 @@
     TT_RELEASE_SAFELY(_content);
     TT_RELEASE_SAFELY(_title);
     TT_RELEASE_SAFELY(_sign);
+    TT_RELEASE_SAFELY(_quantityList);
     [super dealloc];
 }
 
 - (NSMutableArray *) keyArrays
 {
+    
     NSMutableArray *array =  [NSMutableArray arrayWithObjects:@"username",@"productList",@"content",@"title",@"sign", nil];
+//    NSMutableArray *array =  [NSMutableArray arrayWithObjects:@"username",@"productList",@"quantityList",@"content",@"title",@"sign", nil];
     [array addObjectsFromArray: [super keyArrays]];
     return array;
 }
 
 - (NSMutableArray *) valueArrays
 {
+    NSMutableString *computeSign = [NSMutableString string];
+    [computeSign appendFormat:@"companyId%@content%@key%@productList%@title%@username%@",self.comapnyId,self.content,[UserDefaultsManager currentKey],self.productList,self.title,self.username];
+//    [computeSign appendFormat:@"companyId%@content%@key%@quantityList%@productList%@title%@username%@",self.comapnyId,self.content,[UserDefaultsManager currentKey],self.quantityList,self.productList,self.title,self.username];
+    self.sign = [computeSign md5String];
     NSMutableArray *array =   [NSMutableArray arrayWithObjects:self.username,self.productList,self.content,self.title,self.sign, nil];
+//    NSMutableArray *array =   [NSMutableArray arrayWithObjects:self.username,self.quantityList,self.productList,self.content,self.title,self.sign, nil];
     [array addObjectsFromArray: [super valueArrays]];
     return array;
 }
@@ -486,6 +541,9 @@
 
 - (NSMutableArray *) valueArrays
 {
+    NSMutableString *computeSign = [NSMutableString string];
+    [computeSign appendFormat:@"comments%@companyId%@key%@productId%@username%@",self.comments,self.comapnyId,[UserDefaultsManager currentKey],self.productId,self.username];
+    self.sign = [computeSign md5String];
     NSMutableArray *array =   [NSMutableArray arrayWithObjects:self.username,self.productId,self.comments,self.sign, nil];
     [array addObjectsFromArray: [super valueArrays]];
     return array;

@@ -31,7 +31,7 @@ static ProductCart * sharedInstance = nil;
 {
     self = [super init];
     if (self) {
-        self.contents = [NSMutableArray array];
+        [self empty];
     }
     return self;
 }
@@ -55,4 +55,10 @@ static ProductCart * sharedInstance = nil;
 {
     return self.contents;
 }
+
+- (void) empty
+{
+    self.contents = [NSMutableArray array];
+}
+
 @end

@@ -124,6 +124,8 @@
 		DD3A401F193E037F00043CA4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3A401E193E037F00043CA4 /* CoreData.framework */; };
 		DD3A4021193E038500043CA4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3A4020193E038500043CA4 /* QuartzCore.framework */; };
 		DD3AF8A8194AD14200A964B7 /* ProductResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3AF8A7194AD14200A964B7 /* ProductResponse.m */; };
+		DD722A8519616B2700A0E3DC /* DealerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD722A8419616B2700A0E3DC /* DealerViewController.m */; };
+		DD722A8819618A1500A0E3DC /* MyOrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD722A8719618A1500A0E3DC /* MyOrderListViewController.m */; };
 		DD7737DA19409E04006239B2 /* CustomSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7737D919409E04006239B2 /* CustomSearchBar.m */; };
 		DD7737DF1940A162006239B2 /* icon_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD7737DC1940A162006239B2 /* icon_back@2x.png */; };
 		DD7737E01940A162006239B2 /* icon_search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD7737DD1940A162006239B2 /* icon_search@2x.png */; };
@@ -371,6 +373,10 @@
 		DD3A4020193E038500043CA4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DD3AF8A6194AD14200A964B7 /* ProductResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductResponse.h; sourceTree = "<group>"; };
 		DD3AF8A7194AD14200A964B7 /* ProductResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductResponse.m; sourceTree = "<group>"; };
+		DD722A8319616B2700A0E3DC /* DealerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealerViewController.h; sourceTree = "<group>"; };
+		DD722A8419616B2700A0E3DC /* DealerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealerViewController.m; sourceTree = "<group>"; };
+		DD722A8619618A1500A0E3DC /* MyOrderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderListViewController.h; sourceTree = "<group>"; };
+		DD722A8719618A1500A0E3DC /* MyOrderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderListViewController.m; sourceTree = "<group>"; };
 		DD7737D819409E04006239B2 /* CustomSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSearchBar.h; sourceTree = "<group>"; };
 		DD7737D919409E04006239B2 /* CustomSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSearchBar.m; sourceTree = "<group>"; };
 		DD7737DC1940A162006239B2 /* icon_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_back@2x.png"; sourceTree = "<group>"; };
@@ -970,9 +976,13 @@
 				47DF7399194D952B0004CC63 /* AgentListViewController.m */,
 				47DF739B194D954E0004CC63 /* AgentDetailViewController.h */,
 				47DF739C194D954E0004CC63 /* AgentDetailViewController.m */,
-				DD8EEAB71944243000CACC22 /* Root */,
+				DD722A8319616B2700A0E3DC /* DealerViewController.h */,
+				DD722A8419616B2700A0E3DC /* DealerViewController.m */,
+				DD722A8619618A1500A0E3DC /* MyOrderListViewController.h */,
+				DD722A8719618A1500A0E3DC /* MyOrderListViewController.m */,
 				DDD62B20195C215B00FE2C6B /* ProductCart.h */,
 				DDD62B21195C215B00FE2C6B /* ProductCart.m */,
+				DD8EEAB71944243000CACC22 /* Root */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1182,6 +1192,7 @@
 				DD8EEADA1944243000CACC22 /* NewsViewController.m in Sources */,
 				DD7737DA19409E04006239B2 /* CustomSearchBar.m in Sources */,
 				DD8EEAE01944243000CACC22 /* RootViewController.m in Sources */,
+				DD722A8519616B2700A0E3DC /* DealerViewController.m in Sources */,
 				DD3A3FDF193E029300043CA4 /* AKTabBar.m in Sources */,
 				DD3A3FB3193E029300043CA4 /* FeedBackRequest.m in Sources */,
 				47DF739A194D952B0004CC63 /* AgentListViewController.m in Sources */,
@@ -1205,6 +1216,7 @@
 				DD3A3F9B193E029300043CA4 /* BaseWebViewController.m in Sources */,
 				DD13AD6A19592E73005D4222 /* UIPopoverListView.m in Sources */,
 				DD8EEADF1944243000CACC22 /* RegisterViewController.m in Sources */,
+				DD722A8819618A1500A0E3DC /* MyOrderListViewController.m in Sources */,
 				DD13AD861959ACA9005D4222 /* ViewPagerController.m in Sources */,
 				DD3A3FF0193E029300043CA4 /* NSDate+Helper.m in Sources */,
 				DD3A3FF1193E029300043CA4 /* UIImageView+(ASI).m in Sources */,

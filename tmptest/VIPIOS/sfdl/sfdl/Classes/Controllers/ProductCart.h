@@ -18,5 +18,6 @@
 
 - (NSMutableArray *) products;
 
+- (void) empty;
 
 @end

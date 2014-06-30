@@ -34,7 +34,10 @@
 
 
 
-@interface ProductDetailCommentController : BaseTableViewController
+@interface ProductDetailCommentController : BaseTableViewController <UITextViewDelegate>
+@property (nonatomic, retain) UITextView *commentView;
+@property (nonatomic, retain) UIButton   *submitButton;
+@property (nonatomic, retain) UIView     *footerView;
 @property (nonatomic, assign)  UINavigationController *parentNavigationController;
 @property (nonatomic, retain) ProductItem *productItem;
 @property (nonatomic, retain) CommentListRequest    *request;

@@ -10,7 +10,8 @@
 #import "ProductDetailViewController.h"
 #import "ProductCart.h"
 #import "ProductRequest.h"
-#import "CreateObject.H"
+#import "CreateObject.h"
+#import "ProductCartViewController.h"
 
 @interface ProductListViewController ()
 
@@ -92,6 +93,9 @@
         cell.block = ^(id content)
         {
             [[ProductCart sharedInstance] addProductItem:content];
+            ProductCartViewController *controller = [[[ProductCartViewController alloc] init] autorelease];
+            controller.hidesBottomBarWhenPushed = YES;
+            [blockSelf.navigationController pushViewController:controller animated:YES];
         };
 
         return cell;

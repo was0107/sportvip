@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "ListRequestProtocol.h"
 #import "URLMethod.h"
+#import "UserDefaultsManager.h"
+#import "NSString+extend.h"
 
 
 @interface ListRequestBase : NSObject<ListRequestProtocol>

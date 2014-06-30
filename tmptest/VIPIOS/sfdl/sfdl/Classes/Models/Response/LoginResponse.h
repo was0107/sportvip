@@ -44,6 +44,7 @@
 
 @interface ProductItem : ListResponseItemBase
 @property (nonatomic, copy) NSString *productId, *productName, *productType, *productTypeName, *productDesc, *productImg;
+@property (nonatomic, assign) NSUInteger buyCount;
 @end
 
 
@@ -69,6 +70,10 @@
 @interface AgentItem : ListResponseItemBase
 @property (nonatomic, copy) NSString *agentId, *name, *desc;
 @property (nonatomic, copy) NSString *regionId, *regionName;
+@end
+
+@interface RegionItem : ListResponseItemBase
+@property (nonatomic, copy) NSString *regionId, *name, *desc;
 @end
 
 

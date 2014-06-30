@@ -70,6 +70,11 @@
 @end
 
 @interface AgentListRequest : ListPaggingRequestBase
+@property (nonatomic, copy) NSString *name,*productTypeId,*regionId;
+
+@end
+
+@interface RegionListRequest : ListPaggingRequestBase
 
 @end
 
@@ -80,7 +85,7 @@
 @end
 
 @interface OrdertListRequest : ListPaggingRequestBase
-@property (nonatomic, copy) NSString *username,*orderId,*sign;
+@property (nonatomic, copy) NSString *username,*sign;
 
 @end
 
@@ -91,7 +96,7 @@
 
 
 @interface CreateOrderRequest : ListRequestBase
-@property (nonatomic, copy) NSString *username,*productList,*content,*title,*sign;
+@property (nonatomic, copy) NSString *username,*productList,*content,*title,*sign,*quantityList;
 
 @end
 

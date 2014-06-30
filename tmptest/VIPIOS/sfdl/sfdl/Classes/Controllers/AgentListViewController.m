@@ -69,7 +69,7 @@
             cell.subLabel.font = HTFONTSIZE(kFontSize15);
             
             cell.subRightLabel.frame = CGRectMake(180, 58, 130, 20);
-            cell.subRightLabel.textAlignment = UITextAlignmentRight;
+            cell.subRightLabel.textAlignment = NSTextAlignmentRight;
             cell.subRightLabel.textColor = kBlackColor;
             cell.subRightLabel.font = HTFONTSIZE(kFontSize13);
             [cell.contentView addSubview:cell.topLabel];
@@ -99,7 +99,7 @@
     
     self.tableView.cellSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        NewsItem *item = [blockSelf.response at:indexPath.row ];
+        AgentItem *item = [blockSelf.response at:indexPath.row ];
         AgentDetailViewController *controller = [[[AgentDetailViewController alloc] init] autorelease];
         controller.newItem = item;
         [blockSelf.navigationController hidesBottomBarWhenPushed];
@@ -138,7 +138,7 @@
 
 - (void) sendRequestToServer
 {
-    __weak AgentListViewController *blockSelf = self;
+    __block AgentListViewController *blockSelf = self;
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
         if ([_request isFristPage]) {
@@ -164,6 +164,9 @@
     if (!_request) {
         self.request = [[[AgentListRequest alloc] init] autorelease];
     }
+    self.request.name = self.name;
+    self.request.productTypeId = self.typeItem.productTypeId;
+    self.request.regionId = self.regionItem.regionId;
     
     [WASBaseServiceFace serviceWithMethod:[self.request URLString] body:[self.request toJsonString] onSuc:successedBlock onFailed:failedBlock onError:errBlock];
 }

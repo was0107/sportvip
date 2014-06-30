@@ -137,6 +137,8 @@
         self.productTypeName = [self stringObjectFrom:dictionary withKey:@"productTypeName"];
         self.productDesc = [self stringObjectFrom:dictionary withKey:@"productDesc"];
         self.productImg = [self stringObjectFrom:dictionary withKey:@"productImg"];
+        
+        self.buyCount = 1;
     }
     
     return self;
@@ -218,6 +220,21 @@
 @end
 
 
+@implementation RegionItem
+
+- (id) initWithDictionary:(const NSDictionary *) dictionary
+{
+    self = [super init];
+    if (self) {
+        self.regionId = [dictionary objectForKey:@"regionId"];
+        self.name = [dictionary objectForKey:@"name"];
+        self.desc = [dictionary objectForKey:@"desc"];
+    }
+    return self;
+}
+
+@end
+
 @implementation OrderItem
 
 - (id) initWithDictionary:(const NSDictionary *) dictionary
@@ -228,7 +245,17 @@
         self.title = [dictionary objectForKey:@"title"];
         self.content = [dictionary objectForKey:@"content"];
         self.sendTime = [dictionary objectForKey:@"sendTime"];
-        self.status = [dictionary objectForKey:@"status"];
+        
+        NSString *statusKey = [dictionary objectForKey:@"status"];
+        if ([statusKey isEqualToString:@"0"]) {
+            self.status = @"查询中";
+        }
+        else if ([statusKey isEqualToString:@"0"]) {
+            self.status = @"处理中";
+        }
+        else {
+            self.status = @"完成";
+        }
     }
     
     return self;

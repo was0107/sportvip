@@ -105,5 +105,7 @@
 
 - (void)adjustOffsetToIdealIfNeeded;
 
+- (void)setup;
+
 
 @end

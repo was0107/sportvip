@@ -96,7 +96,6 @@
 {
     [super viewDidLoad];
     [[self showRight] showLeft];
-//    [[[self showRight] rightButton] setTitle:@"注册" forState:UIControlStateNormal];
     [self configControllers];
     [self.view addSubview:self.searchView];
     [self.view addSubview:self.cycleView];
@@ -107,31 +106,62 @@
 
 - (void) rightButtonAction:(id)sender
 {
-    NSArray *menuItems =
-    @[
-      [KxMenuItem menuItem:@"Sign in"
-                     image:[UIImage imageNamed:@"home1"]
-                    target:self
-                    action:@selector(pushMenuItem0:)],
-      
-      [KxMenuItem menuItem:@"Setting"
-                     image:[UIImage imageNamed:@"home2"]
-                    target:self
-                    action:@selector(pushMenuItem1:)],
-      
-      [KxMenuItem menuItem:@"Languages"
-                     image:[UIImage imageNamed:@"home3"]
-                    target:self
-                    action:@selector(pushMenuItem2:)],
-      
-      [KxMenuItem menuItem:@"Exit"
-                     image:[UIImage imageNamed:@"home4"]
-                    target:self
-                    action:@selector(pushMenuItem3:)],
-      ];
+    NSArray *menuItems = nil;
+    if ([[self currentUserId] length] == 0) {
+        menuItems = @[
+                      [KxMenuItem menuItem:@"Sign in"
+                                     image:[UIImage imageNamed:@"home1"]
+                                    target:self
+                                    action:@selector(pushMenuItem0:)],
+                      
+                      [KxMenuItem menuItem:@"Setting"
+                                     image:[UIImage imageNamed:@"home2"]
+                                    target:self
+                                    action:@selector(pushMenuItem1:)],
+                      
+                      [KxMenuItem menuItem:@"Languages"
+                                     image:[UIImage imageNamed:@"home3"]
+                                    target:self
+                                    action:@selector(pushMenuItem2:)],
+                      
+//                      [KxMenuItem menuItem:@"Exit"
+//                                     image:[UIImage imageNamed:@"home4"]
+//                                    target:self
+//                                    action:@selector(pushMenuItem3:)],
+                      ];
+
+    } else {
+          menuItems = @[
+          [KxMenuItem menuItem:@"Sign out"
+                         image:[UIImage imageNamed:@"home1"]
+                        target:self
+                        action:@selector(pushMenuItem4:)],
+          
+          [KxMenuItem menuItem:@"My order"
+                         image:[UIImage imageNamed:@"home2"]
+                        target:self
+                        action:@selector(pushMenuItem5:)],
+          
+          [KxMenuItem menuItem:@"Setting"
+                         image:[UIImage imageNamed:@"home2"]
+                        target:self
+                        action:@selector(pushMenuItem1:)],
+          
+          [KxMenuItem menuItem:@"Languages"
+                         image:[UIImage imageNamed:@"home3"]
+                        target:self
+                        action:@selector(pushMenuItem2:)],
+          
+//          [KxMenuItem menuItem:@"Exit"
+//                         image:[UIImage imageNamed:@"home4"]
+//                        target:self
+//                        action:@selector(pushMenuItem3:)],
+          ];
+
+    }
     
     [KxMenu setTintColor:kWhiteColor];
-        [KxMenu showMenuInView:self.view fromRect:CGRectMake(280, -40, 40, 40) menuItems:menuItems];
+    [KxMenu showMenuInView:self.view fromRect:CGRectMake(280, -40, 40, 40) menuItems:menuItems];
 }
 
 - (void) pushMenuItem0:(id)sender
@@ -156,6 +186,18 @@
 
 - (void) pushMenuItem3:(id)sender
 {
+}
+
+- (void) pushMenuItem4:(id)sender
+{
+    [UserDefaultsManager saveUserId:@""];
+}
+
+- (void) pushMenuItem5:(id)sender
+{
+    Class class = NSClassFromString(@"MyOrderListViewController");
+    UIViewController *vc1 = [[[class alloc] init] autorelease];
+    [self.navigationController pushViewController:vc1 animated:YES];
 }
 
 
@@ -187,7 +229,7 @@
     UIButton *button = (UIButton *) sender;
     CustomImageTitleButton *titleButton = (CustomImageTitleButton *)button.superview;
     NSArray *controllersArray = @[@"AboutUsViewController",@"ProductCategoryViewController",@"NewsViewController",@"ContactUsViewController",\
-                                  @"ProductSearchExViewController",@"LeaveMessageViewController",@"LoginViewController",@"AgentListViewController",
+                                  @"ProductSearchExViewController",@"LeaveMessageViewController",@"LoginViewController",@"DealerViewController",
                                   ];
     int position = titleButton.tag - 1000;
     if (self.menuResponse) {

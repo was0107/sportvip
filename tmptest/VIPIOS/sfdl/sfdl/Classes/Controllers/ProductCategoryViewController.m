@@ -115,7 +115,7 @@
 
 - (void) sendRequestToServer
 {
-    __weak ProductCategoryViewController *blockSelf = self;
+    __block ProductCategoryViewController *blockSelf = self;
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
         if ([_request isFristPage]) {

@@ -28,7 +28,7 @@
         [self addSubview:self.rightButton];
         [self addSubview:self.middleLabel];
         [self addSubview:self.rightLabel];
-        self.value = 0;
+        self.value = 1;
     }
     return self;
 }
@@ -52,7 +52,6 @@
         [_leftButton setTitle:@"-" forState:UIControlStateNormal];
         _leftButton.titleLabel.textAlignment = NSTextAlignmentCenter;
         [CreateObject addTargetEfection:_leftButton];
-        _leftButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [_leftButton addTarget:self action:@selector(buttonLeftAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _leftButton;
@@ -68,7 +67,6 @@
         _rightButton.titleLabel.font = HTFONTSIZE(kSystemFontSize14);
         [_rightButton setTitle:@"+" forState:UIControlStateNormal];
         [CreateObject addTargetEfection:_rightButton];
-        _rightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [_rightButton addTarget:self action:@selector(buttonRightAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _rightButton;
@@ -117,11 +115,17 @@
 -(IBAction)buttonLeftAction:(id)sender
 {
     self.value = self.value - 1;
+    if (self.block) {
+        self.block(self);
+    }
 }
 
 -(IBAction)buttonRightAction:(id)sender
 {
     self.value = self.value + 1;
+    if (self.block) {
+        self.block(self);
+    }
 }
 
 
