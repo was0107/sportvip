@@ -161,6 +161,7 @@
 		DD8EEB1B19445E6900CACC22 /* SSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8EEB1A19445E6900CACC22 /* SSettingViewController.m */; };
 		DD8EEB1E19445E9100CACC22 /* LanguageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8EEB1D19445E9100CACC22 /* LanguageViewController.m */; };
 		DD99339C1962DF5A007150EC /* MyOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD99339B1962DF5A007150EC /* MyOrderDetailViewController.m */; };
+		DD99339F1962EDDD007150EC /* ForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD99339E1962EDDD007150EC /* ForgetPasswordViewController.m */; };
 		DDD62B22195C215B00FE2C6B /* ProductCart.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD62B21195C215B00FE2C6B /* ProductCart.m */; };
 		DDD62B25195C276D00FE2C6B /* ProductCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD62B24195C276D00FE2C6B /* ProductCartViewController.m */; };
 /* End PBXBuildFile section */
@@ -433,6 +434,8 @@
 		DD8EEB1D19445E9100CACC22 /* LanguageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageViewController.m; sourceTree = "<group>"; };
 		DD99339A1962DF5A007150EC /* MyOrderDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderDetailViewController.h; sourceTree = "<group>"; };
 		DD99339B1962DF5A007150EC /* MyOrderDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderDetailViewController.m; sourceTree = "<group>"; };
+		DD99339D1962EDDD007150EC /* ForgetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordViewController.h; sourceTree = "<group>"; };
+		DD99339E1962EDDD007150EC /* ForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordViewController.m; sourceTree = "<group>"; };
 		DDD62B20195C215B00FE2C6B /* ProductCart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCart.h; sourceTree = "<group>"; };
 		DDD62B21195C215B00FE2C6B /* ProductCart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCart.m; sourceTree = "<group>"; };
 		DDD62B23195C276D00FE2C6B /* ProductCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCartViewController.h; sourceTree = "<group>"; };
@@ -951,6 +954,8 @@
 				DD8EEA951944243000CACC22 /* LeaveMessageViewController.m */,
 				DD8EEA961944243000CACC22 /* LoginViewController.h */,
 				DD8EEA971944243000CACC22 /* LoginViewController.m */,
+				DD99339D1962EDDD007150EC /* ForgetPasswordViewController.h */,
+				DD99339E1962EDDD007150EC /* ForgetPasswordViewController.m */,
 				DD8EEAA91944243000CACC22 /* NewsDetailViewController.h */,
 				DD8EEAAA1944243000CACC22 /* NewsDetailViewController.m */,
 				DD8EEAAB1944243000CACC22 /* NewsViewController.h */,
@@ -1180,6 +1185,7 @@
 				DD8EEACF1944243000CACC22 /* LeaveMessageViewController.m in Sources */,
 				DD8EEAD01944243000CACC22 /* LoginViewController.m in Sources */,
 				DD3A3FE2193E029300043CA4 /* AKTabBarView.m in Sources */,
+				DD99339F1962EDDD007150EC /* ForgetPasswordViewController.m in Sources */,
 				DD3A3FDA193E029300043CA4 /* CreateObject.m in Sources */,
 				DD3A3F98193E029300043CA4 /* BaseTableViewController.m in Sources */,
 				DD3A3FF6193E029300043CA4 /* STLocationInstance.m in Sources */,

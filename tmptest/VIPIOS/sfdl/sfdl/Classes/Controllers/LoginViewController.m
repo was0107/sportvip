@@ -13,12 +13,13 @@
 #import "LoginRequest.h"
 #import "LoginResponse.h"
 #import "CreateObject.h"
+#import "ForgetPasswordViewController.h"
 
 
 @interface LoginViewController ()
 @property (nonatomic, retain) PubTextField *phoneTextField;
 @property (nonatomic, retain) PubTextField *pwdTextField;
-@property (nonatomic, retain) UIButton     *confirmButton, *newButton;
+@property (nonatomic, retain) UIButton     *confirmButton, *forgetButton, *newButton;
 
 @end
 
@@ -30,15 +31,16 @@
     [self setTitleContent:@"登录"];
     [[[self showRight] rightButton] setTitle:@"注册" forState:UIControlStateNormal];
     
-    UIImageView *imageVeiw = [[[UIImageView alloc] initWithFrame:CGRectMake(42, 20, 243, 30)] autorelease];
-    imageVeiw.backgroundColor = kClearColor;
-    imageVeiw.image = [UIImage imageNamed:@"icon"];
-    [self.view addSubview:imageVeiw];
+//    UIImageView *imageVeiw = [[[UIImageView alloc] initWithFrame:CGRectMake(42, 20, 243, 30)] autorelease];
+//    imageVeiw.backgroundColor = kClearColor;
+//    imageVeiw.image = [UIImage imageNamed:@"icon"];
+//    [self.view addSubview:imageVeiw];
 
     
     
     [self.view addSubview:self.phoneTextField];
     [self.view addSubview:self.pwdTextField];
+    [self.view addSubview:self.forgetButton];
     [self.view addSubview:self.confirmButton];
     [self.view addSubview:self.newButton];
     
@@ -94,11 +96,27 @@
     return _pwdTextField;
 }
 
+- (UIButton *)forgetButton
+{
+    if (!_forgetButton) {
+        _forgetButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+        _forgetButton.frame = CGRectMake(82.0f, 120.0f + kImageStartAt, 243.0f, 40.0f);
+        _forgetButton.backgroundColor = kClearColor;
+        [_forgetButton setTitleColor:kButtonNormalColor forState:UIControlStateNormal];
+        [_forgetButton.titleLabel setFont:[UIFont boldSystemFontOfSize:13.0f]];
+        _forgetButton.titleLabel.textAlignment = NSTextAlignmentRight;
+        [_forgetButton setTitle:@"Forget Password?Get Now>" forState:UIControlStateNormal];
+        [_forgetButton addTarget:self action:@selector(forgetButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    return _forgetButton;
+}
+
 - (UIButton *)confirmButton
 {
     if (!_confirmButton) {
         _confirmButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
-        _confirmButton.frame = CGRectMake(42.0f, 120.0f + kImageStartAt, 243.0f, 40.0f);
+        _confirmButton.frame = CGRectMake(42.0f, 120.0f + kImageStartAt + 50, 243.0f, 40.0f);
         _confirmButton.backgroundColor = kLightGrayColor;
         [_confirmButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18.0f]];
         [CreateObject addTargetEfection:_confirmButton];
@@ -114,7 +132,7 @@
 {
     if (!_newButton) {
         _newButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
-        _newButton.frame = CGRectMake(150.0f, 166.0f + kImageStartAt, 140.0f, 30.0f);
+        _newButton.frame = CGRectMake(150.0f, 166.0f + kImageStartAt + 50, 140.0f, 30.0f);
         _newButton.backgroundColor = kClearColor;
         [_newButton setTitleColor:kButtonNormalColor forState:UIControlStateNormal];
         [_newButton.titleLabel setFont:[UIFont boldSystemFontOfSize:13.0f]];
@@ -125,11 +143,20 @@
     return _newButton;
 }
 
+- (IBAction)forgetButtonAction:(id)sender
+{
+    [self.pwdTextField resignFirstResponder];
+    [self.phoneTextField resignFirstResponder];
+    ForgetPasswordViewController *controller = [[[ForgetPasswordViewController alloc] init] autorelease];
+    [controller setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
 - (IBAction)newButtonAction:(id)sender
 {
     [self.pwdTextField resignFirstResponder];
     [self.phoneTextField resignFirstResponder];
-
+    
     RegisterViewController *controller = [[[RegisterViewController alloc] init] autorelease];
     [controller setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:controller animated:YES];

@@ -171,10 +171,10 @@
         [_rightButton setNormalImage:nil selectedImage:nil];
         _rightButton.titleLabel.font = HTFONTSIZE(kFontSize13);
         if (!IS_IOS_7_OR_GREATER) {
-            [_rightButton setTitleColor:[UIColor getColor:KCustomGreenColor] forState:UIControlStateNormal];
+            [_rightButton setTitleColor:kWhiteColor forState:UIControlStateNormal];
             [_rightButton setBackgroundImage:@"nav_button_normal" selectedImage:@"nav_button_selected" clickImage:@"nav_button_selected"];
         } else {
-            [_rightButton setTitleColor:[UIColor getColor:KCustomGreenColor] forState:UIControlStateNormal];
+            [_rightButton setTitleColor:kWhiteColor forState:UIControlStateNormal];
             [_rightButton setBackgroundImage:@"nav_button_normal" selectedImage:@"nav_button_selected" clickImage:@"nav_button_selected"];
         }
         [_rightButton.titleLabel setFont:[UIFont systemFontOfSize:17.0f]];
@@ -196,31 +196,31 @@
 //    return _customTitleLable;
 //}
 
-//- (void)setTitle:(NSString *)title
-//{
-//    if ([self.navigationController.viewControllers count] > 1 )
-//    {
-//        [super setTitle:@"返回"];
-//    } else {
-////        [super setTitle:title];
-//    }
-////    self.customTitleLable.text = title;
-//    UILabel *titleView = (UILabel *)self.navigationItem.titleView;
-//    if (!titleView) {
-//        titleView = [[UILabel alloc] initWithFrame:CGRectZero];
-//        titleView.backgroundColor = [UIColor clearColor];
-//        titleView.font = HTFONTSIZE(20);
-//        titleView.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
-//        
-//        titleView.textColor = kWhiteColor; // Change to desired color
-//        
-//        self.navigationItem.titleView = titleView;
-//        self.customTitleLable = titleView;
-//        [titleView release];
-//    }
-//    titleView.text = title;
-//    [titleView sizeToFit];
-//}
+- (void)setTitle:(NSString *)title
+{
+    [super setTitle:title];
+    if ([self.navigationController.viewControllers count] > 1 )
+        [super setTitle:@"返回"];
+    else
+        [super setTitle:title];
+    
+    UILabel *titleView = (UILabel *)self.navigationItem.titleView;
+    if (!titleView) {
+        titleView = [[UILabel alloc] initWithFrame:CGRectZero];
+        titleView.backgroundColor = [UIColor clearColor];
+        titleView.font = HTFONTSIZE(20);
+        //        titleView.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+        
+        titleView.textColor = kWhiteColor; // Change to desired color
+        
+        self.navigationItem.titleView = titleView;
+        self.customTitleLable = titleView;
+        [titleView release];
+    }
+    titleView.text = title;
+    [titleView sizeToFit];
+
+}
 
 - (void) setTitleContent:(NSString *) title
 {
