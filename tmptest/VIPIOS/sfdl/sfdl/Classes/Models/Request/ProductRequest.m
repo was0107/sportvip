@@ -378,7 +378,8 @@
 - (NSMutableArray *) valueArrays
 {
     NSMutableString *computeSign = [NSMutableString string];
-    [computeSign appendFormat:@"companyId%@key%@page%@rows%@username%@",self.comapnyId,[UserDefaultsManager currentKey],kIntToString(self.pageno),kIntToString(self.pagesize),self.username];
+    [computeSign appendFormat:@"companyId%@key%@username%@",self.comapnyId,[UserDefaultsManager currentKey],self.username];
+//    [computeSign appendFormat:@"companyId%@key%@page%@rows%@username%@",self.comapnyId,[UserDefaultsManager currentKey],kIntToString(self.pageno),kIntToString(self.pagesize),self.username];
     self.sign = [computeSign md5String];
     
     NSMutableArray *array =   [NSMutableArray arrayWithObjects:self.username,self.sign, nil];

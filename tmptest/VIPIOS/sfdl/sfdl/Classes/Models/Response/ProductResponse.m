@@ -155,6 +155,19 @@
 
 @end
 
+
+@implementation ViewOrderResponse
+
+- (id) initWithDictionary:(const NSDictionary *) dictionary
+{
+    self = [super initWithDictionary:dictionary];
+    self.orderItem = [[[OrderItem alloc] initWithDictionary:[dictionary objectForKey:@"order"]] autorelease];
+    return self;
+}
+
+
+@end
+
 @implementation CommentsResponse
 
 - (id) translateItemFrom:(const NSDictionary *) dictionary

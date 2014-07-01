@@ -60,6 +60,10 @@
 
 @end
 
+@interface ViewOrderResponse : ListResponseBase
+@property (nonatomic, retain) OrderItem *orderItem;
+@end
+
 
 @interface CommentsResponse : ListPaggingResponseBase
 

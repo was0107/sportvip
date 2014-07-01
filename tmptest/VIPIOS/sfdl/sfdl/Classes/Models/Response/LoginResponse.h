@@ -78,8 +78,11 @@
 
 
 @interface OrderItem : ListResponseItemBase
-@property (nonatomic, copy) NSString *orderId, *title, *content;
+@property (nonatomic, copy) NSString *orderId, *title, *content,*productList;
 @property (nonatomic, copy) NSString *sendTime, *status;
+@property (nonatomic, assign) NSInteger statusInt;
+
+@property (nonatomic, retain) NSMutableArray *titleArray,*productIdArray;
 //productList productList:[111,115,124]
 @end
 

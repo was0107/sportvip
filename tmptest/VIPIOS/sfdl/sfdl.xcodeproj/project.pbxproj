@@ -160,6 +160,7 @@
 		DD8EEB181944566900CACC22 /* KxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8EEB171944566900CACC22 /* KxMenu.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		DD8EEB1B19445E6900CACC22 /* SSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8EEB1A19445E6900CACC22 /* SSettingViewController.m */; };
 		DD8EEB1E19445E9100CACC22 /* LanguageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8EEB1D19445E9100CACC22 /* LanguageViewController.m */; };
+		DD99339C1962DF5A007150EC /* MyOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD99339B1962DF5A007150EC /* MyOrderDetailViewController.m */; };
 		DDD62B22195C215B00FE2C6B /* ProductCart.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD62B21195C215B00FE2C6B /* ProductCart.m */; };
 		DDD62B25195C276D00FE2C6B /* ProductCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD62B24195C276D00FE2C6B /* ProductCartViewController.m */; };
 /* End PBXBuildFile section */
@@ -430,6 +431,8 @@
 		DD8EEB1A19445E6900CACC22 /* SSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSettingViewController.m; sourceTree = "<group>"; };
 		DD8EEB1C19445E9100CACC22 /* LanguageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageViewController.h; sourceTree = "<group>"; };
 		DD8EEB1D19445E9100CACC22 /* LanguageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageViewController.m; sourceTree = "<group>"; };
+		DD99339A1962DF5A007150EC /* MyOrderDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderDetailViewController.h; sourceTree = "<group>"; };
+		DD99339B1962DF5A007150EC /* MyOrderDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderDetailViewController.m; sourceTree = "<group>"; };
 		DDD62B20195C215B00FE2C6B /* ProductCart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCart.h; sourceTree = "<group>"; };
 		DDD62B21195C215B00FE2C6B /* ProductCart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCart.m; sourceTree = "<group>"; };
 		DDD62B23195C276D00FE2C6B /* ProductCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCartViewController.h; sourceTree = "<group>"; };
@@ -980,6 +983,8 @@
 				DD722A8419616B2700A0E3DC /* DealerViewController.m */,
 				DD722A8619618A1500A0E3DC /* MyOrderListViewController.h */,
 				DD722A8719618A1500A0E3DC /* MyOrderListViewController.m */,
+				DD99339A1962DF5A007150EC /* MyOrderDetailViewController.h */,
+				DD99339B1962DF5A007150EC /* MyOrderDetailViewController.m */,
 				DDD62B20195C215B00FE2C6B /* ProductCart.h */,
 				DDD62B21195C215B00FE2C6B /* ProductCart.m */,
 				DD8EEAB71944243000CACC22 /* Root */,
@@ -1182,6 +1187,7 @@
 				DD3A3FEC193E029300043CA4 /* WASASIUploadAdapter.m in Sources */,
 				DD3A3FDB193E029300043CA4 /* URLMethod.m in Sources */,
 				DD3A3F94193E029300043CA4 /* BaseGroupTableView.m in Sources */,
+				DD99339C1962DF5A007150EC /* MyOrderDetailViewController.m in Sources */,
 				DD8EEAC61944243000CACC22 /* AboutUsViewController.m in Sources */,
 				DD3A3FB6193E029300043CA4 /* LoginRequest.m in Sources */,
 				DD8EEB1B19445E6900CACC22 /* SSettingViewController.m in Sources */,

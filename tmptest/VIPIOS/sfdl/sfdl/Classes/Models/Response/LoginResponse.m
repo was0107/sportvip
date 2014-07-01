@@ -241,21 +241,31 @@
 {
     self = [super init];
     if (self) {
-        self.orderId = [dictionary objectForKey:@"orderId"];
-        self.title = [dictionary objectForKey:@"title"];
-        self.content = [dictionary objectForKey:@"content"];
-        self.sendTime = [dictionary objectForKey:@"sendTime"];
+        self.orderId     = [dictionary objectForKey:@"orderId"];
+        self.title       = [dictionary objectForKey:@"title"];
+        self.content     = [dictionary objectForKey:@"content"];
+        self.sendTime    = [dictionary objectForKey:@"sendTime"];
+        self.productList = [dictionary objectForKey:@"productList"];
         
         NSString *statusKey = [dictionary objectForKey:@"status"];
+        self.statusInt = [statusKey integerValue];
         if ([statusKey isEqualToString:@"0"]) {
             self.status = @"查询中";
         }
-        else if ([statusKey isEqualToString:@"0"]) {
+        else if ([statusKey isEqualToString:@"1"]) {
             self.status = @"处理中";
         }
         else {
             self.status = @"完成";
         }
+        
+        self.titleArray = [NSMutableArray array];
+        self.productIdArray = [NSMutableArray array];
+
+        NSArray *array = [self.title componentsSeparatedByString:@","];
+        [self.titleArray addObjectsFromArray:array];
+        array = [self.productList componentsSeparatedByString:@","];
+        [self.productIdArray addObjectsFromArray:array];
     }
     
     return self;

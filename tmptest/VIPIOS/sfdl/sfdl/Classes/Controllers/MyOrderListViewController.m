@@ -9,6 +9,8 @@
 #import "MyOrderListViewController.h"
 #import "ProductResponse.h"
 #import "ProductRequest.h"
+#import "MyOrderDetailViewController.h"
+
 @interface MyOrderListViewController ()
 
 @property (nonatomic, retain) OrdertListRequest *request;
@@ -17,19 +19,11 @@
 
 @implementation MyOrderListViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.secondTitleLabel.text = @"My order";
+    [self sendRequestToServer];
     // Do any additional setup after loading the view.
 }
 
@@ -70,6 +64,22 @@
         return  64.0f;
     };
     
+    self.tableView.cellEditBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
+        OrderItem *item = [blockSelf.response at:indexPath.row ];
+        
+        return  (2 == item.statusInt) ? UITableViewCellEditingStyleDelete : UITableViewCellEditingStyleNone;
+    };
+    self.tableView.cellEditActionBlock = ^( UITableView *tableView, NSInteger editingStyle, NSIndexPath *indexPath){
+        if (editingStyle == UITableViewCellEditingStyleDelete) {
+            OrderItem *item = [blockSelf.response at:indexPath.row ];
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationFade];
+            [blockSelf sendRequestToDeleteItem:item];
+            [tableView reloadData];
+        }
+    };
+    
+
+    
     self.tableView.sectionHeaderHeightBlock = ^( UITableView *tableView, NSInteger section){
         return 0.0f;
     };
@@ -87,6 +97,10 @@
     
     self.tableView.cellSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        MyOrderDetailViewController *controller = [[[MyOrderDetailViewController alloc] init] autorelease];
+        controller.item = [blockSelf.response at:indexPath.row];
+        [blockSelf.navigationController hidesBottomBarWhenPushed];
+        [blockSelf.navigationController pushViewController:controller animated:YES];
     };
     
     [self.view addSubview:self.tableView];
@@ -131,6 +145,26 @@
     [WASBaseServiceFace serviceWithMethod:[self.request URLString] body:[self.request toJsonString] onSuc:successedBlock onFailed:failedBlock onError:errBlock];
 }
 
+
+- (void) sendRequestToDeleteItem:(OrderItem *)item
+{
+    idBlock successedBlock = ^(id content){
+        DEBUGLOG(@"success conent %@", content);
+    };
+    
+    idBlock failedBlock = ^(id content){
+        DEBUGLOG(@"failed content %@", content);
+    };
+    
+    idBlock errBlock = ^(id content){
+        DEBUGLOG(@"error content %@", content);
+    };
+    DeleteOrderRequest *deleteRequest =  [[[DeleteOrderRequest alloc] init] autorelease];
+    deleteRequest.username = [UserDefaultsManager userName];
+    deleteRequest.orderId = item.orderId;
+    [WASBaseServiceFace serviceWithMethod:[deleteRequest URLString] body:[deleteRequest toJsonString] onSuc:successedBlock onFailed:failedBlock onError:errBlock];
+
+}
 
 
 @end

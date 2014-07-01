@@ -191,6 +191,7 @@
 - (void) pushMenuItem4:(id)sender
 {
     [UserDefaultsManager saveUserId:@""];
+    [SVProgressHUD showSuccessWithStatus:@"Sign out success"];
 }
 
 - (void) pushMenuItem5:(id)sender
