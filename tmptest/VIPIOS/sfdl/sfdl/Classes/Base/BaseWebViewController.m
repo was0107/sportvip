@@ -82,9 +82,9 @@
     if (!_mainWebView) {
         _mainWebView = [[UIWebView alloc] initWithFrame:[self webViewFrame]];
         _mainWebView.backgroundColor = [UIColor clearColor];
-        _mainWebView.scalesPageToFit = YES;
-        _mainWebView.delegate = self;
-        _mainWebView.opaque = NO;
+//        _mainWebView.scalesPageToFit = YES;
+//        _mainWebView.delegate = self;
+//        _mainWebView.opaque = NO;
     }
     return _mainWebView;
 }

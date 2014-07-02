@@ -15,6 +15,7 @@
 #import "GrowAndDownControl.h"
 #import "ProductDetailViewController.h"
 #import "CreateObject.h"
+#import "LoginViewController.h"
 
 @interface ProductCartViewController ()
 @property (nonatomic, retain) ProductListRequest *request;
@@ -245,6 +246,13 @@
     
     if (listId.length == 0 || listTitle.length ==0 ||quantityListId.length ==0  ) {
         return;
+    }
+    
+    if ([[self currentUserId] length] == 0) {
+        BaseTitleViewController *controller =  [[[LoginViewController alloc] init] autorelease];
+        [controller setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:controller animated:YES];
+        return ;
     }
     
     [SVProgressHUD showWithStatus:@"正在提交订单..."];
