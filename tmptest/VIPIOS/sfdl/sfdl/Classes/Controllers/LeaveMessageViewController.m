@@ -7,16 +7,19 @@
 //
 
 #import "LeaveMessageViewController.h"
-
+#import "LoginRequest.h"
+#import "LoginResponse.h"
 #import "PubTextField.h"
 #import "CreateObject.h"
 #import "ProductRequest.h"
 
 @interface LeaveMessageViewController ()
-@property (nonatomic, retain) PubTextField *geneset, *prime, *standby, *cummins, *stamford, *codePub;
-@property (nonatomic, retain) UIButton     *confirmButton;
-@property (nonatomic, retain) SendMessageRequest *request;
-
+@property (nonatomic, retain) PubTextField *geneset, *prime, *standby, *cummins, *stamford               , *codePub;
+@property (nonatomic, retain) UIButton                *confirmButton;
+@property (nonatomic, retain) SendMessageRequest      *request;
+@property (nonatomic, retain) VerifyCodeResponse      *verifyCodeResponse;
+@property (nonatomic, retain) CheckVerifyCodeResponse *checkCodeResponse;
+@property (nonatomic, retain) UIImageView             *codeImageView;
 
 @end
 
@@ -31,9 +34,10 @@
     [self.scrollView addSubview:self.standby];
     [self.scrollView addSubview:self.cummins];
     [self.scrollView addSubview:self.stamford];
-//    [self.scrollView addSubview:self.codePub];
+    [self.scrollView addSubview:self.codePub];
+    [self.scrollView addSubview:self.codeImageView];
     [self.scrollView addSubview:self.confirmButton];
-    
+    [self requestServerForCode];
     [self.scrollView setContentSize:CGSizeMake(320, self.view.bounds.size.height + 1)];
     // Do any additional setup after loading the view.
 }
@@ -151,11 +155,8 @@
 {
     if (!_codePub) {
         __unsafe_unretained LeaveMessageViewController *safeSelf = self;
-        _codePub = [[PubTextField alloc] initWithFrame:CGRectMake(0, 315, 304, 30) indexTitle:@"" placeHolder:@"Code" pubTextFieldStyle:PubTextFieldStyleTop];
-        _codePub.pubTextField.returnKeyType = UIReturnKeyDone;
-        _codePub.autoLayout = YES;
-        _codePub.indexLabel.frame = CGRectMake(0, 0, 0, 0);
-        _codePub.pubTextField.frame = CGRectMake(8, 5, 100, 20);
+        _codePub = [[PubTextField alloc] initWithFrame:CGRectMake(10, 315, 120, 30) indexTitle:@"" placeHolder:@"Code" pubTextFieldStyle:PubTextFieldStyleTop];
+        _codePub.pubTextField.frame = CGRectMake(0, 5, 100, 30);
         _codePub.pubTextField.keyboardType = UIKeyboardTypeDefault;
         [_codePub.pubTextField onShouldReturn:^(UITextField *textField){
             [safeSelf.codePub resignFirstResponder];
@@ -167,12 +168,26 @@
 }
 
 
+- (UIImageView *)codeImageView
+{
+    if (!_codeImageView) {
+        _codeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(125,  320, 100, 30)];
+        _codeImageView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *recognizer = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(codeAction:)] autorelease];
+        [_codeImageView addGestureRecognizer:recognizer];
+        _codeImageView.layer.borderColor = [kBlueColor CGColor];
+        _codeImageView.layer.borderWidth = 1.0f;
+        _codeImageView.layer.cornerRadius = 2.0f;
+    }
+    return _codeImageView;
+}
+
 
 - (UIButton *)confirmButton
 {
     if (!_confirmButton) {
         _confirmButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
-        _confirmButton.frame = CGRectMake(8.0f, 350.0f, 110.0f, 40.0f);
+        _confirmButton.frame = CGRectMake(8.0f, 370.0f, 110.0f, 40.0f);
         _confirmButton.backgroundColor = kLightGrayColor;
         [_confirmButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18.0f]];
         [CreateObject addTargetEfection:_confirmButton];
@@ -183,6 +198,10 @@
     return _confirmButton;
 }
 
+- (void) codeAction:(UIGestureRecognizer *) recoginizer
+{
+    [self requestServerForCode];
+}
 
 - (IBAction)confirmButtonAction:(id)sender
 {
@@ -190,9 +209,69 @@
     [self sendRequestToServer];
 }
 
+- (void) loadCodeImageView:(VerifyCodeResponse *) response
+{
+    [self.codeImageView setImageWithURL:[NSURL URLWithString:response.imageUrl] placeholderImage:[UIImage imageNamed:kImageDefault]];
+}
+
+- (void)requestServerForCode
+{
+    __block LeaveMessageViewController *safeSelf = self;
+    idBlock succBlock = ^(id content){
+        DEBUGLOG(@"succ content %@", content);
+        safeSelf.verifyCodeResponse = [[[VerifyCodeResponse   alloc] initWithJsonString:content] autorelease];
+        [safeSelf loadCodeImageView:safeSelf.verifyCodeResponse];
+    };
+    
+    idBlock failedBlock = ^(id content){
+        DEBUGLOG(@"failed content %@", content);
+    };
+    idBlock errBlock = ^(id content){
+        DEBUGLOG(@"failed content %@", content);
+    };
+    
+    VerifyCodeRequest *codeRequest = [[[VerifyCodeRequest alloc] init] autorelease];
+    [WASBaseServiceFace serviceWithMethod:[codeRequest URLString] body:[codeRequest toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
+}
+
+- (void)requestServerToCheckCode
+{
+    [SVProgressHUD showWithStatus:@"正在检验..."];
+    __block LeaveMessageViewController *safeSelf = self;
+    idBlock succBlock = ^(id content){
+        DEBUGLOG(@"succ content %@", content);
+        safeSelf.checkCodeResponse = [[[CheckVerifyCodeResponse   alloc] initWithJsonString:content] autorelease];
+        if ([safeSelf.checkCodeResponse isChecked]) {
+            [safeSelf requestServerForRegister:nil];
+            return ;
+        }
+        [SVProgressHUD showErrorWithStatus:@"检验失败!"];
+    };
+    
+    idBlock failedBlock = ^(id content){
+        DEBUGLOG(@"failed content %@", content);
+        [SVProgressHUD showErrorWithStatus:@"检验失败!"];
+        [safeSelf sendRequestToServer];
+    };
+    idBlock errBlock = ^(id content){
+        DEBUGLOG(@"failed content %@", content);
+        [SVProgressHUD showErrorWithStatus:@"检验失败!"];
+        [safeSelf sendRequestToServer];
+    };
+    
+    CheckVerifyCodeRequest *codeRequest = [[[CheckVerifyCodeRequest alloc] init] autorelease];
+    codeRequest.verifyCode = self.codePub.pubTextField.text;
+    [WASBaseServiceFace serviceWithMethod:[codeRequest URLString] body:[codeRequest toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
+}
+
 
 - (void) sendRequestToServer
 {
+    if (![self.checkCodeResponse isChecked]) {
+        [self requestServerToCheckCode];
+        return;
+    }
+
     [SVProgressHUD showWithStatus:@"正在提交..."];
     __weak LeaveMessageViewController *blockSelf = self;
     idBlock successedBlock = ^(id content){

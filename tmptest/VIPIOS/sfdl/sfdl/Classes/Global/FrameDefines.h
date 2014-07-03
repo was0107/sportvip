@@ -10,7 +10,7 @@
 #ifndef  Gwm_FrameDefines_h
 #define  Gwm_FrameDefines_h
 
-#define kImageStartAt 50.0f
+#define kImageStartAt 10.0f
 
 
 #define kNavigationBarHeight    44

@@ -9,8 +9,6 @@
 #import "ListPaggingResponseBase.h"
 #import "LoginResponse.h"
 
-
-
 @interface ProductTypeReponse : ListPaggingResponseBase
 
 @end
@@ -33,7 +31,6 @@
 @interface PictureResponse : ListPaggingResponseBase
 
 @end
-
 
 
 @interface VideoResponse : ListPaggingResponseBase
@@ -60,8 +57,11 @@
 
 @end
 
+
 @interface ViewOrderResponse : ListResponseBase
+
 @property (nonatomic, retain) OrderItem *orderItem;
+
 @end
 
 
@@ -71,6 +71,7 @@
 
 
 @interface NewsDetailResponse : ListResponseBase
+
 @property (nonatomic, retain) NewsItem *item;
 
 @end

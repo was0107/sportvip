@@ -22,7 +22,7 @@
     if (self) {
         // Initialization code
         _searchField = [[UITextField alloc] initWithFrame:CGRectMake(44, 4, 270, 44)];
-        _searchField.placeholder = @"搜索";
+        _searchField.placeholder = @"Search Product";
         _searchField.borderStyle = UITextBorderStyleNone;
         _searchField.autocorrectionType = UITextAutocorrectionTypeNo;
         _searchField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;

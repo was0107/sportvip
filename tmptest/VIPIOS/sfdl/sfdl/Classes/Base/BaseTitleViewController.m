@@ -177,24 +177,11 @@
             [_rightButton setTitleColor:kWhiteColor forState:UIControlStateNormal];
             [_rightButton setBackgroundImage:@"nav_button_normal" selectedImage:@"nav_button_selected" clickImage:@"nav_button_selected"];
         }
-        [_rightButton.titleLabel setFont:[UIFont systemFontOfSize:17.0f]];
+        [_rightButton.titleLabel setFont:HTFONTSIZE(16.0)];
         [_rightButton addTarget:self action:@selector(rightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _rightButton;
 }
-
-//-(UILabel *)customTitleLable
-//{
-//    if (!_customTitleLable) {
-//        _customTitleLable  = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, 44)];
-//        _customTitleLable.font = HTFONTSIZE(20);
-//        _customTitleLable.textColor = kBlackColor;
-//        _customTitleLable.backgroundColor = kClearColor;
-//        _customTitleLable.textAlignment = NSTextAlignmentCenter;
-//        _customTitleLable.text = @"mpmc";
-//    }
-//    return _customTitleLable;
-//}
 
 - (void)setTitle:(NSString *)title
 {
@@ -208,11 +195,8 @@
     if (!titleView) {
         titleView = [[UILabel alloc] initWithFrame:CGRectZero];
         titleView.backgroundColor = [UIColor clearColor];
-        titleView.font = HTFONTSIZE(20);
-        //        titleView.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
-        
+        titleView.font = HTFONTSIZE(18);
         titleView.textColor = kWhiteColor; // Change to desired color
-        
         self.navigationItem.titleView = titleView;
         self.customTitleLable = titleView;
         [titleView release];
@@ -273,7 +257,7 @@
     UILabel *leftView = [[[UILabel alloc] initWithFrame:CGRectMake(5, 5, 60,  20)] autorelease];
     leftView.backgroundColor = kClearColor;
     leftView.font = HTFONTSIZE(kFontSize14);
-    leftView.textAlignment = UITextAlignmentRight;
+    leftView.textAlignment = NSTextAlignmentRight;
     leftView.text = title;
     
     [background addSubview:leftView];

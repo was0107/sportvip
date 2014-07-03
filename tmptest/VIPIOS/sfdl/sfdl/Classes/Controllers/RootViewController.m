@@ -230,7 +230,7 @@
     UIButton *button = (UIButton *) sender;
     CustomImageTitleButton *titleButton = (CustomImageTitleButton *)button.superview;
     NSArray *controllersArray = @[@"AboutUsViewController",@"ProductCategoryViewController",@"NewsViewController",@"ContactUsViewController",\
-                                  @"ProductSearchExViewController",@"LeaveMessageViewController",@"LoginViewController",@"DealerViewController",
+                                  @"",@"",@"",@"DealerViewController",
                                   ];
     int position = titleButton.tag - 1000;
     if (self.menuResponse) {
@@ -244,6 +244,9 @@
                 return;
             }
         }
+    }
+    if ([controllersArray[position] length] == 0) {
+        return;
     }
     Class class = NSClassFromString(controllersArray[position]);
     UIViewController *vc1 = [[[class alloc] init] autorelease];

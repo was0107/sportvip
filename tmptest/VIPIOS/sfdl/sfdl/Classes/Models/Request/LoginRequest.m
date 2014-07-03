@@ -137,3 +137,62 @@
 }
 
 @end
+
+@implementation VerifyCodeRequest
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_deviceId);
+    [super dealloc];
+}
+
+- (NSMutableArray *) keyArrays
+{
+    NSMutableArray *array =  [NSMutableArray arrayWithObjects:@"deviceId", nil];
+    [array addObjectsFromArray: [super keyArrays]];
+    return array;
+}
+
+- (NSMutableArray *) valueArrays
+{
+    self.deviceId = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    NSMutableArray *array =   [NSMutableArray arrayWithObjects:self.deviceId, nil];
+    [array addObjectsFromArray: [super valueArrays]];
+    return array;
+}
+
+- (NSString *) methodString
+{
+    return @"User/getVerifyCode";
+}
+
+@end
+
+@implementation CheckVerifyCodeRequest
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_verifyCode);
+    [super dealloc];
+}
+
+- (NSMutableArray *) keyArrays
+{
+    NSMutableArray *array =  [NSMutableArray arrayWithObjects:@"verifyCode", nil];
+    [array addObjectsFromArray: [super keyArrays]];
+    return array;
+}
+
+- (NSMutableArray *) valueArrays
+{
+    NSMutableArray *array =   [NSMutableArray arrayWithObjects:self.verifyCode, nil];
+    [array addObjectsFromArray: [super valueArrays]];
+    return array;
+}
+
+- (NSString *) methodString
+{
+    return @"User/checkVerifyCode";
+}
+
+@end

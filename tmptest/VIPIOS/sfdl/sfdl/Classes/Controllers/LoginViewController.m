@@ -28,16 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setTitleContent:@"登录"];
-    [[[self showRight] rightButton] setTitle:@"注册" forState:UIControlStateNormal];
-    
-//    UIImageView *imageVeiw = [[[UIImageView alloc] initWithFrame:CGRectMake(42, 20, 243, 30)] autorelease];
-//    imageVeiw.backgroundColor = kClearColor;
-//    imageVeiw.image = [UIImage imageNamed:@"icon"];
-//    [self.view addSubview:imageVeiw];
-
-    
-    
+    [self setTitleContent:@"Login"];
     [self.view addSubview:self.phoneTextField];
     [self.view addSubview:self.pwdTextField];
     [self.view addSubview:self.forgetButton];
@@ -116,7 +107,7 @@
 {
     if (!_confirmButton) {
         _confirmButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
-        _confirmButton.frame = CGRectMake(42.0f, 120.0f + kImageStartAt + 50, 243.0f, 40.0f);
+        _confirmButton.frame = CGRectMake(42.0f, 115.0f + kImageStartAt + 50, 243.0f, 40.0f);
         _confirmButton.backgroundColor = kLightGrayColor;
         [_confirmButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18.0f]];
         [CreateObject addTargetEfection:_confirmButton];

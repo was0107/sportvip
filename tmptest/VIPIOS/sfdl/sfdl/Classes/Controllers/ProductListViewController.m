@@ -66,7 +66,7 @@
             cell.topLabel.frame = CGRectMake(70, 10, 140, 25);
             cell.subLabel.frame = CGRectMake(70, 35, 140, 25);
             cell.leftImageView .frame = CGRectMake(4, 6, 55, 55);
-            cell.rightButton.frame = CGRectMake(220, 15, 90,44);
+            cell.rightButton.frame = CGRectMake(220, 30, 90,35);
             [cell.rightButton setTitle:@" Add To Cart" forState:UIControlStateNormal];
             [CreateObject addTargetEfection:cell.rightButton];
             cell.topLabel.numberOfLines = 2;

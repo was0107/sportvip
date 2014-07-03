@@ -23,11 +23,12 @@
 @property (nonatomic, copy)     NSString    *fullName;
 @property (nonatomic, copy)     NSString    *userCompany;
 @property (nonatomic, copy)     NSString    *tel;
+
 @end
 
 
-
 @interface ForgetPasswordRequest : ListRequestBase
+
 @property (nonatomic, copy)     NSString    *username;
 
 @end
@@ -42,9 +43,22 @@
 
 @end
 
-
-
 @interface CompanyInfoRequest : ListRequestBase
 
 @end
+
+@interface VerifyCodeRequest : ListRequestBase
+
+@property (nonatomic, copy) NSString *deviceId;
+
+@end
+
+
+@interface CheckVerifyCodeRequest : VerifyCodeRequest
+
+@property (nonatomic, copy) NSString *verifyCode;
+
+@end
+
+
 

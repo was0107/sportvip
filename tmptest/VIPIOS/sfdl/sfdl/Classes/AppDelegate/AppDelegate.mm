@@ -8,8 +8,6 @@
 
 #import "AppDelegate.h"
 #import "RootViewController.h"
-#import "STLocationInstance.h"
-#import "iRate.h"
 
 @interface AppDelegate()
 @property (nonatomic, retain) RootViewController *rootController;
@@ -37,15 +35,7 @@
 //    controller.navigationBar.barTintColor = kButtonNormalColor;
 //    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [controller setNavigationBarHidden:NO];
-    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"])
-    {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
-        self.window.rootViewController = controller;
-    }
-    else
-    {
-        self.window.rootViewController = controller;
-    }
+    self.window.rootViewController = controller;
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -54,7 +44,6 @@
 
 - (void)dealloc
 {
-    
     TT_RELEASE_SAFELY(_rootController);
     TT_RELEASE_SAFELY(_window);
     [super dealloc];

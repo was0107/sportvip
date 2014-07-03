@@ -26,24 +26,55 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.secondTitleLabel.text = @"Setting";
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning
+- (void) reduceMemory
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super reduceMemory];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void) configTableView
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    __block SSettingViewController *blockSelf = self;
+    NSArray *titleIndexArray = @[@"About us",@"Contact us"];
+    NSArray *controllersArray = @[@"AboutUsViewController",@"ContactUsViewController"];
+
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
+    self.tableView.cellCreateBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
+        static NSString *identifier = @"ProductCategoryViewController_IDENTIFIER0";
+        BaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        if (!cell){
+            cell = [[BaseTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+            
+            cell.topLabel.frame = CGRectMake(15, 10, 290, 24);
+            cell.topLabel.textColor = kBlackColor;
+            cell.topLabel.font = HTFONTSIZE(kFontSize15);
+            [cell.contentView addSubview:cell.topLabel];
+        }
+        cell.topLabel.text = titleIndexArray[indexPath.row];
+        return cell;
+    };
+    
+    self.tableView.cellNumberBlock = ^( UITableView *tableView, NSInteger section) {
+        return (NSInteger)[titleIndexArray count];
+    };
+    
+    self.tableView.sectionHeaderHeightBlock = ^( UITableView *tableView, NSInteger section){
+        return 0.0f;
+    };
+    
+    self.tableView.cellSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        Class class = NSClassFromString(controllersArray[indexPath.row]);
+        UIViewController *controller = [[[class alloc] init] autorelease];
+        [blockSelf.navigationController hidesBottomBarWhenPushed];
+        [blockSelf.navigationController pushViewController:controller animated:YES];
+        
+    };
+      [self.view addSubview:self.tableView];
 }
-*/
 
 @end

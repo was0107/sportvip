@@ -371,6 +371,43 @@
 @end
 
 
+@implementation VerifyCodeResponse
+
+- (id) initWithDictionary:(const NSDictionary *) dictionary
+{
+    self = [super init];
+    if (self) {
+        self.imageUrl = [dictionary objectForKey:@"imageUrl"];
+    }
+    
+    return self;
+}
+
+@end
+
+
+
+@implementation CheckVerifyCodeResponse
+
+- (id) initWithDictionary:(const NSDictionary *) dictionary
+{
+    self = [super init];
+    if (self) {
+        self.checked = [dictionary objectForKey:@"checked"];
+    }
+    
+    return self;
+}
+
+- (BOOL) isChecked
+{
+    if ([self.checked isEqualToString:@"true"]) {
+        return YES;
+    }
+    return NO;
+}
+
+@end
 
 
 
