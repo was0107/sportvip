@@ -104,7 +104,8 @@
 
 - (void) configWithData:(id) content
 {
-    if (self.content != content) {
+//    if (self.content != content)
+    {
         self.content = content;
         CoacheItem *item = (CoacheItem *) self.content;
         

@@ -156,10 +156,12 @@
         self.name     = [self stringObjectFrom:dictionary withKey:@"name"];
         self.distance = [self floatValueFrom:dictionary withKey:@"distance"];
         self.maxPrice = [self floatValueFrom:dictionary withKey:@"maxPrice"];
-        self.minPrice = [self floatValueFrom:dictionary withKey:@"minPirce"];
+        self.minPrice = [self floatValueFrom:dictionary withKey:@"minPrice"];
         if (self.minPrice < 1) {
             self.priceString = [NSString stringWithFormat:@"￥%.0f",self.maxPrice];
-        } else {
+        } else if(self.maxPrice - self.minPrice < 1) {
+            self.priceString = [NSString stringWithFormat:@"￥%.0f",self.maxPrice];
+        }else {
             self.priceString = [NSString stringWithFormat:@"￥%.0f-%.0f",self.minPrice,self.maxPrice];
         }
         if (self.distance < 1000) {
@@ -362,7 +364,7 @@
         self.address                = [self stringObjectFrom:dictionary withKey:@"address"];
         self.name                   = [self stringObjectFrom:dictionary withKey:@"name"];
         self.distance               = [self floatValueFrom:dictionary withKey:@"distance"];
-        self.minPrice               = [self floatValueFrom:dictionary withKey:@"minPirce"];
+        self.minPrice               = [self floatValueFrom:dictionary withKey:@"minPrice"];
         self.avatar                 = [self stringObjectFrom:dictionary withKey:@"avatar"];
         self.certificate            = [self stringObjectFrom:dictionary withKey:@"certificate"];
         self.zan                    = (int)[self integerValueFrom:dictionary withKey:@"zan"];

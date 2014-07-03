@@ -15,6 +15,15 @@
 
 @implementation ClassTableViewCell
 
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        // Initialization code
+        self.categories  = [[NSMutableArray array] retain];
+    }
+    return self;
+}
 
 - (void) dealloc
 {
@@ -56,7 +65,6 @@
         [self.contentView addSubview:self.subRightLabel];
         [self.contentView addSubview:self.leftImageView];
     }
-
     
 //    self.topLabelEx.text = @"国学培训课程（免费试听)";
 //    [self.topLabelEx setImages:[NSArray arrayWithObjects:@"icon",@"icon",nil] origitation:1];
@@ -103,10 +111,12 @@
 
 - (void) configWithData:(id) content
 {
-    if (self.content != content) {
+//    if (self.content != content)
+    {
         self.content = content;
         GymnasiumItem *item = (GymnasiumItem *) self.content;
-        
+//        self.topLabelEx.frame        = CGRectMake(112, 6, 140, 24);
+
         CGSize size = [item.name sizeWithFont:self.topLabelEx.font constrainedToSize:CGSizeMake(140, 24)];
         if (size.width + 40 < 140) {
             [self.topLabelEx setFrameSize:CGSizeMake(size.width + 40, 24)];

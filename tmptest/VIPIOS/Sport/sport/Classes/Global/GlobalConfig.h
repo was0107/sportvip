@@ -24,7 +24,7 @@
  *  版本号，主要显示在关于页面
  */
 
-#define B5M_VERSION     @"Version 1.0.0  Build 10"
+#define B5M_VERSION     @"Version 1.0.0  Build 1"
 #define TD_ChannelID    @"AppStore"
 
 #define kAPPID          @"593499239"
@@ -34,7 +34,7 @@
 /*
  *  服务器配置
  */
-#define kUseSimulateData    0     //打开表示使用测试环境
+//#define kUseSimulateData    0     //打开表示使用测试环境
 // 测试环境
 #ifdef kUseSimulateData     
 
@@ -46,7 +46,7 @@
 // 正式环境
 #else       
 
-#define kHostDomain         @"http://m.gwmei.com/"
+#define kHostDomain         @"http://yundongvip.cn/api/"
 
 #endif  
 
