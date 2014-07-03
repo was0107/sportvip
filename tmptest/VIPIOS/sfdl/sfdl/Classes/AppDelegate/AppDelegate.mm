@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "RootViewController.h"
 
 @interface AppDelegate()
 @property (nonatomic, retain) RootViewController *rootController;
@@ -16,10 +15,19 @@
 
 
 @implementation AppDelegate
+- (id)init
+{
+    if(self = [super init])
+    {
+        _viewDelegate = [[AGViewDelegate alloc] init];
+    }
+    return self;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
+    [ShareSDK registerApp:@"221de9be5bbc"];     //参数为ShareSDK官网中添加应用后得到的AppKey
+    [self configShareKeys];
     if (IS_IOS_7_OR_GREATER) {
         self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
 	    [application setStatusBarStyle:UIStatusBarStyleDefault];
@@ -40,12 +48,61 @@
     return YES;
 }
 
+- (void) configShareKeys
+{
+    //添加Facebook应用  注册网址 https://developers.facebook.com
+    [ShareSDK connectFacebookWithAppKey:@"107704292745179"
+                              appSecret:@"38053202e1a5fe26c80c753071f0b573"];
+    
+    
+    
+    //添加Twitter应用  注册网址  https://dev.twitter.com
+    [ShareSDK connectTwitterWithConsumerKey:@"MZzQDNKt0lE8c2BL0lIu0empm"
+                             consumerSecret:@"LJTUCaIfkkReZkTEUrXU2nZFh90UGUz6qvmhfnzNnfqp6MdsNu"
+                                redirectUri:@"http://www.sharesdk.cn"];
+    
+    
+    //添加LinkedIn应用  注册网址 https://www.linkedin.com/secure/developer
+    [ShareSDK connectLinkedInWithApiKey:@"75s8cjmc1lmj04"
+                              secretKey:@"nbUZLf0Mtk9XMlKL"
+                            redirectUri:@"http://sharesdk.cn"];
+    
+    /**
+     连接Google+应用以使用相关功能，此应用需要引用GooglePlusConnection.framework、GooglePlus.framework和GoogleOpenSource.framework库
+     https://code.google.com/apis/console上注册应用，并将相关信息填写到以下字段
+     **/
+    [ShareSDK connectGooglePlusWithClientId:@"232554794995.apps.googleusercontent.com"
+                               clientSecret:@"PEdFgtrMw97aCvf0joQj7EMk"
+                                redirectUri:@"http://localhost"
+                                  signInCls:[GPPSignIn class]
+                                   shareCls:[GPPShare class]];
+    
+    /**
+     连接Pinterest应用以使用相关功能，此应用需要引用Pinterest.framework库
+     http://developers.pinterest.com/上注册应用，并将相关信息填写到以下字段
+     **/
+    [ShareSDK connectPinterestWithClientId:@"1432928"
+                              pinterestCls:[Pinterest class]];
+    
+    
+    /**
+     链接Flickr,此平台需要引用FlickrConnection.framework框架。
+     http://www.flickr.com/services/apps/create/上注册应用，并将相关信息填写以下字段。
+     **/
+    [ShareSDK connectFlickrWithApiKey:@"33d833ee6b6fca49943363282dd313dd"
+                            apiSecret:@"3a2c5b42a8fbb8bb"];
+
+    
+    
+}
+
 
 
 - (void)dealloc
 {
     TT_RELEASE_SAFELY(_rootController);
     TT_RELEASE_SAFELY(_window);
+    TT_RELEASE_SAFELY(_viewDelegate);
     [super dealloc];
 }
 

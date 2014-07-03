@@ -7,7 +7,11 @@
 //
 
 #import "BaseTitleViewController.h"
+@class AppDelegate;
 
 @interface RootViewController : BaseTitleViewController
+{
+    AppDelegate *_appDelegate;
 
+}
 @end

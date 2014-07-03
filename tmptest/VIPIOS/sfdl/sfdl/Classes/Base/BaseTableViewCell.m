@@ -323,7 +323,7 @@
         self.topLabel.textColor = kBlackColor;
         self.subLabel.textColor = kDarkGrayColor;
         self.subLabel.font = HTFONTSIZE(kFontSize12);
-        self.subLabel.textAlignment = UITextAlignmentRight;
+        self.subLabel.textAlignment = NSTextAlignmentRight;
         [self.leftImageView setFrame:CGRectMake(8, 8, 28, 28)];
         [self.contentView addSubview:self.topLabel];
         [self.contentView addSubview:self.subLabel];

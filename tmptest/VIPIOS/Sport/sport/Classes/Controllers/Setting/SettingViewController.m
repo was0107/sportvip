@@ -39,7 +39,7 @@
         _currentVersionLabel.backgroundColor      = kClearColor;
         _currentVersionLabel.textColor            = kLightGrayColor;
         _currentVersionLabel.font                 = HTFONTSIZE(kFontSize12);
-        _currentVersionLabel.textAlignment        = UITextAlignmentRight;
+        _currentVersionLabel.textAlignment        = NSTextAlignmentRight;
         _currentVersionLabel.highlightedTextColor = kWhiteColor;
         _currentVersionLabel.text                 = [NSString stringWithFormat:@"当前版本：%@",[B5MUtility version]];
     }

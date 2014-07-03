@@ -113,7 +113,7 @@
     static NSString *keys[] = {kDeviceIMEI,kDeviceMOB,kDeviceOS,kDeviceDEV,kDeviceVER,
         kDeviceCHNL, kDeviceTIME,kDid,kGender,kApp_key};
     NSArray *values = [NSArray arrayWithObjects:device.imei,device.mob,device.os,device.dev,device.ver,
-                       chnl,time,[UserDefaultsManager deviceID],kIntToString([UserDefaultsManager userGender]),kApp_key_value,nil];
+                       chnl,time,[UserDefaultsManager deviceID],[UserDefaultsManager userGender],kApp_key_value,nil];
     
     for (int i = 0 , total = 11; i< total; i++) {
         [_request addRequestHeader:keys[i] value:[values objectAtIndex:i]];

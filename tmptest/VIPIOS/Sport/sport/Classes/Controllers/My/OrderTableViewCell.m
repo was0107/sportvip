@@ -31,8 +31,8 @@
 
     self.timeLabel.backgroundColor   = kClearColor;
     self.timeLabel.textAlignment     = UITextAlignmentLeft;
-    self.rightLabel.textAlignment    = UITextAlignmentRight;
-    self.subRightLabel.textAlignment = UITextAlignmentRight;
+    self.rightLabel.textAlignment    = NSTextAlignmentRight;
+    self.subRightLabel.textAlignment = NSTextAlignmentRight;
 
     self.topLabel.textColor          = kBlackColor;
     self.rightLabel.textColor        = kBlackColor;

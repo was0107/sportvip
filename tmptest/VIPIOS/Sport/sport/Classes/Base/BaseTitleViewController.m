@@ -208,7 +208,7 @@
     UILabel *leftView = [[[UILabel alloc] initWithFrame:CGRectMake(5, 5, 60,  20)] autorelease];
     leftView.backgroundColor = kClearColor;
     leftView.font = HTFONTSIZE(kFontSize14);
-    leftView.textAlignment = UITextAlignmentRight;
+    leftView.textAlignment = NSTextAlignmentRight;
     leftView.text = title;
     
     [background addSubview:leftView];

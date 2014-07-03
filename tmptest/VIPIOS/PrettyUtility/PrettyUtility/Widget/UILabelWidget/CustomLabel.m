@@ -72,7 +72,7 @@
     if(self.textAlignment == UITextAlignmentCenter) {
         alignment = kCTCenterTextAlignment;
     }
-    else  if(self.textAlignment == UITextAlignmentRight) {
+    else  if(self.textAlignment == NSTextAlignmentRight) {
         alignment = kCTRightTextAlignment;
     }
     CTParagraphStyleSetting alignmentStyle;

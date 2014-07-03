@@ -150,7 +150,7 @@
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     cell.topLabel.frame = CGRectMake(10, 10, 180, 24);
                     cell.subLabel.frame = CGRectMake(190, 10, 100, 24);
-                    cell.subLabel.textAlignment = UITextAlignmentRight;
+                    cell.subLabel.textAlignment = NSTextAlignmentRight;
                     [cell.contentView addSubview:cell.topLabel];
                     [cell.contentView addSubview:cell.subLabel];
                 }

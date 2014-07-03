@@ -37,7 +37,7 @@
         self.topRigithEx.textColor            = kLightGrayColor;
         self.middleLabelEx.textColor          = kLightGrayColor;
         self.subRightLabel.textColor          = [UIColor getColor:KCustomGreenColor];
-        self.subRightLabel.textAlignment      = UITextAlignmentRight;
+        self.subRightLabel.textAlignment      = NSTextAlignmentRight;
         self.leftImageView.layer.cornerRadius = 4.0f;
         self.leftImageView.layer.borderWidth  = 0.8f;
         self.leftImageView.layer.borderColor  = [[UIColor getColor:KCustomGreenColor] CGColor];

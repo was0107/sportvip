@@ -166,7 +166,7 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.topLabel.frame = CGRectMake(10, 10, 80, 24);
                 cell.subLabel.frame = CGRectMake(100, 10, 210, 24);
-                cell.subLabel.textAlignment = UITextAlignmentRight;
+                cell.subLabel.textAlignment = NSTextAlignmentRight;
                 [cell.contentView addSubview:cell.topLabel];
                 [cell.contentView addSubview:cell.subLabel];
             }
@@ -188,8 +188,8 @@
                 cell.rightLabel.frame = CGRectMake(110, 10, 110, 24);
                 cell.subRightLabel.frame = CGRectMake(220, 10, 70, 24);
                 cell.topLabel.textColor = kBlackColor;
-                cell.rightLabel.textAlignment = UITextAlignmentRight;
-                cell.subRightLabel.textAlignment = UITextAlignmentRight;
+                cell.rightLabel.textAlignment = NSTextAlignmentRight;
+                cell.subRightLabel.textAlignment = NSTextAlignmentRight;
                 cell.subRightLabel.textColor = [UIColor getColor:KCustomGreenColor];
                 cell.subRightLabel.font = HTFONTSIZE(kFontSize18);
                 [cell.contentView addSubview:cell.topLabel];

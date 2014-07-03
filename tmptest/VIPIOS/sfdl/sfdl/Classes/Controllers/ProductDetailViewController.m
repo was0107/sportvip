@@ -234,7 +234,7 @@
     if (0 == position) {
         BaseWebViewController *webController = [[[BaseWebViewController alloc] init] autorelease];
         webController.title = @"Video";
-        webController.requestURL = @"http://m.b5m.com";
+        webController.requestURL = @"http://v.youku.com/v_show/id_XNzM0ODMxNDc2.html?f=22491019&from=y1.3-idx-grid-1519-9909.104039-104169-104167-104057-104041.1-1";
         [self.parentNavigationController hidesBottomBarWhenPushed];
         [self.parentNavigationController pushViewController:webController animated:YES];
 

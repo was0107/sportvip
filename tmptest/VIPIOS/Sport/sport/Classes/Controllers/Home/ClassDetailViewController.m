@@ -136,7 +136,7 @@
             cell.topLabelEx.font = HTFONTSIZE(kFontSize16);
             cell.subRightEx.font = HTFONTSIZE(kFontSize16);
             cell.subRightEx.textColor = [UIColor getColor:KCustomGreenColor];
-            cell.subRightEx.textAlignment = UITextAlignmentRight;
+            cell.subRightEx.textAlignment = NSTextAlignmentRight;
             [cell.contentView addSubview:cell.subRightEx];
         }
 

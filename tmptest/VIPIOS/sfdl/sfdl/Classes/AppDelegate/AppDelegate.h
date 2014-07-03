@@ -7,9 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RootViewController.h"
+#import <ShareSDK/ShareSDK.h>
+#import <GoogleOpenSource/GoogleOpenSource.h>
+#import <GooglePlus/GooglePlus.h>
+#import <Pinterest/Pinterest.h>
+#import "AGViewDelegate.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic,readonly) AGViewDelegate *viewDelegate;
 
 @end

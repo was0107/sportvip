@@ -16,3 +16,13 @@
 
 #import "Global.h"
 #endif
+
+
+
+#define BUNDLE_NAME @"Resource"
+
+#define IMAGE_NAME @"sharesdk_img"
+#define IMAGE_EXT @"jpg"
+
+#define CONTENT     @"移动企业门户IOS"
+#define SHARE_URL   @"http://www.mcms.com"

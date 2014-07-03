@@ -57,7 +57,7 @@
             cell.subLabel.font = HTFONTSIZE(kFontSize15);
             
             cell.subRightLabel.frame = CGRectMake(180, 58, 130, 20);
-            cell.subRightLabel.textAlignment = UITextAlignmentRight;
+            cell.subRightLabel.textAlignment = NSTextAlignmentRight;
             cell.subRightLabel.textColor = kBlackColor;
             cell.subRightLabel.font = HTFONTSIZE(kFontSize13);
             [cell.contentView addSubview:cell.topLabel];

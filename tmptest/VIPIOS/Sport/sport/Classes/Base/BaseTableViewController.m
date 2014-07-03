@@ -170,7 +170,7 @@
         cell = [[[BaseNewTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
         cell.topLabel.frame = CGRectMake(60, 10, 100, 30);
         cell.subLabel.frame = CGRectMake(150, 10, 140, 30);
-        cell.subLabel.textAlignment = UITextAlignmentRight;
+        cell.subLabel.textAlignment = NSTextAlignmentRight;
         cell.topLabel.font = cell.subLabel.font = HTFONTSIZE(kFontSize18);
         cell.leftImageView.frame = CGRectMake(8, 3, 44, 44);
         cell.leftImageView.layer.borderColor = [kWhiteColor CGColor];
