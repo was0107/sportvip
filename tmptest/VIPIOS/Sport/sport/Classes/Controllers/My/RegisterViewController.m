@@ -31,7 +31,7 @@
 @property (nonatomic,copy   ) NSString                * gender;//状态设置
 
 @property (nonatomic,copy   ) NSString                * nickName;
-@property (nonatomic,assign ) double                  birthday;
+@property (nonatomic,assign ) int                       birthday;
 @property (nonatomic,copy   ) NSString                * phone, *email, *password;
 @property (nonatomic, retain) ZJSwitch               *zjWwitch;
 
@@ -131,7 +131,7 @@
         [dateFormatter setDateFormat:@"yyyy-MM-dd"];
         NSDate * forwardDate = [NSDate dateWithTimeIntervalSinceNow:-18*365*24*60*60];
         
-        self.birthday = [forwardDate timeIntervalSince1970];
+        self.birthday = (int)[forwardDate timeIntervalSince1970];
         NSString *currentDate = [dateFormatter stringFromDate:forwardDate];
         [dateFormatter release];
         
@@ -327,7 +327,6 @@
         return NO;
     }
     
-    
     return YES;
 }
 
@@ -377,7 +376,7 @@
     self.password = self.pwdTextField.pubTextField.text;
     UpdateUserInfoRequest *request = [[[UpdateUserInfoRequest alloc] init] autorelease];
     NSMutableArray * keys = [NSMutableArray arrayWithObjects:@"gender",@"avatar",@"nickName",@"birthday",@"phone",@"email",@"password", nil];
-    NSMutableArray * values = [NSMutableArray arrayWithObjects:self.gender,@"",self.nickName,[NSNumber numberWithDouble:self.birthday], self.phone,self.email,self.password,nil];
+    NSMutableArray * values = [NSMutableArray arrayWithObjects:self.gender,@"",self.nickName,[NSNumber numberWithInt:(int)self.birthday], self.phone,self.email,self.password,nil];
     request.keys = keys;
     request.values = values;
     request.isUpdate = NO;

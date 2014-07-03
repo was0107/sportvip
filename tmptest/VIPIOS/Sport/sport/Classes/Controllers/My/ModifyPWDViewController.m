@@ -205,7 +205,8 @@
     idBlock failedBlock = ^(id content){
         DEBUGLOG(@"failed content %@", content);
         ErrorResponse *response = [[[ErrorResponse alloc] initWithJsonString:content] autorelease];
-        [SVProgressHUD showErrorWithStatus:response.msg];
+//        [SVProgressHUD showErrorWithStatus:response.msg];
+        [SVProgressHUD showErrorWithStatus:@"密码修改失败！"];
         [safeSelf.confirmButton setEnabled:YES];
     };
     
