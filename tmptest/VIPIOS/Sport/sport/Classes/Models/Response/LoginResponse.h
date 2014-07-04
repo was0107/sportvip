@@ -23,6 +23,7 @@
 @property (nonatomic, copy)   NSString   *name,*price,*schoolTime,*coachId,*address,*gymnasiumName;
 @property (nonatomic, retain) NSMutableArray *phones;
 
+@property (nonatomic, assign) float lantitude, longtitude;
 
 
 @end

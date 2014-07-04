@@ -201,8 +201,13 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         if (1 == indexPath.section) {
             SingleMapViewController *controller = [[[SingleMapViewController alloc] init] autorelease];
+            CLLocationCoordinate2D center;
+            center.longitude = blockSelf.response.longtitude;
+            center.latitude = blockSelf.response.lantitude;
+            controller.center = center;
             controller.gymnasiumName = blockSelf.response.gymnasiumName;
             controller.address = blockSelf.response.address;
+            [controller showPosition];
             [controller setHidesBottomBarWhenPushed:YES];
             [blockSelf.navigationController pushViewController:controller animated:YES];
         }

@@ -64,7 +64,7 @@
     }
     TelItem *item = [[[TelItem alloc] init] autorelease];
     item.coachId = @"";
-    item.name = @"";
+    item.name = @"客户电话";
     item.avatar = kImageDefault;
     item.tel = tel;
     return item;
@@ -262,7 +262,7 @@
             
             self.tags = arrayResult;
         }
-        self.longtitude             = [[dictionary objectForKey:@"lon"] doubleValue];
+        self.longtitude             = [[dictionary objectForKey:@"lng"] doubleValue];
         self.lantitude              =  [[dictionary objectForKey:@"lat"] doubleValue];
 
         array = [dictionary objectForKey:@"events"];
@@ -462,7 +462,7 @@
     TT_RELEASE_SAFELY(_phones);
     TT_RELEASE_SAFELY(_hornors);
     TT_RELEASE_SAFELY(_courses);
-    
+    TT_RELEASE_SAFELY(_gymnasiumName)
     [super dealloc];
 }
 
@@ -477,6 +477,7 @@
         self.avatar       = [dictionary objectForKey:@"avatar"];
         self.resume       = [dictionary objectForKey:@"resume"];
         self.introduction = [dictionary objectForKey:@"introduction"];
+        self.gymnasiumName = [dictionary objectForKey:@"gymnasiumName"];
         
         
         NSDictionary *location      = [dictionary objectForKey:@"location"];

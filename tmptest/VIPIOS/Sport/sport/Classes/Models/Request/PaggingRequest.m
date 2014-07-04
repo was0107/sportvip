@@ -32,7 +32,7 @@
 - (NSMutableArray *) keyArrays
 {
     NSMutableArray *array = [super keyArrays];
-    [array addObject:@"lon"];
+    [array addObject:@"lng"];
     [array addObject:@"lat"];
     [array addObject:@"age"];
     [array addObject:@"distance"];

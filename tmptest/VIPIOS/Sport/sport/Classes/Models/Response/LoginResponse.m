@@ -66,12 +66,15 @@
         NSArray *array = [dictionary objectForKey:@"age"];
         NSArray *keyArray = [NSArray arrayWithObjects:@"YOUER",@"XIAOXUE",@"CHUZHONG",@"GAOZHONG",@"CHENGREN",@"",nil];
         NSArray *titleArray = [NSArray arrayWithObjects:@"幼儿",@"小学",@"初中",@"高中",@"成人",@"全部",nil];
-        NSString *keyTemp = [array objectAtIndex:0];
         NSMutableString *ageString = [NSMutableString string];
-        for (int i = 0 ; i < [keyArray count]; i++) {
-            NSString *key = [keyArray objectAtIndex:i];
-            if ([key isEqualToString:keyTemp]) {
-                [ageString appendFormat:@"%@、",[titleArray objectAtIndex:i] ];
+
+        for (int j = 0; j < [array count]; j++) {
+            NSString *keyTemp = [array objectAtIndex:j];
+            for (int i = 0 ; i < [keyArray count]; i++) {
+                NSString *key = [keyArray objectAtIndex:i];
+                if ([key isEqualToString:keyTemp]) {
+                    [ageString appendFormat:@"%@、",[titleArray objectAtIndex:i] ];
+                }
             }
         }
         if ([ageString length] > 0) {
@@ -79,7 +82,9 @@
         } else {
             self.age = @"";
         }
-        
+        NSDictionary *location      = [dictionary objectForKey:@"location"];
+        self.longtitude             = [[location objectForKey:@"y"] floatValue];
+        self.lantitude              = [[location objectForKey:@"x"] floatValue];
         
         array = [dictionary objectForKey:@"phones"];
         NSMutableArray *arrayResult = [NSMutableArray array];
@@ -116,7 +121,8 @@
     if (self) {
         NSArray *array = (NSArray *) dictionary;
         if ([array count] > 0) {
-            self.phone = [array objectAtIndex:0];
+            NSDictionary *dictionary = [array objectAtIndex:0];
+            self.phone = [dictionary objectForKey:@"phone"];
         } else {
             self.phone = @"";
         }

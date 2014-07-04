@@ -314,7 +314,7 @@
     [_mapView removeAnnotations:[_mapView annotations]];
     MapLocation *location = [[[MapLocation alloc] init] autorelease];
     location.coordinate = center;
-    location.theTitle = self.response.name;
+    location.theTitle = self.response.gymnasiumName;
     [self.mapView addAnnotation:location];
     
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(center, 5000, 5000);
