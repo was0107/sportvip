@@ -15,6 +15,7 @@
 #import "PaggingRequest.h"
 #import "PaggingResponse.h"
 #import "TeacherViewController.h"
+#import "SingleMapViewController.h"
 
 @interface YardViewController()<XLCycleScrollViewDelegate, XLCycleScrollViewDatasource>
 @property (nonatomic, retain) XLCycleScrollView *cycleView;
@@ -259,9 +260,15 @@
         imageLabelEx.text = string;//@"上海闵行区什么路";
         [imageLabelEx setImage:[imageArray objectAtIndex:section] origitation:0];
         [[imageLabelEx shiftPositionY:1] shiftPositionX:-1];
+
         if (0 == section) {
             UIView *lineView = [[[UIView alloc] initWithFrame:CGRectMake(0, view.bounds.size.height-0.5f, 320, 0.5f)] autorelease];
             lineView.backgroundColor = kLightGrayColor;
+            UITapGestureRecognizer *gesture = [[[UITapGestureRecognizer alloc  ] initWithTarget:self action:@selector(goToMap:)] autorelease];
+            UIImageView *rightImageView = [[[UIImageView alloc] initWithFrame:CGRectMake(300, 4 + size.height/2, 14, 14)] autorelease];
+            rightImageView.image = [UIImage imageNamed:@"chatroom_arrow_right"];
+            [view addGestureRecognizer:gesture];
+            [view addSubview:rightImageView];
             [view addSubview:lineView];
         }
         if (0 == 4) {
@@ -291,6 +298,22 @@
     };
     
     
+}
+
+- (void) goToMap:(UIGestureRecognizer *)recognizer
+{
+    if (self.response) {
+        CLLocationCoordinate2D center;
+        SingleMapViewController *controller = [[[SingleMapViewController alloc] init] autorelease];
+        center.longitude = self.response.longtitude;
+        center.latitude = self.response.lantitude;
+        controller.center = center;
+        controller.gymnasiumName = self.response.name;
+        controller.address = self.response.address;
+        [controller showPosition];
+        [controller setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:controller animated:YES];
+    }
 }
 
 - (void) dealWithData

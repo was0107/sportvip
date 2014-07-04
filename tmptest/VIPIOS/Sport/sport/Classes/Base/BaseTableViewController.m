@@ -211,8 +211,10 @@
 {
     DEBUGLOG(@"%s : %d", __func__, indexPath.row);
     TelItem *telItem = [self.telArray objectAtIndex:indexPath.row];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telItem.tel]];
-    [self sendTelRequestToServer:telItem.coachId];
+    if ([telItem.tel length ] > 0) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",telItem.tel]]];
+        [self sendTelRequestToServer:telItem.coachId];
+    }
 }
 
 - (CGFloat)popoverListView:(UIPopoverListView *)popoverListView

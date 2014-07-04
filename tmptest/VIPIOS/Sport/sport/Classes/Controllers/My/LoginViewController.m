@@ -180,7 +180,6 @@
         [UserDefaultsManager saveUserBirthDay:response.userItem.birthday];
         [UserDefaultsManager saveUserGender:response.userItem.gender];
         
-//        [UserDefaultsManager saveUserLogin:YES];
         [safeSelf.confirmButton setEnabled:YES];
         [SVProgressHUD dismiss];
         [safeSelf.navigationController popToRootViewControllerAnimated:YES];
@@ -190,7 +189,6 @@
         DEBUGLOG(@"failed content %@", content);
         [[[[ErrorResponse alloc] initWithJsonString:content] autorelease] show];
         [safeSelf.confirmButton setEnabled:YES];
-        [SVProgressHUD showErrorWithStatus:@"登录失败"];
     };
     idBlock errBlock = ^(id content){
         DEBUGLOG(@"failed content %@", content);

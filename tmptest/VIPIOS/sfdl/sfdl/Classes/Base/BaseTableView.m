@@ -227,7 +227,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (self.sectionHeaderHeightBlock) {
-        return  self.sectionHeaderHeightBlock(tableView, section);
+        return  (CGFloat)self.sectionHeaderHeightBlock(tableView, section);
     }
     return 0.0f;
 }
@@ -235,7 +235,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     if (self.sectionFooterHeightBlock) {
-        return  self.sectionFooterHeightBlock(tableView, section);
+        return  (CGFloat)self.sectionFooterHeightBlock(tableView, section);
     }
     return 0.0f;
 }
@@ -243,7 +243,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if (self.sectionHeaderBlock) {
-        return  self.sectionHeaderBlock(tableView, section);
+        return  (UIView *)self.sectionHeaderBlock(tableView, section);
     }
     return nil;
 }
@@ -251,7 +251,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     if (self.sectionFooterBlock) {
-        return  self.sectionFooterBlock(tableView, section);
+        return  (UIView *)self.sectionFooterBlock(tableView, section);
     }
     return nil;
 }
@@ -259,7 +259,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if (self.sectionNumberBlock) {
-        return self.sectionNumberBlock(tableView);
+        return (NSInteger)self.sectionNumberBlock(tableView);
     }
     return 1;
 }
@@ -267,7 +267,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (self.cellNumberBlock) {
-        return self.cellNumberBlock(tableView,section);
+        return (NSInteger)self.cellNumberBlock(tableView,section);
     }
     return _totalCount;
 }
@@ -275,7 +275,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.cellCreateBlock) {
-        return self.cellCreateBlock(tableView,indexPath);
+        return (UITableViewCell *)self.cellCreateBlock(tableView,indexPath);
     }
     return nil;
 }
@@ -298,7 +298,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.cellHeightBlock) {
-        return self.cellHeightBlock(tableView,indexPath);
+        return (CGFloat)self.cellHeightBlock(tableView,indexPath);
     }
     return 44.0f;
 }

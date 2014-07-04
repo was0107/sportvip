@@ -59,6 +59,7 @@
         self.description = [dictionary objectForKey:@"description"];
         self.name = [dictionary objectForKey:@"name"];
         self.address = [dictionary objectForKey:@"address"];
+        self.gymnasiumName = [dictionary objectForKey:@"gymnasiumName"];
         self.schoolTime = [dictionary objectForKey:@"schoolTime"];
         NSString *priceTemp = [dictionary objectForKey:@"price"];
         self.price = [NSString stringWithFormat:@"￥%@",priceTemp];

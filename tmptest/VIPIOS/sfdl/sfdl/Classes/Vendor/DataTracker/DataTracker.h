@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 //#define kUsingTalkingData
-//#define kUsingUMeng
+#define kUsingUMeng
 //#define kUsingGoogleAnalytics
 
 #pragma mark - import header

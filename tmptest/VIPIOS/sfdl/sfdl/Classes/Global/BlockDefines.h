@@ -17,8 +17,8 @@ typedef UIView*     (^tableViewViewBlock)( UITableView *tableView, NSInteger sec
 typedef NSInteger   (^tableViewIntBlock)( UITableView *tableView, NSInteger section);
 typedef NSInteger   (^tableViewIntPathBlock)( UITableView *tableView, NSIndexPath *indexPath);
 typedef NSInteger   (^tableViewIntBlockEx)( UITableView *tableView);
-typedef CGFloat     (^tableViewFloatBlock)( UITableView *tableView, NSIndexPath *indexPath);
-typedef CGFloat     (^tableViewFloatSectionBlock)( UITableView *tableView, NSInteger section);
+typedef float     (^tableViewFloatBlock)( UITableView *tableView, NSIndexPath *indexPath);
+typedef float     (^tableViewFloatSectionBlock)( UITableView *tableView, NSInteger section);
 
 //pickerView block
 typedef id          (^pickeCellBlock)(UIPickerView *pickerView, NSInteger row, NSInteger component);

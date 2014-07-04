@@ -33,7 +33,7 @@
 @property (nonatomic,copy   ) NSString                * gender;//状态设置
 
 @property (nonatomic,copy   ) NSString                * nickName;
-@property (nonatomic,copy   ) NSString                * birthday;
+@property (nonatomic,assign ) int                       birthday;
 @property (nonatomic,copy   ) NSString                * phone, *email, *password;
 @property (nonatomic, retain) ZJSwitch               *zjWwitch;
 @end
@@ -58,7 +58,6 @@
     TT_RELEASE_SAFELY(_birthTextField);
     TT_RELEASE_SAFELY(_gender);
     TT_RELEASE_SAFELY(_nickName);
-    TT_RELEASE_SAFELY(_birthday);
     TT_RELEASE_SAFELY(_phone);
     TT_RELEASE_SAFELY(_email);
     TT_RELEASE_SAFELY(_password);
@@ -156,7 +155,7 @@
         [dateFormatter setDateFormat:@"yyyy-MM-dd"];
         NSDate * forwardDate = [NSDate dateWithTimeIntervalSinceNow:-18*365*24*60*60];
         
-        self.birthday = [NSString stringWithFormat:@"%f",[forwardDate timeIntervalSince1970] ];
+        self.birthday = (int)[forwardDate timeIntervalSince1970];
         NSString *currentDate = [dateFormatter stringFromDate:forwardDate];
         [dateFormatter release];
         
@@ -181,7 +180,7 @@
     NSDate *date = [dateFormatter dateFromString:currentDateStr];
     if (date) {
         self.datePicker.pickerView.date = date;
-        self.birthday = [NSString stringWithFormat:@"%f",[date timeIntervalSince1970] ];
+        self.birthday = [date timeIntervalSince1970];
     }
     [self.datePicker showContent:YES];
     [self.view endEditing:YES];
@@ -370,15 +369,13 @@
         [UserDefaultsManager saveUserIcon:response.userItem.avatar];
         [UserDefaultsManager saveUserBirthDay:response.userItem.birthday];
         [UserDefaultsManager saveUserGender:response.userItem.gender];
-        [SVProgressHUD dismiss];
-        [safeSelf.navigationController dismissViewControllerAnimated:YES completion:nil];
+        [SVProgressHUD showSuccessWithStatus:@"更新成功！"];
         [safeSelf.confirmButton setEnabled:YES];
     };
     
     idBlock failedBlock = ^(id content){
         DEBUGLOG(@"failed content %@", content);
         [[[[ErrorResponse alloc] initWithJsonString:content] autorelease] show];
-        [SVProgressHUD showErrorWithStatus:@"更新失败"];
         [safeSelf.confirmButton setEnabled:YES];
     };
     idBlock errBlock = ^(id content){
@@ -394,7 +391,7 @@
     self.password = self.pwdTextField.pubTextField.text;
     UpdateUserInfoRequest *request = [[[UpdateUserInfoRequest alloc] init] autorelease];
     NSMutableArray * keys = [NSMutableArray arrayWithObjects:@"id",@"gender",@"avatar",@"nickName",@"birthday",@"phone",@"email",nil];
-    NSMutableArray * values = [NSMutableArray arrayWithObjects:[self currentUserId],self.gender,@"",self.nickName,[NSNumber numberWithDouble:[self.birthday doubleValue]], self.phone,self.email,nil];
+    NSMutableArray * values = [NSMutableArray arrayWithObjects:[self currentUserId],self.gender,@"",self.nickName,[NSNumber numberWithInt:(int)self.birthday], self.phone,self.email,nil];
     request.keys = keys;
     request.values = values;
     request.isUpdate = YES;

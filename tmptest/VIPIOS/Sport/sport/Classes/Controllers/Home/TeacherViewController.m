@@ -126,7 +126,7 @@
             [cell1.leftImageView setImageWithURL:[NSURL URLWithString:blockSelf.response.avatar]
                                placeholderImage:[UIImage imageNamed:kImageDefault]
                                         success:^(UIImage *image){
-                                            UIImage * image1 = [image imageScaledToSizeEx:CGSizeMake(100, 80)];
+                                            UIImage * image1 = [image imageScaledToSizeEx:CGSizeMake(100, 90)];
                                             cell1.leftImageView.image = image1;
                                             
                                         }
@@ -309,8 +309,8 @@
 - (void) dealWithData
 {
     CLLocationCoordinate2D center;
-    center.latitude=self.response.longtitude;
-    center.longitude=self.response.lantitude;
+    center.latitude=self.response.lantitude;
+    center.longitude=self.response.longtitude;
     [_mapView removeAnnotations:[_mapView annotations]];
     MapLocation *location = [[[MapLocation alloc] init] autorelease];
     location.coordinate = center;

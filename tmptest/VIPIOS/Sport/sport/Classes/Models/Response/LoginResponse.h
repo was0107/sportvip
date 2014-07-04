@@ -20,7 +20,7 @@
 
 @interface ClassDetailResponse : ListResponseBase
 @property (nonatomic, copy)   NSString   *advantage,*age,*coachName,*description,*coachAvatar;
-@property (nonatomic, copy)   NSString   *name,*price,*schoolTime,*coachId,*address;
+@property (nonatomic, copy)   NSString   *name,*price,*schoolTime,*coachId,*address,*gymnasiumName;
 @property (nonatomic, retain) NSMutableArray *phones;
 
 

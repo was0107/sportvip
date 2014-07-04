@@ -117,7 +117,7 @@
     };
     
     self.tableView.sectionNumberBlock = ^( UITableView *tableView){
-        return 1;
+        return (NSInteger)1;
     };
     
     self.tableView.sectionHeaderBlock = ^( UITableView *tableView, NSInteger section){

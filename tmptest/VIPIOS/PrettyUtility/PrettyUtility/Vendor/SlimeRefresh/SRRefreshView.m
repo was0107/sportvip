@@ -56,7 +56,7 @@
         _slime.shadowType = SRSlimeNone;
         [self addSubview:_slime];
         
-        _refleshView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sr_refresh"]];
+        _refleshView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"threfresh"]];
         _refleshView.center = _slime.startPoint;
         _refleshView.bounds = CGRectMake(0.0f, 0.0f, kRefreshImageWidth, kRefreshImageWidth);
         [self addSubview:_refleshView];

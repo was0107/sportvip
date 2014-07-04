@@ -113,7 +113,7 @@
     };
     
     self.tableView.cellNumberBlock = ^( UITableView *tableView, NSInteger section) {
-        return 3;
+        return (NSInteger)3;
     };
     
         

@@ -76,7 +76,9 @@
 
 - (NSMutableArray *) keyArrays
 {
-    NSMutableArray *array = [super keyArrays];
+    NSMutableArray *array = [NSMutableArray array];
+    
+    [array addObject:@"emailOrPhone"];
     [array addObject:@"oldPassword"];
     [array addObject:@"password"];
     return array;
@@ -84,7 +86,8 @@
 
 - (NSMutableArray *) valueArrays
 {
-    NSMutableArray *array = [super valueArrays];
+    NSMutableArray *array = [NSMutableArray array];
+    [array addObject:self.email];
     [array addObject:self.password];
     [array addObject:self.theNewPassword];
     return array;
@@ -92,7 +95,7 @@
 
 - (NSString *) methodString
 {
-    return @"user/update-password";
+    return @"user/updateCredential";
 }
 
 @end
@@ -189,7 +192,7 @@
     NSMutableArray *array = [super keyArrays];
     [array addObject:@"type"];
     [array addObject:@"userId"];
-    [array addObject:@"courseId"];
+    [array addObject:@"targetId"];
     return array;
 }
 

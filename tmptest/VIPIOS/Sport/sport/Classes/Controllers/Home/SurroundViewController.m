@@ -100,7 +100,10 @@
         
         GymnasiumItem *item = [_response.result objectAtIndex:i];
         MapLocation *location = [[[MapLocation alloc] init] autorelease];
-        location.coordinate = CLLocationCoordinate2DMake(item.longtitude,item.lantitude);
+         CLLocationCoordinate2D center;
+        center.longitude = item.longtitude;
+        center.latitude = item.lantitude;
+        location.coordinate = center;
         location.theTitle =item.name;
         location.theSubTitle = item.address;
         location.content = item;

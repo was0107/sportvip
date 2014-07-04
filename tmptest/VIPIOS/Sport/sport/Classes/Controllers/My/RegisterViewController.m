@@ -82,23 +82,8 @@
     [self.scrollView addSubview:self.pwdTextField];
     [self.scrollView addSubview:self.confirmButton];
     [self.view addSubview:self.scrollView];
-    
-    
-    
-//#ifdef kUseSimulateData
-//    self.nameTextField.pubTextField.text = @"was0107";
-//    self.emailTextField.pubTextField.text = @"hr@163.com";
-//    self.phoneTextField.pubTextField.text = @"13611111111";
-//    self.pwdTextField.pubTextField.text = @"111111";
-//#endif
-    // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (ZJSwitch *) zjWwitch
 {
@@ -338,7 +323,6 @@
         return;
     }
     [SVProgressHUD showWithStatus:@"正在注册..."];
-
     [self.confirmButton setEnabled:NO];
     __unsafe_unretained RegisterViewController *safeSelf = self;
 
@@ -361,7 +345,6 @@
         DEBUGLOG(@"failed content %@", content);
         [[[[ErrorResponse alloc] initWithJsonString:content] autorelease] show];
         [safeSelf.confirmButton setEnabled:YES];
-        [SVProgressHUD showErrorWithStatus:@"注册失败"];
     };
     idBlock errBlock = ^(id content){
         DEBUGLOG(@"failed content %@", content);

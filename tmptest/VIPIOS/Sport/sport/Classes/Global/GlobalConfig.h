@@ -27,7 +27,7 @@
 #define B5M_VERSION     @"Version 1.0.0  Build 1"
 #define TD_ChannelID    @"AppStore"
 
-#define kAPPID          @"593499239"
+#define kAPPID          @"896077200"
 
 
 

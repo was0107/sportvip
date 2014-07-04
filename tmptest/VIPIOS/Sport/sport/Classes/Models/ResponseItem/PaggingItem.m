@@ -177,8 +177,8 @@
         }
         
         NSDictionary *location      = [dictionary objectForKey:@"location"];
-        self.longtitude             = [self floatValueFrom:location withKey:@"x"];
-        self.lantitude              = [self floatValueFrom:location withKey:@"y"];
+        self.longtitude             = [self floatValueFrom:location withKey:@"y"];
+        self.lantitude              = [self floatValueFrom:location withKey:@"x"];
 
         
         NSMutableArray *array = [dictionary objectForKey:@"tags"];
@@ -262,7 +262,9 @@
             
             self.tags = arrayResult;
         }
-        
+        self.longtitude             = [[dictionary objectForKey:@"lon"] doubleValue];
+        self.lantitude              =  [[dictionary objectForKey:@"lat"] doubleValue];
+
         array = [dictionary objectForKey:@"events"];
         arrayResult = [NSMutableArray array];
         @autoreleasepool {
@@ -385,8 +387,8 @@
         }
 
         NSDictionary *location      = [dictionary objectForKey:@"location"];
-        self.longtitude             = [self floatValueFrom:location withKey:@"x"];
-        self.lantitude              = [self floatValueFrom:location withKey:@"y"];
+        self.longtitude             = [self floatValueFrom:location withKey:@"y"];
+        self.lantitude              = [self floatValueFrom:location withKey:@"x"];
 
         NSMutableArray *array       = [dictionary objectForKey:@"tags"];
         NSMutableArray *arrayResult = [NSMutableArray array];
@@ -478,8 +480,8 @@
         
         
         NSDictionary *location      = [dictionary objectForKey:@"location"];
-        self.longtitude             = [[location objectForKey:@"x"] floatValue];
-        self.lantitude              = [[location objectForKey:@"y"] floatValue];
+        self.longtitude             = [[location objectForKey:@"y"] floatValue];
+        self.lantitude              = [[location objectForKey:@"x"] floatValue];
         
         NSMutableArray *array = [dictionary objectForKey:@"tags"];
         NSMutableArray *arrayResult = [NSMutableArray array];

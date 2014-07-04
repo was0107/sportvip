@@ -16,6 +16,7 @@
 #import "PaggingRequest.h"
 #import "PaggingResponse.h"
 #import "TeacherViewController.h"
+#import "SingleMapViewController.h"
 
 @interface ClassDetailViewController ()
 @property (nonatomic, retain) ClassDetailResponse *response;
@@ -91,13 +92,13 @@
                 cell = [[BaseTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier1];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
 //                cell.backgroundColor = kClearColor;
-                cell.topLabel.frame = CGRectMake(10, 2, 300, 20);
+                cell.topLabel.frame = CGRectMake(30, 2, 285, 20);
                 cell.topLabel.font = HTFONTSIZE(kFontSize16);
                 cell.topLabel.numberOfLines = 0;
                 [cell.contentView addSubview:cell.topLabel];
             }
             NSString *title = [_titleArray1 objectAtIndex:indexPath.row];
-            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 2000)];
+            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(285, 2000)];
             [cell.topLabel setFrameHeight:size.height+10];
             cell.topLabel.text = [_titleArray1 objectAtIndex:indexPath.row];
             
@@ -110,7 +111,7 @@
                 cell.topLabel.textColor = kBlackColor;
 //                cell.backgroundColor = kClearColor;
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                cell.topLabel.frame = CGRectMake(10, 4, 300, 120);
+                cell.topLabel.frame = CGRectMake(30, 4, 280, 120);
 //                cell.topLabel.layer.borderColor = [kTipsTitleColor CGColor];
 //                cell.topLabel.layer.borderWidth = 1.0f;
                 cell.topLabel.numberOfLines = 0;
@@ -118,7 +119,7 @@
                 [cell.contentView addSubview:cell.topLabel];
             }
             NSString *title = blockSelf.response.advantage;
-            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 2000)];
+            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(280, 2000)];
             [cell.topLabel setFrameHeight:size.height];
             cell.topLabel.text = title;
             return (UITableViewCell *)cell;
@@ -140,8 +141,8 @@
             [cell.contentView addSubview:cell.subRightEx];
         }
 
-        cell.selectionStyle = (2 == indexPath.section) ? UITableViewCellSelectionStyleGray :  UITableViewCellSelectionStyleNone;
-        cell.accessoryType = (2 == indexPath.section) ? UITableViewCellAccessoryDisclosureIndicator :  UITableViewCellAccessoryNone;
+        cell.selectionStyle = (2 == indexPath.section || 1 == indexPath.section) ? UITableViewCellSelectionStyleGray :  UITableViewCellSelectionStyleNone;
+        cell.accessoryType = (2 == indexPath.section || 1 == indexPath.section) ? UITableViewCellAccessoryDisclosureIndicator :  UITableViewCellAccessoryNone;
 
         cell.topLabelEx.frame = CGRectMake(10, 8, 300, 24);
         NSString *title = [_titleArray2 objectAtIndex:indexPath.section];
@@ -170,17 +171,17 @@
     self.tableView.cellHeightBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
         if (4 == indexPath.section) {
             NSString *title = [_titleArray1 objectAtIndex:indexPath.row];
-            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(280, 2000)];
-            return size.height + 16;
+            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(285, 2000)];
+            return size.height + 10;
         }
         else  if (5 == indexPath.section) {
             NSString *title = blockSelf.response.advantage;
-            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 2000)];
-            return size.height +4;
+            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(285, 2000)];
+            return size.height +10;
         }
         NSString *string = [_titleArray2 objectAtIndex:indexPath.section];
         CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(280, 20000)];
-        return size.height + 20;
+        return size.height + ((size.height < 24 ) ? 20 : 20);
     };
     
     self.tableView.cellNumberBlock = ^( UITableView *tableView, NSInteger section) {
@@ -198,7 +199,14 @@
     
     self.tableView.cellSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        if (2 == indexPath.section) {
+        if (1 == indexPath.section) {
+            SingleMapViewController *controller = [[[SingleMapViewController alloc] init] autorelease];
+            controller.gymnasiumName = blockSelf.response.gymnasiumName;
+            controller.address = blockSelf.response.address;
+            [controller setHidesBottomBarWhenPushed:YES];
+            [blockSelf.navigationController pushViewController:controller animated:YES];
+        }
+       else if (2 == indexPath.section) {
             TeacherViewController *controller = [[[TeacherViewController alloc] init] autorelease];
             CoacheItem *coachItem = [[[CoacheItem alloc] init] autorelease];
             coachItem.itemId = blockSelf.response.coachId;
@@ -256,10 +264,10 @@
 {
     self.titleArray1 = [NSMutableArray arrayWithObjects:self.response.age,self.response.description,nil];
     self.titleArray2 = [NSMutableArray arrayWithObjects:self.response.name,\
-                        [NSString stringWithFormat:@"上课地点:%@",self.response.address],\
+                        [NSString stringWithFormat:@"上课地点:\r\n%@",self.response.address],\
                         [NSString stringWithFormat:@"教练:%@",self.response.coachName],
                         [NSString stringWithFormat:@"上课时间:%@",self.response.schoolTime],
-                        @"适合年龄",\
+                        @"适合人群",\
                         @"课程特色",nil];
 
     [self.tableView reloadData];
