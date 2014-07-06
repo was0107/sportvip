@@ -98,8 +98,8 @@
                 [arrayResult addObject:item];
             }
             
-            self.phones = arrayResult;
         }
+            self.phones = arrayResult;
 
     }
     return self;

@@ -92,7 +92,7 @@
                 cell = [[BaseTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier1];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
 //                cell.backgroundColor = kClearColor;
-                cell.topLabel.frame = CGRectMake(30, 5, 285, 20);
+                cell.topLabel.frame = CGRectMake(30, 1, 285, 20);
                 cell.topLabel.font = HTFONTSIZE(kFontSize16);
                 cell.topLabel.numberOfLines = 0;
                 [cell.contentView addSubview:cell.topLabel];
@@ -172,7 +172,7 @@
         if (4 == indexPath.section) {
             NSString *title = [_titleArray1 objectAtIndex:indexPath.row];
             CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(280, 2000)];
-            return size.height + 10;
+            return size.height + 20;
         }
         else  if (5 == indexPath.section) {
             NSString *title = blockSelf.response.advantage;

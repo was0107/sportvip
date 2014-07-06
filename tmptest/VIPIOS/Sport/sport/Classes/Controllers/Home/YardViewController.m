@@ -119,9 +119,9 @@
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 }
                 
-                int total =  MIN([blockSelf.response.events count], 6 * (indexPath.section));
+                int total =  MIN([blockSelf.response.events count], 6 * (indexPath.row + 1));
                 [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-                for (int i = 6 * (indexPath.section - 1) ; i < total; i++) {
+                for (int i = 6 * (indexPath.row) ; i < total; i++) {
                     EventTagItem *tagItem = [blockSelf.response.events objectAtIndex:i];
                     UIImageLabelEx *labelEx = [[[UIImageLabelEx alloc] initWithFrame:CGRectMake(15 + 50 * (i % 6), 4, 49, 20)] autorelease];
                     labelEx.backgroundColor = kClearColor;
