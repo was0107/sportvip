@@ -68,12 +68,12 @@
         NSArray *titleArray = [NSArray arrayWithObjects:@"幼儿",@"小学",@"初中",@"高中",@"成人",@"全部",nil];
         NSMutableString *ageString = [NSMutableString string];
 
-        for (int j = 0; j < [array count]; j++) {
-            NSString *keyTemp = [array objectAtIndex:j];
-            for (int i = 0 ; i < [keyArray count]; i++) {
-                NSString *key = [keyArray objectAtIndex:i];
-                if ([key isEqualToString:keyTemp]) {
-                    [ageString appendFormat:@"%@、",[titleArray objectAtIndex:i] ];
+        for (int j = 0 ; j < [keyArray count]; j++) {
+            NSString *ageTemp = [keyArray objectAtIndex:j];
+            for (int i = 0 ; i < [array count]; i++) {
+                NSString *contentItem = [array objectAtIndex:i];
+                if ([ageTemp isEqualToString:contentItem]) {
+                    [ageString appendFormat:@"%@、",[titleArray objectAtIndex:j]];
                 }
             }
         }
