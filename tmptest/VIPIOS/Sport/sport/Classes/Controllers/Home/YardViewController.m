@@ -173,9 +173,9 @@
 //                NSArray *imageIndexArray = @[@"home9",@"home10",@"home11",@"home12"];
 //                int flag =  (iPhone5) ? 120 : 110;
                 int tag = 1000;
-                int total =  MIN([blockSelf.response.coaches count], 4 * (indexPath.section-2));
+                int total =  MIN([blockSelf.response.coaches count], 4 * (indexPath.row+1));
                 [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-                for (int i = 4 * (indexPath.section - 3) ; i < total; i++) {
+                for (int i = 4 * (indexPath.row) ; i < total; i++) {
                     CoacheItem *item = [[blockSelf.response coaches] objectAtIndex:i];
                     CustomRoundImageTitle *button = [[[CustomRoundImageTitle alloc] initWithFrame:CGRectMake(4 + 79 * (i%4), 4, 75, 90)] autorelease];
                     button.tag =  tag+i;
