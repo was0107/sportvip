@@ -18,7 +18,7 @@
 @property (nonatomic,retain) BaseTableView *tableView;
 @property (nonatomic, retain) UIPopoverListView *poplistview ;
 
-@property (nonatomic, assign) NSMutableArray *telArray;
+@property (nonatomic, retain) NSMutableArray *telArray;
 
 -(void)refreshTableView;
 @end

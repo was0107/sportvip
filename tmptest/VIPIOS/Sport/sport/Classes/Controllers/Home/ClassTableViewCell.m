@@ -137,20 +137,24 @@
         
         
         [self.categories makeObjectsPerformSelector:@selector(removeFromSuperview)];
+        [self.categories removeAllObjects];
         int total = MIN(3, [item.events count]);
-        for (int i = 0 ; i < total; i++) {
-            UIImageLabelEx *labelEx = [[[UIImageLabelEx alloc] initWithFrame:CGRectMake(130 + 36 *i, 68, 36, 20)] autorelease];
-            labelEx.backgroundColor = kClearColor;
-            labelEx.textColor = kDarkTextColor;
-            labelEx.highlightedTextColor = kBlackColor;
-            labelEx.font = HTFONTSIZE(kFontSize13);
-            labelEx.textAlignment = UITextAlignmentCenter;
-            [self.contentView addSubview:labelEx];
-            [self.categories addObject:labelEx];
-            
-            EventTagItem *tagItem = [item.events objectAtIndex:i];
-            labelEx.text = tagItem.name;
-            [labelEx setImage:tagItem.icon origitation:2];
+        if (0 < total) {
+            for (int i = 0 ; i < total; i++) {
+                UIImageLabelEx *labelEx = [[[UIImageLabelEx alloc] initWithFrame:CGRectMake(130 + 36 *i, 68, 36, 20)] autorelease];
+                labelEx.backgroundColor = kClearColor;
+                labelEx.textColor = kDarkTextColor;
+                labelEx.highlightedTextColor = kBlackColor;
+                labelEx.font = HTFONTSIZE(kFontSize13);
+                labelEx.textAlignment = UITextAlignmentCenter;
+                [self.contentView addSubview:labelEx];
+                [self.categories addObject:labelEx];
+                
+                EventTagItem *tagItem = [item.events objectAtIndex:i];
+                labelEx.text = tagItem.name;
+                [labelEx setImage:tagItem.icon origitation:2];
+            }
+
         }
         
         

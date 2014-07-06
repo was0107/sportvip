@@ -69,7 +69,7 @@
 
 - (IBAction)showTeachers:(id)sender
 {
-    self.telArray = [self.response.phones copy];
+    self.telArray = [NSMutableArray arrayWithArray:self.response.phones];
     if ([[DataManager sharedInstance].serviceTel length] > 0) {
         [self.telArray addObject:[TelItem hotItem:[DataManager sharedInstance].serviceTel]];
     }

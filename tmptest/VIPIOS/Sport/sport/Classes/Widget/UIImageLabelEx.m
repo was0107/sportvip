@@ -125,4 +125,11 @@
     return self;
 }
 
+- (void) removeFromSuperview
+{
+    [super removeFromSuperview];
+    [self.layerArray makeObjectsPerformSelector:@selector(removeFromSuperview)];
+}
+
+
 @end

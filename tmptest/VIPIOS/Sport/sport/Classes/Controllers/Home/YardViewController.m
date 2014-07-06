@@ -101,11 +101,23 @@
         
             if (0 == indexPath.section) {
                 static NSString *identifier = @"YARD_TABLEVIEW_CELL_IDENTIFIER0";
-                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-                if (!cell) {
-                    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
-                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                BaseSportTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+                if (!cell){
+                    cell = [[[BaseSportTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
+                    cell.topLabelEx.textColor = kBlackColor;
+                    cell.topLabelEx.numberOfLines = 0;
+                    [cell.contentView addSubview:cell.topLabelEx];
+                    cell.topLabelEx.font = HTFONTSIZE(kFontSize16);
                 }
+                
+                cell.selectionStyle = (0 == indexPath.section) ? UITableViewCellSelectionStyleGray :  UITableViewCellSelectionStyleNone;
+                cell.accessoryType = (0 == indexPath.section) ? UITableViewCellAccessoryDisclosureIndicator :  UITableViewCellAccessoryNone;
+                cell.topLabelEx.frame = CGRectMake(8, 8, 300, 24);
+                NSString *title = [_titleArray objectAtIndex:indexPath.row];
+                CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(300, 2000)];
+                [[cell.topLabelEx setFrameHeight:size.height + 4] setFrameWidth:size.width + 45];
+                cell.topLabelEx.text = title;
+                [cell.topLabelEx setImage:@"map" origitation:0];
                 return (UITableViewCell *)cell;
             }
             else  if (1 == indexPath.section) {
@@ -201,7 +213,9 @@
     
     self.tableView.cellHeightBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
         if (0 == indexPath.section) {
-            return 0.0f;
+            NSString *string = [_titleArray objectAtIndex:indexPath.section];
+            CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(280, 20000)];
+            return size.height + 20;
         }
         else  if (1 == indexPath.section) {
             return 50.0f;
@@ -220,7 +234,7 @@
     
     self.tableView.cellNumberBlock = ^( UITableView *tableView, NSInteger section) {
         if (0 == section) {
-            return 0;
+            return 1;
         }
         else  if (1 == section) {
             return (NSInteger)([[blockSelf.response events] count] + 5)/ 6 ;
@@ -236,7 +250,9 @@
     };
     
     self.tableView.sectionHeaderHeightBlock = ^( UITableView *tableView, NSInteger section){
-        
+        if (section == 0) {
+            return 0.0f;
+        }
         NSString *string = [_titleArray objectAtIndex:section];
         CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(280, 20000)];
         return size.height + 20;
@@ -248,7 +264,9 @@
     
     NSArray *imageArray = [NSArray arrayWithObjects:@"map",@"sport",@"course",@"coach",@"desc",nil];
     self.tableView.sectionHeaderBlock = ^( UITableView *tableView, NSInteger section){
-        
+        if (0 == section) {
+            return [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320,0)] autorelease];
+        }
         NSString *string = [_titleArray objectAtIndex:section];
         CGSize size = [string sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(280, 20000)];
         UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, size.height + 20)] autorelease];
@@ -260,27 +278,29 @@
         imageLabelEx.text = string;//@"上海闵行区什么路";
         [imageLabelEx setImage:[imageArray objectAtIndex:section] origitation:0];
         [[imageLabelEx shiftPositionY:1] shiftPositionX:-1];
-
-        if (0 == section) {
-            UIView *lineView = [[[UIView alloc] initWithFrame:CGRectMake(0, view.bounds.size.height-0.5f, 320, 0.5f)] autorelease];
-            lineView.backgroundColor = kLightGrayColor;
-            UITapGestureRecognizer *gesture = [[[UITapGestureRecognizer alloc  ] initWithTarget:self action:@selector(goToMap:)] autorelease];
-            UIImageView *rightImageView = [[[UIImageView alloc] initWithFrame:CGRectMake(300, 4 + size.height/2, 14, 14)] autorelease];
-            rightImageView.image = [UIImage imageNamed:@"chatroom_arrow_right"];
-            [view addGestureRecognizer:gesture];
-            [view addSubview:rightImageView];
-            [view addSubview:lineView];
-        }
-        if (0 == 4) {
+        if (section == 4) {
             imageLabelEx.textColor = kTableViewColor;
         }
         return (UIView *)view;
     };
     
-    
     self.tableView.cellSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        if (2 == indexPath.section)
+        if (0 == indexPath.section) {
+            if (blockSelf.response) {
+                CLLocationCoordinate2D center;
+                SingleMapViewController *controller = [[[SingleMapViewController alloc] init] autorelease];
+                center.longitude = blockSelf.response.longtitude;
+                center.latitude = blockSelf.response.lantitude;
+                controller.center = center;
+                controller.gymnasiumName = blockSelf.response.name;
+                controller.address = blockSelf.response.address;
+                [controller showPosition];
+                [controller setHidesBottomBarWhenPushed:YES];
+                [blockSelf.navigationController pushViewController:controller animated:YES];
+            }
+        }
+        else if (2 == indexPath.section)
         {
             ClassDetailViewController *controller = [[[ClassDetailViewController alloc] init] autorelease];
             CourseItem *item = [[blockSelf.response courses] objectAtIndex:indexPath.row];
@@ -302,19 +322,7 @@
 
 - (void) goToMap:(UIGestureRecognizer *)recognizer
 {
-    if (self.response) {
-        CLLocationCoordinate2D center;
-        SingleMapViewController *controller = [[[SingleMapViewController alloc] init] autorelease];
-        center.longitude = self.response.longtitude;
-        center.latitude = self.response.lantitude;
-        controller.center = center;
-        controller.gymnasiumName = self.response.name;
-        controller.address = self.response.address;
-        [controller showPosition];
-        [controller setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:controller animated:YES];
-    }
-}
+   }
 
 - (void) dealWithData
 {

@@ -25,6 +25,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[DataTracker sharedInstance] startDataTracker];
+
     if (IS_IOS_7_OR_GREATER) {
         self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
 	    [application setStatusBarStyle:UIStatusBarStyleDefault];

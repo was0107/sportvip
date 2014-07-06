@@ -164,7 +164,7 @@
 - (UITableViewCell *)popoverListView:(UIPopoverListView *)popoverListView
                     cellForIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *identifier = @"HOME_TABLEVIEW_CELL_IDENTIFIER0";
+    static NSString *identifier = @"UIPopoverListView_TABLEVIEW_CELL_IDENTIFIER0";
     BaseNewTableViewCell *cell = [popoverListView.listView dequeueReusableCellWithIdentifier:identifier];
     if (!cell){
         cell = [[[BaseNewTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];

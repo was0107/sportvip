@@ -249,7 +249,7 @@
 
 - (CGRect)tableViewFrame
 {
-    return CGRectMake(0, 40, 320.0, kContentBoundsHeight-84);
+    return CGRectMake(0, 40, 320.0, kContentBoundsHeight-88);
 }
 
 - (void) configTableView

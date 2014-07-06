@@ -20,4 +20,6 @@
 - (id) shiftPositionY:(CGFloat) flag;
 - (id) shiftPositionX:(CGFloat) flag;
 
+- (void) removeFromSuperview;
+
 @end

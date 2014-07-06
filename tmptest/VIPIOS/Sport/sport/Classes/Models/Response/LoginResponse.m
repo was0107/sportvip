@@ -86,7 +86,7 @@
         self.longtitude             = [[location objectForKey:@"y"] floatValue];
         self.lantitude              = [[location objectForKey:@"x"] floatValue];
         
-        array = [dictionary objectForKey:@"phones"];
+        array = [dictionary objectForKey:@"phoneNum"];
         NSMutableArray *arrayResult = [NSMutableArray array];
         @autoreleasepool {
             for ( int i = 0 , total = [array count]; i < total; ++i) {
@@ -97,10 +97,8 @@
                 item.tel      = [array objectAtIndex:i];
                 [arrayResult addObject:item];
             }
-            
         }
-            self.phones = arrayResult;
-
+        self.phones = arrayResult;
     }
     return self;
 }
