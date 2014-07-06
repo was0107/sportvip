@@ -49,6 +49,12 @@
 
 }
 
+- (void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [_selectControl dissmissContent:NO];
+}
+
 - (void) reduceMemory
 {
     TT_RELEASE_SAFELY(_typeButton);

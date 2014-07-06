@@ -69,7 +69,7 @@
 
 - (IBAction)showTeachers:(id)sender
 {
-    self.telArray = self.response.phones;
+    self.telArray = [self.response.phones copy];
     if ([[DataManager sharedInstance].serviceTel length] > 0) {
         [self.telArray addObject:[TelItem hotItem:[DataManager sharedInstance].serviceTel]];
     }
@@ -92,14 +92,14 @@
                 cell = [[BaseTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier1];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
 //                cell.backgroundColor = kClearColor;
-                cell.topLabel.frame = CGRectMake(30, 2, 285, 20);
+                cell.topLabel.frame = CGRectMake(30, 5, 285, 20);
                 cell.topLabel.font = HTFONTSIZE(kFontSize16);
                 cell.topLabel.numberOfLines = 0;
                 [cell.contentView addSubview:cell.topLabel];
             }
             NSString *title = [_titleArray1 objectAtIndex:indexPath.row];
-            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(285, 2000)];
-            [cell.topLabel setFrameHeight:size.height+10];
+            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(280, 2000)];
+            [cell.topLabel setFrameHeight:size.height+20];
             cell.topLabel.text = [_titleArray1 objectAtIndex:indexPath.row];
             
             return (UITableViewCell *)cell;
@@ -171,7 +171,7 @@
     self.tableView.cellHeightBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
         if (4 == indexPath.section) {
             NSString *title = [_titleArray1 objectAtIndex:indexPath.row];
-            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(285, 2000)];
+            CGSize size = [title sizeWithFont:HTFONTSIZE(kFontSize16) constrainedToSize:CGSizeMake(280, 2000)];
             return size.height + 10;
         }
         else  if (5 == indexPath.section) {

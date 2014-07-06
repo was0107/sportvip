@@ -89,7 +89,7 @@
 
 - (IBAction)showTeachers:(id)sender
 {
-    self.telArray = self.response.phones;
+    self.telArray = [NSMutableArray arrayWithArray:self.response.phones];
     if ([[DataManager sharedInstance].serviceTel length] > 0) {
         [self.telArray addObject:[TelItem hotItem:[DataManager sharedInstance].serviceTel]];
     }
@@ -103,7 +103,7 @@
     __block TeacherViewController *blockSelf = self;
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
     self.tableView.tableFooterView = [self footerView];
-    NSArray *titleArray = [NSArray arrayWithObjects:@"",@"个人简介",@"精练精选课程",@"教学点", nil];
+    NSArray *titleArray = [NSArray arrayWithObjects:@"",@"个人简介",@"教练精选课程",@"教学点", nil];
 
     self.tableView.cellCreateBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
         if (0 == indexPath.section) {
