@@ -15,7 +15,7 @@
     if (self.theTitle) {
         return self.theTitle;
     }
-    return @"您的位置!";
+    return @"";
 }
 - (NSString *)subtitle {
     if (self.theSubTitle) {

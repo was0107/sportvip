@@ -53,19 +53,23 @@
 - (id)initWithDictionary:(const NSDictionary *)dictionary{
     self = [super init];
     if (self) {
-        self.advantage = [dictionary objectForKey:@"advantage"];
-        self.coachName = [dictionary objectForKey:@"coachName"];
-        self.coachId = [dictionary objectForKey:@"coachId"];
-        self.description = [dictionary objectForKey:@"description"];
-        self.name = [dictionary objectForKey:@"name"];
-        self.address = [dictionary objectForKey:@"address"];
-        self.gymnasiumName = [dictionary objectForKey:@"gymnasiumName"];
-        self.schoolTime = [dictionary objectForKey:@"schoolTime"];
-        NSString *priceTemp = [dictionary objectForKey:@"price"];
-        self.price = [NSString stringWithFormat:@"￥%@",priceTemp];
-        NSArray *array = [dictionary objectForKey:@"age"];
-        NSArray *keyArray = [NSArray arrayWithObjects:@"YOUER",@"XIAOXUE",@"CHUZHONG",@"GAOZHONG",@"CHENGREN",@"",nil];
-        NSArray *titleArray = [NSArray arrayWithObjects:@"幼儿",@"小学",@"初中",@"高中",@"成人",@"全部",nil];
+        self.advantage             = [dictionary objectForKey:@"advantage"];
+        self.coachName             = [dictionary objectForKey:@"coachName"];
+        self.coachId               = [dictionary objectForKey:@"coachId"];
+        self.description           = [dictionary objectForKey:@"description"];
+        self.name                  = [dictionary objectForKey:@"name"];
+        self.address               = [dictionary objectForKey:@"address"];
+        self.gymnasiumName         = [dictionary objectForKey:@"gymnasiumName"];
+        self.coachAvatar           = [dictionary objectForKey:@"coachAvatar"];
+        self.schoolTime            = [dictionary objectForKey:@"schoolTime"];
+        NSDictionary *location     = [dictionary objectForKey:@"location"];
+        self.longtitude            = [[location objectForKey:@"y"] floatValue];
+        self.lantitude             = [[location objectForKey:@"x"] floatValue];
+        NSString *priceTemp        = [dictionary objectForKey:@"price"];
+        self.price                 = [NSString stringWithFormat:@"￥%@",priceTemp];
+        NSArray *array             = [dictionary objectForKey:@"age"];
+        NSArray *keyArray          = [NSArray arrayWithObjects:@"YOUER",@"XIAOXUE",@"CHUZHONG",@"GAOZHONG",@"CHENGREN",@"",nil];
+        NSArray *titleArray        = [NSArray arrayWithObjects:@"幼儿",@"小学",@"初中",@"高中",@"成人",@"全部",nil];
         NSMutableString *ageString = [NSMutableString string];
 
         for (int j = 0 ; j < [keyArray count]; j++) {
@@ -82,17 +86,14 @@
         } else {
             self.age = @"";
         }
-        NSDictionary *location      = [dictionary objectForKey:@"location"];
-        self.longtitude             = [[location objectForKey:@"y"] floatValue];
-        self.lantitude              = [[location objectForKey:@"x"] floatValue];
         
         array = [dictionary objectForKey:@"phoneNum"];
         NSMutableArray *arrayResult = [NSMutableArray array];
         @autoreleasepool {
             for ( int i = 0 , total = [array count]; i < total; ++i) {
                 TelItem *item = [[[TelItem alloc] init] autorelease];
-                item.coachId     = self.coachId;
-                item.name     = self.name;
+                item.coachId  = self.coachId;
+                item.name     = self.coachName;
                 item.avatar   = self.coachAvatar;
                 item.tel      = [array objectAtIndex:i];
                 [arrayResult addObject:item];

@@ -66,20 +66,27 @@
 
 - (IBAction)showCurrentAction:(id)sender
 {
-    if (_mapView.userLocation) {
-        [_mapView setCenterCoordinate:_mapView.userLocation.location.coordinate animated:YES];
+//    if (_mapView.userLocation) {
+//        [_mapView setCenterCoordinate:_mapView.userLocation.location.coordinate animated:YES];
 //        _mapView.showsUserLocation = NO;
-        [self resetRegion];
+//        [self resetRegion];
         self.request.longitude = _mapView.userLocation.location.coordinate.longitude;
         self.request.latitude= _mapView.userLocation.location.coordinate.latitude;
         [self sendRequestToServer];
-    }
+//    }
     [SVProgressHUD dismiss];
 }
 
 - (id) resetRegion
 {
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(_mapView.userLocation.location.coordinate, 50000, 50000);
+    MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
+    [_mapView setRegion:adjustedRegion animated:YES];
+    return self;
+}
+
+- (id) resetRegionWith:(MKCoordinateRegion ) viewRegion
+{
     MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
     [_mapView setRegion:adjustedRegion animated:YES];
     return self;
@@ -132,7 +139,7 @@
     if (_response.arrayCount == 0) {
         return;
     }
-    
+//    [self resetRegionWith:MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(self.request.latitude, self.request.longitude), 50000, 50000)];
     [_mapView setRegion:MKCoordinateRegionMake(CLLocationCoordinate2DMake((minLat+maxLat)/2, (minLng+maxLng)/2), MKCoordinateSpanMake((maxLat-minLat)+0.01, (maxLng-minLng)+0.01)) animated:YES];
     
 }
@@ -193,9 +200,12 @@
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
-    CLLocationCoordinate2D cord = [mapView convertPoint:mapView.center toCoordinateFromView:mapView];
-    self.request.latitude = cord.latitude;
-    self.request.longitude = cord.longitude;
+    if (_response && !animated) {
+        CLLocationCoordinate2D cord = [mapView convertPoint:mapView.center toCoordinateFromView:mapView];
+        self.request.latitude = cord.latitude;
+        self.request.longitude = cord.longitude;
+        [self sendRequestToServer];
+    }
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
