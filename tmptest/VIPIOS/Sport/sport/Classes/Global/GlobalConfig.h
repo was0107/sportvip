@@ -24,7 +24,7 @@
  *  版本号，主要显示在关于页面
  */
 
-#define B5M_VERSION     @"Version 1.0.0  Build 1"
+#define B5M_VERSION     @"Version 1.0  Build 1"
 #define TD_ChannelID    @"AppStore"
 
 #define kAPPID          @"896077200"
