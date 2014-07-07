@@ -29,6 +29,6 @@
 @end
 
 @interface ServicePhoneResponse : ListResponseBase
-@property (nonatomic, copy) NSString     *phone;
+@property (nonatomic, retain) NSMutableArray *phones;
 
 @end

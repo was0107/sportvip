@@ -389,14 +389,10 @@
 
 - (void) sendToGetServicePhone
 {
-    __block HomeViewController *blockSelf = self;
     idBlock succBlock = ^(id content){
         DEBUGLOG(@"succeed content %@", content);
-        [blockSelf.tableView tableViewDidFinishedLoading];
         ServicePhoneResponse *serviceResponse = [[[ServicePhoneResponse alloc] initWithJsonString:content] autorelease];
-        if ([serviceResponse.phone length] > 0) {
-            [DataManager sharedInstance].serviceTel = serviceResponse.phone;
-        }
+        [DataManager sharedInstance].serviceTels = serviceResponse.phones;
     };
     
     idBlock failedBlock = ^(id content) {

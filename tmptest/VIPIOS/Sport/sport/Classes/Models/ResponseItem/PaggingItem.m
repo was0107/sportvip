@@ -8,7 +8,6 @@
 
 #import "PaggingItem.h"
 
-
 @implementation CourseItem
 - (void)dealloc{
     
@@ -57,14 +56,14 @@
 }
 
 
-+(TelItem *) hotItem:(NSString *)tel
++(TelItem *) hotItem:(NSString *) tel name:(NSString *) name
 {
     if (!tel || [tel length] == 0) {
         return nil;
     }
     TelItem *item = [[[TelItem alloc] init] autorelease];
     item.coachId = @"";
-    item.name = @"客户电话";
+    item.name = name;
     item.avatar = kImageDefault;
     item.tel = tel;
     return item;
@@ -462,7 +461,8 @@
     TT_RELEASE_SAFELY(_phones);
     TT_RELEASE_SAFELY(_hornors);
     TT_RELEASE_SAFELY(_courses);
-    TT_RELEASE_SAFELY(_gymnasiumName)
+    TT_RELEASE_SAFELY(_gymnasiumNames)
+    TT_RELEASE_SAFELY(_locations)
     [super dealloc];
 }
 
@@ -477,12 +477,6 @@
         self.avatar       = [dictionary objectForKey:@"avatar"];
         self.resume       = [dictionary objectForKey:@"resume"];
         self.introduction = [dictionary objectForKey:@"introduction"];
-        self.gymnasiumName = [dictionary objectForKey:@"gymnasiumName"];
-        
-        
-        NSDictionary *location      = [dictionary objectForKey:@"location"];
-        self.longtitude             = [[location objectForKey:@"y"] floatValue];
-        self.lantitude              = [[location objectForKey:@"x"] floatValue];
         
         NSMutableArray *array = [dictionary objectForKey:@"tags"];
         NSMutableArray *arrayResult = [NSMutableArray array];
@@ -532,6 +526,35 @@
                 [arrayResult addObject:item];
             }
             self.courses = arrayResult;
+        }
+        
+        
+//        self.gymnasiumName = [dictionary objectForKey:@"gymnasiumName"];
+//        
+//        
+//        NSDictionary *location      = [dictionary objectForKey:@"location"];
+//        self.longtitude             = [[location objectForKey:@"y"] floatValue];
+//        self.lantitude              = [[location objectForKey:@"x"] floatValue];
+        
+        array = [dictionary objectForKey:@"gymnasiumNames"];
+        arrayResult = [NSMutableArray array];
+        @autoreleasepool {
+            for ( int i = 0 , total = [array count]; i < total; ++i) {
+                NSString *gymnasium =  [array objectAtIndex:i];
+                [arrayResult addObject:gymnasium];
+            }
+            self.gymnasiumNames = arrayResult;
+        }
+        array = [dictionary objectForKey:@"locations"];
+        arrayResult = [NSMutableArray array];
+        @autoreleasepool {
+            for ( int i = 0 , total = [array count]; i < total; ++i) {
+                NSDictionary *dictionaryItem = (NSDictionary *) [array objectAtIndex:i];
+//                CLLocationCoordinate2D center = CLLocationCoordinate2DMake([[location objectForKey:@"x"] floatValue],[[location objectForKey:@"y"] floatValue]);
+                CLLocation *llocation = [[[CLLocation alloc] initWithLatitude:[[dictionaryItem objectForKey:@"x"] floatValue] longitude:[[dictionaryItem objectForKey:@"y"] floatValue]] autorelease];
+                [arrayResult addObject:llocation];
+            }
+            self.locations = arrayResult;
         }
         
     }

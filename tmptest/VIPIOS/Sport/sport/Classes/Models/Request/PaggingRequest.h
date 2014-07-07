@@ -59,5 +59,6 @@
 
 @interface CheckCoachesRequest : ListPaggingRequestBase
 @property (nonatomic, copy) NSString *userId;
-
+@property (nonatomic, assign) double longitude,latitude;
+@property (nonatomic, copy) NSString *distance;
 @end

@@ -35,6 +35,7 @@ static DataManager * sharedInstance = nil;
 {
     self = [super init];
     if (self) {
+        self.serviceTels = [NSMutableArray array];
         [self createSort];
         [self createDistance];
         [self addDefaultCategory];
@@ -137,7 +138,7 @@ static DataManager * sharedInstance = nil;
     TT_RELEASE_SAFELY(_sortArray);
     TT_RELEASE_SAFELY(_cateArray);
     TT_RELEASE_SAFELY(_distanceArray);
-    TT_RELEASE_SAFELY(_serviceTel);
+    TT_RELEASE_SAFELY(_serviceTels);
     TT_RELEASE_SAFELY(_categoryAndsubArray);
     TT_RELEASE_SAFELY(_areaAndLandmarkArray);
     [super dealloc];

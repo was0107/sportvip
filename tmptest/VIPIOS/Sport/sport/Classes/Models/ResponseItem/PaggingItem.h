@@ -16,7 +16,7 @@
 @interface TelItem : ListResponseItemBase
 @property (nonatomic, copy) NSString *coachId,*name,*avatar,*tel;
 
-+(TelItem *) hotItem:(NSString *) tel;
++(TelItem *) hotItem:(NSString *) tel name:(NSString *) name;
 
 @end
 
@@ -71,9 +71,8 @@
 
 @interface CoacheDetailResponse : ListResponseBase
 
-@property (nonatomic, copy) NSString *itemId,*avatar,*name,*introduction,*resume,*gymnasiumName;
-@property (nonatomic, retain) NSMutableArray *tags,*phones,*hornors,*courses;
-@property (nonatomic, assign) float lantitude, longtitude;
+@property (nonatomic, copy) NSString *itemId,*avatar,*name,*introduction,*resume;
+@property (nonatomic, retain) NSMutableArray *tags,*phones,*hornors,*courses,*gymnasiumNames,*locations;
 @property (nonatomic, assign) int age;
 @end
 

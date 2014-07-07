@@ -82,8 +82,8 @@
 - (IBAction)showTeachers:(id)sender
 {
     self.telArray = [NSMutableArray arrayWithArray:self.response.phones];
-    if ([[DataManager sharedInstance].serviceTel length] > 0) {
-        [self.telArray addObject:[TelItem hotItem:[DataManager sharedInstance].serviceTel]];
+    if ([[DataManager sharedInstance].serviceTels count] > 0) {
+        [self.telArray addObjectsFromArray:[DataManager sharedInstance].serviceTels];
     }
     [self.poplistview.listView reloadData];
     [self.poplistview show];

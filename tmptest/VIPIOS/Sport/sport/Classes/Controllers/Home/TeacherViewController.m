@@ -90,8 +90,8 @@
 - (IBAction)showTeachers:(id)sender
 {
     self.telArray = [NSMutableArray arrayWithArray:self.response.phones];
-    if ([[DataManager sharedInstance].serviceTel length] > 0) {
-        [self.telArray addObject:[TelItem hotItem:[DataManager sharedInstance].serviceTel]];
+    if ([[DataManager sharedInstance].serviceTels count] > 0) {
+        [self.telArray addObjectsFromArray:[DataManager sharedInstance].serviceTels];
     }
     [self.poplistview.listView reloadData];
     [self.poplistview show];
@@ -304,22 +304,43 @@
     };
 }
 
-
+- (void) dealWithMapData
+{
+    int minLength = MIN([_response.locations count], [_response.gymnasiumNames count]);
+    if (minLength == 0) {
+        return;
+    }
+    [_mapView removeAnnotations:[_mapView annotations]];
+    double minLat = 90,minLng = 180,maxLat = -90,maxLng = -180;
+    for (int i = 0 ; i < minLength ; i++)
+    {
+        
+        CLLocation *item = [_response.locations objectAtIndex:i];
+        MapLocation *location = [[[MapLocation alloc] init] autorelease];
+        location.coordinate = item.coordinate;
+        location.theTitle =[_response.gymnasiumNames objectAtIndex:i];
+        
+        [self.mapView addAnnotation:location];
+        if (location.coordinate.latitude > maxLat) {
+            maxLat = location.coordinate.latitude;
+        }
+        if (location.coordinate.longitude>maxLng) {
+            maxLng = location.coordinate.longitude;
+        }
+        if (location.coordinate.latitude<minLat) {
+            minLat = location.coordinate.latitude;
+        }
+        if (location.coordinate.longitude<minLng) {
+            minLng = location.coordinate.longitude;
+        }
+    }
+    
+    [_mapView setRegion:MKCoordinateRegionMake(CLLocationCoordinate2DMake((minLat+maxLat)/2, (minLng+maxLng)/2), MKCoordinateSpanMake((maxLat-minLat)+0.01, (maxLng-minLng)+0.01)) animated:YES];
+}
 
 - (void) dealWithData
 {
-    CLLocationCoordinate2D center;
-    center.latitude=self.response.lantitude;
-    center.longitude=self.response.longtitude;
-    [_mapView removeAnnotations:[_mapView annotations]];
-    MapLocation *location = [[[MapLocation alloc] init] autorelease];
-    location.coordinate = center;
-    location.theTitle = self.response.gymnasiumName;
-    [self.mapView addAnnotation:location];
-    
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(center, 5000, 5000);
-    MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
-    [_mapView setRegion:adjustedRegion animated:YES];
+    [self dealWithMapData];
     [self.mapView setExclusiveTouch:YES];
     [self.tableView reloadData];
     [self.view addSubview:self.tableView];}

@@ -113,9 +113,27 @@
     return _coachesRequest;
 }
 
+- (void) startLocation
+{
+    __block DidContactClassesViewController *blockSelf = self;
+    [STLocationInstance sharedInstance].placeBlock = ^(id place) {
+        CLPlacemark *placemark = (CLPlacemark *) place;
+        blockSelf.coachesRequest.longitude = placemark.location.coordinate.longitude;
+        blockSelf.coachesRequest.latitude = placemark.location.coordinate.latitude;
+        [SVProgressHUD showSuccessWithStatus:@"定位成功"];
+        [blockSelf sendRequestToServer];
+    };
+}
+
 
 - (void) sendRequestToServer
 {
+    if (![STLocationInstance sharedInstance].checkinLocation) {
+        [SVProgressHUD showWithOnlyStatus:@"正在定位..." duration:30];
+        [self startLocation];
+        return;
+    }
+    
     __block DidContactClassesViewController *blockSelf = self;
     idBlock succBlock = ^(id content){
         DEBUGLOG(@"succeed content %@", content);
@@ -141,6 +159,8 @@
         [SVProgressHUD dismiss];
     };
     self.coachesRequest.userId = [self currentUserId];
+    self.coachesRequest.longitude = [STLocationInstance sharedInstance].checkinLocation.coordinate.longitude;
+    self.coachesRequest.latitude = [STLocationInstance sharedInstance].checkinLocation.coordinate.latitude;
     [WASBaseServiceFace serviceWithMethod:[self.coachesRequest URLString] body:[self.coachesRequest toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
 }
 @end

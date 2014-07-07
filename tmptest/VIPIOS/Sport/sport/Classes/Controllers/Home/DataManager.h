@@ -11,7 +11,7 @@
 #import "PaggingResponse.h"
 
 @interface DataManager : NSObject
-@property (nonatomic, copy)   NSString *serviceTel;
+@property (nonatomic, retain) NSMutableArray *serviceTels;
 @property (nonatomic, retain) NSMutableArray *cateArray;
 @property (nonatomic, retain) NSMutableArray *distanceArray;
 @property (nonatomic, retain) NSMutableArray *sortArray;

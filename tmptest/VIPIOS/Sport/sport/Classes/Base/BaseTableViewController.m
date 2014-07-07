@@ -174,8 +174,8 @@
         cell.topLabel.font = cell.subLabel.font = HTFONTSIZE(kFontSize18);
         cell.leftImageView.frame = CGRectMake(8, 3, 44, 44);
         cell.leftImageView.layer.borderColor = [kWhiteColor CGColor];
-        cell.leftImageView.layer.cornerRadius = 22.0f;
-        cell.leftImageView.layer.borderWidth = 2.0f;
+        cell.leftImageView.layer.cornerRadius = 2.0f;
+        cell.leftImageView.layer.borderWidth = 1.0f;
         [cell.contentView addSubview:cell.topLabel];
         [cell.contentView addSubview:cell.subLabel];
         [cell.contentView addSubview:cell.leftImageView];

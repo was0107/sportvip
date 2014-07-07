@@ -111,7 +111,7 @@
 
 - (void)dealloc{
     
-    TT_RELEASE_SAFELY(_phone);
+    TT_RELEASE_SAFELY(_phones);
     [super dealloc];
 }
 
@@ -119,13 +119,15 @@
     self = [super init];
     if (self) {
         NSArray *array = (NSArray *) dictionary;
-        if ([array count] > 0) {
-            NSDictionary *dictionary = [array objectAtIndex:0];
-            self.phone = [dictionary objectForKey:@"phone"];
-        } else {
-            self.phone = @"";
+        NSMutableArray *arrayResult = [NSMutableArray array];
+        @autoreleasepool {
+            for ( int i = 0 , total = [array count]; i < total; ++i) {
+                NSDictionary *dic = [array objectAtIndex:i];
+                TelItem *item = [TelItem hotItem:[dic objectForKey:@"phone"] name:[dic objectForKey:@"name"]];
+                [arrayResult addObject:item];
+            }
         }
-        
+        self.phones = arrayResult;
     }
     return self;
 }

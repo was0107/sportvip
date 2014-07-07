@@ -179,6 +179,7 @@
 - (void) dealloc
 {
     TT_RELEASE_SAFELY(_userId);
+    TT_RELEASE_SAFELY(_distance);
     [super dealloc];
 }
 
@@ -187,6 +188,9 @@
     NSMutableArray *array = [super keyArrays];
     [array addObject:@"userId"];
     [array addObject:@"type"];
+    [array addObject:@"lng"];
+    [array addObject:@"lat"];
+    [array addObject:@"distance"];
     return array;
 }
 
@@ -195,6 +199,9 @@
     NSMutableArray *array = [super valueArrays];
     [array addObject:self.userId];
     [array addObject:@"CONTACT"];
+    [array addObject:[NSNumber numberWithDouble:self.longitude]];
+    [array addObject:[NSNumber numberWithDouble:self.latitude]];
+    [array addObject:@""];
     return array;
 }
 
