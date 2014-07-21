@@ -287,7 +287,7 @@
     };
     
     self.tableView.cellNumberBlock = ^( UITableView *tableView, NSInteger section) {
-        return (NSInteger)(0 == _type) ? [blockSelf.response count] : [blockSelf.coachesResponse count];
+        return (NSInteger)(0 == _type) ? [blockSelf.response arrayCount] : [blockSelf.coachesResponse arrayCount];
     };
     
     self.tableView.sectionHeaderHeightBlock = ^( UITableView *tableView, NSInteger section){
