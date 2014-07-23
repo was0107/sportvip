@@ -159,6 +159,7 @@
             NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
             [dateFormatter setDateFormat:@"yyyy-MM-dd"];
             NSString *currentDateStr = [dateFormatter stringFromDate:date];
+            self.birthday = [date timeIntervalSince1970];
             [_birthdayButton setTitle:currentDateStr forState:UIControlStateNormal];
             DEBUGLOG(@"currentDateStr = %@",currentDateStr);
         };

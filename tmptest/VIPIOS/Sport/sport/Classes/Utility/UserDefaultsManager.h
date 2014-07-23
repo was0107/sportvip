@@ -47,6 +47,7 @@
 
 
 + (void)saveUserBirthDay:(long)birthDay;
++ (long) userBirthDay;
 
 
 /**

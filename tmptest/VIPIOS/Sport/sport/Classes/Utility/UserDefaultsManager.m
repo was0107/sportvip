@@ -90,6 +90,15 @@
     
 }
 
++ (long) userBirthDay
+{
+    NSNumber *number = [[NSUserDefaults standardUserDefaults] objectForKey:UDK_UserBirthDay];
+    if (!number) {
+        return 0;
+    }
+    return [number longValue];
+}
+
 + (NSString *) userCoverIcon
 {
     NSString *userCoverIcon = [[NSUserDefaults standardUserDefaults] objectForKey:UDK_UserCoverIcon];

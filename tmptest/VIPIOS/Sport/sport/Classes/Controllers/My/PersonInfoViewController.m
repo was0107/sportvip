@@ -84,24 +84,13 @@
     [self.scrollView addSubview:self.emailTextField];
     [self.emailTextField.pubTextField setEnabled:NO];
     [self.phoneTextField.pubTextField setEnabled:NO];
-    [self.nameTextField.pubTextField setEnabled:NO];
 
     [self.scrollView addSubview:self.confirmButton];
     [self.view addSubview:self.scrollView];
     
     [self showRight];
     [self.rightButton setTitle:@"退出" forState:UIControlStateNormal];
-    
-//#ifdef kUseSimulateData
-//    self.nameTextField.pubTextField.text = @"was0107";
-//    self.emailTextField.pubTextField.text = @"hr@163.com";
-//    self.phoneTextField.pubTextField.text = @"13611111111";
-//    self.pwdTextField.pubTextField.text = @"111111";
-//#else
-//#endif
-    
     [self initData];
-    // Do any additional setup after loading the view.
 }
 
 - (void) initData
@@ -109,6 +98,18 @@
     self.nameTextField.pubTextField.text = [UserDefaultsManager userName];
     self.emailTextField.pubTextField.text = [UserDefaultsManager userEmail];
     self.phoneTextField.pubTextField.text = [UserDefaultsManager userTel];
+    
+    long longDate = [UserDefaultsManager userBirthDay];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate * forwardDate = [NSDate dateWithTimeIntervalSince1970:longDate];
+    
+    self.birthday = (int)[forwardDate timeIntervalSince1970];
+    NSString *currentDate = [dateFormatter stringFromDate:forwardDate];
+    [dateFormatter release];
+    
+    [_birthdayButton setTitle:currentDate forState:UIControlStateNormal];
+
     
     if ([@"MALE" isEqualToString:[UserDefaultsManager userGender]]) {
         [self.zjWwitch setOn:YES animated:YES];
@@ -198,6 +199,7 @@
             NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
             [dateFormatter setDateFormat:@"yyyy-MM-dd"];
             NSString *currentDateStr = [dateFormatter stringFromDate:date];
+            self.birthday = [date timeIntervalSince1970];
             [_birthdayButton setTitle:currentDateStr forState:UIControlStateNormal];
             DEBUGLOG(@"currentDateStr = %@",currentDateStr);
         };
