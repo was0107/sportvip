@@ -178,6 +178,7 @@
         blockSelf.selectItemView.alpha = 1;
     }];
     
+    [_pickerView selectRow:_currentIndex inComponent:0 animated:YES];
     return self;
 }
 

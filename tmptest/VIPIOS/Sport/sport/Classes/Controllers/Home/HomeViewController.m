@@ -373,6 +373,7 @@
         [blockSelf.tableView tableViewDidFinishedLoading];
         EventsResponse *eventResponse = [[[EventsResponse alloc] initWithJsonString:content] autorelease];
         [[DataManager sharedInstance] resetSortArray:eventResponse];
+        _cateIndex = [[DataManager sharedInstance].sortArray count] - 1;
     };
     
     idBlock failedBlock = ^(id content) {
