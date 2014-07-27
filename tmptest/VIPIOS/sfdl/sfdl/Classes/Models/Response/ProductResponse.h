@@ -85,3 +85,25 @@
 @interface ProductPropertySearchResponse : ListPaggingResponseBase
 
 @end
+
+
+
+
+/*
+ *server
+ */
+
+@interface EnquiryListResponse : ListPaggingResponseBase
+
+@end
+
+
+@interface ViewEnquiryResponse : ListResponseBase
+@property (nonatomic, retain) EnquiryItem *item;
+
+@end
+
+@interface ReplyEnquiryResponse : ListResponseBase
+
+@end
+

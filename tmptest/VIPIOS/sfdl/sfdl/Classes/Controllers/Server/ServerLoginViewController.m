@@ -213,7 +213,7 @@
         [safeSelf.confirmButton setEnabled:YES];
     };
     
-    LoginRequest *request = [[[LoginRequest alloc] init] autorelease];
+    ServerLoginRequest *request = [[[ServerLoginRequest alloc] init] autorelease];
     request.username    = _phoneTextField.pubTextField.text;
     request.password = _pwdTextField.pubTextField.text;
     [WASBaseServiceFace serviceWithMethod:[request URLString] body:[request toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];

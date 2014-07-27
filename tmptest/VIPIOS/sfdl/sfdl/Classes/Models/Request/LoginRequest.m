@@ -40,6 +40,17 @@
 
 @end
 
+@implementation ServerLoginRequest
+
+
+- (NSString *) methodString
+{
+    return @"CompanyUser/login";
+}
+
+
+@end
+
 @implementation RegiseterRequest
 
 - (void) dealloc

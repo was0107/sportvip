@@ -147,5 +147,27 @@
 
 
 
+/*
+ *server
+ */
+
+@interface EnquiryListRequest : ListPaggingRequestBase
+@property (nonatomic, copy) NSString *username,*sign;
+
+@end
+
+@interface ViewEnquiryRequest : ListRequestBase
+
+@property (nonatomic, copy) NSString *username,*enquiryId,*sing;
+
+@end
+
+@interface ReplyEnquiryRequest : ViewEnquiryRequest
+
+@property (nonatomic, copy) NSString *title,*content;
+
+@end
+
+
 
 

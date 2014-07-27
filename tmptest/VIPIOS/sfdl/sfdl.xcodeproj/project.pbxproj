@@ -12,6 +12,8 @@
 		47DF7397194D83A80004CC63 /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 47DF7396194D83A80004CC63 /* RTLabel.m */; };
 		47DF739A194D952B0004CC63 /* AgentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47DF7399194D952B0004CC63 /* AgentListViewController.m */; };
 		47DF739D194D954E0004CC63 /* AgentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47DF739C194D954E0004CC63 /* AgentDetailViewController.m */; };
+		49B3E426198573E400F0822A /* EnquiryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B3E425198573E400F0822A /* EnquiryListViewController.m */; };
+		49B3E4291985743600F0822A /* ViewEnquiryViewContrller.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B3E4281985743600F0822A /* ViewEnquiryViewContrller.m */; };
 		DD06522F194DAABD00EECCBE /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DD06522E194DAABD00EECCBE /* SVProgressHUD.bundle */; };
 		DD129454197D134000D08A01 /* ProductCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD62B24195C276D00FE2C6B /* ProductCartViewController.m */; };
 		DD129455197D134000D08A01 /* URLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3F45193E029300043CA4 /* URLParser.m */; };
@@ -332,6 +334,10 @@
 		47DF7399194D952B0004CC63 /* AgentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgentListViewController.m; sourceTree = "<group>"; };
 		47DF739B194D954E0004CC63 /* AgentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgentDetailViewController.h; sourceTree = "<group>"; };
 		47DF739C194D954E0004CC63 /* AgentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgentDetailViewController.m; sourceTree = "<group>"; };
+		49B3E424198573E400F0822A /* EnquiryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnquiryListViewController.h; sourceTree = "<group>"; };
+		49B3E425198573E400F0822A /* EnquiryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnquiryListViewController.m; sourceTree = "<group>"; };
+		49B3E4271985743600F0822A /* ViewEnquiryViewContrller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewEnquiryViewContrller.h; sourceTree = "<group>"; };
+		49B3E4281985743600F0822A /* ViewEnquiryViewContrller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewEnquiryViewContrller.m; sourceTree = "<group>"; };
 		DD06522E194DAABD00EECCBE /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		DD1294ED197D134000D08A01 /* sfdl copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sfdl copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD1294EE197D134000D08A01 /* sfdl copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "sfdl copy-Info.plist"; path = "/Users/allenwang/Documents/==ruby/sportvip/tmptest/VIPIOS/sfdl/sfdl copy-Info.plist"; sourceTree = "<absolute>"; };
@@ -692,6 +698,10 @@
 			children = (
 				DD1294F0197D185B00D08A01 /* ServerLoginViewController.h */,
 				DD1294F1197D185B00D08A01 /* ServerLoginViewController.m */,
+				49B3E424198573E400F0822A /* EnquiryListViewController.h */,
+				49B3E425198573E400F0822A /* EnquiryListViewController.m */,
+				49B3E4271985743600F0822A /* ViewEnquiryViewContrller.h */,
+				49B3E4281985743600F0822A /* ViewEnquiryViewContrller.m */,
 			);
 			path = Server;
 			sourceTree = "<group>";
@@ -1533,6 +1543,7 @@
 				DD8EEAE11944243000CACC22 /* SearchViewController.m in Sources */,
 				DD3A3FEA193E029300043CA4 /* WASASICacheAdapter.m in Sources */,
 				DD3A3FF3193E029300043CA4 /* IdentifierValidator.m in Sources */,
+				49B3E4291985743600F0822A /* ViewEnquiryViewContrller.m in Sources */,
 				47DF7397194D83A80004CC63 /* RTLabel.m in Sources */,
 				DD3A3FB4193E029300043CA4 /* ListPaggingRequestBase.m in Sources */,
 				DD1294F2197D185B00D08A01 /* ServerLoginViewController.m in Sources */,
@@ -1566,6 +1577,7 @@
 				DD8EEB181944566900CACC22 /* KxMenu.m in Sources */,
 				DD3A3FB8193E029300043CA4 /* ErrorResponse.m in Sources */,
 				DD8EEADB1944243000CACC22 /* ProductCategoryViewController.m in Sources */,
+				49B3E426198573E400F0822A /* EnquiryListViewController.m in Sources */,
 				DD3A3FE5193E029300043CA4 /* DataTracker.m in Sources */,
 				DD8C9E771949854600436209 /* ProductRequest.m in Sources */,
 				DD3A3FF4193E029300043CA4 /* CustomSelectControl.m in Sources */,

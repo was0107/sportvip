@@ -16,6 +16,14 @@
 @end
 
 
+
+@interface ServerLoginRequest : LoginRequest
+
+@end
+
+
+
+
 @interface RegiseterRequest : LoginRequest
 
 @property (nonatomic, copy)     NSString    *email;

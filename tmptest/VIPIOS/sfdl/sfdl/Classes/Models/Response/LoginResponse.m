@@ -410,4 +410,25 @@
 @end
 
 
+@implementation EnquiryItem
+
+- (id) initWithDictionary:(const NSDictionary *) dictionary
+{
+    self = [super init];
+    if (self) {
+        self.enquiryId = [dictionary objectForKey:@"enquiryId"];
+        self.title = [dictionary objectForKey:@"title"];
+        self.content = [dictionary objectForKey:@"content"];
+        self.sendTime = [dictionary objectForKey:@"sendTime"];
+        self.status = [dictionary objectForKey:@"status"];
+        self.productList = [dictionary objectForKey:@"productList"];
+        self.progress = [dictionary objectForKey:@"progress"];
+    }
+    
+    return self;
+}
+
+@end
+
+
 
