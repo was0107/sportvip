@@ -93,7 +93,7 @@
 		DD3A3FED193E029300043CA4 /* WASBaseAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3F74193E029300043CA4 /* WASBaseAdapter.m */; };
 		DD3A3FEE193E029300043CA4 /* WASBaseServiceFace.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3F77193E029300043CA4 /* WASBaseServiceFace.m */; };
 		DD3A3FF0193E029300043CA4 /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3F7D193E029300043CA4 /* NSDate+Helper.m */; };
-		DD3A3FF1193E029300043CA4 /* UIImageView+(ASI).m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3F7F193E029300043CA4 /* UIImageView+(ASI).m */; };
+		DD3A3FF1193E029300043CA4 /* UIImageView+(ASI).m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3F7F193E029300043CA4 /* UIImageView+(ASI).m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		DD3A3FF2193E029300043CA4 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3A3F81193E029300043CA4 /* libMobClickLibrary.a */; };
 		DD3A3FF3193E029300043CA4 /* IdentifierValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3F85193E029300043CA4 /* IdentifierValidator.m */; };
 		DD3A3FF4193E029300043CA4 /* CustomSelectControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A3F88193E029300043CA4 /* CustomSelectControl.m */; };

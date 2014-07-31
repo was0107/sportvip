@@ -63,7 +63,6 @@
 		DD28C9C4198A453900177D00 /* CreateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = DD28C954198A453900177D00 /* CreateObject.m */; };
 		DD28C9C5198A453900177D00 /* URLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DD28C956198A453900177D00 /* URLParser.m */; };
 		DD28C9C6198A453900177D00 /* UserDefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DD28C959198A453900177D00 /* UserDefaultsManager.m */; };
-		DD28C9C7198A453900177D00 /* AKTabBarController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DD28C95C198A453900177D00 /* AKTabBarController.bundle */; };
 		DD28C9C8198A453900177D00 /* DataTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = DD28C95F198A453900177D00 /* DataTracker.m */; };
 		DD28C9C9198A453900177D00 /* ViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD28C962198A453900177D00 /* ViewPagerController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		DD28C9CA198A453900177D00 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DD28C966198A453900177D00 /* MBProgressHUD.m */; };
@@ -219,7 +218,6 @@
 		DD28C957198A453900177D00 /* URLRequestHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLRequestHeader.h; sourceTree = "<group>"; };
 		DD28C958198A453900177D00 /* UserDefaultsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaultsManager.h; sourceTree = "<group>"; };
 		DD28C959198A453900177D00 /* UserDefaultsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaultsManager.m; sourceTree = "<group>"; };
-		DD28C95C198A453900177D00 /* AKTabBarController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AKTabBarController.bundle; sourceTree = "<group>"; };
 		DD28C95E198A453900177D00 /* DataTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataTracker.h; sourceTree = "<group>"; };
 		DD28C95F198A453900177D00 /* DataTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataTracker.m; sourceTree = "<group>"; };
 		DD28C961198A453900177D00 /* ViewPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewPagerController.h; sourceTree = "<group>"; };
@@ -613,7 +611,6 @@
 		DD28C95A198A453900177D00 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				DD28C95B198A453900177D00 /* AKTabBarController */,
 				DD28C95D198A453900177D00 /* DataTracker */,
 				DD28C960198A453900177D00 /* ICViewPager */,
 				DD28C963198A453900177D00 /* iRate */,
@@ -626,14 +623,6 @@
 				DD28C981198A453900177D00 /* Validator */,
 			);
 			path = Vendor;
-			sourceTree = "<group>";
-		};
-		DD28C95B198A453900177D00 /* AKTabBarController */ = {
-			isa = PBXGroup;
-			children = (
-				DD28C95C198A453900177D00 /* AKTabBarController.bundle */,
-			);
-			path = AKTabBarController;
 			sourceTree = "<group>";
 		};
 		DD28C95D198A453900177D00 /* DataTracker */ = {
@@ -847,7 +836,6 @@
 				DD28C9B8198A453900177D00 /* home5@2x.png in Resources */,
 				DD28C9B3198A453900177D00 /* home12@2x.png in Resources */,
 				DD28C9F9198A482700177D00 /* Default.png in Resources */,
-				DD28C9C7198A453900177D00 /* AKTabBarController.bundle in Resources */,
 				DD28C9B0198A453900177D00 /* bg_top.png in Resources */,
 				DD28C9B4198A453900177D00 /* home1@2x.png in Resources */,
 				DD28C9B6198A453900177D00 /* home3@2x.png in Resources */,
@@ -968,7 +956,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -977,7 +965,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Haibo Liu (4RT4T5V272)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Haibo Liu (4RT4T5V272)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -995,6 +984,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "90B1C7D9-2EC4-4272-95D7-D7231B602524";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1006,7 +996,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -1015,7 +1005,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Haibo Liu (4RT4T5V272)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Haibo Liu (4RT4T5V272)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1026,6 +1017,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PROVISIONING_PROFILE = "90B1C7D9-2EC4-4272-95D7-D7231B602524";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1038,9 +1030,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Haibo Liu (4RT4T5V272)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Haibo Liu (4RT4T5V272)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sfdlserver/sfdlserver-Prefix.pch";
 				INFOPLIST_FILE = "sfdlserver/sfdlserver-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/sfdlserver/Classes/Vendor/Umeng",
@@ -1048,6 +1043,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "90B1C7D9-2EC4-4272-95D7-D7231B602524";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../PrettyUtility/\"/**";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -1061,9 +1057,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Haibo Liu (4RT4T5V272)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Haibo Liu (4RT4T5V272)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sfdlserver/sfdlserver-Prefix.pch";
 				INFOPLIST_FILE = "sfdlserver/sfdlserver-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/sfdlserver/Classes/Vendor/Umeng",
@@ -1071,6 +1070,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "90B1C7D9-2EC4-4272-95D7-D7231B602524";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../PrettyUtility/\"/**";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -1136,6 +1136,7 @@
 				DD28C8F3198A424800177D00 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DD28C8F4198A424800177D00 /* Build configuration list for PBXNativeTarget "sfdlserverTests" */ = {
 			isa = XCConfigurationList;
@@ -1144,6 +1145,7 @@
 				DD28C8F6198A424800177D00 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

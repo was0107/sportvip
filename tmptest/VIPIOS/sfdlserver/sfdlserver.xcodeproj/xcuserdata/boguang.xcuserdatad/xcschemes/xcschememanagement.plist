@@ -4,25 +4,20 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>sfdl.xcscheme</key>
+		<key>sfdlserver.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>4</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>DD129452197D134000D08A01</key>
+		<key>DD28C8BE198A424700177D00</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DD3A3E74193E014D00043CA4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DD3A3E95193E014D00043CA4</key>
+		<key>DD28C8DF198A424700177D00</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -21,6 +21,14 @@
 @implementation EnquiryListViewController
 
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.secondTitleLabel.text = @"Enquiry List";
+    [self sendRequestToServer];
+    // Do any additional setup after loading the view.
+}
+
 - (void) configTableView
 {
     __block typeof(self) blockSelf = self;

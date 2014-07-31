@@ -12,7 +12,7 @@
 #import "LoginRequest.h"
 #import "LoginResponse.h"
 #import "CreateObject.h"
-
+#import "EnquiryListViewController.h"
 
 @interface ServerLoginViewController ()
 @property (nonatomic, retain) PubTextField *phoneTextField;
@@ -155,7 +155,11 @@
 - (IBAction)confirmButtonAction:(id)sender
 {
     [self.pwdTextField resignFirstResponder];
-    [self requestServerForLogin:sender];
+    
+    EnquiryListViewController *controller = [[[EnquiryListViewController alloc] init] autorelease];
+    [controller setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:controller animated:YES];
+//    [self requestServerForLogin:sender];
 }
 
 
