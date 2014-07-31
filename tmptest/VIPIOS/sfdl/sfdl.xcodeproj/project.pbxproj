@@ -491,13 +491,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4920696D198A2F6C00B5B054 /* server */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = server;
-			sourceTree = "<group>";
-		};
 		DD1294EF197D13B500D08A01 /* Server */ = {
 			isa = PBXGroup;
 			children = (
@@ -704,7 +697,6 @@
 		DD3A3EAD193E029300043CA4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				4920696D198A2F6C00B5B054 /* server */,
 				DD8EEA801944243000CACC22 /* Controllers */,
 				DD3A3EAE193E029300043CA4 /* AppDelegate */,
 				DD3A3EB1193E029300043CA4 /* Base */,

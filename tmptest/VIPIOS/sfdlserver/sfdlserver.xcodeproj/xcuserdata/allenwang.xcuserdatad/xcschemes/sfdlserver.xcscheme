@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DD129452197D134000D08A01"
-               BuildableName = "sfdl copy.app"
+               BlueprintIdentifier = "DD28C8BE198A424700177D00"
+               BuildableName = "sfdlserver.app"
                BlueprintName = "sfdlserver"
-               ReferencedContainer = "container:sfdl.xcodeproj">
+               ReferencedContainer = "container:sfdlserver.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,14 +28,24 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DD28C8DF198A424700177D00"
+               BuildableName = "sfdlserverTests.xctest"
+               BlueprintName = "sfdlserverTests"
+               ReferencedContainer = "container:sfdlserver.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DD129452197D134000D08A01"
-            BuildableName = "sfdl copy.app"
+            BlueprintIdentifier = "DD28C8BE198A424700177D00"
+            BuildableName = "sfdlserver.app"
             BlueprintName = "sfdlserver"
-            ReferencedContainer = "container:sfdl.xcodeproj">
+            ReferencedContainer = "container:sfdlserver.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -51,10 +61,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DD129452197D134000D08A01"
-            BuildableName = "sfdl copy.app"
+            BlueprintIdentifier = "DD28C8BE198A424700177D00"
+            BuildableName = "sfdlserver.app"
             BlueprintName = "sfdlserver"
-            ReferencedContainer = "container:sfdl.xcodeproj">
+            ReferencedContainer = "container:sfdlserver.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -69,10 +79,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DD129452197D134000D08A01"
-            BuildableName = "sfdl copy.app"
+            BlueprintIdentifier = "DD28C8BE198A424700177D00"
+            BuildableName = "sfdlserver.app"
             BlueprintName = "sfdlserver"
-            ReferencedContainer = "container:sfdl.xcodeproj">
+            ReferencedContainer = "container:sfdlserver.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
