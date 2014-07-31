@@ -487,9 +487,10 @@
 				DD130EA518FD26EF006FA005 /* libsqlite3.dylib in Frameworks */,
 				DD130EA318FD26E6006FA005 /* libxml2.dylib in Frameworks */,
 				DD130EA118FD265E006FA005 /* libPrettyUtility.a in Frameworks */,
+				DDB0D43A1924E08300490E35 /* libMobClickLibrary.a in Frameworks */,
+				DDB0D42E1924E08300490E35 /* libGoogleAnalytics.a in Frameworks */,
 				DD130FBC18FD595B006FA005 /* Accelerate.framework in Frameworks */,
 				DD130FBA18FD593D006FA005 /* MessageUI.framework in Frameworks */,
-				DDB0D43A1924E08300490E35 /* libMobClickLibrary.a in Frameworks */,
 				DD130EAD18FD2715006FA005 /* CoreFoundation.framework in Frameworks */,
 				DD130FB818FD5874006FA005 /* MobileCoreServices.framework in Frameworks */,
 				DD130FB618FD582F006FA005 /* SystemConfiguration.framework in Frameworks */,
@@ -501,7 +502,6 @@
 				DD130E6318FD1D4B006FA005 /* CoreGraphics.framework in Frameworks */,
 				DD130E6518FD1D4B006FA005 /* UIKit.framework in Frameworks */,
 				DD130E6118FD1D4B006FA005 /* Foundation.framework in Frameworks */,
-				DDB0D42E1924E08300490E35 /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
