@@ -650,7 +650,6 @@
 {
     TT_RELEASE_SAFELY(_title);
     TT_RELEASE_SAFELY(_content);
-    TT_RELEASE_SAFELY(_sign);
     [super dealloc];
 }
 

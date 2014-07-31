@@ -158,7 +158,7 @@
 
 @interface ViewEnquiryRequest : ListRequestBase
 
-@property (nonatomic, copy) NSString *username,*enquiryId,*sing;
+@property (nonatomic, copy) NSString *username,*enquiryId,*sign;
 
 @end
 
