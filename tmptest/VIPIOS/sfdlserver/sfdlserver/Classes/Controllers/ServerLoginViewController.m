@@ -34,8 +34,8 @@
 //    [self.view addSubview:self.newButton];
     
 #ifdef kUseSimulateData
-    self.phoneTextField.pubTextField.text = @"Username";
-    self.pwdTextField.pubTextField.text = @"Password";
+    self.phoneTextField.pubTextField.text = @"haibo";
+    self.pwdTextField.pubTextField.text = @"admin123";
 #endif
 }
 
@@ -155,11 +155,7 @@
 - (IBAction)confirmButtonAction:(id)sender
 {
     [self.pwdTextField resignFirstResponder];
-    
-    EnquiryListViewController *controller = [[[EnquiryListViewController alloc] init] autorelease];
-    [controller setHidesBottomBarWhenPushed:YES];
-    [self.navigationController pushViewController:controller animated:YES];
-//    [self requestServerForLogin:sender];
+    [self requestServerForLogin:sender];
 }
 
 
@@ -201,7 +197,10 @@
         [UserDefaultsManager saveKey:response.key];
         [safeSelf.confirmButton setEnabled:YES];
         [SVProgressHUD dismiss];
-        [safeSelf.navigationController popToRootViewControllerAnimated:YES];
+
+        EnquiryListViewController *controller = [[[EnquiryListViewController alloc] init] autorelease];
+        [controller setHidesBottomBarWhenPushed:YES];
+        [safeSelf.navigationController pushViewController:controller animated:YES];
     };
     
     idBlock failedBlock = ^(id content){

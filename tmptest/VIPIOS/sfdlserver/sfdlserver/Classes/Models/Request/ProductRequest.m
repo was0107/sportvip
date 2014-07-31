@@ -26,7 +26,7 @@
 - (NSMutableArray *) valueArrays
 {
     NSMutableString *computeSign = [NSMutableString string];
-    [computeSign appendFormat:@"companyId%@username%@",self.comapnyId,self.username];
+    [computeSign appendFormat:@"companyId%@key%@username%@",self.comapnyId,[UserDefaultsManager currentKey],self.username];
     self.sign = [computeSign md5String];
     NSMutableArray *array =   [NSMutableArray arrayWithObjects:self.username,self.sign, nil];
     [array addObjectsFromArray: [super valueArrays]];
@@ -59,7 +59,7 @@
 - (NSMutableArray *) valueArrays
 {
     NSMutableString *computeSign = [NSMutableString string];
-    [computeSign appendFormat:@"companyId%@enquiryId%@username%@",self.comapnyId,self.enquiryId,self.username];
+    [computeSign appendFormat:@"companyId%@enquiryId%@key%@username%@",self.comapnyId,self.enquiryId,[UserDefaultsManager currentKey],self.username];
     self.sign = [computeSign md5String];
     NSMutableArray *array =   [NSMutableArray arrayWithObjects:self.username,self.enquiryId,self.sign, nil];
     [array addObjectsFromArray: [super valueArrays]];
@@ -91,7 +91,8 @@
 - (NSMutableArray *) valueArrays
 {
     NSMutableString *computeSign = [NSMutableString string];
-    [computeSign appendFormat:@"companyId%@content%@enquiryId%@title%@username%@",self.comapnyId,self.content,self.enquiryId,self.title,self.username];
+    [computeSign appendFormat:@"companyId%@content%@enquiryId%@key%@title%@username%@",self.comapnyId,self.content,
+     self.enquiryId,[UserDefaultsManager currentKey],self.title,self.username];
     self.sign = [computeSign md5String];
     NSMutableArray *array =   [NSMutableArray arrayWithObjects:self.title,self.content,self.sign, nil];
     [array addObjectsFromArray: [super valueArrays]];

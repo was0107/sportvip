@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "APService.h"
 
 @interface AppDelegate()
 @property (nonatomic, retain) ServerLoginViewController *rootController;
@@ -29,13 +30,20 @@
     self.rootController = [[[ServerLoginViewController alloc] init] autorelease];
     UINavigationController *controller = [[[UINavigationController alloc] initWithRootViewController:self.rootController] autorelease];
     controller.navigationBar.backgroundColor = kButtonNormalColor;
-
-//    [UINavigationBar appearance].barTintColor = kButtonNormalColor;
-//    controller.navigationBar.barTintColor = kButtonNormalColor;
-//    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [controller setNavigationBarHidden:NO];
     self.window.rootViewController = controller;
     [self.window makeKeyAndVisible];
+    
+    [self moniterJpush];
+    // Required
+    [APService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    // Required
+    [APService setupWithOption:launchOptions];
+    
+    if ([UserDefaultsManager userName].length > 0) {
+        [APService setTags:[NSSet setWithObject:@"IOS"] alias:[UserDefaultsManager userName]];
+    }
+    
     return YES;
 }
 
@@ -56,12 +64,14 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [application setApplicationIconBadgeNumber:0];
+
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -72,6 +82,66 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    [APService registerDeviceToken:deviceToken];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *) error {
+    NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [APService handleRemoteNotification:userInfo];
+}
+
+
+- (void) moniterJpush
+{
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter addObserver:self selector:@selector(networkDidSetup:) name:kAPNetworkDidSetupNotification object:nil];
+    [defaultCenter addObserver:self selector:@selector(networkDidClose:) name:kAPNetworkDidCloseNotification object:nil];
+    [defaultCenter addObserver:self selector:@selector(networkDidRegister:) name:kAPNetworkDidRegisterNotification object:nil];
+    [defaultCenter addObserver:self selector:@selector(networkDidLogin:) name:kAPNetworkDidLoginNotification object:nil];
+    [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kAPNetworkDidReceiveMessageNotification object:nil];
+}
+
+
+//avoid compile error for sdk under 7.0
+#ifdef __IPHONE_7_0
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    [APService handleRemoteNotification:userInfo];
+    completionHandler(UIBackgroundFetchResultNoData);
+}
+#endif
+
+#pragma mark -
+
+- (void)networkDidSetup:(NSNotification *)notification {
+    NSLog(@"已连接");
+}
+
+- (void)networkDidClose:(NSNotification *)notification {
+    NSLog(@"未连接。。。");
+}
+
+- (void)networkDidRegister:(NSNotification *)notification {
+    NSLog(@"已注册");
+}
+
+- (void)networkDidLogin:(NSNotification *)notification {
+    NSLog(@"已登录");
+}
+
+- (void)networkDidReceiveMessage:(NSNotification *)notification {
+    NSDictionary * userInfo = [notification userInfo];
+    NSString *title = [userInfo valueForKey:@"title"];
+    NSString *content = [userInfo valueForKey:@"content"];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    NSLog(@"user info = %@ title = %@ content= %@", userInfo, title, content);
 }
 
 @end

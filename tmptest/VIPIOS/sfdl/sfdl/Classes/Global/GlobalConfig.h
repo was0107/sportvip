@@ -40,16 +40,12 @@
 
 #define kHostDomain         @"http://112.124.12.144/mcms/index.php/Mobile/"    // test stage
 
-
 // 正式环境
 #else       
 
-#define kHostDomain         @"http://m.gwmei.com/"
+#define kHostDomain         @"http://112.124.12.144/mcms/index.php/Mobile/"    // test stage
 
-#endif  
-
-#define kImageHostDomain    @"http://img.b5m.com/image/"
-
+#endif
 
 #endif
 
