@@ -52,7 +52,7 @@
 - (void)sendRequestToServer
 {
     
-    __unsafe_unretained AboutUsViewController *safeSelf = self;
+    __block typeof(self) safeSelf = self;
     
     idBlock succBlock = ^(id content){
         DEBUGLOG(@"succ content %@", content);

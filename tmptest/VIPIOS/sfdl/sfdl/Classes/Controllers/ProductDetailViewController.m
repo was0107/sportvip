@@ -135,10 +135,10 @@
     
     CGFloat yPosition = self.webView.y + self.webView.height;
     
-    NSString *image[] = {@"icon",@"icon",@"icon"};
+    NSString *image[] = {@"icon_vedio",@"icon_message",@"icon_phone"};
     NSString *names[] = {@"Video",@"Leave Messages",@"Contact Us"};
     for (int i = 0; i< 3; i++) {
-        CustomLeftImageButton *imageButton = [[[CustomLeftImageButton alloc] initWithFrame:CGRectMake(i * 105 + 1, yPosition, 104, 44)] autorelease];
+        CustomLeftImageButton *imageButton = [[[CustomLeftImageButton alloc] initWithFrame:CGRectMake(i * 105, yPosition, 107, 44)] autorelease];
         imageButton.tag = 1000+i;
         imageButton.backgroundColor = kBlackColor;
         imageButton.leftImageView.image = [UIImage imageNamed:image[i]];
@@ -303,9 +303,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.scrollView = [[[UIKeyboardAvoidingScrollView alloc] initWithFrame:CGRectMake(0,  0, 320.0, kContentBoundsHeight)] autorelease];
+    self.scrollView.backgroundColor = kClearColor;
+    self.scrollView.contentSize = CGSizeMake(320, kContentBoundsHeight);
+    
     [self.tableView setup];
+    CGRect rect = self.tableView.frame;
+    rect.origin.y = rect.size.height-44;
+    rect.size.height = 110;
+    self.footerView.frame = rect;
+    [self.scrollView addSubview:self.tableView];
+    [self.scrollView addSubview:self.footerView];
+    [self.view addSubview:self.scrollView];
     [self sendRequestToServer];
     // Do any additional setup after loading the view.
+}
+
+
+- (CGRect) tableViewFrame
+{
+    CGRect rect = kContentFrame;
+    rect.size.height -= 110;
+    return rect;
 }
 
 - (int) tableViewType
@@ -318,6 +338,8 @@
     if (!_commentView) {
         _commentView = [[UITextView alloc] initWithFrame:CGRectMake(10, 10, 300, 60)];
         _commentView.layer.cornerRadius = 2.0f;
+        _commentView.returnKeyType  = UIReturnKeyDone;
+        _commentView.delegate = self;
         _commentView.layer.borderColor = [kBlueColor CGColor];
         _commentView.layer.borderWidth = 1.0f;
         _commentView.delegate = self;
@@ -380,7 +402,7 @@
 {
     __block ProductDetailCommentController *blockSelf = self;
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
-    self.tableView.tableFooterView = [self footerView];//[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
     self.tableView.cellCreateBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
         static NSString *identifier = @"ProductCategoryViewController_IDENTIFIER0";
         BaseNewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -428,7 +450,7 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     };
     
-    [self.view addSubview:self.tableView];
+    [self.scrollView addSubview:self.tableView];
 }
 
 - (void) dealWithData
@@ -470,4 +492,18 @@
     
     [WASBaseServiceFace serviceWithMethod:[self.request URLString] body:[self.request toJsonString] onSuc:successedBlock onFailed:failedBlock onError:errBlock];
 }
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text; {
+    
+    if ([@"\n" isEqualToString:text] == YES) {
+        [self.commentView resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    [self.commentView resignFirstResponder];
+}
+
 @end

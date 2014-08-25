@@ -286,7 +286,7 @@
 {
     NSString *lang = [[NSUserDefaults standardUserDefaults] objectForKey:@"COMPANY_ID"];
     if (!lang || [lang length] == 0) {
-        return @"1";
+        return @"2";
     }
     return lang;
 }

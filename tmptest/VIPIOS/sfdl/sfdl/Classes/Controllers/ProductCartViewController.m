@@ -30,6 +30,10 @@
 {
     [super viewDidLoad];
     self.secondTitleLabel.text = @"Product Carts";
+    self.scrollView = [[[UIKeyboardAvoidingScrollView alloc] initWithFrame:CGRectMake(0,  44, 320.0, kContentBoundsHeight-44)] autorelease];
+    self.scrollView.backgroundColor = kWhiteColor;
+    [self.scrollView addSubview:self.tableView];
+    [self.view addSubview:self.scrollView];
     // Do any additional setup after loading the view.
 }
 
@@ -38,6 +42,11 @@
     [super viewDidAppear:animated];
     [self.tableView reloadData];
     [self enableBuyButton];
+}
+
+- (CGRect) tableViewFrame
+{
+    return CGRectMake(0, 0, 320.0, kContentBoundsHeight-40);
 }
 
 - (int) tableViewType
@@ -147,7 +156,6 @@
         [blockSelf.navigationController pushViewController:controller animated:YES];
     };
     
-    [self.view addSubview:self.tableView];
 }
 
 - (void) enableBuyButton
@@ -227,6 +235,10 @@
 
 - (IBAction)submitButtonAction:(id)sender
 {
+    if (self.commentView.text.length == 0) {
+        [SVProgressHUD showErrorWithStatus:@"Remark 不能为空"];
+        return;
+    }
     NSMutableString *quantityListId = [NSMutableString string];
     NSMutableString *listId = [NSMutableString string];
     NSMutableString *listTitle = [NSMutableString string];
@@ -281,6 +293,20 @@
 //    addCommentRequest.quantityList = [quantityListId substringToIndex:quantityListId.length - 1];
     [WASBaseServiceFace serviceWithMethod:[addCommentRequest URLString] body:[addCommentRequest toJsonString] onSuc:successedBlock onFailed:failedBlock onError:errBlock];
     
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text; {
+    
+    if ([@"\n" isEqualToString:text] == YES) {
+        [self.commentView resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    [self.commentView resignFirstResponder];
 }
 
 @end

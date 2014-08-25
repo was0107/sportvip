@@ -73,6 +73,13 @@
         self.companyName = [company objectForKey:@"company_name"];
         self.companyDes = [company objectForKey:@"company_desc"];
         self.contactus = [company objectForKey:@"contactus"];
+        if ([self.companyDes isKindOfClass:[NSNull class]]) {
+            self.companyDes = @"";
+        }
+        if ([self.contactus isKindOfClass:[NSNull class]]) {
+            self.contactus = @"";
+        }
+        
     }
     
     return self;

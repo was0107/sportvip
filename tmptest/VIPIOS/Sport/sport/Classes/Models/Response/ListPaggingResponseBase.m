@@ -116,6 +116,9 @@
 
 - (id) at:(NSInteger) index
 {
+    if (index >= [self.result count]) {
+        return nil;
+    }
     return [self.result objectAtIndex:index];
 }
 

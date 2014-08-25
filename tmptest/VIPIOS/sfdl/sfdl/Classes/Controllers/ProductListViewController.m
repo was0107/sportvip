@@ -129,7 +129,7 @@
     };
     
     self.tableView.loadMoreBlock = ^(id content) {
-        if (![blockSelf.request isFristPage]) {
+        if (blockSelf.request  && ![blockSelf.request isFristPage]) {
             [blockSelf sendRequestToServer];
         }
     };

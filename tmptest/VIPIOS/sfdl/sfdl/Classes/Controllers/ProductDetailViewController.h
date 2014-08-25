@@ -11,6 +11,7 @@
 #import "ProductRequest.h"
 #import "ProductResponse.h"
 #import "GrowAndDownControl.h"
+#import "UIKeyboardAvoidingScrollView.h"
 
 @interface ProductDetailViewController : ViewPagerController
 @property (nonatomic, retain) ProductItem *productItem;
@@ -42,4 +43,6 @@
 @property (nonatomic, retain) ProductItem *productItem;
 @property (nonatomic, retain) CommentListRequest    *request;
 @property (nonatomic, retain) CommentsResponse      *response;
+@property (nonatomic, retain) UIKeyboardAvoidingScrollView            *scrollView;
+
 @end

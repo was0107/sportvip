@@ -384,6 +384,9 @@
             tag =4 * j + i;
             CustomImageTitleButton *button = (CustomImageTitleButton *)[self.view viewWithTag:1000+tag];
             MenuItem *menuItem = [self.menuResponse at:tag ];
+            if (!menuItem) {
+                break;
+            }
             [button setText:menuItem.menu_name image:menuItem.icon];
         }
     }
@@ -392,7 +395,7 @@
 
 - (void) sendRequestToGetMenu
 {
-    __weak RootViewController *blockSelf = self;
+    __block typeof(self) blockSelf = self;
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
         blockSelf.menuResponse = [[[MenuResponse alloc] initWithJsonString:content] autorelease];

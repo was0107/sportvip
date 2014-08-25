@@ -15,4 +15,6 @@
 @property (nonatomic, retain) UIButton   *submitButton,*goBackShoppingButton;
 @property (nonatomic, retain) UIView     *footerView;
 @property (nonatomic, retain) UILabel    *tipLabel;
+@property (nonatomic, retain) UIKeyboardAvoidingScrollView            *scrollView;
+
 @end

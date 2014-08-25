@@ -10,7 +10,7 @@
 
 #define kDefaultTabHeight 44.0 // Default tab height
 #define kDefaultTabOffset 56.0 // Offset of the second and further tabs' from left
-#define kDefaultTabWidth 128.0
+#define kDefaultTabWidth 160.0
 
 #define kDefaultTabLocation 1.0 // 1.0: Top, 0.0: Bottom
 

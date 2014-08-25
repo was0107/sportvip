@@ -44,6 +44,7 @@
 {
     if (!_topButton) {
         _topButton = [[UIButton alloc]initWithFrame:CGRectMake(3, 3, 70, 70)];
+        _topButton.contentEdgeInsets = UIEdgeInsetsMake(15,15,15,15);
         _topButton.contentMode = UIViewContentModeCenter;
         [_topButton setBackgroundImage:[[UIImage imageWithColor:kButtonNormalColor size:CGSizeMake(10, 10)] stretchableImageWithLeftCapWidth:5 topCapHeight:5] forState:UIControlStateNormal];
         [_topButton setBackgroundImage:[[UIImage imageWithColor:kButtonSelectColor size:CGSizeMake(10, 10)] stretchableImageWithLeftCapWidth:5 topCapHeight:5] forState:UIControlStateHighlighted];
@@ -70,8 +71,8 @@
     self.bottomTitleLabel.text = text;
     if (imageName && [imageName hasPrefix:@"http"]) {
         
-        [self.topButton setImageWithURL:[NSURL URLWithString:imageName]];
-        _topButton.contentMode = UIViewContentModeCenter;
+        [self.topButton setImageWithURL:[NSURL URLWithString:imageName]] ;
+//        _topButton.contentMode = UIViewContentModeCenter;
     } else {
         [self.topButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
     }

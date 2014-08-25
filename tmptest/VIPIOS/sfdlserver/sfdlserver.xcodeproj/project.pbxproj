@@ -11,6 +11,7 @@
 		4940B375198A6D7D00829608 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4940B374198A6D7D00829608 /* Security.framework */; };
 		4940B377198A6DAF00829608 /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4940B376198A6DAF00829608 /* PushConfig.plist */; };
 		4940B37B198A6EB700829608 /* libPushSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4940B37A198A6EB700829608 /* libPushSDK.a */; };
+		4977D04019AB0B580089397C /* threfresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4977D03F19AB0B580089397C /* threfresh@2x.png */; };
 		DD28C8C3198A424700177D00 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD28C8C2198A424700177D00 /* Foundation.framework */; };
 		DD28C8C5198A424700177D00 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD28C8C4198A424700177D00 /* CoreGraphics.framework */; };
 		DD28C8C7198A424700177D00 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD28C8C6198A424700177D00 /* UIKit.framework */; };
@@ -128,6 +129,7 @@
 		4940B376198A6DAF00829608 /* PushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PushConfig.plist; sourceTree = "<group>"; };
 		4940B379198A6EB700829608 /* APService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APService.h; sourceTree = "<group>"; };
 		4940B37A198A6EB700829608 /* libPushSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPushSDK.a; sourceTree = "<group>"; };
+		4977D03F19AB0B580089397C /* threfresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "threfresh@2x.png"; path = "sfdl/threfresh@2x.png"; sourceTree = "<group>"; };
 		DD28C8BF198A424700177D00 /* sfdlserver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sfdlserver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD28C8C2198A424700177D00 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DD28C8C4198A424700177D00 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -587,6 +589,7 @@
 		DD28C93C198A453900177D00 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4977D03F19AB0B580089397C /* threfresh@2x.png */,
 				DD28C93D198A453900177D00 /* bg_top.png */,
 				DD28C93E198A453900177D00 /* sfdl */,
 			);
@@ -872,6 +875,7 @@
 				DD28C9B0198A453900177D00 /* bg_top.png in Resources */,
 				DD28C9B4198A453900177D00 /* home1@2x.png in Resources */,
 				DD28C9B6198A453900177D00 /* home3@2x.png in Resources */,
+				4977D04019AB0B580089397C /* threfresh@2x.png in Resources */,
 				DD28C9C3198A453900177D00 /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

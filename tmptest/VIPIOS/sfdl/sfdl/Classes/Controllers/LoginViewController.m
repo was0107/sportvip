@@ -170,11 +170,11 @@
 //        return NO;
 //    }
     
-    if (![IdentifierValidator isValid:IdentifierTypePassword value:_pwdTextField.pubTextField.text]) {
-        [SVProgressHUD showErrorWithStatus:@"密码为6-16位的字母、数字组成"];
-        [_pwdTextField becomeFirstResponder];
-        return NO;
-    }
+//    if (![IdentifierValidator isValid:IdentifierTypePassword value:_pwdTextField.pubTextField.text]) {
+//        [SVProgressHUD showErrorWithStatus:@"密码为6-16位的字母、数字组成"];
+//        [_pwdTextField becomeFirstResponder];
+//        return NO;
+//    }
     
     return YES;
 }
