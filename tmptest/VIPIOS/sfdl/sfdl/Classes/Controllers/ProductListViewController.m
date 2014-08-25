@@ -137,7 +137,8 @@
     [self.view addSubview:self.tableView];
     
     if (self.productTypeId) {
-        [self.tableView doSendRequest:YES];
+//        [self.tableView doSendRequest:YES];
+        [self sendRequestToServer];
     }
 }
 

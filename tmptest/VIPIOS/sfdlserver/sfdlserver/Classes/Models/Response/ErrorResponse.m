@@ -33,8 +33,8 @@
 {
     self = [super init];
     if (self) {
-        self.errorCode  = [[dictionary objectForKey:@"errorCode"] integerValue];
-        self.msg        = [dictionary objectForKey:@"msg"];
+        self.errorCode  = [[dictionary objectForKey:@"code"] integerValue];
+        self.msg        = [dictionary objectForKey:@"message"];
         self.exception  = [dictionary objectForKey:@"exception"];
     }
     return self;

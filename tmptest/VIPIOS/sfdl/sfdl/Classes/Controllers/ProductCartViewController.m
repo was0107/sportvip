@@ -68,12 +68,18 @@
             cell.leftImageView .frame = CGRectMake(10, 10, 50, 50);
             cell.topLabel.numberOfLines = 2;
             cell.topLabel.textColor = kBlackColor;
-            GrowAndDownControl *labelTwo = [[[GrowAndDownControl alloc]initWithFrame:CGRectMake(140, 15, 170, 40)] autorelease];
+            GrowAndDownControl *labelTwo = [[[GrowAndDownControl alloc]initWithFrame:CGRectMake(140, 0, 170, 40)] autorelease];
             labelTwo.tag = 1000;
             cell.topLabel.font = HTFONTSIZE(kFontSize15);
+            [cell.rightButton setTitle:@"Remove" forState:UIControlStateNormal];
+            cell.rightButton.backgroundColor = kButtonNormalColor;
+            cell.rightButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+            [cell.rightButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
+            cell.rightButton.frame = CGRectMake(250, 40, 65, 30);
             [cell.contentView addSubview:cell.topLabel];
             [cell.contentView addSubview:cell.leftImageView];
             [cell.contentView addSubview:labelTwo];
+            [cell.contentView addSubview:cell.rightButton];
         }
         cell.contentView.tag  = 1024+indexPath.row;
         GrowAndDownControl *labelTwo = (GrowAndDownControl *)[cell.contentView viewWithTag:1000];
@@ -83,6 +89,13 @@
         labelTwo.value = item.buyCount;
         labelTwo.content = item;
         cell.content = item;
+        
+        cell.block = ^(id content){
+            [[[ProductCart sharedInstance] products] removeObjectAtIndex:indexPath.row];
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView reloadData];
+            [blockSelf enableBuyButton];
+        };
         [cell.leftImageView setImageWithURL:[NSURL URLWithString:item.productImg]
                            placeholderImage:[UIImage imageNamed:kImageDefault]
                                     success:^(UIImage *image){
@@ -180,9 +193,10 @@
 {
     if (!_goBackShoppingButton) {
         _goBackShoppingButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
-        _goBackShoppingButton.frame = CGRectMake(10, 120+24, 80, 30);
+        _goBackShoppingButton.frame = CGRectMake(5, 120+24, 150, 30);
         [CreateObject addTargetEfection:_goBackShoppingButton];
-        [_goBackShoppingButton setTitle:@"submit" forState:UIControlStateNormal];
+        _goBackShoppingButton.titleLabel.font = HTFONTSIZE(kFontSize14);
+        [_goBackShoppingButton setTitle:@"Continue Shopping" forState:UIControlStateNormal];
         [_goBackShoppingButton addTarget:self action:@selector(goBackButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _goBackShoppingButton;
@@ -192,9 +206,10 @@
 {
     if (!_submitButton) {
         _submitButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
-        _submitButton.frame = CGRectMake(10, 120+24, 80, 30);
+        _submitButton.frame = CGRectMake(165, 120+24, 150, 30);
+        _submitButton.titleLabel.font = HTFONTSIZE(kFontSize14);
         [CreateObject addTargetEfection:_submitButton];
-        [_submitButton setTitle:@"submit" forState:UIControlStateNormal];
+        [_submitButton setTitle:@"Submit" forState:UIControlStateNormal];
         [_submitButton addTarget:self action:@selector(submitButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _submitButton;

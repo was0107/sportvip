@@ -25,7 +25,7 @@
 
 @interface ReplyEnquiryRequest : ViewEnquiryRequest
 
-@property (nonatomic, copy) NSString *title,*content;
+@property (nonatomic, copy) NSString *title, *content;
 
 @end
 
