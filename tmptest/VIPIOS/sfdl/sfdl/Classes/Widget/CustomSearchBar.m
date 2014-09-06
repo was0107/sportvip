@@ -86,3 +86,54 @@
 
 
 @end
+
+
+
+@implementation CustomSearchBarEx
+
+
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code
+        
+        self.backgroundColor = kOrangeColor;
+        
+        UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 1, 233, frame.size.height-2)];
+        bgView.backgroundColor = kWhiteColor;
+        [self addSubview:bgView];
+        
+        
+        _label1 = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 220, 40)];
+        _label1.textColor = kBlackColor;
+        _label1.text = @"We're now providing comprehensive stable and timely solutions for Electricity ...";
+        _label1.numberOfLines = 2;
+        _label1.font = HTFONTSIZE(kFontSize12);
+        _label2 = [[UILabel alloc] initWithFrame:CGRectMake(240, 30, 70, 20)];
+        _label2.textColor = kWhiteColor;
+        _label2.text = @"Send Email";
+        _label2.numberOfLines = 2;
+        _label2.textAlignment = NSTextAlignmentCenter;
+        _label2.font = HTFONTSIZE(kFontSize12);
+        
+        UIImageView *icon = [[[UIImageView alloc] initWithFrame:CGRectMake(265, 5, 24, 24)] autorelease];;
+        [icon setImage:[UIImage imageNamed:@"ic_search_icon"]];
+        icon.backgroundColor = kClearColor;
+        [self addSubview:self.label1];
+        [self addSubview:self.label2];
+        [self addSubview:icon];
+    }
+    return self;
+}
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_label2);
+    TT_RELEASE_SAFELY(_label1);
+    [super dealloc];
+}
+
+
+@end

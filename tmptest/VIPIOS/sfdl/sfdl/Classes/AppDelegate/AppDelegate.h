@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RootViewController.h"
+#import "RootViewControllerEx.H"
 #import <ShareSDK/ShareSDK.h>
 #import <GoogleOpenSource/GoogleOpenSource.h>
 #import <GooglePlus/GooglePlus.h>

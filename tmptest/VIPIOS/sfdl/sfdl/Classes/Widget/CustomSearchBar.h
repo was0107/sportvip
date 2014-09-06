@@ -15,3 +15,11 @@ typedef void (^CompleteBlock)(NSString *keyword);
 @property (nonatomic, copy)     CompleteBlock    completeBlok;
 
 @end
+
+
+
+@interface CustomSearchBarEx : UIView
+
+@property (nonatomic, retain) UILabel *label1, *label2;
+
+@end

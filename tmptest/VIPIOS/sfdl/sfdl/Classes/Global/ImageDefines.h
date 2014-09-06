@@ -9,4 +9,4 @@
 
 
 #define kImageDefault     @"icon"
-#define KCustomGreenColor @"198A47"
+#define KCustomGreenColor @"f4f4f4"

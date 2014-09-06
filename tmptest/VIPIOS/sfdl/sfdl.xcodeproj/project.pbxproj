@@ -12,6 +12,19 @@
 		47DF7397194D83A80004CC63 /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 47DF7396194D83A80004CC63 /* RTLabel.m */; };
 		47DF739A194D952B0004CC63 /* AgentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47DF7399194D952B0004CC63 /* AgentListViewController.m */; };
 		47DF739D194D954E0004CC63 /* AgentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47DF739C194D954E0004CC63 /* AgentDetailViewController.m */; };
+		490CE84819BABFCF00C2F887 /* AKTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 490CE83919BABFCF00C2F887 /* AKTab.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		490CE84919BABFCF00C2F887 /* AKTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 490CE83B19BABFCF00C2F887 /* AKTabBar.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		490CE84A19BABFCF00C2F887 /* AKTabBarController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 490CE83D19BABFCF00C2F887 /* AKTabBarController.bundle */; };
+		490CE84B19BABFCF00C2F887 /* AKTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 490CE83F19BABFCF00C2F887 /* AKTabBarController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		490CE84C19BABFCF00C2F887 /* AKTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 490CE84119BABFCF00C2F887 /* AKTabBarView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		490CE84D19BABFCF00C2F887 /* UINavigationController+AKTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 490CE84319BABFCF00C2F887 /* UINavigationController+AKTabBarController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		490CE84F19BABFCF00C2F887 /* UIViewController+AKTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 490CE84719BABFCF00C2F887 /* UIViewController+AKTabBarController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		490CE85319BAC02600C2F887 /* RootViewControllerEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 490CE85219BAC02600C2F887 /* RootViewControllerEx.m */; };
+		490CE85619BAC16100C2F887 /* HomeViewControllerEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 490CE85519BAC16100C2F887 /* HomeViewControllerEx.m */; };
+		490CE85919BAC17400C2F887 /* InquiryViewControllerEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 490CE85819BAC17400C2F887 /* InquiryViewControllerEx.m */; };
+		490CE85F19BAD7EF00C2F887 /* UIMenuBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 490CE85C19BAD7EF00C2F887 /* UIMenuBar.m */; };
+		490CE86019BAD7EF00C2F887 /* UIMenuBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 490CE85E19BAD7EF00C2F887 /* UIMenuBarItem.m */; };
+		490CE86319BAE82000C2F887 /* CustomThreeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 490CE86219BAE82000C2F887 /* CustomThreeButton.m */; };
 		493D107A19ADD45E0003B366 /* back_home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493D107819ADD45E0003B366 /* back_home@2x.png */; };
 		493D107B19ADD45E0003B366 /* the_cart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 493D107919ADD45E0003B366 /* the_cart@2x.png */; };
 		494480E819AF8BE1006508DB /* the_order@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 494480E719AF8BE1006508DB /* the_order@2x.png */; };
@@ -190,6 +203,31 @@
 		47DF7399194D952B0004CC63 /* AgentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgentListViewController.m; sourceTree = "<group>"; };
 		47DF739B194D954E0004CC63 /* AgentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgentDetailViewController.h; sourceTree = "<group>"; };
 		47DF739C194D954E0004CC63 /* AgentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgentDetailViewController.m; sourceTree = "<group>"; };
+		490CE83819BABFCF00C2F887 /* AKTab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKTab.h; sourceTree = "<group>"; };
+		490CE83919BABFCF00C2F887 /* AKTab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKTab.m; sourceTree = "<group>"; };
+		490CE83A19BABFCF00C2F887 /* AKTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKTabBar.h; sourceTree = "<group>"; };
+		490CE83B19BABFCF00C2F887 /* AKTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKTabBar.m; sourceTree = "<group>"; };
+		490CE83D19BABFCF00C2F887 /* AKTabBarController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AKTabBarController.bundle; sourceTree = "<group>"; };
+		490CE83E19BABFCF00C2F887 /* AKTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKTabBarController.h; sourceTree = "<group>"; };
+		490CE83F19BABFCF00C2F887 /* AKTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKTabBarController.m; sourceTree = "<group>"; };
+		490CE84019BABFCF00C2F887 /* AKTabBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKTabBarView.h; sourceTree = "<group>"; };
+		490CE84119BABFCF00C2F887 /* AKTabBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKTabBarView.m; sourceTree = "<group>"; };
+		490CE84219BABFCF00C2F887 /* UINavigationController+AKTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+AKTabBarController.h"; sourceTree = "<group>"; };
+		490CE84319BABFCF00C2F887 /* UINavigationController+AKTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+AKTabBarController.m"; sourceTree = "<group>"; };
+		490CE84619BABFCF00C2F887 /* UIViewController+AKTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+AKTabBarController.h"; sourceTree = "<group>"; };
+		490CE84719BABFCF00C2F887 /* UIViewController+AKTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AKTabBarController.m"; sourceTree = "<group>"; };
+		490CE85119BAC02600C2F887 /* RootViewControllerEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewControllerEx.h; sourceTree = "<group>"; };
+		490CE85219BAC02600C2F887 /* RootViewControllerEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewControllerEx.m; sourceTree = "<group>"; };
+		490CE85419BAC16100C2F887 /* HomeViewControllerEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewControllerEx.h; sourceTree = "<group>"; };
+		490CE85519BAC16100C2F887 /* HomeViewControllerEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewControllerEx.m; sourceTree = "<group>"; };
+		490CE85719BAC17400C2F887 /* InquiryViewControllerEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InquiryViewControllerEx.h; sourceTree = "<group>"; };
+		490CE85819BAC17400C2F887 /* InquiryViewControllerEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InquiryViewControllerEx.m; sourceTree = "<group>"; };
+		490CE85B19BAD7EF00C2F887 /* UIMenuBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIMenuBar.h; sourceTree = "<group>"; };
+		490CE85C19BAD7EF00C2F887 /* UIMenuBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIMenuBar.m; sourceTree = "<group>"; };
+		490CE85D19BAD7EF00C2F887 /* UIMenuBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIMenuBarItem.h; sourceTree = "<group>"; };
+		490CE85E19BAD7EF00C2F887 /* UIMenuBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIMenuBarItem.m; sourceTree = "<group>"; };
+		490CE86119BAE82000C2F887 /* CustomThreeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomThreeButton.h; sourceTree = "<group>"; };
+		490CE86219BAE82000C2F887 /* CustomThreeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomThreeButton.m; sourceTree = "<group>"; };
 		493D107819ADD45E0003B366 /* back_home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_home@2x.png"; sourceTree = "<group>"; };
 		493D107919ADD45E0003B366 /* the_cart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "the_cart@2x.png"; sourceTree = "<group>"; };
 		494480E719AF8BE1006508DB /* the_order@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "the_order@2x.png"; sourceTree = "<group>"; };
@@ -505,6 +543,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		490CE83719BABFCF00C2F887 /* AKTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				490CE83819BABFCF00C2F887 /* AKTab.h */,
+				490CE83919BABFCF00C2F887 /* AKTab.m */,
+				490CE83A19BABFCF00C2F887 /* AKTabBar.h */,
+				490CE83B19BABFCF00C2F887 /* AKTabBar.m */,
+				490CE83D19BABFCF00C2F887 /* AKTabBarController.bundle */,
+				490CE83E19BABFCF00C2F887 /* AKTabBarController.h */,
+				490CE83F19BABFCF00C2F887 /* AKTabBarController.m */,
+				490CE84019BABFCF00C2F887 /* AKTabBarView.h */,
+				490CE84119BABFCF00C2F887 /* AKTabBarView.m */,
+				490CE84219BABFCF00C2F887 /* UINavigationController+AKTabBarController.h */,
+				490CE84319BABFCF00C2F887 /* UINavigationController+AKTabBarController.m */,
+				490CE84619BABFCF00C2F887 /* UIViewController+AKTabBarController.h */,
+				490CE84719BABFCF00C2F887 /* UIViewController+AKTabBarController.m */,
+			);
+			path = AKTabBarController;
+			sourceTree = "<group>";
+		};
+		490CE85019BAC00900C2F887 /* ControllersEx */ = {
+			isa = PBXGroup;
+			children = (
+				490CE85119BAC02600C2F887 /* RootViewControllerEx.h */,
+				490CE85219BAC02600C2F887 /* RootViewControllerEx.m */,
+				490CE85419BAC16100C2F887 /* HomeViewControllerEx.h */,
+				490CE85519BAC16100C2F887 /* HomeViewControllerEx.m */,
+				490CE85719BAC17400C2F887 /* InquiryViewControllerEx.h */,
+				490CE85819BAC17400C2F887 /* InquiryViewControllerEx.m */,
+				490CE86119BAE82000C2F887 /* CustomThreeButton.h */,
+				490CE86219BAE82000C2F887 /* CustomThreeButton.m */,
+			);
+			path = ControllersEx;
+			sourceTree = "<group>";
+		};
+		490CE85A19BAD7EF00C2F887 /* UIMenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				490CE85B19BAD7EF00C2F887 /* UIMenuBar.h */,
+				490CE85C19BAD7EF00C2F887 /* UIMenuBar.m */,
+				490CE85D19BAD7EF00C2F887 /* UIMenuBarItem.h */,
+				490CE85E19BAD7EF00C2F887 /* UIMenuBarItem.m */,
+			);
+			path = UIMenuBar;
+			sourceTree = "<group>";
+		};
 		DD1294EF197D13B500D08A01 /* Server */ = {
 			isa = PBXGroup;
 			children = (
@@ -711,6 +795,7 @@
 		DD3A3EAD193E029300043CA4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				490CE85019BAC00900C2F887 /* ControllersEx */,
 				DD8EEA801944243000CACC22 /* Controllers */,
 				DD3A3EAE193E029300043CA4 /* AppDelegate */,
 				DD3A3EB1193E029300043CA4 /* Base */,
@@ -867,6 +952,8 @@
 		DD3A3F49193E029300043CA4 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				490CE85A19BAD7EF00C2F887 /* UIMenuBar */,
+				490CE83719BABFCF00C2F887 /* AKTabBarController */,
 				DD13AD831959ACA9005D4222 /* ICViewPager */,
 				DD3A3F58193E029300043CA4 /* DataTracker */,
 				DD3A3F66193E029300043CA4 /* MBProgressHUD */,
@@ -1158,6 +1245,7 @@
 				4977D03A19AB09310089397C /* icon_message@2x.png in Resources */,
 				DD13AD821959A8AB005D4222 /* icon_default@2x.png in Resources */,
 				4977D03E19AB0B460089397C /* threfresh@2x.png in Resources */,
+				490CE84A19BABFCF00C2F887 /* AKTabBarController.bundle in Resources */,
 				DD2B9F911965590B00CB20C3 /* Resource.bundle in Resources */,
 				493D107B19ADD45E0003B366 /* the_cart@2x.png in Resources */,
 				DD3A4003193E02D100043CA4 /* icon-120.png in Resources */,
@@ -1208,10 +1296,12 @@
 				DD3A3FDC193E029300043CA4 /* URLParser.m in Sources */,
 				DD8EEAD91944243000CACC22 /* NewsDetailViewController.m in Sources */,
 				DD8EEB1E19445E9100CACC22 /* LanguageViewController.m in Sources */,
+				490CE84919BABFCF00C2F887 /* AKTabBar.m in Sources */,
 				DD7737E71940AA4D006239B2 /* BaseSecondTitleViewController.m in Sources */,
 				DD8EEADE1944243000CACC22 /* ProductSearchViewController.m in Sources */,
 				DD13AD6719592D33005D4222 /* ProductSearchExViewController.m in Sources */,
 				DD3A3F99193E029300043CA4 /* BaseTitleViewController.m in Sources */,
+				490CE85919BAC17400C2F887 /* InquiryViewControllerEx.m in Sources */,
 				DD3A3FBF193E029300043CA4 /* UserItemBase.m in Sources */,
 				47B6E3BE195DFA530025D71D /* CustomLeftImageButton.m in Sources */,
 				DD3A3F9A193E029300043CA4 /* BaseViewController.m in Sources */,
@@ -1221,6 +1311,7 @@
 				DD8EEADC1944243000CACC22 /* ProductDetailViewController.m in Sources */,
 				DD3A3FF7193E029300043CA4 /* UIImageLabelEx.m in Sources */,
 				DD3A3F97193E029300043CA4 /* BaseTableViewCell.m in Sources */,
+				490CE85619BAC16100C2F887 /* HomeViewControllerEx.m in Sources */,
 				DD3A3FE8193E029300043CA4 /* MBProgressHUD.m in Sources */,
 				DD3A3F95193E029300043CA4 /* BaseSectionTableViewController.m in Sources */,
 				DD3A3F93193E029300043CA4 /* AppDelegate.mm in Sources */,
@@ -1236,24 +1327,30 @@
 				DD8EEACF1944243000CACC22 /* LeaveMessageViewController.m in Sources */,
 				DD8EEAD01944243000CACC22 /* LoginViewController.m in Sources */,
 				DD99339F1962EDDD007150EC /* ForgetPasswordViewController.m in Sources */,
+				490CE85319BAC02600C2F887 /* RootViewControllerEx.m in Sources */,
 				DD3A3FDA193E029300043CA4 /* CreateObject.m in Sources */,
 				DD3A3F98193E029300043CA4 /* BaseTableViewController.m in Sources */,
 				DD3A3FEC193E029300043CA4 /* WASASIUploadAdapter.m in Sources */,
 				DD99339C1962DF5A007150EC /* MyOrderDetailViewController.m in Sources */,
 				DD8EEAC61944243000CACC22 /* AboutUsViewController.m in Sources */,
 				DD3A3FB6193E029300043CA4 /* LoginRequest.m in Sources */,
+				490CE84B19BABFCF00C2F887 /* AKTabBarController.m in Sources */,
 				DD8EEB1B19445E6900CACC22 /* SSettingViewController.m in Sources */,
 				DD3A3FEE193E029300043CA4 /* WASBaseServiceFace.m in Sources */,
 				DD2B9F4319654DD800CB20C3 /* AGViewDelegate.m in Sources */,
 				DD3A3FF8193E029300043CA4 /* UITextField+DelegateBlocks.m in Sources */,
 				DD3A3FBA193E029300043CA4 /* ListResponseBase.m in Sources */,
+				490CE85F19BAD7EF00C2F887 /* UIMenuBar.m in Sources */,
+				490CE86319BAE82000C2F887 /* CustomThreeButton.m in Sources */,
 				DD8EEADA1944243000CACC22 /* NewsViewController.m in Sources */,
 				DD7737DA19409E04006239B2 /* CustomSearchBar.m in Sources */,
 				DD722A8519616B2700A0E3DC /* DealerViewController.m in Sources */,
 				47DF739A194D952B0004CC63 /* AgentListViewController.m in Sources */,
 				DD3A3FBB193E029300043CA4 /* LoginResponse.m in Sources */,
 				DD3A3FB5193E029300043CA4 /* ListRequestBase.m in Sources */,
+				490CE84819BABFCF00C2F887 /* AKTab.m in Sources */,
 				DD3A3F96193E029300043CA4 /* BaseTableView.m in Sources */,
+				490CE84D19BABFCF00C2F887 /* UINavigationController+AKTabBarController.m in Sources */,
 				47DF739D194D954E0004CC63 /* AgentDetailViewController.m in Sources */,
 				DD3AF8A8194AD14200A964B7 /* ProductResponse.m in Sources */,
 				DD3A3FE9193E029300043CA4 /* WASASIAdapter.m in Sources */,
@@ -1265,8 +1362,11 @@
 				DD8C9E771949854600436209 /* ProductRequest.m in Sources */,
 				DD3A3FF4193E029300043CA4 /* CustomSelectControl.m in Sources */,
 				DD8EEAC71944243000CACC22 /* ContactUsViewController.m in Sources */,
+				490CE86019BAD7EF00C2F887 /* UIMenuBarItem.m in Sources */,
 				DD3A3F9B193E029300043CA4 /* BaseWebViewController.m in Sources */,
 				DDEE96561963D341008DFC51 /* RootViewController.m in Sources */,
+				490CE84C19BABFCF00C2F887 /* AKTabBarView.m in Sources */,
+				490CE84F19BABFCF00C2F887 /* UIViewController+AKTabBarController.m in Sources */,
 				DD13AD6A19592E73005D4222 /* UIPopoverListView.m in Sources */,
 				DD8EEADF1944243000CACC22 /* RegisterViewController.m in Sources */,
 				DD722A8819618A1500A0E3DC /* MyOrderListViewController.m in Sources */,

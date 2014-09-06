@@ -48,7 +48,7 @@
       [[self showLeft] enableBackGesture];
     }
     self.navigationController.navigationBar.tintColor = kWhiteColor;
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:kButtonNormalColor size:CGSizeMake(10, 10)] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor getColor:@"f4f4f4"] size:CGSizeMake(10, 10)] forBarMetrics:UIBarMetricsDefault];
 
 //     self.navigationItem.titleView = self.customTitleLable;
 }
@@ -198,21 +198,24 @@
     if (!titleView) {
         titleView = [[UILabel alloc] initWithFrame:CGRectZero];
         titleView.backgroundColor = [UIColor clearColor];
-        titleView.font = HTFONTSIZE(18);
-        titleView.textColor = kWhiteColor; // Change to desired color
+        titleView.font = HTFONTSIZE(20);
+        //        titleView.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+        
+        titleView.textColor = [UIColor orangeColor]; // Change to desired color
+        
         self.navigationItem.titleView = titleView;
         self.customTitleLable = titleView;
         [titleView release];
     }
-    titleView.text = @"";
+    titleView.text = [title uppercaseString];
     [titleView sizeToFit];
-
 }
+
 
 - (void) setTitleContent:(NSString *) title
 {
     self.title = title;
-//    self.customTitleLable.text = title;
+    self.customTitleLable.text = title;
     self.trackViewId = title;
 }
 
@@ -279,7 +282,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[self showRight] showLeft];
 }
 
 
@@ -305,9 +307,9 @@
         [button0 setImage:[UIImage imageNamed:@"icon_search"] forState:UIControlStateNormal];
         [button1 setImage:[UIImage imageNamed:@"icon_share"] forState:UIControlStateNormal];
         [button2 setImage:[UIImage imageNamed:@"ic_more"] forState:UIControlStateNormal];
-        [CreateObject addTargetEfection:button0];
-        [CreateObject addTargetEfection:button1];
-        [CreateObject addTargetEfection:button2];
+//        [CreateObject addTargetEfection:button0];
+//        [CreateObject addTargetEfection:button1];
+//        [CreateObject addTargetEfection:button2];
         
         button0.frame = CGRectMake(0, 0, 44, 44);
         button1.frame = CGRectMake(44, 0, 44, 44);
