@@ -8,7 +8,7 @@
 
 #import "BaseTitleViewController.h"
 
-@interface BaseWebViewController : BaseTitleViewController
+@interface BaseWebViewController : ShareTitleViewController
 @property (nonatomic, retain, readonly) UIWebView       *mainWebView;
 @property (nonatomic, retain, readonly) UIActivityIndicatorView  *activityView;
 @property (nonatomic, copy) NSString *requestURL;

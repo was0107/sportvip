@@ -43,7 +43,7 @@
 - (PubTextField *)phoneTextField
 {
     if (!_phoneTextField) {
-        __unsafe_unretained ForgetPasswordViewController *safeSelf = self;
+        __block ForgetPasswordViewController *safeSelf = self;
         _phoneTextField = [[PubTextField alloc] initWithFrame:CGRectMake(25, 15 , 255, 40) indexTitle:@"" placeHolder:@"Username" pubTextFieldStyle:PubTextFieldStyleTop];
         _phoneTextField.pubTextField.returnKeyType = UIReturnKeyDone;
         _phoneTextField.pubTextField.frame = CGRectMake(0, 0, 250, 40);

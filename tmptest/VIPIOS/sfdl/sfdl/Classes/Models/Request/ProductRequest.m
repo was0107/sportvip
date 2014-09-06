@@ -445,9 +445,8 @@
 
 - (NSMutableArray *) keyArrays
 {
-    
-    NSMutableArray *array =  [NSMutableArray arrayWithObjects:@"username",@"productList",@"content",@"title",@"sign", nil];
-//    NSMutableArray *array =  [NSMutableArray arrayWithObjects:@"username",@"productList",@"quantityList",@"content",@"title",@"sign", nil];
+//    NSMutableArray *array =  [NSMutableArray arrayWithObjects:@"username",@"productList",@"content",@"title",@"sign", nil];
+    NSMutableArray *array =  [NSMutableArray arrayWithObjects:@"username",@"productList",@"quantityList",@"content",@"title",@"sign", nil];
     [array addObjectsFromArray: [super keyArrays]];
     return array;
 }
@@ -456,10 +455,10 @@
 {
     NSMutableString *computeSign = [NSMutableString string];
     [computeSign appendFormat:@"companyId%@content%@key%@productList%@title%@username%@",self.comapnyId,self.content,[UserDefaultsManager currentKey],self.productList,self.title,self.username];
-//    [computeSign appendFormat:@"companyId%@content%@key%@quantityList%@productList%@title%@username%@",self.comapnyId,self.content,[UserDefaultsManager currentKey],self.quantityList,self.productList,self.title,self.username];
+//    [computeSign appendFormat:@"companyId%@content%@key%@productList%@quantityList%@title%@username%@",self.comapnyId,self.content,[UserDefaultsManager currentKey],self.productList,self.quantityList,self.title,self.username];
     self.sign = [computeSign md5String];
-    NSMutableArray *array =   [NSMutableArray arrayWithObjects:self.username,self.productList,self.content,self.title,self.sign, nil];
-//    NSMutableArray *array =   [NSMutableArray arrayWithObjects:self.username,self.quantityList,self.productList,self.content,self.title,self.sign, nil];
+//    NSMutableArray *array =   [NSMutableArray arrayWithObjects:self.username,self.productList,self.content,self.title,self.sign, nil];
+    NSMutableArray *array =   [NSMutableArray arrayWithObjects:self.username,self.productList,self.quantityList,self.content,self.title,self.sign, nil];
     [array addObjectsFromArray: [super valueArrays]];
     return array;
 }

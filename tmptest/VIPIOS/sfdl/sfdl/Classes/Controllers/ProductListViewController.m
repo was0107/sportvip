@@ -63,17 +63,23 @@
         if (!cell){
             cell = [[BaseTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
             
-            cell.topLabel.frame = CGRectMake(70, 10, 140, 25);
-            cell.subLabel.frame = CGRectMake(70, 35, 140, 25);
-            cell.leftImageView .frame = CGRectMake(4, 6, 55, 55);
-            cell.rightButton.frame = CGRectMake(220, 30, 90,35);
-            [cell.rightButton setTitle:@" Add To Cart" forState:UIControlStateNormal];
+            cell.topLabel.frame = CGRectMake(70, 10, 166, 50);
+            cell.subLabel.frame = CGRectMake(70, 35, 160, 25);
+            cell.leftImageView .frame = CGRectMake(10, 6, 55, 55);
+            cell.rightButton.frame = CGRectMake(240, 30, 70,35);
+            [cell.rightButton setTitle:@" Cart " forState:UIControlStateNormal];
+            
+            CALayer *layer = [CALayer layer];
+            layer.contents = ((UIImage *)[UIImage imageNamed:@"the_cart"]).CGImage;
+            layer.frame = CGRectMake(35, 0, 35, 35);
+            [cell.rightButton.layer addSublayer:layer];
+            
             [CreateObject addTargetEfection:cell.rightButton];
-            cell.topLabel.numberOfLines = 2;
+            cell.topLabel.numberOfLines = 0;
             cell.topLabel.textColor = kBlackColor;
-            cell.topLabel.font = HTFONTSIZE(kFontSize15);
+            cell.topLabel.font = HTFONTSIZE(kFontSize14);
             [cell.contentView addSubview:cell.topLabel];
-            [cell.contentView addSubview:cell.subLabel];
+//            [cell.contentView addSubview:cell.subLabel];
             [cell.contentView addSubview:cell.leftImageView];
             [cell.contentView addSubview:cell.rightButton];
         }

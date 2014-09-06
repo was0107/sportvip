@@ -77,7 +77,7 @@
             cell.textField.layer.borderColor = [kBlueColor CGColor];
             cell.textField.layer.borderWidth = 1.0f;
             cell.topLabel.textColor = kBlackColor;
-            cell.topLabel.font =  cell.subLabel.font = HTFONTSIZE(kFontSize15);
+            cell.topLabel.font =  cell.subLabel.font = HTFONTSIZE(kFontSize14);
             [cell.contentView addSubview:cell.topLabel];
             [cell.contentView addSubview:cell.textField];
             cell.textField.delegate = self;

@@ -10,7 +10,6 @@
 #import "CustomSearchBar.h"
 #import "CustomImageTitleButton.h"
 #import "SearchViewController.h"
-#import "KxMenu.h"
 #import <objc/runtime.h>
 #import <objc/message.h>
 #import "CreateObject.h"
@@ -27,7 +26,6 @@
 @property (nonatomic, retain) XLCycleScrollView *cycleView;
 @property (nonatomic, retain) UIImageView   *topImageView;
 @property (nonatomic, retain) CustomSearchBar *searchView;
-@property (nonatomic, retain) UIView          *rightView;
 
 @property (nonatomic, retain) PictureResponse    *pictureResponse;
 @property (nonatomic, retain) PictureListRequest *pictureRequest;
@@ -48,61 +46,9 @@
     [super dealloc];
 }
 
-- (id) showRight
-{
-    UIBarButtonItem *right = [[[UIBarButtonItem alloc] initWithCustomView:self.rightView] autorelease];    
-    [self.navigationItem mySetRightBarButtonItem:right];
-    return self;
-}
-
-
-
-- (UIView *) rightView
-{
-    if (!_rightView) {
-        _rightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 132, 44)];
-        
-        UIButton *button0 = [UIButton buttonWithType:UIButtonTypeCustom];
-        UIButton *button1 = [UIButton buttonWithType:UIButtonTypeCustom];
-        UIButton *button2 = [UIButton buttonWithType:UIButtonTypeCustom];
-
-        [button0 setImage:[UIImage imageNamed:@"icon_search"] forState:UIControlStateNormal];
-        [button1 setImage:[UIImage imageNamed:@"icon_share"] forState:UIControlStateNormal];
-        [button2 setImage:[UIImage imageNamed:@"ic_more"] forState:UIControlStateNormal];
-        [CreateObject addTargetEfection:button0];
-        [CreateObject addTargetEfection:button1];
-        [CreateObject addTargetEfection:button2];
-
-        button0.frame = CGRectMake(0, 0, 44, 44);
-        button1.frame = CGRectMake(44, 0, 44, 44);
-        button2.frame = CGRectMake(88, 0, 44, 44);
-        
-        [_rightView addSubview:button0];
-        [_rightView addSubview:button1];
-        [_rightView addSubview:button2];
-        
-        [button0 addTarget:self action:@selector(searchButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-        [button1 addTarget:self action:@selector(shareButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-        [button2 addTarget:self action:@selector(rightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _rightView;
-}
-
-- (void) shareButtonAction:(id) sender
-{
-    [self simpleShareAllButtonClickHandler:sender];
-}
-
-- (void) searchButtonAction:(id) sender
-{
-    ProductSearchExViewController *controller = [[[ProductSearchExViewController alloc] init] autorelease];
-    [self.navigationController pushViewController:controller animated:YES];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[self showRight] showLeft];
     [self configControllers];
     [self.view addSubview:self.searchView];
     [self.view addSubview:self.cycleView];
@@ -110,104 +56,6 @@
     [self sendRequestToServer];
     [self sendRequestToGetMenu];
 }
-
-- (void) rightButtonAction:(id)sender
-{
-    NSArray *menuItems = nil;
-    if ([[self currentUserId] length] == 0) {
-        menuItems = @[
-                      [KxMenuItem menuItem:@"Sign in"
-                                     image:[UIImage imageNamed:@"home1"]
-                                    target:self
-                                    action:@selector(pushMenuItem0:)],
-                      
-                      [KxMenuItem menuItem:@"Setting"
-                                     image:[UIImage imageNamed:@"home2"]
-                                    target:self
-                                    action:@selector(pushMenuItem1:)],
-                      
-                      [KxMenuItem menuItem:@"Languages"
-                                     image:[UIImage imageNamed:@"home3"]
-                                    target:self
-                                    action:@selector(pushMenuItem2:)],
-                      
-//                      [KxMenuItem menuItem:@"Exit"
-//                                     image:[UIImage imageNamed:@"home4"]
-//                                    target:self
-//                                    action:@selector(pushMenuItem3:)],
-                      ];
-
-    } else {
-          menuItems = @[
-          [KxMenuItem menuItem:@"Sign out"
-                         image:[UIImage imageNamed:@"home1"]
-                        target:self
-                        action:@selector(pushMenuItem4:)],
-          
-          [KxMenuItem menuItem:@"My order"
-                         image:[UIImage imageNamed:@"home2"]
-                        target:self
-                        action:@selector(pushMenuItem5:)],
-          
-          [KxMenuItem menuItem:@"Setting"
-                         image:[UIImage imageNamed:@"home2"]
-                        target:self
-                        action:@selector(pushMenuItem1:)],
-          
-          [KxMenuItem menuItem:@"Languages"
-                         image:[UIImage imageNamed:@"home3"]
-                        target:self
-                        action:@selector(pushMenuItem2:)],
-          
-//          [KxMenuItem menuItem:@"Exit"
-//                         image:[UIImage imageNamed:@"home4"]
-//                        target:self
-//                        action:@selector(pushMenuItem3:)],
-          ];
-
-    }
-    
-    [KxMenu setTintColor:kWhiteColor];
-    [KxMenu showMenuInView:self.view fromRect:CGRectMake(280, -40, 40, 40) menuItems:menuItems];
-}
-
-- (void) pushMenuItem0:(id)sender
-{
-    Class class = NSClassFromString(@"LoginViewController");
-    UIViewController *vc1 = [[[class alloc] init] autorelease];
-    [self.navigationController pushViewController:vc1 animated:YES];
-}
-- (void) pushMenuItem1:(id)sender
-{
-    Class class = NSClassFromString(@"SSettingViewController");
-    UIViewController *vc1 = [[[class alloc] init] autorelease];
-    [self.navigationController pushViewController:vc1 animated:YES];
-}
-
-- (void) pushMenuItem2:(id)sender
-{
-    Class class = NSClassFromString(@"LanguageViewController");
-    UIViewController *vc1 = [[[class alloc] init] autorelease];
-    [self.navigationController pushViewController:vc1 animated:YES];
-}
-
-- (void) pushMenuItem3:(id)sender
-{
-}
-
-- (void) pushMenuItem4:(id)sender
-{
-    [UserDefaultsManager saveUserId:@""];
-    [SVProgressHUD showSuccessWithStatus:@"Sign out success"];
-}
-
-- (void) pushMenuItem5:(id)sender
-{
-    Class class = NSClassFromString(@"MyOrderListViewController");
-    UIViewController *vc1 = [[[class alloc] init] autorelease];
-    [self.navigationController pushViewController:vc1 animated:YES];
-}
-
 
 - (id) configControllers
 {
@@ -417,74 +265,6 @@
     [WASBaseServiceFace serviceWithMethod:[self.menuRequest URLString] body:[self.menuRequest toJsonString] onSuc:successedBlock onFailed:failedBlock onError:errBlock];
 
 }
-
-
-
-// share function
-
-- (void)simpleShareAllButtonClickHandler:(id)sender
-{
-//    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
-    
-    //构造分享内容
-    id<ISSContent> publishContent = [ShareSDK content:CONTENT
-                                       defaultContent:CONTENT
-                                                image:nil//[ShareSDK imageWithPath:imagePath]
-                                                title:@"ShareSDK"
-                                                  url:@"http://www.sharesdk.cn"
-                                          description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
-                                            mediaType:SSPublishContentMediaTypeNews];
-    
-    ///////////////////////
-    //以下信息为特定平台需要定义分享内容，如果不需要可省略下面的添加方法
-    
-    
-    
-    //结束定制信息
-    ////////////////////////
-    
-    
-    //创建弹出菜单容器
-    id<ISSContainer> container = [ShareSDK container];
-    [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
-    
-    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
-                                                         allowCallback:NO
-                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
-                                                          viewDelegate:nil
-                                               authManagerViewDelegate:_appDelegate.viewDelegate];
-    
-    //在授权页面中添加关注官方微博
-//    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
-//                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
-//                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
-//                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
-//                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
-//                                    nil]];
-    
-    id<ISSShareOptions> shareOptions = [ShareSDK simpleShareOptionsWithTitle:@"内容分享"
-                                                           shareViewDelegate:_appDelegate.viewDelegate];
-    
-    //弹出分享菜单
-    [ShareSDK showShareActionSheet:container
-                         shareList:nil
-                           content:publishContent
-                     statusBarTips:YES
-                       authOptions:authOptions
-                      shareOptions:shareOptions
-                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-                                
-                                if (state == SSPublishContentStateSuccess)
-                                {
-                                    NSLog( @"分享成功");
-                                }
-                                else if (state == SSPublishContentStateFail)
-                                {
-                                    NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"分享失败,错误码:%d,错误描述:%@"), [error errorCode], [error errorDescription]);
-                                }
-                            }];
-}
-
 
 
 @end

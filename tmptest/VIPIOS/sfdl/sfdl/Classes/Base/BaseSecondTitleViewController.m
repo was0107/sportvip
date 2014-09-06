@@ -58,7 +58,7 @@
         _secondTitleLabel.backgroundColor = kClearColor;
         _secondTitleLabel.textColor = KTextColor;
         _secondTitleLabel.highlightedTextColor = kWhiteColor;
-        _secondTitleLabel.font = HTFONTBIGSIZE(kFontSize16);
+        _secondTitleLabel.font = HTFONTSIZE(kFontSize15);
     }
     return _secondTitleLabel;
 }

@@ -29,6 +29,7 @@
         [self addSubview:self.middleLabel];
         [self addSubview:self.rightLabel];
         self.value = 1;
+        [self.layer setMasksToBounds:YES];
     }
     return self;
 }
@@ -48,7 +49,7 @@
         _leftButton = [[UIButton alloc]initWithFrame:CGRectMake(5, 5, 46,30)];
         [_leftButton setTitleColor:kWhiteColor forState:UIControlStateNormal];
         [_leftButton setTitleColor:kBlackColor forState:UIControlStateSelected];
-        _leftButton.titleLabel.font = HTFONTSIZE(kSystemFontSize14);
+        _leftButton.titleLabel.font = HTFONTSIZE(kSystemFontSize17);
         [_leftButton setTitle:@"-" forState:UIControlStateNormal];
         _leftButton.titleLabel.textAlignment = NSTextAlignmentCenter;
         [CreateObject addTargetEfection:_leftButton];
@@ -64,7 +65,7 @@
         [_rightButton setTitleColor:kWhiteColor forState:UIControlStateNormal];
         [_rightButton setTitleColor:kBlackColor forState:UIControlStateSelected];
         _rightButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        _rightButton.titleLabel.font = HTFONTSIZE(kSystemFontSize14);
+        _rightButton.titleLabel.font = HTFONTSIZE(kSystemFontSize17);
         [_rightButton setTitle:@"+" forState:UIControlStateNormal];
         [CreateObject addTargetEfection:_rightButton];
         [_rightButton addTarget:self action:@selector(buttonRightAction:) forControlEvents:UIControlEventTouchUpInside];

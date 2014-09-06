@@ -11,7 +11,7 @@
 #import "BaseTableViewCell.h"
 
 
-@interface BaseTableViewController : BaseTitleViewController
+@interface BaseTableViewController : ShareTitleViewController
 
 @property (nonatomic,retain) BaseTableView *tableView;
 

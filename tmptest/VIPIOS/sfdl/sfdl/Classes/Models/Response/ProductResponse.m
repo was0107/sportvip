@@ -60,6 +60,18 @@
     return [[[ProductPropsItem alloc] initWithDictionary:dictionary] autorelease];
 }
 
+- (id) translateFrom:(const NSDictionary *) dictionary
+{
+    self.productId = [dictionary objectForKey:@"productId"];
+    self.productName = [dictionary objectForKey:@"productName"];
+    self.videoUrl = [dictionary objectForKey:@"videoUrl"];
+    self.productType = [dictionary objectForKey:@"productType"];
+    self.productTypeName = [dictionary objectForKey:@"productTypeName"];
+    self.productDesc = [dictionary objectForKey:@"productDesc"];
+    self.productImg = [dictionary objectForKey:@"productImg"];
+    return self;
+}
+
 - (NSString *) resultKey
 {
     return @"productProps";

@@ -122,6 +122,7 @@
     self = [super init];
     if (self) {
         self.productTypeId = [dictionary objectForKey:@"productTypeId"];
+        self.productTypeImg = [dictionary objectForKey:@"productTypeImg"];
         self.productTypeName = [dictionary objectForKey:@"productTypeName"];
         self.parent = [dictionary objectForKey:@"parent"];
     }

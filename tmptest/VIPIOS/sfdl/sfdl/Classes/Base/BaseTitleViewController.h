@@ -8,6 +8,9 @@
 
 #import "BaseViewController.h"
 #import "UIButton+extend.h"
+#import "KxMenu.h"
+#import "CreateObject.h"
+#import "AppDelegate.h"
 
 @interface BaseTitleViewController : BaseViewController
 @property (nonatomic, retain, readonly) UIView   *titleView;
@@ -31,5 +34,12 @@
 - (UIView *) createTextField:(NSString *) title placeHolder:(NSString *)place tag:(NSInteger)tag column:(NSInteger)column height:(CGFloat)height delegate:(id)delegate;
 
 - (void) enableRightButton:(BOOL) flag;
+
+@end
+
+
+
+@interface ShareTitleViewController : BaseTitleViewController
+@property (nonatomic, retain) UIView          *rightView;
 
 @end

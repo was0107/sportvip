@@ -76,7 +76,7 @@
             cell.subLabel.backgroundColor = kWhiteColor;
             cell.subLabel.textAlignment = NSTextAlignmentRight;
             cell.topLabel.textColor = kBlackColor;
-            cell.topLabel.font =  cell.subLabel.font = HTFONTSIZE(kFontSize15);
+            cell.topLabel.font =  cell.subLabel.font = HTFONTSIZE(kFontSize14);
             [cell.contentView addSubview:cell.topLabel];
             [cell.contentView addSubview:cell.subLabel];
         }

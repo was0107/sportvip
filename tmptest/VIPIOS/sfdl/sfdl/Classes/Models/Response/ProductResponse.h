@@ -24,7 +24,7 @@
 
 
 @interface ProductDetailResponse : ListPaggingResponseBase
-
+@property (nonatomic, copy) NSString *productId, *productName, *videoUrl, *productType, *productTypeName, *productDesc, *productImg;
 
 @end
 

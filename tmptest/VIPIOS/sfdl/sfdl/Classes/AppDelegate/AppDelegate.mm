@@ -24,6 +24,12 @@
     return self;
 }
 
+
++ (AppDelegate *)sharedAppDelegate
+{
+    return (AppDelegate*) [UIApplication sharedApplication].delegate;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [ShareSDK registerApp:@"221de9be5bbc"];     //参数为ShareSDK官网中添加应用后得到的AppKey

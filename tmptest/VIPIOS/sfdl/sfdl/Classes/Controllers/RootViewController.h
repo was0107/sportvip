@@ -7,11 +7,6 @@
 //
 
 #import "BaseTitleViewController.h"
-@class AppDelegate;
 
-@interface RootViewController : BaseTitleViewController
-{
-    AppDelegate *_appDelegate;
-
-}
+@interface RootViewController : ShareTitleViewController
 @end

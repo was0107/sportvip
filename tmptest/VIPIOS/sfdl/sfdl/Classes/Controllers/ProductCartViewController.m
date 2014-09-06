@@ -64,11 +64,11 @@
         BaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell){
             cell = [[BaseTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
-            cell.topLabel.frame = CGRectMake(60, 10, 80, 50);
+            cell.topLabel.frame = CGRectMake(64, 10, 115, 50);
             cell.leftImageView .frame = CGRectMake(10, 10, 50, 50);
             cell.topLabel.numberOfLines = 2;
             cell.topLabel.textColor = kBlackColor;
-            GrowAndDownControl *labelTwo = [[[GrowAndDownControl alloc]initWithFrame:CGRectMake(140, 0, 170, 40)] autorelease];
+            GrowAndDownControl *labelTwo = [[[GrowAndDownControl alloc]initWithFrame:CGRectMake(184, 0, 130, 40)] autorelease];
             labelTwo.tag = 1000;
             cell.topLabel.font = HTFONTSIZE(kFontSize15);
             [cell.rightButton setTitle:@"Remove" forState:UIControlStateNormal];
@@ -153,7 +153,7 @@
             tipLabel.backgroundColor = kClearColor;
             tipLabel.text = keys[i];
             tipLabel.textAlignment = align[i];
-            tipLabel.font = HTFONTSIZE(kFontSize13);
+            tipLabel.font = HTFONTSIZE(kFontSize14);
             [view addSubview:tipLabel];
         }
         return (UIView *)view;
@@ -195,7 +195,7 @@
         _goBackShoppingButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
         _goBackShoppingButton.frame = CGRectMake(5, 120+24, 150, 30);
         [CreateObject addTargetEfection:_goBackShoppingButton];
-        _goBackShoppingButton.titleLabel.font = HTFONTSIZE(kFontSize14);
+        _goBackShoppingButton.titleLabel.font = HTFONTSIZE(kFontSize16);
         [_goBackShoppingButton setTitle:@"Continue Shopping" forState:UIControlStateNormal];
         [_goBackShoppingButton addTarget:self action:@selector(goBackButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -207,7 +207,7 @@
     if (!_submitButton) {
         _submitButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
         _submitButton.frame = CGRectMake(165, 120+24, 150, 30);
-        _submitButton.titleLabel.font = HTFONTSIZE(kFontSize14);
+        _submitButton.titleLabel.font = HTFONTSIZE(kFontSize16);
         [CreateObject addTargetEfection:_submitButton];
         [_submitButton setTitle:@"Submit" forState:UIControlStateNormal];
         [_submitButton addTarget:self action:@selector(submitButtonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -305,7 +305,7 @@
     addCommentRequest.content = self.commentView.text.length == 0 ? @"": self.commentView.text;
     addCommentRequest.title = [listTitle substringToIndex:listTitle.length - 1];
     addCommentRequest.productList = [listId substringToIndex:listId.length - 1];
-//    addCommentRequest.quantityList = [quantityListId substringToIndex:quantityListId.length - 1];
+    addCommentRequest.quantityList = [quantityListId substringToIndex:quantityListId.length - 1];
     [WASBaseServiceFace serviceWithMethod:[addCommentRequest URLString] body:[addCommentRequest toJsonString] onSuc:successedBlock onFailed:failedBlock onError:errBlock];
     
 }

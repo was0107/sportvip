@@ -49,17 +49,17 @@
             cell.topLabel.frame = CGRectMake(10, 4, 300, 20);
             cell.topLabel.textColor = kBlackColor;
             cell.topLabel.numberOfLines = 1;
-            cell.topLabel.font = HTFONTSIZE(kFontSize17);
+            cell.topLabel.font = HTFONTSIZE(kFontSize16);
             
             cell.subLabel.frame = CGRectMake(10, 24, 300, 40);
             cell.subLabel.textColor = kBlackColor;
             cell.subLabel.numberOfLines = 2;
-            cell.subLabel.font = HTFONTSIZE(kFontSize15);
+            cell.subLabel.font = HTFONTSIZE(kFontSize14);
             
             cell.subRightLabel.frame = CGRectMake(180, 58, 130, 20);
             cell.subRightLabel.textAlignment = NSTextAlignmentRight;
             cell.subRightLabel.textColor = kBlackColor;
-            cell.subRightLabel.font = HTFONTSIZE(kFontSize13);
+            cell.subRightLabel.font = HTFONTSIZE(kFontSize14);
             [cell.contentView addSubview:cell.topLabel];
             [cell.contentView addSubview:cell.subLabel];
             [cell.contentView addSubview:cell.subRightLabel];

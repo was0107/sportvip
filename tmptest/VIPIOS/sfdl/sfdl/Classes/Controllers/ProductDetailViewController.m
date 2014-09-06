@@ -136,14 +136,15 @@
     CGFloat yPosition = self.webView.y + self.webView.height;
     
     NSString *image[] = {@"icon_vedio",@"icon_message",@"icon_phone"};
-    NSString *names[] = {@"Video",@"Leave Messages",@"Contact Us"};
+    NSString *names[] = {@"Video",@"Inquiry",@"Contact Us"};
     for (int i = 0; i< 3; i++) {
-        CustomLeftImageButton *imageButton = [[[CustomLeftImageButton alloc] initWithFrame:CGRectMake(i * 105, yPosition, 107, 44)] autorelease];
+        CustomLeftImageButton *imageButton = [[[CustomLeftImageButton alloc] initWithFrame:CGRectMake(i * 106.6f, yPosition, 106.6f, 44)] autorelease];
         imageButton.tag = 1000+i;
         imageButton.backgroundColor = kBlackColor;
         imageButton.leftImageView.image = [UIImage imageNamed:image[i]];
         imageButton.rightLabel.text = names[i];
         imageButton.rightLabel.textColor = kWhiteColor;
+        imageButton.rightLabel.font = HTFONTSIZE(kFontSize14);
         [imageButton addTarget:self action:@selector(bottomAction:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:imageButton];
     }
@@ -168,11 +169,16 @@
 {
     if (!_rightButton) {
         _rightButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
-        _rightButton.frame =CGRectMake(108, 60+24, 90,24);
+        _rightButton.frame =CGRectMake(108, 60+24, 70,24);
         [_rightButton setTitleColor:kWhiteColor forState:UIControlStateNormal];
         [_rightButton setTitleColor:kBlackColor forState:UIControlStateSelected];
         _rightButton.titleLabel.font = HTFONTSIZE(kSystemFontSize14);
-        [_rightButton setTitle:@" Add To Cart" forState:UIControlStateNormal];
+        [_rightButton setTitle:@" Cart " forState:UIControlStateNormal];
+        CALayer *layer = [CALayer layer];
+        layer.contents = ((UIImage *)[UIImage imageNamed:@"the_cart"]).CGImage;
+        layer.frame = CGRectMake(40, -3, 30, 30);
+        [_rightButton.layer addSublayer:layer];
+        
         [CreateObject addTargetEfection:_rightButton];
         _rightButton.titleLabel.textAlignment = NSTextAlignmentCenter;
         _rightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
@@ -188,7 +194,7 @@
         _labelOne = [[UILabel alloc]initWithFrame:CGRectMake(108, 2, 200, 20)];
         _labelOne.textColor  = [UIColor getColor:kCellLeftColor];
         _labelOne.backgroundColor = kClearColor;
-        _labelOne.font = HTFONTSIZE(kSystemFontSize15);
+        _labelOne.font = HTFONTSIZE(kFontSize14);
     }
     return _labelOne;
 }
@@ -234,7 +240,7 @@
     if (0 == position) {
         BaseWebViewController *webController = [[[BaseWebViewController alloc] init] autorelease];
         webController.title = @"Video";
-        webController.requestURL = @"http://v.youku.com/v_show/id_XNzM0ODMxNDc2.html?f=22491019&from=y1.3-idx-grid-1519-9909.104039-104169-104167-104057-104041.1-1";
+        webController.requestURL = self.response.videoUrl;
         [self.parentNavigationController hidesBottomBarWhenPushed];
         [self.parentNavigationController pushViewController:webController animated:YES];
 
@@ -353,7 +359,7 @@
         _submitButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
         _submitButton.frame = CGRectMake(10, 75, 80, 30);
         [CreateObject addTargetEfection:_submitButton];
-        [_submitButton setTitle:@"submit" forState:UIControlStateNormal];
+        [_submitButton setTitle:@"Submit" forState:UIControlStateNormal];
         [_submitButton addTarget:self action:@selector(submitButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _submitButton;

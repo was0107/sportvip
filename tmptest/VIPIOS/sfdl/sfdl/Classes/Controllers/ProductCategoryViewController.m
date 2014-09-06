@@ -52,14 +52,25 @@
         BaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell){
             cell = [[BaseTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
-            
-            cell.topLabel.frame = CGRectMake(15, 10, 290, 24);
+            cell.leftImageView .frame = CGRectMake(10, 5, 40, 40);
+            cell.topLabel.frame = CGRectMake(54, 5, 250, 40);
             cell.topLabel.textColor = kBlackColor;
-            cell.topLabel.font = HTFONTSIZE(kFontSize15);
+            cell.topLabel.font = HTFONTSIZE(kFontSize14);
             [cell.contentView addSubview:cell.topLabel];
+            [cell.contentView addSubview:cell.leftImageView];
         }
         ProductTypeItem *item = [blockSelf.response at:indexPath.row ];
         cell.topLabel.text = item.productTypeName;
+        
+        [cell.leftImageView setImageWithURL:[NSURL URLWithString:item.productTypeImg]
+                           placeholderImage:[UIImage imageNamed:kImageDefault]
+                                    success:^(UIImage *image){
+                                        UIImage * image1 = [image imageScaledToSizeEx:CGSizeMake(100, 100)];
+                                        cell.leftImageView.image = image1;
+                                    }
+                                    failure:^(NSError *error){
+                                        cell.leftImageView.image = [UIImage imageNamed:kImageDefault];
+                                    }];
         return cell;
     };
     
@@ -69,6 +80,10 @@
     
     self.tableView.sectionHeaderHeightBlock = ^( UITableView *tableView, NSInteger section){
         return 0.0f;
+    };
+    
+    self.tableView.cellHeightBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
+        return  50.0f;
     };
     
     self.tableView.cellSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {

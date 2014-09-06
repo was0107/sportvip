@@ -56,12 +56,13 @@
 -(UILabel *)bottomTitleLabel
 {
     if (!_bottomTitleLabel) {
-        _bottomTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(2, 76, 71, 20)];
+        _bottomTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(3, 73, 70, 36)];
         _bottomTitleLabel.textColor  = kGrayColor;
         _bottomTitleLabel.textAlignment = NSTextAlignmentCenter;
         _bottomTitleLabel.backgroundColor = kClearColor;
-        _bottomTitleLabel.font = SYSTEMFONT(kSystemFontSize10);
-        _bottomTitleLabel.numberOfLines = 0;
+        _bottomTitleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        _bottomTitleLabel.font = SYSTEMFONT(kSystemFontSize12);
+        _bottomTitleLabel.numberOfLines = 2;
     }
     return _bottomTitleLabel;
 }
@@ -122,7 +123,7 @@
         _bottomTitleLabel.textColor  = kGrayColor;
         _bottomTitleLabel.textAlignment = NSTextAlignmentCenter;
         _bottomTitleLabel.backgroundColor = kClearColor;
-        _bottomTitleLabel.font = SYSTEMFONT(kSystemFontSize10);
+        _bottomTitleLabel.font = SYSTEMFONT(kSystemFontSize13);
         _bottomTitleLabel.numberOfLines = 0;
     }
     return _bottomTitleLabel;

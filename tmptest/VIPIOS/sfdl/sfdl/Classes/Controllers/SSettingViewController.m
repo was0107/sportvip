@@ -51,7 +51,7 @@
             
             cell.topLabel.frame = CGRectMake(15, 10, 290, 24);
             cell.topLabel.textColor = kBlackColor;
-            cell.topLabel.font = HTFONTSIZE(kFontSize15);
+            cell.topLabel.font = HTFONTSIZE(kFontSize14);
             [cell.contentView addSubview:cell.topLabel];
         }
         cell.topLabel.text = titleIndexArray[indexPath.row];

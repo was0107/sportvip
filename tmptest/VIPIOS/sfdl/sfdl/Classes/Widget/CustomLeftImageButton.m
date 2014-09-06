@@ -40,7 +40,7 @@
 - (UIImageView *) leftImageView
 {
     if (!_leftImageView) {
-        _leftImageView = [[UIImageView alloc] initWithFrame:CGRectMake(2, 2, 40, 40)];
+        _leftImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 34, 34)];
         _leftImageView.backgroundColor = kClearColor;
         _leftImageView.userInteractionEnabled = YES;
         _leftImageView.image = [UIImage imageNamed:@"icon"];

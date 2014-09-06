@@ -47,7 +47,7 @@
             cell.topLabel.textColor = kBlackColor;
             cell.subLabel.textColor = kLightGrayColor;
             cell.subLabel.textAlignment = NSTextAlignmentRight;
-            cell.topLabel.font = cell.subLabel.font = cell.rightLabel.font = HTFONTSIZE(kFontSize15);
+            cell.topLabel.font = cell.subLabel.font = cell.rightLabel.font = HTFONTSIZE(kFontSize14);
             [cell.contentView addSubview:cell.topLabel];
             [cell.contentView addSubview:cell.subLabel];
             [cell.contentView addSubview:cell.rightLabel];

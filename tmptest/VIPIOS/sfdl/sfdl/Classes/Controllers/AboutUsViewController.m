@@ -91,7 +91,7 @@
         _labelOne = [[UILabel alloc]initWithFrame:CGRectMake(8, 44, 304, 20)];
         _labelOne.textColor  = [UIColor getColor:kCellLeftColor];
         _labelOne.backgroundColor = kClearColor;
-        _labelOne.font = HTFONTSIZE(kSystemFontSize15);
+        _labelOne.font = HTFONTSIZE(kFontSize14);
 //        NSString *version = [NSString stringWithFormat:kAboutItemStringVersion,[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
 //        _labelOne.text = version;
     }

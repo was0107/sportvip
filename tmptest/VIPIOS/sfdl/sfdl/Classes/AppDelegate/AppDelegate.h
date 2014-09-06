@@ -19,4 +19,6 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic,readonly) AGViewDelegate *viewDelegate;
 
++ (AppDelegate *)sharedAppDelegate;
+
 @end

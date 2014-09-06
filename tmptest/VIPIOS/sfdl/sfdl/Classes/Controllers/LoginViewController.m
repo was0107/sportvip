@@ -91,10 +91,10 @@
 {
     if (!_forgetButton) {
         _forgetButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
-        _forgetButton.frame = CGRectMake(82.0f, 120.0f + kImageStartAt, 243.0f, 40.0f);
+        _forgetButton.frame = CGRectMake(52.0f, 120.0f + kImageStartAt, 253.0f, 40.0f);
         _forgetButton.backgroundColor = kClearColor;
         [_forgetButton setTitleColor:kButtonNormalColor forState:UIControlStateNormal];
-        [_forgetButton.titleLabel setFont:[UIFont boldSystemFontOfSize:13.0f]];
+        [_forgetButton.titleLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
         _forgetButton.titleLabel.textAlignment = NSTextAlignmentRight;
         [_forgetButton setTitle:@"Forget Password?Get Now>" forState:UIControlStateNormal];
         [_forgetButton addTarget:self action:@selector(forgetButtonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -109,7 +109,7 @@
         _confirmButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
         _confirmButton.frame = CGRectMake(42.0f, 115.0f + kImageStartAt + 50, 243.0f, 40.0f);
         _confirmButton.backgroundColor = kLightGrayColor;
-        [_confirmButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18.0f]];
+        [_confirmButton.titleLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
         [CreateObject addTargetEfection:_confirmButton];
         [_confirmButton setTitle:@"Sign in" forState:UIControlStateNormal];
         [_confirmButton addTarget:self action:@selector(confirmButtonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -123,10 +123,10 @@
 {
     if (!_newButton) {
         _newButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
-        _newButton.frame = CGRectMake(150.0f, 166.0f + kImageStartAt + 50, 140.0f, 30.0f);
+        _newButton.frame = CGRectMake(115.0f, 166.0f + kImageStartAt + 50, 175.0f, 30.0f);
         _newButton.backgroundColor = kClearColor;
         [_newButton setTitleColor:kButtonNormalColor forState:UIControlStateNormal];
-        [_newButton.titleLabel setFont:[UIFont boldSystemFontOfSize:13.0f]];
+        [_newButton.titleLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
         [_newButton setTitle:@"New user? Join Now>" forState:UIControlStateNormal];
         [_newButton addTarget:self action:@selector(newButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
