@@ -58,7 +58,7 @@
 {
     if (!_phoneTextField) {
         __unsafe_unretained LoginViewController *safeSelf = self;
-        _phoneTextField = [[PubTextField alloc] initWithFrame:CGRectMake(25, 15 + kImageStartAt, 255, 40) indexTitle:@"" placeHolder:@"Member ID or Email" pubTextFieldStyle:PubTextFieldStyleTop];
+        _phoneTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0, 15 + kImageStartAt, 320, 40) indexTitle:@"" placeHolder:@"Member ID or Email" pubTextFieldStyle:PubTextFieldStyleTop];
         _phoneTextField.pubTextField.returnKeyType = UIReturnKeyNext;
         _phoneTextField.pubTextField.frame = CGRectMake(0, 0, 250, 40);
         _phoneTextField.autoLayout = YES;
@@ -74,7 +74,7 @@
 {
     if (!_pwdTextField) {
         __block LoginViewController *safeSelf = self;
-        _pwdTextField = [[PubTextField alloc] initWithFrame:CGRectMake(25, 62 + kImageStartAt, 255, 40) indexTitle:@"" placeHolder:@"Password" pubTextFieldStyle:PubTextFieldStyleBottom];
+        _pwdTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0, 62 + kImageStartAt, 320, 40) indexTitle:@"" placeHolder:@"Password" pubTextFieldStyle:PubTextFieldStyleBottom];
         _pwdTextField.pubTextField.returnKeyType = UIReturnKeyDone;
         _pwdTextField.pubTextField.frame = CGRectMake(0, 0, 250, 40);
         _pwdTextField.pubTextField.secureTextEntry = YES;
@@ -111,7 +111,7 @@
         _confirmButton.backgroundColor = kLightGrayColor;
         [_confirmButton.titleLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
         [CreateObject addTargetEfection:_confirmButton];
-        [_confirmButton setTitle:@"Sign in" forState:UIControlStateNormal];
+        [_confirmButton setTitle:@"SUBMIT" forState:UIControlStateNormal];
         [_confirmButton addTarget:self action:@selector(confirmButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     

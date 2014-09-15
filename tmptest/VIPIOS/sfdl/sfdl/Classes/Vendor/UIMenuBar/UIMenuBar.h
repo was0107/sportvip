@@ -42,6 +42,7 @@
 @property (nonatomic, copy)   NSMutableArray       *items;
 @property (nonatomic, assign) UIMenuBarItem        *selectedItem; // will show feedback based on mode. default is nil
 @property (nonatomic, retain) UIColor              *tintColor;    // Default is black.
+@property (nonatomic, assign) BOOL                  isShowing;
 
 - (id)initWithFrame:(CGRect)frame items:(NSArray *)items;
 - (void)setItems:(NSMutableArray *)items;

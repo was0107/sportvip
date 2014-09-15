@@ -35,6 +35,18 @@
 
 @implementation HomeViewControllerEx
 
+
+- (NSString *)tabImageName
+{
+    return @"home_black";
+}
+
+- (NSString *)tabSelectedImageName
+{
+    return @"home_white";
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

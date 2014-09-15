@@ -9,12 +9,17 @@
 #import "RootViewControllerEx.h"
 #import "BaseTitleViewController.h"
 
-@interface RootViewControllerEx ()
+#import "UIMenuBar.h"
 
+
+@interface RootViewControllerEx ()<UIMenuBarDelegate>
+@property (nonatomic, retain) UIMenuBar *menuBar;
 @end
 
 @implementation RootViewControllerEx
 
+
+@synthesize menuBar   = _menuBar;
 @synthesize currentFrom = _currentFrom;
 
 - (id)initWithTabBarHeight:(NSUInteger)height
@@ -27,6 +32,7 @@
 - (void )dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    TT_RELEASE_SAFELY(_menuBar);
     [super dealloc];
 }
 
@@ -36,12 +42,12 @@
     
     [arrayVC addObject:[self createItem:@"HomeViewControllerEx" title:@"Home"]];
     [arrayVC addObject:[self createItem:@"InquiryViewControllerEx" title:@"Inquiry"]];
-    [arrayVC addObject:[self createItem:@"InquiryViewControllerEx" title:@"Menu"]];
+    [arrayVC addObject:[self createItem:@"MenuViewControllerEx" title:@"Menu"]];
     
 //    self.tabEdgeColor = [UIColor getColor:@"bdbdbd"];
     self.tabEdgeColor = [UIColor whiteColor];
     self.textColor = [UIColor blackColor];
-    self.selectedTextColor = [UIColor blackColor];
+    self.selectedTextColor = [UIColor whiteColor];
     [self setViewControllers:arrayVC];
     self.delegate = self;
     return self;
@@ -69,9 +75,52 @@
 - (BOOL) canChangeToContoller:(UIViewController *)controller
 {
     if ([[controller.title uppercaseString] isEqualToString:@"MENU"]) {
+        [self popMenuAction:nil];
         return NO;
     }
+    [self clickAction:nil];
     return YES;
+}
+
+- (UIMenuBar *) menuBar
+{
+    if (!_menuBar) {
+        UIMenuBarItem *menuItem1 = [[UIMenuBarItem alloc] initWithTitle:@"About us" target:self image:[UIImage imageNamed:@"about"] action:@selector(clickAction:)];
+        UIMenuBarItem *menuItem2 = [[UIMenuBarItem alloc] initWithTitle:@"News" target:self image:[UIImage imageNamed:@"news"] action:@selector(clickAction:)];
+        UIMenuBarItem *menuItem3 = [[UIMenuBarItem alloc] initWithTitle:@"User Center" target:self image:[UIImage imageNamed:@"users"] action:@selector(clickAction:)];
+        UIMenuBarItem *menuItem4 = [[UIMenuBarItem alloc] initWithTitle:@"Find Your Dealer" target:self image:[UIImage imageNamed:@"search_jxs"] action:@selector(clickAction:)];
+        UIMenuBarItem *menuItem5 = [[UIMenuBarItem alloc] initWithTitle:@"Contact Us" target:self image:[UIImage imageNamed:@"contact"] action:@selector(clickAction:)];
+        UIMenuBarItem *menuItem6 = [[UIMenuBarItem alloc] initWithTitle:@"Logout" target:self image:[UIImage imageNamed:@"quite"] action:@selector(clickAction:)];
+        
+        NSMutableArray *items =
+        [NSMutableArray arrayWithObjects:menuItem1, menuItem2, menuItem3, menuItem4, menuItem5, menuItem6,nil];
+        
+        _menuBar = [[UIMenuBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 140.0f) items:items];
+        _menuBar.backgroundColor = [UIColor getColor:@"f4f4f4"];
+        _menuBar.alpha = 0.8f;
+        //menuBar.layer.borderWidth = 1.f;
+        //menuBar.layer.borderColor = [[UIColor orangeColor] CGColor];
+        //menuBar.tintColor = [UIColor orangeColor];
+        _menuBar.delegate = self;
+    }
+    
+    return _menuBar ;
+}
+
+- (void)popMenuAction:(id)sender
+{
+    if (!self.menuBar.isShowing) {
+        [self.menuBar show];
+        return;
+    }
+    [self clickAction:nil];
+}
+
+- (void)clickAction:(id)sender
+{
+    if (self.menuBar.isShowing) {
+        [self.menuBar dismiss];
+    }
 }
 
 @end

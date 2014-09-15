@@ -168,13 +168,13 @@
             int width = self.frame.size.width/3.0f;
             int x = (width-item.sizeValue)/2.0f;
             
-            int height = (_containerView.frame.size.height)/2.0f;
-            int y = (height-item.sizeValue)/2.0f;
+            int height = 60.0f;//(_containerView.frame.size.height)/2.0f;
+            int y = 5;//(height-item.sizeValue)/2.0f;
 
             item.containView.frame = CGRectMake(x+width*coloumn,
-                                                y+row*height,
+                                                y*row+row*height,
                                                 item.sizeValue,
-                                                item.sizeValue);
+                                                60.0f);
             
             [pageContent addSubview:item.containView];
         }
@@ -217,11 +217,13 @@
 - (void)show
 {
     [self _presentModelView];
+    self.isShowing = YES;
 }
 
 - (void)dismiss
 {
     [self _dismissModalView];
+    self.isShowing = NO;
 }
 
 
@@ -233,12 +235,13 @@
         // Calulate all frames
         CGRect sf = self.frame;
         CGRect vf = keywindow.frame;
+        vf.size.height -= 44.0f;
         CGRect f  = CGRectMake(0, vf.size.height-sf.size.height, vf.size.width, sf.size.height);
         CGRect of = CGRectMake(0, 0, vf.size.width, vf.size.height-sf.size.height);
         
         // Add semi overlay
-        UIView * overlay = [[UIView alloc] initWithFrame:keywindow.bounds];
-        overlay.backgroundColor = [UIColor colorWithRed:.16 green:.17 blue:.21 alpha:.6]; 
+        UIView * overlay = [[UIView alloc] initWithFrame:vf];
+        overlay.backgroundColor = [UIColor clearColor];//[UIColor colorWithRed:.16 green:.17 blue:.21 alpha:.6];
         
         UIView* ss = [[UIView alloc] initWithFrame:keywindow.bounds];
         [overlay addSubview:ss];
@@ -247,6 +250,7 @@
         UIControl * dismissButton = [[UIControl alloc] initWithFrame:CGRectZero];
         [dismissButton addTarget:self action:@selector(_dismissModalView) forControlEvents:UIControlEventTouchUpInside];
         dismissButton.backgroundColor = [UIColor clearColor];
+        of.size.height -= 44.0f;
         dismissButton.frame = of;
         [overlay addSubview:dismissButton];
         
@@ -256,15 +260,15 @@
         }];
         
         // Present view animated
-        self.frame = CGRectMake(0, vf.size.height, vf.size.width, sf.size.height);
+        self.frame = CGRectMake(0, vf.size.height, vf.size.width, sf.size.height-44.0f);
         [keywindow addSubview:self];
         self.layer.shadowColor = [[UIColor blackColor] CGColor];
         self.layer.shadowOffset = CGSizeMake(0, -2);
         self.layer.shadowRadius = 5.0;
         self.layer.shadowOpacity = 0.8;
-        [UIView animateWithDuration:kSemiModalAnimationDuration animations:^{
+//        [UIView animateWithDuration:kSemiModalAnimationDuration animations:^{
             self.frame = f;
-        }];
+//        }];
     }
 }
 
@@ -273,18 +277,18 @@
     UIWindow * keywindow = [[UIApplication sharedApplication] keyWindow];
     UIView * modal = [keywindow.subviews objectAtIndex:keywindow.subviews.count-1];
     UIView * overlay = [keywindow.subviews objectAtIndex:keywindow.subviews.count-2];
-    [UIView animateWithDuration:kSemiModalAnimationDuration animations:^{
+//    [UIView animateWithDuration:kSemiModalAnimationDuration animations:^{
         modal.frame = CGRectMake(0, keywindow.frame.size.height, modal.frame.size.width, modal.frame.size.height);
-    } completion:^(BOOL finished) {
+//    } completion:^(BOOL finished) {
         [overlay removeFromSuperview];
         [modal removeFromSuperview];
-    }];
+//    }];
     
     // Begin overlay animation
     UIImageView * ss = (UIImageView*)[overlay.subviews objectAtIndex:0];
-    [UIView animateWithDuration:kSemiModalAnimationDuration animations:^{
+//    [UIView animateWithDuration:kSemiModalAnimationDuration animations:^{
         ss.alpha = 1;
-    }];
+//    }];
 }
 
 
