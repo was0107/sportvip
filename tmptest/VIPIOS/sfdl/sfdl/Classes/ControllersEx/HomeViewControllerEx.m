@@ -51,7 +51,7 @@
 {
     [super viewDidLoad];
     [[self showRight] showLeft];
-    [self.customTitleLable setAlpha:0];
+    [self.customTitleLable setText:@""];
     [self.headerView addSubview:self.searchView];
     [self.headerView addSubview:self.cycleView];
     

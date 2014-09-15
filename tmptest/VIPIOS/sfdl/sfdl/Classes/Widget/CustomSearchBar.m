@@ -119,7 +119,7 @@
         _label2.font = HTFONTSIZE(kFontSize12);
         
         UIImageView *icon = [[[UIImageView alloc] initWithFrame:CGRectMake(265, 5, 24, 24)] autorelease];;
-        [icon setImage:[UIImage imageNamed:@"ic_search_icon"]];
+        [icon setImage:[UIImage imageNamed:@"home_email"]];
         icon.backgroundColor = kClearColor;
         [self addSubview:self.label1];
         [self addSubview:self.label2];

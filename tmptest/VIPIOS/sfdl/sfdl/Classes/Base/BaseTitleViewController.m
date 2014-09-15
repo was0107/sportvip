@@ -110,13 +110,13 @@
 
         
         UIImageView *bgView = [[[UIImageView alloc] initWithFrame:CGRectMake(30, 0, 60, 44)] autorelease];
-        bgView.image = [UIImage imageNamed:@"icon_default"];
+//        bgView.image = [UIImage imageNamed:@"icon_default"];
         UITapGestureRecognizer *gesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(leftViewAction:)] autorelease];
         
         [_leftView addGestureRecognizer:gesture];
         if ([self.navigationController.viewControllers count] > 1 )
         {
-            bgView.image = [UIImage imageNamed:@"back_home"];
+//            bgView.image = [UIImage imageNamed:@"back_home"];
             bgView.frame = CGRectMake(20, 2, 40, 40);
             [_leftView addSubview:back];
         }
@@ -304,9 +304,9 @@
         UIButton *button1 = [UIButton buttonWithType:UIButtonTypeCustom];
         UIButton *button2 = [UIButton buttonWithType:UIButtonTypeCustom];
         
-        [button0 setImage:[UIImage imageNamed:@"icon_search"] forState:UIControlStateNormal];
-        [button1 setImage:[UIImage imageNamed:@"icon_share"] forState:UIControlStateNormal];
-        [button2 setImage:[UIImage imageNamed:@"ic_more"] forState:UIControlStateNormal];
+        [button0 setImage:[UIImage imageNamed:@"search"] forState:UIControlStateNormal];
+        [button1 setImage:[UIImage imageNamed:@"social"] forState:UIControlStateNormal];
+        [button2 setImage:[UIImage imageNamed:@"list"] forState:UIControlStateNormal];
 //        [CreateObject addTargetEfection:button0];
 //        [CreateObject addTargetEfection:button1];
 //        [CreateObject addTargetEfection:button2];
@@ -314,6 +314,11 @@
         button0.frame = CGRectMake(0, 0, 44, 44);
         button1.frame = CGRectMake(44, 0, 44, 44);
         button2.frame = CGRectMake(88, 0, 44, 44);
+        
+        int spaceWidth = 3;
+        button0.imageEdgeInsets = UIEdgeInsetsMake(spaceWidth,spaceWidth,spaceWidth,spaceWidth);
+        button1.imageEdgeInsets = UIEdgeInsetsMake(spaceWidth,spaceWidth,spaceWidth,spaceWidth);
+        button2.imageEdgeInsets = UIEdgeInsetsMake(spaceWidth,spaceWidth,spaceWidth,spaceWidth);
         
         [_rightView addSubview:button0];
         [_rightView addSubview:button1];

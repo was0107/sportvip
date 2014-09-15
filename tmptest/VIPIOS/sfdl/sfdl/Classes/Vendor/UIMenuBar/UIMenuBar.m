@@ -275,6 +275,9 @@
 - (void)_dismissModalView
 {    
     UIWindow * keywindow = [[UIApplication sharedApplication] keyWindow];
+    if (keywindow.subviews.count <2) {
+        return;
+    }
     UIView * modal = [keywindow.subviews objectAtIndex:keywindow.subviews.count-1];
     UIView * overlay = [keywindow.subviews objectAtIndex:keywindow.subviews.count-2];
 //    [UIView animateWithDuration:kSemiModalAnimationDuration animations:^{

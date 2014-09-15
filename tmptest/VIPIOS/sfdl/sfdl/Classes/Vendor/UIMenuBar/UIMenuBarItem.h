@@ -28,10 +28,12 @@
 @property (nonatomic, retain, readonly) UIImage *image;
 @property (nonatomic, retain) UIControl *containView;
 @property (nonatomic, readonly) CGFloat sizeValue;
+@property (nonatomic, copy, readonly) NSString *controllerString;
 
 - (id)initWithTitle:(NSString *)title
              target:(id)target
               image:(UIImage *)image
-             action:(SEL)action;
+             action:(SEL)action
+         controller:(NSString *) controller;
 
 @end

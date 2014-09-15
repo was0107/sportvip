@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 
 @interface AppDelegate()
-@property (nonatomic, retain) RootViewControllerEx *rootController;
 
 @end
 
@@ -41,15 +40,18 @@
     {
         self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     }
+    
     self.rootController = [[[RootViewControllerEx alloc] initWithTabBarHeight:45.0f] autorelease];
-//    UINavigationController *controller = [[[UINavigationController alloc] initWithRootViewController:self.rootController] autorelease];
-//    controller.navigationBar.backgroundColor = kButtonNormalColor;
+    UINavigationController *controller = [[[UINavigationController alloc] initWithRootViewController:self.rootController] autorelease];
+    controller.view.backgroundColor = [UIColor getColor:@"f4f4f4"];
 
 //    [UINavigationBar appearance].barTintColor = kButtonNormalColor;
 //    controller.navigationBar.barTintColor = kButtonNormalColor;
 //    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-//    [controller setNavigationBarHidden:NO];
-    self.window.rootViewController = self.rootController;
+    [controller setNavigationBarHidden:NO animated:NO];
+//    [controller setToolbarHidden:YES animated:NO];
+//    self.window.rootViewController = self.rootController;
+    self.window.rootViewController = controller;
     [self.window makeKeyAndVisible];
     return YES;
 }

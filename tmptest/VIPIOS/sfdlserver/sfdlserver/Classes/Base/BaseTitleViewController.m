@@ -110,7 +110,7 @@
 
         
         UIImageView *bgView = [[[UIImageView alloc] initWithFrame:CGRectMake(30, 0, 60, 44)] autorelease];
-        bgView.image = [UIImage imageNamed:@"icon_default"];
+        bgView.image = [UIImage imageNamed:@"icon"];
         
         UITapGestureRecognizer *gesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(leftViewAction:)] autorelease];
         

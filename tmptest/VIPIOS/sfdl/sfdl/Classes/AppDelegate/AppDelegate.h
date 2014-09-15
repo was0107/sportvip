@@ -18,6 +18,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic,readonly) AGViewDelegate *viewDelegate;
+@property (nonatomic, retain) RootViewControllerEx *rootController;
 
 + (AppDelegate *)sharedAppDelegate;
 

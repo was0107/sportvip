@@ -14,6 +14,7 @@
 
 @interface RootViewControllerEx ()<UIMenuBarDelegate>
 @property (nonatomic, retain) UIMenuBar *menuBar;
+@property (nonatomic, retain) BaseTitleViewController *menuController;
 @end
 
 @implementation RootViewControllerEx
@@ -42,9 +43,11 @@
     
     [arrayVC addObject:[self createItem:@"HomeViewControllerEx" title:@"Home"]];
     [arrayVC addObject:[self createItem:@"InquiryViewControllerEx" title:@"Inquiry"]];
+    
+//    self.menuController = (UINavigationController *)[self createItem:@"MenuViewControllerEx" title:@"Menu"];
     [arrayVC addObject:[self createItem:@"MenuViewControllerEx" title:@"Menu"]];
     
-//    self.tabEdgeColor = [UIColor getColor:@"bdbdbd"];
+    self.tabEdgeColor = [UIColor getColor:@"bdbdbd"];
     self.tabEdgeColor = [UIColor whiteColor];
     self.textColor = [UIColor blackColor];
     self.selectedTextColor = [UIColor whiteColor];
@@ -58,6 +61,10 @@
     Class class = NSClassFromString(controller);
     BaseTitleViewController *vc1 = [[[class alloc] init] autorelease];
     vc1.title = title;
+//    if ([controller isEqualToString:@"HomeViewControllerEx"]) {
+//        self.menuController = vc1;
+//    }
+//    return vc1;
     UINavigationController *nav1 = [[[UINavigationController alloc] initWithRootViewController:vc1] autorelease];
     nav1.navigationBar.tintColor = [UIColor orangeColor];
     nav1.navigationBar.backgroundColor = [UIColor getColor:@"f4f4f4"];
@@ -71,6 +78,12 @@
     //    self.view.frame = kFullFrame;
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
+}
+
 
 - (BOOL) canChangeToContoller:(UIViewController *)controller
 {
@@ -78,19 +91,19 @@
         [self popMenuAction:nil];
         return NO;
     }
-    [self clickAction:nil];
+    [self dissmissMenubar];
     return YES;
 }
 
 - (UIMenuBar *) menuBar
 {
     if (!_menuBar) {
-        UIMenuBarItem *menuItem1 = [[UIMenuBarItem alloc] initWithTitle:@"About us" target:self image:[UIImage imageNamed:@"about"] action:@selector(clickAction:)];
-        UIMenuBarItem *menuItem2 = [[UIMenuBarItem alloc] initWithTitle:@"News" target:self image:[UIImage imageNamed:@"news"] action:@selector(clickAction:)];
-        UIMenuBarItem *menuItem3 = [[UIMenuBarItem alloc] initWithTitle:@"User Center" target:self image:[UIImage imageNamed:@"users"] action:@selector(clickAction:)];
-        UIMenuBarItem *menuItem4 = [[UIMenuBarItem alloc] initWithTitle:@"Find Your Dealer" target:self image:[UIImage imageNamed:@"search_jxs"] action:@selector(clickAction:)];
-        UIMenuBarItem *menuItem5 = [[UIMenuBarItem alloc] initWithTitle:@"Contact Us" target:self image:[UIImage imageNamed:@"contact"] action:@selector(clickAction:)];
-        UIMenuBarItem *menuItem6 = [[UIMenuBarItem alloc] initWithTitle:@"Logout" target:self image:[UIImage imageNamed:@"quite"] action:@selector(clickAction:)];
+        UIMenuBarItem *menuItem1 = [[UIMenuBarItem alloc] initWithTitle:@"About us" target:self image:[UIImage imageNamed:@"about"] action:@selector(clickAction1:) controller:@"AboutUsViewController"];
+        UIMenuBarItem *menuItem2 = [[UIMenuBarItem alloc] initWithTitle:@"News" target:self image:[UIImage imageNamed:@"news"] action:@selector(clickAction2:) controller:@"NewsViewController"];
+        UIMenuBarItem *menuItem3 = [[UIMenuBarItem alloc] initWithTitle:@"User Center" target:self image:[UIImage imageNamed:@"users"] action:@selector(clickAction3:) controller:@"UserViewController"];
+        UIMenuBarItem *menuItem4 = [[UIMenuBarItem alloc] initWithTitle:@"Find Your Dealer" target:self image:[UIImage imageNamed:@"search_jxs"] action:@selector(clickAction4:) controller:@"AgentListViewController"];
+        UIMenuBarItem *menuItem5 = [[UIMenuBarItem alloc] initWithTitle:@"Contact Us" target:self image:[UIImage imageNamed:@"contact"] action:@selector(clickAction5:) controller:@"ContactUsViewController"];
+        UIMenuBarItem *menuItem6 = [[UIMenuBarItem alloc] initWithTitle:@"Logout" target:self image:[UIImage imageNamed:@"quite"] action:@selector(clickAction6:) controller:@""];
         
         NSMutableArray *items =
         [NSMutableArray arrayWithObjects:menuItem1, menuItem2, menuItem3, menuItem4, menuItem5, menuItem6,nil];
@@ -113,14 +126,75 @@
         [self.menuBar show];
         return;
     }
-    [self clickAction:nil];
+    [self dissmissMenubar];
 }
 
-- (void)clickAction:(id)sender
+- (void)dissmissMenubar
 {
+    
     if (self.menuBar.isShowing) {
         [self.menuBar dismiss];
     }
 }
+
+- (void) goToViewController:(NSString *) controller
+{
+    Class class = NSClassFromString(controller);
+    if (class) {
+        BaseTitleViewController *controller = [[[class alloc] init] autorelease];
+        [self.navigationController setNavigationBarHidden:NO];
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+
+}
+- (void)clickAction1:(id)sender
+{
+    [self goToViewController:@"AboutUsViewController"];
+    [self dissmissMenubar];
+}
+
+
+- (void)clickAction2:(id)sender
+{
+    [self goToViewController:@"NewsViewController"];
+
+    [self dissmissMenubar];
+}
+
+
+- (void)clickAction3:(id)sender
+{
+    [self goToViewController:@"UserViewController"];
+
+    [self dissmissMenubar];
+}
+
+
+- (void)clickAction4:(id)sender
+{
+    [self goToViewController:@"AgentListViewController"];
+
+    [self dissmissMenubar];
+}
+
+
+- (void)clickAction5:(id)sender
+{
+    [self goToViewController:@"ContactUsViewController"];
+
+    [self dissmissMenubar];
+}
+
+
+- (void)clickAction6:(id)sender
+{
+    [self goToViewController:@"AboutUsViewController"];
+
+    [self dissmissMenubar];
+}
+
+
+
+
 
 @end

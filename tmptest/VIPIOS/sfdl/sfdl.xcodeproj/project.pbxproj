@@ -85,7 +85,6 @@
 		DD13AD6A19592E73005D4222 /* UIPopoverListView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD13AD6919592E73005D4222 /* UIPopoverListView.m */; };
 		DD13AD7D1959A831005D4222 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DD13AD7B1959A831005D4222 /* icon.png */; };
 		DD13AD7E1959A831005D4222 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD13AD7C1959A831005D4222 /* icon@2x.png */; };
-		DD13AD801959A83F005D4222 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD13AD7F1959A83F005D4222 /* Images.xcassets */; };
 		DD13AD861959ACA9005D4222 /* ViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD13AD851959ACA9005D4222 /* ViewPagerController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		DD2B9F2F1965439900CB20C3 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD2B9F2D1965439900CB20C3 /* CoreTelephony.framework */; };
 		DD2B9F301965439900CB20C3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD2B9F2E1965439900CB20C3 /* CoreText.framework */; };
@@ -327,7 +326,6 @@
 		DD13AD6919592E73005D4222 /* UIPopoverListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPopoverListView.m; sourceTree = "<group>"; };
 		DD13AD7B1959A831005D4222 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		DD13AD7C1959A831005D4222 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
-		DD13AD7F1959A83F005D4222 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DD13AD841959ACA9005D4222 /* ViewPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewPagerController.h; sourceTree = "<group>"; };
 		DD13AD851959ACA9005D4222 /* ViewPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewPagerController.m; sourceTree = "<group>"; };
 		DD2B9F2D1965439900CB20C3 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -814,7 +812,6 @@
 			isa = PBXGroup;
 			children = (
 				DD3A3EAD193E029300043CA4 /* Classes */,
-				DD13AD7F1959A83F005D4222 /* Images.xcassets */,
 				DD3A3E7F193E014D00043CA4 /* Supporting Files */,
 			);
 			path = sfdl;
@@ -1388,7 +1385,6 @@
 				DD3A4002193E02D100043CA4 /* Default@2x.png in Resources */,
 				DD06522F194DAABD00EECCBE /* SVProgressHUD.bundle in Resources */,
 				DD3A3E83193E014D00043CA4 /* InfoPlist.strings in Resources */,
-				DD13AD801959A83F005D4222 /* Images.xcassets in Resources */,
 				DD3A4001193E02D100043CA4 /* Default.png in Resources */,
 				DD3A3FC0193E029300043CA4 /* bg_top.png in Resources */,
 				DD2B9F971965590B00CB20C3 /* PinterestSDKResources.bundle in Resources */,

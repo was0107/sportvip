@@ -28,9 +28,10 @@
              target:(id)target
               image:(UIImage *)image
              action:(SEL)action
+         controller:(NSString *) controller
 {
     if(self = [super init]){
-        
+        _controllerString = [controller copy];
         _title = [[NSString stringWithFormat:@"%@", title] retain];
         _image = [[UIImage imageWithCGImage:image.CGImage] retain];
         _action = action;
@@ -114,6 +115,7 @@
     [_containView release], _containView = nil;
     [_imageView release], _imageView = nil;
     [_titleLabel release], _titleLabel = nil;
+    [_controllerString release], _controllerString = nil;
     [super dealloc];
 }
 
