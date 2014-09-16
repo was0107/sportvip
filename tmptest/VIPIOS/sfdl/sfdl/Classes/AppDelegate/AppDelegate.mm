@@ -43,7 +43,7 @@
     
     self.rootController = [[[RootViewControllerEx alloc] initWithTabBarHeight:45.0f] autorelease];
     UINavigationController *controller = [[[UINavigationController alloc] initWithRootViewController:self.rootController] autorelease];
-    controller.view.backgroundColor = [UIColor getColor:@"f4f4f4"];
+    controller.view.backgroundColor = [UIColor getColor:@"EBEAF1"];
 
 //    [UINavigationBar appearance].barTintColor = kButtonNormalColor;
 //    controller.navigationBar.barTintColor = kButtonNormalColor;

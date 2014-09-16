@@ -174,10 +174,10 @@
         [_rightButton setNormalImage:nil selectedImage:nil];
         _rightButton.titleLabel.font = HTFONTSIZE(kFontSize13);
         if (!IS_IOS_7_OR_GREATER) {
-            [_rightButton setTitleColor:kWhiteColor forState:UIControlStateNormal];
+            [_rightButton setTitleColor:kOrangeColor forState:UIControlStateNormal];
             [_rightButton setBackgroundImage:@"nav_button_normal" selectedImage:@"nav_button_selected" clickImage:@"nav_button_selected"];
         } else {
-            [_rightButton setTitleColor:kWhiteColor forState:UIControlStateNormal];
+            [_rightButton setTitleColor:kOrangeColor forState:UIControlStateNormal];
             [_rightButton setBackgroundImage:@"nav_button_normal" selectedImage:@"nav_button_selected" clickImage:@"nav_button_selected"];
         }
         [_rightButton.titleLabel setFont:HTFONTSIZE(16.0)];

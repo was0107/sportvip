@@ -24,7 +24,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.secondTitleLabel.text = @"Enquiry List";
+//    self.secondTitleLabel.text = @"Enquiry List";
+    [self setTitleContent:@"ENQUIRY LIST"];
+
     [self sendRequestToServer];
     // Do any additional setup after loading the view.
 }

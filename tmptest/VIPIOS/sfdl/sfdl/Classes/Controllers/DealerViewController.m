@@ -43,6 +43,8 @@
     [super viewDidLoad];
     _contentDictionary = [[NSMutableDictionary alloc] init];
     self.secondTitleLabel.text = @"Dealer";
+    [self setTitleContent:@"DEALER"];
+
     self.name = @"";
     self.typeItem =nil;
     self.regionItem = nil;

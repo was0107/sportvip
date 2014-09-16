@@ -31,7 +31,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.secondTitleLabel.text = @"Languages";
+//    self.secondTitleLabel.text = @"Languages";
+    [self setTitleContent:@"LANGUAGES"];
+
     // Do any additional setup after loading the view.
 }
 

@@ -26,7 +26,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.secondTitleLabel.text = @"Setting";
+//    self.secondTitleLabel.text = @"Setting";
+    [self setTitleContent:@"SETTING"];
+
     // Do any additional setup after loading the view.
 }
 

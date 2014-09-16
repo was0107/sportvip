@@ -76,7 +76,7 @@
 
 + (UIButton *) addTargetEfection:(UIButton *) theButton
 {
-    [theButton setBackgroundImage:[[UIImage imageWithColor:[UIColor getColor:KCustomGreenColor] size:CGSizeMake(10, 10)] stretchableImageWithLeftCapWidth:5 topCapHeight:5] forState:UIControlStateNormal];
+    [theButton setBackgroundImage:[[UIImage imageWithColor:[UIColor orangeColor] size:CGSizeMake(10, 10)] stretchableImageWithLeftCapWidth:5 topCapHeight:5] forState:UIControlStateNormal];
     [theButton setBackgroundImage:[[UIImage imageWithColor:kButtonSelectColor size:CGSizeMake(10, 10)] stretchableImageWithLeftCapWidth:5 topCapHeight:5] forState:UIControlStateHighlighted];
     return  theButton;
 }

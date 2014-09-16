@@ -20,7 +20,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.secondTitleLabel.text = @"Order Detail";
+//    self.secondTitleLabel.text = @"Order Detail";
+    [self setTitleContent:@"ORDER DETAIL"];
+
     [self sendRequestToServer];
     // Do any additional setup after loading the view.
 }

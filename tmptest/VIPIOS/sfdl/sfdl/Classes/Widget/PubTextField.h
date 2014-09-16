@@ -13,7 +13,7 @@ typedef enum{
 
 
 #define kPubTextFieldHeight 40
-#define kPubTextFieldHeight2 42
+#define kPubTextFieldHeight2 41
 
 
 @interface PubTextField : UIView

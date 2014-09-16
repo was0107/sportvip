@@ -21,7 +21,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.secondTitleLabel.text = @"News";
+//    self.secondTitleLabel.text = @"News";
+    [self setTitleContent:@"NEWS"];
+
 }
 
 - (void)didReceiveMemoryWarning

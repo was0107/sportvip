@@ -35,10 +35,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.secondTitleLabel.text = @"About Us";
+    [self setTitleContent:@"About Us"];
     [self.tableView removeFromSuperview];
 //    [self.view addSubview:self.iconImageView];
-    [self.view addSubview:self.labelOne];
+//    [self.view addSubview:self.labelOne];
     [self.view addSubview:self.labelTwo];
     [self sendRequestToServer];
 }
@@ -102,7 +102,7 @@
 {
     if (!_labelTwo)
     {
-        _labelTwo = [[UIWebView alloc]initWithFrame:CGRectMake(0, 64, 320, kContentBoundsHeight-64)];
+        _labelTwo = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, 320, kContentBoundsHeight-0)];
 //        _labelTwo.textColor  = [UIColor getColor:kCellLeftColor];
 //        _labelTwo.textAlignment = NSTextAlignmentCenter;
         _labelTwo.backgroundColor = kClearColor;

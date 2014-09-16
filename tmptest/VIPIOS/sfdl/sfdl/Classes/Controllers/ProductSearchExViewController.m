@@ -39,7 +39,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.secondTitleLabel.text = @"Product Search";
+//    self.secondTitleLabel.text = @"Product Search";
+    [self setTitleContent:@"PRODUCT SEARCH"];
+
     _contentDictionary = [[NSMutableDictionary alloc] init];
     [self sendRequestToGetCondictionServer];
     self.propertyId = [NSMutableArray array];

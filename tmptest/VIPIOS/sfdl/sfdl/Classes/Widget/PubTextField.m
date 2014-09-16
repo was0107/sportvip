@@ -8,7 +8,7 @@
 
 #define kIndexLabelWidth         40.0f
 #define kIndexLabelHeight        20.0f
-#define kIndexLabelLeftPadding   12.0f
+#define kIndexLabelLeftPadding   4.0f
 #define kIndexLabelRightPadding  24.0f
 #define kIndexLabelTopPadding    3.0f
 #define kIndexLabelBottomPadding 12.0f
@@ -47,6 +47,7 @@
 //        self.autocapitalizationType = UITextAutocapitalizationTypeNone;
         
         [self addSubview:[self indexLabel]];
+        self.backgroundColor = kWhiteColor;
         
     }
     return self;
@@ -85,12 +86,12 @@
             
             _pubTextField = [[UITextField alloc] initWithFrame:CGRectMake(self.bounds.origin.x + kIndexLabelLeftPadding + kIndexLabelWidth + kIndexLabelRightPadding, self.bounds.origin.y + 10, kTextFieldWidth, 20)];
         }
-        _pubTextField.layer.borderWidth = 0.5f;
-        _pubTextField.layer.borderColor = [kGrayColor CGColor];
+//        _pubTextField.layer.borderWidth = 0.5f;
+//        _pubTextField.layer.borderColor = [kGrayColor CGColor];
         _pubTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
         _pubTextField.autocorrectionType = UITextAutocorrectionTypeNo;
         _pubTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        _pubTextField.textColor = kDarkGrayColor;
+        _pubTextField.textColor = kBlackColor;
         _pubTextField.font = HTFONTSIZE(kSystemFontSize16);
     }
     

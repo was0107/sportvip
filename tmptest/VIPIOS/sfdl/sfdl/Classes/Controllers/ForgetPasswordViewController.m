@@ -44,7 +44,7 @@
 {
     if (!_phoneTextField) {
         __block ForgetPasswordViewController *safeSelf = self;
-        _phoneTextField = [[PubTextField alloc] initWithFrame:CGRectMake(25, 15 , 255, 40) indexTitle:@"" placeHolder:@"Username" pubTextFieldStyle:PubTextFieldStyleTop];
+        _phoneTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0, 15 , 320, 40) indexTitle:@"Name:" placeHolder:@"Username" pubTextFieldStyle:PubTextFieldStyleTop];
         _phoneTextField.pubTextField.returnKeyType = UIReturnKeyDone;
         _phoneTextField.pubTextField.frame = CGRectMake(0, 0, 250, 40);
         _phoneTextField.autoLayout = YES;
@@ -60,11 +60,11 @@
 {
     if (!_confirmButton) {
         _confirmButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
-        _confirmButton.frame = CGRectMake(42.0f,  70, 243.0f, 40.0f);
+        _confirmButton.frame = CGRectMake(0.0f,  70, 320.0f, 40.0f);
         _confirmButton.backgroundColor = kLightGrayColor;
         [_confirmButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18.0f]];
         [CreateObject addTargetEfection:_confirmButton];
-        [_confirmButton setTitle:@"Submit" forState:UIControlStateNormal];
+        [_confirmButton setTitle:@"SUBMIT" forState:UIControlStateNormal];
         [_confirmButton addTarget:self action:@selector(confirmButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     
@@ -81,12 +81,12 @@
 
 - (BOOL)checkTextField
 {
-    if ([_phoneTextField.pubTextField.text length] == 0) {
-        [SVProgressHUD showErrorWithStatus:@"请输入正常的用户名"];
-        [_phoneTextField becomeFirstResponder];
-        return NO;
-    }
-    
+//    if ([_phoneTextField.pubTextField.text length] == 0) {
+//        [SVProgressHUD showErrorWithStatus:@"请输入正常的用户名"];
+//        [_phoneTextField becomeFirstResponder];
+//        return NO;
+//    }
+//    
     return YES;
 }
 

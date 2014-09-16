@@ -47,7 +47,7 @@
     {
       [[self showLeft] enableBackGesture];
     }
-    self.navigationController.navigationBar.tintColor = kWhiteColor;
+//    self.navigationController.navigationBar.tintColor = kWhiteColor;
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:kButtonNormalColor size:CGSizeMake(10, 10)] forBarMetrics:UIBarMetricsDefault];
 
 //     self.navigationItem.titleView = self.customTitleLable;

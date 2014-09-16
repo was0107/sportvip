@@ -25,12 +25,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.view addSubview:self.secondTitleLabel];
-    
-    CALayer *lineLayer = [CALayer layer];
-    lineLayer.backgroundColor = [KLineColor CGColor];
-    lineLayer.frame = CGRectMake(10, 38, 300, 2);
-    [self.view.layer addSublayer:lineLayer];
+//    [self.view addSubview:self.secondTitleLabel];
+//    
+//    CALayer *lineLayer = [CALayer layer];
+//    lineLayer.backgroundColor = [KLineColor CGColor];
+//    lineLayer.frame = CGRectMake(10, 38, 300, 2);
+//    [self.view.layer addSublayer:lineLayer];
     
     if (![self useTablViewToShow]) {
         [self.view addSubview:self.scrollView];
@@ -46,22 +46,22 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (CGRect)tableViewFrame
-{
-    return CGRectMake(0, 40, 320.0, kContentBoundsHeight-40);
-}
-
-- (UILabel *) secondTitleLabel
-{
-    if (!_secondTitleLabel) {
-        _secondTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, 300, 24)];
-        _secondTitleLabel.backgroundColor = kClearColor;
-        _secondTitleLabel.textColor = KTextColor;
-        _secondTitleLabel.highlightedTextColor = kWhiteColor;
-        _secondTitleLabel.font = HTFONTSIZE(kFontSize15);
-    }
-    return _secondTitleLabel;
-}
+//- (CGRect)tableViewFrame
+//{
+//    return CGRectMake(0, 0, 320.0, kContentBoundsHeight-0);
+//}
+//
+//- (UILabel *) secondTitleLabel
+//{
+//    if (!_secondTitleLabel) {
+//        _secondTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, 300, 24)];
+//        _secondTitleLabel.backgroundColor = kClearColor;
+//        _secondTitleLabel.textColor = KTextColor;
+//        _secondTitleLabel.highlightedTextColor = kWhiteColor;
+//        _secondTitleLabel.font = HTFONTSIZE(kFontSize15);
+//    }
+//    return _secondTitleLabel;
+//}
 
 - (UIKeyboardAvoidingScrollView *) scrollView
 {

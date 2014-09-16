@@ -69,7 +69,7 @@
         
 //        if (IS_IOS_7_OR_GREATER)
         {
-            self.backgroundColor = kWhiteColor;
+            self.backgroundColor = kBlackColor;
         }
     }
     
@@ -140,7 +140,7 @@
 
 - (void)setFieldStyle:(PubTextFieldStyle)fieldStyle
 {
-//    return;
+    return;
     switch (fieldStyle) {
         case PubTextFieldStyleOne:
         {

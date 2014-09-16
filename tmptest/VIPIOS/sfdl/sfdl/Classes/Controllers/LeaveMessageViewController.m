@@ -28,7 +28,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.secondTitleLabel.text = @"Leave Message";
+//    self.secondTitleLabel.text = @"Leave Message";
+    [self setTitleContent:@"LEAVE MESSAGE"];
+
     [self.scrollView addSubview:self.geneset];
     [self.scrollView addSubview:self.prime];
     [self.scrollView addSubview:self.standby];

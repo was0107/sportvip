@@ -80,6 +80,9 @@
 		4924E42F19C6749500D19666 /* home_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4924E42D19C6749500D19666 /* home_black@2x.png */; };
 		4924E43019C6749500D19666 /* home_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4924E42E19C6749500D19666 /* home_white@2x.png */; };
 		4924E43319C6788700D19666 /* MenuViewControllerEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 4924E43219C6788700D19666 /* MenuViewControllerEx.m */; };
+		4998571719C73CFD00B82234 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4998571619C73CFD00B82234 /* ChangePasswordViewController.m */; };
+		4998571A19C7407000B82234 /* UserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4998571919C7407000B82234 /* UserCenterViewController.m */; };
+		4998571D19C7421700B82234 /* BrowsingHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4998571C19C7421700B82234 /* BrowsingHistoryViewController.m */; };
 		DD06522F194DAABD00EECCBE /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DD06522E194DAABD00EECCBE /* SVProgressHUD.bundle */; };
 		DD13AD6719592D33005D4222 /* ProductSearchExViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD13AD6619592D33005D4222 /* ProductSearchExViewController.m */; };
 		DD13AD6A19592E73005D4222 /* UIPopoverListView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD13AD6919592E73005D4222 /* UIPopoverListView.m */; };
@@ -313,6 +316,12 @@
 		4924E42E19C6749500D19666 /* home_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_white@2x.png"; sourceTree = "<group>"; };
 		4924E43119C6788700D19666 /* MenuViewControllerEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewControllerEx.h; sourceTree = "<group>"; };
 		4924E43219C6788700D19666 /* MenuViewControllerEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewControllerEx.m; sourceTree = "<group>"; };
+		4998571519C73CFD00B82234 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
+		4998571619C73CFD00B82234 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
+		4998571819C7407000B82234 /* UserCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCenterViewController.h; sourceTree = "<group>"; };
+		4998571919C7407000B82234 /* UserCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCenterViewController.m; sourceTree = "<group>"; };
+		4998571B19C7421700B82234 /* BrowsingHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowsingHistoryViewController.h; sourceTree = "<group>"; };
+		4998571C19C7421700B82234 /* BrowsingHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowsingHistoryViewController.m; sourceTree = "<group>"; };
 		49B3E424198573E400F0822A /* EnquiryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnquiryListViewController.h; sourceTree = "<group>"; };
 		49B3E425198573E400F0822A /* EnquiryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnquiryListViewController.m; sourceTree = "<group>"; };
 		49B3E4271985743600F0822A /* ViewEnquiryViewContrller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewEnquiryViewContrller.h; sourceTree = "<group>"; };
@@ -635,6 +644,12 @@
 				4924E43219C6788700D19666 /* MenuViewControllerEx.m */,
 				490CE86119BAE82000C2F887 /* CustomThreeButton.h */,
 				490CE86219BAE82000C2F887 /* CustomThreeButton.m */,
+				4998571519C73CFD00B82234 /* ChangePasswordViewController.h */,
+				4998571619C73CFD00B82234 /* ChangePasswordViewController.m */,
+				4998571819C7407000B82234 /* UserCenterViewController.h */,
+				4998571919C7407000B82234 /* UserCenterViewController.m */,
+				4998571B19C7421700B82234 /* BrowsingHistoryViewController.h */,
+				4998571C19C7421700B82234 /* BrowsingHistoryViewController.m */,
 			);
 			path = ControllersEx;
 			sourceTree = "<group>";
@@ -1428,7 +1443,9 @@
 				DD3A3FDD193E029300043CA4 /* UserDefaultsManager.m in Sources */,
 				DD8EEADC1944243000CACC22 /* ProductDetailViewController.m in Sources */,
 				DD3A3FF7193E029300043CA4 /* UIImageLabelEx.m in Sources */,
+				4998571719C73CFD00B82234 /* ChangePasswordViewController.m in Sources */,
 				DD3A3F97193E029300043CA4 /* BaseTableViewCell.m in Sources */,
+				4998571D19C7421700B82234 /* BrowsingHistoryViewController.m in Sources */,
 				490CE85619BAC16100C2F887 /* HomeViewControllerEx.m in Sources */,
 				DD3A3FE8193E029300043CA4 /* MBProgressHUD.m in Sources */,
 				DD3A3F95193E029300043CA4 /* BaseSectionTableViewController.m in Sources */,
@@ -1476,6 +1493,7 @@
 				DD8EEB181944566900CACC22 /* KxMenu.m in Sources */,
 				DD3A3FB8193E029300043CA4 /* ErrorResponse.m in Sources */,
 				DD8EEADB1944243000CACC22 /* ProductCategoryViewController.m in Sources */,
+				4998571A19C7407000B82234 /* UserCenterViewController.m in Sources */,
 				DD3A3FE5193E029300043CA4 /* DataTracker.m in Sources */,
 				DD8C9E771949854600436209 /* ProductRequest.m in Sources */,
 				DD3A3FF4193E029300043CA4 /* CustomSelectControl.m in Sources */,

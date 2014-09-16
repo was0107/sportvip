@@ -19,4 +19,7 @@
 - (BOOL) useTablViewToShow;
 
 -(void)refreshTableView;
+
+- (CGRect)tableViewFrame;
+
 @end

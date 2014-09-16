@@ -31,7 +31,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.secondTitleLabel.text = @"Agent";
+//    self.secondTitleLabel.text = @"Agent";
+    [self setTitleContent:@"Agent"];
+
     // Do any additional setup after loading the view.
 }
 

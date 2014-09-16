@@ -24,7 +24,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.secondTitleLabel.text = @"News";
+//    self.secondTitleLabel.text = @"News";
+    [self setTitleContent:@"NEWS"];
+
     [self.scrollView removeFromSuperview];
     [self.view addSubview:self.labelOne];
     [self.view addSubview:self.content];

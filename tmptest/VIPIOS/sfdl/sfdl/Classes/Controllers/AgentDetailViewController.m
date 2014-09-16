@@ -23,7 +23,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.secondTitleLabel.text = @"Agent";
+//    self.secondTitleLabel.text = @"Agent";
+    [self setTitleContent:@"Agent"];
+
     [self.scrollView removeFromSuperview];
     [self.view addSubview:self.labelOne];
     [self.view addSubview:self.content];
