@@ -20,6 +20,8 @@
 
 - (id)setCellsGroupCount:(NSInteger ) number at:(NSIndexPath *)indexPath;
 
+- (void) configWithType:(int) type;
+
 @end
 
 @interface BaseTableViewCell : BaseTableViewCornerCell
@@ -29,7 +31,6 @@
 @property (nonatomic, retain) UITextField *textField;
 @property (nonatomic, retain) UIButton * rightButton;
 @property (nonatomic, copy) idBlock block;
-- (void) configWithType:(int) type;
 
 @end
 

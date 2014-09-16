@@ -83,6 +83,7 @@
 		4998571719C73CFD00B82234 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4998571619C73CFD00B82234 /* ChangePasswordViewController.m */; };
 		4998571A19C7407000B82234 /* UserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4998571919C7407000B82234 /* UserCenterViewController.m */; };
 		4998571D19C7421700B82234 /* BrowsingHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4998571C19C7421700B82234 /* BrowsingHistoryViewController.m */; };
+		49D00D9719C7CA7900801880 /* NewsTableViewCellEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D00D9619C7CA7900801880 /* NewsTableViewCellEx.m */; };
 		DD06522F194DAABD00EECCBE /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DD06522E194DAABD00EECCBE /* SVProgressHUD.bundle */; };
 		DD13AD6719592D33005D4222 /* ProductSearchExViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD13AD6619592D33005D4222 /* ProductSearchExViewController.m */; };
 		DD13AD6A19592E73005D4222 /* UIPopoverListView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD13AD6919592E73005D4222 /* UIPopoverListView.m */; };
@@ -326,6 +327,8 @@
 		49B3E425198573E400F0822A /* EnquiryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnquiryListViewController.m; sourceTree = "<group>"; };
 		49B3E4271985743600F0822A /* ViewEnquiryViewContrller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewEnquiryViewContrller.h; sourceTree = "<group>"; };
 		49B3E4281985743600F0822A /* ViewEnquiryViewContrller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewEnquiryViewContrller.m; sourceTree = "<group>"; };
+		49D00D9519C7CA7900801880 /* NewsTableViewCellEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableViewCellEx.h; sourceTree = "<group>"; };
+		49D00D9619C7CA7900801880 /* NewsTableViewCellEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableViewCellEx.m; sourceTree = "<group>"; };
 		DD06522E194DAABD00EECCBE /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		DD1294F0197D185B00D08A01 /* ServerLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerLoginViewController.h; sourceTree = "<group>"; };
 		DD1294F1197D185B00D08A01 /* ServerLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerLoginViewController.m; sourceTree = "<group>"; };
@@ -650,6 +653,8 @@
 				4998571919C7407000B82234 /* UserCenterViewController.m */,
 				4998571B19C7421700B82234 /* BrowsingHistoryViewController.h */,
 				4998571C19C7421700B82234 /* BrowsingHistoryViewController.m */,
+				49D00D9519C7CA7900801880 /* NewsTableViewCellEx.h */,
+				49D00D9619C7CA7900801880 /* NewsTableViewCellEx.m */,
 			);
 			path = ControllersEx;
 			sourceTree = "<group>";
@@ -1509,6 +1514,7 @@
 				DD13AD861959ACA9005D4222 /* ViewPagerController.m in Sources */,
 				DD3A3FF0193E029300043CA4 /* NSDate+Helper.m in Sources */,
 				DD3A3FF1193E029300043CA4 /* UIImageView+(ASI).m in Sources */,
+				49D00D9719C7CA7900801880 /* NewsTableViewCellEx.m in Sources */,
 				DD3A3FF5193E029300043CA4 /* PubTextField.m in Sources */,
 				DD3A3E85193E014D00043CA4 /* main.m in Sources */,
 				DD3A3FBD193E029300043CA4 /* CategoryItem.m in Sources */,
