@@ -132,7 +132,7 @@
 {
     if (!_confirmButton) {
         _confirmButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
-        _confirmButton.frame = CGRectMake(0.0f, 25 + 4 * kPubTextFieldHeight2  + kImageStartAt, 320.0f, 40.0f);
+        _confirmButton.frame = CGRectMake(0.0f, 25 + 3 * kPubTextFieldHeight2  + kImageStartAt, 320.0f, 40.0f);
         _confirmButton.backgroundColor = kClearColor;
         [_confirmButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18.0f]];
         [CreateObject addTargetEfection:_confirmButton];

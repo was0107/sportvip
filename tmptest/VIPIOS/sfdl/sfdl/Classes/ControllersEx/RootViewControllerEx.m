@@ -27,6 +27,7 @@
 {
     self = [super initWithTabBarHeight:height];
     [self setMinimumHeightToDisplayTitle:20.0];
+    self.tabStrokeColor = kOrangeColor;
     return [self configControllers];
 }
 

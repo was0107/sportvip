@@ -222,11 +222,11 @@ static const float kTopMargin = 1.0;
         // We fill the background with a noise pattern
         CGContextSaveGState(ctx);
         {
-//            [[UIColor colorWithPatternImage:[UIImage imageNamed:_selectedBackgroundImageName ? _selectedBackgroundImageName : @"AKTabBarController.bundle/noise-pattern"]] set];
+            [[UIColor orangeColor] set];
 //            [kClearColor set];
 ////            [[UIColor colorWithRed:0.9412 green:0.9412 blue:0.9412 alpha:1.0] set];// #f0f0f0
-//            CGContextFillRect(ctx, rect);
-//            
+            CGContextFillRect(ctx, rect);
+//
 //            // We set the parameters of th gradient multiply blend
 //            size_t num_locations = 2;
 //            CGFloat locations[2] = {1.0, 0.0};

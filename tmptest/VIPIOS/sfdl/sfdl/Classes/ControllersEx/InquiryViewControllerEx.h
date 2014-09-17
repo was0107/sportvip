@@ -6,8 +6,8 @@
 //  Copyright (c) 2014年 allen.wang. All rights reserved.
 //
 
-#import "BaseTitleViewController.h"
+#import "BaseTableViewController.h"
 
-@interface InquiryViewControllerEx : BaseTitleViewController
+@interface InquiryViewControllerEx : BaseTableViewController
 
 @end

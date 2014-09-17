@@ -23,13 +23,13 @@
     self.rightLabel.numberOfLines = 1;
     self.rightLabel.textColor = kGrayColor;
 
-    self.subRightLabel.frame = CGRectMake(254, 32, 64, 20);
+    self.subRightLabel.frame = CGRectMake(254, 30, 64, 20);
     self.subRightLabel.font = HTFONTSIZE(kFontSize12);
     self.subRightLabel.textAlignment = NSTextAlignmentCenter;
     self.subRightLabel.numberOfLines = 1;
     self.subRightLabel.textColor = kLightGrayColor;
     
-    self.rightImageView.frame = CGRectMake(206, 47, 50, 3);
+    self.rightImageView.frame = CGRectMake(206, 45, 50, 5);
     self.rightImageView.backgroundColor = kOrangeColor;
     
     CALayer *layer = [CALayer layer];
