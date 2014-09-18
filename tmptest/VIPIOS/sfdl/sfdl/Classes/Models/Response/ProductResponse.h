@@ -87,6 +87,28 @@
 @end
 
 
+/*
+ * add new interface
+ */
+
+
+
+@interface ProductForHomePageResponse : ListPaggingResponseBase
+@property (nonatomic, retain) NSMutableArray * hotArray;                  //结果集
+
+@end
+
+@interface BrowsingHistoryListResponse : ListPaggingResponseBase
+
+@property (nonatomic, copy) NSString *username;
+
+@end
+
+
+@interface BannerResponse : ListPaggingResponseBase
+
+@end
+
 
 
 /*

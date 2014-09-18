@@ -26,9 +26,11 @@
 @property (nonatomic, retain) UIImageView   *topImageView;
 @property (nonatomic, retain) CustomSearchBarEx *searchView;
 
-@property (nonatomic, retain) PictureResponse    *pictureResponse;
-@property (nonatomic, retain) PictureListRequest *pictureRequest;
+@property (nonatomic, retain) BannerResponse     *pictureResponse;
+@property (nonatomic, retain) BannerRequest      *pictureRequest;
 
+@property (nonatomic, retain) ProductForHomePageRequest  *request;
+@property (nonatomic, retain) ProductForHomePageResponse *response;
 @property (nonatomic, retain) UIView            *headerView;
 
 @end
@@ -46,7 +48,6 @@
     return @"home_white";
 }
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -56,6 +57,8 @@
     [self.headerView addSubview:self.cycleView];
     
     self.tableView.tableHeaderView = self.headerView;
+    
+    [self sendToGetListData];
     [self sendRequestToServer];
     // Do any additional setup after loading the view.
 }
@@ -101,35 +104,6 @@
 }
 
 
-- (void) sendRequestToServer
-{
-    __block typeof(self) blockSelf = self;
-    idBlock successedBlock = ^(id content){
-        DEBUGLOG(@"success conent %@", content);
-        if ([_pictureRequest isFristPage]) {
-            blockSelf.pictureResponse = [[PictureResponse alloc] initWithJsonString:content];
-        } else {
-            [blockSelf.pictureResponse appendPaggingFromJsonString:content];
-        }
-        [_pictureRequest nextPage];
-        [_cycleView reloadData];
-    };
-    
-    idBlock failedBlock = ^(id content){
-        DEBUGLOG(@"failed content %@", content);
-    };
-    
-    idBlock errBlock = ^(id content){
-        DEBUGLOG(@"error content %@", content);
-    };
-    if (!_pictureRequest) {
-        self.pictureRequest = [[[PictureListRequest alloc] init] autorelease];
-    }
-    
-    [WASBaseServiceFace serviceWithMethod:[self.pictureRequest URLString] body:[self.pictureRequest toJsonString] onSuc:successedBlock onFailed:failedBlock onError:errBlock];
-}
-
-
 
 #pragma mark - XLCycleScrollViewDatasource
 
@@ -156,8 +130,8 @@
     imageView.image = [UIImage imageNamed:@"icon"];
     if (index >= 0 && index < [self.pictureResponse count]) {
         
-        PictureItem *pictureItem = [self.pictureResponse at:index];
-        [imageView setImageWithURL:[NSURL URLWithString:pictureItem.mediaUrl]
+        BannerItem *pictureItem = [self.pictureResponse at:index];
+        [imageView setImageWithURL:[NSURL URLWithString:pictureItem.bannerImg]
                   placeholderImage:[UIImage imageNamed:kImageDefault]
                            success:^(UIImage *image){
                                UIImage * image1 = [image imageScaledToSizeEx:CGSizeMake(320, 120)];
@@ -198,7 +172,9 @@
         if (!cell){
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
             cell.accessoryType = UITableViewCellAccessoryNone;
-            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.contentView.backgroundColor = kClearColor;
+            cell.backgroundColor = kClearColor;
             CustomThreeButton *button1 = [[[CustomThreeButton alloc] initWithFrame:CGRectMake(0, 0, 107, 130)] autorelease];
             CustomThreeButton *button2 = [[[CustomThreeButton alloc] initWithFrame:CGRectMake(108, 0, 107, 130)] autorelease];
             CustomThreeButton *button3 = [[[CustomThreeButton alloc] initWithFrame:CGRectMake(216, 0, 107, 130)] autorelease];
@@ -218,13 +194,24 @@
             lineView.backgroundColor = kGrayColor;
             lineView.alpha = 0.3f;
             [cell.contentView addSubview:lineView];
+        }
+        NSMutableArray *array = (1 == indexPath.section) ? [blockSelf.response hotArray] : [blockSelf.response result];
+        for (int i =0 ; i < 3 ; i++) {
+            CustomThreeButton *button = (CustomThreeButton *)[cell.contentView viewWithTag:1000+i];
+            if (indexPath.row * 3 + i < [array count]) {
+                HomeProductItem *item = [array objectAtIndex:indexPath.row * 3 + i];
+                [button setContent:item];
+                [button setHidden:NO];
+            } else {
+                [button setHidden:YES];
+            }
             
         }
         return cell;
     };
     
     self.tableView.cellNumberBlock = ^( UITableView *tableView, NSInteger section) {
-        return (eSectionIndex01 == section) ? 2 : 1;
+        return (NSInteger)((((eSectionIndex01 == section) ? [[blockSelf.response hotArray] count] : ([[blockSelf.response result] count])) + 2) /3);
     };
     
     self.tableView.sectionNumberBlock = ^( UITableView *tableView) {
@@ -273,12 +260,63 @@
     };
     
     [self.view addSubview: self.tableView];
-    
 }
 
 - (void) goToMore:(UIGestureRecognizer *) recognizer
 {
     
+}
+
+
+- (void) sendRequestToServer
+{
+    __block typeof(self) blockSelf = self;
+    idBlock successedBlock = ^(id content){
+        DEBUGLOG(@"success conent %@", content);
+        blockSelf.pictureResponse = [[BannerResponse alloc] initWithJsonString:content];
+        [_cycleView reloadData];
+    };
+    
+    idBlock failedBlock = ^(id content){
+        DEBUGLOG(@"failed content %@", content);
+    };
+    
+    idBlock errBlock = ^(id content){
+        DEBUGLOG(@"error content %@", content);
+    };
+    
+    if (!_pictureRequest) {
+        self.pictureRequest = [[[BannerRequest alloc] init] autorelease];
+    }
+    
+    [WASBaseServiceFace serviceWithMethod:[self.pictureRequest URLString] body:[self.pictureRequest toJsonString] onSuc:successedBlock onFailed:failedBlock onError:errBlock];
+}
+
+
+- (void) sendToGetListData
+{
+    __block typeof(self) blockSelf = self;
+    idBlock successedBlock = ^(id content){
+        DEBUGLOG(@"success conent %@", content);
+        blockSelf.response = [[ProductForHomePageResponse alloc] initWithJsonString:content];
+        [blockSelf.tableView reloadData];
+        [blockSelf.tableView tableViewDidFinishedLoading];
+    };
+    
+    idBlock failedBlock = ^(id content){
+        DEBUGLOG(@"failed content %@", content);
+        [blockSelf.tableView tableViewDidFinishedLoading];
+    };
+    
+    idBlock errBlock = ^(id content){
+        DEBUGLOG(@"error content %@", content);
+        [blockSelf.tableView tableViewDidFinishedLoading];
+    };
+    if (!_request) {
+        self.request = [[[ProductForHomePageRequest alloc] init] autorelease];
+    }
+    
+    [WASBaseServiceFace serviceWithMethod:[self.request URLString] body:[self.request toJsonString] onSuc:successedBlock onFailed:failedBlock onError:errBlock];
 }
 
 @end

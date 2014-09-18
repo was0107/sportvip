@@ -144,7 +144,24 @@
 
 @end
 
+/*
+ * add new interface
+ */
 
+
+@interface ProductForHomePageRequest : ListPaggingRequestBase
+
+@end
+
+@interface BrowsingHistoryListRequest : ListPaggingRequestBase
+
+@property (nonatomic, copy) NSString *username;
+
+@end
+
+@interface BannerRequest : ListPaggingRequestBase
+
+@end
 
 
 /*

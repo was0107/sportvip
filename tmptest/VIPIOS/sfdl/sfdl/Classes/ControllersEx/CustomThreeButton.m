@@ -48,7 +48,7 @@
 //        _theImageView.layer.cornerRadius = 2.0f;
 //        _theImageView.layer.borderColor = kGrayColor;
 //        _theImageView.layer.borderWidth = 1.0f;
-        _theLabel.backgroundColor = kClearColor;
+        _theLabel.backgroundColor = kWhiteColor;
         
     }
     return _theImageView;
@@ -61,6 +61,7 @@
         _theLabel.textColor = kOrangeColor;
         _theLabel.numberOfLines = 2;
         _theLabel.backgroundColor = kClearColor;
+        _theLabel.textAlignment = NSTextAlignmentCenter;
         _theLabel.font = HTFONTSIZE(kFontSize12);
     }
     return _theLabel;
@@ -87,19 +88,27 @@
                            placeholderImage:[UIImage imageNamed:kImageDefault]
                                     success:^(UIImage *image){
                                         
-                                        UIImage * image1 = [image imageScaledToSizeEx:CGSizeMake(100, 90)];
+                                        UIImage * image1 = [image imageScaledToSizeEx:CGSizeMake(107, 93)];
                                         blockSelf.theImageView.image = image1;
                                         
                                     }
                                     failure:^(NSError *error){
                                         blockSelf.theImageView.image = [UIImage imageNamed:kImageDefault];
                                     }];
-
-        
     }
-    
-    
-    
+}
+
+
+- (void) setContent:(id)content
+{
+    if (_content != content) {
+        _content = content;
+        HomeProductItem *item = (HomeProductItem *) content;
+        if (item) {
+            self.title = item.productName;
+            self.imageString = item.productImg;
+        }
+    }
 }
 
 @end
@@ -112,7 +121,7 @@
     if (self) {
         // Initialization code
         self.theLabel.frame = CGRectMake(2, 0, 103, 36);
-        self.theImageView.frame = CGRectMake(2, 37, 103, 90);
+        self.theImageView.frame = CGRectMake(0, 37, 107, 93);
         UIView *lineView = [[[UIView alloc] initWithFrame:CGRectMake(0, 36, 107, 1)] autorelease];
         lineView.backgroundColor = kGrayColor;
         lineView.alpha = 0.3f;
@@ -133,7 +142,7 @@
     if (self) {
         // Initialization code
         self.theLabel.frame = CGRectMake(2, 0, 103, 36);
-        self.theImageView.frame = CGRectMake(2, 37, 103, 90);
+        self.theImageView.frame = CGRectMake(0, 37, 107, 93);
         UIView *lineView = [[[UIView alloc] initWithFrame:CGRectMake(0, 36, 107, 1)] autorelease];
         lineView.backgroundColor = kGrayColor;
         lineView.alpha = 0.3f;

@@ -237,9 +237,82 @@
 
 @end
 
+@implementation ProductForHomePageResponse
+
+- (id) translateItemFrom:(const NSDictionary *) dictionary
+{
+    return [[[HomeProductItem alloc] initWithDictionary:dictionary] autorelease];
+}
+
+- (NSString *) resultKey
+{
+    return @"recommendProductList";
+}
+
+- (id) translateFrom:(const NSDictionary *) dictionary
+{
+    self.hotArray = [self getHotResultFrom:dictionary];
+    return self;
+}
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_hotArray);
+    [super dealloc];
+}
+
+- (NSMutableArray *) getHotResultFrom:(const NSDictionary *) dictionary
+{
+    NSMutableArray *array = [dictionary objectForKey:@"hotProductList"];
+    NSMutableArray *arrayResult = [NSMutableArray array];
+    if ([array isKindOfClass:[NSNull class]]) {
+        return arrayResult;
+    }
+    @autoreleasepool {
+        for ( int i = 0 , total = [array count]; i < total; ++i) {
+            NSDictionary *dictionary = (NSDictionary *) [array objectAtIndex:i];
+            id valied = [self translateItemFrom:dictionary];
+            [arrayResult addObject:valied];
+        }
+    }
+    return arrayResult;
+}
+
+@end
+
+
+@implementation BrowsingHistoryListResponse
+
+
+- (id) translateItemFrom:(const NSDictionary *) dictionary
+{
+    return [[[HistoryItem alloc] initWithDictionary:dictionary] autorelease];
+}
+
+- (NSString *) resultKey
+{
+    return @"historyList";
+}
+
+@end
 
 
 
+
+@implementation BannerResponse
+
+
+- (id) translateItemFrom:(const NSDictionary *) dictionary
+{
+    return [[[BannerItem alloc] initWithDictionary:dictionary] autorelease];
+}
+
+- (NSString *) resultKey
+{
+    return @"pictureList";
+}
+
+@end
 
 
 /*

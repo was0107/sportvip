@@ -133,7 +133,7 @@
 
 - (NSString *) currentUserId;
 {
-    return [UserDefaultsManager userId];
+    return [UserDefaultsManager userName];
 }
 
 - (BOOL) didUserLogined

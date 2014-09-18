@@ -8,7 +8,7 @@
 
 #import "RootViewControllerEx.h"
 #import "BaseTitleViewController.h"
-
+#import "UserDefaultsManager.h"
 #import "UIMenuBar.h"
 
 
@@ -104,7 +104,7 @@
         UIMenuBarItem *menuItem3 = [[UIMenuBarItem alloc] initWithTitle:@"User Center" target:self image:[UIImage imageNamed:@"users"] action:@selector(clickAction3:) controller:@"UserCenterViewController"];
         UIMenuBarItem *menuItem4 = [[UIMenuBarItem alloc] initWithTitle:@"Find Your Dealer" target:self image:[UIImage imageNamed:@"search_jxs"] action:@selector(clickAction4:) controller:@"AgentListViewController"];
         UIMenuBarItem *menuItem5 = [[UIMenuBarItem alloc] initWithTitle:@"Contact Us" target:self image:[UIImage imageNamed:@"contact"] action:@selector(clickAction5:) controller:@"ContactUsViewController"];
-        UIMenuBarItem *menuItem6 = [[UIMenuBarItem alloc] initWithTitle:@"Logout" target:self image:[UIImage imageNamed:@"quite"] action:@selector(clickAction6:) controller:@""];
+        UIMenuBarItem *menuItem6 = [[UIMenuBarItem alloc] initWithTitle:([UserDefaultsManager userId].length == 0 ) ? @"Login":@"Logout" target:self image:[UIImage imageNamed:@"quite"] action:@selector(clickAction6:) controller:@""];
         
         NSMutableArray *items =
         [NSMutableArray arrayWithObjects:menuItem1, menuItem2, menuItem3, menuItem4, menuItem5, menuItem6,nil];
@@ -189,8 +189,13 @@
 
 - (void)clickAction6:(id)sender
 {
-    [self goToViewController:@"AboutUsViewController"];
-
+    UIMenuBarItem *menuItem6 =  [[_menuBar items] objectAtIndex:5];
+    if ([UserDefaultsManager userId].length == 0 ) {
+        [self goToViewController:@"LoginViewController"];
+    } else {
+        [UserDefaultsManager saveUserId:@""];
+    }
+    menuItem6.title = ([UserDefaultsManager userId].length == 0 ) ? @"Login":@"Logout";
     [self dissmissMenubar];
 }
 

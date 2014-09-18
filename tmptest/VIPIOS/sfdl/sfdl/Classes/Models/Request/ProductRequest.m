@@ -579,6 +579,60 @@
 
 
 
+
+@implementation ProductForHomePageRequest
+
+- (NSString *) methodString
+{
+    return @"Product/getProductListForHomePage";
+}
+
+@end
+
+@implementation BannerRequest
+
+- (NSString *) methodString
+{
+    return @"Picture/getBannerList";
+}
+
+@end
+
+@implementation BrowsingHistoryListRequest
+
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_username);
+    [super dealloc];
+}
+
+- (NSMutableArray *) keyArrays
+{
+    NSMutableArray *array =  [NSMutableArray arrayWithObjects:@"username", nil];
+    [array addObjectsFromArray: [super keyArrays]];
+    return array;
+}
+
+- (NSMutableArray *) valueArrays
+{
+    NSMutableArray *array =   [NSMutableArray arrayWithObjects:self.username, nil];
+    [array addObjectsFromArray: [super valueArrays]];
+    return array;
+}
+
+- (NSString *) methodString
+{
+    return @"Product/getBrowsingHistoryList";
+}
+
+@end
+
+
+
+
+
+
 @implementation EnquiryListRequest
 - (void) dealloc
 {

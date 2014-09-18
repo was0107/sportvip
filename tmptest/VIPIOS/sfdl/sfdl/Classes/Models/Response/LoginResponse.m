@@ -188,6 +188,26 @@
 @end
 
 
+
+
+@implementation BannerItem : ListResponseItemBase
+
+- (id) initWithDictionary:(const NSDictionary *) dictionary
+{
+    self = [super init];
+    if (self) {
+        self.bannerId = [dictionary objectForKey:@"bannerId"];
+        self.bannerName = [dictionary objectForKey:@"bannerName"];
+        self.bannerImg = [dictionary objectForKey:@"bannerImg"];
+        self.bannerLink = [dictionary objectForKey:@"bannerLink"];
+        self.type = [dictionary objectForKey:@"type"];
+    }
+    
+    return self;
+}
+
+@end
+
 @implementation NewsItem
 
 - (id) initWithDictionary:(const NSDictionary *) dictionary
@@ -416,6 +436,56 @@
 }
 
 @end
+
+
+
+
+@implementation HistoryItem
+
+
+- (id) initWithDictionary:(const NSDictionary *) dictionary
+{
+    self  = [super init];
+    if (self) {
+        self.historyId       = [dictionary objectForKey:@"historyId"];
+        self.companyId       = [dictionary objectForKey:@"companyId"];
+        self.username        = [dictionary objectForKey:@"username"];
+        self.content         = [dictionary objectForKey:@"content"];
+        self.type            = [dictionary objectForKey:@"type"];
+        self.refId           = [dictionary objectForKey:@"refId"];
+        self.creationTime    = [dictionary objectForKey:@"creationTime"];
+    }
+
+    return self;
+}
+
+@end
+
+
+@implementation HomeProductItem
+
+- (id) initWithDictionary:(const NSDictionary *) dictionary
+{
+    self = [super init];
+    if (self) {
+        self.productId       = [dictionary objectForKey:@"productId"];
+        self.productName     = [dictionary objectForKey:@"productName"];
+        self.recommendFlag   = [dictionary objectForKey:@"recommendFlag"];
+        self.hotFlag         = [dictionary objectForKey:@"hotFlag"];
+        self.productImg      = [dictionary objectForKey:@"productImg"];
+        self.productTypeId   = [dictionary objectForKey:@"productTypeId"];
+        self.productTypeName = [dictionary objectForKey:@"productTypeName"];
+        self.productDesc     = [dictionary objectForKey:@"productDesc"];
+    }
+
+    return self;
+}
+
+
+@end
+
+
+
 
 
 @implementation EnquiryItem

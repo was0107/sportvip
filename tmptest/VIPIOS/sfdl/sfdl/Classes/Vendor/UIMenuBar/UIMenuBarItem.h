@@ -24,7 +24,7 @@
 }
 
 @property (nonatomic) SEL action;
-@property (nonatomic, retain, readonly) NSString *title;
+@property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain, readonly) UIImage *image;
 @property (nonatomic, retain) UIControl *containView;
 @property (nonatomic, readonly) CGFloat sizeValue;

@@ -27,10 +27,6 @@
 @interface RegiseterRequest : LoginRequest
 
 @property (nonatomic, copy)     NSString    *email;
-@property (nonatomic, copy)     NSString    *title;
-@property (nonatomic, copy)     NSString    *fullName;
-@property (nonatomic, copy)     NSString    *userCompany;
-@property (nonatomic, copy)     NSString    *tel;
 
 @end
 

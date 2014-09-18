@@ -70,6 +70,12 @@
 
 @end
 
+@interface BannerItem : ListResponseItemBase
+
+@property (nonatomic, copy) NSString *bannerId, *bannerName, *bannerImg, *bannerLink, *type;
+
+@end
+
 @interface NewsItem : ListResponseItemBase
 
 @property (nonatomic, copy) NSString *newsId, *creationTime, *status;
@@ -147,6 +153,22 @@
 @end
 
 
+@interface HistoryItem : ListResponseItemBase
+
+@property (nonatomic, copy) NSString *historyId, *companyId, *username;
+
+@property (nonatomic, copy) NSString *content, *type, *refId, *creationTime;
+
+@end
+
+
+@interface HomeProductItem : ListResponseItemBase
+
+@property (nonatomic, copy) NSString *productId, *productName, *recommendFlag;
+
+@property (nonatomic, copy) NSString *hotFlag, *productImg, *productTypeId, *productTypeName, *productDesc;
+
+@end
 
 
 /*

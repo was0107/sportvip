@@ -56,23 +56,19 @@
 - (void) dealloc
 {
     TT_RELEASE_SAFELY(_email);
-    TT_RELEASE_SAFELY(_title);
-    TT_RELEASE_SAFELY(_fullName);
-    TT_RELEASE_SAFELY(_userCompany);
-    TT_RELEASE_SAFELY(_tel);
     [super dealloc];
 }
 
 - (NSMutableArray *) keyArrays
 {
-    NSMutableArray *array = [NSMutableArray arrayWithObjects:@"email", @"title", @"fullName", @"userCompany", @"tel",  nil];
+    NSMutableArray *array = [NSMutableArray arrayWithObjects:@"email",  nil];
     [array addObjectsFromArray: [super keyArrays]];
     return array;
 }
 
 - (NSMutableArray *) valueArrays
 {
-    NSMutableArray *array =  [NSMutableArray arrayWithObjects:self.email, self.title,self.fullName,self.userCompany,self.tel, nil];
+    NSMutableArray *array =  [NSMutableArray arrayWithObjects:self.email, nil];
     [array addObjectsFromArray: [super valueArrays]];
     return array;
 }

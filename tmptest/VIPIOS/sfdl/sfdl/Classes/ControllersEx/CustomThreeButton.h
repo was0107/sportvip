@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoginResponse.h"
 
 @interface CustomColumButton : UIButton
 @property (nonatomic, copy) NSString *imageString, *title;

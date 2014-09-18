@@ -15,7 +15,8 @@
 @property (nonatomic, retain) ViewNewsRequest *request;
 @property (nonatomic, retain) NewsDetailResponse *response;
 @property(nonatomic, retain)UIImageView * iconImageView;
-@property(nonatomic, retain)UILabel *labelOne;
+@property(nonatomic, retain)UILabel *labelOne, *labelTwo;
+@property(nonatomic, retain) UIView *topView;
 @property(nonatomic, retain)UIWebView *content;
 @end
 
@@ -26,11 +27,15 @@
     [super viewDidLoad];
 //    self.secondTitleLabel.text = @"News";
     [self setTitleContent:@"NEWS"];
-
+    self.scrollView.backgroundColor = kWhiteColor;
     [self.scrollView removeFromSuperview];
-    [self.view addSubview:self.labelOne];
+    [self.content.scrollView addSubview:self.topView];
     [self.view addSubview:self.content];
     self.labelOne.text = self.newItem.newsTitle;
+    self.labelTwo.text = self.newItem.creationTime;
+    [self.content.scrollView setContentInset:UIEdgeInsetsMake(80,0,0,80)];
+    
+    [[self.content scrollView] scrollRectToVisible:CGRectMake(0, 0, 0, 0) animated:YES];
     [self sendRequestToServer];
 }
 
@@ -46,10 +51,25 @@
     return NO;
 }
 
+- (UIView *) topView
+{
+    if (!_topView) {
+        _topView = [[[UIView alloc] initWithFrame:CGRectMake(0, -80, 320, 80)] autorelease];
+        _topView.backgroundColor = kWhiteColor;
+        UIView *lineView = [[[UIView alloc] initWithFrame:CGRectMake(0, 79, 320, 1)] autorelease];
+        lineView.backgroundColor = kLightGrayColor;
+        lineView.alpha = 0.5f;
+        [_topView addSubview:lineView];
+        
+        [_topView addSubview:self.labelOne];
+        [_topView addSubview:self.labelTwo];
+    }
+    return _topView;
+}
 
 - (CGRect)tableViewFrame
 {
-    return CGRectMake(0, 64, 320.0, kContentBoundsHeight-64);
+    return CGRectMake(0, 0, 320.0, kContentBoundsHeight-0);
 }
 
 
@@ -57,12 +77,27 @@
 {
     if (!_labelOne)
     {
-        _labelOne = [[UILabel alloc]initWithFrame:CGRectMake(10, 40, 300, 24)];
-        _labelOne.textColor  = [UIColor getColor:kCellLeftColor];
+        _labelOne = [[UILabel alloc]initWithFrame:CGRectMake(10, 10, 300, 40)];
+        _labelOne.textColor  = kBlackColor;
         _labelOne.backgroundColor = kClearColor;
+        _labelOne.numberOfLines = 2;
         _labelOne.font = HTFONTSIZE(kSystemFontSize17);
     }
     return _labelOne;
+}
+
+-(UILabel *)labelTwo
+{
+    if (!_labelTwo)
+    {
+        _labelTwo = [[UILabel alloc]initWithFrame:CGRectMake(10, 55, 300, 20)];
+        _labelTwo.textColor  = kLightGrayColor;
+        _labelTwo.backgroundColor = kClearColor;
+        _labelTwo.numberOfLines = 2;
+        _labelTwo.textAlignment = NSTextAlignmentRight;
+        _labelTwo.font = HTFONTSIZE(kSystemFontSize14);
+    }
+    return _labelTwo;
 }
 
 
@@ -70,7 +105,7 @@
 {
     if (!_content)
     {
-        _content = [[UIWebView alloc]initWithFrame:CGRectMake(0, 64, 320, kContentBoundsHeight-64)];
+        _content = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, 320, kContentBoundsHeight)];
         _content.backgroundColor = kClearColor;
         
     }

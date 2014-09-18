@@ -58,7 +58,7 @@
     self.emailTextField.pubTextField.text = @"hr@163.com";
     self.memberIDTextField.pubTextField.text = @"111111";
     self.pwdTextField.pubTextField.text = @"111111";
-    self.titleTextField.pubTextField.text = @"title";
+    self.titleTextField.pubTextField.text = @"111111";
 #endif
     
     [self.scrollView setContentSize:CGSizeMake(320, 50 + 5 * kPubTextFieldHeight2  + kImageStartAt)];
@@ -139,7 +139,7 @@
         __unsafe_unretained RegisterViewController *safeSelf = self;
         _emailTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0, 10 + 3 * kPubTextFieldHeight2  + kImageStartAt , 320, kPubTextFieldHeight) indexTitle:@"Email:" placeHolder:@"Current Email" pubTextFieldStyle:PubTextFieldStyleTop];
         _emailTextField.autoLayout = YES;
-        _emailTextField.pubTextField.returnKeyType = UIReturnKeyNext;
+        _emailTextField.pubTextField.returnKeyType = UIReturnKeyDone;
         _emailTextField.pubTextField.keyboardType = UIKeyboardTypeDefault;
         [_emailTextField.pubTextField onShouldReturn:^(UITextField *textField){
             [safeSelf confirmButtonAction:nil];
@@ -309,7 +309,6 @@
     }
     
     self.request.email    = self.emailTextField.pubTextField.text;
-//    self.request.title    = self.titleTextField.pubTextField.text;
     self.request.username    = self.memberIDTextField.pubTextField.text;
     self.request.password = self.pwdTextField.pubTextField.text;
     [WASBaseServiceFace serviceWithMethod:[self.request URLString] body:[self.request toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
