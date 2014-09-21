@@ -74,6 +74,7 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         NewsItem *item = [blockSelf.response at:indexPath.row ];
         NewsDetailViewController *controller = [[[NewsDetailViewController alloc] init] autorelease];
+        controller.newsList = [blockSelf.response result];
         controller.newItem = item;
         [blockSelf.navigationController hidesBottomBarWhenPushed];
         [blockSelf.navigationController pushViewController:controller animated:YES];

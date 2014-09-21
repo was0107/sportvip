@@ -32,6 +32,7 @@
     [self.scrollView removeFromSuperview];
     [self.content.scrollView addSubview:self.topView];
     [self.view addSubview:self.content];
+    [self.view addSubview:self.bottomView];
     [self.content.scrollView setContentInset:UIEdgeInsetsMake(80,0,80,0)];
 }
 
@@ -56,7 +57,6 @@
         lineView.backgroundColor = kLightGrayColor;
         lineView.alpha = 0.5f;
         [_topView addSubview:lineView];
-        
         [_topView addSubview:self.labelOne];
         [_topView addSubview:self.labelTwo];
     }
@@ -72,21 +72,36 @@
         lineView.backgroundColor = kLightGrayColor;
         lineView.alpha = 0.5f;
         [_bottomView addSubview:lineView];
-        
-        self.preButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.preButton.backgroundColor = kClearColor;
-        self.preButton.frame = CGRectMake(0, 4, 320, 30);
-        [self.preButton addTarget:self action:@selector(preAction:) forControlEvents:UIControlEventTouchUpInside];
-        
-        self.nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.nextButton.backgroundColor = kClearColor;
-        self.nextButton.frame = CGRectMake(0, 36, 320, 30);
-        [self.nextButton addTarget:self action:@selector(nextAction:) forControlEvents:UIControlEventTouchUpInside];
-        
         [_bottomView addSubview:self.preButton];
         [_bottomView addSubview:self.nextButton];
     }
     return _bottomView;
+}
+
+- (UIButton *) preButton
+{
+    if (!_preButton) {
+        _preButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+        _preButton.backgroundColor = kClearColor;
+        _preButton.frame = CGRectMake(0, 4, 320, 30);
+        [_preButton setTitleColor:kOrangeColor forState:UIControlStateNormal];
+        [_preButton setTitleColor:kLightGrayColor forState:UIControlStateDisabled];
+        [_preButton addTarget:self action:@selector(preAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _preButton;
+}
+
+- (UIButton *) nextButton
+{
+    if (!_nextButton) {
+        _nextButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+        _nextButton.backgroundColor = kClearColor;
+        _nextButton.frame = CGRectMake(0, 36, 320, 30);
+        [_nextButton setTitleColor:kOrangeColor forState:UIControlStateNormal];
+        [_nextButton setTitleColor:kLightGrayColor forState:UIControlStateDisabled];
+        [_nextButton addTarget:self action:@selector(nextAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _nextButton;
 }
 
 - (void) NewsItemChanged:(NSUInteger ) index
@@ -100,31 +115,29 @@
         [self.preButton setTitle:@"Previous:--" forState:UIControlStateNormal];
         if (index + 1 < total) {
             NewsItem *NextItem = [self.newsList objectAtIndex:index + 1];
-            [self.nextButton setTitle:[NSString stringWithFormat:@"Next:%@",NextItem.content] forState:UIControlStateNormal];
+            [self.nextButton setTitle:[NSString stringWithFormat:@"Next:%@",NextItem.newsTitle] forState:UIControlStateNormal];
             [self.nextButton setEnabled:YES];
         }
         
     } else if ( (total - 1) == index) {
         if (index > 0) {
             NewsItem *NextItem = [self.newsList objectAtIndex:index -1];
-            [self.preButton setTitle:[NSString stringWithFormat:@"Previous:%@",NextItem.content] forState:UIControlStateNormal];
+            [self.preButton setTitle:[NSString stringWithFormat:@"Previous:%@",NextItem.newsTitle] forState:UIControlStateNormal];
             [self.preButton setEnabled:YES];
         }
-        
         [self.nextButton setEnabled:NO];
         [self.nextButton setTitle:@"Next:--" forState:UIControlStateNormal];
         
     } else {
-        
         if (index > 0) {
             [self.preButton setEnabled:YES];
             NewsItem *NextItem = [self.newsList objectAtIndex:index -1];
-            [self.preButton setTitle:[NSString stringWithFormat:@"Previous:%@",NextItem.content] forState:UIControlStateNormal];
+            [self.preButton setTitle:[NSString stringWithFormat:@"Previous:%@",NextItem.newsTitle] forState:UIControlStateNormal];
         }
         if (index + 1 < total) {
             [self.nextButton setEnabled:YES];
             NewsItem *NextItem = [self.newsList objectAtIndex:index + 1];
-            [self.nextButton setTitle:[NSString stringWithFormat:@"Next:%@",NextItem.content] forState:UIControlStateNormal];
+            [self.nextButton setTitle:[NSString stringWithFormat:@"Next:%@",NextItem.newsTitle] forState:UIControlStateNormal];
         }
     }
     
@@ -134,8 +147,8 @@
 - (void) setNewItem:(NewsItem *)newItem
 {
     if (_newItem != newItem) {
-        [_newItem release];
         
+        _newItem = newItem;
         if (!_newItem) {
             return;
         }
@@ -156,12 +169,21 @@
 
 - (IBAction)preAction:(id)sender
 {
-    
+    NSUInteger index =  [self.newsList indexOfObject:_newItem];
+    if (index  >= 1) {
+        [self setNewItem:[self.newsList objectAtIndex:index-1]];
+    }
+
 }
 
 - (IBAction)nextAction:(id)sender
 {
-    
+    NSUInteger index =  [self.newsList indexOfObject:_newItem];
+    NSUInteger total = [self.newsList count];
+    if (index  < total - 1) {
+        [self setNewItem:[self.newsList objectAtIndex:index+1]];
+    }
+
 }
 
 
