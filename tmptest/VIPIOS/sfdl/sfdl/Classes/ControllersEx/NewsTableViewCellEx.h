@@ -7,6 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
+#import "LoginResponse.h"
 
 @interface NewsTableViewCellEx : BaseNewTableViewCell
 

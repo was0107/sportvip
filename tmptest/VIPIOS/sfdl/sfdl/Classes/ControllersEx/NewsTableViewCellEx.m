@@ -50,9 +50,17 @@
 
 - (void) setContent:(id)content
 {
-    self.topLabel.text = @"The different series of deutz gensets have different features";
-    self.rightLabel.text = @"08:59";
-    self.subRightLabel.text = @"2014-09-03";
+    if ([content isKindOfClass:[HistoryItem class]]) {
+        HistoryItem *item = (HistoryItem *) content;
+        self.topLabel.text = item.content;
+        self.rightLabel.text = [item.creationTime substringFromIndex:8];
+        self.subRightLabel.text = [item.creationTime substringToIndex:7];
+    }
+    else {
+        self.topLabel.text = @"The different series of deutz gensets have different features";
+        self.rightLabel.text = @"08:59";
+        self.subRightLabel.text = @"2014-09-03";
+    }
 }
 
 @end

@@ -16,8 +16,9 @@
 @property (nonatomic, retain) NewsDetailResponse *response;
 @property(nonatomic, retain)UIImageView * iconImageView;
 @property(nonatomic, retain)UILabel *labelOne, *labelTwo;
-@property(nonatomic, retain) UIView *topView;
+@property(nonatomic, retain) UIView *topView, *bottomView;
 @property(nonatomic, retain)UIWebView *content;
+@property(nonatomic, retain) UIButton *preButton, *nextButton;
 @end
 
 @implementation NewsDetailViewController
@@ -31,12 +32,7 @@
     [self.scrollView removeFromSuperview];
     [self.content.scrollView addSubview:self.topView];
     [self.view addSubview:self.content];
-    self.labelOne.text = self.newItem.newsTitle;
-    self.labelTwo.text = self.newItem.creationTime;
-    [self.content.scrollView setContentInset:UIEdgeInsetsMake(80,0,0,80)];
-    
-    [[self.content scrollView] scrollRectToVisible:CGRectMake(0, 0, 0, 0) animated:YES];
-    [self sendRequestToServer];
+    [self.content.scrollView setContentInset:UIEdgeInsetsMake(80,0,80,0)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,6 +62,111 @@
     }
     return _topView;
 }
+
+- (UIView *) bottomView
+{
+    if (!_bottomView) {
+        _bottomView = [[[UIView alloc] initWithFrame:CGRectMake(0, kContentBoundsHeight-70, 320, 70)] autorelease];
+        _bottomView.backgroundColor = kWhiteColor;
+        UIView *lineView = [[[UIView alloc] initWithFrame:CGRectMake(0, 79, 320, 1)] autorelease];
+        lineView.backgroundColor = kLightGrayColor;
+        lineView.alpha = 0.5f;
+        [_bottomView addSubview:lineView];
+        
+        self.preButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.preButton.backgroundColor = kClearColor;
+        self.preButton.frame = CGRectMake(0, 4, 320, 30);
+        [self.preButton addTarget:self action:@selector(preAction:) forControlEvents:UIControlEventTouchUpInside];
+        
+        self.nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.nextButton.backgroundColor = kClearColor;
+        self.nextButton.frame = CGRectMake(0, 36, 320, 30);
+        [self.nextButton addTarget:self action:@selector(nextAction:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [_bottomView addSubview:self.preButton];
+        [_bottomView addSubview:self.nextButton];
+    }
+    return _bottomView;
+}
+
+- (void) NewsItemChanged:(NSUInteger ) index
+{
+    NSUInteger total = [self.newsList count];
+    
+    if (NSNotFound == index) {
+        [self.bottomView setHidden:YES];
+    } else if (0 == index) {
+        [self.preButton setEnabled:NO];
+        [self.preButton setTitle:@"Previous:--" forState:UIControlStateNormal];
+        if (index + 1 < total) {
+            NewsItem *NextItem = [self.newsList objectAtIndex:index + 1];
+            [self.nextButton setTitle:[NSString stringWithFormat:@"Next:%@",NextItem.content] forState:UIControlStateNormal];
+            [self.nextButton setEnabled:YES];
+        }
+        
+    } else if ( (total - 1) == index) {
+        if (index > 0) {
+            NewsItem *NextItem = [self.newsList objectAtIndex:index -1];
+            [self.preButton setTitle:[NSString stringWithFormat:@"Previous:%@",NextItem.content] forState:UIControlStateNormal];
+            [self.preButton setEnabled:YES];
+        }
+        
+        [self.nextButton setEnabled:NO];
+        [self.nextButton setTitle:@"Next:--" forState:UIControlStateNormal];
+        
+    } else {
+        
+        if (index > 0) {
+            [self.preButton setEnabled:YES];
+            NewsItem *NextItem = [self.newsList objectAtIndex:index -1];
+            [self.preButton setTitle:[NSString stringWithFormat:@"Previous:%@",NextItem.content] forState:UIControlStateNormal];
+        }
+        if (index + 1 < total) {
+            [self.nextButton setEnabled:YES];
+            NewsItem *NextItem = [self.newsList objectAtIndex:index + 1];
+            [self.nextButton setTitle:[NSString stringWithFormat:@"Next:%@",NextItem.content] forState:UIControlStateNormal];
+        }
+    }
+    
+    [self goToNews];
+}
+
+- (void) setNewItem:(NewsItem *)newItem
+{
+    if (_newItem != newItem) {
+        [_newItem release];
+        
+        if (!_newItem) {
+            return;
+        }
+        
+        NSUInteger index =  [self.newsList indexOfObject:_newItem];
+        [self NewsItemChanged:index];
+    }
+}
+
+- (void) goToNews
+{
+    self.labelOne.text = self.newItem.newsTitle;
+    self.labelTwo.text = self.newItem.creationTime;
+    [self.content.scrollView setContentInset:UIEdgeInsetsMake(80,0,80,0)];
+    [[self.content scrollView] scrollRectToVisible:CGRectMake(0, -80, 0, 0) animated:YES];
+    [self sendRequestToServer];
+}
+
+- (IBAction)preAction:(id)sender
+{
+    
+}
+
+- (IBAction)nextAction:(id)sender
+{
+    
+}
+
+
+
+
 
 - (CGRect)tableViewFrame
 {

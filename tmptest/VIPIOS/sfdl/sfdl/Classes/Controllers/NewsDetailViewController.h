@@ -11,4 +11,6 @@
 
 @interface NewsDetailViewController : BaseSecondTitleViewController
 @property (nonatomic, assign) NewsItem *newItem;
+
+@property (nonatomic, assign) NSMutableArray *newsList;
 @end

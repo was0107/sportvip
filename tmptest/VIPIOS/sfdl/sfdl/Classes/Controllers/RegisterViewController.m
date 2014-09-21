@@ -289,8 +289,9 @@
     __unsafe_unretained RegisterViewController *safeSelf = self;
     
     idBlock succBlock = ^(id content){
-        DEBUGLOG(@"succ content %@", content);        
-        [safeSelf requestServerForLogin];
+        DEBUGLOG(@"succ content %@", content);
+        [SVProgressHUD showSuccessWithStatus:@"请等待后台审核或是联系客服!"];
+//        [safeSelf requestServerForLogin];
     };
     
     idBlock failedBlock = ^(id content){
