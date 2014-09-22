@@ -44,10 +44,6 @@
 {
     if (!_theImageView) {
         _theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-        
-//        _theImageView.layer.cornerRadius = 2.0f;
-//        _theImageView.layer.borderColor = kGrayColor;
-//        _theImageView.layer.borderWidth = 1.0f;
         _theLabel.backgroundColor = kWhiteColor;
         
     }
@@ -121,6 +117,7 @@
     if (self) {
         // Initialization code
         self.theLabel.frame = CGRectMake(2, 0, 103, 36);
+        self.theLabel.textAlignment = NSTextAlignmentLeft;
         self.theImageView.frame = CGRectMake(0, 37, 107, 93);
         UIView *lineView = [[[UIView alloc] initWithFrame:CGRectMake(0, 36, 107, 1)] autorelease];
         lineView.backgroundColor = kGrayColor;
@@ -141,9 +138,13 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.theLabel.frame = CGRectMake(2, 0, 103, 36);
-        self.theImageView.frame = CGRectMake(0, 37, 107, 93);
-        UIView *lineView = [[[UIView alloc] initWithFrame:CGRectMake(0, 36, 107, 1)] autorelease];
+        self.theLabel.frame = CGRectMake(20, 150, 155, 25);
+        self.theLabel.textAlignment = NSTextAlignmentLeft;
+        self.theImageView.frame = CGRectMake(20, 20, 117, 115);
+        self.theImageView.layer.cornerRadius = 2.0f;
+        self.theImageView.layer.borderColor = [kGrayColor CGColor];
+        self.theImageView.layer.borderWidth = 1.0f;
+        UIView *lineView = [[[UIView alloc] initWithFrame:CGRectMake(0, 179, 160, 1)] autorelease];
         lineView.backgroundColor = kGrayColor;
         lineView.alpha = 0.3f;
         [self addSubview:lineView];

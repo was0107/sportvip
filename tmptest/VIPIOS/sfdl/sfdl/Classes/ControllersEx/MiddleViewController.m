@@ -125,7 +125,7 @@
         NSIndexPath *indexPath = [self.selectedDiction objectForKey:kIntToString(0)];
         ProductTypeItem  *typeItem = [self.prodcutTypeResponse at:indexPath.row];
         for (int i = 1; i < level; i++) {
-            indexPath = [self.selectedDiction objectForKey:kIntToString(1)];
+            indexPath = [self.selectedDiction objectForKey:kIntToString(i)];
             typeItem = [[typeItem children] objectAtIndex:indexPath.row];
         }
         return typeItem.children;
@@ -176,7 +176,7 @@
     if (1 == level){
         ProductTypeItem *selectedItem = [[self getCurrentLevelArray:level] objectAtIndex:indexPath.row];
         ProductListViewController *controller = [[[ProductListViewController alloc] init] autorelease];
-        controller.secondTitleLabel.text = selectedItem.productTypeName;
+        controller.sectionTitle = selectedItem.productTypeName;
         controller.productTypeId = selectedItem.productTypeId;
         [self.navigationController hidesBottomBarWhenPushed];
         [self.navigationController pushViewController:controller animated:YES];
