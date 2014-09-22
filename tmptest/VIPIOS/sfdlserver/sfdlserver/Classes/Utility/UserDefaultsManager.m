@@ -270,7 +270,7 @@
 {
     NSString *lang = [[NSUserDefaults standardUserDefaults] objectForKey:@"LANG"];
     if (!lang || [lang length] == 0) {
-        return @"zh";
+        return @"en";
     }
     return lang;
 }
@@ -286,7 +286,7 @@
 {
     NSString *lang = [[NSUserDefaults standardUserDefaults] objectForKey:@"COMPANY_ID"];
     if (!lang || [lang length] == 0) {
-        return @"2";
+        return @"5";
     }
     return lang;
 }

@@ -256,13 +256,14 @@
         label1.font = HTFONTSIZE(kFontSize16);
         label1.textColor = kBlackColor;
         
-        UILabel *label2 = [[[UILabel alloc] initWithFrame:CGRectMake(220,14,90,20)] autorelease];
+        UILabel *label2 = [[[UILabel alloc] initWithFrame:CGRectMake(220,4,90,40)] autorelease];
         label2.text = @"MORE";
         label2.font = HTFONTSIZE(kFontSize14);
         label2.textColor = kGrayColor;
         label2.textAlignment = NSTextAlignmentRight;
         label2.userInteractionEnabled = YES;
-        UIGestureRecognizer *gesture = [[[UIGestureRecognizer alloc] initWithTarget:self action:@selector(goToMore:)] autorelease];
+        footerView.userInteractionEnabled = YES;
+        UIGestureRecognizer *gesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goToMore:)] autorelease];
         [label2 addGestureRecognizer:gesture];
         
         [footerView addSubview:label1];
@@ -280,7 +281,9 @@
 
 - (void) goToMore:(UIGestureRecognizer *) recognizer
 {
-    
+    Class class = NSClassFromString(@"MiddleViewController");
+    UIViewController *controller = [[[class alloc] init] autorelease];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 

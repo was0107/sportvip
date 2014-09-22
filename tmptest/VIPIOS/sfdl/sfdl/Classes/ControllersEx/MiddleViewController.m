@@ -173,7 +173,10 @@
 - (void)pushTreeView:(InfiniteTreeView *)pushTreeView didSelectedLevel:(NSInteger)level indexPath:(NSIndexPath*)indexPath
 {
     [self.selectedDiction setObject:indexPath   forKey:kIntToString(level)];
-    if (1 == level){
+    ProductTypeItem *item = [[self getCurrentLevelArray:level] objectAtIndex:indexPath.row];
+
+    if ([[item children] count] == 0)
+    {
         ProductTypeItem *selectedItem = [[self getCurrentLevelArray:level] objectAtIndex:indexPath.row];
         ProductListViewController *controller = [[[ProductListViewController alloc] init] autorelease];
         controller.sectionTitle = selectedItem.productTypeName;
@@ -201,8 +204,12 @@
 
 - (BOOL)pushTreeViewHasNextLevel:(InfiniteTreeView *)pushTreeView currentLevel:(NSInteger)level indexPath:(NSIndexPath*)indexPath
 {
+    [self.selectedDiction setObject:indexPath   forKey:kIntToString(level)];
     BOOL next = TRUE;
-    if (level == 1) {
+    
+    ProductTypeItem *item = [[self getCurrentLevelArray:level] objectAtIndex:indexPath.row];
+    
+    if ([[item children] count] == 0) {
         next = FALSE;
     }
     return next;
