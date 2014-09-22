@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		47B6E3BB195DF3C00025D71D /* GrowAndDownControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B6E3BA195DF3C00025D71D /* GrowAndDownControl.m */; };
 		47B6E3BE195DFA530025D71D /* CustomLeftImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B6E3BD195DFA530025D71D /* CustomLeftImageButton.m */; };
-		47DF7397194D83A80004CC63 /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 47DF7396194D83A80004CC63 /* RTLabel.m */; };
+		47DF7397194D83A80004CC63 /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 47DF7396194D83A80004CC63 /* RTLabel.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		47DF739A194D952B0004CC63 /* AgentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47DF7399194D952B0004CC63 /* AgentListViewController.m */; };
 		47DF739D194D954E0004CC63 /* AgentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47DF739C194D954E0004CC63 /* AgentDetailViewController.m */; };
 		490CE84819BABFCF00C2F887 /* AKTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 490CE83919BABFCF00C2F887 /* AKTab.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };

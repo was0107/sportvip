@@ -9,6 +9,8 @@
 #import "ProductDetailViewControllerEx.h"
 #import "XLCycleScrollView.h"
 #import "RTLabel.h"
+#import "LoginRequest.h"
+#import "LoginResponse.h"
 
 @interface ProductDetailViewControllerEx ()<XLCycleScrollViewDelegate, XLCycleScrollViewDatasource>
 @property (nonatomic, retain) XLCycleScrollView     *cycleView;
@@ -19,6 +21,7 @@
 @property (nonatomic, retain) RTLabel               *belongLabel,*telLabel,*emailLabel;
 @property (nonatomic, retain) UIImageView           *videoImageView;
 @property (nonatomic, retain) UIButton              *descButton, *featureButton;
+@property (nonatomic, retain) UIView                *topView, *bottomView;
 
 @end
 
@@ -32,6 +35,7 @@
 
     [self.view addSubview:self.content];
     
+    [self sendRequestToGetCompanyServer];
     [self sendRequestToServer];
     // Do any additional setup after loading the view.
 }
@@ -43,21 +47,56 @@
 
 - (void) createNameView
 {
-    UIView *headerview = [[[UIView alloc] initWithFrame:CGRectMake(0, -165, 320, 52)] autorelease];
+    UIView *headerview = [[[UIView alloc] initWithFrame:CGRectMake(0, -197, 320, 52)] autorelease];
     headerview.backgroundColor = kClearColor;
     UILabel *titL = [[[UILabel alloc] initWithFrame:CGRectMake(0, 8, 320, 36)] autorelease];
-    titL.text = [NSString stringWithFormat:@"    %@",self.productItem.productName];
+    titL.text = [NSString stringWithFormat:@"  %@",self.productItem.productName];
     titL.textColor = kBlackColor;
     titL.backgroundColor = [UIColor whiteColor];
     titL.font = [UIFont boldSystemFontOfSize:15];
     [headerview addSubview:titL];
     self.productLabel = titL;
     [_content.scrollView  addSubview:headerview];
+    self.topView = headerview;
 }
+
+- (RTLabel *) belongLabel
+{
+    if (!_belongLabel) {
+        _belongLabel = [[RTLabel alloc] initWithFrame:CGRectMake(160, 8, 150, 30)];
+        _belongLabel.text = [NSString stringWithFormat:@"Belongs to:<font size=14 color=black>%@ </font>", @""];
+        _belongLabel.textColor = kOrangeColor;
+        _belongLabel.backgroundColor = [UIColor whiteColor];
+    }
+    return _belongLabel;
+}
+
+- (RTLabel *) telLabel
+{
+    if (!_telLabel) {
+        _telLabel = [[RTLabel alloc] initWithFrame:CGRectMake(160, 38, 150, 30)];
+        _telLabel.text = [NSString stringWithFormat:@"Tel:<font size=14 color=black>%@</font>", @""];
+        _telLabel.textColor = kOrangeColor;
+        _telLabel.backgroundColor = [UIColor whiteColor];
+    }
+    return _telLabel;
+}
+
+- (RTLabel *) emailLabel
+{
+    if (!_emailLabel) {
+        _emailLabel = [[RTLabel alloc] initWithFrame:CGRectMake(160, 68, 150, 18)];
+        _emailLabel.text = [NSString stringWithFormat:@"E-mail:<font size=14 color=black>%@</font>", @""];
+        _emailLabel.textColor = kOrangeColor;
+        _emailLabel.backgroundColor = [UIColor whiteColor];
+    }
+    return _emailLabel;
+}
+
 
 - (void) createVideoView
 {
-    UIView *headerview = [[[UIView alloc] initWithFrame:CGRectMake(0, -113, 320, 93)] autorelease];
+    UIView *headerview = [[[UIView alloc] initWithFrame:CGRectMake(0, -143, 320, 93)] autorelease];
     headerview.backgroundColor = kWhiteColor;
     
     UIImageView *imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(8, 8, 144, 77)] autorelease];
@@ -65,50 +104,31 @@
     [imageView.layer setMasksToBounds:YES];
     imageView.image = [UIImage imageNamed:@"icon"];
     self.videoImageView = imageView;
-    
-    RTLabel *titL = [[[RTLabel alloc] initWithFrame:CGRectMake(160, 8, 150, 30)] autorelease];
-    titL.text = [NSString stringWithFormat:@"Belongs to:<font size=19 color=orange>￥%@ </font>", @"fdfd"];
-    titL.textColor = kBlackColor;
-    titL.backgroundColor = [UIColor whiteColor];
-    titL.font = [UIFont boldSystemFontOfSize:15];
-    [headerview addSubview:titL];
-    self.belongLabel = titL;
-    
-    titL = [[[RTLabel alloc] initWithFrame:CGRectMake(160, 38, 150, 30)] autorelease];
-    titL.text = [NSString stringWithFormat:@"Tel:%@",self.productItem.productName];
-    titL.textColor = kBlackColor;
-    titL.backgroundColor = [UIColor whiteColor];
-    titL.font = [UIFont boldSystemFontOfSize:15];
-    [headerview addSubview:titL];
-    self.telLabel = titL;
-    
-    titL = [[[RTLabel alloc] initWithFrame:CGRectMake(160, 68, 150, 18)] autorelease];
-    titL.text = [NSString stringWithFormat:@"E-mail:%@",self.productItem.productName];
-    titL.textColor = kBlackColor;
-    titL.backgroundColor = [UIColor whiteColor];
-    titL.font = [UIFont boldSystemFontOfSize:15];
-    [headerview addSubview:titL];
-    self.emailLabel = titL;
+    [headerview addSubview:imageView];
+
+    [headerview addSubview:[self belongLabel]];
+    [headerview addSubview:[self telLabel]];
+    [headerview addSubview:[self emailLabel]];
+//    
     [_content.scrollView  addSubview:headerview];
-    
+    self.bottomView = headerview;
+
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(160, -30, 160, 30);
+    button.frame = CGRectMake(160, -40, 160, 30);
     button.backgroundColor = kLightGrayColor;
     [button setTitleColor:kWhiteColor forState:UIControlStateNormal];
     [button setTitle:@"Feautres" forState:UIControlStateNormal];
-    [button setBackgroundImage:[UIImage imageWithColor:kOrangeColor size:CGSizeMake(19, 19)] forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(descriptionAction:) forControlEvents:UIControlEventTouchUpInside];
-    self.descButton = button;
+    [button addTarget:self action:@selector(featureAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.featureButton = button;
     [_content.scrollView addSubview:button];
 
     button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(0, -30, 160, 30);
+    button.frame = CGRectMake(0, -40, 160, 30);
     button.backgroundColor = kLightGrayColor;
     [button setTitle:@"Description" forState:UIControlStateNormal];
     [button setTitleColor:kWhiteColor forState:UIControlStateNormal];
-    [button setBackgroundImage:[UIImage imageWithColor:kLightGrayColor size:CGSizeMake(19, 19)] forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(featureAction:) forControlEvents:UIControlEventTouchUpInside];
-    self.featureButton = button;
+    [button addTarget:self action:@selector(descriptionAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.descButton = button;
     [_content.scrollView addSubview:button];
 }
 
@@ -136,10 +156,10 @@
 -(UIWebView *)content
 {
     if (!_content) {
-        _content = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, 320, kContentBoundsHeight)];
-        _content.scrollView.backgroundColor = kWhiteColor;
-        _content.backgroundColor = kWhiteColor;
-        [_content.scrollView setContentInset:UIEdgeInsetsMake(305,0,0,0)];
+        _content = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, 320, kContentBoundsHeight-44)];
+        _content.scrollView.backgroundColor = kClearColor;
+        _content.backgroundColor = kClearColor;
+        [_content.scrollView setContentInset:UIEdgeInsetsMake(365,0,0,0)];
         [_content.scrollView addSubview:self.cycleView];
         [self createNameView];
         [self createVideoView];
@@ -153,7 +173,7 @@
 - (XLCycleScrollView *)cycleView
 {
     if (!_cycleView) {
-        _cycleView = [[XLCycleScrollView alloc] initWithFrame:CGRectMake(0, -305.0,320, 165.0f)];
+        _cycleView = [[XLCycleScrollView alloc] initWithFrame:CGRectMake(0, -365.0,320, 165.0f)];
         _cycleView.backgroundColor = kWhiteColor;
         _cycleView.delegate = self;
         _cycleView.dataSource = self;
@@ -193,13 +213,38 @@
 }
 
 
+- (void)sendRequestToGetCompanyServer
+{
+    __block typeof(self) blockSelf = self;
+    idBlock succBlock = ^(id content){
+        DEBUGLOG(@"succ content %@", content);
+        AboutUsResponse *aboutResponse = [[[AboutUsResponse alloc] initWithJsonString:content] autorelease];
+        blockSelf.telLabel.text = [NSString stringWithFormat:@"Tel : <font size=14 color=black>%@ </font>", [aboutResponse companyTelephone]];
+        blockSelf.emailLabel.text = [NSString stringWithFormat:@"E-mail : <font size=14 color=black>%@ </font>", [aboutResponse email]];
+    };
+    
+    idBlock failedBlock = ^(id content){
+        DEBUGLOG(@"failed content %@", content);
+//        [[[[ErrorResponse alloc] initWithJsonString:content] autorelease] show];
+    };
+    idBlock errBlock = ^(id content){
+        DEBUGLOG(@"failed content %@", content);
+    };
+
+    CompanyInfoRequest *request = [[[CompanyInfoRequest alloc] init] autorelease];
+    [WASBaseServiceFace serviceWithMethod:[request URLString] body:[request toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
+}
+
+
 - (void) sendRequestToServer
 {
     __block typeof(self) blockSelf = self;
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
-        blockSelf.response = [[ProductDetailResponse alloc] initWithJsonString:content];
+        blockSelf.response = [[[ProductDetailResponse alloc] initWithJsonString:content] autorelease];
         [blockSelf.cycleView reloadData];
+        blockSelf.belongLabel.text = [NSString stringWithFormat:@"Belongs to: <font size=14 color=black>%@ </font>",blockSelf.response.productTypeName];
+        [blockSelf descriptionAction:blockSelf.descButton];
     };
 
     idBlock failedBlock = ^(id content){

@@ -26,7 +26,9 @@
 
 @interface AboutUsResponse : ListResponseBase
 
-@property (nonatomic, copy) NSString *companyName, *companyDes,*contactus;
+@property (nonatomic, copy) NSString *companyName, *companyDes,*contactus,*telphone1,*telphone2, *email;
+
+- (NSString *) companyTelephone;
 
 @end
 
@@ -163,11 +165,9 @@
 @end
 
 
-@interface HomeProductItem : ListResponseItemBase
+@interface HomeProductItem : ProductItem
 
-@property (nonatomic, copy) NSString *productId, *productName, *recommendFlag;
-
-@property (nonatomic, copy) NSString *hotFlag, *productImg, *productTypeId, *productTypeName, *productDesc;
+@property (nonatomic, copy) NSString  *recommendFlag,*productTypeId, *hotFlag;
 
 @end
 

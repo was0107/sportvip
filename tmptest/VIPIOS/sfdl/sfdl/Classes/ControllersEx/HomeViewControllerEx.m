@@ -20,6 +20,7 @@
 #import "BaseWebViewController.h"
 #import "ProductSearchExViewController.h"
 #import "CustomThreeButton.h"
+#import "ProductDetailViewControllerEx.h"
 
 @interface HomeViewControllerEx ()<XLCycleScrollViewDelegate, XLCycleScrollViewDatasource>
 @property (nonatomic, retain) XLCycleScrollView *cycleView;
@@ -180,7 +181,10 @@
             CustomThreeButton *button1 = [[[CustomThreeButton alloc] initWithFrame:CGRectMake(0, 0, 107, 130)] autorelease];
             CustomThreeButton *button2 = [[[CustomThreeButton alloc] initWithFrame:CGRectMake(108, 0, 107, 130)] autorelease];
             CustomThreeButton *button3 = [[[CustomThreeButton alloc] initWithFrame:CGRectMake(216, 0, 107, 130)] autorelease];
-            
+            [button1 addTarget:self action:@selector(buttonActionProduct:) forControlEvents:UIControlEventTouchUpInside];
+            [button2 addTarget:self action:@selector(buttonActionProduct:) forControlEvents:UIControlEventTouchUpInside];
+            [button3 addTarget:self action:@selector(buttonActionProduct:) forControlEvents:UIControlEventTouchUpInside];
+
             [cell.contentView addSubview:button1];
             [cell.contentView addSubview:button2];
             [cell.contentView addSubview:button3];
@@ -216,8 +220,8 @@
                 [button setHidden:NO];
             } else {
                 [button setHidden:YES];
+                [button setContent:nil];
             }
-            
         }
         return cell;
     };
@@ -278,6 +282,18 @@
 {
     
 }
+
+
+- (IBAction)buttonActionProduct:(id)sender
+{
+    CustomTwoButton *button = (CustomTwoButton *) sender;
+    if (button && button.content) {
+        ProductDetailViewControllerEx *controller = [[[ProductDetailViewControllerEx alloc] init] autorelease];
+        controller.productItem = button.content;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+}
+
 
 
 - (void) sendRequestToServer

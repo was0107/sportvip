@@ -73,6 +73,9 @@
         self.companyName = [company objectForKey:@"company_name"];
         self.companyDes = [company objectForKey:@"company_desc"];
         self.contactus = [company objectForKey:@"contactus"];
+        self.email = [company objectForKey:@"email"];
+        self.telphone1 = [company objectForKey:@"telphone1"];
+        self.telphone2 = [company objectForKey:@"telphone2"];
         if ([self.companyDes isKindOfClass:[NSNull class]]) {
             self.companyDes = @"";
         }
@@ -83,6 +86,17 @@
     }
     
     return self;
+}
+
+- (NSString *) companyTelephone
+{
+    if ([self.telphone1 length] > 0) {
+        return self.telphone1;
+    }
+    else if ([self.telphone2 length] > 0 ) {
+        return self.telphone2;
+    }
+    return @"";
 }
 
 
