@@ -16,6 +16,7 @@
 @property (nonatomic, retain) XLCycleScrollView     *cycleView;
 @property (nonatomic, retain) ProductDetailResponse *response;
 @property (nonatomic, retain) ViewProductRequest    *request;
+@property (nonatomic, retain) AboutUsResponse       *aboutResponse;
 @property (nonatomic, retain) UIWebView             *content;
 @property (nonatomic, retain) UILabel               *productLabel;
 @property (nonatomic, retain) RTLabel               *belongLabel,*telLabel,*emailLabel;
@@ -65,6 +66,7 @@
         _belongLabel = [[RTLabel alloc] initWithFrame:CGRectMake(160, 8, 150, 30)];
         _belongLabel.text = [NSString stringWithFormat:@"Belongs to:<font size=14 color=black>%@ </font>", @""];
         _belongLabel.textColor = kOrangeColor;
+        _belongLabel.lineBreakMode = RTTextLineBreakModeCharWrapping;
         _belongLabel.backgroundColor = [UIColor whiteColor];
     }
     return _belongLabel;
@@ -76,7 +78,8 @@
         _telLabel = [[RTLabel alloc] initWithFrame:CGRectMake(160, 38, 150, 30)];
         _telLabel.text = [NSString stringWithFormat:@"Tel:<font size=14 color=black>%@</font>", @""];
         _telLabel.textColor = kOrangeColor;
-        _telLabel.backgroundColor = [UIColor whiteColor];
+        _telLabel.lineBreakMode = RTTextLineBreakModeCharWrapping;
+        _telLabel.backgroundColor = [UIColor clearColor];
     }
     return _telLabel;
 }
@@ -87,7 +90,8 @@
         _emailLabel = [[RTLabel alloc] initWithFrame:CGRectMake(160, 68, 150, 18)];
         _emailLabel.text = [NSString stringWithFormat:@"E-mail:<font size=14 color=black>%@</font>", @""];
         _emailLabel.textColor = kOrangeColor;
-        _emailLabel.backgroundColor = [UIColor whiteColor];
+        _emailLabel.lineBreakMode = RTTextLineBreakModeCharWrapping;
+        _emailLabel.backgroundColor = [UIColor clearColor];
     }
     return _emailLabel;
 }
@@ -215,11 +219,15 @@
 - (void)sendRequestToGetCompanyServer
 {
     __block typeof(self) blockSelf = self;
+//    blockSelf.telLabel.text = [NSString stringWithFormat:@"Tel : <font size=14 color=black>%@ </font>", @"fdfdf"];
+
     idBlock succBlock = ^(id content){
         DEBUGLOG(@"succ content %@", content);
-        AboutUsResponse *aboutResponse = [[[AboutUsResponse alloc] initWithJsonString:content] autorelease];
-        blockSelf.telLabel.text = [NSString stringWithFormat:@"Tel : <font size=14 color=black>%@ </font>", [aboutResponse companyTelephone]];
-        blockSelf.emailLabel.text = [NSString stringWithFormat:@"E-mail : <font size=14 color=black>%@ </font>", [aboutResponse email]];
+        blockSelf.aboutResponse = [[[AboutUsResponse alloc] initWithJsonString:content] autorelease];
+        blockSelf.telLabel.text = [NSString stringWithFormat:@"Tel : <font size=14 color=black>%@ </font>", [blockSelf.aboutResponse companyTelephone]];
+//        blockSelf.telLabel.text = [NSString stringWithFormat:@"Tel : <font size=14 color=black>%@ </font>", @"fdfdf"];
+
+        blockSelf.emailLabel.text = [NSString stringWithFormat:@"E-mail : <font size=14 color=black>%@ </font>", [blockSelf.aboutResponse email]];
     };
     
     idBlock failedBlock = ^(id content){
