@@ -91,6 +91,7 @@
 		4998571D19C7421700B82234 /* BrowsingHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4998571C19C7421700B82234 /* BrowsingHistoryViewController.m */; };
 		49BACBB819CF2960004F837B /* MiddleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BACBB719CF2960004F837B /* MiddleViewController.m */; };
 		49BACBBE19CFF7B3004F837B /* ProductDetailViewControllerEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BACBBD19CFF7B3004F837B /* ProductDetailViewControllerEx.m */; };
+		49BACBC519D00E1E004F837B /* InquiryFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BACBC419D00E1E004F837B /* InquiryFormViewController.m */; };
 		49D00D9719C7CA7900801880 /* NewsTableViewCellEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D00D9619C7CA7900801880 /* NewsTableViewCellEx.m */; };
 		DD06522F194DAABD00EECCBE /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DD06522E194DAABD00EECCBE /* SVProgressHUD.bundle */; };
 		DD13AD6719592D33005D4222 /* ProductSearchExViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD13AD6619592D33005D4222 /* ProductSearchExViewController.m */; };
@@ -350,6 +351,8 @@
 		49BACBB719CF2960004F837B /* MiddleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiddleViewController.m; sourceTree = "<group>"; };
 		49BACBBC19CFF7B3004F837B /* ProductDetailViewControllerEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailViewControllerEx.h; sourceTree = "<group>"; };
 		49BACBBD19CFF7B3004F837B /* ProductDetailViewControllerEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailViewControllerEx.m; sourceTree = "<group>"; };
+		49BACBC319D00E1E004F837B /* InquiryFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InquiryFormViewController.h; sourceTree = "<group>"; };
+		49BACBC419D00E1E004F837B /* InquiryFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InquiryFormViewController.m; sourceTree = "<group>"; };
 		49D00D9519C7CA7900801880 /* NewsTableViewCellEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableViewCellEx.h; sourceTree = "<group>"; };
 		49D00D9619C7CA7900801880 /* NewsTableViewCellEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableViewCellEx.m; sourceTree = "<group>"; };
 		DD06522E194DAABD00EECCBE /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
@@ -666,6 +669,8 @@
 				490CE85519BAC16100C2F887 /* HomeViewControllerEx.m */,
 				490CE85719BAC17400C2F887 /* InquiryViewControllerEx.h */,
 				490CE85819BAC17400C2F887 /* InquiryViewControllerEx.m */,
+				49BACBC319D00E1E004F837B /* InquiryFormViewController.h */,
+				49BACBC419D00E1E004F837B /* InquiryFormViewController.m */,
 				4924E43119C6788700D19666 /* MenuViewControllerEx.h */,
 				4924E43219C6788700D19666 /* MenuViewControllerEx.m */,
 				490CE86119BAE82000C2F887 /* CustomThreeButton.h */,
@@ -1522,6 +1527,7 @@
 				DD3A3F98193E029300043CA4 /* BaseTableViewController.m in Sources */,
 				DD3A3FEC193E029300043CA4 /* WASASIUploadAdapter.m in Sources */,
 				DD99339C1962DF5A007150EC /* MyOrderDetailViewController.m in Sources */,
+				49BACBC519D00E1E004F837B /* InquiryFormViewController.m in Sources */,
 				DD8EEAC61944243000CACC22 /* AboutUsViewController.m in Sources */,
 				DD3A3FB6193E029300043CA4 /* LoginRequest.m in Sources */,
 				490CE84B19BABFCF00C2F887 /* AKTabBarController.m in Sources */,

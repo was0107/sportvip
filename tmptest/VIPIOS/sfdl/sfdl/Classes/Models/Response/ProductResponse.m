@@ -69,7 +69,24 @@
     self.productTypeName = [dictionary objectForKey:@"productTypeName"];
     self.productDesc = [dictionary objectForKey:@"productDesc"];
     self.productImg = [dictionary objectForKey:@"productImg"];
+    self.videoImg = [dictionary objectForKey:@"videoImg"];
+    self.feature = [dictionary objectForKey:@"feature"];
+    
+    self.imagesArray = [NSMutableArray array];
+    [self dealWithImage:@"productImg1" from:dictionary];
+    [self dealWithImage:@"productImg2" from:dictionary];
+    [self dealWithImage:@"productImg3" from:dictionary];
+    [self dealWithImage:@"productImg4" from:dictionary];
+    [self dealWithImage:@"productImg5" from:dictionary];
     return self;
+}
+
+- (void) dealWithImage:(NSString *) key from:(const NSDictionary *) dictionary
+{
+    NSString *images = [dictionary objectForKey:key];
+    if (images && [images length] > 0) {
+        [self.imagesArray addObject:images];
+    }
 }
 
 - (NSString *) resultKey

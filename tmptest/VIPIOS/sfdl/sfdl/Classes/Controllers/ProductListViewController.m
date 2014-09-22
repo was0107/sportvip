@@ -13,6 +13,7 @@
 #import "CreateObject.h"
 #import "CustomThreeButton.h"
 #import "ProductCartViewController.h"
+#import "ProductDetailViewControllerEx.h"
 
 @interface ProductListViewController ()
 
@@ -77,6 +78,9 @@
             CustomTwoButton *button1 = [[[CustomTwoButton alloc] initWithFrame:CGRectMake(0, 0, 159.5f, 180)] autorelease];
             CustomTwoButton *button2 = [[[CustomTwoButton alloc] initWithFrame:CGRectMake(160.5f, 0, 159.5f, 180)] autorelease];
             
+            [button1 addTarget:self action:@selector(buttonActionProduct:) forControlEvents:UIControlEventTouchUpInside];
+            [button2 addTarget:self action:@selector(buttonActionProduct:) forControlEvents:UIControlEventTouchUpInside];
+            
             [cell.contentView addSubview:button1];
             [cell.contentView addSubview:button2];
             
@@ -96,6 +100,7 @@
                 [button setHidden:NO];
             } else {
                 [button setHidden:YES];
+                [button setContent:nil];
             }
             
         }
@@ -116,9 +121,9 @@
     
     self.tableView.sectionHeaderBlock = ^( UITableView *tableView, NSInteger section){
         UIView *headerview = nil;
-        headerview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 52)];
+        headerview = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 52)] autorelease];
         headerview.backgroundColor = kClearColor;
-        UILabel *titL = [[UILabel alloc] initWithFrame:CGRectMake(0, 8, 320, 36)];
+        UILabel *titL = [[[UILabel alloc] initWithFrame:CGRectMake(0, 8, 320, 36)] autorelease];
         titL.text = [NSString stringWithFormat:@"    %@",self.sectionTitle];
         titL.textColor = kBlackColor;
         titL.backgroundColor = [UIColor whiteColor];
@@ -153,6 +158,16 @@
     if (self.productTypeId) {
 //        [self.tableView doSendRequest:YES];
         [self sendRequestToServer];
+    }
+}
+
+- (IBAction)buttonActionProduct:(id)sender
+{
+    CustomTwoButton *button = (CustomTwoButton *) sender;
+    if (button && button.content) {
+        ProductDetailViewControllerEx *controller = [[[ProductDetailViewControllerEx alloc] init] autorelease];
+        controller.productItem = button.content;
+        [self.navigationController pushViewController:controller animated:YES];
     }
 }
 

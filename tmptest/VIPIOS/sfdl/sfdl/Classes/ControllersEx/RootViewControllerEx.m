@@ -43,7 +43,7 @@
     NSMutableArray *arrayVC = [NSMutableArray array];
     
     [arrayVC addObject:[self createItem:@"HomeViewControllerEx" title:@"Home"]];
-    [arrayVC addObject:[self createItem:@"InquiryViewControllerEx" title:@"Inquiry"]];
+    [arrayVC addObject:[self createItem:@"InquiryFormViewController" title:@"Inquiry"]];
     
 //    self.menuController = (UINavigationController *)[self createItem:@"MenuViewControllerEx" title:@"Menu"];
     [arrayVC addObject:[self createItem:@"MenuViewControllerEx" title:@"Menu"]];

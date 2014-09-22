@@ -28,7 +28,7 @@
     [super viewDidLoad];
 //    self.secondTitleLabel.text = @"News";
     [self setTitleContent:@"NEWS"];
-    self.scrollView.backgroundColor = kWhiteColor;
+    self.content.scrollView.backgroundColor = kWhiteColor;
     [self.scrollView removeFromSuperview];
     [self.content.scrollView addSubview:self.topView];
     [self.view addSubview:self.content];
@@ -41,7 +41,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 - (BOOL) useTablViewToShow
 {
@@ -187,9 +186,6 @@
 }
 
 
-
-
-
 - (CGRect)tableViewFrame
 {
     return CGRectMake(0, 0, 320.0, kContentBoundsHeight-0);
@@ -211,8 +207,7 @@
 
 -(UILabel *)labelTwo
 {
-    if (!_labelTwo)
-    {
+    if (!_labelTwo) {
         _labelTwo = [[UILabel alloc]initWithFrame:CGRectMake(10, 55, 300, 20)];
         _labelTwo.textColor  = kLightGrayColor;
         _labelTwo.backgroundColor = kClearColor;
@@ -226,8 +221,7 @@
 
 -(UIWebView *)content
 {
-    if (!_content)
-    {
+    if (!_content) {
         _content = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, 320, kContentBoundsHeight)];
         _content.backgroundColor = kClearColor;
         

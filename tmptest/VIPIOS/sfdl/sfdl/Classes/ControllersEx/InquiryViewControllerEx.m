@@ -23,16 +23,6 @@
     // Do any additional setup after loading the view.
 }
 
-- (NSString *)tabImageName
-{
-    return @"email_black";
-}
-
-- (NSString *)tabSelectedImageName
-{
-    return @"email_white";
-}
-
 - (void) configTableView
 {
     __block typeof(self) blockSelf = self;

@@ -28,7 +28,7 @@
 
 @interface ViewProductRequest : ListRequestBase
 
-@property (nonatomic, copy) NSString *productId;
+@property (nonatomic, copy) NSString *productId, *username;
 
 @end
 

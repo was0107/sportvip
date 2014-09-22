@@ -100,19 +100,26 @@
 - (void) dealloc
 {
     TT_RELEASE_SAFELY(_productId);
+    TT_RELEASE_SAFELY(_username);
     [super dealloc];
 }
 
 - (NSMutableArray *) keyArrays
 {
-    NSMutableArray *array =  [NSMutableArray arrayWithObjects:@"productId", nil];
+    NSMutableArray *array =  [NSMutableArray arrayWithObjects:@"productId",@"username", nil];
+    if ([self.username length] == 0) {
+        array =  [NSMutableArray arrayWithObjects:@"productId", nil];
+    }
     [array addObjectsFromArray: [super keyArrays]];
     return array;
 }
 
 - (NSMutableArray *) valueArrays
 {
-    NSMutableArray *array =   [NSMutableArray arrayWithObjects:self.productId, nil];
+    NSMutableArray *array =   [NSMutableArray arrayWithObjects:self.productId, self.username,nil];
+    if ([self.username length] == 0) {
+        array =   [NSMutableArray arrayWithObjects:self.productId,nil];
+    }
     [array addObjectsFromArray: [super valueArrays]];
     return array;
 }

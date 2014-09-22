@@ -6,8 +6,12 @@
 //  Copyright (c) 2014年 allen.wang. All rights reserved.
 //
 
-#import "BaseWebViewController.h"
+#import "BaseSecondTitleViewController.h"
+#import "ProductRequest.h"
+#import "ProductResponse.h"
 
-@interface ProductDetailViewControllerEx : BaseWebViewController
+
+@interface ProductDetailViewControllerEx : BaseSecondTitleViewController
+@property (nonatomic, assign) ProductItem *productItem;
 
 @end
