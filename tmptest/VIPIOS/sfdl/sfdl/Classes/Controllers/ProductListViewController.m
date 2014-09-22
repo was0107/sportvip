@@ -11,6 +11,7 @@
 #import "ProductCart.h"
 #import "ProductRequest.h"
 #import "CreateObject.h"
+#import "CustomThreeButton.h"
 #import "ProductCartViewController.h"
 
 @interface ProductListViewController ()
@@ -32,7 +33,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [self setTitleContent:@"PRODUCT"];
+
     if (!self.productTypeId) {
         [self dealWithData];
         [self.tableView tableViewDidFinishedLoading];
@@ -59,60 +61,47 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
     self.tableView.cellCreateBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
         static NSString *identifier = @"ProductCategoryViewController_IDENTIFIER0";
-        BaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell){
-            cell = [[BaseTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.contentView.backgroundColor = kClearColor;
+            cell.backgroundColor = kClearColor;
+            CustomTwoButton *button1 = [[[CustomTwoButton alloc] initWithFrame:CGRectMake(0, 0, 107, 130)] autorelease];
+            CustomTwoButton *button2 = [[[CustomTwoButton alloc] initWithFrame:CGRectMake(108, 0, 107, 130)] autorelease];
             
-            cell.topLabel.frame = CGRectMake(70, 10, 166, 50);
-            cell.subLabel.frame = CGRectMake(70, 35, 160, 25);
-            cell.leftImageView .frame = CGRectMake(10, 6, 55, 55);
-            cell.rightButton.frame = CGRectMake(240, 30, 70,35);
-            [cell.rightButton setTitle:@" Cart " forState:UIControlStateNormal];
+            [cell.contentView addSubview:button1];
+            [cell.contentView addSubview:button2];
             
-            CALayer *layer = [CALayer layer];
-            layer.contents = ((UIImage *)[UIImage imageNamed:@"the_cart"]).CGImage;
-            layer.frame = CGRectMake(35, 0, 35, 35);
-            [cell.rightButton.layer addSublayer:layer];
-            
-            [CreateObject addTargetEfection:cell.rightButton];
-            cell.topLabel.numberOfLines = 0;
-            cell.topLabel.textColor = kBlackColor;
-            cell.topLabel.font = HTFONTSIZE(kFontSize14);
-            [cell.contentView addSubview:cell.topLabel];
-//            [cell.contentView addSubview:cell.subLabel];
-            [cell.contentView addSubview:cell.leftImageView];
-            [cell.contentView addSubview:cell.rightButton];
+            button1.tag = 1000 + 0;
+            button2.tag = 1000 + 1;
+            UIView *lineView = [[[UIView alloc] initWithFrame:CGRectMake(107, 0, 1, 130)] autorelease];
+            lineView.backgroundColor = kGrayColor;
+            lineView.alpha = 0.3f;
+            [cell.contentView addSubview:lineView];
         }
-        ProductItem *item = [blockSelf.response at:indexPath.row ];
-        cell.topLabel.text = item.productName;
-        cell.subLabel.text = item.productDesc;
-        cell.content = item;
-        [cell.leftImageView setImageWithURL:[NSURL URLWithString:item.productImg]
-                           placeholderImage:[UIImage imageNamed:kImageDefault]
-                                    success:^(UIImage *image){
-                                        UIImage * image1 = [image imageScaledToSizeEx:CGSizeMake(100, 100)];
-                                        cell.leftImageView.image = image1;
-                                    }
-                                    failure:^(NSError *error){
-                                        cell.leftImageView.image = [UIImage imageNamed:kImageDefault];
-                                    }];
-        cell.block = ^(id content)
-        {
-            [[ProductCart sharedInstance] addProductItem:content];
-            ProductCartViewController *controller = [[[ProductCartViewController alloc] init] autorelease];
-            controller.hidesBottomBarWhenPushed = YES;
-            [blockSelf.navigationController pushViewController:controller animated:YES];
-        };
-
+        NSMutableArray *array = [blockSelf.response result];
+        for (int i =0 ; i < 2 ; i++) {
+            CustomTwoButton *button = (CustomTwoButton *)[cell.contentView viewWithTag:1000+i];
+            if (indexPath.row * 2 + i < [array count]) {
+                HomeProductItem *item = [array objectAtIndex:indexPath.row * 2 + i];
+                [button setContent:item];
+                [button setHidden:NO];
+            } else {
+                [button setHidden:YES];
+            }
+            
+        }
         return cell;
     };
     
     self.tableView.cellNumberBlock = ^( UITableView *tableView, NSInteger section) {
-        return (NSInteger)[blockSelf.response arrayCount];
+        return (NSInteger)([blockSelf.response arrayCount] + 1 ) / 2;
     };
     
     self.tableView.cellHeightBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
-        return  70.0f;
+        return  140.0f;
     };
 
     self.tableView.sectionHeaderHeightBlock = ^( UITableView *tableView, NSInteger section){
@@ -121,12 +110,12 @@
     
     self.tableView.cellSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        ProductItem *item = [blockSelf.response at:indexPath.row ];
-        ProductDetailViewController *controller = [[[ProductDetailViewController alloc] init] autorelease];
-//        controller.secondTitleLabel.text = item.productName;
-        controller.productItem = item;
-        [blockSelf.navigationController hidesBottomBarWhenPushed];
-        [blockSelf.navigationController pushViewController:controller animated:YES];
+//        ProductItem *item = [blockSelf.response at:indexPath.row ];
+//        ProductDetailViewController *controller = [[[ProductDetailViewController alloc] init] autorelease];
+////        controller.secondTitleLabel.text = item.productName;
+//        controller.productItem = item;
+//        [blockSelf.navigationController hidesBottomBarWhenPushed];
+//        [blockSelf.navigationController pushViewController:controller animated:YES];
         
     };
     self.tableView.refreshBlock = ^(id content) {

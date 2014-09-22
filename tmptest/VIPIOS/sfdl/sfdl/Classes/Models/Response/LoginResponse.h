@@ -39,7 +39,8 @@
 
 @interface ProductTypeItem : ListResponseItemBase
 
-@property (nonatomic, copy) NSString *productTypeId, *productTypeName,*productTypeImg, *parent;
+@property (nonatomic, copy) NSString *productTypeId, *productTypeName,*productTypeImg, *parent, *templateId;
+@property (nonatomic, retain) NSMutableArray *children;
 
 @end
 

@@ -12,5 +12,6 @@
 @interface ProductListViewController : BaseSecondTitleViewController
 @property (nonatomic, copy) NSString *productTypeId;
 @property (nonatomic, retain) ProductResponse    *response;
+@property (nonatomic, assign) ProductTypeItem *productItem;
 
 @end

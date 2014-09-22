@@ -124,7 +124,18 @@
         self.productTypeId = [dictionary objectForKey:@"productTypeId"];
         self.productTypeImg = [dictionary objectForKey:@"productTypeImg"];
         self.productTypeName = [dictionary objectForKey:@"productTypeName"];
+        self.templateId     = [dictionary objectForKey:@"template"];
         self.parent = [dictionary objectForKey:@"parent"];
+        
+        NSArray *array = [dictionary objectForKey:@"children"];
+        NSMutableArray *childRenArray = [NSMutableArray array];
+        if (array && [array count] > 0) {
+            for (int i = 0 , total = [array count]; i < total; i++) {
+                ProductTypeItem *typeItem = [[ProductTypeItem alloc] initWithDictionary:[array objectAtIndex:i]];
+                [childRenArray addObject:typeItem];
+            }
+        }
+        self.children = childRenArray;
     }
     
     return self;
