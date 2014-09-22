@@ -90,6 +90,7 @@
 		4998571A19C7407000B82234 /* UserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4998571919C7407000B82234 /* UserCenterViewController.m */; };
 		4998571D19C7421700B82234 /* BrowsingHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4998571C19C7421700B82234 /* BrowsingHistoryViewController.m */; };
 		49BACBB819CF2960004F837B /* MiddleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BACBB719CF2960004F837B /* MiddleViewController.m */; };
+		49BACBBE19CFF7B3004F837B /* ProductDetailViewControllerEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BACBBD19CFF7B3004F837B /* ProductDetailViewControllerEx.m */; };
 		49D00D9719C7CA7900801880 /* NewsTableViewCellEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D00D9619C7CA7900801880 /* NewsTableViewCellEx.m */; };
 		DD06522F194DAABD00EECCBE /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DD06522E194DAABD00EECCBE /* SVProgressHUD.bundle */; };
 		DD13AD6719592D33005D4222 /* ProductSearchExViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD13AD6619592D33005D4222 /* ProductSearchExViewController.m */; };
@@ -347,6 +348,8 @@
 		49B3E4281985743600F0822A /* ViewEnquiryViewContrller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewEnquiryViewContrller.m; sourceTree = "<group>"; };
 		49BACBB619CF2960004F837B /* MiddleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiddleViewController.h; sourceTree = "<group>"; };
 		49BACBB719CF2960004F837B /* MiddleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiddleViewController.m; sourceTree = "<group>"; };
+		49BACBBC19CFF7B3004F837B /* ProductDetailViewControllerEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailViewControllerEx.h; sourceTree = "<group>"; };
+		49BACBBD19CFF7B3004F837B /* ProductDetailViewControllerEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailViewControllerEx.m; sourceTree = "<group>"; };
 		49D00D9519C7CA7900801880 /* NewsTableViewCellEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableViewCellEx.h; sourceTree = "<group>"; };
 		49D00D9619C7CA7900801880 /* NewsTableViewCellEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableViewCellEx.m; sourceTree = "<group>"; };
 		DD06522E194DAABD00EECCBE /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
@@ -677,6 +680,8 @@
 				49D00D9619C7CA7900801880 /* NewsTableViewCellEx.m */,
 				49BACBB619CF2960004F837B /* MiddleViewController.h */,
 				49BACBB719CF2960004F837B /* MiddleViewController.m */,
+				49BACBBC19CFF7B3004F837B /* ProductDetailViewControllerEx.h */,
+				49BACBBD19CFF7B3004F837B /* ProductDetailViewControllerEx.m */,
 			);
 			path = ControllersEx;
 			sourceTree = "<group>";
@@ -1502,6 +1507,7 @@
 				DD3A3FED193E029300043CA4 /* WASBaseAdapter.m in Sources */,
 				DD8EEAE11944243000CACC22 /* SearchViewController.m in Sources */,
 				DD3A3FEA193E029300043CA4 /* WASASICacheAdapter.m in Sources */,
+				49BACBBE19CFF7B3004F837B /* ProductDetailViewControllerEx.m in Sources */,
 				DD3A3FF3193E029300043CA4 /* IdentifierValidator.m in Sources */,
 				47DF7397194D83A80004CC63 /* RTLabel.m in Sources */,
 				DD3A3FB4193E029300043CA4 /* ListPaggingRequestBase.m in Sources */,

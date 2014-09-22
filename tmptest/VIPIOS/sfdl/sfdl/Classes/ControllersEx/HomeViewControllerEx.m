@@ -166,6 +166,8 @@
 {
     __block typeof(self) blockSelf = self;
     self.tableView.tableHeaderView = TABLE_VIEW_HEADERVIEW(20.1f);
+    self.tableView.separatorColor = kClearColor;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.cellCreateBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
         static NSString *identifier = @"SETTING_TABLEVIEW_CELL_IDENTIFIER";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -194,6 +196,16 @@
             lineView.backgroundColor = kGrayColor;
             lineView.alpha = 0.3f;
             [cell.contentView addSubview:lineView];
+            
+            lineView = [[[UIView alloc] initWithFrame:CGRectMake(0, 129.5f, 320, 0.5f)] autorelease];
+            lineView.backgroundColor = kGrayColor;
+            lineView.alpha = 0.3f;
+            [cell.contentView addSubview:lineView];
+            
+            lineView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.5)] autorelease];
+            lineView.backgroundColor = kGrayColor;
+            lineView.alpha = 0.3f;
+            [cell.contentView addSubview:lineView];
         }
         NSMutableArray *array = (1 == indexPath.section) ? [blockSelf.response hotArray] : [blockSelf.response result];
         for (int i =0 ; i < 3 ; i++) {
@@ -219,7 +231,7 @@
     };
     
     self.tableView.cellHeightBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
-        return  140.0f;
+        return  130.0f;
     };
     
     self.tableView.sectionHeaderHeightBlock = ^( UITableView *tableView, NSInteger section){
