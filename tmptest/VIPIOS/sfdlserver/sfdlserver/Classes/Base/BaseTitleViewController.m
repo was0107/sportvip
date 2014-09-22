@@ -47,8 +47,8 @@
     {
       [[self showLeft] enableBackGesture];
     }
-//    self.navigationController.navigationBar.tintColor = kWhiteColor;
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:kButtonNormalColor size:CGSizeMake(10, 10)] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.tintColor = kWhiteColor;
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor getColor:@"f4f4f4"] size:CGSizeMake(10, 10)] forBarMetrics:UIBarMetricsDefault];
 
 //     self.navigationItem.titleView = self.customTitleLable;
 }
@@ -119,7 +119,7 @@
             [_leftView addSubview:back];
         else
             [_leftView setShiftHorizon:-15.0f];
-        [_leftView addSubview:bgView];
+//        [_leftView addSubview:bgView];
     }
     return _leftView;
 }
@@ -196,7 +196,7 @@
         titleView = [[UILabel alloc] initWithFrame:CGRectZero];
         titleView.backgroundColor = [UIColor clearColor];
         titleView.font = HTFONTSIZE(18);
-        titleView.textColor = kWhiteColor; // Change to desired color
+        titleView.textColor = kOrangeColor; // Change to desired color
         self.navigationItem.titleView = titleView;
         self.customTitleLable = titleView;
         [titleView release];

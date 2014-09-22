@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseSecondTitleViewController.h"
+#import "BaseTableViewController.h"
 
-@interface EnquiryListViewController : BaseSecondTitleViewController
+@interface EnquiryListViewController : BaseTableViewController
 
 @end

@@ -30,6 +30,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setTitleContent:@"INQUIRY DETAIL"];
+
     self.scrollView = [[[UIKeyboardAvoidingScrollView alloc] initWithFrame:CGRectMake(0,  0, 320.0, kContentBoundsHeight)] autorelease];
     self.scrollView.backgroundColor = kClearColor;
     self.scrollView.contentSize = CGSizeMake(320, kContentBoundsHeight);

@@ -25,7 +25,7 @@
 {
     [super viewDidLoad];
 //    self.secondTitleLabel.text = @"Enquiry List";
-    [self setTitleContent:@"ENQUIRY LIST"];
+    [self setTitleContent:@"INQUIRY LIST"];
 
     [self sendRequestToServer];
     // Do any additional setup after loading the view.
@@ -38,9 +38,9 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
     self.tableView.cellCreateBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
         static NSString *identifier = @"ProductCategoryViewController_IDENTIFIER0";
-        BaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        BaseNewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell){
-            cell = [[BaseTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+            cell = [[BaseNewTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
             
             cell.topLabel.frame = CGRectMake(10, 10, 300, 25);
             cell.subLabel.frame = CGRectMake(10, 35, 300, 25);
@@ -55,6 +55,36 @@
             [cell.contentView addSubview:cell.subLabel];
 //            [cell.contentView addSubview:cell.leftImageView];
 //            [cell.contentView addSubview:cell.rightButton];
+            
+            cell.topLabel.frame = CGRectMake(4, 4, 250, 40);
+            cell.topLabel.font = HTFONTSIZE(kFontSize14);
+            cell.topLabel.numberOfLines = 2;
+            cell.topLabel.textColor = kLightGrayColor;
+            
+            cell.rightLabel.frame = CGRectMake(254, 6, 64, 20);
+            cell.rightLabel.font = HTFONTSIZE(kFontSize16);
+            cell.rightLabel.textAlignment = NSTextAlignmentCenter;
+            cell.rightLabel.numberOfLines = 1;
+            cell.rightLabel.textColor = kGrayColor;
+            
+            cell.subRightLabel.frame = CGRectMake(254, 30, 64, 20);
+            cell.subRightLabel.font = HTFONTSIZE(kFontSize12);
+            cell.subRightLabel.textAlignment = NSTextAlignmentCenter;
+            cell.subRightLabel.numberOfLines = 1;
+            cell.subRightLabel.textColor = kLightGrayColor;
+            
+            cell.rightImageView.frame = CGRectMake(206, 45, 50, 5);
+            cell.rightImageView.backgroundColor = kOrangeColor;
+            
+            CALayer *layer = [CALayer layer];
+            layer.frame = CGRectMake(250, 0, 1, 50);
+            layer.backgroundColor = [[UIColor getColor:@"EBEAF1"] CGColor];
+            [cell.contentView.layer addSublayer:layer];
+            
+            [cell.contentView addSubview:cell.topLabel];
+            [cell.contentView addSubview:cell.rightLabel];
+            [cell.contentView addSubview:cell.subRightLabel];
+            [cell.contentView addSubview:cell.rightImageView];
         }
         EnquiryItem *item = [blockSelf.response at:indexPath.row ];
         cell.topLabel.text = item.title;

@@ -56,7 +56,7 @@
 {
     if (!_phoneTextField) {
         __block typeof(self) safeSelf = self;
-        _phoneTextField = [[PubTextField alloc] initWithFrame:CGRectMake(25, 15 + kImageStartAt, 255, 40) indexTitle:@"" placeHolder:@"Member ID or Email" pubTextFieldStyle:PubTextFieldStyleTop];
+        _phoneTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0, 10 + kImageStartAt, 320, 40) indexTitle:@"Name:" placeHolder:@"Member ID or Email" pubTextFieldStyle:PubTextFieldStyleTop];
         _phoneTextField.pubTextField.returnKeyType = UIReturnKeyNext;
         _phoneTextField.pubTextField.frame = CGRectMake(0, 0, 250, 40);
         _phoneTextField.autoLayout = YES;
@@ -72,7 +72,7 @@
 {
     if (!_pwdTextField) {
         __block typeof(self) safeSelf = self;
-        _pwdTextField = [[PubTextField alloc] initWithFrame:CGRectMake(25, 62 + kImageStartAt, 255, 40) indexTitle:@"" placeHolder:@"Password" pubTextFieldStyle:PubTextFieldStyleBottom];
+        _pwdTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0, 51 + kImageStartAt, 320, 40) indexTitle:@"Password:" placeHolder:@"Password" pubTextFieldStyle:PubTextFieldStyleBottom];
         _pwdTextField.pubTextField.returnKeyType = UIReturnKeyDone;
         _pwdTextField.pubTextField.frame = CGRectMake(0, 0, 250, 40);
         _pwdTextField.pubTextField.secureTextEntry = YES;
@@ -85,37 +85,21 @@
     return _pwdTextField;
 }
 
-- (UIButton *)forgetButton
-{
-    if (!_forgetButton) {
-        _forgetButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
-        _forgetButton.frame = CGRectMake(82.0f, 120.0f + kImageStartAt, 243.0f, 40.0f);
-        _forgetButton.backgroundColor = kClearColor;
-        [_forgetButton setTitleColor:kButtonNormalColor forState:UIControlStateNormal];
-        [_forgetButton.titleLabel setFont:[UIFont boldSystemFontOfSize:13.0f]];
-        _forgetButton.titleLabel.textAlignment = NSTextAlignmentRight;
-        [_forgetButton setTitle:@"Forget Password?Get Now>" forState:UIControlStateNormal];
-        [_forgetButton addTarget:self action:@selector(forgetButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    
-    return _forgetButton;
-}
-
 - (UIButton *)confirmButton
 {
     if (!_confirmButton) {
         _confirmButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
-        _confirmButton.frame = CGRectMake(42.0f, 115.0f + kImageStartAt + 50, 243.0f, 40.0f);
-        _confirmButton.backgroundColor = kLightGrayColor;
-        [_confirmButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18.0f]];
+        _confirmButton.frame = CGRectMake(0.0f, 96.0f + 20, 320.0f, 40.0f);
+        _confirmButton.backgroundColor = kClearColor;
+        [_confirmButton setTitleColor:kWhiteColor forState:UIControlStateNormal];
+        [_confirmButton.titleLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
         [CreateObject addTargetEfection:_confirmButton];
-        [_confirmButton setTitle:@"Sign in" forState:UIControlStateNormal];
+        [_confirmButton setTitle:@"SUBMIT" forState:UIControlStateNormal];
         [_confirmButton addTarget:self action:@selector(confirmButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     
     return _confirmButton;
 }
-
 
 - (UIButton *)newButton
 {
@@ -207,11 +191,17 @@
         DEBUGLOG(@"failed content %@", content);
         [[[[ErrorResponse alloc] initWithJsonString:content] autorelease] show];
         [safeSelf.confirmButton setEnabled:YES];
+        EnquiryListViewController *controller = [[[EnquiryListViewController alloc] init] autorelease];
+        [controller setHidesBottomBarWhenPushed:YES];
+        [safeSelf.navigationController pushViewController:controller animated:YES];
     };
     idBlock errBlock = ^(id content){
         DEBUGLOG(@"failed content %@", content);
         [SVProgressHUD showErrorWithStatus:@"登录失败"];
         [safeSelf.confirmButton setEnabled:YES];
+        EnquiryListViewController *controller = [[[EnquiryListViewController alloc] init] autorelease];
+        [controller setHidesBottomBarWhenPushed:YES];
+        [safeSelf.navigationController pushViewController:controller animated:YES];
     };
     
     ServerLoginRequest *request = [[[ServerLoginRequest alloc] init] autorelease];

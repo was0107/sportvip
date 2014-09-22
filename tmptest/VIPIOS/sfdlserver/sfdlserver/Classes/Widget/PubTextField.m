@@ -8,7 +8,7 @@
 
 #define kIndexLabelWidth         40.0f
 #define kIndexLabelHeight        20.0f
-#define kIndexLabelLeftPadding   12.0f
+#define kIndexLabelLeftPadding   4.0f
 #define kIndexLabelRightPadding  24.0f
 #define kIndexLabelTopPadding    3.0f
 #define kIndexLabelBottomPadding 12.0f
@@ -43,10 +43,11 @@
     if (self) {
         // Initialization code
         
-//        self.borderStyle = UITextBorderStyleNone;
-//        self.autocapitalizationType = UITextAutocapitalizationTypeNone;
+        //        self.borderStyle = UITextBorderStyleNone;
+        //        self.autocapitalizationType = UITextAutocapitalizationTypeNone;
         
         [self addSubview:[self indexLabel]];
+        self.backgroundColor = kWhiteColor;
         
     }
     return self;
@@ -67,9 +68,9 @@
         [self.pubTextField useBlocksForDelegate];
         [self initialBlocks];
         
-//        if (IS_IOS_7_OR_GREATER)
+        //        if (IS_IOS_7_OR_GREATER)
         {
-            self.backgroundColor = kBlackColor;
+            self.backgroundColor = kWhiteColor;
         }
     }
     
@@ -85,12 +86,12 @@
             
             _pubTextField = [[UITextField alloc] initWithFrame:CGRectMake(self.bounds.origin.x + kIndexLabelLeftPadding + kIndexLabelWidth + kIndexLabelRightPadding, self.bounds.origin.y + 10, kTextFieldWidth, 20)];
         }
-        _pubTextField.layer.borderWidth = 0.5f;
-        _pubTextField.layer.borderColor = [kGrayColor CGColor];
+        //        _pubTextField.layer.borderWidth = 0.5f;
+        //        _pubTextField.layer.borderColor = [kGrayColor CGColor];
         _pubTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
         _pubTextField.autocorrectionType = UITextAutocorrectionTypeNo;
         _pubTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        _pubTextField.textColor = kDarkGrayColor;
+        _pubTextField.textColor = kBlackColor;
         _pubTextField.font = HTFONTSIZE(kSystemFontSize16);
     }
     
@@ -109,9 +110,9 @@
 {
     _maxWidth = maxWidth;
     
-//    if (_maxWidth > self.indexLabel.frame.size.width)
+    //    if (_maxWidth > self.indexLabel.frame.size.width)
     {
-//        [self.indexLabel setFrameWidth:_maxWidth + 2];
+        //        [self.indexLabel setFrameWidth:_maxWidth + 2];
         [self.pubTextField setFrameX:self.indexLabel.width + self.indexLabel.x  + 5 ];
         [self.pubTextField setFrameWidth:self.bounds.size.width - (self.indexLabel.width - self.indexLabel.x  + kIndexLabelLeftPadding  + kIndexLabelRightPadding) ];
         [self.pubTextField setFrameWidth:self.bounds.size.width - self.pubTextField.x + 5 ];
@@ -140,7 +141,7 @@
 
 - (void)setFieldStyle:(PubTextFieldStyle)fieldStyle
 {
-    return;
+    //    return;
     switch (fieldStyle) {
         case PubTextFieldStyleOne:
         {
@@ -194,7 +195,7 @@
         {
             if (!IS_IOS_7_OR_GREATER) {
                 [_fieldBackground setImage:[UIImage imageNamed:@"list_bottom_normal"]];
-
+                
             } else {
                 
                 UIImage *bgImage = [[UIImage imageNamed:@"register_line_icon"] stretchableImageWithLeftCapWidth:2 topCapHeight:0];

@@ -32,11 +32,10 @@
     [super viewDidLoad];
     [self setTitleContent:@"PRODUCT"];
     [self.scrollView removeFromSuperview];
-
-    [self.view addSubview:self.content];
-    
+    [self.content loadHTMLString:@"<html></html>" baseURL:nil];
     [self sendRequestToGetCompanyServer];
     [self sendRequestToServer];
+    [self.view addSubview:self.content];
     // Do any additional setup after loading the view.
 }
 
