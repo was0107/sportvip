@@ -129,6 +129,8 @@
             break;
         }
     }
+    NSArray *colors  = @[kWhiteColor,[UIColor getColor:@"434343"],[UIColor getColor:@"262626"]];
+    foundTableView.backgroundColor = colors[foundTableView.level % 3];
     foundTableView.dataSource = self;
     foundTableView.delegate = self;
     return foundTableView;

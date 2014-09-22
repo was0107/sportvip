@@ -181,6 +181,7 @@
         [self.navigationController hidesBottomBarWhenPushed];
         [self.navigationController pushViewController:controller animated:YES];
     }
+    
 }
 
 - (UIView *)pushTreeView:(InfiniteTreeView *)pushTreeView level:(NSInteger)level viewForHeaderInSection:(NSInteger)section
@@ -209,6 +210,7 @@
 
 - (void)pushTreeViewWillReloadAtLevel:(InfiniteTreeView*)pushTreeView currentLevel:(NSInteger)currentLevel level:(NSInteger)level                            indexPath:(NSIndexPath*)indexPath
 {
+    pushTreeView.backgroundColor = kRedColor;
 }
 
 #pragma mark - IBAction methods

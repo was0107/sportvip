@@ -138,7 +138,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.theLabel.frame = CGRectMake(20, 150, 155, 25);
+        self.theLabel.frame = CGRectMake(20, 140, 115, 35);
         self.theLabel.textAlignment = NSTextAlignmentLeft;
         self.theImageView.frame = CGRectMake(20, 20, 117, 115);
         self.theImageView.layer.cornerRadius = 2.0f;
