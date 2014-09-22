@@ -24,11 +24,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    self.secondTitleLabel.text = @"Enquiry List";
     [self setTitleContent:@"INQUIRY LIST"];
-
     [self sendRequestToServer];
-    // Do any additional setup after loading the view.
 }
 
 - (void) configTableView
@@ -42,24 +39,20 @@
         if (!cell){
             cell = [[BaseNewTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
             
-            cell.topLabel.frame = CGRectMake(10, 10, 300, 25);
-            cell.subLabel.frame = CGRectMake(10, 35, 300, 25);
-//            cell.leftImageView .frame = CGRectMake(4, 6, 55, 55);
-//            cell.rightButton.frame = CGRectMake(220, 30, 90,35);
-//            [cell.rightButton setTitle:@" Add To Cart" forState:UIControlStateNormal];
-//            [CreateObject addTargetEfection:cell.rightButton];
-            cell.topLabel.numberOfLines = 2;
-            cell.topLabel.textColor = kBlackColor;
-            cell.topLabel.font = HTFONTSIZE(kFontSize15);
-            [cell.contentView addSubview:cell.topLabel];
-            [cell.contentView addSubview:cell.subLabel];
-//            [cell.contentView addSubview:cell.leftImageView];
-//            [cell.contentView addSubview:cell.rightButton];
+            UIImageView *imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)] autorelease];
+            imageView.backgroundColor  = kClearColor;
+            cell.backgroundView = imageView;
             
-            cell.topLabel.frame = CGRectMake(4, 4, 250, 40);
+            cell.topLabel.frame = CGRectMake(4, 4, 170, 40);
             cell.topLabel.font = HTFONTSIZE(kFontSize14);
             cell.topLabel.numberOfLines = 2;
-            cell.topLabel.textColor = kLightGrayColor;
+            cell.topLabel.textColor = kGrayColor;
+            
+            cell.subLabel.frame = CGRectMake(180, 4, 64, 40);
+            cell.subLabel.font = HTFONTSIZE(kFontSize16);
+            cell.subLabel.textAlignment = NSTextAlignmentCenter;
+            cell.subLabel.numberOfLines = 2;
+            cell.subLabel.textColor = kGrayColor;
             
             cell.rightLabel.frame = CGRectMake(254, 6, 64, 20);
             cell.rightLabel.font = HTFONTSIZE(kFontSize16);
@@ -73,40 +66,47 @@
             cell.subRightLabel.numberOfLines = 1;
             cell.subRightLabel.textColor = kLightGrayColor;
             
-            cell.rightImageView.frame = CGRectMake(206, 45, 50, 5);
-            cell.rightImageView.backgroundColor = kOrangeColor;
-            
             CALayer *layer = [CALayer layer];
+            layer.frame = CGRectMake(175, 0, 1, 50);
+            layer.backgroundColor = [[UIColor getColor:@"EBEAF1"] CGColor];
+            [cell.contentView.layer addSublayer:layer];
+            
+            layer = [CALayer layer];
             layer.frame = CGRectMake(250, 0, 1, 50);
             layer.backgroundColor = [[UIColor getColor:@"EBEAF1"] CGColor];
             [cell.contentView.layer addSublayer:layer];
             
             [cell.contentView addSubview:cell.topLabel];
+            [cell.contentView addSubview:cell.subLabel];
             [cell.contentView addSubview:cell.rightLabel];
             [cell.contentView addSubview:cell.subRightLabel];
-            [cell.contentView addSubview:cell.rightImageView];
         }
-        EnquiryItem *item = [blockSelf.response at:indexPath.row ];
-        cell.topLabel.text = item.title;
-        cell.subLabel.text = item.content;
-        cell.content = item;
-//        [cell.leftImageView setImageWithURL:[NSURL URLWithString:item.productImg]
-//                           placeholderImage:[UIImage imageNamed:kImageDefault]
-//                                    success:^(UIImage *image){
-//                                        UIImage * image1 = [image imageScaledToSizeEx:CGSizeMake(100, 100)];
-//                                        cell.leftImageView.image = image1;
-//                                    }
-//                                    failure:^(NSError *error){
-//                                        cell.leftImageView.image = [UIImage imageNamed:kImageDefault];
-//                                    }];
-//        cell.block = ^(id content)
-//        {
-//            [[ProductCart sharedInstance] addProductItem:content];
-//            ProductCartViewController *controller = [[[ProductCartViewController alloc] init] autorelease];
-//            controller.hidesBottomBarWhenPushed = YES;
-//            [blockSelf.navigationController pushViewController:controller animated:YES];
-//        };
+//        EnquiryItem *item = [blockSelf.response at:indexPath.row ];
+//        cell.topLabel.text = item.title;
+//        cell.subLabel.text = item.content;
+//        cell.rightLabel.text = [item.creationTime substringFromIndex:8];
+//        cell.subRightLabel.text = [item.creationTime substringToIndex:7];
+//        cell.content = item;
         
+        if (0 == indexPath.row) {
+            cell.backgroundView.backgroundColor = kRedColor;
+            cell.topLabel.textColor = kWhiteColor;
+            cell.subLabel.textColor = kWhiteColor;
+            cell.rightLabel.textColor = kWhiteColor;
+            cell.subRightLabel.textColor = kWhiteColor;
+        }
+        else {
+            cell.backgroundView.backgroundColor = kClearColor;
+            cell.topLabel.textColor = kGrayColor;
+            cell.subLabel.textColor = kGrayColor;
+            cell.rightLabel.textColor = kGrayColor;
+            cell.subRightLabel.textColor = kLightGrayColor;
+        }
+        
+        cell.topLabel.text = @"The different series of deutz gensets have different features";
+        cell.subLabel.text = @"user name";
+        cell.rightLabel.text = @"08:59";
+        cell.subRightLabel.text = @"2014-09-03";
         return cell;
     };
     
@@ -115,7 +115,7 @@
     };
     
     self.tableView.cellHeightBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
-        return  70.0f;
+        return  50.0f;
     };
     
     self.tableView.sectionHeaderHeightBlock = ^( UITableView *tableView, NSInteger section){
@@ -126,7 +126,6 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         EnquiryItem *item = [blockSelf.response at:indexPath.row ];
         ViewEnquiryViewContrller *controller = [[[ViewEnquiryViewContrller alloc] init] autorelease];
-        //        controller.secondTitleLabel.text = item.productName;
         controller.item = item;
         [blockSelf.navigationController hidesBottomBarWhenPushed];
         [blockSelf.navigationController pushViewController:controller animated:YES];

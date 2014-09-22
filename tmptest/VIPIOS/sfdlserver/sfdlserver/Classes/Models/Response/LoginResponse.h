@@ -153,7 +153,6 @@
  *server
  */
 
-
 @interface EnquiryItem : ListResponseItemBase
 
 @property (nonatomic, copy) NSString *enquiryId,*title,*content,*sendTime,*status;

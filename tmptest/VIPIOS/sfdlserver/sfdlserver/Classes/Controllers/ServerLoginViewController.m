@@ -191,17 +191,17 @@
         DEBUGLOG(@"failed content %@", content);
         [[[[ErrorResponse alloc] initWithJsonString:content] autorelease] show];
         [safeSelf.confirmButton setEnabled:YES];
-        EnquiryListViewController *controller = [[[EnquiryListViewController alloc] init] autorelease];
-        [controller setHidesBottomBarWhenPushed:YES];
-        [safeSelf.navigationController pushViewController:controller animated:YES];
+//        EnquiryListViewController *controller = [[[EnquiryListViewController alloc] init] autorelease];
+//        [controller setHidesBottomBarWhenPushed:YES];
+//        [safeSelf.navigationController pushViewController:controller animated:YES];
     };
     idBlock errBlock = ^(id content){
         DEBUGLOG(@"failed content %@", content);
         [SVProgressHUD showErrorWithStatus:@"登录失败"];
         [safeSelf.confirmButton setEnabled:YES];
-        EnquiryListViewController *controller = [[[EnquiryListViewController alloc] init] autorelease];
-        [controller setHidesBottomBarWhenPushed:YES];
-        [safeSelf.navigationController pushViewController:controller animated:YES];
+//        EnquiryListViewController *controller = [[[EnquiryListViewController alloc] init] autorelease];
+//        [controller setHidesBottomBarWhenPushed:YES];
+//        [safeSelf.navigationController pushViewController:controller animated:YES];
     };
     
     ServerLoginRequest *request = [[[ServerLoginRequest alloc] init] autorelease];
