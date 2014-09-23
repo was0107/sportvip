@@ -19,22 +19,10 @@
 
 @implementation AgentListViewController
 
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    self.secondTitleLabel.text = @"Agent";
-    [self setTitleContent:@"Agent"];
-
-    // Do any additional setup after loading the view.
+    [self setTitleContent:@"FIND YOUR DEALER"];
 }
 
 - (void)didReceiveMemoryWarning

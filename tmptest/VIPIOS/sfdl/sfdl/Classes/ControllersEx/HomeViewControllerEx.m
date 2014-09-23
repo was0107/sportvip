@@ -360,6 +360,7 @@
 {
     if (!_popInputView) {
         _popInputView = [[PopInputView alloc] initWithFrame:CGRectMake(0, 50, 320, 300)];
+        _popInputView.controller = self;
     }
     return _popInputView;
 }

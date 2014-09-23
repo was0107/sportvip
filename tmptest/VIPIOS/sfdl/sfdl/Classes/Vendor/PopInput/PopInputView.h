@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface PopInputView : UIView
+@property (nonatomic, assign) UIViewController *controller;
 @property (nonatomic, assign) BOOL isShowing;
 - (void)show;
 - (void)dismiss;

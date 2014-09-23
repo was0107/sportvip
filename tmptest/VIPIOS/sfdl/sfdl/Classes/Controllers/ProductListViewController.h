@@ -14,4 +14,5 @@
 @property (nonatomic, retain) ProductResponse *response;
 @property (nonatomic, assign) ProductTypeItem *productItem;
 @property (nonatomic, copy)   NSString        *sectionTitle;
+@property (nonatomic, copy)   NSString        *searchText;
 @end

@@ -102,7 +102,7 @@
         UIMenuBarItem *menuItem1 = [[UIMenuBarItem alloc] initWithTitle:@"About us" target:self image:[UIImage imageNamed:@"about"] action:@selector(clickAction1:) controller:@"AboutUsViewController"];
         UIMenuBarItem *menuItem2 = [[UIMenuBarItem alloc] initWithTitle:@"News" target:self image:[UIImage imageNamed:@"news"] action:@selector(clickAction2:) controller:@"NewsViewController"];
         UIMenuBarItem *menuItem3 = [[UIMenuBarItem alloc] initWithTitle:@"User Center" target:self image:[UIImage imageNamed:@"users"] action:@selector(clickAction3:) controller:@"UserCenterViewController"];
-        UIMenuBarItem *menuItem4 = [[UIMenuBarItem alloc] initWithTitle:@"Find Your Dealer" target:self image:[UIImage imageNamed:@"search_jxs"] action:@selector(clickAction4:) controller:@"AgentListViewController"];
+        UIMenuBarItem *menuItem4 = [[UIMenuBarItem alloc] initWithTitle:@"Find Your Dealer" target:self image:[UIImage imageNamed:@"search_jxs"] action:@selector(clickAction4:) controller:@"DealerViewController"];
         UIMenuBarItem *menuItem5 = [[UIMenuBarItem alloc] initWithTitle:@"Contact Us" target:self image:[UIImage imageNamed:@"contact"] action:@selector(clickAction5:) controller:@"ContactUsViewController"];
         UIMenuBarItem *menuItem6 = [[UIMenuBarItem alloc] initWithTitle:([UserDefaultsManager userId].length == 0 ) ? @"Login":@"Logout" target:self image:[UIImage imageNamed:@"quite"] action:@selector(clickAction6:) controller:@""];
         
@@ -158,7 +158,6 @@
 - (void)clickAction2:(id)sender
 {
     [self goToViewController:@"NewsViewController"];
-
     [self dissmissMenubar];
 }
 
@@ -166,15 +165,13 @@
 - (void)clickAction3:(id)sender
 {
     [self goToViewController:@"UserCenterViewController"];
-
     [self dissmissMenubar];
 }
 
 
 - (void)clickAction4:(id)sender
 {
-    [self goToViewController:@"AgentListViewController"];
-
+    [self goToViewController:@"DealerViewController"];
     [self dissmissMenubar];
 }
 
@@ -182,7 +179,6 @@
 - (void)clickAction5:(id)sender
 {
     [self goToViewController:@"ContactUsViewController"];
-
     [self dissmissMenubar];
 }
 

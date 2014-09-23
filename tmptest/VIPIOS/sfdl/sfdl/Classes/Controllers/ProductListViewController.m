@@ -16,8 +16,9 @@
 #import "ProductDetailViewControllerEx.h"
 
 @interface ProductListViewController ()
-
-@property (nonatomic, retain) ProductListRequest *request;
+@property (nonatomic, assign) ListPaggingRequestBase *request;
+@property (nonatomic, retain) SearchProductRequest *searchRequest;
+@property (nonatomic, retain) ProductListRequest *listRequest;
 @end
 
 @implementation ProductListViewController
@@ -143,22 +144,22 @@
         
     };
     self.tableView.refreshBlock = ^(id content) {
-        [blockSelf.request firstPage];
+        [blockSelf.listRequest firstPage];
         [blockSelf sendRequestToServer];
     };
     
     self.tableView.loadMoreBlock = ^(id content) {
-        if (blockSelf.request  && ![blockSelf.request isFristPage]) {
+        if (blockSelf.listRequest  && ![blockSelf.listRequest isFristPage]) {
             [blockSelf sendRequestToServer];
         }
     };
     
     [self.view addSubview:self.tableView];
     
-    if (self.productTypeId) {
+//    if (self.productTypeId) {
 //        [self.tableView doSendRequest:YES];
         [self sendRequestToServer];
-    }
+//    }
 }
 
 - (IBAction)buttonActionProduct:(id)sender
@@ -208,10 +209,21 @@
         DEBUGLOG(@"error content %@", content);
         [blockSelf.tableView tableViewDidFinishedLoading];
     };
-    if (!_request) {
-        self.request = [[[ProductListRequest alloc] init] autorelease];
+    if ([self.searchText length] > 0) {
+        
+        if (!_searchRequest) {
+            self.searchRequest = [[[SearchProductRequest alloc] init] autorelease];
+        }
+        self.searchRequest.productName  = self.searchText;
+        self.request = self.searchRequest;
     }
-    self.request.productTypeId = self.productTypeId;
+    else {
+        if (!_listRequest) {
+            self.listRequest = [[[ProductListRequest alloc] init] autorelease];
+        }
+        self.listRequest.productTypeId = self.productTypeId;
+        self.request = self.listRequest;
+    }
     
     [WASBaseServiceFace serviceWithMethod:[self.request URLString] body:[self.request toJsonString] onSuc:successedBlock onFailed:failedBlock onError:errBlock];
 }

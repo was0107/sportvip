@@ -177,6 +177,11 @@
         _codeTextField.pubTextField.frame = CGRectMake(90, 5, 100, 30);
         _codeTextField.pubTextField.keyboardType = UIKeyboardTypeDefault;
         [_codeTextField addSubview:[self codeImageView]];
+        CALayer *layer = [CALayer layer];
+        layer.frame = CGRectMake(208, 0, 2, kPubTextFieldHeight);
+        layer.backgroundColor = [[UIColor getColor:@"EBEAF1"] CGColor];
+        [_codeTextField.layer addSublayer:layer];
+        
         [_codeTextField.pubTextField onShouldReturn:^(UITextField *textField){
             [safeSelf.codeTextField resignFirstResponder];
             return YES;
@@ -192,7 +197,7 @@
 //        _productImageView.layer.borderColor = [kBlueColor CGColor];
 //        _productImageView.layer.borderWidth = 1.0f;
 //        _productImageView.layer.cornerRadius = 2.0f;
-        _productImageView.backgroundColor = kLightGrayColor;
+        _productImageView.backgroundColor = [UIColor getColor:@"EBEAF1"];
     }
     return _productImageView;
 }
@@ -200,7 +205,7 @@
 - (UIImageView *)codeImageView
 {
     if (!_codeImageView) {
-        _codeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(210,  5, 100, 30)];
+        _codeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(212,  5, 100, 30)];
         _codeImageView.userInteractionEnabled = YES;
         UITapGestureRecognizer *recognizer = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(codeAction:)] autorelease];
         [_codeImageView addGestureRecognizer:recognizer];

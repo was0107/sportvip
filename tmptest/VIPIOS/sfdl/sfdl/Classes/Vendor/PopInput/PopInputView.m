@@ -8,6 +8,7 @@
 
 #import "PopInputView.h"
 #import "CreateObject.h"
+#import "ProductListViewController.h"
 #define kSemiModalAnimationDuration 0.3f
 
 @interface PopInputView()<UITextFieldDelegate>
@@ -85,7 +86,15 @@
 
 - (IBAction)searchButtonAction:(id)sender
 {
+    NSString *textString = self.textField.text ;
     [self dismiss];
+    if ([textString length] > 0) {
+        ProductListViewController *listViewController = [[[ProductListViewController alloc] init] autorelease];
+        listViewController.sectionTitle = textString;
+        listViewController.searchText = textString;
+        [self.controller.navigationController hidesBottomBarWhenPushed];
+        [self.controller.navigationController pushViewController:listViewController animated:YES];
+    }
 }
 
 
@@ -138,6 +147,7 @@
 
 - (void)_dismissModalView
 {
+    [self.textField resignFirstResponder];
     UIWindow * keywindow = [[UIApplication sharedApplication] keyWindow];
     if (keywindow.subviews.count <2) {
         return;

@@ -45,8 +45,8 @@
     __block typeof(self) blockSelf = self;
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20.1f)];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
-    NSArray *titleIndexArray = @[@"Change the password", @"Inquiry", @"Browsing history"];
-    NSArray *controllerIndexArray = @[@"ChangePasswordViewController",@"InquiryViewControllerEx",@"BrowsingHistoryViewController"];
+    NSArray *titleIndexArray = @[@"Inquiry", @"Browsing history",@"Change the password", ];
+    NSArray *controllerIndexArray = @[@"InquiryViewControllerEx",@"BrowsingHistoryViewController",@"ChangePasswordViewController"];
     self.tableView.cellCreateBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
         static NSString *identifier = @"HOME_TABLEVIEW_CELL_IDENTIFIER0";
         BaseSingleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];

@@ -48,7 +48,7 @@
     _titleView.backgroundColor = [UIColor getColor:KCustomGreenColor];
     
     _titleView.textAlignment = UITextAlignmentCenter;
-    _titleView.textColor = [UIColor whiteColor];
+    _titleView.textColor = kOrangeColor;
     CGFloat xWidth = self.bounds.size.width;
     _titleView.lineBreakMode = UILineBreakModeTailTruncation;
     _titleView.frame = CGRectMake(0, 0, xWidth, 40.0f);

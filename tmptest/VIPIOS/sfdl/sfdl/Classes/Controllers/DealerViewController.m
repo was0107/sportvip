@@ -21,7 +21,7 @@
 
 @property (nonatomic, assign) ProductTypeItem    *typeItem;
 @property (nonatomic, assign) RegionItem         *regionItem;
-@property (nonatomic, copy)  NSString            *name;
+@property (nonatomic, copy)  NSString            *name, *address;
 
 
 
@@ -46,12 +46,49 @@
     [self setTitleContent:@"DEALER"];
 
     self.name = @"";
+    self.address = @"";
     self.typeItem =nil;
     self.regionItem = nil;
     [self.tableView setup];
     [self sendRequestToGetProductTypeServer];
     [self sendRequestToGetRegionServer];
     // Do any additional setup after loading the view.
+}
+
+- (void) createHeaderView
+{
+    UIView *headerView = [[[UIView  alloc] initWithFrame:CGRectMake(0, 0, 320, 110)] autorelease];
+    headerView.backgroundColor = kClearColor;
+    
+    UIView *topView = [[[UIView  alloc] initWithFrame:CGRectMake(0, 0, 320, 50)] autorelease];
+    topView.backgroundColor = kWhiteColor;
+    
+    
+    UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(10, 2, 300, 40)] autorelease];
+    label.numberOfLines = 2;
+    label.textColor = kBlackColor;
+    label.backgroundColor = kClearColor;
+    label.font = HTFONTSIZE(kFontSize14);
+    label.text = @"Need help finding a Cat dealer near you? To user the Cat dealer locator below, simply enter your address and ...";
+    
+    [topView addSubview:label];
+    [headerView addSubview:topView];
+    
+    topView = [[[UIView  alloc] initWithFrame:CGRectMake(-1, 60, 322, 40)] autorelease];
+    topView.backgroundColor = kWhiteColor;
+    topView.layer.borderWidth = 0.5f;
+    topView.layer.borderColor = [[UIColor colorWithWhite:0.4f alpha:0.2f] CGColor];
+    
+    label = [[[UILabel alloc] initWithFrame:CGRectMake(10, 2, 300, 34)] autorelease];
+    label.numberOfLines = 2;
+    label.backgroundColor = kClearColor;
+    label.font = HTFONTSIZE(kFontSize14);
+    label.textColor = kOrangeColor;
+    label.text = @"Dark Gray pins Represent Home Dealer for Your Area";
+    
+    [topView addSubview:label];
+    [headerView addSubview:topView];
+    self.tableView.tableHeaderView = headerView;
 }
 
 - (int) tableViewType
@@ -62,21 +99,28 @@
 - (void) configTableView
 {
     __block DealerViewController *blockSelf = self;
-    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
+//    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
+    [self createHeaderView];
     self.tableView.tableFooterView = [self footerView];//[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
+    self.tableView.separatorColor = kClearColor;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.cellCreateBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
-        static NSString *titlesArray[] = {@"Name/Address",@"Product Type",@"Region"};
+        static NSString *titlesArray[3][2] = {{@"Address, City,Stage,or Postal Code/Country"},
+            {@"For this type of Equipment",@"Show this type of location"},
+            {@"Dealer Name"}};
         static NSString *identifier = @"ProductCategoryViewController_IDENTIFIER0";
         BaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell){
             cell = [[BaseTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
             
-            cell.topLabel.frame = CGRectMake(15, 10, 110, 24);
-            cell.subLabel.frame = CGRectMake(125, 10, 175, 24);
-            cell.textField.frame = CGRectMake(125, 4, 175, 36);
-            cell.subLabel.backgroundColor = kWhiteColor;
+
+            cell.topLabel.frame = CGRectMake(10, 3, 300, 25);
+            cell.textField.frame = CGRectMake(10, 28, 300, 30);
+            cell.subLabel.frame = CGRectMake(10, 28, 300, 30);
             cell.subLabel.textAlignment = NSTextAlignmentRight;
-            cell.textField.layer.borderColor = [kBlueColor CGColor];
+            cell.subLabel.layer.borderColor = [kLightGrayColor CGColor];
+            cell.subLabel.layer.borderWidth = 1.0f;
+            cell.textField.layer.borderColor = [kLightGrayColor CGColor];
             cell.textField.layer.borderWidth = 1.0f;
             cell.topLabel.textColor = kBlackColor;
             cell.topLabel.font =  cell.subLabel.font = HTFONTSIZE(kFontSize14);
@@ -85,55 +129,66 @@
             cell.textField.delegate = self;
             
         }
-        cell.topLabel.text = titlesArray[indexPath.row];
-        
-        switch (indexPath.row) {
-            case 0:
-                
-                break;
-            case 1:
-                cell.subLabel.text = (!self.typeItem) ? @"请选择" : self.typeItem.productTypeName;
-                break;
-            case 2:
-                cell.subLabel.text = (!self.regionItem) ? @"请选择" : self.regionItem.name;
-                break;
-                
-            default:
-                break;
-        }
-        
-        if (0 == indexPath.row) {
+        cell.topLabel.text = titlesArray[indexPath.section][indexPath.row];
+        if (0 == indexPath.section) {
             [cell.subLabel removeFromSuperview];
             [cell.contentView addSubview:cell.textField];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        } else {
+        } else if (1 == indexPath.section ){
             [cell.textField removeFromSuperview];
             [cell.contentView addSubview:cell.subLabel];
             cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+            
+            if (0 == indexPath.row) {
+                cell.subLabel.text = (!self.typeItem) ? @"请选择  " : self.typeItem.productTypeName;
+            } else {
+                cell.subLabel.text = (!self.regionItem) ? @"请选择  " : self.regionItem.name;
+            }
+        } else {
+            [cell.subLabel removeFromSuperview];
+            [cell.contentView addSubview:cell.textField];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         return cell;
     };
     
     self.tableView.cellNumberBlock = ^( UITableView *tableView, NSInteger section) {
-        return (NSInteger)3;
+        return (NSInteger)(1 != section) ? 1 : 2;
     };
     
+    self.tableView.cellHeightBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
+        return  64.0f;
+    };
+    
+    self.tableView.sectionNumberBlock = ^( UITableView *tableView) {
+        return (NSInteger)3;
+    };
         
     self.tableView.sectionHeaderHeightBlock = ^( UITableView *tableView, NSInteger section){
-        return 0.0f;
+        return (0 < section) ? 22.0f : 0.0f;
+    };
+    
+    self.tableView.sectionHeaderBlock = ^( UITableView *tableView, NSInteger section)
+    {
+        UIView *footerView = [[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 22)]autorelease];
+        footerView.backgroundColor = kWhiteColor;
+        UILabel *label1 = [[[UILabel alloc] initWithFrame:CGRectMake(10,0,300,22)] autorelease];
+        label1.text = (eSectionIndex02 == section) ? @"OR" : @"MORE SEARCH OPTIONS";
+        label1.font = HTFONTSIZE(kFontSize15);
+        label1.textColor =  (eSectionIndex02 == section) ? kBlackColor : kOrangeColor;
+        [footerView addSubview:label1];
+        return footerView;
     };
     
     self.tableView.cellSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
-        if (0 == indexPath.row) {
+        if (1 != indexPath.section) {
             return ;
         }
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        if (1 == indexPath.row) {
-            [_poplistview setTitle:@"Product Type"];
-            
-        }
-        else if (2 == indexPath.row) {
-            [_poplistview setTitle:@"Region"];
+        if (0 == indexPath.row) {
+            [blockSelf.poplistview setTitle:@"Product Type"];
+        }else{
+            [blockSelf.poplistview setTitle:@"Region"];
         }
         _currentIndex = indexPath.row;
         [blockSelf.poplistview.listView reloadData];
@@ -149,10 +204,10 @@
     UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 64)] autorelease];
     view.backgroundColor = kClearColor;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setTitle:@"Submit" forState:UIControlStateNormal];
+    [button setTitle:@"FIND LOCATIONS" forState:UIControlStateNormal];
     [button addTarget:self action:@selector(showTeachers:) forControlEvents:UIControlEventTouchUpInside];
     [CreateObject addTargetEfection:button];
-    button.frame = CGRectMake(20, 10, 280, 44);
+    button.frame = CGRectMake(10, 10, 160, 40);
     [view addSubview:button];
     return view;
 }
@@ -162,7 +217,6 @@
     [self.tableView setEditing:NO];
     [self sendRequestToServer];
 }
-
 
 - (void) sendRequestToGetProductTypeServer
 {
@@ -258,7 +312,7 @@
         cell.topLabel.font = cell.subLabel.font = HTFONTSIZE(kFontSize18);
         [cell.contentView addSubview:cell.topLabel];
     }
-    if (1 == _currentIndex) {
+    if (0 == _currentIndex) {
         ProductTypeItem *productTiem = [self.prodcutTypeResponse at:indexPath.row];
         cell.topLabel.text = productTiem.productTypeName;
     } else {
@@ -271,7 +325,7 @@
 - (NSInteger)popoverListView:(UIPopoverListView *)popoverListView
        numberOfRowsInSection:(NSInteger)section
 {
-    return (1 == _currentIndex) ? [[self.prodcutTypeResponse result] count] : [[self.regionResponse result] count];
+    return (0 == _currentIndex) ? [[self.prodcutTypeResponse result] count] : [[self.regionResponse result] count];
 }
 
 #pragma mark - UIPopoverListViewDelegate
@@ -279,7 +333,7 @@
 {
     DEBUGLOG(@"%s : %d", __func__, indexPath.row);
     [popoverListView.listView deselectRowAtIndexPath:indexPath animated:YES];
-    if ((1 == _currentIndex) ) {
+    if ((0 == _currentIndex) ) {
         self.typeItem = [self.prodcutTypeResponse at:indexPath.row];
         [_contentDictionary setObject:self.typeItem.productTypeName forKey:kIntToString(_currentIndex)];
 
