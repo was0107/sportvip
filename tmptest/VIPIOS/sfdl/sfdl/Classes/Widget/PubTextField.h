@@ -21,6 +21,7 @@ typedef enum{
 @property (nonatomic, assign) BOOL  autoLayout;
 @property (nonatomic, assign) CGFloat  maxWidth;
 @property (nonatomic, retain) UITextField *pubTextField;
+@property (nonatomic, retain) UITextView  *pubTextView;
 
 - (BOOL)becomeFirstResponder;
 

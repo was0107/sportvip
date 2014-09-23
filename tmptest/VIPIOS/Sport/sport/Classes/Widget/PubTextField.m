@@ -5,7 +5,7 @@
 #import "PubTextField.h"
 #import "UITextField+DelegateBlocks.h"
 
-#define kIndexLabelWidth         40.0f
+#define kIndexLabelWidth         60.0f
 #define kIndexLabelHeight        20.0f
 #define kIndexLabelLeftPadding   12.0f
 #define kIndexLabelRightPadding  24.0f

@@ -6,7 +6,7 @@
 #import "UITextField+DelegateBlocks.h"
 #import "UIView+extend.h"
 
-#define kIndexLabelWidth         40.0f
+#define kIndexLabelWidth         55.0f
 #define kIndexLabelHeight        20.0f
 #define kIndexLabelLeftPadding   4.0f
 #define kIndexLabelRightPadding  24.0f
@@ -16,7 +16,7 @@
 #define kTextFieldWidth          225.0f
 #define kTextFieldHeight         34.0f
 
-@interface PubTextField ()
+@interface PubTextField ()<UITextViewDelegate>
 
 @property (nonatomic, retain) UIImageView *fieldBackground;
 @property (nonatomic, assign) PubTextFieldStyle fieldStyle;
@@ -60,13 +60,19 @@
         
         [self addSubview:[self fieldBackground]];
         [self addSubview:[self indexLabel]];
-        [self addSubview:[self pubTextField]];
-        self.pubTextField.placeholder = [NSString stringWithFormat:@" %@",placeHolder];
+        
+        if (frame.size.height > kPubTextFieldHeight) {
+            [self addSubview:[self pubTextView]];
+        } else {
+            self.pubTextField.placeholder = [NSString stringWithFormat:@" %@",placeHolder];
+            
+            [self.pubTextField useBlocksForDelegate];
+            [self initialBlocks];
+            
+            [self addSubview:[self pubTextField]];
+        }
         self.indexLabel.text = indexTile;
         self.fieldStyle = pubFieldStyle;
-        
-        [self.pubTextField useBlocksForDelegate];
-        [self initialBlocks];
         
 //        if (IS_IOS_7_OR_GREATER)
         {
@@ -75,6 +81,23 @@
     }
     
     return self;
+}
+
+
+- (UITextView *) pubTextView
+{
+    if (!_pubTextView) {
+        _pubTextView = [[UITextView alloc] initWithFrame:CGRectMake(self.bounds.origin.x + kIndexLabelLeftPadding + kIndexLabelWidth + kIndexLabelRightPadding, self.bounds.origin.y + kIndexLabelTopPadding, kTextFieldWidth, self.bounds.size.height - 2*kIndexLabelTopPadding)];
+//        _pubTextView.layer.cornerRadius = 2.0f;
+//        _pubTextView.layer.borderColor = [kBlueColor CGColor];
+//        _pubTextView.layer.borderWidth = 1.0f;        
+        _pubTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
+        _pubTextView.autocorrectionType = UITextAutocorrectionTypeNo;
+        _pubTextView.textColor = kBlackColor;
+        _pubTextView.font = HTFONTSIZE(kSystemFontSize16);
+        _pubTextView.delegate = self;
+    }
+    return _pubTextView ;
 }
 
 - (UITextField *)pubTextField
@@ -264,6 +287,11 @@
     [self.pubTextField onShouldReturn:^BOOL(UITextField *textField) {
         return YES;
     }];
+}
+
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text; {
+    return YES;
 }
 
 @end

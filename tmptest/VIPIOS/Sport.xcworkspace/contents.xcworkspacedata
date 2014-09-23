@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Sport/sport.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:sfdlserver/sfdlserver.xcodeproj">
    </FileRef>
    <FileRef

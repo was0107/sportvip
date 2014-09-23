@@ -16,7 +16,7 @@
 #define kTextFieldWidth          225.0f
 #define kTextFieldHeight         34.0f
 
-@interface PubTextField ()
+@interface PubTextField ()<UITextViewDelegate>
 
 @property (nonatomic, retain) UIImageView *fieldBackground;
 @property (nonatomic, assign) PubTextFieldStyle fieldStyle;
@@ -33,7 +33,7 @@
     [_indexLabel release];
     [_fieldBackground release];
     [_pubTextField release];
-    
+    self.textViewShouldReturen = nil;
     [super dealloc];
 }
 
