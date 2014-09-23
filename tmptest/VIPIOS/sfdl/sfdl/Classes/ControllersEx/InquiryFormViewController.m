@@ -24,7 +24,7 @@
 @property (nonatomic, retain) PubTextField            *pictureTextField;
 @property (nonatomic, retain) PubTextField            *codeTextField;
 @property (nonatomic, retain) UIButton                *confirmButton;
-@property (nonatomic, retain) UIImageView             *codeImageView;
+@property (nonatomic, retain) UIImageView             *codeImageView, *productImageView;
 @property (nonatomic, retain) UIKeyboardAvoidingScrollView            *scrollView;
 
 @property (nonatomic, retain) RegiseterRequest        *request;
@@ -60,7 +60,7 @@
     [self.scrollView setContentSize:CGSizeMake(320, 50 + 13 * kPubTextFieldHeight2  + kImageStartAt)];
     
     [self.view addSubview:self.scrollView];
-
+    [self requestServerForCode];
     // Do any additional setup after loading the view.
 }
 
@@ -153,6 +153,7 @@
         _pictureTextField.indexLabel.textAlignment = NSTextAlignmentRight;
         _pictureTextField.pubTextField.enabled = NO;
         _pictureTextField.pubTextView.editable = NO;
+        [_pictureTextField addSubview:[self productImageView]];
         _pictureTextField.pubTextField.returnKeyType = UIReturnKeyNext;
         _pictureTextField.pubTextField.keyboardType = UIKeyboardTypeDefault;
         [_pictureTextField.pubTextField onShouldReturn:^(UITextField *textField){
@@ -172,7 +173,9 @@
         //        _codeTextField.autoLayout = YES;
         _codeTextField.indexLabel.textAlignment = NSTextAlignmentRight;
         _codeTextField.pubTextField.returnKeyType = UIReturnKeyDone;
+        _codeTextField.pubTextField.frame = CGRectMake(90, 5, 100, 30);
         _codeTextField.pubTextField.keyboardType = UIKeyboardTypeDefault;
+        [_codeTextField addSubview:[self codeImageView]];
         [_codeTextField.pubTextField onShouldReturn:^(UITextField *textField){
             [safeSelf.codeTextField resignFirstResponder];
             return YES;
@@ -181,6 +184,30 @@
     return _codeTextField;
 }
 
+- (UIImageView *)productImageView
+{
+    if (!_productImageView) {
+        _productImageView = [[UIImageView alloc] initWithFrame:CGRectMake(90,  10, 100, 100)];
+        _productImageView.layer.borderColor = [kBlueColor CGColor];
+        _productImageView.layer.borderWidth = 1.0f;
+        _productImageView.layer.cornerRadius = 2.0f;
+    }
+    return _productImageView;
+}
+
+- (UIImageView *)codeImageView
+{
+    if (!_codeImageView) {
+        _codeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(210,  5, 100, 30)];
+        _codeImageView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *recognizer = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(codeAction:)] autorelease];
+        [_codeImageView addGestureRecognizer:recognizer];
+        _codeImageView.layer.borderColor = [kBlueColor CGColor];
+        _codeImageView.layer.borderWidth = 1.0f;
+        _codeImageView.layer.cornerRadius = 2.0f;
+    }
+    return _codeImageView;
+}
 
 - (UIButton *)confirmButton
 {
