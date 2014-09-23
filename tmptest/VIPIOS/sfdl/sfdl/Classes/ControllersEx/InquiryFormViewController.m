@@ -187,10 +187,11 @@
 - (UIImageView *)productImageView
 {
     if (!_productImageView) {
-        _productImageView = [[UIImageView alloc] initWithFrame:CGRectMake(90,  10, 100, 100)];
-        _productImageView.layer.borderColor = [kBlueColor CGColor];
-        _productImageView.layer.borderWidth = 1.0f;
-        _productImageView.layer.cornerRadius = 2.0f;
+        _productImageView = [[UIImageView alloc] initWithFrame:CGRectMake(91,  10, 100, 100)];
+//        _productImageView.layer.borderColor = [kBlueColor CGColor];
+//        _productImageView.layer.borderWidth = 1.0f;
+//        _productImageView.layer.cornerRadius = 2.0f;
+        _productImageView.backgroundColor = kLightGrayColor;
     }
     return _productImageView;
 }
@@ -202,9 +203,9 @@
         _codeImageView.userInteractionEnabled = YES;
         UITapGestureRecognizer *recognizer = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(codeAction:)] autorelease];
         [_codeImageView addGestureRecognizer:recognizer];
-        _codeImageView.layer.borderColor = [kBlueColor CGColor];
-        _codeImageView.layer.borderWidth = 1.0f;
-        _codeImageView.layer.cornerRadius = 2.0f;
+//        _codeImageView.layer.borderColor = [kBlueColor CGColor];
+//        _codeImageView.layer.borderWidth = 1.0f;
+//        _codeImageView.layer.cornerRadius = 2.0f;
     }
     return _codeImageView;
 }
@@ -248,7 +249,8 @@
 
 - (void) loadCodeImageView:(VerifyCodeResponse *) response
 {
-    [self.codeImageView setImageWithURL:[NSURL URLWithString:response.imageUrl] placeholderImage:[UIImage imageNamed:kImageDefault]];
+    NSString *keyString = [NSString stringWithFormat:@"%@&1=%d",response.imageUrl, (NSUInteger)(arc4random() % NSUIntegerMax)];
+    [self.codeImageView setImageWithURL:[NSURL URLWithString:keyString] placeholderImage:[UIImage imageNamed:@""]];
 }
 
 - (void)requestServerForCode
