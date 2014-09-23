@@ -12,6 +12,7 @@
 		47DF7397194D83A80004CC63 /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 47DF7396194D83A80004CC63 /* RTLabel.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		47DF739A194D952B0004CC63 /* AgentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47DF7399194D952B0004CC63 /* AgentListViewController.m */; };
 		47DF739D194D954E0004CC63 /* AgentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47DF739C194D954E0004CC63 /* AgentDetailViewController.m */; };
+		4902923919D14B08004192CD /* PopInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4902923819D14B08004192CD /* PopInputView.m */; };
 		490CE84819BABFCF00C2F887 /* AKTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 490CE83919BABFCF00C2F887 /* AKTab.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		490CE84919BABFCF00C2F887 /* AKTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 490CE83B19BABFCF00C2F887 /* AKTabBar.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		490CE84A19BABFCF00C2F887 /* AKTabBarController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 490CE83D19BABFCF00C2F887 /* AKTabBarController.bundle */; };
@@ -245,6 +246,8 @@
 		47DF7399194D952B0004CC63 /* AgentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgentListViewController.m; sourceTree = "<group>"; };
 		47DF739B194D954E0004CC63 /* AgentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgentDetailViewController.h; sourceTree = "<group>"; };
 		47DF739C194D954E0004CC63 /* AgentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgentDetailViewController.m; sourceTree = "<group>"; };
+		4902923719D14B08004192CD /* PopInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopInputView.h; sourceTree = "<group>"; };
+		4902923819D14B08004192CD /* PopInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopInputView.m; sourceTree = "<group>"; };
 		490CE83819BABFCF00C2F887 /* AKTab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKTab.h; sourceTree = "<group>"; };
 		490CE83919BABFCF00C2F887 /* AKTab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKTab.m; sourceTree = "<group>"; };
 		490CE83A19BABFCF00C2F887 /* AKTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKTabBar.h; sourceTree = "<group>"; };
@@ -640,6 +643,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4902923619D14AF6004192CD /* PopInput */ = {
+			isa = PBXGroup;
+			children = (
+				4902923719D14B08004192CD /* PopInputView.h */,
+				4902923819D14B08004192CD /* PopInputView.m */,
+			);
+			path = PopInput;
+			sourceTree = "<group>";
+		};
 		490CE83719BABFCF00C2F887 /* AKTabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1082,6 +1094,7 @@
 		DD3A3F49193E029300043CA4 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				4902923619D14AF6004192CD /* PopInput */,
 				494E067419C96983001E2839 /* PushTree */,
 				490CE85A19BAD7EF00C2F887 /* UIMenuBar */,
 				490CE83719BABFCF00C2F887 /* AKTabBarController */,
@@ -1533,6 +1546,7 @@
 				490CE84B19BABFCF00C2F887 /* AKTabBarController.m in Sources */,
 				DD8EEB1B19445E6900CACC22 /* SSettingViewController.m in Sources */,
 				DD3A3FEE193E029300043CA4 /* WASBaseServiceFace.m in Sources */,
+				4902923919D14B08004192CD /* PopInputView.m in Sources */,
 				DD2B9F4319654DD800CB20C3 /* AGViewDelegate.m in Sources */,
 				DD3A3FF8193E029300043CA4 /* UITextField+DelegateBlocks.m in Sources */,
 				DD3A3FBA193E029300043CA4 /* ListResponseBase.m in Sources */,

@@ -21,6 +21,8 @@
 #import "ProductSearchExViewController.h"
 #import "CustomThreeButton.h"
 #import "ProductDetailViewControllerEx.h"
+#import "PopInputView.h"
+
 
 @interface HomeViewControllerEx ()<XLCycleScrollViewDelegate, XLCycleScrollViewDatasource>
 @property (nonatomic, retain) XLCycleScrollView *cycleView;
@@ -34,6 +36,7 @@
 @property (nonatomic, retain) ProductForHomePageResponse *response;
 @property (nonatomic, retain) UIView            *headerView;
 
+@property (nonatomic, retain) PopInputView      *popInputView;
 @end
 
 @implementation HomeViewControllerEx
@@ -350,4 +353,18 @@
     [WASBaseServiceFace serviceWithMethod:[self.request URLString] body:[self.request toJsonString] onSuc:successedBlock onFailed:failedBlock onError:errBlock];
 }
 
+
+- (PopInputView *) popInputView
+{
+    if (!_popInputView) {
+        _popInputView = [[PopInputView alloc] initWithFrame:CGRectMake(0, 50, 320, 300)];
+    }
+    return _popInputView;
+}
+
+
+- (void) searchButtonAction:(id) sender
+{
+    [self.popInputView show];
+}
 @end
