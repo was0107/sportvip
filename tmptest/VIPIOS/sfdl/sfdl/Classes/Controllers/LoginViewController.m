@@ -203,6 +203,7 @@
         LoginResponse *response = [[[LoginResponse alloc] initWithJsonString:content] autorelease];
         [UserDefaultsManager saveUserId:response.key];
         [UserDefaultsManager saveUserName:_phoneTextField.pubTextField.text];
+        [UserDefaultsManager saveUserEmail:response.userItem.email];
         [UserDefaultsManager saveKey:response.key];
         [safeSelf.confirmButton setEnabled:YES];
         [SVProgressHUD dismiss];

@@ -324,6 +324,7 @@
         LoginResponse *response = [[[LoginResponse alloc] initWithJsonString:content] autorelease];
         [UserDefaultsManager saveUserId:response.key];
         [UserDefaultsManager saveKey:response.key];
+        [UserDefaultsManager saveUserEmail:response.userItem.email];
         [UserDefaultsManager saveUserName:_memberIDTextField.pubTextField.text];
         [safeSelf.confirmButton setEnabled:YES];
         [SVProgressHUD dismiss];

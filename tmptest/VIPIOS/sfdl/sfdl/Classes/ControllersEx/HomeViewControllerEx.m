@@ -82,16 +82,18 @@
     if (!_searchView) {
 //        __block typeof(self) blockSelf = self;
         _searchView = [[CustomSearchBarEx alloc] initWithFrame:CGRectMake(0, 102.0,320,50.0)];
-//        _searchView.completeBlok = ^(NSString *result) {
-//            if (result.length > 0) {
-//                SearchViewController *controller = [[[SearchViewController alloc] init] autorelease];
-//                controller.secondTitleLabel.text = result;
-//                [blockSelf.navigationController hidesBottomBarWhenPushed];
-//                [blockSelf.navigationController pushViewController:controller animated:YES];
-//            }
-//        };
+        _searchView.userInteractionEnabled = YES;
+        UIGestureRecognizer *gesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goToInquiry:)] autorelease];
+        [_searchView addGestureRecognizer:gesture];
     }
     return _searchView;
+}
+
+- (void) goToInquiry:(UIGestureRecognizer *) recognizer
+{
+    Class class = NSClassFromString(@"InquiryFormViewController");
+    UIViewController *controller = [[[class alloc] init] autorelease];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (UIImageView *) topImageView

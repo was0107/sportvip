@@ -50,6 +50,7 @@
     [self.scrollView addSubview:self.codeTextField];
     [self.scrollView addSubview:self.confirmButton];
     
+    self.emailTextField.pubTextField.text = [UserDefaultsManager userEmail];
 #ifdef kUseSimulateData
     self.emailTextField.pubTextField.text = @"hr@163.com";
 //    self.memberIDTextField.pubTextField.text = @"111111";
