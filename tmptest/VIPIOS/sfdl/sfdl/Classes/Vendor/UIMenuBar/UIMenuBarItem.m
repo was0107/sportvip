@@ -89,6 +89,14 @@
     _containView.backgroundColor = [UIColor clearColor];
 }
 
+- (void) setTitle:(NSString *)title
+{
+    if (_title != title) {
+        _title = title;
+    }
+    _titleLabel.text = _title;
+}
+
 
 
 - (void)layOutSubviews

@@ -38,7 +38,7 @@
 
 - (void) configTableView
 {
-    __weak MyOrderListViewController *blockSelf = self;
+    __unsafe_unretained MyOrderListViewController *blockSelf = self;
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
     self.tableView.cellCreateBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
@@ -130,7 +130,7 @@
 
 - (void) sendRequestToServer
 {
-    __weak MyOrderListViewController *blockSelf = self;
+    __unsafe_unretained MyOrderListViewController *blockSelf = self;
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
         blockSelf.response = [[OrdersResponse alloc] initWithJsonString:content];

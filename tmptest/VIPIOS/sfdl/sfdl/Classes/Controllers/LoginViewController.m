@@ -49,8 +49,8 @@
     
     [[[self showRight] rightButton] setTitle:@"Join" forState:UIControlStateNormal];
 #ifdef kUseSimulateData
-    self.phoneTextField.pubTextField.text = @"Username";
-    self.pwdTextField.pubTextField.text = @"Password";
+    self.phoneTextField.pubTextField.text = @"111111";
+    self.pwdTextField.pubTextField.text = @"111111";
 #endif
 }
 

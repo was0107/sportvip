@@ -63,10 +63,6 @@
     Class class = NSClassFromString(controller);
     BaseTitleViewController *vc1 = [[[class alloc] init] autorelease];
     vc1.title = title;
-//    if ([controller isEqualToString:@"HomeViewControllerEx"]) {
-//        self.menuController = vc1;
-//    }
-//    return vc1;
     UINavigationController *nav1 = [[[UINavigationController alloc] initWithRootViewController:vc1] autorelease];
     nav1.navigationBar.tintColor = [UIColor orangeColor];
     nav1.navigationBar.backgroundColor = [UIColor getColor:@"f4f4f4"];
@@ -76,8 +72,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //    self.view.frame = CGRectMake(0, 0, 320, 568);
-    //    self.view.frame = kFullFrame;
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -97,25 +91,25 @@
     return YES;
 }
 
+- (NSMutableArray *) getMenuArrays
+{
+    UIMenuBarItem *menuItem1 = [[[UIMenuBarItem alloc] initWithTitle:@"About us" target:self image:[UIImage imageNamed:@"about"] action:@selector(clickAction1:) controller:@"AboutUsViewController"] autorelease];
+    UIMenuBarItem *menuItem2 = [[[UIMenuBarItem alloc] initWithTitle:@"News" target:self image:[UIImage imageNamed:@"news"] action:@selector(clickAction2:) controller:@"NewsViewController"] autorelease];
+    UIMenuBarItem *menuItem3 = [[[UIMenuBarItem alloc] initWithTitle:@"User Center" target:self image:[UIImage imageNamed:@"users"] action:@selector(clickAction3:) controller:@"UserCenterViewController"] autorelease];
+    UIMenuBarItem *menuItem4 = [[[UIMenuBarItem alloc] initWithTitle:@"Find Your Dealer" target:self image:[UIImage imageNamed:@"search_jxs"] action:@selector(clickAction4:) controller:@"DealerViewController"] autorelease];
+    UIMenuBarItem *menuItem5 = [[[UIMenuBarItem alloc] initWithTitle:@"Contact Us" target:self image:[UIImage imageNamed:@"contact"] action:@selector(clickAction5:) controller:@"ContactUsViewController"] autorelease];
+    UIMenuBarItem *menuItem6 = [[[UIMenuBarItem alloc] initWithTitle:([UserDefaultsManager userName].length == 0 ) ? @"Login":@"Logout" target:self image:[UIImage imageNamed:@"quite"] action:@selector(clickAction6:) controller:@""] autorelease];
+    
+   return [NSMutableArray arrayWithObjects:menuItem1, menuItem2, menuItem3, menuItem4, menuItem5, menuItem6,nil];
+}
+
 - (UIMenuBar *) menuBar
 {
     if (!_menuBar) {
-        UIMenuBarItem *menuItem1 = [[UIMenuBarItem alloc] initWithTitle:@"About us" target:self image:[UIImage imageNamed:@"about"] action:@selector(clickAction1:) controller:@"AboutUsViewController"];
-        UIMenuBarItem *menuItem2 = [[UIMenuBarItem alloc] initWithTitle:@"News" target:self image:[UIImage imageNamed:@"news"] action:@selector(clickAction2:) controller:@"NewsViewController"];
-        UIMenuBarItem *menuItem3 = [[UIMenuBarItem alloc] initWithTitle:@"User Center" target:self image:[UIImage imageNamed:@"users"] action:@selector(clickAction3:) controller:@"UserCenterViewController"];
-        UIMenuBarItem *menuItem4 = [[UIMenuBarItem alloc] initWithTitle:@"Find Your Dealer" target:self image:[UIImage imageNamed:@"search_jxs"] action:@selector(clickAction4:) controller:@"DealerViewController"];
-        UIMenuBarItem *menuItem5 = [[UIMenuBarItem alloc] initWithTitle:@"Contact Us" target:self image:[UIImage imageNamed:@"contact"] action:@selector(clickAction5:) controller:@"ContactUsViewController"];
-        UIMenuBarItem *menuItem6 = [[UIMenuBarItem alloc] initWithTitle:([UserDefaultsManager userId].length == 0 ) ? @"Login":@"Logout" target:self image:[UIImage imageNamed:@"quite"] action:@selector(clickAction6:) controller:@""];
         
-        NSMutableArray *items =
-        [NSMutableArray arrayWithObjects:menuItem1, menuItem2, menuItem3, menuItem4, menuItem5, menuItem6,nil];
-        
-        _menuBar = [[UIMenuBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 140.0f) items:items];
+        _menuBar = [[UIMenuBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 140.0f) items:[NSMutableArray array]];
         _menuBar.backgroundColor = [UIColor getColor:@"f4f4f4"];
         _menuBar.alpha = 0.8f;
-        //menuBar.layer.borderWidth = 1.f;
-        //menuBar.layer.borderColor = [[UIColor orangeColor] CGColor];
-        //menuBar.tintColor = [UIColor orangeColor];
         _menuBar.delegate = self;
     }
     
@@ -125,6 +119,7 @@
 - (void)popMenuAction:(id)sender
 {
     if (!self.menuBar.isShowing) {
+        [self.menuBar setItems:[self getMenuArrays]];
         [self.menuBar show];
         return;
     }
@@ -133,7 +128,6 @@
 
 - (void)dissmissMenubar
 {
-    
     if (self.menuBar.isShowing) {
         [self.menuBar dismiss];
     }
@@ -147,7 +141,6 @@
         [self.navigationController setNavigationBarHidden:NO];
         [self.navigationController pushViewController:controller animated:YES];
     }
-
 }
 - (void)clickAction1:(id)sender
 {
@@ -155,20 +148,21 @@
     [self dissmissMenubar];
 }
 
-
 - (void)clickAction2:(id)sender
 {
     [self goToViewController:@"NewsViewController"];
     [self dissmissMenubar];
 }
 
-
 - (void)clickAction3:(id)sender
 {
-    [self goToViewController:@"UserCenterViewController"];
+    if ([UserDefaultsManager userName].length == 0 ) {
+        [self goToViewController:@"LoginViewController"];
+    } else {
+        [self goToViewController:@"UserCenterViewController"];
+    }
     [self dissmissMenubar];
 }
-
 
 - (void)clickAction4:(id)sender
 {
@@ -176,23 +170,19 @@
     [self dissmissMenubar];
 }
 
-
 - (void)clickAction5:(id)sender
 {
     [self goToViewController:@"ContactUsViewController"];
     [self dissmissMenubar];
 }
 
-
 - (void)clickAction6:(id)sender
 {
-    UIMenuBarItem *menuItem6 =  [[_menuBar items] objectAtIndex:5];
-    if ([UserDefaultsManager userId].length == 0 ) {
+    if ([UserDefaultsManager userName].length == 0 ) {
         [self goToViewController:@"LoginViewController"];
     } else {
-        [UserDefaultsManager saveUserId:@""];
+        [UserDefaultsManager saveUserName:@""];
     }
-    menuItem6.title = ([UserDefaultsManager userId].length == 0 ) ? @"Login":@"Logout";
     [self dissmissMenubar];
 }
 

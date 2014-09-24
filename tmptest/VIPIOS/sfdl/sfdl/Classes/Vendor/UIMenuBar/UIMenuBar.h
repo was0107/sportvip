@@ -47,6 +47,8 @@
 - (id)initWithFrame:(CGRect)frame items:(NSArray *)items;
 - (void)setItems:(NSMutableArray *)items;
 - (void)show;  
-- (void)dismiss; 
+- (void)dismiss;
+
+- (void) reloadData;
 
 @end

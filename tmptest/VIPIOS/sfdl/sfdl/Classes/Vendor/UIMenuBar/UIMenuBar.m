@@ -131,6 +131,12 @@
                                             _containerView.bounds.size.height);
 }
 
+
+- (void) reloadData
+{
+    [self _resetSubViewsLayout];
+}
+
 - (void)_resetSubViewsLayout
 {
     if(_items.count==0) return;
