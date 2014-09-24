@@ -261,11 +261,34 @@
 {
     self = [super init];
     if (self) {
+        self.keysArray = [NSMutableArray array];
+        self.valuesArray = [NSMutableArray array];
         self.agentId = [dictionary objectForKey:@"agentId"];
         self.name = [dictionary objectForKey:@"name"];
         self.desc = [dictionary objectForKey:@"desc"];
         self.regionId = [dictionary objectForKey:@"regionId"];
         self.regionName = [dictionary objectForKey:@"regionName"];
+        self.agentCode = [dictionary objectForKey:@"agentCode"];
+        self.contact = [dictionary objectForKey:@"contact"];
+        self.tel = [dictionary objectForKey:@"tel"];
+        self.address = [dictionary objectForKey:@"address"];
+        self.zipcode = [dictionary objectForKey:@"zipcode"];
+        self.email = [dictionary objectForKey:@"email"];
+        [self.keysArray addObject:@"Serial number:"];
+        [self.keysArray addObject:@"Contacts:"];
+        [self.keysArray addObject:@"Description:"];
+        [self.keysArray addObject:@"Tel"];
+        [self.keysArray addObject:@"Email:"];
+        [self.keysArray addObject:@"Zip:"];
+        [self.keysArray addObject:@"Address:"];
+        
+        [self.valuesArray addObject:self.agentCode];
+        [self.valuesArray addObject:self.contact];
+        [self.valuesArray addObject:self.desc];
+        [self.valuesArray addObject:self.tel];
+        [self.valuesArray addObject:self.email];
+        [self.valuesArray addObject:self.zipcode];
+        [self.valuesArray addObject:self.address];
     }
     
     return self;

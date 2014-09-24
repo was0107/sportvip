@@ -141,8 +141,10 @@
             
             if (0 == indexPath.row) {
                 cell.subLabel.text = (!self.typeItem) ? @"请选择  " : self.typeItem.productTypeName;
+                cell.subLabel.textAlignment = (!self.typeItem) ? NSTextAlignmentRight : NSTextAlignmentLeft;
             } else {
                 cell.subLabel.text = (!self.regionItem) ? @"请选择  " : self.regionItem.name;
+                cell.subLabel.textAlignment = (!self.regionItem) ? NSTextAlignmentRight : NSTextAlignmentLeft;
             }
         } else {
             [cell.subLabel removeFromSuperview];

@@ -89,8 +89,9 @@
 
 @interface AgentItem : ListResponseItemBase
 
-@property (nonatomic, copy) NSString *agentId, *name, *desc;
+@property (nonatomic, copy) NSString *agentId, *name, *desc, *agentCode,*contact, *tel,*address, *zipcode, *email;
 @property (nonatomic, copy) NSString *regionId, *regionName;
+@property (nonatomic, retain) NSMutableArray *keysArray, *valuesArray;
 
 @end
 

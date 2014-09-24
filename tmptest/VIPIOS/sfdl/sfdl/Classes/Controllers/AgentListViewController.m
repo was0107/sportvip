@@ -14,6 +14,7 @@
 @interface AgentListViewController ()
 @property (nonatomic, retain) AgentListRequest *request;
 @property (nonatomic, retain) AgentResponse    *response;
+@property (nonatomic, retain) NSMutableDictionary *diction;
 
 @end
 
@@ -31,7 +32,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 - (int) tableViewType
 {
     return  eTypeRefreshHeader | eTypeFooter;
@@ -39,6 +39,7 @@
 
 - (void) configTableView
 {
+    self.diction = [NSMutableDictionary dictionary];
     __block AgentListViewController *blockSelf = self;
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
@@ -48,30 +49,23 @@
         if (!cell){
             cell = [[BaseNewTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
             
-            cell.topLabel.frame = CGRectMake(10, 4, 300, 20);
-            cell.topLabel.textColor = kBlackColor;
-            cell.topLabel.numberOfLines = 1;
-            cell.topLabel.font = HTFONTSIZE(kFontSize15);
-            
-            cell.subLabel.frame = CGRectMake(10, 24, 300, 20);
-            cell.subLabel.textColor = kBlackColor;
-            cell.subLabel.numberOfLines = 2;
-            cell.subLabel.font = HTFONTSIZE(kFontSize14);
-            
-            cell.subRightLabel.frame = CGRectMake(180, 58, 130, 20);
-            cell.subRightLabel.textAlignment = NSTextAlignmentRight;
-            cell.subRightLabel.textColor = kBlackColor;
-            cell.subRightLabel.font = HTFONTSIZE(kFontSize14);
+            cell.topLabel.frame              = CGRectMake(10, 4, 100, 36);
+            cell.topLabel.textColor          = kLightGrayColor;
+            cell.topLabel.numberOfLines      = 1;
+            cell.topLabel.textAlignment      = NSTextAlignmentRight;
+            cell.topLabel.font               = HTFONTSIZE(kFontSize15);
+
+            cell.subLabel.frame              = CGRectMake(115, 4, 185, 36);
+            cell.subLabel.textColor          = kBlackColor;
+            cell.subLabel.numberOfLines      = 0;
+            cell.subLabel.font               = HTFONTSIZE(kFontSize14);
             [cell.contentView addSubview:cell.topLabel];
             [cell.contentView addSubview:cell.subLabel];
-//            [cell.contentView addSubview:cell.subRightLabel];
         }
         
-        AgentItem *item = [blockSelf.response at:indexPath.row ];
-        
-        cell.topLabel.text = item.name;
-        cell.subLabel.text = item.desc;
-//        [cell.subRightLabel sizeThatFits:CGSizeMake(300, 40)];
+        AgentItem *item = [blockSelf.response at:indexPath.section ];
+        cell.topLabel.text = [item.keysArray objectAtIndex:indexPath.row];
+        cell.subLabel.text = [item.valuesArray objectAtIndex:indexPath.row];
         return cell;
     };
     
@@ -79,24 +73,49 @@
         return  44.0f;
     };
     
-    self.tableView.cellNumberBlock = ^( UITableView *tableView, NSInteger section) {
+    self.tableView.sectionNumberBlock = ^( UITableView *tableView) {
         return (NSInteger)[blockSelf.response arrayCount];
     };
     
+    self.tableView.cellNumberBlock = ^( UITableView *tableView, NSInteger section) {
+        NSNumber *value = [self.diction objectForKey:kIntToString(section)];
+        BOOL flag = YES;
+        if (value) {
+            flag = [value boolValue];
+        } else {
+            return 0;
+        }
+        return (flag) ? 7 : 0 ;
+    };
+    
     self.tableView.sectionHeaderHeightBlock = ^( UITableView *tableView, NSInteger section){
-        return 0.0f;
+        return 46.0F;
+    };
+    
+    self.tableView.sectionHeaderBlock = ^( UITableView *tableView, NSInteger section)
+    {
+        UIView *footerView = [[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 46)]autorelease];
+        footerView.backgroundColor = kClearColor;
+        UIView *footerView1 = [[[UIView alloc]initWithFrame:CGRectMake(0, 10, 320, 36)]autorelease];
+        footerView1.backgroundColor = kOrangeColor;
+        UILabel *label1 = [[[UILabel alloc] initWithFrame:CGRectMake(20,0,280,36)] autorelease];
+        label1.text = @"COMPANY";
+        label1.font = HTFONTSIZE(kFontSize15);
+        label1.textColor = kWhiteColor;
+        [footerView1 addSubview:label1];
+        footerView1.tag = 1000+ section;
+        UIGestureRecognizer *gesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sectionGesture:)] autorelease];
+        [footerView1 addGestureRecognizer:gesture];
+        [footerView addSubview:footerView1];
+        return footerView;
     };
     
     self.tableView.cellSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        AgentItem *item = [blockSelf.response at:indexPath.row ];
-        AgentDetailViewController *controller = [[[AgentDetailViewController alloc] init] autorelease];
-        controller.newItem = item;
-        [blockSelf.navigationController hidesBottomBarWhenPushed];
-        [blockSelf.navigationController pushViewController:controller animated:YES];
     };
     
     self.tableView.refreshBlock = ^(id content) {
+        [blockSelf.request firstPage];
         [blockSelf sendRequestToServer];
     };
     
@@ -110,6 +129,18 @@
     [self sendRequestToServer];
     
     //       [self.tableView doSendRequest:YES];
+}
+
+- (void) sectionGesture:(UIGestureRecognizer *)recognizer
+{
+    NSUInteger section = recognizer.view.tag - 1000;
+    NSNumber *value = [self.diction objectForKey:kIntToString(section)];
+    BOOL flag = YES;
+    if (value) {
+        flag = ![value boolValue];
+    }
+    [self.diction setObject:[NSNumber numberWithBool:flag] forKey:kIntToString(section)];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 
