@@ -61,7 +61,7 @@
     [self setTitleContent:@"INQUIRY FORM"];
     self.scrollView = [[[UIKeyboardAvoidingScrollView alloc] initWithFrame:CGRectMake(0,  0, 320.0, kContentBoundsHeight)] autorelease];
     self.scrollView.backgroundColor = kClearColor;
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendRequestToGetCompanyServer) name:@"sendRequestToGetCompanyServer" object:nil];
     [self.scrollView addSubview:self.emailTextField];
     [self.scrollView addSubview:self.toTextField];
     [self.scrollView addSubview:self.subjectTextField];
@@ -72,17 +72,14 @@
     
 #ifdef kUseSimulateData
     self.emailTextField.pubTextField.text = @"hr@163.com";
-//    self.memberIDTextField.pubTextField.text = @"111111";
 //    self.pwdTextField.pubTextField.text = @"111111";
 //    self.titleTextField.pubTextField.text = @"111111";
 #endif
     
-    self.emailTextField.pubTextField.text = [UserDefaultsManager userEmail];
     
     [self.scrollView setContentSize:CGSizeMake(320, 50 + 13 * kPubTextFieldHeight2  + kImageStartAt)];
-    
     [self.view addSubview:self.scrollView];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendRequestToGetCompanyServer) name:@"sendRequestToGetCompanyServer" object:nil];
+//    self.emailTextField.pubTextField.text = [UserDefaultsManager userEmail];
     [self requestServerForCode];
     [self sendRequestToGetCompanyServer];
     // Do any additional setup after loading the view.
@@ -96,12 +93,15 @@
 
 - (void)sendRequestToGetCompanyServer
 {
-    typeof(self) blockSelf = self;
-    if ([[blockSelf.toTextField.pubTextField text] length] != 0) {
+    if ([[self.toTextField.pubTextField text] length] != 0) {
         return;
     }
+
+    __unsafe_unretained typeof(self) safeSelf = self;
     if ([[[AppDelegate sharedAppDelegate] rootController] aboutResponse]) {
-        blockSelf.toTextField.pubTextField.text = [[[[AppDelegate sharedAppDelegate] rootController] aboutResponse] email];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            safeSelf.toTextField.pubTextView.text = [[[[AppDelegate sharedAppDelegate] rootController] aboutResponse] email];
+        });
         return;
     }
     [[[AppDelegate sharedAppDelegate] rootController] sendRequestToGetCompanyServer];
@@ -117,7 +117,6 @@
 {
     return @"email_white";
 }
-
 
 - (PubTextField *)emailTextField
 {
@@ -191,7 +190,6 @@
 - (PubTextField *)pictureTextField
 {
     if (!_pictureTextField) {
-        __unsafe_unretained typeof(self) safeSelf = self;
         _pictureTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  10 + 6.5 * kPubTextFieldHeight2  + kImageStartAt, 320, 3*kPubTextFieldHeight) indexTitle:@"Picture:" placeHolder:@"" pubTextFieldStyle:PubTextFieldStyleBottom];
         //        _pictureTextField.autoLayout = YES;
         _pictureTextField.indexLabel.textAlignment = NSTextAlignmentRight;
@@ -214,7 +212,6 @@
     if (!_codeTextField) {
         __unsafe_unretained typeof(self) safeSelf = self;
         _codeTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  10 + 9.5 * kPubTextFieldHeight2  + kImageStartAt, 320, kPubTextFieldHeight) indexTitle:@"Code:" placeHolder:@"" pubTextFieldStyle:PubTextFieldStyleBottom];
-        //        _codeTextField.autoLayout = YES;
         _codeTextField.indexLabel.textAlignment = NSTextAlignmentRight;
         _codeTextField.pubTextField.returnKeyType = UIReturnKeyDone;
         _codeTextField.pubTextField.frame = CGRectMake(90, 5, 100, 30);
@@ -237,9 +234,6 @@
 {
     if (!_productImageView) {
         _productImageView = [[UIImageView alloc] initWithFrame:CGRectMake(91,  10, 100, 100)];
-//        _productImageView.layer.borderColor = [kBlueColor CGColor];
-//        _productImageView.layer.borderWidth = 1.0f;
-//        _productImageView.layer.cornerRadius = 2.0f;
         _productImageView.backgroundColor = [UIColor getColor:@"EBEAF1"];
     }
     return _productImageView;
@@ -252,9 +246,6 @@
         _codeImageView.userInteractionEnabled = YES;
         UITapGestureRecognizer *recognizer = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(codeAction:)] autorelease];
         [_codeImageView addGestureRecognizer:recognizer];
-//        _codeImageView.layer.borderColor = [kBlueColor CGColor];
-//        _codeImageView.layer.borderWidth = 1.0f;
-//        _codeImageView.layer.cornerRadius = 2.0f;
     }
     return _codeImageView;
 }
@@ -270,7 +261,6 @@
         [_confirmButton setTitle:@"SUBMIT" forState:UIControlStateNormal];
         [_confirmButton addTarget:self action:@selector(confirmButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
-    
     return _confirmButton;
 }
 
@@ -284,7 +274,6 @@
     [self resignFirstResponder];
     [self requestServerForRegister:sender];
 }
-
 
 - (BOOL)checkTextField
 {
@@ -364,7 +353,6 @@
         return;
     }
     [self.confirmButton setEnabled:NO];
-    __unsafe_unretained typeof(self) safeSelf = self;
     [SVProgressHUD showWithStatus:@"正在提交订单..."];
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);

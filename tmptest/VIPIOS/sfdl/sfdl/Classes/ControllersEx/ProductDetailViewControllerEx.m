@@ -11,6 +11,7 @@
 #import "RTLabel.h"
 #import "LoginRequest.h"
 #import "LoginResponse.h"
+#import "BaseWebViewController.h"
 
 @interface ProductDetailViewControllerEx ()<XLCycleScrollViewDelegate, XLCycleScrollViewDatasource>
 @property (nonatomic, retain) XLCycleScrollView     *cycleView;
@@ -135,6 +136,17 @@
     }
 }
 
+- (void) videoGesture:(UIGestureRecognizer *) recognizer
+{
+    if (self.response && [self.response.videoUrl length] > 0) {
+        BaseWebViewController *webController = [[[BaseWebViewController alloc] init] autorelease];
+        webController.title = @"VIDEO";
+        webController.requestURL = self.response.videoUrl;
+        [self.navigationController hidesBottomBarWhenPushed];
+        [self.navigationController pushViewController:webController animated:YES];
+    }
+}
+
 - (void) createVideoView
 {
     UIView *headerview = [[[UIView alloc] initWithFrame:CGRectMake(0, -143, 320, 93)] autorelease];
@@ -145,6 +157,8 @@
     [imageView.layer setMasksToBounds:YES];
     imageView.image = [UIImage imageNamed:@"icon"];
     self.videoImageView = imageView;
+    UIGestureRecognizer *gesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(videoGesture:)] autorelease];
+    [imageView addGestureRecognizer:gesture];
     [headerview addSubview:imageView];
 
     [headerview addSubview:[self belongLabel]];
