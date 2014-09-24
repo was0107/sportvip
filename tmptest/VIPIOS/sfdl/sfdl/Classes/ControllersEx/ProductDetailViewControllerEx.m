@@ -54,6 +54,7 @@
     [self setTitleContent:@"PRODUCT"];
     [self.scrollView removeFromSuperview];
     [self.content loadHTMLString:@"<html></html>" baseURL:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendRequestToGetCompanyServer) name:@"sendRequestToGetCompanyServer" object:nil];
     [self sendRequestToGetCompanyServer];
     [self sendRequestToServer];
     [self.view addSubview:self.content];
@@ -100,6 +101,8 @@
         _telLabel.textColor = kOrangeColor;
         _telLabel.lineBreakMode = RTTextLineBreakModeCharWrapping;
         _telLabel.backgroundColor = [UIColor clearColor];
+        UIGestureRecognizer *gesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(telGesture:)] autorelease];
+        [_telLabel addGestureRecognizer:gesture];
     }
     return _telLabel;
 }
@@ -112,10 +115,25 @@
         _emailLabel.textColor = kOrangeColor;
         _emailLabel.lineBreakMode = RTTextLineBreakModeCharWrapping;
         _emailLabel.backgroundColor = [UIColor clearColor];
+        UIGestureRecognizer *gesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(emailGesture:)] autorelease];
+        [_emailLabel addGestureRecognizer:gesture];
     }
     return _emailLabel;
 }
 
+- (void) telGesture:(UIGestureRecognizer *)recognizer
+{
+    if ([[self.aboutResponse companyTelephone] length] > 0) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@", [self.aboutResponse companyTelephone]]]];
+    }
+}
+
+- (void) emailGesture:(UIGestureRecognizer *)recognizer
+{
+    if ([[self.aboutResponse email] length] > 0) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"mailto://%@", [self.aboutResponse email]]]];
+    }
+}
 
 - (void) createVideoView
 {
@@ -239,28 +257,14 @@
 
 - (void)sendRequestToGetCompanyServer
 {
-    __unsafe_unretained typeof(self) blockSelf = self;
-//    blockSelf.telLabel.text = [NSString stringWithFormat:@"Tel : <font size=14 color=black>%@ </font>", @"fdfdf"];
-
-    idBlock succBlock = ^(id content){
-        DEBUGLOG(@"succ content %@", content);
-        blockSelf.aboutResponse = [[[AboutUsResponse alloc] initWithJsonString:content] autorelease];
+    typeof(self) blockSelf = self;
+    if ([[[AppDelegate sharedAppDelegate] rootController] aboutResponse]) {
+        blockSelf.aboutResponse = [[[AppDelegate sharedAppDelegate] rootController] aboutResponse];
         blockSelf.telLabel.text = [NSString stringWithFormat:@"Tel : <font size=14 color=black>%@ </font>", [blockSelf.aboutResponse companyTelephone]];
-//        blockSelf.telLabel.text = [NSString stringWithFormat:@"Tel : <font size=14 color=black>%@ </font>", @"fdfdf"];
-
         blockSelf.emailLabel.text = [NSString stringWithFormat:@"E-mail : <font size=14 color=black>%@ </font>", [blockSelf.aboutResponse email]];
-    };
-    
-    idBlock failedBlock = ^(id content){
-        DEBUGLOG(@"failed content %@", content);
-//        [[[[ErrorResponse alloc] initWithJsonString:content] autorelease] show];
-    };
-    idBlock errBlock = ^(id content){
-        DEBUGLOG(@"failed content %@", content);
-    };
-
-    CompanyInfoRequest *request = [[[CompanyInfoRequest alloc] init] autorelease];
-    [WASBaseServiceFace serviceWithMethod:[request URLString] body:[request toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
+        return;
+    }
+    [[[AppDelegate sharedAppDelegate] rootController] sendRequestToGetCompanyServer];
 }
 
 

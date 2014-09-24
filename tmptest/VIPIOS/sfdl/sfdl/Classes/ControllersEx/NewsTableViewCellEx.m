@@ -53,8 +53,8 @@
     if ([content isKindOfClass:[HistoryItem class]]) {
         HistoryItem *item = (HistoryItem *) content;
         self.topLabel.text = item.content;
-        self.rightLabel.text = [item.creationTime substringFromIndex:8];
-        self.subRightLabel.text = [item.creationTime substringToIndex:7];
+        self.rightLabel.text = [item.creationTime substringWithRange:NSMakeRange(11, 5)];
+        self.subRightLabel.text = [item.creationTime substringToIndex:10];
     }
     else {
         self.topLabel.text = @"The different series of deutz gensets have different features";

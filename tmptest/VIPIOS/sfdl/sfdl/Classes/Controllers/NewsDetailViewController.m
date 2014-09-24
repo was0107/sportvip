@@ -82,7 +82,7 @@
 {
     if (!_bottomView) {
         _bottomView = [[[UIView alloc] initWithFrame:CGRectMake(0, kContentBoundsHeight-70, 320, 70)] autorelease];
-        _bottomView.backgroundColor = kWhiteColor;
+        _bottomView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.7f];
         UIView *lineView = [[[UIView alloc] initWithFrame:CGRectMake(0, 79, 320, 1)] autorelease];
         lineView.backgroundColor = kLightGrayColor;
         lineView.alpha = 0.5f;
@@ -98,7 +98,8 @@
     if (!_preButton) {
         _preButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
         _preButton.backgroundColor = kClearColor;
-        _preButton.frame = CGRectMake(0, 4, 320, 30);
+        _preButton.frame = CGRectMake(10, 4, 300, 30);
+        _preButton.titleLabel.font = HTFONTSIZE(kFontSize13);
         [_preButton setTitleColor:kOrangeColor forState:UIControlStateNormal];
         [_preButton setTitleColor:kLightGrayColor forState:UIControlStateDisabled];
         [_preButton addTarget:self action:@selector(preAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -111,7 +112,8 @@
     if (!_nextButton) {
         _nextButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
         _nextButton.backgroundColor = kClearColor;
-        _nextButton.frame = CGRectMake(0, 36, 320, 30);
+        _nextButton.frame = CGRectMake(10, 36, 300, 30);
+        _nextButton.titleLabel.font = HTFONTSIZE(kFontSize13);
         [_nextButton setTitleColor:kOrangeColor forState:UIControlStateNormal];
         [_nextButton setTitleColor:kLightGrayColor forState:UIControlStateDisabled];
         [_nextButton addTarget:self action:@selector(nextAction:) forControlEvents:UIControlEventTouchUpInside];

@@ -9,6 +9,7 @@
 #import "InquiryFormViewController.h"
 #import "PubTextField.h"
 #import "IdentifierValidator.h"
+#import "ProductRequest.h"
 #import "LoginRequest.h"
 #import "LoginResponse.h"
 #import "UIKeyboardAvoidingScrollView.h"
@@ -69,7 +70,6 @@
     [self.scrollView addSubview:self.codeTextField];
     [self.scrollView addSubview:self.confirmButton];
     
-    self.emailTextField.pubTextField.text = [UserDefaultsManager userEmail];
 #ifdef kUseSimulateData
     self.emailTextField.pubTextField.text = @"hr@163.com";
 //    self.memberIDTextField.pubTextField.text = @"111111";
@@ -77,12 +77,36 @@
 //    self.titleTextField.pubTextField.text = @"111111";
 #endif
     
+    self.emailTextField.pubTextField.text = [UserDefaultsManager userEmail];
+    
     [self.scrollView setContentSize:CGSizeMake(320, 50 + 13 * kPubTextFieldHeight2  + kImageStartAt)];
     
     [self.view addSubview:self.scrollView];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendRequestToGetCompanyServer) name:@"sendRequestToGetCompanyServer" object:nil];
     [self requestServerForCode];
+    [self sendRequestToGetCompanyServer];
     // Do any additional setup after loading the view.
 }
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self sendRequestToGetCompanyServer];
+}
+
+- (void)sendRequestToGetCompanyServer
+{
+    typeof(self) blockSelf = self;
+    if ([[blockSelf.toTextField.pubTextField text] length] != 0) {
+        return;
+    }
+    if ([[[AppDelegate sharedAppDelegate] rootController] aboutResponse]) {
+        blockSelf.toTextField.pubTextField.text = [[[[AppDelegate sharedAppDelegate] rootController] aboutResponse] email];
+        return;
+    }
+    [[[AppDelegate sharedAppDelegate] rootController] sendRequestToGetCompanyServer];
+}
+
 
 - (NSString *)tabImageName
 {
@@ -339,36 +363,30 @@
         DEBUGLOG(@"check failed.");
         return;
     }
-    
-    [SVProgressHUD showWithStatus:@"正在注册..."];
     [self.confirmButton setEnabled:NO];
     __unsafe_unretained typeof(self) safeSelf = self;
-    
-    idBlock succBlock = ^(id content){
-        DEBUGLOG(@"succ content %@", content);
-        [SVProgressHUD showSuccessWithStatus:@"请等待后台审核或是联系客服!"];
-        //        [safeSelf requestServerForLogin];
+    [SVProgressHUD showWithStatus:@"正在提交订单..."];
+    idBlock successedBlock = ^(id content){
+        DEBUGLOG(@"success conent %@", content);
+        [SVProgressHUD showSuccessWithStatus:@"提交订单成功!"];
     };
     
     idBlock failedBlock = ^(id content){
         DEBUGLOG(@"failed content %@", content);
-        [[[[ErrorResponse alloc] initWithJsonString:content] autorelease] show];
-        [safeSelf.confirmButton setEnabled:YES];
-    };
-    idBlock errBlock = ^(id content){
-        DEBUGLOG(@"failed content %@", content);
-        [SVProgressHUD showErrorWithStatus:@"注册失败"];
-        [safeSelf.confirmButton setEnabled:YES];
+        [SVProgressHUD showErrorWithStatus:@"提交订单失败"];
     };
     
-//    if (!self.request) {
-//        self.request = [[[RegiseterRequest alloc] init] autorelease];
-//    }
-//    
-//    self.request.email    = self.emailTextField.pubTextField.text;
-//    self.request.username    = self.memberIDTextField.pubTextField.text;
-//    self.request.password = self.pwdTextField.pubTextField.text;
-//    [WASBaseServiceFace serviceWithMethod:[self.request URLString] body:[self.request toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
+    idBlock errBlock = ^(id content){
+        DEBUGLOG(@"error content %@", content);
+        [SVProgressHUD showErrorWithStatus:@"提交订单失败"];
+    };
+    CreateOrderRequest *createOrderRequest = [[[CreateOrderRequest alloc] init] autorelease];
+    createOrderRequest.username = [UserDefaultsManager userName];
+    createOrderRequest.title = [self.subjectTextField.pubTextField text];
+    createOrderRequest.content = self.messageTextField.pubTextView.text.length == 0 ? @"": self.messageTextField.pubTextView.text;
+    createOrderRequest.productList = @"";
+    createOrderRequest.quantityList = @"";
+    [WASBaseServiceFace serviceWithMethod:[createOrderRequest URLString] body:[createOrderRequest toJsonString] onSuc:successedBlock onFailed:failedBlock onError:errBlock];
 }
 
 @end

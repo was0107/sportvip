@@ -28,6 +28,7 @@
     self = [super initWithTabBarHeight:height];
     [self setMinimumHeightToDisplayTitle:20.0];
     self.tabStrokeColor = kOrangeColor;
+    [self sendRequestToGetCompanyServer];
     return [self configControllers];
 }
 
@@ -80,7 +81,6 @@
     [self.navigationController setNavigationBarHidden:YES];
 }
 
-
 - (BOOL) canChangeToContoller:(UIViewController *)controller
 {
     if ([[controller.title uppercaseString] isEqualToString:@"MENU"]) {
@@ -91,13 +91,36 @@
     return YES;
 }
 
+
+- (void)sendRequestToGetCompanyServer
+{
+    __unsafe_unretained typeof(self) blockSelf = self;
+    idBlock succBlock = ^(id content){
+        DEBUGLOG(@"succ content %@", content);
+        blockSelf.aboutResponse = [[[AboutUsResponse alloc] initWithJsonString:content] autorelease];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"sendRequestToGetCompanyServer" object:nil];
+    };
+    
+    idBlock failedBlock = ^(id content){
+        DEBUGLOG(@"failed content %@", content);
+    };
+    idBlock errBlock = ^(id content){
+        DEBUGLOG(@"failed content %@", content);
+    };
+    
+    CompanyInfoRequest *infoRequest = [[[CompanyInfoRequest alloc] init] autorelease];
+    [WASBaseServiceFace serviceWithMethod:[infoRequest URLString] body:[infoRequest toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
+}
+
+
+
 - (NSMutableArray *) getMenuArrays
 {
-    UIMenuBarItem *menuItem1 = [[[UIMenuBarItem alloc] initWithTitle:@"About us" target:self image:[UIImage imageNamed:@"about"] action:@selector(clickAction1:) controller:@"AboutUsViewController"] autorelease];
-    UIMenuBarItem *menuItem2 = [[[UIMenuBarItem alloc] initWithTitle:@"News" target:self image:[UIImage imageNamed:@"news"] action:@selector(clickAction2:) controller:@"NewsViewController"] autorelease];
-    UIMenuBarItem *menuItem3 = [[[UIMenuBarItem alloc] initWithTitle:@"User Center" target:self image:[UIImage imageNamed:@"users"] action:@selector(clickAction3:) controller:@"UserCenterViewController"] autorelease];
-    UIMenuBarItem *menuItem4 = [[[UIMenuBarItem alloc] initWithTitle:@"Find Your Dealer" target:self image:[UIImage imageNamed:@"search_jxs"] action:@selector(clickAction4:) controller:@"DealerViewController"] autorelease];
-    UIMenuBarItem *menuItem5 = [[[UIMenuBarItem alloc] initWithTitle:@"Contact Us" target:self image:[UIImage imageNamed:@"contact"] action:@selector(clickAction5:) controller:@"ContactUsViewController"] autorelease];
+    UIMenuBarItem *menuItem1 = [[[UIMenuBarItem alloc] initWithTitle:@"About us" target:self image:[UIImage imageNamed:@"about"] action:@selector(clickAction1:) controller:@""] autorelease];
+    UIMenuBarItem *menuItem2 = [[[UIMenuBarItem alloc] initWithTitle:@"News" target:self image:[UIImage imageNamed:@"news"] action:@selector(clickAction2:) controller:@""] autorelease];
+    UIMenuBarItem *menuItem3 = [[[UIMenuBarItem alloc] initWithTitle:@"User Center" target:self image:[UIImage imageNamed:@"users"] action:@selector(clickAction3:) controller:@""] autorelease];
+    UIMenuBarItem *menuItem4 = [[[UIMenuBarItem alloc] initWithTitle:@"Find Your Dealer" target:self image:[UIImage imageNamed:@"search_jxs"] action:@selector(clickAction4:) controller:@""] autorelease];
+    UIMenuBarItem *menuItem5 = [[[UIMenuBarItem alloc] initWithTitle:@"Contact Us" target:self image:[UIImage imageNamed:@"contact"] action:@selector(clickAction5:) controller:@""] autorelease];
     UIMenuBarItem *menuItem6 = [[[UIMenuBarItem alloc] initWithTitle:([UserDefaultsManager userName].length == 0 ) ? @"Login":@"Logout" target:self image:[UIImage imageNamed:@"quite"] action:@selector(clickAction6:) controller:@""] autorelease];
     
    return [NSMutableArray arrayWithObjects:menuItem1, menuItem2, menuItem3, menuItem4, menuItem5, menuItem6,nil];
@@ -106,7 +129,6 @@
 - (UIMenuBar *) menuBar
 {
     if (!_menuBar) {
-        
         _menuBar = [[UIMenuBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 140.0f) items:[NSMutableArray array]];
         _menuBar.backgroundColor = [UIColor getColor:@"f4f4f4"];
         _menuBar.alpha = 0.8f;

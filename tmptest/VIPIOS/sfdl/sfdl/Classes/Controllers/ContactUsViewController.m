@@ -40,41 +40,28 @@
     [self setTitleContent:@"CONTACT US"];
 
     [self.tableView removeFromSuperview];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendRequestToGetCompanyServer) name:@"sendRequestToGetCompanyServer" object:nil];
+
 //    [self.view addSubview:self.iconImageView];
 //    [self.view addSubview:self.labelOne];
     [self.view addSubview:self.labelTwo];
-    [self sendRequestToServer];
 }
 
-- (void)didReceiveMemoryWarning
+- (void) viewDidAppear:(BOOL)animated
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super viewDidAppear:animated];
+    [self sendRequestToGetCompanyServer];
 }
 
-- (void)sendRequestToServer
+- (void)sendRequestToGetCompanyServer
 {
-    
-    __unsafe_unretained ContactUsViewController *safeSelf = self;
-    
-    idBlock succBlock = ^(id content){
-        DEBUGLOG(@"succ content %@", content);
-        safeSelf.response = [[[AboutUsResponse alloc] initWithJsonString:content] autorelease];
-        safeSelf.labelOne.text = [NSString stringWithFormat:@"公司名称：%@",safeSelf.response.companyName];
-        //        safeSelf.labelTwo.text = safeSelf.response.companyDes;
-        [safeSelf.labelTwo loadHTMLString:safeSelf.response.contactus baseURL:nil];
-    };
-    
-    idBlock failedBlock = ^(id content){
-        DEBUGLOG(@"failed content %@", content);
-        [[[[ErrorResponse alloc] initWithJsonString:content] autorelease] show];
-    };
-    idBlock errBlock = ^(id content){
-        DEBUGLOG(@"failed content %@", content);
-    };
-    
-    CompanyInfoRequest *request = [[[CompanyInfoRequest alloc] init] autorelease];
-    [WASBaseServiceFace serviceWithMethod:[request URLString] body:[request toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
+    typeof(self) blockSelf = self;
+    if ([[[AppDelegate sharedAppDelegate] rootController] aboutResponse]) {
+        blockSelf.response = [[[AppDelegate sharedAppDelegate] rootController] aboutResponse];
+        [blockSelf.labelTwo loadHTMLString:blockSelf.response.contactus baseURL:nil];
+        return;
+    }
+    [[[AppDelegate sharedAppDelegate] rootController] sendRequestToGetCompanyServer];
 }
 
 -(UIImageView *)iconImageView

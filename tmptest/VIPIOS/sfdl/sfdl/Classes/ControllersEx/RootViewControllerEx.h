@@ -7,11 +7,18 @@
 //
 
 #import "AKTabBarController.h"
+#import "LoginRequest.h"
+#import "LoginResponse.h"
 
 @interface RootViewControllerEx : AKTabBarController<AKTabBarController,UIAlertViewDelegate>
 
 @property (nonatomic,assign)NSInteger currentFrom;
 
+@property (nonatomic, retain) AboutUsResponse *aboutResponse;
+
 - (id)initWithTabBarHeight:(NSUInteger)height;
+
+- (void)sendRequestToGetCompanyServer;
+
 
 @end
