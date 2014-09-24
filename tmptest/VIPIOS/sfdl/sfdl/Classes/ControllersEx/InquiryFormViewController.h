@@ -8,6 +8,10 @@
 
 #import "BaseTableViewController.h"
 
+#import "ProductRequest.h"
+#import "ProductResponse.h"
+
 @interface InquiryFormViewController : BaseTableViewController
+@property (nonatomic, assign) ProductItem *productItem;
 
 @end

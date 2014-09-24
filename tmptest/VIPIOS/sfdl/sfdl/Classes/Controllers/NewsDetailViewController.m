@@ -236,7 +236,6 @@
     return _labelTwo;
 }
 
-
 -(UIWebView *)content
 {
     if (!_content) {

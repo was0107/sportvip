@@ -38,7 +38,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setTitleContent:@"PRODUCT"];
+    [self setTitleContent:@"PRODUCTS"];
 
     if (!self.productTypeId) {
         [self dealWithData];

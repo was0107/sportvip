@@ -17,7 +17,7 @@
 #import "UIImageView+WebCache.h"
 
 @interface InquiryFormViewController ()
-
+@property (nonatomic, retain) ProductItem             *currentItem;
 @property (nonatomic, retain) PubTextField            *emailTextField;
 @property (nonatomic, retain) PubTextField            *toTextField;
 @property (nonatomic, retain) PubTextField            *subjectTextField;
@@ -62,6 +62,7 @@
     self.scrollView = [[[UIKeyboardAvoidingScrollView alloc] initWithFrame:CGRectMake(0,  0, 320.0, kContentBoundsHeight)] autorelease];
     self.scrollView.backgroundColor = kClearColor;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendRequestToGetCompanyServer) name:@"sendRequestToGetCompanyServer" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inquiryFormNotification:) name:@"INQUIRYFORM" object:nil];
     [self.scrollView addSubview:self.emailTextField];
     [self.scrollView addSubview:self.toTextField];
     [self.scrollView addSubview:self.subjectTextField];
@@ -91,17 +92,25 @@
     [self sendRequestToGetCompanyServer];
 }
 
+- (void) inquiryFormNotification:(NSNotification *) notification
+{
+    self.currentItem = notification.object;
+    if (self.currentItem) {
+//        [self.scrollView scrollRectToVisible:CGRectMake(0, 0, 0, 0) animated:YES];
+        [self.scrollView scrollsToTop];
+        self.subjectTextField.pubTextField.text = self.currentItem.productName;
+        [self.productImageView setImageWithURL:[NSURL URLWithString:self.currentItem.productImg] placeholderImage:[UIImage imageNamed:@""]];
+    }
+}
+
 - (void)sendRequestToGetCompanyServer
 {
     if ([[self.toTextField.pubTextField text] length] != 0) {
         return;
     }
-
     __unsafe_unretained typeof(self) safeSelf = self;
     if ([[[AppDelegate sharedAppDelegate] rootController] aboutResponse]) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            safeSelf.toTextField.pubTextView.text = [[[[AppDelegate sharedAppDelegate] rootController] aboutResponse] email];
-        });
+        safeSelf.toTextField.pubTextView.text = [[[[AppDelegate sharedAppDelegate] rootController] aboutResponse] email];
         return;
     }
     [[[AppDelegate sharedAppDelegate] rootController] sendRequestToGetCompanyServer];
@@ -242,7 +251,7 @@
 - (UIImageView *)codeImageView
 {
     if (!_codeImageView) {
-        _codeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(212,  5, 100, 30)];
+        _codeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(210,  0, 110, kPubTextFieldHeight)];
         _codeImageView.userInteractionEnabled = YES;
         UITapGestureRecognizer *recognizer = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(codeAction:)] autorelease];
         [_codeImageView addGestureRecognizer:recognizer];
@@ -376,7 +385,7 @@
     createOrderRequest.username = [UserDefaultsManager userName];
     createOrderRequest.title = [self.subjectTextField.pubTextField text];
     createOrderRequest.content = self.messageTextField.pubTextView.text.length == 0 ? @"": self.messageTextField.pubTextView.text;
-    createOrderRequest.productList = @"";
+    createOrderRequest.productList = self.currentItem ? self.currentItem.productId : @"";
     createOrderRequest.quantityList = @"";
     createOrderRequest.email = self.emailTextField.pubTextField.text;
     createOrderRequest.verifyCode = self.codeTextField.pubTextField.text;

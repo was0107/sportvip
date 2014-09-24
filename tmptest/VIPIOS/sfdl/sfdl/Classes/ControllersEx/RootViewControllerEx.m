@@ -10,7 +10,8 @@
 #import "BaseTitleViewController.h"
 #import "UserDefaultsManager.h"
 #import "UIMenuBar.h"
-
+#import "InquiryFormViewController.h"
+#import "ProductDetailViewControllerEx.h"
 
 @interface RootViewControllerEx ()<UIMenuBarDelegate>
 @property (nonatomic, retain) UIMenuBar *menuBar;
@@ -87,10 +88,16 @@
         [self popMenuAction:nil];
         return NO;
     }
+    
+    UINavigationController *navigationController = [self.viewControllers objectAtIndex:0];
+    if ([[navigationController.viewControllers lastObject] isKindOfClass:[ProductDetailViewControllerEx class]] &&
+        [[controller.title uppercaseString] isEqualToString:@"INQUIRY FORM"] ) {
+        ProductDetailViewControllerEx *productListController = (ProductDetailViewControllerEx *)[navigationController.viewControllers lastObject];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"INQUIRYFORM" object:productListController.productItem];
+    }
     [self dissmissMenubar];
     return YES;
 }
-
 
 - (void)sendRequestToGetCompanyServer
 {

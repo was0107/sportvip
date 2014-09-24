@@ -100,7 +100,6 @@
     return _pushTreeView ;
 }
 
-
 - (void) sendRequestToGetProductTypeServer
 {
     __unsafe_unretained typeof(self) blockSelf = self;
