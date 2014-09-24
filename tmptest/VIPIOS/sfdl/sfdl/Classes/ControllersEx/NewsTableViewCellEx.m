@@ -56,10 +56,16 @@
         self.rightLabel.text = [item.creationTime substringWithRange:NSMakeRange(11, 5)];
         self.subRightLabel.text = [item.creationTime substringToIndex:10];
     }
+    else if ([content isKindOfClass:[OrderItem class]]) {
+        OrderItem *item = (OrderItem *) content;
+        self.topLabel.text = item.content;
+        self.rightLabel.text = [item.sendTime substringWithRange:NSMakeRange(11, 5)];
+        self.subRightLabel.text = [item.sendTime substringToIndex:10];
+    }
     else {
-        self.topLabel.text = @"The different series of deutz gensets have different features";
-        self.rightLabel.text = @"08:59";
-        self.subRightLabel.text = @"2014-09-03";
+        self.topLabel.text = @"--";
+        self.rightLabel.text = @"--";
+        self.subRightLabel.text = @"--";
     }
 }
 

@@ -353,20 +353,24 @@
         return;
     }
     [self.confirmButton setEnabled:NO];
+    __unsafe_unretained typeof(self) safeSelf = self;
     [SVProgressHUD showWithStatus:@"正在提交订单..."];
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
         [SVProgressHUD showSuccessWithStatus:@"提交订单成功!"];
+        [safeSelf.confirmButton setEnabled:YES];
     };
     
     idBlock failedBlock = ^(id content){
         DEBUGLOG(@"failed content %@", content);
         [SVProgressHUD showErrorWithStatus:@"提交订单失败"];
+        [safeSelf.confirmButton setEnabled:YES];
     };
     
     idBlock errBlock = ^(id content){
         DEBUGLOG(@"error content %@", content);
-        [SVProgressHUD showErrorWithStatus:@"提交订单失败"];
+        [[[[ErrorResponse alloc] initWithJsonString:content] autorelease] show];
+        [safeSelf.confirmButton setEnabled:YES];
     };
     CreateOrderRequest *createOrderRequest = [[[CreateOrderRequest alloc] init] autorelease];
     createOrderRequest.username = [UserDefaultsManager userName];
@@ -374,6 +378,8 @@
     createOrderRequest.content = self.messageTextField.pubTextView.text.length == 0 ? @"": self.messageTextField.pubTextView.text;
     createOrderRequest.productList = @"";
     createOrderRequest.quantityList = @"";
+    createOrderRequest.email = self.emailTextField.pubTextField.text;
+    createOrderRequest.verifyCode = self.codeTextField.pubTextField.text;
     [WASBaseServiceFace serviceWithMethod:[createOrderRequest URLString] body:[createOrderRequest toJsonString] onSuc:successedBlock onFailed:failedBlock onError:errBlock];
 }
 

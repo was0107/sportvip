@@ -109,7 +109,7 @@
 @interface CreateOrderRequest : ListRequestBase
 
 @property (nonatomic, copy) NSString *username,*productList,*content,*title,*sign,*quantityList;
-
+@property (nonatomic, copy) NSString *email,*verifyCode,*deviceId;
 @end
 
 

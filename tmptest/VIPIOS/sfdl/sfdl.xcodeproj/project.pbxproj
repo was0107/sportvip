@@ -94,6 +94,7 @@
 		49BACBBE19CFF7B3004F837B /* ProductDetailViewControllerEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BACBBD19CFF7B3004F837B /* ProductDetailViewControllerEx.m */; };
 		49BACBC519D00E1E004F837B /* InquiryFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BACBC419D00E1E004F837B /* InquiryFormViewController.m */; };
 		49D00D9719C7CA7900801880 /* NewsTableViewCellEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D00D9619C7CA7900801880 /* NewsTableViewCellEx.m */; };
+		49FB527A19D2C17500E95C16 /* InquiryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49FB527919D2C17500E95C16 /* InquiryDetailViewController.m */; };
 		DD06522F194DAABD00EECCBE /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DD06522E194DAABD00EECCBE /* SVProgressHUD.bundle */; };
 		DD13AD6719592D33005D4222 /* ProductSearchExViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD13AD6619592D33005D4222 /* ProductSearchExViewController.m */; };
 		DD13AD6A19592E73005D4222 /* UIPopoverListView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD13AD6919592E73005D4222 /* UIPopoverListView.m */; };
@@ -358,6 +359,8 @@
 		49BACBC419D00E1E004F837B /* InquiryFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InquiryFormViewController.m; sourceTree = "<group>"; };
 		49D00D9519C7CA7900801880 /* NewsTableViewCellEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableViewCellEx.h; sourceTree = "<group>"; };
 		49D00D9619C7CA7900801880 /* NewsTableViewCellEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableViewCellEx.m; sourceTree = "<group>"; };
+		49FB527819D2C17500E95C16 /* InquiryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InquiryDetailViewController.h; sourceTree = "<group>"; };
+		49FB527919D2C17500E95C16 /* InquiryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InquiryDetailViewController.m; sourceTree = "<group>"; };
 		DD06522E194DAABD00EECCBE /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		DD1294F0197D185B00D08A01 /* ServerLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerLoginViewController.h; sourceTree = "<group>"; };
 		DD1294F1197D185B00D08A01 /* ServerLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerLoginViewController.m; sourceTree = "<group>"; };
@@ -681,6 +684,8 @@
 				490CE85519BAC16100C2F887 /* HomeViewControllerEx.m */,
 				490CE85719BAC17400C2F887 /* InquiryViewControllerEx.h */,
 				490CE85819BAC17400C2F887 /* InquiryViewControllerEx.m */,
+				49FB527819D2C17500E95C16 /* InquiryDetailViewController.h */,
+				49FB527919D2C17500E95C16 /* InquiryDetailViewController.m */,
 				49BACBC319D00E1E004F837B /* InquiryFormViewController.h */,
 				49BACBC419D00E1E004F837B /* InquiryFormViewController.m */,
 				4924E43119C6788700D19666 /* MenuViewControllerEx.h */,
@@ -1505,6 +1510,7 @@
 				DD8EEADE1944243000CACC22 /* ProductSearchViewController.m in Sources */,
 				DD13AD6719592D33005D4222 /* ProductSearchExViewController.m in Sources */,
 				DD3A3F99193E029300043CA4 /* BaseTitleViewController.m in Sources */,
+				49FB527A19D2C17500E95C16 /* InquiryDetailViewController.m in Sources */,
 				490CE85919BAC17400C2F887 /* InquiryViewControllerEx.m in Sources */,
 				DD3A3FBF193E029300043CA4 /* UserItemBase.m in Sources */,
 				47B6E3BE195DFA530025D71D /* CustomLeftImageButton.m in Sources */,

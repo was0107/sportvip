@@ -428,6 +428,10 @@
     TT_RELEASE_SAFELY(_productIdArray);
     TT_RELEASE_SAFELY(_productList);
     TT_RELEASE_SAFELY(_status);
+    TT_RELEASE_SAFELY(_enquiryEmail);
+    TT_RELEASE_SAFELY(_toEmail);
+    TT_RELEASE_SAFELY(_progress);
+    TT_RELEASE_SAFELY(_productListArray);
     [super dealloc];
 }
 
@@ -440,6 +444,9 @@
         self.title       = [dictionary objectForKey:@"title"];
         self.content     = [dictionary objectForKey:@"content"];
         self.sendTime    = [dictionary objectForKey:@"sendTime"];
+        self.progress    = [dictionary objectForKey:@"progress"];
+        self.enquiryEmail    = [dictionary objectForKey:@"enquiryEmail"];
+        self.toEmail    = [dictionary objectForKey:@"toEmail"];
         self.productList = [dictionary objectForKey:@"productList"];
         
         NSString *statusKey = [dictionary objectForKey:@"status"];
@@ -456,11 +463,12 @@
         
         self.titleArray = [NSMutableArray array];
         self.productIdArray = [NSMutableArray array];
+        self.productListArray = [NSMutableArray array];
 
-        NSArray *array = [self.title componentsSeparatedByString:@","];
-        [self.titleArray addObjectsFromArray:array];
-        array = [self.productList componentsSeparatedByString:@","];
-        [self.productIdArray addObjectsFromArray:array];
+//        NSArray *array = [self.title componentsSeparatedByString:@","];
+//        [self.titleArray addObjectsFromArray:array];
+//        array = [self.productList componentsSeparatedByString:@","];
+//        [self.productIdArray addObjectsFromArray:array];
     }
     
     return self;

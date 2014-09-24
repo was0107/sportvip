@@ -24,6 +24,8 @@ typedef enum{
 @property (nonatomic, retain) UITextField *pubTextField;
 @property (nonatomic, retain) UITextView  *pubTextView;
 
+- (void) setEditable:(BOOL) flag;
+
 - (BOOL)becomeFirstResponder;
 
 - (BOOL)resignFirstResponder;

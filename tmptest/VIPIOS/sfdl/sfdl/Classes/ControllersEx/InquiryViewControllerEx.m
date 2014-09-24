@@ -8,9 +8,10 @@
 
 #import "InquiryViewControllerEx.h"
 #import "NewsTableViewCellEx.h"
-#import "MyOrderDetailViewController.h"
+#import "InquiryDetailViewController.h"
 #import "ProductResponse.h"
 #import "ProductRequest.h"
+
 @interface InquiryViewControllerEx ()
 
 @property (nonatomic, retain) OrdertListRequest *request;
@@ -39,8 +40,6 @@
     __unsafe_unretained typeof(self) blockSelf = self;
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20.1f)];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
-    NSArray *titleIndexArray = @[@"Change the password", @"Inquiry", @"Browsing history"];
-    NSArray *controllerIndexArray = @[@"ChangePasswordViewController",@"InquiryViewControllerEx",@"BrowsingHistoryViewController"];
     self.tableView.cellCreateBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
         static NSString *identifier = @"HOME_TABLEVIEW_CELL_IDENTIFIER0";
         NewsTableViewCellEx *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -50,7 +49,8 @@
         }
         
         [cell showLeft:(indexPath.row %2 != 0)];
-        [cell setContent:nil];
+        OrderItem *item = [blockSelf.response at:indexPath.row ];
+        [cell setContent:item];
         return cell;
     };
     
@@ -77,8 +77,6 @@
         }
     };
     
-    
-    
     self.tableView.sectionHeaderHeightBlock = ^( UITableView *tableView, NSInteger section){
         return 0.0f;
     };
@@ -96,7 +94,7 @@
     
     self.tableView.cellSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        MyOrderDetailViewController *controller = [[[MyOrderDetailViewController alloc] init] autorelease];
+        InquiryDetailViewController *controller = [[[InquiryDetailViewController alloc] init] autorelease];
         controller.item = [blockSelf.response at:indexPath.row];
         [blockSelf.navigationController hidesBottomBarWhenPushed];
         [blockSelf.navigationController pushViewController:controller animated:YES];

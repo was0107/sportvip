@@ -108,8 +108,11 @@
 @property (nonatomic, copy) NSString *sendTime, *status;
 @property (nonatomic, assign) NSInteger statusInt;
 
-@property (nonatomic, retain) NSMutableArray *titleArray,*productIdArray;
+@property (nonatomic, retain) NSMutableArray *titleArray,*productIdArray, *productListArray;
 //productList productList:[111,115,124]
+
+@property (nonatomic, copy) NSString *progress, *enquiryEmail, *toEmail;
+
 @end
 
 

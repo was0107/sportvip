@@ -447,13 +447,17 @@
     TT_RELEASE_SAFELY(_title);
     TT_RELEASE_SAFELY(_sign);
     TT_RELEASE_SAFELY(_quantityList);
+    TT_RELEASE_SAFELY(_email);
+    TT_RELEASE_SAFELY(_verifyCode);
+    TT_RELEASE_SAFELY(_deviceId);
     [super dealloc];
 }
 
 - (NSMutableArray *) keyArrays
 {
 //    NSMutableArray *array =  [NSMutableArray arrayWithObjects:@"username",@"productList",@"content",@"title",@"sign", nil];
-    NSMutableArray *array =  [NSMutableArray arrayWithObjects:@"username",@"productList",@"quantityList",@"content",@"title",@"sign", nil];
+    NSMutableArray *array =  [NSMutableArray arrayWithObjects:@"username",@"productList",@"quantityList",
+                              @"content",@"title",@"sign",@"email",@"verifyCode",@"deviceId", nil];
     [array addObjectsFromArray: [super keyArrays]];
     return array;
 }
@@ -461,11 +465,13 @@
 - (NSMutableArray *) valueArrays
 {
     NSMutableString *computeSign = [NSMutableString string];
+    self.deviceId = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     [computeSign appendFormat:@"companyId%@content%@key%@productList%@title%@username%@",self.comapnyId,self.content,[UserDefaultsManager currentKey],self.productList,self.title,self.username];
 //    [computeSign appendFormat:@"companyId%@content%@key%@productList%@quantityList%@title%@username%@",self.comapnyId,self.content,[UserDefaultsManager currentKey],self.productList,self.quantityList,self.title,self.username];
     self.sign = [computeSign md5String];
 //    NSMutableArray *array =   [NSMutableArray arrayWithObjects:self.username,self.productList,self.content,self.title,self.sign, nil];
-    NSMutableArray *array =   [NSMutableArray arrayWithObjects:self.username,self.productList,self.quantityList,self.content,self.title,self.sign, nil];
+    NSMutableArray *array =   [NSMutableArray arrayWithObjects:self.username,self.productList,self.quantityList,
+                               self.content,self.title,self.sign,self.email,self.verifyCode,self.deviceId,nil];
     [array addObjectsFromArray: [super valueArrays]];
     return array;
 }

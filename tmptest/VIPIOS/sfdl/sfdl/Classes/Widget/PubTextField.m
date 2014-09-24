@@ -84,6 +84,13 @@
 }
 
 
+- (void) setEditable:(BOOL) flag
+{
+    self.pubTextField.enabled = flag;
+    self.pubTextView.editable = flag;
+}
+
+
 - (UITextView *) pubTextView
 {
     if (!_pubTextView) {
