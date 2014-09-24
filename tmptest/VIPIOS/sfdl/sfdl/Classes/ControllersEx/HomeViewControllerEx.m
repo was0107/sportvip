@@ -41,6 +41,20 @@
 
 @implementation HomeViewControllerEx
 
+- (void) reduceMemory
+{
+    TT_RELEASE_SAFELY(_cycleView);
+    TT_RELEASE_SAFELY(_topImageView);
+    TT_RELEASE_SAFELY(_searchView);
+    TT_RELEASE_SAFELY(_pictureRequest);
+    TT_RELEASE_SAFELY(_pictureResponse);
+    TT_RELEASE_SAFELY(_request);
+    TT_RELEASE_SAFELY(_response);
+    TT_RELEASE_SAFELY(_popInputView);
+    TT_RELEASE_SAFELY(_headerView);
+    [super reduceMemory];
+}
+
 
 - (NSString *)tabImageName
 {
@@ -80,7 +94,7 @@
 - (CustomSearchBarEx *) searchView
 {
     if (!_searchView) {
-//        __block typeof(self) blockSelf = self;
+//        __unsafe_unretained typeof(self) blockSelf = self;
         _searchView = [[CustomSearchBarEx alloc] initWithFrame:CGRectMake(0, 102.0,320,50.0)];
         _searchView.userInteractionEnabled = YES;
         UIGestureRecognizer *gesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goToInquiry:)] autorelease];
@@ -120,6 +134,7 @@
         _cycleView.backgroundColor = kClearColor;
         _cycleView.delegate = self;
         _cycleView.dataSource = self;
+        _cycleView.pageControl.currentPageIndicatorTintColor = kOrangeColor;
         [_cycleView reloadData];
     }
     return _cycleView;
@@ -170,7 +185,7 @@
 
 - (void) configTableView
 {
-    __block typeof(self) blockSelf = self;
+    __unsafe_unretained typeof(self) blockSelf = self;
     self.tableView.tableHeaderView = TABLE_VIEW_HEADERVIEW(20.1f);
     self.tableView.separatorColor = kClearColor;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -306,7 +321,7 @@
 
 - (void) sendRequestToServer
 {
-    __block typeof(self) blockSelf = self;
+    __unsafe_unretained typeof(self) blockSelf = self;
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
         blockSelf.pictureResponse = [[BannerResponse alloc] initWithJsonString:content];
@@ -331,7 +346,7 @@
 
 - (void) sendToGetListData
 {
-    __block typeof(self) blockSelf = self;
+    __unsafe_unretained typeof(self) blockSelf = self;
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
         blockSelf.response = [[ProductForHomePageResponse alloc] initWithJsonString:content];

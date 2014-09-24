@@ -63,6 +63,10 @@
     TT_RELEASE_SAFELY(_companyName);
     TT_RELEASE_SAFELY(_companyDes);
     TT_RELEASE_SAFELY(_contactus);
+    TT_RELEASE_SAFELY(_contactus);
+    TT_RELEASE_SAFELY(_email);
+    TT_RELEASE_SAFELY(_telphone1);
+    TT_RELEASE_SAFELY(_telphone2);
     [super dealloc];
 }
 
@@ -131,6 +135,18 @@
 
 @implementation ProductTypeItem
 
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_productTypeId);
+    TT_RELEASE_SAFELY(_productTypeImg);
+    TT_RELEASE_SAFELY(_productTypeName);
+    TT_RELEASE_SAFELY(_templateId);
+    TT_RELEASE_SAFELY(_parent);
+    TT_RELEASE_SAFELY(_children);
+    [super dealloc];
+}
+
 - (id) initWithDictionary:(const NSDictionary *) dictionary
 {
     self = [super init];
@@ -159,6 +175,17 @@
 
 @implementation ProductItem
 
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_productId);
+    TT_RELEASE_SAFELY(_productName);
+    TT_RELEASE_SAFELY(_productType);
+    TT_RELEASE_SAFELY(_productTypeName);
+    TT_RELEASE_SAFELY(_productDesc);
+    TT_RELEASE_SAFELY(_productImg);
+    [super dealloc];
+}
+
 - (id) initWithDictionary:(const NSDictionary *) dictionary
 {
     self = [super init];
@@ -180,6 +207,16 @@
 
 @implementation ProductPropsItem
 
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_propId);
+    TT_RELEASE_SAFELY(_propName);
+    TT_RELEASE_SAFELY(_proValue);
+    [super dealloc];
+}
+
+
 - (id) initWithDictionary:(const NSDictionary *) dictionary
 {
     self = [super init];
@@ -195,6 +232,20 @@
 
 
 @implementation PictureItem
+
+
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_mediaId);
+    TT_RELEASE_SAFELY(_creationTime);
+    TT_RELEASE_SAFELY(_mediaTitle);
+    TT_RELEASE_SAFELY(_mediaDesc);
+    TT_RELEASE_SAFELY(_isLocal);
+    TT_RELEASE_SAFELY(_mediaUrl);
+    [super dealloc];
+}
+
 
 - (id) initWithDictionary:(const NSDictionary *) dictionary
 {
@@ -217,6 +268,18 @@
 
 @implementation BannerItem : ListResponseItemBase
 
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_bannerId);
+    TT_RELEASE_SAFELY(_bannerName);
+    TT_RELEASE_SAFELY(_bannerImg);
+    TT_RELEASE_SAFELY(_bannerLink);
+    TT_RELEASE_SAFELY(_type);
+    [super dealloc];
+}
+
+
 - (id) initWithDictionary:(const NSDictionary *) dictionary
 {
     self = [super init];
@@ -234,6 +297,20 @@
 @end
 
 @implementation NewsItem
+
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_newsId);
+    TT_RELEASE_SAFELY(_creationTime);
+    TT_RELEASE_SAFELY(_status);
+    TT_RELEASE_SAFELY(_newsTitle);
+    TT_RELEASE_SAFELY(_subTitle);
+    TT_RELEASE_SAFELY(_keyWords);
+    TT_RELEASE_SAFELY(_abstract);
+    TT_RELEASE_SAFELY(_content);
+    [super dealloc];
+}
 
 - (id) initWithDictionary:(const NSDictionary *) dictionary
 {
@@ -256,6 +333,25 @@
 
 
 @implementation AgentItem
+
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_agentId);
+    TT_RELEASE_SAFELY(_name);
+    TT_RELEASE_SAFELY(_desc);
+    TT_RELEASE_SAFELY(_regionId);
+    TT_RELEASE_SAFELY(_regionName);
+    TT_RELEASE_SAFELY(_agentCode);
+    TT_RELEASE_SAFELY(_contact);
+    TT_RELEASE_SAFELY(_tel);
+    TT_RELEASE_SAFELY(_address);
+    TT_RELEASE_SAFELY(_zipcode);
+    TT_RELEASE_SAFELY(_email);
+    TT_RELEASE_SAFELY(_keysArray);
+    TT_RELEASE_SAFELY(_valuesArray);
+    [super dealloc];
+}
 
 - (id) initWithDictionary:(const NSDictionary *) dictionary
 {
@@ -298,6 +394,15 @@
 
 @implementation RegionItem
 
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_regionId);
+    TT_RELEASE_SAFELY(_name);
+    TT_RELEASE_SAFELY(_desc);
+    [super dealloc];
+}
+
+
 - (id) initWithDictionary:(const NSDictionary *) dictionary
 {
     self = [super init];
@@ -312,6 +417,20 @@
 @end
 
 @implementation OrderItem
+
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_orderId);
+    TT_RELEASE_SAFELY(_title);
+    TT_RELEASE_SAFELY(_content);
+    TT_RELEASE_SAFELY(_sendTime);
+    TT_RELEASE_SAFELY(_productIdArray);
+    TT_RELEASE_SAFELY(_productList);
+    TT_RELEASE_SAFELY(_status);
+    [super dealloc];
+}
+
 
 - (id) initWithDictionary:(const NSDictionary *) dictionary
 {
@@ -351,6 +470,17 @@
 
 @implementation CommentItem
 
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_comments);
+    TT_RELEASE_SAFELY(_commentsId);
+    TT_RELEASE_SAFELY(_productId);
+    TT_RELEASE_SAFELY(_username);
+    TT_RELEASE_SAFELY(_createTime);
+    [super dealloc];
+}
+
 - (id) initWithDictionary:(const NSDictionary *) dictionary
 {
     self = [super init];
@@ -369,6 +499,16 @@
 
 
 @implementation MenuItem
+
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_menu_alias);
+    TT_RELEASE_SAFELY(_menu_name);
+    TT_RELEASE_SAFELY(_menu_url);
+    TT_RELEASE_SAFELY(_icon);
+    [super dealloc];
+}
 
 - (id) initWithDictionary:(const NSDictionary *) dictionary
 {
@@ -401,6 +541,14 @@
 
 @implementation ProperListItem
 
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_propertyListId);
+    TT_RELEASE_SAFELY(_propertyListValue);
+    [super dealloc];
+}
+
 - (id) initWithDictionary:(const NSDictionary *) dictionary
 {
     self = [super init];
@@ -416,6 +564,15 @@
 
 
 @implementation ProperItem
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_productTypeId);
+    TT_RELEASE_SAFELY(_productTypeName);
+    TT_RELEASE_SAFELY(_propertyId);
+    TT_RELEASE_SAFELY(_propertyName);
+    [super dealloc];
+}
 
 - (id) initWithDictionary:(const NSDictionary *) dictionary
 {
@@ -449,6 +606,13 @@
 
 @implementation VerifyCodeResponse
 
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_imageUrl);
+    [super dealloc];
+}
+
+
 - (id) initWithDictionary:(const NSDictionary *) dictionary
 {
     self = [super init];
@@ -464,6 +628,12 @@
 
 
 @implementation CheckVerifyCodeResponse
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_checked );
+    [super dealloc];
+}
 
 - (id) initWithDictionary:(const NSDictionary *) dictionary
 {
@@ -489,6 +659,19 @@
 
 
 @implementation HistoryItem
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_historyId);
+    TT_RELEASE_SAFELY(_companyId);
+    TT_RELEASE_SAFELY(_username);
+    TT_RELEASE_SAFELY(_content);
+    TT_RELEASE_SAFELY(_type);
+    TT_RELEASE_SAFELY(_refId);
+    TT_RELEASE_SAFELY(_creationTime);
+    [super dealloc];
+}
+
 
 
 - (id) initWithDictionary:(const NSDictionary *) dictionary
@@ -530,9 +713,14 @@
 }
 
 
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_productTypeId);
+    [super dealloc];
+}
+
+
 @end
-
-
 
 
 
@@ -552,6 +740,19 @@
     }
     
     return self;
+}
+
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_enquiryId);
+    TT_RELEASE_SAFELY(_title);
+    TT_RELEASE_SAFELY(_content);
+    TT_RELEASE_SAFELY(_sendTime);
+    TT_RELEASE_SAFELY(_status);
+    TT_RELEASE_SAFELY(_productList);
+    TT_RELEASE_SAFELY(_progress);
+    [super dealloc];
 }
 
 @end

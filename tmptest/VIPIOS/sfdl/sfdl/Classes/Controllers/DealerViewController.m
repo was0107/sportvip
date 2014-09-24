@@ -38,6 +38,20 @@
     NSMutableDictionary *_contentDictionary;
 }
 
+
+- (void) reduceMemory
+{
+    TT_RELEASE_SAFELY(_prodcutTypeRequest);
+    TT_RELEASE_SAFELY(_prodcutTypeResponse);
+    TT_RELEASE_SAFELY(_regionRequest);
+    TT_RELEASE_SAFELY(_regionResponse);
+    TT_RELEASE_SAFELY(_name);
+    TT_RELEASE_SAFELY(_address);
+    TT_RELEASE_SAFELY(_poplistview);
+    TT_RELEASE_SAFELY(_contentDictionary);
+    [super reduceMemory];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -98,7 +112,7 @@
 
 - (void) configTableView
 {
-    __block DealerViewController *blockSelf = self;
+    __unsafe_unretained DealerViewController *blockSelf = self;
 //    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
     [self createHeaderView];
     self.tableView.tableFooterView = [self footerView];//[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
@@ -222,7 +236,7 @@
 
 - (void) sendRequestToGetProductTypeServer
 {
-    __block DealerViewController *blockSelf = self;
+    __unsafe_unretained DealerViewController *blockSelf = self;
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
         blockSelf.prodcutTypeResponse = [[ProductTypeReponse alloc] initWithJsonString:content];
@@ -245,7 +259,7 @@
 
 - (void) sendRequestToGetRegionServer
 {
-    __block DealerViewController *blockSelf = self;
+    __unsafe_unretained DealerViewController *blockSelf = self;
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
         blockSelf.regionResponse = [[RegionResponse alloc] initWithJsonString:content];

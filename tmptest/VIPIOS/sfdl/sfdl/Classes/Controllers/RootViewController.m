@@ -43,6 +43,13 @@
 - (void )dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    TT_RELEASE_SAFELY(_cycleView);
+    TT_RELEASE_SAFELY(_topImageView);
+    TT_RELEASE_SAFELY(_searchView);
+    TT_RELEASE_SAFELY(_pictureResponse);
+    TT_RELEASE_SAFELY(_pictureRequest);
+    TT_RELEASE_SAFELY(_menuRequest);
+    TT_RELEASE_SAFELY(_menuResponse);
     [super dealloc];
 }
 
@@ -117,7 +124,7 @@
 - (CustomSearchBar *) searchView
 {
     if (!_searchView) {
-        __block RootViewController *blockSelf = self;
+        __weak RootViewController *blockSelf = self;
         _searchView = [[CustomSearchBar alloc] initWithFrame:CGRectMake(0, 0.0,320,52.0)];
         _searchView.backgroundColor = kGridTableViewColor;
         _searchView.completeBlok = ^(NSString *result) {
@@ -148,7 +155,7 @@
 
 - (void) sendRequestToServer
 {
-    __block RootViewController *blockSelf = self;
+    __weak RootViewController *blockSelf = self;
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
         if ([_pictureRequest isFristPage]) {
@@ -243,7 +250,7 @@
 
 - (void) sendRequestToGetMenu
 {
-    __block typeof(self) blockSelf = self;
+    __weak typeof(self) blockSelf = self;
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
         blockSelf.menuResponse = [[[MenuResponse alloc] initWithJsonString:content] autorelease];

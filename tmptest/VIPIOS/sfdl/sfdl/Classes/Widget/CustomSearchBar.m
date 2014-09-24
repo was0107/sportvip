@@ -34,7 +34,7 @@
         
         CALayer *iconbg = [CALayer layer];
         iconbg.frame = CGRectMake(8, 8, 304, 36);
-        iconbg.borderColor = kGrayColor;
+        iconbg.borderColor = [kGrayColor CGColor];
         iconbg.backgroundColor = [kWhiteColor CGColor];
         iconbg.cornerRadius = 2.0f;
         iconbg.borderWidth = 2.0f;

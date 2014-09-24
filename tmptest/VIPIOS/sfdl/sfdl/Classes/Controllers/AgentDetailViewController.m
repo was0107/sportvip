@@ -20,6 +20,17 @@
 
 @implementation AgentDetailViewController
 
+
+- (void) reduceMemory
+{
+    TT_RELEASE_SAFELY(_iconImageView);
+    TT_RELEASE_SAFELY(_labelOne);
+    TT_RELEASE_SAFELY(_content);
+    TT_RELEASE_SAFELY(_request);
+    TT_RELEASE_SAFELY(_response);
+    [super reduceMemory];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -34,13 +45,6 @@
     [self.content loadHTMLString:self.newItem.desc baseURL:nil];
 
 }
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 - (BOOL) useTablViewToShow
 {
@@ -80,7 +84,7 @@
 
 - (void)sendRequestToServer
 {
-    __block AgentDetailViewController *safeSelf = self;
+    __unsafe_unretained AgentDetailViewController *safeSelf = self;
     
     idBlock succBlock = ^(id content){
         DEBUGLOG(@"succ content %@", content);

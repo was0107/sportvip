@@ -60,6 +60,21 @@
     return [[[ProductPropsItem alloc] initWithDictionary:dictionary] autorelease];
 }
 
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_productId);
+    TT_RELEASE_SAFELY(_productDesc);
+    TT_RELEASE_SAFELY(_productName);
+    TT_RELEASE_SAFELY(_productType);
+    TT_RELEASE_SAFELY(_productTypeName);
+    TT_RELEASE_SAFELY(_productImg);
+    TT_RELEASE_SAFELY(_videoImg);
+    TT_RELEASE_SAFELY(_videoUrl);
+    TT_RELEASE_SAFELY(_feature);
+    TT_RELEASE_SAFELY(_imagesArray);
+    [super dealloc];
+}
+
 - (id) translateFrom:(const NSDictionary *) dictionary
 {
     self.productId = [dictionary objectForKey:@"productId"];
@@ -194,6 +209,12 @@
     return self;
 }
 
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_orderItem);
+    [super dealloc];
+}
+
 
 @end
 
@@ -219,6 +240,13 @@
     self.item = [[[NewsItem alloc] initWithDictionary:dictionary] autorelease];
     return self;
 }
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_item);
+    [super dealloc];
+}
+
 
 @end
 
@@ -358,6 +386,13 @@
     self = [super initWithDictionary:dictionary];
     self.item = [[[EnquiryItem alloc] initWithDictionary:[dictionary objectForKey:@"enquiry"]] autorelease];
     return self;
+}
+
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_item);
+    [super dealloc];
 }
 
 @end

@@ -79,7 +79,7 @@
         [_imageString release];
         _imageString = [imageString copy];
         
-        __block typeof(self) blockSelf = self;
+        __unsafe_unretained typeof(self) blockSelf = self;
         [self.theImageView setImageWithURL:[NSURL URLWithString:_imageString]
                            placeholderImage:[UIImage imageNamed:kImageDefault]
                                     success:^(UIImage *image){

@@ -14,15 +14,6 @@
 
 @implementation SSettingViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -39,7 +30,7 @@
 
 - (void) configTableView
 {
-    __block SSettingViewController *blockSelf = self;
+    __unsafe_unretained SSettingViewController *blockSelf = self;
     NSArray *titleIndexArray = @[@"About us",@"Contact us"];
     NSArray *controllersArray = @[@"AboutUsViewController",@"ContactUsViewController"];
 

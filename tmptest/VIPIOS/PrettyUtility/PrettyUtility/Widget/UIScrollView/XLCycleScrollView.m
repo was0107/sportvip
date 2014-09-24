@@ -13,7 +13,6 @@ static const CGFloat kTimerInteveral = 6.0f;
 @interface XLCycleScrollView () <UIScrollViewDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
-@property (nonatomic, strong) UIPageControl *pageControl;
 
 @property (nonatomic, assign) NSInteger totalPages;
 @property (nonatomic, assign) NSInteger curPage;

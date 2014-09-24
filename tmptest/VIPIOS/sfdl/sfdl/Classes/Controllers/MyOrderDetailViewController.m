@@ -17,6 +17,14 @@
 
 @implementation MyOrderDetailViewController
 
+- (void) reduceMemory
+{
+    TT_RELEASE_SAFELY(_detailItem);
+    TT_RELEASE_SAFELY(_request);
+    TT_RELEASE_SAFELY(_response);
+    [super reduceMemory];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -34,7 +42,7 @@
 
 - (void) configTableView
 {
-    __block MyOrderDetailViewController *blockSelf = self;
+    __unsafe_unretained MyOrderDetailViewController *blockSelf = self;
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
     self.tableView.cellCreateBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
@@ -92,7 +100,7 @@
 
 - (void) sendRequestToServer
 {
-    __block MyOrderDetailViewController *blockSelf = self;
+    __unsafe_unretained MyOrderDetailViewController *blockSelf = self;
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
         blockSelf.response = [[ViewOrderResponse alloc] initWithJsonString:content];

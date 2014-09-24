@@ -16,20 +16,23 @@
 #import "ProductDetailViewControllerEx.h"
 
 @interface ProductListViewController ()
-@property (nonatomic, assign) ListPaggingRequestBase *request;
+@property (nonatomic, retain) ListPaggingRequestBase *request;
 @property (nonatomic, retain) SearchProductRequest *searchRequest;
 @property (nonatomic, retain) ProductListRequest *listRequest;
 @end
 
 @implementation ProductListViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (void) reduceMemory
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    TT_RELEASE_SAFELY(_productTypeId);
+    TT_RELEASE_SAFELY(_response);
+    TT_RELEASE_SAFELY(_sectionTitle);
+    TT_RELEASE_SAFELY(_searchText);
+    TT_RELEASE_SAFELY(_request);
+    TT_RELEASE_SAFELY(_searchRequest);
+    TT_RELEASE_SAFELY(_listRequest);
+    [super reduceMemory];
 }
 
 - (void)viewDidLoad
@@ -44,12 +47,6 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (CGRect)tableViewFrame
 {
     return CGRectMake(0, 0, 320.0, kContentBoundsHeight-0);
@@ -62,7 +59,7 @@
 
 - (void) configTableView
 {
-    __block ProductListViewController *blockSelf = self;
+    __unsafe_unretained ProductListViewController *blockSelf = self;
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
     self.tableView.separatorColor = kClearColor;
@@ -187,7 +184,7 @@
 
 - (void) sendRequestToServer
 {
-    __weak ProductListViewController *blockSelf = self;
+    __unsafe_unretained ProductListViewController *blockSelf = self;
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
         if ([_request isFristPage]) {

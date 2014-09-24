@@ -23,6 +23,12 @@
 
 @implementation MiddleviewCell
 
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_myTextLabel);
+    [super dealloc];
+}
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -59,6 +65,14 @@
 
 @implementation MiddleViewController
 
+- (void) reduceMemory
+{
+    TT_RELEASE_SAFELY(_prodcutTypeRequest);
+    TT_RELEASE_SAFELY(_prodcutTypeResponse);
+    TT_RELEASE_SAFELY(_selectedDiction);
+    [super reduceMemory];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -89,7 +103,7 @@
 
 - (void) sendRequestToGetProductTypeServer
 {
-    __block typeof(self) blockSelf = self;
+    __unsafe_unretained typeof(self) blockSelf = self;
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
         blockSelf.prodcutTypeResponse = [[ProductTypeReponse alloc] initWithJsonString:content];

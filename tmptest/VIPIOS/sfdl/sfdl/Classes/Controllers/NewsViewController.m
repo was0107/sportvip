@@ -19,18 +19,19 @@
 
 @implementation NewsViewController
 
+- (void) reduceMemory
+{
+    TT_RELEASE_SAFELY(_request);
+    TT_RELEASE_SAFELY(_response);
+    [super reduceMemory];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 //    self.secondTitleLabel.text = @"News";
     [self setTitleContent:@"NEWS"];
 
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (int) tableViewType
@@ -40,7 +41,7 @@
 
 - (void) configTableView
 {
-    __block typeof(self) blockSelf = self;
+    __unsafe_unretained typeof(self) blockSelf = self;
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20.1f)];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
     self.tableView.cellCreateBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
@@ -111,7 +112,7 @@
 
 - (void) sendRequestToServer
 {
-    __block typeof(self) blockSelf = self;
+    __unsafe_unretained typeof(self) blockSelf = self;
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
         if ([_request isFristPage]) {

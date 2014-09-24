@@ -20,6 +20,12 @@
 @implementation BrowsingHistoryViewController
 
 
+- (void) reduceMemory
+{
+    TT_RELEASE_SAFELY(_response);
+    TT_RELEASE_SAFELY(_request);
+    [super reduceMemory];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -30,7 +36,7 @@
 
 - (void) configTableView
 {
-    __block typeof(self) blockSelf = self;
+    __unsafe_unretained typeof(self) blockSelf = self;
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20.1f)];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
     
@@ -100,7 +106,7 @@
 
 - (void) sendRequestToServer
 {
-    __block typeof(self) blockSelf = self;
+    __unsafe_unretained typeof(self) blockSelf = self;
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
         if ([_request isFristPage]) {

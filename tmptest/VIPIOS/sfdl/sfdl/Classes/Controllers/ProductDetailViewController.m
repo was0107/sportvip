@@ -23,6 +23,14 @@
 
 @implementation ProductDetailViewController
 
+- (void) reduceMemory
+{
+    TT_RELEASE_SAFELY(_introController);
+    TT_RELEASE_SAFELY(_commentController);
+    TT_RELEASE_SAFELY(_productItem);
+    [super reduceMemory];
+}
+
 - (void)viewDidLoad
 {
     
@@ -117,6 +125,20 @@
 
 
 @implementation ProductDetailIntroController
+
+
+- (void) reduceMemory
+{
+    TT_RELEASE_SAFELY(_labelOne);
+    TT_RELEASE_SAFELY(_labelTwo);
+    TT_RELEASE_SAFELY(_leftImageView);
+    TT_RELEASE_SAFELY(_webView);
+    TT_RELEASE_SAFELY(_rightButton);
+    TT_RELEASE_SAFELY(_productItem);
+    TT_RELEASE_SAFELY(_request);
+    TT_RELEASE_SAFELY(_response);
+    [super reduceMemory];
+}
 
 - (void)viewDidLoad
 {
@@ -260,7 +282,7 @@
 
 - (void) sendRequestToServer
 {
-    __block ProductDetailIntroController *blockSelf = self;
+    __unsafe_unretained ProductDetailIntroController *blockSelf = self;
      self.labelOne.text = [NSString stringWithFormat:@"%@",self.productItem.productName];
     [self.webView loadHTMLString:self.productItem.productDesc baseURL:nil];
     [self.leftImageView setImageWithURL:[NSURL URLWithString:self.productItem.productImg]
@@ -273,7 +295,7 @@
                                     blockSelf.leftImageView.image = [UIImage imageNamed:kImageDefault];
                                 }];
 
-//    __weak ProductDetailIntroController *blockSelf = self;
+//    __unsafe_unretained ProductDetailIntroController *blockSelf = self;
 //    idBlock successedBlock = ^(id content){
 //        DEBUGLOG(@"success conent %@", content);
 //        blockSelf.response = [[ProductDetailResponse alloc] initWithJsonString:content];
@@ -299,6 +321,18 @@
 
 
 @implementation ProductDetailCommentController
+
+- (void) reduceMemory
+{
+    TT_RELEASE_SAFELY(_commentView);
+    TT_RELEASE_SAFELY(_submitButton);
+    TT_RELEASE_SAFELY(_footerView);
+    TT_RELEASE_SAFELY(_scrollView);
+    TT_RELEASE_SAFELY(_productItem);
+    TT_RELEASE_SAFELY(_request);
+    TT_RELEASE_SAFELY(_response);
+    [super reduceMemory];
+}
 
 - (void) viewDidAppear:(BOOL)animated
 {
@@ -382,7 +416,7 @@
         return;
     }
     [self.commentView resignFirstResponder];
-    __block ProductDetailCommentController *blockSelf = self;
+    __unsafe_unretained ProductDetailCommentController *blockSelf = self;
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
         blockSelf.commentView.text = @"";
@@ -406,7 +440,7 @@
 
 - (void) configTableView
 {
-    __block ProductDetailCommentController *blockSelf = self;
+    __unsafe_unretained ProductDetailCommentController *blockSelf = self;
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
     self.tableView.cellCreateBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
@@ -474,7 +508,7 @@
 
 - (void) sendRequestToServer
 {
-    __block ProductDetailCommentController *blockSelf = self;
+    __unsafe_unretained ProductDetailCommentController *blockSelf = self;
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
         blockSelf.response = [[CommentsResponse alloc] initWithJsonString:content];

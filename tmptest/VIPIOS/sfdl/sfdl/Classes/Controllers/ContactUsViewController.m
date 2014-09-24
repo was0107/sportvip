@@ -23,13 +23,14 @@
 
 @implementation ContactUsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (void) reduceMemory
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    TT_RELEASE_SAFELY(_iconImageView);
+    TT_RELEASE_SAFELY(_labelOne);
+    TT_RELEASE_SAFELY(_labelTwo);
+    TT_RELEASE_SAFELY(_response);
+    TT_RELEASE_SAFELY(_request);
+    [super reduceMemory];
 }
 
 - (void)viewDidLoad
@@ -114,14 +115,5 @@
     }
     return _labelTwo;
 }
-
--(void)reduceMemory
-{
-    TT_RELEASE_SAFELY(_iconImageView);
-    TT_RELEASE_SAFELY(_labelOne);
-    TT_RELEASE_SAFELY(_labelTwo);
-    [super reduceMemory];
-}
-
 
 @end

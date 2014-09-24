@@ -23,6 +23,21 @@
 
 @implementation NewsDetailViewController
 
+- (void) reduceMemory
+{
+    TT_RELEASE_SAFELY(_request);
+    TT_RELEASE_SAFELY(_response);
+    TT_RELEASE_SAFELY(_iconImageView);
+    TT_RELEASE_SAFELY(_labelTwo);
+    TT_RELEASE_SAFELY(_labelOne);
+    TT_RELEASE_SAFELY(_topView);
+    TT_RELEASE_SAFELY(_bottomView);
+    TT_RELEASE_SAFELY(_content);
+    TT_RELEASE_SAFELY(_preButton);
+    TT_RELEASE_SAFELY(_nextButton);
+    [super reduceMemory];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

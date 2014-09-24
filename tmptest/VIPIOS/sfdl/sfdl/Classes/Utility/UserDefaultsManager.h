@@ -39,9 +39,6 @@
 + (NSString *) userIcon;
 + (void)saveUserIcon:(NSString *)userIcon;
 
-+ (BOOL)didUserLogin;
-+ (void)saveUserLogin:(BOOL)login;
-
 
 + (void)saveUserBirthDay:(long)birthDay;
 
@@ -76,8 +73,6 @@
 + (NSString *) theLastChangedCity;
 
 
-+ (void)savePushIDChange:(NSInteger)change;
-
 /**
  * @brief  2G/3G省流量模式 -- default 0 关闭
  *
@@ -86,7 +81,6 @@
  * @return　NSInteger
  * @note
  */
-+ (NSInteger) netTrafficMode;
 
 + (void)saveNetTrafficMode:(NSInteger)flag;
 
@@ -101,24 +95,6 @@
  */
 + (void) storeNetWorkChangedTipStatus:(NSUInteger)status;
 + (NSUInteger) netWorkChangedTipStatus;
-//
-
-+ (NSUInteger) todayPoint;
-+ (void) saveToday:(int)point;
-
-
-/**  抢购十点提醒  是否开启
- *   @brif 设置category的值
- */
-
-+ (void) savePredictTimeTips:(BOOL)flag;
-
-+ (BOOL) ishasPredictTimeTips;
-
-
-
-+ (void) saveGuidePicture:(id) picture;
-+ (id) guidePicture;
 
 + (void) saveLang:(NSString *)lang;
 + (NSString *) currentLang;

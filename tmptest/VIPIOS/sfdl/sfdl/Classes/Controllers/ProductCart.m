@@ -27,6 +27,12 @@ static ProductCart * sharedInstance = nil;
     return sharedInstance;
 }
 
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_contents);
+    [super dealloc];
+}
+
 - (id) init
 {
     self = [super init];

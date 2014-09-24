@@ -25,6 +25,18 @@
 
 @implementation ProductCartViewController
 
+- (void) reduceMemory
+{
+    TT_RELEASE_SAFELY(_commentView);
+    TT_RELEASE_SAFELY(_submitButton);
+    TT_RELEASE_SAFELY(_goBackShoppingButton);
+    TT_RELEASE_SAFELY(_footerView);
+    TT_RELEASE_SAFELY(_tipLabel);
+    TT_RELEASE_SAFELY(_request);
+    TT_RELEASE_SAFELY(_response);
+    self.scrollView = nil;
+    [super reduceMemory];
+}
 
 - (void)viewDidLoad
 {
@@ -56,7 +68,7 @@
 
 - (void) configTableView
 {
-    __block ProductCartViewController *blockSelf = self;
+    __unsafe_unretained ProductCartViewController *blockSelf = self;
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
     self.tableView.tableFooterView = [self footerView];//[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
     self.tableView.cellCreateBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
@@ -284,7 +296,7 @@
     
     [SVProgressHUD showWithStatus:@"正在提交订单..."];
     [self.commentView resignFirstResponder];
-    __block ProductCartViewController *blockSelf = self;
+    __unsafe_unretained ProductCartViewController *blockSelf = self;
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
         blockSelf.commentView.text = @"";

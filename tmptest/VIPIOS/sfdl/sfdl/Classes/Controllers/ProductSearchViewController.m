@@ -7,6 +7,7 @@
 //
 
 #import "ProductSearchViewController.h"
+#import "UITextField+DelegateBlocks.h"
 #import "PubTextField.h"
 #import "CreateObject.h"
 #import "ProductRequest.h"
@@ -60,6 +61,9 @@
     TT_RELEASE_SAFELY(_cummins);
     TT_RELEASE_SAFELY(_standby);
     TT_RELEASE_SAFELY(_confirmButton);
+    TT_RELEASE_SAFELY(_condictionRequest);
+    TT_RELEASE_SAFELY(_request);
+    TT_RELEASE_SAFELY(_response);
     [super reduceMemory];
 }
 
@@ -171,7 +175,7 @@
 
 - (void) sendRequestToGetCondictionServer
 {
-    __block ProductSearchViewController *blockSelf = self;
+    __unsafe_unretained ProductSearchViewController *blockSelf = self;
     [SVProgressHUD showWithStatus:@"正在提交..."];
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
@@ -195,7 +199,7 @@
 
 - (void) sendRequestToServer
 {
-    __block ProductSearchViewController *blockSelf = self;
+    __unsafe_unretained ProductSearchViewController *blockSelf = self;
     [SVProgressHUD showWithStatus:@"正在提交..."];
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);

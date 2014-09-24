@@ -28,6 +28,26 @@
 
 @implementation ProductDetailViewControllerEx
 
+
+- (void) reduceMemory
+{
+    TT_RELEASE_SAFELY(_cycleView);
+    TT_RELEASE_SAFELY(_bottomView);
+    TT_RELEASE_SAFELY(_topView);
+    TT_RELEASE_SAFELY(_featureButton);
+    TT_RELEASE_SAFELY(_descButton);
+    TT_RELEASE_SAFELY(_videoImageView);
+    TT_RELEASE_SAFELY(_emailLabel);
+    TT_RELEASE_SAFELY(_telLabel);
+    TT_RELEASE_SAFELY(_belongLabel);
+    TT_RELEASE_SAFELY(_productLabel);
+    TT_RELEASE_SAFELY(_content);
+    TT_RELEASE_SAFELY(_aboutResponse);
+    TT_RELEASE_SAFELY(_response);
+    TT_RELEASE_SAFELY(_request);
+    [super reduceMemory];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -180,6 +200,7 @@
         _cycleView.backgroundColor = kWhiteColor;
         _cycleView.delegate = self;
         _cycleView.dataSource = self;
+        _cycleView.pageControl.currentPageIndicatorTintColor = kOrangeColor;
         [_cycleView reloadData];
     }
     return _cycleView;
@@ -218,7 +239,7 @@
 
 - (void)sendRequestToGetCompanyServer
 {
-    __block typeof(self) blockSelf = self;
+    __unsafe_unretained typeof(self) blockSelf = self;
 //    blockSelf.telLabel.text = [NSString stringWithFormat:@"Tel : <font size=14 color=black>%@ </font>", @"fdfdf"];
 
     idBlock succBlock = ^(id content){
@@ -245,7 +266,7 @@
 
 - (void) sendRequestToServer
 {
-    __block typeof(self) blockSelf = self;
+    __unsafe_unretained typeof(self) blockSelf = self;
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
         blockSelf.response = [[[ProductDetailResponse alloc] initWithJsonString:content] autorelease];

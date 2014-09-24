@@ -404,7 +404,7 @@
     if (treeTableView1) {
         [self back];
     }
-    NSString *key = [NSString stringWithFormat:@"LEVEL%ld", level];
+    NSString *key = [NSString stringWithFormat:@"LEVEL%d", level];
     _selectedLevelIndexDic[key] = indexPath;
 }
 
@@ -417,13 +417,13 @@
 
 - (void)removeSelectedIndex:(NSInteger)level
 {
-    NSString *key = [NSString stringWithFormat:@"LEVEL%ld", level];
+    NSString *key = [NSString stringWithFormat:@"LEVEL%d", level];
     [_selectedLevelIndexDic removeObjectForKey:key];
 }
 
 - (BOOL)indexSelected:(NSInteger)level indexPath:(NSIndexPath*)indexPath
 {
-    NSString *key = [NSString stringWithFormat:@"LEVEL%ld", level];
+    NSString *key = [NSString stringWithFormat:@"LEVEL%d", level];
     NSIndexPath *selectedIndexPath = _selectedLevelIndexDic[key];
     if (selectedIndexPath && selectedIndexPath.section == indexPath.section &&
         selectedIndexPath.row == indexPath.row) {

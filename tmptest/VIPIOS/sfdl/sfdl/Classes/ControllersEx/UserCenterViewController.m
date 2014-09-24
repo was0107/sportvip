@@ -42,7 +42,7 @@
 
 - (void) configTableView
 {
-    __block typeof(self) blockSelf = self;
+    __unsafe_unretained typeof(self) blockSelf = self;
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20.1f)];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
     NSArray *titleIndexArray = @[@"Inquiry", @"Browsing history",@"Change the password", ];

@@ -31,6 +31,8 @@
 @property (nonatomic, retain) ProductItem *productItem;
 @property (nonatomic, retain) ViewProductRequest        *request;
 @property (nonatomic, retain) ProductDetailResponse     *response;
+
+
 @end
 
 
@@ -44,5 +46,6 @@
 @property (nonatomic, retain) CommentListRequest    *request;
 @property (nonatomic, retain) CommentsResponse      *response;
 @property (nonatomic, retain) UIKeyboardAvoidingScrollView            *scrollView;
+
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "ChangePasswordViewController.h"
+#import "UITextField+DelegateBlocks.h"
 #import "PubTextField.h"
 #import "IdentifierValidator.h"
 #import "LoginRequest.h"
@@ -36,6 +37,20 @@
     int _type;
 }
 
+- (void) reduceMemory
+{
+    TT_RELEASE_SAFELY(_memberIDTextField);
+    TT_RELEASE_SAFELY(_pwdTextField);
+    TT_RELEASE_SAFELY(_titleTextField);
+    TT_RELEASE_SAFELY(_codeImageView);
+    TT_RELEASE_SAFELY(_confirmButton);
+    TT_RELEASE_SAFELY(_scrollView);
+    TT_RELEASE_SAFELY(_response);
+    TT_RELEASE_SAFELY(_request);
+    TT_RELEASE_SAFELY(_verifyCodeResponse);
+    TT_RELEASE_SAFELY(_checkCodeResponse);
+    [super reduceMemory];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -54,7 +69,7 @@
 #ifdef kUseSimulateData
     self.memberIDTextField.pubTextField.text = @"111111";
     self.pwdTextField.pubTextField.text = @"111111";
-    self.titleTextField.pubTextField.text = @"title";
+    self.titleTextField.pubTextField.text = @"111111";
 #endif
     
     [self.scrollView setContentSize:CGSizeMake(320, 50 + 4 * kPubTextFieldHeight2  + kImageStartAt)];
@@ -78,7 +93,7 @@
 - (PubTextField *)memberIDTextField
 {
     if (!_memberIDTextField) {
-        __block typeof(self) safeSelf = self;
+        __unsafe_unretained typeof(self) safeSelf = self;
         _memberIDTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0, 10 + 0* kPubTextFieldHeight2  + kImageStartAt , 320, kPubTextFieldHeight) indexTitle:@"Name:" placeHolder:@"Member ID" pubTextFieldStyle:PubTextFieldStyleTop];
         _memberIDTextField.autoLayout = YES;
         _memberIDTextField.pubTextField.returnKeyType = UIReturnKeyNext;
@@ -95,7 +110,7 @@
 - (PubTextField *)pwdTextField
 {
     if (!_pwdTextField) {
-        __block typeof(self) safeSelf = self;
+        __unsafe_unretained typeof(self) safeSelf = self;
         _pwdTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  10 + 1 * kPubTextFieldHeight2  + kImageStartAt, 320, kPubTextFieldHeight) indexTitle:@"Password:" placeHolder:@"Password" pubTextFieldStyle:PubTextFieldStyleBottom];
         _pwdTextField.autoLayout = YES;
         _pwdTextField.pubTextField.returnKeyType = UIReturnKeyNext;
@@ -113,7 +128,7 @@
 - (PubTextField *)titleTextField
 {
     if (!_titleTextField) {
-        __block typeof(self) safeSelf = self;
+        __unsafe_unretained typeof(self) safeSelf = self;
         _titleTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  10 + 2 * kPubTextFieldHeight2  + kImageStartAt, 320, kPubTextFieldHeight) indexTitle:@"Repeat Password:" placeHolder:@"Title" pubTextFieldStyle:PubTextFieldStyleBottom];
         _titleTextField.autoLayout = YES;
         _titleTextField.pubTextField.returnKeyType = UIReturnKeyNext;
@@ -181,7 +196,7 @@
     
     [SVProgressHUD showWithStatus:@"正在注册..."];
     [self.confirmButton setEnabled:NO];
-    __block typeof(self) safeSelf = self;
+    __unsafe_unretained typeof(self) safeSelf = self;
     
     idBlock succBlock = ^(id content){
         DEBUGLOG(@"succ content %@", content);

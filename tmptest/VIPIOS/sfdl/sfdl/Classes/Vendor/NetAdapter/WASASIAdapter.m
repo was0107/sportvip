@@ -199,8 +199,7 @@
 
 - (NSString *) hash
 {
-    return [NSString stringWithFormat:@"%@-%@",
-            kIntToString([UserDefaultsManager userGender]),
+    return [NSString stringWithFormat:@"%@-%@",[UserDefaultsManager userGender],
             self.body];
 }
 

@@ -14,6 +14,7 @@
 #import "LoginResponse.h"
 #import "CreateObject.h"
 #import "ForgetPasswordViewController.h"
+#import "UITextField+DelegateBlocks.h"
 
 
 @interface LoginViewController ()
@@ -24,6 +25,17 @@
 @end
 
 @implementation LoginViewController
+
+
+- (void) reduceMemory
+{
+    TT_RELEASE_SAFELY(_phoneTextField);
+    TT_RELEASE_SAFELY(_pwdTextField);
+    TT_RELEASE_SAFELY(_confirmButton);
+    TT_RELEASE_SAFELY(_forgetButton);
+    TT_RELEASE_SAFELY(_newButton );
+    [super reduceMemory];
+}
 
 - (void)viewDidLoad
 {
@@ -40,13 +52,6 @@
     self.phoneTextField.pubTextField.text = @"Username";
     self.pwdTextField.pubTextField.text = @"Password";
 #endif
-}
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void) rightButtonAction:(id)sender
@@ -75,7 +80,7 @@
 - (PubTextField *)pwdTextField
 {
     if (!_pwdTextField) {
-        __block LoginViewController *safeSelf = self;
+        __unsafe_unretained LoginViewController *safeSelf = self;
         _pwdTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0, 51 + kImageStartAt, 320, 40) indexTitle:@"Password:" placeHolder:@"Password" pubTextFieldStyle:PubTextFieldStyleBottom];
         _pwdTextField.pubTextField.returnKeyType = UIReturnKeyDone;
         _pwdTextField.pubTextField.frame = CGRectMake(0, 0, 250, 40);

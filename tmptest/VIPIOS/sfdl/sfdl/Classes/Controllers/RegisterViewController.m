@@ -37,6 +37,21 @@
     int _type;
 }
 
+- (void) reduceMemory
+{
+    TT_RELEASE_SAFELY(_emailTextField);
+    TT_RELEASE_SAFELY(_memberIDTextField);
+    TT_RELEASE_SAFELY(_pwdTextField);
+    TT_RELEASE_SAFELY(_titleTextField);
+    TT_RELEASE_SAFELY(_confirmButton);
+    TT_RELEASE_SAFELY(_codeImageView);
+    TT_RELEASE_SAFELY(_scrollView);
+    TT_RELEASE_SAFELY(_verifyCodeResponse);
+    TT_RELEASE_SAFELY(_checkCodeResponse);
+    TT_RELEASE_SAFELY(_request);
+    TT_RELEASE_SAFELY(_response);
+    [super reduceMemory];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -69,13 +84,6 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
 - (void) rightButtonAction:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -101,7 +109,7 @@
 - (PubTextField *)pwdTextField
 {
     if (!_pwdTextField) {
-        __block RegisterViewController *safeSelf = self;
+        __weak RegisterViewController *safeSelf = self;
         _pwdTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  10 + 1 * kPubTextFieldHeight2  + kImageStartAt, 320, kPubTextFieldHeight) indexTitle:@"Password:" placeHolder:@"Password" pubTextFieldStyle:PubTextFieldStyleBottom];
         _pwdTextField.autoLayout = YES;
         _pwdTextField.pubTextField.returnKeyType = UIReturnKeyNext;
@@ -119,7 +127,7 @@
 - (PubTextField *)titleTextField
 {
     if (!_titleTextField) {
-        __block RegisterViewController *safeSelf = self;
+        __weak RegisterViewController *safeSelf = self;
         _titleTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  10 + 2 * kPubTextFieldHeight2  + kImageStartAt, 320, kPubTextFieldHeight) indexTitle:@"Repeat Password:" placeHolder:@"Title" pubTextFieldStyle:PubTextFieldStyleBottom];
         _titleTextField.autoLayout = YES;
         _titleTextField.pubTextField.returnKeyType = UIReturnKeyNext;

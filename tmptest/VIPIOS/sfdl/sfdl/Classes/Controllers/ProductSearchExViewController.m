@@ -27,13 +27,18 @@
     NSMutableDictionary *_contentDictionary;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (void) reduceMemory
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    TT_RELEASE_SAFELY(_productRequest);
+    TT_RELEASE_SAFELY(_productResponse);
+    TT_RELEASE_SAFELY(_propertyId);
+    TT_RELEASE_SAFELY(_propertyListId);
+    TT_RELEASE_SAFELY(_propertyListValues);
+    TT_RELEASE_SAFELY(_contentDictionary);
+    TT_RELEASE_SAFELY(_poplistview);
+    TT_RELEASE_SAFELY(_request);
+    TT_RELEASE_SAFELY(_response);
+    [super reduceMemory];
 }
 
 - (void)viewDidLoad
@@ -50,13 +55,6 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
 - (int) tableViewType
 {
     return  eTypeNone;
@@ -64,7 +62,7 @@
 
 - (void) configTableView
 {
-    __block ProductSearchExViewController *blockSelf = self;
+    __unsafe_unretained ProductSearchExViewController *blockSelf = self;
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
     self.tableView.cellCreateBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
@@ -125,7 +123,7 @@
 
 - (void) sendRequestToGetCondictionServer
 {
-    __weak ProductSearchExViewController *blockSelf = self;
+    __unsafe_unretained ProductSearchExViewController *blockSelf = self;
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
         blockSelf.response = [[ProductPropertySearchResponse alloc] initWithJsonString:content];
@@ -147,7 +145,7 @@
 
 - (void) sendRequestToServer
 {
-    __block ProductSearchExViewController *blockSelf = self;
+    __unsafe_unretained ProductSearchExViewController *blockSelf = self;
     [SVProgressHUD showWithStatus:@"正在提交..."];
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);

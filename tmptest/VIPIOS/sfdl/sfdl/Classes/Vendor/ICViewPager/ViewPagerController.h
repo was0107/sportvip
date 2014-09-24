@@ -31,8 +31,8 @@ typedef NS_ENUM(NSUInteger, ViewPagerComponent) {
 @interface ViewPagerController : BaseTitleViewController
 @property (nonatomic) NSUInteger activeTabIndex;
 
-@property id<ViewPagerDataSource> dataSource;
-@property id<ViewPagerDelegate> delegate;
+@property (nonatomic, assign)id<ViewPagerDataSource> dataSource;
+@property (nonatomic, assign)id<ViewPagerDelegate> delegate;
 
 #pragma mark ViewPagerOptions
 // Tab bar's height, defaults to 49.0
@@ -56,9 +56,9 @@ typedef NS_ENUM(NSUInteger, ViewPagerComponent) {
 
 #pragma mark Colors
 // Colors for several parts
-@property UIColor *indicatorColor;
-@property UIColor *tabsViewBackgroundColor;
-@property UIColor *contentViewBackgroundColor;
+@property (nonatomic, strong) UIColor *indicatorColor;
+@property (nonatomic, strong) UIColor *tabsViewBackgroundColor;
+@property (nonatomic, strong) UIColor *contentViewBackgroundColor;
 
 #pragma mark Methods
 // Reload all tabs and contents

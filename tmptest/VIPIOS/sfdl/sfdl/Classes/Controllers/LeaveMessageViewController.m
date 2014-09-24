@@ -25,6 +25,23 @@
 
 @implementation LeaveMessageViewController
 
+
+- (void) reduceMemory
+{
+    TT_RELEASE_SAFELY(_geneset);
+    TT_RELEASE_SAFELY(_prime);
+    TT_RELEASE_SAFELY(_standby);
+    TT_RELEASE_SAFELY(_cummins);
+    TT_RELEASE_SAFELY(_stamford);
+    TT_RELEASE_SAFELY(_codePub);
+    TT_RELEASE_SAFELY(_confirmButton);
+    TT_RELEASE_SAFELY(_verifyCodeResponse);
+    TT_RELEASE_SAFELY(_checkCodeResponse);
+    TT_RELEASE_SAFELY(_codeImageView);
+    TT_RELEASE_SAFELY(_request);
+    [super reduceMemory];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -54,20 +71,6 @@
 {
     return NO;
 }
-
-- (void) reduceMemory
-{
-    TT_RELEASE_SAFELY(_geneset);
-    TT_RELEASE_SAFELY(_prime);
-    TT_RELEASE_SAFELY(_stamford);
-    TT_RELEASE_SAFELY(_cummins);
-    TT_RELEASE_SAFELY(_standby);
-    TT_RELEASE_SAFELY(_codePub);
-    TT_RELEASE_SAFELY(_confirmButton);
-    TT_RELEASE_SAFELY(_request);
-    [super reduceMemory];
-}
-
 
 - (PubTextField *)geneset
 {
@@ -218,7 +221,7 @@
 
 - (void)requestServerForCode
 {
-    __block LeaveMessageViewController *safeSelf = self;
+    __unsafe_unretained LeaveMessageViewController *safeSelf = self;
     idBlock succBlock = ^(id content){
         DEBUGLOG(@"succ content %@", content);
         safeSelf.verifyCodeResponse = [[[VerifyCodeResponse   alloc] initWithJsonString:content] autorelease];
@@ -239,12 +242,12 @@
 - (void)requestServerToCheckCode
 {
     [SVProgressHUD showWithStatus:@"正在检验..."];
-    __block LeaveMessageViewController *safeSelf = self;
+    __unsafe_unretained LeaveMessageViewController *safeSelf = self;
     idBlock succBlock = ^(id content){
         DEBUGLOG(@"succ content %@", content);
         safeSelf.checkCodeResponse = [[[CheckVerifyCodeResponse   alloc] initWithJsonString:content] autorelease];
         if ([safeSelf.checkCodeResponse isChecked]) {
-            [safeSelf requestServerForRegister:nil];
+            [safeSelf sendRequestToServer];
             return ;
         }
         [SVProgressHUD showErrorWithStatus:@"检验失败!"];
@@ -275,7 +278,7 @@
     }
 
     [SVProgressHUD showWithStatus:@"正在提交..."];
-    __weak LeaveMessageViewController *blockSelf = self;
+    __unsafe_unretained LeaveMessageViewController *blockSelf = self;
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
         

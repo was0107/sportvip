@@ -35,6 +35,7 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     TT_RELEASE_SAFELY(_menuBar);
+    TT_RELEASE_SAFELY(_menuController);
     [super dealloc];
 }
 

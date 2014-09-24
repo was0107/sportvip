@@ -63,7 +63,7 @@
     label.font = HTFONTBIGSIZE(kFontSize14);
     label.backgroundColor = kClearColor;
     label.textColor = kBlackColor;
-    label.lineBreakMode = UILineBreakModeTailTruncation;
+    label.lineBreakMode = NSLineBreakByCharWrapping;
     return label;
 }
 

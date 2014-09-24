@@ -27,6 +27,7 @@
 @end
 
 @interface XLCycleScrollView : UIView
+@property (nonatomic, strong) UIPageControl *pageControl;
 
 @property (nonatomic, weak) id<XLCycleScrollViewDatasource> dataSource;
 @property (nonatomic, weak) id<XLCycleScrollViewDelegate> delegate;

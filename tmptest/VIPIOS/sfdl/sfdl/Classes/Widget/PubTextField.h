@@ -3,6 +3,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UITextField+DelegateBlocks.h"
 
 typedef enum{
     PubTextFieldStyleOne = 0,

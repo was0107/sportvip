@@ -18,8 +18,6 @@
 
 @implementation ProductCategoryViewController
 
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -27,21 +25,16 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
 - (void) reduceMemory
 {
+    TT_RELEASE_SAFELY(_request);
+    TT_RELEASE_SAFELY(_response);
     [super reduceMemory];
 }
 
 - (void) configTableView
 {
-    __block ProductCategoryViewController *blockSelf = self;
+    __unsafe_unretained ProductCategoryViewController *blockSelf = self;
 //    NSArray *titleIndexArray = @[@"Open Type Generator Sets",@"Slient Type Generator Sets",@"Trailer Type Generator Sets",@"Mobile Light Tower", \
 //                                 @"High-volt Generator Sets",@"Alternator",@"Options"];
 
@@ -130,7 +123,7 @@
 
 - (void) sendRequestToServer
 {
-    __block ProductCategoryViewController *blockSelf = self;
+    __unsafe_unretained ProductCategoryViewController *blockSelf = self;
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
         if ([_request isFristPage]) {

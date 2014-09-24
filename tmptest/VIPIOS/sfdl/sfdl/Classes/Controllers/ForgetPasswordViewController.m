@@ -25,6 +25,13 @@
 
 @implementation ForgetPasswordViewController
 
+- (void) reduceMemory
+{
+    TT_RELEASE_SAFELY(_phoneTextField);
+    TT_RELEASE_SAFELY(_confirmButton);
+    [super reduceMemory];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -43,7 +50,7 @@
 - (PubTextField *)phoneTextField
 {
     if (!_phoneTextField) {
-        __block ForgetPasswordViewController *safeSelf = self;
+        __weak ForgetPasswordViewController *safeSelf = self;
         _phoneTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0, 15 , 320, 40) indexTitle:@"Name:" placeHolder:@"Username" pubTextFieldStyle:PubTextFieldStyleTop];
         _phoneTextField.pubTextField.returnKeyType = UIReturnKeyDone;
         _phoneTextField.pubTextField.frame = CGRectMake(0, 0, 250, 40);

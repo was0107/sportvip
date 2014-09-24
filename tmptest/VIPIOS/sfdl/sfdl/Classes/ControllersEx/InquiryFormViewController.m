@@ -35,6 +35,25 @@
 
 @implementation InquiryFormViewController
 
+- (void) reduceMemory
+{
+    TT_RELEASE_SAFELY(_emailTextField);
+    TT_RELEASE_SAFELY(_toTextField);
+    TT_RELEASE_SAFELY(_subjectTextField);
+    TT_RELEASE_SAFELY(_messageTextField);
+    TT_RELEASE_SAFELY(_pictureTextField);
+    TT_RELEASE_SAFELY(_codeImageView);
+    TT_RELEASE_SAFELY(_codeTextField);
+    TT_RELEASE_SAFELY(_confirmButton);
+    TT_RELEASE_SAFELY(_productImageView);
+    TT_RELEASE_SAFELY(_scrollView);
+    TT_RELEASE_SAFELY(_response);
+    TT_RELEASE_SAFELY(_request);
+    TT_RELEASE_SAFELY(_verifyCodeResponse);
+    TT_RELEASE_SAFELY(_checkCodeResponse);
+    [super reduceMemory];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -79,7 +98,7 @@
 - (PubTextField *)emailTextField
 {
     if (!_emailTextField) {
-        __block typeof(self) safeSelf = self;
+        __unsafe_unretained typeof(self) safeSelf = self;
         _emailTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0, 10 + 0* kPubTextFieldHeight2  + kImageStartAt , 320, kPubTextFieldHeight) indexTitle:@"E-mail:" placeHolder:@"" pubTextFieldStyle:PubTextFieldStyleTop];
 //        _emailTextField.autoLayout = YES;
         _emailTextField.indexLabel.textAlignment = NSTextAlignmentRight;
@@ -96,7 +115,7 @@
 - (PubTextField *)toTextField
 {
     if (!_toTextField) {
-        __block typeof(self) safeSelf = self;
+        __unsafe_unretained typeof(self) safeSelf = self;
         _toTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0, 10 + 1* kPubTextFieldHeight2  + kImageStartAt , 320, 1.5*kPubTextFieldHeight) indexTitle:@"To:" placeHolder:@"" pubTextFieldStyle:PubTextFieldStyleTop];
         //        _toTextField.autoLayout = YES;
         _toTextField.indexLabel.textAlignment = NSTextAlignmentRight;
@@ -113,7 +132,7 @@
 - (PubTextField *)subjectTextField
 {
     if (!_subjectTextField) {
-        __block typeof(self) safeSelf = self;
+        __unsafe_unretained typeof(self) safeSelf = self;
         _subjectTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0, 10 + 2.5* kPubTextFieldHeight2  + kImageStartAt , 320, kPubTextFieldHeight) indexTitle:@"Subject:" placeHolder:@"" pubTextFieldStyle:PubTextFieldStyleTop];
         //        _subjectTextField.autoLayout = YES;
         _subjectTextField.indexLabel.textAlignment = NSTextAlignmentRight;
@@ -130,7 +149,7 @@
 - (PubTextField *)messageTextField
 {
     if (!_messageTextField) {
-        __block typeof(self) safeSelf = self;
+        __unsafe_unretained typeof(self) safeSelf = self;
         _messageTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0, 10 + 3.5* kPubTextFieldHeight2  + kImageStartAt , 320, 3*kPubTextFieldHeight) indexTitle:@"Message:" placeHolder:@"" pubTextFieldStyle:PubTextFieldStyleTop];
         //        _messageTextField.autoLayout = YES;
         _messageTextField.indexLabel.textAlignment = NSTextAlignmentRight;
@@ -148,7 +167,7 @@
 - (PubTextField *)pictureTextField
 {
     if (!_pictureTextField) {
-        __block typeof(self) safeSelf = self;
+        __unsafe_unretained typeof(self) safeSelf = self;
         _pictureTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  10 + 6.5 * kPubTextFieldHeight2  + kImageStartAt, 320, 3*kPubTextFieldHeight) indexTitle:@"Picture:" placeHolder:@"" pubTextFieldStyle:PubTextFieldStyleBottom];
         //        _pictureTextField.autoLayout = YES;
         _pictureTextField.indexLabel.textAlignment = NSTextAlignmentRight;
@@ -169,7 +188,7 @@
 - (PubTextField *)codeTextField
 {
     if (!_codeTextField) {
-        __block typeof(self) safeSelf = self;
+        __unsafe_unretained typeof(self) safeSelf = self;
         _codeTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  10 + 9.5 * kPubTextFieldHeight2  + kImageStartAt, 320, kPubTextFieldHeight) indexTitle:@"Code:" placeHolder:@"" pubTextFieldStyle:PubTextFieldStyleBottom];
         //        _codeTextField.autoLayout = YES;
         _codeTextField.indexLabel.textAlignment = NSTextAlignmentRight;
@@ -261,7 +280,7 @@
 
 - (void)requestServerForCode
 {
-    __block typeof(self) safeSelf = self;
+    __unsafe_unretained typeof(self) safeSelf = self;
     idBlock succBlock = ^(id content){
         DEBUGLOG(@"succ content %@", content);
         safeSelf.verifyCodeResponse = [[[VerifyCodeResponse   alloc] initWithJsonString:content] autorelease];
@@ -282,7 +301,7 @@
 - (void)requestServerToCheckCode
 {
     [SVProgressHUD showWithStatus:@"正在检验..."];
-       __block typeof(self) safeSelf = self;
+       __unsafe_unretained typeof(self) safeSelf = self;
     idBlock succBlock = ^(id content){
         DEBUGLOG(@"succ content %@", content);
         safeSelf.checkCodeResponse = [[[CheckVerifyCodeResponse   alloc] initWithJsonString:content] autorelease];
@@ -323,7 +342,7 @@
     
     [SVProgressHUD showWithStatus:@"正在注册..."];
     [self.confirmButton setEnabled:NO];
-    __block typeof(self) safeSelf = self;
+    __unsafe_unretained typeof(self) safeSelf = self;
     
     idBlock succBlock = ^(id content){
         DEBUGLOG(@"succ content %@", content);
