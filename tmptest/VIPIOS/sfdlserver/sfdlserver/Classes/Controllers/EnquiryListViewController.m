@@ -21,6 +21,13 @@
 @implementation EnquiryListViewController
 
 
+- (void) reduceMemory
+{
+    TT_RELEASE_SAFELY(_request);
+    TT_RELEASE_SAFELY(_response);
+    [super reduceMemory];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

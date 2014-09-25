@@ -23,6 +23,16 @@
 
 @implementation ServerLoginViewController
 
+- (void) reduceMemory
+{
+    TT_RELEASE_SAFELY(_phoneTextField);
+    TT_RELEASE_SAFELY(_pwdTextField);
+    TT_RELEASE_SAFELY(_confirmButton);
+    TT_RELEASE_SAFELY(_forgetButton);
+    TT_RELEASE_SAFELY(_newButton);
+    [super reduceMemory];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -38,13 +48,6 @@
     self.pwdTextField.pubTextField.text = @"shoufan";
 #endif
 }
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 - (PubTextField *)phoneTextField
 {
