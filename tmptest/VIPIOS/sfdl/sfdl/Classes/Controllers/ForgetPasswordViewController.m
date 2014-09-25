@@ -69,7 +69,7 @@
         _confirmButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
         _confirmButton.frame = CGRectMake(0.0f,  70, 320.0f, 40.0f);
         _confirmButton.backgroundColor = kLightGrayColor;
-        [_confirmButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18.0f]];
+        [_confirmButton.titleLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
         [CreateObject addTargetEfection:_confirmButton];
         [_confirmButton setTitle:@"SUBMIT" forState:UIControlStateNormal];
         [_confirmButton addTarget:self action:@selector(confirmButtonAction:) forControlEvents:UIControlEventTouchUpInside];
