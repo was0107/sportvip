@@ -34,7 +34,7 @@
 /*
  *  服务器配置
  */
-#define kUseSimulateData    0     //打开表示使用测试环境
+//#define kUseSimulateData    0     //打开表示使用测试环境
 // 测试环境
 #ifdef kUseSimulateData     
 
