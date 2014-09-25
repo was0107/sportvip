@@ -29,8 +29,9 @@
         self.backgroundColor = kWhiteColor;
         
         UIView *SELVIEW = [[[UIView alloc] initWithFrame:self.bounds] autorelease];
-        SELVIEW.backgroundColor = KCellSelColor;
+        SELVIEW.backgroundColor = [UIColor getColor:@"EBEAF1"];
         self.selectedBackgroundView = SELVIEW;
+        
 //        self.selectionStyle = UITableViewCellSelectionStyleGray;
     }
     return self;

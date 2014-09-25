@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4903B14F19D3EBA100B47CCA /* quite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4903B14E19D3EBA100B47CCA /* quite@2x.png */; };
 		4940B373198A6D7700829608 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4940B372198A6D7700829608 /* CoreTelephony.framework */; };
 		4940B375198A6D7D00829608 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4940B374198A6D7D00829608 /* Security.framework */; };
 		4940B377198A6DAF00829608 /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4940B376198A6DAF00829608 /* PushConfig.plist */; };
@@ -124,6 +125,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4903B14E19D3EBA100B47CCA /* quite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "quite@2x.png"; sourceTree = "<group>"; };
 		4940B372198A6D7700829608 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		4940B374198A6D7D00829608 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		4940B376198A6DAF00829608 /* PushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PushConfig.plist; sourceTree = "<group>"; };
@@ -589,6 +591,7 @@
 		DD28C93C198A453900177D00 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4903B14E19D3EBA100B47CCA /* quite@2x.png */,
 				4977D03F19AB0B580089397C /* threfresh@2x.png */,
 				DD28C93D198A453900177D00 /* bg_top.png */,
 				DD28C93E198A453900177D00 /* sfdl */,
@@ -871,6 +874,7 @@
 				DD28C9B5198A453900177D00 /* home2@2x.png in Resources */,
 				DD28C9B8198A453900177D00 /* home5@2x.png in Resources */,
 				DD28C9B3198A453900177D00 /* home12@2x.png in Resources */,
+				4903B14F19D3EBA100B47CCA /* quite@2x.png in Resources */,
 				DD28C9F9198A482700177D00 /* Default.png in Resources */,
 				DD28C9B0198A453900177D00 /* bg_top.png in Resources */,
 				DD28C9B4198A453900177D00 /* home1@2x.png in Resources */,

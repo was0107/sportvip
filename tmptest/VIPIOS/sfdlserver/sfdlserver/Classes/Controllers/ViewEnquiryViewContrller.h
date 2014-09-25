@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseTitleViewController.h"
+#import "BaseTableViewController.h"
 #import "LoginResponse.h"
 
-@interface ViewEnquiryViewContrller : BaseTitleViewController
+@interface ViewEnquiryViewContrller : BaseTableViewController
 
 @property (nonatomic, retain) EnquiryItem *item;
 @end

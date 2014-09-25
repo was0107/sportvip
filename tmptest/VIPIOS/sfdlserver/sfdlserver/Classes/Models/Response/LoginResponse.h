@@ -153,12 +153,22 @@
  *server
  */
 
+
 @interface EnquiryItem : ListResponseItemBase
 
 @property (nonatomic, copy) NSString *enquiryId,*title,*content,*sendTime,*status;
 
-@property (nonatomic, copy) NSString *productList,*progress;
+@property (nonatomic, copy) NSString *username,*progress, *readFlag/*１为已读，其它为未读*/;
 
+// for detail
+
+@property (nonatomic, copy) NSString *ip_address, *country, *area, *field_value1, *field_value2,*field_value3, *field_value4,*field_value5;
+
+@property (nonatomic, retain) NSMutableString *productList;
+
+@property (nonatomic, retain) NSMutableArray *keysArray, *valuesArray;
+
+- (BOOL) isItemReaded;
 @end
 
 

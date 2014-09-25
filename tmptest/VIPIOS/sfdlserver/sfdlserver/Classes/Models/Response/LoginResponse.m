@@ -412,20 +412,104 @@
 
 @implementation EnquiryItem
 
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_enquiryId);
+    TT_RELEASE_SAFELY(_title);
+    TT_RELEASE_SAFELY(_content);
+    TT_RELEASE_SAFELY(_sendTime);
+    TT_RELEASE_SAFELY(_status);
+    TT_RELEASE_SAFELY(_productList);
+    TT_RELEASE_SAFELY(_progress);
+    TT_RELEASE_SAFELY(_username);
+    TT_RELEASE_SAFELY(_readFlag);
+    TT_RELEASE_SAFELY(_ip_address);
+    TT_RELEASE_SAFELY(_country);
+    TT_RELEASE_SAFELY(_area);
+    TT_RELEASE_SAFELY(_field_value1);
+    TT_RELEASE_SAFELY(_field_value2);
+    TT_RELEASE_SAFELY(_field_value3);
+    TT_RELEASE_SAFELY(_field_value4);
+    TT_RELEASE_SAFELY(_field_value5);
+    [super dealloc];
+}
+
 - (id) initWithDictionary:(const NSDictionary *) dictionary
 {
     self = [super init];
     if (self) {
-        self.enquiryId = [dictionary objectForKey:@"enquiryId"];
-        self.title = [dictionary objectForKey:@"title"];
-        self.content = [dictionary objectForKey:@"content"];
-        self.sendTime = [dictionary objectForKey:@"sendTime"];
-        self.status = [dictionary objectForKey:@"status"];
-        self.productList = [dictionary objectForKey:@"productList"];
-        self.progress = [dictionary objectForKey:@"progress"];
+        self.enquiryId    = [self stringObjectFrom:dictionary withKey:@"enquiryId"];
+        self.title        = [self stringObjectFrom:dictionary withKey:@"title"];
+        self.content      = [self stringObjectFrom:dictionary withKey:@"content"];
+        self.sendTime     = [self stringObjectFrom:dictionary withKey:@"sendTime"];
+        self.status       = [self stringObjectFrom:dictionary withKey:@"status"];
+        self.progress     = [self stringObjectFrom:dictionary withKey:@"progress"];
+        self.username     = [self stringObjectFrom:dictionary withKey:@"username"];
+        self.readFlag     = [self stringObjectFrom:dictionary withKey:@"readFlag"];
+        self.ip_address   = [self stringObjectFrom:dictionary withKey:@"ip_address"];
+        self.country      = [self stringObjectFrom:dictionary withKey:@"country"];
+        self.area         = [self stringObjectFrom:dictionary withKey:@"area"];
+        self.field_value1 = [self stringObjectFrom:dictionary withKey:@"field_value1"];
+        self.field_value2 = [self stringObjectFrom:dictionary withKey:@"field_value2"];
+        self.field_value3 = [self stringObjectFrom:dictionary withKey:@"field_value3"];
+        self.field_value4 = [self stringObjectFrom:dictionary withKey:@"field_value4"];
+        self.field_value5 = [self stringObjectFrom:dictionary withKey:@"field_value5"];
+        
+        
+        self.keysArray = [NSMutableArray array];
+        self.valuesArray = [NSMutableArray array];
+        self.productList = [NSMutableString stringWithString:@""];
+        
+        NSArray *array = [dictionary objectForKey:@"productList"];
+        if ([array isKindOfClass:[NSArray class]]) {
+            for (int i = 0 , total = [array count]; i < total; i++) {
+                NSDictionary *dict = [array objectAtIndex:i];
+                NSString *proName = [dict objectForKey:@"product_name"];
+                [self.productList appendFormat:@"%@",proName];
+                if (i != total -1) {
+                    [self.productList appendString:@"\n"];
+                }
+            }
+        }
+        
+        NSString *statusKey = [dictionary objectForKey:@"status"];
+        if ([statusKey isEqualToString:@"0"]) {
+            self.status = @"查询中";
+        }
+        else if ([statusKey isEqualToString:@"1"]) {
+            self.status = @"处理中";
+        }
+        else {
+            self.status = @"完成";
+        }
+        
+        [self.keysArray addObject:@"Subject:"];
+        [self.keysArray addObject:@"From:"];
+        [self.keysArray addObject:@"Message:"];
+        [self.keysArray addObject:@"Time:"];
+        [self.keysArray addObject:@"Progress:"];
+        [self.keysArray addObject:@"IP:"];
+        [self.keysArray addObject:@"Country:"];
+        [self.keysArray addObject:@"Regional:"];
+        [self.keysArray addObject:@"Product:"];
+        
+        [self.valuesArray addObject:self.title];
+        [self.valuesArray addObject:self.username];
+        [self.valuesArray addObject:self.content];
+        [self.valuesArray addObject:self.sendTime];
+        [self.valuesArray addObject:self.status];
+        [self.valuesArray addObject:self.ip_address];
+        [self.valuesArray addObject:self.country];
+        [self.valuesArray addObject:self.area];
+        [self.valuesArray addObject:self.productList];
     }
     
     return self;
+}
+
+- (BOOL) isItemReaded
+{
+    return[self.readFlag isEqualToString:@"1"];
 }
 
 @end

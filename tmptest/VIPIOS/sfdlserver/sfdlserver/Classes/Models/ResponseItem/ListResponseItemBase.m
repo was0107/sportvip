@@ -22,7 +22,7 @@
 -(NSString *)stringObjectFrom:(const NSDictionary *)dictionary withKey:(NSString *)key
 {
     NSString * stringValue = [dictionary objectForKey:key];
-    if (stringValue == (NSString *)[NSNull null]) {
+    if (!stringValue || stringValue == (NSString *)[NSNull null]) {
         stringValue = kEmptyString;
         return stringValue;
     }

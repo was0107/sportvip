@@ -133,7 +133,7 @@
 - (id) showRight
 {
     UIBarButtonItem *right = [[[UIBarButtonItem alloc] initWithCustomView:self.rightButton] autorelease];
-    [self.navigationItem setRightBarButtonItem:right];
+    [self.navigationItem mySetRightBarButtonItem:right];
     return self;
 }
 
@@ -167,16 +167,12 @@
 {
     if (!_rightButton) {
         _rightButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
-        _rightButton.frame = CGRectMake(5, 12, 49, 33);;
+        _rightButton.frame = CGRectMake(5, 12, 47, 44);;
+        int spaceWidth = 3;
+        _rightButton.imageEdgeInsets = UIEdgeInsetsMake(spaceWidth,spaceWidth,spaceWidth,spaceWidth);
         [_rightButton setNormalImage:nil selectedImage:nil];
         _rightButton.titleLabel.font = HTFONTSIZE(kFontSize13);
-        if (!IS_IOS_7_OR_GREATER) {
-            [_rightButton setTitleColor:kWhiteColor forState:UIControlStateNormal];
-            [_rightButton setBackgroundImage:@"nav_button_normal" selectedImage:@"nav_button_selected" clickImage:@"nav_button_selected"];
-        } else {
-            [_rightButton setTitleColor:kWhiteColor forState:UIControlStateNormal];
-            [_rightButton setBackgroundImage:@"nav_button_normal" selectedImage:@"nav_button_selected" clickImage:@"nav_button_selected"];
-        }
+        [_rightButton setImage:[UIImage imageNamed:@"quite"] forState:UIControlStateNormal];
         [_rightButton.titleLabel setFont:HTFONTSIZE(16.0)];
         [_rightButton addTarget:self action:@selector(rightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }

@@ -222,9 +222,10 @@
     view.backgroundColor = kClearColor;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:@"FIND LOCATIONS" forState:UIControlStateNormal];
+    [button.titleLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
     [button addTarget:self action:@selector(showTeachers:) forControlEvents:UIControlEventTouchUpInside];
     [CreateObject addTargetEfection:button];
-    button.frame = CGRectMake(10, 10, 160, 40);
+    button.frame = CGRectMake(0, 10, 320, 40);
     [view addSubview:button];
     return view;
 }

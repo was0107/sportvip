@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setTitleContent:@"Login"];
+    [self setTitleContent:@"LOGIN"];
     [self.view addSubview:self.phoneTextField];
     [self.view addSubview:self.pwdTextField];
 //    [self.view addSubview:self.forgetButton];
@@ -34,8 +34,8 @@
 //    [self.view addSubview:self.newButton];
     
 #ifdef kUseSimulateData
-    self.phoneTextField.pubTextField.text = @"haibo";
-    self.pwdTextField.pubTextField.text = @"admin123";
+    self.phoneTextField.pubTextField.text = @"shoufan";
+    self.pwdTextField.pubTextField.text = @"shoufan";
 #endif
 }
 
@@ -45,12 +45,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) rightButtonAction:(id)sender
-{
-//    RegisterViewController *controller = [[[RegisterViewController alloc] init] autorelease];
-//    [controller setHidesBottomBarWhenPushed:YES];
-//    [self.navigationController pushViewController:controller animated:YES];
-}
 
 - (PubTextField *)phoneTextField
 {

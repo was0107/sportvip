@@ -24,8 +24,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setTitleContent:@"INQUIRY LIST"];
+    [[self showRight] setTitleContent:@"INQUIRY LIST"];
     [self sendRequestToServer];
+}
+
+- (IBAction)rightButtonAction:(id)sender
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void) configTableView
@@ -81,14 +86,14 @@
             [cell.contentView addSubview:cell.rightLabel];
             [cell.contentView addSubview:cell.subRightLabel];
         }
-//        EnquiryItem *item = [blockSelf.response at:indexPath.row ];
-//        cell.topLabel.text = item.title;
-//        cell.subLabel.text = item.content;
-//        cell.rightLabel.text = [item.creationTime substringFromIndex:8];
-//        cell.subRightLabel.text = [item.creationTime substringToIndex:7];
-//        cell.content = item;
+        EnquiryItem *item = [blockSelf.response at:indexPath.row ];
+        cell.topLabel.text = item.title;
+        cell.subLabel.text = item.content;
+        cell.rightLabel.text = [item.sendTime substringWithRange:NSMakeRange(11, 5)];
+        cell.subRightLabel.text = [item.sendTime substringToIndex:10];
+        cell.content = item;
         
-        if (0 == indexPath.row) {
+        if (![item isItemReaded]) {
             cell.backgroundView.backgroundColor = kRedColor;
             cell.topLabel.textColor = kWhiteColor;
             cell.subLabel.textColor = kWhiteColor;
@@ -103,10 +108,10 @@
             cell.subRightLabel.textColor = kLightGrayColor;
         }
         
-        cell.topLabel.text = @"The different series of deutz gensets have different features";
-        cell.subLabel.text = @"user name";
-        cell.rightLabel.text = @"08:59";
-        cell.subRightLabel.text = @"2014-09-03";
+//        cell.topLabel.text = @"The different series of deutz gensets have different features";
+//        cell.subLabel.text = @"user name";
+//        cell.rightLabel.text = @"08:59";
+//        cell.subRightLabel.text = @"2014-09-03";
         return cell;
     };
     
@@ -125,10 +130,12 @@
     self.tableView.cellSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         EnquiryItem *item = [blockSelf.response at:indexPath.row ];
+        item.readFlag = kEmptyString;
         ViewEnquiryViewContrller *controller = [[[ViewEnquiryViewContrller alloc] init] autorelease];
         controller.item = item;
         [blockSelf.navigationController hidesBottomBarWhenPushed];
         [blockSelf.navigationController pushViewController:controller animated:YES];
+        [blockSelf.tableView reloadData];
         
     };
     self.tableView.refreshBlock = ^(id content) {

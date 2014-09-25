@@ -5,6 +5,9 @@
       location = "group:sfdl/sfdl.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:sfdlserver/sfdlserver.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:PrettyUtility/PrettyUtility.xcodeproj">
    </FileRef>
 </Workspace>
