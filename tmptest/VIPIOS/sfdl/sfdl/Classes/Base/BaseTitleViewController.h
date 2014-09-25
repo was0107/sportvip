@@ -42,4 +42,14 @@
 @interface ShareTitleViewController : BaseTitleViewController
 @property (nonatomic, retain) UIView          *rightView;
 
+- (id) showType;
+
+- (id) showSearch;
+
+- (id) showShare;
+
+- (id) showSearchAndType;
+
+- (id<ISSContent>) shareContent;
+
 @end

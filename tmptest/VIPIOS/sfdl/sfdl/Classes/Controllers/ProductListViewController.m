@@ -38,6 +38,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[self showSearchAndType] showRight];
     [self setTitleContent:@"PRODUCTS"];
 
     if (!self.productTypeId) {

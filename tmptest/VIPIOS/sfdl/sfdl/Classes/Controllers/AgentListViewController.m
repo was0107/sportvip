@@ -33,6 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[self showType] showRight];
     [self setTitleContent:@"FIND YOUR DEALER"];
 }
 

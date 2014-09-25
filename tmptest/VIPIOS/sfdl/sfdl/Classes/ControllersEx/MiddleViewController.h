@@ -8,6 +8,6 @@
 
 #import "BaseTitleViewController.h"
 
-@interface MiddleViewController : BaseTitleViewController
+@interface MiddleViewController : ShareTitleViewController
 
 @end

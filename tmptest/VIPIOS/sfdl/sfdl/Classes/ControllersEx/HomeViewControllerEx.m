@@ -36,7 +36,6 @@
 @property (nonatomic, retain) ProductForHomePageResponse *response;
 @property (nonatomic, retain) UIView            *headerView;
 
-@property (nonatomic, retain) PopInputView      *popInputView;
 @end
 
 @implementation HomeViewControllerEx
@@ -50,7 +49,6 @@
     TT_RELEASE_SAFELY(_pictureResponse);
     TT_RELEASE_SAFELY(_request);
     TT_RELEASE_SAFELY(_response);
-    TT_RELEASE_SAFELY(_popInputView);
     TT_RELEASE_SAFELY(_headerView);
     [super reduceMemory];
 }
@@ -371,18 +369,4 @@
 }
 
 
-- (PopInputView *) popInputView
-{
-    if (!_popInputView) {
-        _popInputView = [[PopInputView alloc] initWithFrame:CGRectMake(0, 50, 320, 300)];
-        _popInputView.controller = self;
-    }
-    return _popInputView;
-}
-
-
-- (void) searchButtonAction:(id) sender
-{
-    [self.popInputView show];
-}
 @end

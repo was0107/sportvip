@@ -11,6 +11,7 @@
 #import "UIImage+extend.h"
 #import "UIView+extend.h"
 #import "UIImage+tintedImage.h"
+#import "PopInputView.h"
 
 
 @interface BaseTitleViewController()
@@ -274,9 +275,19 @@
 
 @end
 
+@interface ShareTitleViewController()
+@property (nonatomic, retain) PopInputView      *popInputView;
 
+@end
 
 @implementation ShareTitleViewController
+
+- (void) reduceMemory
+{
+    TT_RELEASE_SAFELY(_rightView);
+    TT_RELEASE_SAFELY(_popInputView);
+    [super reduceMemory];
+}
 
 
 - (void)viewDidLoad
@@ -285,6 +296,43 @@
 }
 
 
+- (id) showType
+{
+    [[self.rightView viewWithTag:1000+0] removeFromSuperview];
+    [[self.rightView viewWithTag:1000+1] removeFromSuperview];
+    [self.rightView setFrame:CGRectMake(0, 0, 44, 44)];
+    [[self.rightView viewWithTag:1000+2] setFrame:CGRectMake(0, 0, 44, 44)];
+
+    return self;
+}
+
+- (id) showSearch
+{
+    [[self.rightView viewWithTag:1000+0] setFrame:CGRectMake(0, 0, 44, 44)];
+    [[self.rightView viewWithTag:1000+1] removeFromSuperview];
+    [[self.rightView viewWithTag:1000+2] removeFromSuperview];
+    [self.rightView setFrame:CGRectMake(0, 0, 44, 44)];
+    return self;
+}
+
+
+- (id) showShare
+{
+    [[self.rightView viewWithTag:1000+1] setFrame:CGRectMake(0, 0, 44, 44)];
+    [[self.rightView viewWithTag:1000+0] removeFromSuperview];
+    [[self.rightView viewWithTag:1000+2] removeFromSuperview];
+    [self.rightView setFrame:CGRectMake(0, 0, 44, 44)];
+    return self;
+}
+
+- (id) showSearchAndType
+{
+    [[self.rightView viewWithTag:1000+0] setFrame:CGRectMake(0, 0, 44, 44)];
+    [[self.rightView viewWithTag:1000+2] setFrame:CGRectMake(44, 0, 44, 44)];
+    [[self.rightView viewWithTag:1000+1] removeFromSuperview];
+    [self.rightView setFrame:CGRectMake(0, 0, 88, 44)];
+    return self;
+}
 
 - (id) showRight
 {
@@ -292,7 +340,6 @@
     [self.navigationItem mySetRightBarButtonItem:right];
     return self;
 }
-
 
 
 - (UIView *) rightView
@@ -315,6 +362,10 @@
         button1.frame = CGRectMake(44, 0, 44, 44);
         button2.frame = CGRectMake(88, 0, 44, 44);
         
+        button0.tag = 1000+0;
+        button1.tag = 1000+1;
+        button2.tag = 1000+2;
+        
         int spaceWidth = 3;
         button0.imageEdgeInsets = UIEdgeInsetsMake(spaceWidth,spaceWidth,spaceWidth,spaceWidth);
         button1.imageEdgeInsets = UIEdgeInsetsMake(spaceWidth,spaceWidth,spaceWidth,spaceWidth);
@@ -331,12 +382,25 @@
     return _rightView;
 }
 
+//- (void) searchButtonAction:(id) sender
+//{
+//    Class class = NSClassFromString(@"ProductSearchExViewController");
+//    UIViewController *controller = [[[class alloc] init] autorelease];
+//    [self.navigationController pushViewController:controller animated:YES];
+//}
+
+- (PopInputView *) popInputView
+{
+    if (!_popInputView) {
+        _popInputView = [[PopInputView alloc] initWithFrame:CGRectMake(0, 50, 320, 300)];
+        _popInputView.controller = self;
+    }
+    return _popInputView;
+}
 
 - (void) searchButtonAction:(id) sender
 {
-    Class class = NSClassFromString(@"ProductSearchExViewController");
-    UIViewController *controller = [[[class alloc] init] autorelease];
-    [self.navigationController pushViewController:controller animated:YES];
+    [self.popInputView show];
 }
 
 - (void) shareButtonAction:(id) sender
@@ -446,7 +510,16 @@
     [self.navigationController pushViewController:vc1 animated:YES];
 }
 
-
+- (id<ISSContent>) shareContent
+{
+    return [ShareSDK content:CONTENT
+              defaultContent:CONTENT
+                       image:nil//[ShareSDK imageWithPath:imagePath]
+                       title:CONTENT
+                         url:SHARE_URL
+                 description:CONTENT
+                   mediaType:SSPublishContentMediaTypeNews];
+}
 
 // share function
 
@@ -455,13 +528,7 @@
     //    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     
     //构造分享内容
-    id<ISSContent> publishContent = [ShareSDK content:CONTENT
-                                       defaultContent:CONTENT
-                                                image:nil//[ShareSDK imageWithPath:imagePath]
-                                                title:@"ShareSDK"
-                                                  url:@"http://www.sharesdk.cn"
-                                          description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
-                                            mediaType:SSPublishContentMediaTypeNews];
+    id<ISSContent> publishContent = [self shareContent];
     
     ///////////////////////
     //以下信息为特定平台需要定义分享内容，如果不需要可省略下面的添加方法

@@ -29,6 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[self showType] showRight];
 //    self.secondTitleLabel.text = @"News";
     [self setTitleContent:@"NEWS"];
 

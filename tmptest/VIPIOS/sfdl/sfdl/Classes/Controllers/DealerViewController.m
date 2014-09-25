@@ -55,6 +55,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[self showType] showRight];
     _contentDictionary = [[NSMutableDictionary alloc] init];
     self.secondTitleLabel.text = @"Dealer";
     [self setTitleContent:@"DEALER"];

@@ -52,6 +52,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[self showShare] showRight];
     [self setTitleContent:@"PRODUCT"];
     [self.scrollView removeFromSuperview];
     [self.content loadHTMLString:@"<html></html>" baseURL:nil];
@@ -220,6 +221,23 @@
         [self createVideoView];
     }
     return _content;
+}
+
+
+
+
+- (id<ISSContent>) shareContent
+{
+    if (!self.productItem) {
+        return [super shareContent];
+    }
+    return [ShareSDK content:self.productItem.productName
+              defaultContent:self.productItem.debugDescription
+                       image:nil//[ShareSDK imageWithPath:imagePath]
+                       title:self.productItem.productName
+                         url:SHARE_URL
+                 description:self.productItem.debugDescription
+                   mediaType:SSPublishContentMediaTypeNews];
 }
 
 

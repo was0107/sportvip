@@ -58,6 +58,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[self showType] showRight];
     [self setTitleContent:@"INQUIRY FORM"];
     self.scrollView = [[[UIKeyboardAvoidingScrollView alloc] initWithFrame:CGRectMake(0,  0, 320.0, kContentBoundsHeight)] autorelease];
     self.scrollView.backgroundColor = kClearColor;
@@ -199,7 +200,7 @@
 - (PubTextField *)pictureTextField
 {
     if (!_pictureTextField) {
-        _pictureTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  10 + 6.5 * kPubTextFieldHeight2  + kImageStartAt, 320, 3*kPubTextFieldHeight) indexTitle:@"Picture:" placeHolder:@"" pubTextFieldStyle:PubTextFieldStyleBottom];
+        _pictureTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  10 + 6.5 * kPubTextFieldHeight2  + kImageStartAt-2, 320, 3*kPubTextFieldHeight) indexTitle:@"Picture:" placeHolder:@"" pubTextFieldStyle:PubTextFieldStyleBottom];
         //        _pictureTextField.autoLayout = YES;
         _pictureTextField.indexLabel.textAlignment = NSTextAlignmentRight;
         _pictureTextField.pubTextField.enabled = NO;
@@ -220,7 +221,7 @@
 {
     if (!_codeTextField) {
         __unsafe_unretained typeof(self) safeSelf = self;
-        _codeTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  10 + 9.5 * kPubTextFieldHeight2  + kImageStartAt, 320, kPubTextFieldHeight) indexTitle:@"Code:" placeHolder:@"" pubTextFieldStyle:PubTextFieldStyleBottom];
+        _codeTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  10 + 9.5 * kPubTextFieldHeight2  + kImageStartAt-4, 320, kPubTextFieldHeight) indexTitle:@"Code:" placeHolder:@"" pubTextFieldStyle:PubTextFieldStyleBottom];
         _codeTextField.indexLabel.textAlignment = NSTextAlignmentRight;
         _codeTextField.pubTextField.returnKeyType = UIReturnKeyDone;
         _codeTextField.pubTextField.frame = CGRectMake(90, 5, 100, 30);
@@ -267,7 +268,7 @@
         _confirmButton.backgroundColor = kClearColor;
         [_confirmButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18.0f]];
         [CreateObject addTargetEfection:_confirmButton];
-        [_confirmButton setTitle:@"SUBMIT" forState:UIControlStateNormal];
+        [_confirmButton setTitle:@"SEND" forState:UIControlStateNormal];
         [_confirmButton addTarget:self action:@selector(confirmButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _confirmButton;

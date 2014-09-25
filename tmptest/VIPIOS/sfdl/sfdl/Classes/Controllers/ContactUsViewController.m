@@ -36,6 +36,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[self showType] showRight];
 //    self.secondTitleLabel.text = @"Contact Us";
     [self setTitleContent:@"CONTACT US"];
 

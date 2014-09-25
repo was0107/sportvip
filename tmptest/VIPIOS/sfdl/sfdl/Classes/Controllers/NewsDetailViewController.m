@@ -42,6 +42,7 @@
 {
     [super viewDidLoad];
 //    self.secondTitleLabel.text = @"News";
+    [[self showType] showRight];
     [self setTitleContent:@"NEWS"];
     [self.content loadHTMLString:@"<html></html>" baseURL:nil];
     self.content.scrollView.backgroundColor = kWhiteColor;

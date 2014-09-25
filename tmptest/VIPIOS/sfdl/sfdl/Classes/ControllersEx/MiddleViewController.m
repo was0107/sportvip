@@ -70,12 +70,14 @@
     TT_RELEASE_SAFELY(_prodcutTypeRequest);
     TT_RELEASE_SAFELY(_prodcutTypeResponse);
     TT_RELEASE_SAFELY(_selectedDiction);
+    TT_RELEASE_SAFELY(_pushTreeView);
     [super reduceMemory];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[self showSearch] showRight];
     [self setTitleContent:@"PRODUCTS"];
     [self.view addSubview:self.pushTreeView];
     self.selectedDiction = [NSMutableDictionary dictionary];
@@ -92,7 +94,7 @@
 - (InfiniteTreeView *) pushTreeView
 {
     if (!_pushTreeView) {
-        _pushTreeView = [InfiniteTreeView loadFromXib];
+        _pushTreeView = [[InfiniteTreeView loadFromXib] retain];
         _pushTreeView.frame = self.view.bounds;
         _pushTreeView.dataSource = self;
         _pushTreeView.delegate = self;

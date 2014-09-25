@@ -43,16 +43,19 @@
     UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(5, 40, 310, 120)] autorelease];
     view.backgroundColor = kWhiteColor;
     
-    self.textField = [[[UITextField alloc] initWithFrame:CGRectMake(0, 10, 310, 35)] autorelease];
-    self.textField.backgroundColor = [UIColor colorWithWhite:0.667f alpha:0.2f];
+    self.textField = [[[UITextField alloc] initWithFrame:CGRectMake(5, 0, 310, 35)] autorelease];
+    self.textField.backgroundColor = kClearColor;
     self.textField.placeholder = @"Product";
     self.textField.textColor = kDarkGrayColor;
     self.textField.returnKeyType = UIReturnKeyDone;
     self.textField.delegate = self;
-    [view addSubview:self.textField];
+    UIView *left = [[[UIView alloc] initWithFrame:CGRectMake(0, 10, 310, 35)] autorelease];
+    left.backgroundColor = [UIColor colorWithWhite:0.667f alpha:0.2f];
+    [left addSubview:self.textField];
+    [view addSubview:left];
     
     self.searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.searchButton.frame = CGRectMake(200, 10, 100, 35);
+    self.searchButton.frame = CGRectMake(205, 10, 100, 35);
     self.searchButton.backgroundColor = kClearColor;
     [self.searchButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18.0f]];
     [CreateObject addTargetEfection:self.searchButton];
