@@ -99,6 +99,13 @@
     
     self.tableView.sectionHeaderBlock = ^( UITableView *tableView, NSInteger section)
     {
+        NSNumber *value = [self.diction objectForKey:kIntToString(section)];
+        BOOL flag = YES;
+        if (value) {
+            flag = [value boolValue];
+        } else {
+            flag = NO;
+        }
         UIView *footerView = [[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 46)]autorelease];
         footerView.backgroundColor = kClearColor;
         UIView *footerView1 = [[[UIView alloc]initWithFrame:CGRectMake(0, 10, 320, 36)]autorelease];
@@ -109,9 +116,13 @@
         label1.textColor = kWhiteColor;
         [footerView1 addSubview:label1];
         footerView1.tag = 1000+ section;
+        
+        UIImageView *rightView = [[[UIImageView alloc] initWithFrame:CGRectMake(280, 12, 32, 32)] autorelease];
+        rightView.image = [UIImage imageNamed:flag ? @"arrow_down" : @"arrow_right"];
         UIGestureRecognizer *gesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sectionGesture:)] autorelease];
         [footerView1 addGestureRecognizer:gesture];
         [footerView addSubview:footerView1];
+        [footerView addSubview:rightView];
         return footerView;
     };
     

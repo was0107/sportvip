@@ -96,6 +96,7 @@
         //        _labelTwo.textColor  = [UIColor getColor:kCellLeftColor];
         //        _labelTwo.textAlignment = NSTextAlignmentCenter;
         _labelTwo.backgroundColor = kClearColor;
+        _labelTwo.opaque = NO;
         //        _labelTwo.font = HTFONTSIZE(kSystemFontSize14);
         //        _labelTwo.text = lLabelTwoString;
         //        _labelTwo.numberOfLines = 0;

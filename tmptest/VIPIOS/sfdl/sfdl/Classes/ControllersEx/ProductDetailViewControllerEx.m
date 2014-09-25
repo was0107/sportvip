@@ -215,6 +215,7 @@
         _content = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, 320, kContentBoundsHeight-44)];
         _content.scrollView.backgroundColor = kClearColor;
         _content.backgroundColor = kClearColor;
+        _content.opaque = NO;
         [_content.scrollView setContentInset:UIEdgeInsetsMake(365,0,0,0)];
         [_content.scrollView addSubview:self.cycleView];
         [self createNameView];
