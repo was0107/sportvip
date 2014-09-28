@@ -10,29 +10,54 @@
 	<string>Sport</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>D8727C49-EC56-4200-9186-A2EE9E4DE2DC</key>
+		<key>395bb510-9cf1-4adc-a0f4-6a4ce3c7c256++2684</key>
+		<string>http://www.svnchina.com/svn/discount/Discount/Discount/Common/AKTabBarController/AKTabBarController.bundle</string>
+		<key>8818FE46068926A6B0F015D6AEA009B20A9CF050</key>
 		<string>https://github.com/was0107/sportvip.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>tmptest/VIPIOS/Sport.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>D8727C49-EC56-4200-9186-A2EE9E4DE2DC</key>
+		<key>395bb510-9cf1-4adc-a0f4-6a4ce3c7c256++2684</key>
+		<string>../../../tmptest/VIPIOS/sfdl/sfdl/Classes/Vendor/AKTabBarController/AKTabBarController.bundle</string>
+		<key>8818FE46068926A6B0F015D6AEA009B20A9CF050</key>
 		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>395bb510-9cf1-4adc-a0f4-6a4ce3c7c256++2684</key>
+		<string>http://www.svnchina.com/svn/discount</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/was0107/sportvip.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>D8727C49-EC56-4200-9186-A2EE9E4DE2DC</string>
+	<string>8818FE46068926A6B0F015D6AEA009B20A9CF050</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>395bb510-9cf1-4adc-a0f4-6a4ce3c7c256++2684</string>
+			<key>IDESourceControlWCCName</key>
+			<string>AKTabBarController.bundle</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>395bb510-9cf1-4adc-a0f4-6a4ce3c7c256++2684</string>
+			<key>IDESourceControlWCCName</key>
+			<string>AKTabBarController.bundle</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>D8727C49-EC56-4200-9186-A2EE9E4DE2DC</string>
+			<string>8818FE46068926A6B0F015D6AEA009B20A9CF050</string>
 			<key>IDESourceControlWCCName</key>
 			<string>sportvip</string>
 		</dict>

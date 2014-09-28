@@ -51,6 +51,7 @@
         if (!cell){
             cell = [[NewsTableViewCellEx alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
             [cell configWithType:0];
+            cell.contentView.backgroundColor = kWhiteColor;
         }
         [cell showLeft:(indexPath.row %2 != 0)];
         NewsItem *item = [blockSelf.response at:indexPath.row ];

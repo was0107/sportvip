@@ -134,6 +134,7 @@
     [self.indexLabel sizeToFit];
     CGFloat max = self.indexLabel.width;
     [self setMaxWidth:max];
+    [self.pubTextField setFrameY:10];
     
 }
 - (void) setMaxWidth:(CGFloat)maxWidth

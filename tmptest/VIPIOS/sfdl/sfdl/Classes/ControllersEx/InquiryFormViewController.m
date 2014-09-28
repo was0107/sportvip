@@ -111,7 +111,7 @@
     }
     __unsafe_unretained typeof(self) safeSelf = self;
     if ([[[AppDelegate sharedAppDelegate] rootController] aboutResponse]) {
-        safeSelf.toTextField.pubTextView.text = [[[[AppDelegate sharedAppDelegate] rootController] aboutResponse] email];
+        safeSelf.toTextField.pubTextField.text = [[[[AppDelegate sharedAppDelegate] rootController] aboutResponse] email];
         return;
     }
     [[[AppDelegate sharedAppDelegate] rootController] sendRequestToGetCompanyServer];
@@ -149,7 +149,7 @@
 {
     if (!_toTextField) {
         __unsafe_unretained typeof(self) safeSelf = self;
-        _toTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0, 10 + 1* kPubTextFieldHeight2  + kImageStartAt , 320, 1.5*kPubTextFieldHeight) indexTitle:@"To:" placeHolder:@"" pubTextFieldStyle:PubTextFieldStyleTop];
+        _toTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0, 10 + 1* kPubTextFieldHeight2  + kImageStartAt , 320, 1.*kPubTextFieldHeight) indexTitle:@"To:" placeHolder:@"" pubTextFieldStyle:PubTextFieldStyleTop];
         //        _toTextField.autoLayout = YES;
         _toTextField.indexLabel.textAlignment = NSTextAlignmentRight;
         _toTextField.pubTextField.returnKeyType = UIReturnKeyNext;
@@ -166,7 +166,7 @@
 {
     if (!_subjectTextField) {
         __unsafe_unretained typeof(self) safeSelf = self;
-        _subjectTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0, 10 + 2.5* kPubTextFieldHeight2  + kImageStartAt , 320, kPubTextFieldHeight) indexTitle:@"Subject:" placeHolder:@"" pubTextFieldStyle:PubTextFieldStyleTop];
+        _subjectTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0, 10 + 2.* kPubTextFieldHeight2  + kImageStartAt , 320, kPubTextFieldHeight) indexTitle:@"Subject:" placeHolder:@"" pubTextFieldStyle:PubTextFieldStyleTop];
         //        _subjectTextField.autoLayout = YES;
         _subjectTextField.indexLabel.textAlignment = NSTextAlignmentRight;
         _subjectTextField.pubTextField.returnKeyType = UIReturnKeyNext;
@@ -183,7 +183,7 @@
 {
     if (!_messageTextField) {
         __unsafe_unretained typeof(self) safeSelf = self;
-        _messageTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0, 10 + 3.5* kPubTextFieldHeight2  + kImageStartAt , 320, 3*kPubTextFieldHeight) indexTitle:@"Message:" placeHolder:@"" pubTextFieldStyle:PubTextFieldStyleTop];
+        _messageTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0, 10 + 3.* kPubTextFieldHeight2  + kImageStartAt , 320, 3*kPubTextFieldHeight) indexTitle:@"Message:" placeHolder:@"" pubTextFieldStyle:PubTextFieldStyleTop];
         //        _messageTextField.autoLayout = YES;
         _messageTextField.indexLabel.textAlignment = NSTextAlignmentRight;
         _messageTextField.pubTextField.returnKeyType = UIReturnKeyNext;
@@ -200,7 +200,7 @@
 - (PubTextField *)pictureTextField
 {
     if (!_pictureTextField) {
-        _pictureTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  10 + 6.5 * kPubTextFieldHeight2  + kImageStartAt-2, 320, 3*kPubTextFieldHeight) indexTitle:@"Picture:" placeHolder:@"" pubTextFieldStyle:PubTextFieldStyleBottom];
+        _pictureTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  10 + 6. * kPubTextFieldHeight2  + kImageStartAt-2, 320, 3*kPubTextFieldHeight) indexTitle:@"Picture:" placeHolder:@"" pubTextFieldStyle:PubTextFieldStyleBottom];
         //        _pictureTextField.autoLayout = YES;
         _pictureTextField.indexLabel.textAlignment = NSTextAlignmentRight;
         _pictureTextField.pubTextField.enabled = NO;
@@ -221,7 +221,7 @@
 {
     if (!_codeTextField) {
         __unsafe_unretained typeof(self) safeSelf = self;
-        _codeTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  10 + 9.5 * kPubTextFieldHeight2  + kImageStartAt-4, 320, kPubTextFieldHeight) indexTitle:@"Code:" placeHolder:@"" pubTextFieldStyle:PubTextFieldStyleBottom];
+        _codeTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  10 + 9. * kPubTextFieldHeight2  + kImageStartAt-4, 320, kPubTextFieldHeight) indexTitle:@"Code:" placeHolder:@"" pubTextFieldStyle:PubTextFieldStyleBottom];
         _codeTextField.indexLabel.textAlignment = NSTextAlignmentRight;
         _codeTextField.pubTextField.returnKeyType = UIReturnKeyDone;
         _codeTextField.pubTextField.frame = CGRectMake(90, 5, 100, 30);
@@ -264,7 +264,7 @@
 {
     if (!_confirmButton) {
         _confirmButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
-        _confirmButton.frame = CGRectMake(0.0f, 25 + 10.5 * kPubTextFieldHeight2  + kImageStartAt, 320.0f, 40.0f);
+        _confirmButton.frame = CGRectMake(0.0f, 25 + 10. * kPubTextFieldHeight2  + kImageStartAt, 320.0f, 40.0f);
         _confirmButton.backgroundColor = kClearColor;
         [_confirmButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18.0f]];
         [CreateObject addTargetEfection:_confirmButton];

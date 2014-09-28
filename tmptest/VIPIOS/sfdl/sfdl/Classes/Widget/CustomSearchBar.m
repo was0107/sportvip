@@ -113,6 +113,7 @@
         _label1.font = HTFONTSIZE(kFontSize12);
         _label2 = [[UILabel alloc] initWithFrame:CGRectMake(240, 30, 70, 20)];
         _label2.textColor = kWhiteColor;
+        _label2.backgroundColor = kClearColor;
         _label2.text = @"Send Email";
         _label2.numberOfLines = 2;
         _label2.textAlignment = NSTextAlignmentCenter;

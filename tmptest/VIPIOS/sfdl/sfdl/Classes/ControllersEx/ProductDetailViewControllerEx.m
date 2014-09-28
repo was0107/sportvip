@@ -288,6 +288,20 @@
 }
 
 
+- (void) dealWithVideo
+{
+    [self.videoImageView setImageWithURL:[NSURL URLWithString:self.response.videoImg]
+              placeholderImage:[UIImage imageNamed:kImageDefault]
+                       success:^(UIImage *image){
+                           UIImage * image1 = [image imageScaledToSizeEx:CGSizeMake(144, 77)];
+                           _videoImageView.image = image1;
+                       }
+                       failure:^(NSError *error){
+                           _videoImageView.image = [UIImage imageNamed:kImageDefault];
+                       }];
+
+}
+
 - (void)sendRequestToGetCompanyServer
 {
     typeof(self) blockSelf = self;
@@ -310,6 +324,7 @@
         [blockSelf.cycleView reloadData];
         blockSelf.belongLabel.text = [NSString stringWithFormat:@"Belongs to: <font size=14 color=black>%@ </font>",blockSelf.response.productTypeName];
         [blockSelf descriptionAction:blockSelf.descButton];
+        [blockSelf dealWithVideo];
     };
 
     idBlock failedBlock = ^(id content){

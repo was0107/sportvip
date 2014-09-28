@@ -64,6 +64,22 @@
     return @"home_white";
 }
 
+- (id) showLeft
+{
+    
+    UIBarButtonItem *right = [[[UIBarButtonItem alloc] initWithCustomView:[self leftViewTemp]] autorelease];
+    [self.navigationItem mySetLeftBarButtonItem:right];
+    return self;
+}
+
+- (UIView *) leftViewTemp
+{
+    UIImageView *bgView = [[[UIImageView alloc] initWithFrame:CGRectMake(30, 0, 60, 44)] autorelease];
+    bgView.image = [UIImage imageNamed:@"icon"];
+    return bgView;
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -268,16 +284,18 @@
     self.tableView.sectionHeaderBlock = ^( UITableView *tableView, NSInteger section)
     {
         UIView *footerView = [[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 35)]autorelease];
-        
+        footerView.backgroundColor = blockSelf.view.backgroundColor;
         UILabel *label1 = [[[UILabel alloc] initWithFrame:CGRectMake(10,9,200,30)] autorelease];
         label1.text = (eSectionIndex01 == section) ? @"HOT PRODUCTS" : @"MOST POPULATE";
         label1.font = HTFONTSIZE(kFontSize16);
         label1.textColor = kBlackColor;
+        label1.backgroundColor = kClearColor;
         
         UILabel *label2 = [[[UILabel alloc] initWithFrame:CGRectMake(220,4,90,40)] autorelease];
         label2.text = @"MORE";
         label2.font = HTFONTSIZE(kFontSize14);
         label2.textColor = kGrayColor;
+        label2.backgroundColor = kClearColor;
         label2.textAlignment = NSTextAlignmentRight;
         label2.userInteractionEnabled = YES;
         footerView.userInteractionEnabled = YES;

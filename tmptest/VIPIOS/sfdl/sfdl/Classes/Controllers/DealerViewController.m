@@ -127,8 +127,7 @@
         BaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell){
             cell = [[BaseTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
-            
-
+            cell.contentView.backgroundColor = kWhiteColor;
             cell.topLabel.frame = CGRectMake(10, 3, 300, 25);
             cell.textField.frame = CGRectMake(10, 28, 300, 30);
             cell.subLabel.frame = CGRectMake(10, 28, 300, 30);
@@ -152,7 +151,7 @@
         } else if (1 == indexPath.section ){
             [cell.textField removeFromSuperview];
             [cell.contentView addSubview:cell.subLabel];
-            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+            cell.selectionStyle = UITableViewCellSelectionStyleGray;
             
             if (0 == indexPath.row) {
                 cell.subLabel.text = (!self.typeItem) ? @"请选择  " : self.typeItem.productTypeName;

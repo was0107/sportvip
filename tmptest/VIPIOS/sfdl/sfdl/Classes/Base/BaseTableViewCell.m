@@ -31,7 +31,7 @@
         UIView *SELVIEW = [[[UIView alloc] initWithFrame:self.bounds] autorelease];
         SELVIEW.backgroundColor = KCellSelColor;
 //        self.selectedBackgroundView = SELVIEW;
-//        self.selectionStyle = UITableViewCellSelectionStyleGray;
+        self.selectionStyle = UITableViewCellSelectionStyleGray;
     }
     return self;
 }
