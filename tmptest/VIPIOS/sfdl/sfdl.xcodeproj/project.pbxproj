@@ -13,6 +13,7 @@
 		47DF739A194D952B0004CC63 /* AgentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47DF7399194D952B0004CC63 /* AgentListViewController.m */; };
 		47DF739D194D954E0004CC63 /* AgentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47DF739C194D954E0004CC63 /* AgentDetailViewController.m */; };
 		4902923919D14B08004192CD /* PopInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4902923819D14B08004192CD /* PopInputView.m */; };
+		49093EB119D7E9460087A9FC /* left_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49093EB019D7E9460087A9FC /* left_logo@2x.png */; };
 		490CE84819BABFCF00C2F887 /* AKTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 490CE83919BABFCF00C2F887 /* AKTab.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		490CE84919BABFCF00C2F887 /* AKTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 490CE83B19BABFCF00C2F887 /* AKTabBar.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		490CE84A19BABFCF00C2F887 /* AKTabBarController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 490CE83D19BABFCF00C2F887 /* AKTabBarController.bundle */; };
@@ -249,6 +250,7 @@
 		47DF739C194D954E0004CC63 /* AgentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgentDetailViewController.m; sourceTree = "<group>"; };
 		4902923719D14B08004192CD /* PopInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopInputView.h; sourceTree = "<group>"; };
 		4902923819D14B08004192CD /* PopInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopInputView.m; sourceTree = "<group>"; };
+		49093EB019D7E9460087A9FC /* left_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left_logo@2x.png"; sourceTree = "<group>"; };
 		490CE83819BABFCF00C2F887 /* AKTab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKTab.h; sourceTree = "<group>"; };
 		490CE83919BABFCF00C2F887 /* AKTab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKTab.m; sourceTree = "<group>"; };
 		490CE83A19BABFCF00C2F887 /* AKTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKTabBar.h; sourceTree = "<group>"; };
@@ -1215,6 +1217,7 @@
 		DD7737DB1940A162006239B2 /* sfdl */ = {
 			isa = PBXGroup;
 			children = (
+				49093EB019D7E9460087A9FC /* left_logo@2x.png */,
 				4924E42D19C6749500D19666 /* home_black@2x.png */,
 				4924E42E19C6749500D19666 /* home_white@2x.png */,
 				4924E3C319C6719E00D19666 /* about@2x.png */,
@@ -1431,6 +1434,7 @@
 				DD2B9F901965590B00CB20C3 /* ShareSDKLocalizable.strings in Resources */,
 				4924E40419C6719E00D19666 /* home@2x.png in Resources */,
 				4924E40E19C6719E00D19666 /* home10@2x.png in Resources */,
+				49093EB119D7E9460087A9FC /* left_logo@2x.png in Resources */,
 				4924E41719C6719E00D19666 /* icon_search@2x.png in Resources */,
 				DD2B9F991965590B00CB20C3 /* ShareSDKFlatShareViewUI.bundle in Resources */,
 				4924E42719C6719E00D19666 /* share_v@2x.png in Resources */,

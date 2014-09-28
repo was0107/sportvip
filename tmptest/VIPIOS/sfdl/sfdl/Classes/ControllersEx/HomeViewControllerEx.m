@@ -75,7 +75,7 @@
 - (UIView *) leftViewTemp
 {
     UIImageView *bgView = [[[UIImageView alloc] initWithFrame:CGRectMake(30, 0, 60, 44)] autorelease];
-    bgView.image = [UIImage imageNamed:@"icon"];
+    bgView.image = [UIImage imageNamed:@"left_logo"];
     return bgView;
 }
 
@@ -131,7 +131,6 @@
         int flag1 =  (iPhone5) ? 0 : 44;
         
         _topImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 60.0,320, kContentBoundsHeight- kContentBoundsHeight + 2 * flag - 60.0f - flag1)];
-        
         _topImageView.backgroundColor = kGridTableViewColor;
     }
     return _topImageView;
