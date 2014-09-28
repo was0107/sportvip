@@ -43,14 +43,14 @@
 - (void) configTableView
 {
     __block typeof(self) blockSelf = self;
-    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20.1f)];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.1f)];
     self.tableView.cellCreateBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
         static NSString *identifier = @"ProductCategoryViewController_IDENTIFIER0";
         BaseNewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell){
             cell = [[BaseNewTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
-            
+            cell.contentView.backgroundColor = kWhiteColor;
             UIImageView *imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)] autorelease];
             imageView.backgroundColor  = kClearColor;
             cell.backgroundView = imageView;

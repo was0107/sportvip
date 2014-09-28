@@ -43,10 +43,10 @@
     [self.view addSubview:self.confirmButton];
 //    [self.view addSubview:self.newButton];
     
-#ifdef kUseSimulateData
+//#ifdef kUseSimulateData
     self.phoneTextField.pubTextField.text = @"shoufan";
     self.pwdTextField.pubTextField.text = @"shoufan";
-#endif
+//#endif
 }
 
 - (PubTextField *)phoneTextField
@@ -154,7 +154,11 @@
 //        [_pwdTextField becomeFirstResponder];
 //        return NO;
 //    }
-//    
+//
+    if ([self.phoneTextField.pubTextField.text length ] == 0 ||
+        [self.pwdTextField.pubTextField.text length] == 0) {
+        return NO;
+    }
     return YES;
 }
 

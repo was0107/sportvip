@@ -55,7 +55,7 @@
         BaseNewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell){
             cell = [[[BaseNewTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
-            
+            cell.contentView.backgroundColor = kWhiteColor;
             cell.topLabel.frame              = CGRectMake(5, 4, 70, 36);
             cell.topLabel.textColor          = kLightGrayColor;
             cell.topLabel.numberOfLines      = 1;
@@ -72,7 +72,7 @@
         
         EnquiryItem *item = [blockSelf.response item];
         NSString *value = [item.valuesArray objectAtIndex:indexPath.row];
-        CGSize size = [value sizeWithFont:HTFONTSIZE(14) forWidth:230 lineBreakMode:NSLineBreakByClipping];
+        CGSize size = [value sizeWithFont:HTFONTSIZE(14) forWidth:230 lineBreakMode:NSLineBreakByCharWrapping];
         [cell.subLabel setFrame:CGRectMake(80, 4, 230, size.height <= 36 ? 36 : size.height)];
         cell.topLabel.text = [item.keysArray objectAtIndex:indexPath.row];
         cell.subLabel.text = value;
@@ -82,7 +82,8 @@
     self.tableView.cellHeightBlock = ^(UITableView *tableView, NSIndexPath *indexPath){
         EnquiryItem *item = [blockSelf.response item];
         NSString *value = [item.valuesArray objectAtIndex:indexPath.row];
-        CGSize size = [value sizeWithFont:HTFONTSIZE(14) forWidth:230 lineBreakMode:NSLineBreakByClipping];
+        CGSize size = [value sizeWithFont:HTFONTSIZE(14) forWidth:230 lineBreakMode:NSLineBreakByCharWrapping];
+//        CGRect rect = [value boundingRectWithSize:CGSizeMake(230, 20000) options:NSStringDrawingUsesDeviceMetrics attributes:nil context:nil];
         return  size.height <= 36 ? 44 : (size.height + 8);
     };
     
