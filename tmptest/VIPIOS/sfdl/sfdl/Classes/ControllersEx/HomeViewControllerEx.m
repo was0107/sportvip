@@ -74,7 +74,7 @@
 
 - (UIView *) leftViewTemp
 {
-    UIImageView *bgView = [[[UIImageView alloc] initWithFrame:CGRectMake(30, 0, 60, 44)] autorelease];
+    UIImageView *bgView = [[[UIImageView alloc] initWithFrame:CGRectMake(20, 7, 67, 30)] autorelease];
     bgView.image = [UIImage imageNamed:@"left_logo"];
     return bgView;
 }

@@ -292,6 +292,9 @@
         [_codeTextField.pubTextField becomeFirstResponder];
         return NO;
     }
+    if ([self.emailTextField.pubTextField.text  length] == 0) {
+        return NO;
+    }
     return YES;
 }
 
@@ -384,12 +387,12 @@
     };
     CreateOrderRequest *createOrderRequest = [[[CreateOrderRequest alloc] init] autorelease];
     createOrderRequest.username = [UserDefaultsManager userName];
-    createOrderRequest.title = [self.subjectTextField.pubTextField text];
+    createOrderRequest.title = self.subjectTextField.pubTextField.text.length == 0 ? @"": self.subjectTextField.pubTextField.text;
     createOrderRequest.content = self.messageTextField.pubTextView.text.length == 0 ? @"": self.messageTextField.pubTextView.text;
     createOrderRequest.productList = self.currentItem ? self.currentItem.productId : @"";
     createOrderRequest.quantityList = @"";
-    createOrderRequest.email = self.emailTextField.pubTextField.text;
-    createOrderRequest.verifyCode = self.codeTextField.pubTextField.text;
+    createOrderRequest.email = self.emailTextField.pubTextField.text.length == 0 ? @"": self.emailTextField.pubTextField.text;
+    createOrderRequest.verifyCode = self.codeTextField.pubTextField.text.length == 0 ? @"": self.codeTextField.pubTextField.text;
     [WASBaseServiceFace serviceWithMethod:[createOrderRequest URLString] body:[createOrderRequest toJsonString] onSuc:successedBlock onFailed:failedBlock onError:errBlock];
 }
 

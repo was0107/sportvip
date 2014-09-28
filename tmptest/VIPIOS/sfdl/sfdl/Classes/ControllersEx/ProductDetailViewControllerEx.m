@@ -216,6 +216,8 @@
         _content.scrollView.backgroundColor = kClearColor;
         _content.backgroundColor = kClearColor;
         _content.opaque = NO;
+        UIView *view = [_content.subviews objectAtIndex:0];
+        view.backgroundColor = kClearColor;
         [_content.scrollView setContentInset:UIEdgeInsetsMake(365,0,0,0)];
         [_content.scrollView addSubview:self.cycleView];
         [self createNameView];

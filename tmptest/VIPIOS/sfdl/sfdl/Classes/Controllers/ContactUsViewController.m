@@ -97,6 +97,9 @@
         //        _labelTwo.textAlignment = NSTextAlignmentCenter;
         _labelTwo.backgroundColor = kClearColor;
         _labelTwo.opaque = NO;
+        
+        UIView *view = [_labelTwo.subviews objectAtIndex:0];
+        view.backgroundColor = kClearColor;
         //        _labelTwo.font = HTFONTSIZE(kSystemFontSize14);
         //        _labelTwo.text = lLabelTwoString;
         //        _labelTwo.numberOfLines = 0;
