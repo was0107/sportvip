@@ -43,10 +43,10 @@
     [self.view addSubview:self.confirmButton];
 //    [self.view addSubview:self.newButton];
     
-//#ifdef kUseSimulateData
+#ifdef kUseSimulateData
     self.phoneTextField.pubTextField.text = @"shoufan";
     self.pwdTextField.pubTextField.text = @"shoufan";
-//#endif
+#endif
 }
 
 - (PubTextField *)phoneTextField
