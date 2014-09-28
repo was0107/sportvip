@@ -66,15 +66,14 @@
 
 - (id) showLeft
 {
-    
     UIBarButtonItem *right = [[[UIBarButtonItem alloc] initWithCustomView:[self leftViewTemp]] autorelease];
-    [self.navigationItem mySetLeftBarButtonItem:right];
+    [self.navigationItem setLeftBarButtonItem:right];
     return self;
 }
 
 - (UIView *) leftViewTemp
 {
-    UIImageView *bgView = [[[UIImageView alloc] initWithFrame:CGRectMake(20, 7, 67, 30)] autorelease];
+    UIImageView *bgView = [[[UIImageView alloc] initWithFrame:CGRectMake(30, 7, 67, 30)] autorelease];
     bgView.image = [UIImage imageNamed:@"left_logo"];
     return bgView;
 }
