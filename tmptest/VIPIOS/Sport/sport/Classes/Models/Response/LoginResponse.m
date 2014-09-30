@@ -39,7 +39,7 @@
     TT_RELEASE_SAFELY(_advantage);
     TT_RELEASE_SAFELY(_age);
     TT_RELEASE_SAFELY(_coachName);
-    TT_RELEASE_SAFELY(_description);
+//    TT_RELEASE_SAFELY(_description);
     TT_RELEASE_SAFELY(_name);
     TT_RELEASE_SAFELY(_price);
     TT_RELEASE_SAFELY(_schoolTime);

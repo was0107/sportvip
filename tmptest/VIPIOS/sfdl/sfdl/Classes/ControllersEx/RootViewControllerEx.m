@@ -57,7 +57,6 @@
     self.selectedTextColor = [UIColor whiteColor];
     [self setViewControllers:arrayVC];
     self.delegate = self;
-    [self setCurrentFrom:1];
     return self;
 }
 

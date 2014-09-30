@@ -13,7 +13,7 @@
     
     TT_RELEASE_SAFELY(_coachId);
     TT_RELEASE_SAFELY(_advantage);
-    TT_RELEASE_SAFELY(_description);
+//    TT_RELEASE_SAFELY(_description);
     TT_RELEASE_SAFELY(_name);
     TT_RELEASE_SAFELY(_schoolTime);
     TT_RELEASE_SAFELY(_coachName)
