@@ -15,7 +15,7 @@
 
 @interface RootViewControllerEx ()<UIMenuBarDelegate>
 @property (nonatomic, retain) UIMenuBar *menuBar;
-@property (nonatomic, retain) BaseTitleViewController *menuController;
+@property (nonatomic, retain) UINavigationController *menuController;
 @end
 
 @implementation RootViewControllerEx
@@ -48,8 +48,9 @@
     [arrayVC addObject:[self createItem:@"HomeViewControllerEx" title:@"Home"]];
     [arrayVC addObject:[self createItem:@"InquiryFormViewController" title:@"Inquiry"]];
     
-//    self.menuController = (UINavigationController *)[self createItem:@"MenuViewControllerEx" title:@"Menu"];
-    [arrayVC addObject:[self createItem:@"MenuViewControllerEx" title:@"Menu"]];
+    self.menuController = (UINavigationController *)[self createItem:@"MenuViewControllerEx" title:@"Menu"];
+    [arrayVC addObject:[self menuController]];
+    //    [arrayVC addObject:[self createItem:@"MenuViewControllerEx" title:@"Menu"]];
     
     self.tabEdgeColor = [UIColor getColor:@"bdbdbd"];
     self.tabEdgeColor = [UIColor whiteColor];
@@ -166,9 +167,13 @@
 {
     Class class = NSClassFromString(controller);
     if (class) {
-        BaseTitleViewController *controller = [[[class alloc] init] autorelease];
-        [self.navigationController setNavigationBarHidden:NO];
-        [self.navigationController pushViewController:controller animated:YES];
+         BaseTitleViewController *controllerTemp = [[[class alloc] init] autorelease];
+//        [controllerTemp setHidesBottomBarWhenPushed:YES];
+        [[[[AppDelegate sharedAppDelegate] rootController] getSelectedViewController] pushViewController:controllerTemp animated:YES];
+//        [self.menuController pushViewController:controllerTemp animated:YES];
+//        BaseTitleViewController *controller = [[[class alloc] init] autorelease];
+//        [self.navigationController setNavigationBarHidden:NO];
+//        [self.navigationController pushViewController:controller animated:YES];
     }
 }
 - (void)clickAction1:(id)sender

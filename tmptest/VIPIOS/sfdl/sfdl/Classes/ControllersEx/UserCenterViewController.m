@@ -25,6 +25,11 @@
     return  eTypeNone;
 }
 
+- (CGRect)tableViewFrame
+{
+    return kContentWithTabBarFrame;
+}
+
 - (void) configTableView
 {
     __unsafe_unretained typeof(self) blockSelf = self;

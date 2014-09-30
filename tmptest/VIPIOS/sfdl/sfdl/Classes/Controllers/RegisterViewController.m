@@ -60,7 +60,7 @@
     [[[self showRight] rightButton] setTitle:@"Login" forState:UIControlStateNormal];
 
     
-    self.scrollView = [[[UIKeyboardAvoidingScrollView alloc] initWithFrame:CGRectMake(0,  0, 320.0, kContentBoundsHeight)] autorelease];
+    self.scrollView = [[[UIKeyboardAvoidingScrollView alloc] initWithFrame:CGRectMake(0,  0, 320.0, kContentBoundsHeight-44)] autorelease];
     self.scrollView.backgroundColor = kClearColor;
     
     [self.scrollView addSubview:self.emailTextField];

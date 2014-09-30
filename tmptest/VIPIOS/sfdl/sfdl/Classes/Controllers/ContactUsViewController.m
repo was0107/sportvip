@@ -92,7 +92,7 @@
 {
     if (!_labelTwo)
     {
-        _labelTwo = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, 320, kContentBoundsHeight-0)];
+        _labelTwo = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, 320, kContentBoundsHeight-44)];
         //        _labelTwo.textColor  = [UIColor getColor:kCellLeftColor];
         //        _labelTwo.textAlignment = NSTextAlignmentCenter;
         _labelTwo.backgroundColor = kClearColor;

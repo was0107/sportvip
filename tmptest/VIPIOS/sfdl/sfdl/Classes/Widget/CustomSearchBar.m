@@ -101,7 +101,7 @@
         
         self.backgroundColor = kOrangeColor;
         
-        UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 1, 233, frame.size.height-2)];
+        UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 1, 233, 46)];
         bgView.backgroundColor = kWhiteColor;
         [self addSubview:bgView];
         

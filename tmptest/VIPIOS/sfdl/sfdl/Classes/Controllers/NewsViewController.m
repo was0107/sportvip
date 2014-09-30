@@ -35,6 +35,11 @@
 
 }
 
+- (CGRect)tableViewFrame
+{
+    return kContentWithTabBarFrame;
+}
+
 - (int) tableViewType
 {
     return  eTypeRefreshHeader | eTypeFooter;
@@ -80,10 +85,12 @@
         controller.newsList = [blockSelf.response result];
         controller.newItem = item;
         [blockSelf.navigationController hidesBottomBarWhenPushed];
+//        [controller setHidesBottomBarWhenPushed:YES];
         [blockSelf.navigationController pushViewController:controller animated:YES];
     };
     
     self.tableView.refreshBlock = ^(id content) {
+        [blockSelf.request firstPage];
         [blockSelf sendRequestToServer];
     };
     

@@ -49,8 +49,8 @@
 //    controller.navigationBar.barTintColor = kButtonNormalColor;
 //    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
 //    [controller setToolbarHidden:YES animated:NO];
-//    self.window.rootViewController = self.rootController;
-    self.window.rootViewController = controller;
+    self.window.rootViewController = self.rootController;
+//    self.window.rootViewController = controller;
     [self.window makeKeyAndVisible];
     return YES;
 }

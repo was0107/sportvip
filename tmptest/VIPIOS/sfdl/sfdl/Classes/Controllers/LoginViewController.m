@@ -57,7 +57,7 @@
 - (void) rightButtonAction:(id)sender
 {
     RegisterViewController *controller = [[[RegisterViewController alloc] init] autorelease];
-    [controller setHidesBottomBarWhenPushed:YES];
+//    [controller setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -151,7 +151,7 @@
     [self.pwdTextField resignFirstResponder];
     [self.phoneTextField resignFirstResponder];
     ForgetPasswordViewController *controller = [[[ForgetPasswordViewController alloc] init] autorelease];
-    [controller setHidesBottomBarWhenPushed:YES];
+//    [controller setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -161,7 +161,7 @@
     [self.phoneTextField resignFirstResponder];
     
     RegisterViewController *controller = [[[RegisterViewController alloc] init] autorelease];
-    [controller setHidesBottomBarWhenPushed:YES];
+//    [controller setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

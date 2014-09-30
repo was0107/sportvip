@@ -289,7 +289,7 @@
     
     if ([[self currentUserId] length] == 0) {
         BaseTitleViewController *controller =  [[[LoginViewController alloc] init] autorelease];
-        [controller setHidesBottomBarWhenPushed:YES];
+//        [controller setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:controller animated:YES];
         return ;
     }

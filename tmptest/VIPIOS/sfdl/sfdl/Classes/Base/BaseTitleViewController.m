@@ -412,6 +412,7 @@
 {
     Class class = NSClassFromString(@"MiddleViewController");
     UIViewController *controller = [[[class alloc] init] autorelease];
+//    [controller setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:controller animated:YES];
     return;
     
