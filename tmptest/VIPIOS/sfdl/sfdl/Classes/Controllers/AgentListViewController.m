@@ -42,6 +42,11 @@
     return  eTypeRefreshHeader | eTypeFooter;
 }
 
+- (CGRect)tableViewFrame
+{
+    return kContentWithTabBarFrame;
+}
+
 - (void) configTableView
 {
     self.diction = [NSMutableDictionary dictionary];
@@ -53,7 +58,7 @@
         BaseNewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell){
             cell = [[BaseNewTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
-            
+            cell.contentView.backgroundColor = kWhiteColor;
             cell.topLabel.frame              = CGRectMake(10, 4, 100, 36);
             cell.topLabel.textColor          = kLightGrayColor;
             cell.topLabel.numberOfLines      = 1;
@@ -107,13 +112,14 @@
             flag = NO;
         }
         UIView *footerView = [[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 46)]autorelease];
-        footerView.backgroundColor = kClearColor;
+        footerView.backgroundColor = blockSelf.view.backgroundColor;
         UIView *footerView1 = [[[UIView alloc]initWithFrame:CGRectMake(0, 10, 320, 36)]autorelease];
         footerView1.backgroundColor = kOrangeColor;
         UILabel *label1 = [[[UILabel alloc] initWithFrame:CGRectMake(20,0,280,36)] autorelease];
         label1.text = @"COMPANY:";
         label1.font = HTFONTSIZE(kFontSize15);
         label1.textColor = kWhiteColor;
+        label1.backgroundColor = kClearColor;
         [footerView1 addSubview:label1];
         footerView1.tag = 1000+ section;
         
