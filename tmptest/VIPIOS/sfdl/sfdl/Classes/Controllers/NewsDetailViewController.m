@@ -82,7 +82,7 @@
 - (UIView *) bottomView
 {
     if (!_bottomView) {
-        _bottomView = [[[UIView alloc] initWithFrame:CGRectMake(0, kContentBoundsHeight-70, 320, 70)] autorelease];
+        _bottomView = [[[UIView alloc] initWithFrame:CGRectMake(0, kContentBoundsHeight-70-44, 320, 70)] autorelease];
         _bottomView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.7f];
         UIView *lineView = [[[UIView alloc] initWithFrame:CGRectMake(0, 79, 320, 1)] autorelease];
         lineView.backgroundColor = kLightGrayColor;

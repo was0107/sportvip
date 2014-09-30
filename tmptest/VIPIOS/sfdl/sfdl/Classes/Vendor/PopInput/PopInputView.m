@@ -40,10 +40,10 @@
 
 - (void) createInternalView
 {
-    UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(5, 40, 310, 120)] autorelease];
+    UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(5, 40, 310, 135)] autorelease];
     view.backgroundColor = kWhiteColor;
-    
-    self.textField = [[[UITextField alloc] initWithFrame:CGRectMake(5, 0, 310, 35)] autorelease];
+    view.clipsToBounds = YES;
+    self.textField = [[[UITextField alloc] initWithFrame:CGRectMake(5, 6, 310, 35)] autorelease];
     self.textField.backgroundColor = kClearColor;
     self.textField.placeholder = @"Product";
     self.textField.textColor = kDarkGrayColor;
@@ -63,13 +63,13 @@
     [self.searchButton addTarget:self action:@selector(searchButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:self.searchButton];
     
-    UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(1, 55, 64, 20)] autorelease];
+    UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(5, 55, 64, 20)] autorelease];
     label.text = @"Keywords:";
     label.textColor = kOrangeColor;
     label.font = HTFONTSIZE(kFontSize13);
     [view addSubview:label];
 
-    label = [[[UILabel alloc] initWithFrame:CGRectMake(68, 50, 240, 70)] autorelease];
+    label = [[[UILabel alloc] initWithFrame:CGRectMake(73, 46, 230, 90)] autorelease];
     label.text = @"With all the, advantages of ,soundproof sets, Suitable for outdoor works, Towing devices is , set aside on the wheel chassis to, keep alance Equipped with, warning lamp";
     label.textColor = kLightGrayColor;
     label.numberOfLines = 4;
