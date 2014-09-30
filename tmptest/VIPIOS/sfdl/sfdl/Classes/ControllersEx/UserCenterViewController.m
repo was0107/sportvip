@@ -42,6 +42,7 @@
         BaseSingleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell){
             cell = [[BaseSingleTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+            cell.contentView.backgroundColor = kWhiteColor;
             [cell.contentView addSubview:cell.topLabel];
         }
         cell.topLabel.text = titleIndexArray[indexPath.row];

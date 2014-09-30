@@ -50,6 +50,7 @@
         NewsTableViewCellEx *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell){
             cell = [[NewsTableViewCellEx alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+            cell.contentView.backgroundColor = kWhiteColor;
             [cell configWithType:0];
         }
         
