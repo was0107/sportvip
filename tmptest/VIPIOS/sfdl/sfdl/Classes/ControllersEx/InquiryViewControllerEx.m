@@ -30,7 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setTitleContent:@"INQUIRY"];
+    [self setTitleContent:NSLocalizedString(@"INQUIRY",@"INQUIRY")];
     [self sendRequestToServer];
     // Do any additional setup after loading the view.
 }

@@ -17,7 +17,7 @@
 {
     [super viewDidLoad];
     [[self showType] showRight];
-    [self setTitleContent:@"USER CENTER"];
+    [self setTitleContent:NSLocalizedString(@"USER CENTER",@"USER CENTER")];
 }
 
 - (int) tableViewType
@@ -45,7 +45,7 @@
             cell.contentView.backgroundColor = kWhiteColor;
             [cell.contentView addSubview:cell.topLabel];
         }
-        cell.topLabel.text = titleIndexArray[indexPath.row];
+        cell.topLabel.text = NSLocalizedString(titleIndexArray[indexPath.row],titleIndexArray[indexPath.row]);
         return cell;
     };
     

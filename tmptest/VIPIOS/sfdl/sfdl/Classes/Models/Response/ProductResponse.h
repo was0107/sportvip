@@ -26,7 +26,7 @@
 @interface ProductDetailResponse : ListPaggingResponseBase
 @property (nonatomic, copy) NSString *productId, *productName, *videoUrl, *productType, *productTypeName, *productDesc, *productImg;
 
-@property (nonatomic, copy) NSString *videoImg, *feature;
+@property (nonatomic, copy) NSString *videoImg, *feature, *others;
 
 @property (nonatomic, retain) NSMutableArray *imagesArray;
 
@@ -113,6 +113,14 @@
 
 @end
 
+
+@interface CheckVersionResponse : ListResponseBase
+
+@property (nonatomic, copy) NSString *version, *download_url;
+
+- (BOOL) isNeedToTip;
+
+@end
 
 
 /*

@@ -45,10 +45,10 @@
 {
     NSMutableArray *arrayVC = [NSMutableArray array];
     
-    [arrayVC addObject:[self createItem:@"HomeViewControllerEx" title:@"Home"]];
-    [arrayVC addObject:[self createItem:@"InquiryFormViewController" title:@"Inquiry"]];
+    [arrayVC addObject:[self createItem:@"HomeViewControllerEx" title:NSLocalizedString(@"Home", @"Home")]];
+    [arrayVC addObject:[self createItem:@"InquiryFormViewController" title:NSLocalizedString(@"Inquiry",@"Inquiry")]];
     
-    self.menuController = (UINavigationController *)[self createItem:@"MenuViewControllerEx" title:@"Menu"];
+    self.menuController = (UINavigationController *)[self createItem:@"MenuViewControllerEx" title:NSLocalizedString(@"Menu",@"Menu")];
     [arrayVC addObject:[self menuController]];
     //    [arrayVC addObject:[self createItem:@"MenuViewControllerEx" title:@"Menu"]];
     
@@ -124,12 +124,12 @@
 
 - (NSMutableArray *) getMenuArrays
 {
-    UIMenuBarItem *menuItem1 = [[[UIMenuBarItem alloc] initWithTitle:@"About us" target:self image:[UIImage imageNamed:@"about"] action:@selector(clickAction1:) controller:@""] autorelease];
-    UIMenuBarItem *menuItem2 = [[[UIMenuBarItem alloc] initWithTitle:@"News" target:self image:[UIImage imageNamed:@"news"] action:@selector(clickAction2:) controller:@""] autorelease];
-    UIMenuBarItem *menuItem3 = [[[UIMenuBarItem alloc] initWithTitle:@"User Center" target:self image:[UIImage imageNamed:@"users"] action:@selector(clickAction3:) controller:@""] autorelease];
-    UIMenuBarItem *menuItem4 = [[[UIMenuBarItem alloc] initWithTitle:@"Find Your Dealer" target:self image:[UIImage imageNamed:@"search_jxs"] action:@selector(clickAction4:) controller:@""] autorelease];
-    UIMenuBarItem *menuItem5 = [[[UIMenuBarItem alloc] initWithTitle:@"Contact Us" target:self image:[UIImage imageNamed:@"contact"] action:@selector(clickAction5:) controller:@""] autorelease];
-    UIMenuBarItem *menuItem6 = [[[UIMenuBarItem alloc] initWithTitle:([UserDefaultsManager userName].length == 0 ) ? @"Login":@"Logout" target:self image:[UIImage imageNamed:@"quite"] action:@selector(clickAction6:) controller:@""] autorelease];
+    UIMenuBarItem *menuItem1 = [[[UIMenuBarItem alloc] initWithTitle:NSLocalizedString(@"About Us",@"About Us") target:self image:[UIImage imageNamed:@"about"] action:@selector(clickAction1:) controller:@""] autorelease];
+    UIMenuBarItem *menuItem2 = [[[UIMenuBarItem alloc] initWithTitle:NSLocalizedString(@"News",@"News") target:self image:[UIImage imageNamed:@"news"] action:@selector(clickAction2:) controller:@""] autorelease];
+    UIMenuBarItem *menuItem3 = [[[UIMenuBarItem alloc] initWithTitle:NSLocalizedString(@"User Center",@"User Center") target:self image:[UIImage imageNamed:@"users"] action:@selector(clickAction3:) controller:@""] autorelease];
+    UIMenuBarItem *menuItem4 = [[[UIMenuBarItem alloc] initWithTitle:NSLocalizedString(@"Find Your Dealer",@"Find Your Dealer") target:self image:[UIImage imageNamed:@"search_jxs"] action:@selector(clickAction4:) controller:@""] autorelease];
+    UIMenuBarItem *menuItem5 = [[[UIMenuBarItem alloc] initWithTitle:NSLocalizedString(@"Contact Us",@"Contact Us") target:self image:[UIImage imageNamed:@"contact"] action:@selector(clickAction5:) controller:@""] autorelease];
+    UIMenuBarItem *menuItem6 = [[[UIMenuBarItem alloc] initWithTitle:([UserDefaultsManager userName].length == 0 ) ? NSLocalizedString(@"Login",@"Login"):NSLocalizedString(@"Logout",@"Logout") target:self image:[UIImage imageNamed:@"quite"] action:@selector(clickAction6:) controller:@""] autorelease];
     
    return [NSMutableArray arrayWithObjects:menuItem1, menuItem2, menuItem3, menuItem4, menuItem5, menuItem6,nil];
 }

@@ -42,3 +42,34 @@
 @implementation ReplyEnquiryResponse
 
 @end
+
+
+@implementation CheckVersionResponse
+
+- (void) dealloc
+{
+    TT_RELEASE_SAFELY(_version);
+    TT_RELEASE_SAFELY(_download_url);
+    [super dealloc];
+}
+
+
+- (id) initWithDictionary:(const NSDictionary *) dictionary
+{
+    self = [super initWithDictionary:dictionary];
+    self.version = [dictionary objectForKey:@"version"];
+    self.download_url = [dictionary objectForKey:@"download_url"];
+    return self;
+}
+
+
+- (BOOL) isNeedToTip
+{
+    NSString *versionTemp =  [NSString stringWithFormat:@"%@", [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey]];
+    if ([self.version length] > 0 && ![versionTemp isEqualToString:self.version]) {
+        return YES;
+    }
+    return NO;
+}
+
+@end

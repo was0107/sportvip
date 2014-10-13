@@ -37,7 +37,7 @@
 {
     [super viewDidLoad];
     [[self showType] showRight];
-    [self setTitleContent:@"ABOUT US"];
+    [self setTitleContent:NSLocalizedString(@"ABOUT US","ABOUT US")];
     [self.tableView removeFromSuperview];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendRequestToGetCompanyServer) name:@"sendRequestToGetCompanyServer" object:nil];
 //    [self.view addSubview:self.iconImageView];

@@ -58,25 +58,25 @@
             cell.topLabel.frame = CGRectMake(4, 4, 170, 40);
             cell.topLabel.font = HTFONTSIZE(kFontSize14);
             cell.topLabel.numberOfLines = 2;
-            cell.topLabel.textColor = kGrayColor;
+            cell.topLabel.textColor = cell.topLabel.textColor = kGrayColor;
             
             cell.subLabel.frame = CGRectMake(180, 4, 64, 40);
             cell.subLabel.font = HTFONTSIZE(kFontSize16);
             cell.subLabel.textAlignment = NSTextAlignmentCenter;
             cell.subLabel.numberOfLines = 2;
-            cell.subLabel.textColor = kGrayColor;
+            cell.subLabel.textColor = cell.subLabel.textColor = kGrayColor;
             
             cell.rightLabel.frame = CGRectMake(254, 6, 64, 20);
             cell.rightLabel.font = HTFONTSIZE(kFontSize16);
             cell.rightLabel.textAlignment = NSTextAlignmentCenter;
             cell.rightLabel.numberOfLines = 1;
-            cell.rightLabel.textColor = kGrayColor;
+            cell.rightLabel.textColor = cell.rightLabel.textColor =  kGrayColor;
             
             cell.subRightLabel.frame = CGRectMake(254, 30, 64, 20);
             cell.subRightLabel.font = HTFONTSIZE(kFontSize12);
             cell.subRightLabel.textAlignment = NSTextAlignmentCenter;
             cell.subRightLabel.numberOfLines = 1;
-            cell.subRightLabel.textColor = kLightGrayColor;
+            cell.subRightLabel.textColor = cell.subRightLabel.textColor = kLightGrayColor;
             
             CALayer *layer = [CALayer layer];
             layer.frame = CGRectMake(175, 0, 1, 50);

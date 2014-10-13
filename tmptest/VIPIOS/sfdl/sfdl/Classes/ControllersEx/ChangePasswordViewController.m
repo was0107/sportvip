@@ -54,9 +54,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self setTitleContent:@"CREATE ACCOUNT"];
-    [[[self showRight] rightButton] setTitle:@"Login" forState:UIControlStateNormal];
+    [self setTitleContent:NSLocalizedString(@"CREATE ACCOUNT",@"CREATE ACCOUNT")];
+    [[[self showRight] rightButton] setTitle:NSLocalizedString(@"Login",@"Login") forState:UIControlStateNormal];
     
     
     self.scrollView = [[[UIKeyboardAvoidingScrollView alloc] initWithFrame:CGRectMake(0,  0, 320.0, kContentBoundsHeight)] autorelease];
@@ -94,7 +93,7 @@
 {
     if (!_memberIDTextField) {
         __unsafe_unretained typeof(self) safeSelf = self;
-        _memberIDTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0, 10 + 0* kPubTextFieldHeight2  + kImageStartAt , 320, kPubTextFieldHeight) indexTitle:@"Name:" placeHolder:@"Member ID" pubTextFieldStyle:PubTextFieldStyleTop];
+        _memberIDTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0, 10 + 0* kPubTextFieldHeight2  + kImageStartAt , 320, kPubTextFieldHeight) indexTitle:NSLocalizedString(@"Name:",@"Name:") placeHolder:NSLocalizedString(@"Member ID",@"Member ID") pubTextFieldStyle:PubTextFieldStyleTop];
         _memberIDTextField.autoLayout = YES;
         _memberIDTextField.pubTextField.returnKeyType = UIReturnKeyNext;
         _memberIDTextField.pubTextField.keyboardType = UIKeyboardTypeDefault;
@@ -111,7 +110,7 @@
 {
     if (!_pwdTextField) {
         __unsafe_unretained typeof(self) safeSelf = self;
-        _pwdTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  10 + 1 * kPubTextFieldHeight2  + kImageStartAt, 320, kPubTextFieldHeight) indexTitle:@"Password:" placeHolder:@"Password" pubTextFieldStyle:PubTextFieldStyleBottom];
+        _pwdTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  10 + 1 * kPubTextFieldHeight2  + kImageStartAt, 320, kPubTextFieldHeight) indexTitle:NSLocalizedString(@"Password:",@"Password:") placeHolder:NSLocalizedString(@"Password",@"Password") pubTextFieldStyle:PubTextFieldStyleBottom];
         _pwdTextField.autoLayout = YES;
         _pwdTextField.pubTextField.returnKeyType = UIReturnKeyNext;
         _pwdTextField.pubTextField.secureTextEntry = YES;
@@ -129,7 +128,7 @@
 {
     if (!_titleTextField) {
         __unsafe_unretained typeof(self) safeSelf = self;
-        _titleTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  10 + 2 * kPubTextFieldHeight2  + kImageStartAt, 320, kPubTextFieldHeight) indexTitle:@"Repeat Password:" placeHolder:@"Title" pubTextFieldStyle:PubTextFieldStyleBottom];
+        _titleTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  10 + 2 * kPubTextFieldHeight2  + kImageStartAt, 320, kPubTextFieldHeight) indexTitle:NSLocalizedString(@"Repeat Password:",@"Repeat Password:") placeHolder:NSLocalizedString(@"Repeat Password",@"Repeat Password") pubTextFieldStyle:PubTextFieldStyleBottom];
         _titleTextField.autoLayout = YES;
         _titleTextField.pubTextField.returnKeyType = UIReturnKeyNext;
         _titleTextField.pubTextField.secureTextEntry = YES;
@@ -151,7 +150,7 @@
         _confirmButton.backgroundColor = kClearColor;
         [_confirmButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18.0f]];
         [CreateObject addTargetEfection:_confirmButton];
-        [_confirmButton setTitle:@"SUBMIT" forState:UIControlStateNormal];
+        [_confirmButton setTitle:NSLocalizedString(@"SUBMIT",@"SUBMIT") forState:UIControlStateNormal];
         [_confirmButton addTarget:self action:@selector(confirmButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     
@@ -168,12 +167,12 @@
 - (BOOL)checkTextField
 {
     if (![IdentifierValidator isValid:IdentifierTypePassword value:_memberIDTextField.pubTextField.text]) {
-        [SVProgressHUD showErrorWithStatus:@"请输入正确的用户名"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Name is error",@"Name is error")];
         return NO;
     }
     
     if (![_pwdTextField.pubTextField.text isEqualToString:_titleTextField.pubTextField.text]) {
-        [SVProgressHUD showErrorWithStatus:@"两次输入密码不一致"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Password is error",@"Password is error")];
         [_pwdTextField becomeFirstResponder];
         return NO;
     }
@@ -194,13 +193,13 @@
         return;
     }
     
-    [SVProgressHUD showWithStatus:@"正在注册..."];
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"Watting...",@"Watting...")];
     [self.confirmButton setEnabled:NO];
     __unsafe_unretained typeof(self) safeSelf = self;
     
     idBlock succBlock = ^(id content){
         DEBUGLOG(@"succ content %@", content);
-        [SVProgressHUD showSuccessWithStatus:@"密码修改成功"];
+        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Password updated successfully",@"Password updated successfully")];
     };
     
     idBlock failedBlock = ^(id content){
@@ -210,7 +209,7 @@
     };
     idBlock errBlock = ^(id content){
         DEBUGLOG(@"failed content %@", content);
-        [SVProgressHUD showErrorWithStatus:@"密码修改失败"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Password updated  failed",@"Password updated failed")];
         [safeSelf.confirmButton setEnabled:YES];
     };
     

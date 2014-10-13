@@ -29,6 +29,9 @@
 
 #define kAPPID          @"593499239"
 
+#define kCompanyId      @"5"            //
+#define kCompanyLan     @"en"
+
 
 
 /*

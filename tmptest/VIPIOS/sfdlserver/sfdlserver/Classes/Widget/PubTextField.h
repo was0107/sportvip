@@ -3,6 +3,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UITextField+DelegateBlocks.h"
 
 typedef enum{
     PubTextFieldStyleOne = 0,
@@ -13,10 +14,7 @@ typedef enum{
 
 
 #define kPubTextFieldHeight 40
-#define kPubTextFieldHeight2 42
-
-typedef BOOL (^UITextViewShouldReturnBlock)(UITextField *textView);
-
+#define kPubTextFieldHeight2 41
 
 
 @interface PubTextField : UIView
@@ -24,7 +22,9 @@ typedef BOOL (^UITextViewShouldReturnBlock)(UITextField *textView);
 @property (nonatomic, assign) BOOL  autoLayout;
 @property (nonatomic, assign) CGFloat  maxWidth;
 @property (nonatomic, retain) UITextField *pubTextField;
-@property (nonatomic, copy)   UITextViewShouldReturnBlock textViewShouldReturen;
+@property (nonatomic, retain) UITextView  *pubTextView;
+
+- (void) setEditable:(BOOL) flag;
 
 - (BOOL)becomeFirstResponder;
 

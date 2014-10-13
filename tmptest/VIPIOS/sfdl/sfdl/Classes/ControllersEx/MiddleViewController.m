@@ -78,7 +78,7 @@
 {
     [super viewDidLoad];
     [[self showSearch] showRight];
-    [self setTitleContent:@"PRODUCTS"];
+    [self setTitleContent:NSLocalizedString(@"PRODUCTS",@"PRODUCTS")];
     [self.view addSubview:self.pushTreeView];
     self.selectedDiction = [NSMutableDictionary dictionary];
     [self sendRequestToGetProductTypeServer];

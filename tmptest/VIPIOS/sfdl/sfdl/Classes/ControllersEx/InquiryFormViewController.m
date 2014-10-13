@@ -59,7 +59,7 @@
 {
     [super viewDidLoad];
     [[self showType] showRight];
-    [self setTitleContent:@"INQUIRY FORM"];
+    [self setTitleContent:NSLocalizedString(@"INQUIRY FORM",@"INQUIRY FORM")];
     self.scrollView = [[[UIKeyboardAvoidingScrollView alloc] initWithFrame:CGRectMake(0,  0, 320.0, kContentBoundsHeight)] autorelease];
     self.scrollView.backgroundColor = kClearColor;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendRequestToGetCompanyServer) name:@"sendRequestToGetCompanyServer" object:nil];
@@ -68,18 +68,18 @@
     [self.scrollView addSubview:self.toTextField];
     [self.scrollView addSubview:self.subjectTextField];
     [self.scrollView addSubview:self.messageTextField];
-    [self.scrollView addSubview:self.pictureTextField];
+//    [self.scrollView addSubview:self.pictureTextField];
     [self.scrollView addSubview:self.codeTextField];
     [self.scrollView addSubview:self.confirmButton];
     
 #ifdef kUseSimulateData
-    self.emailTextField.pubTextField.text = @"hr@163.com";
+//    self.emailTextField.pubTextField.text = @"11@111.com";
 //    self.pwdTextField.pubTextField.text = @"111111";
 //    self.titleTextField.pubTextField.text = @"111111";
 #endif
     
     
-    [self.scrollView setContentSize:CGSizeMake(320, 50 + 13 * kPubTextFieldHeight2  + kImageStartAt)];
+    [self.scrollView setContentSize:CGSizeMake(320, 50 + 10 * kPubTextFieldHeight2  + kImageStartAt)];
     [self.view addSubview:self.scrollView];
 //    self.emailTextField.pubTextField.text = [UserDefaultsManager userEmail];
     [self requestServerForCode];
@@ -98,6 +98,12 @@
     self.currentItem = notification.object;
     if (self.currentItem) {
 //        [self.scrollView scrollRectToVisible:CGRectMake(0, 0, 0, 0) animated:YES];
+        
+        [self.scrollView addSubview:self.pictureTextField];
+        self.codeTextField.frame = CGRectMake(0,  10 + 9. * kPubTextFieldHeight2  + kImageStartAt-4, 320, kPubTextFieldHeight);
+        self.confirmButton.frame = CGRectMake(0.0f, 25 + 10. * kPubTextFieldHeight2  + kImageStartAt, 320.0f, 40.0f);
+        [self.scrollView setContentSize:CGSizeMake(320, 50 + 13 * kPubTextFieldHeight2  + kImageStartAt)];
+
         [self.scrollView scrollsToTop];
         self.subjectTextField.pubTextField.text = self.currentItem.productName;
         [self.productImageView setImageWithURL:[NSURL URLWithString:self.currentItem.productImg] placeholderImage:[UIImage imageNamed:@""]];
@@ -221,7 +227,7 @@
 {
     if (!_codeTextField) {
         __unsafe_unretained typeof(self) safeSelf = self;
-        _codeTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  10 + 9. * kPubTextFieldHeight2  + kImageStartAt-4, 320, kPubTextFieldHeight) indexTitle:@"Code:" placeHolder:@"" pubTextFieldStyle:PubTextFieldStyleBottom];
+        _codeTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  10 + 6. * kPubTextFieldHeight2  + kImageStartAt-2, 320, kPubTextFieldHeight) indexTitle:@"Code:" placeHolder:@"" pubTextFieldStyle:PubTextFieldStyleBottom];
         _codeTextField.indexLabel.textAlignment = NSTextAlignmentRight;
         _codeTextField.pubTextField.returnKeyType = UIReturnKeyDone;
         _codeTextField.pubTextField.frame = CGRectMake(90, 5, 100, 30);
@@ -264,7 +270,7 @@
 {
     if (!_confirmButton) {
         _confirmButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
-        _confirmButton.frame = CGRectMake(0.0f, 25 + 10. * kPubTextFieldHeight2  + kImageStartAt, 320.0f, 40.0f);
+        _confirmButton.frame = CGRectMake(0.0f, 25 + 7. * kPubTextFieldHeight2  + kImageStartAt, 320.0f, 40.0f);
         _confirmButton.backgroundColor = kClearColor;
         [_confirmButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18.0f]];
         [CreateObject addTargetEfection:_confirmButton];
@@ -288,7 +294,7 @@
 - (BOOL)checkTextField
 {
     if (![self.checkCodeResponse isChecked]) {
-        [SVProgressHUD showErrorWithStatus:@"请输入正常的验证码信息"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Please enter the normal verification code",@"Please enter the normal verification code")];
         [_codeTextField.pubTextField becomeFirstResponder];
         return NO;
     }
@@ -326,7 +332,7 @@
 
 - (void)requestServerToCheckCode
 {
-    [SVProgressHUD showWithStatus:@"正在检验..."];
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"Verificating...",@"Verificating...")];
        __unsafe_unretained typeof(self) safeSelf = self;
     idBlock succBlock = ^(id content){
         DEBUGLOG(@"succ content %@", content);
@@ -335,17 +341,16 @@
             [safeSelf requestServerForRegister:nil];
             return ;
         }
-        [SVProgressHUD showErrorWithStatus:@"检验失败!"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Verification code error!",@"Verification code error!")];
     };
 
     idBlock failedBlock = ^(id content){
-        DEBUGLOG(@"failed content %@", content);
-        [SVProgressHUD showErrorWithStatus:@"检验失败!"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Verification code error!",@"Verification code error!")];
         [safeSelf requestServerForRegister:nil];
     };
     idBlock errBlock = ^(id content){
         DEBUGLOG(@"failed content %@", content);
-        [SVProgressHUD showErrorWithStatus:@"检验失败!"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Verification code error!",@"Verification code error!")];
         [safeSelf requestServerForRegister:nil];
     };
 
@@ -367,22 +372,22 @@
     }
     [self.confirmButton setEnabled:NO];
     __unsafe_unretained typeof(self) safeSelf = self;
-    [SVProgressHUD showWithStatus:@"正在提交订单..."];
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"Submitting...",@"Submitting...")];
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
-        [SVProgressHUD showSuccessWithStatus:@"提交订单成功!"];
+        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Submitting Succeed!",@"Submitting Succeed!")];
         [safeSelf.confirmButton setEnabled:YES];
     };
     
     idBlock failedBlock = ^(id content){
         DEBUGLOG(@"failed content %@", content);
-        [SVProgressHUD showErrorWithStatus:@"提交订单失败"];
+        [[[[ErrorResponse alloc] initWithJsonString:content] autorelease] show];
         [safeSelf.confirmButton setEnabled:YES];
     };
     
     idBlock errBlock = ^(id content){
         DEBUGLOG(@"error content %@", content);
-        [[[[ErrorResponse alloc] initWithJsonString:content] autorelease] show];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Submitting Failed!",@"Submitting Failed!")];
         [safeSelf.confirmButton setEnabled:YES];
     };
     CreateOrderRequest *createOrderRequest = [[[CreateOrderRequest alloc] init] autorelease];

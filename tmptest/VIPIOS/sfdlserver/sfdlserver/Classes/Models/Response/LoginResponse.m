@@ -491,7 +491,9 @@
         [self.keysArray addObject:@"IP:"];
         [self.keysArray addObject:@"Country:"];
         [self.keysArray addObject:@"Regional:"];
-        [self.keysArray addObject:@"Product:"];
+        if ([self.productList length] > 0) {
+            [self.keysArray addObject:@"Product:"];
+        }
         
         [self.valuesArray addObject:self.title];
         [self.valuesArray addObject:self.username];
@@ -501,6 +503,7 @@
         [self.valuesArray addObject:self.ip_address];
         [self.valuesArray addObject:self.country];
         [self.valuesArray addObject:self.area];
+        if ([self.productList length] > 0) 
         [self.valuesArray addObject:self.productList];
     }
     

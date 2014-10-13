@@ -39,7 +39,7 @@
 {
     [super viewDidLoad];
     [[self showSearchAndType] showRight];
-    [self setTitleContent:@"PRODUCTS"];
+    [self setTitleContent:NSLocalizedString(@"PRODUCTS","PRODUCTS")];
 
     if (!self.productTypeId) {
         [self dealWithData];

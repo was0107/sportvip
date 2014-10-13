@@ -35,8 +35,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setTitleContent:@"Forget password"];
-    
+    [self setTitleContent:NSLocalizedString(@"Forget password","Forget password")];
+
     [self.view addSubview:self.phoneTextField];
     [self.view addSubview:self.confirmButton];
 }
@@ -71,7 +71,7 @@
         _confirmButton.backgroundColor = kLightGrayColor;
         [_confirmButton.titleLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
         [CreateObject addTargetEfection:_confirmButton];
-        [_confirmButton setTitle:@"SUBMIT" forState:UIControlStateNormal];
+        [_confirmButton setTitle:NSLocalizedString(@"SUBMIT",@"SUBMIT") forState:UIControlStateNormal];
         [_confirmButton addTarget:self action:@selector(confirmButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     
@@ -120,6 +120,7 @@
     
     idBlock failedBlock = ^(id content){
         DEBUGLOG(@"failed content %@", content);
+        [[[[ErrorResponse alloc] initWithJsonString:content] autorelease] show];
         [safeSelf.confirmButton setEnabled:YES];
     };
     idBlock errBlock = ^(id content){

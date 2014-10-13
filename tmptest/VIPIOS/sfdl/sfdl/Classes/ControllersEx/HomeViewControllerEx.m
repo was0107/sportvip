@@ -246,6 +246,7 @@
         NSMutableArray *array = (1 == indexPath.section) ? [blockSelf.response hotArray] : [blockSelf.response result];
         for (int i =0 ; i < 3 ; i++) {
             CustomThreeButton *button = (CustomThreeButton *)[cell.contentView viewWithTag:1000+i];
+            button.theLabel.textColor = (1 == indexPath.section)? kBlackColor : kOrangeColor;
             if (indexPath.row * 3 + i < [array count]) {
                 HomeProductItem *item = [array objectAtIndex:indexPath.row * 3 + i];
                 [button setContent:item];
@@ -284,13 +285,13 @@
         UIView *footerView = [[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 35)]autorelease];
         footerView.backgroundColor = blockSelf.view.backgroundColor;
         UILabel *label1 = [[[UILabel alloc] initWithFrame:CGRectMake(10,9,200,30)] autorelease];
-        label1.text = (eSectionIndex01 == section) ? @"HOT PRODUCTS" : @"MOST POPULATE";
+        label1.text = (eSectionIndex01 == section) ? NSLocalizedString(@"HOT PRODUCTS",@"HOT PRODUCTS") : NSLocalizedString(@"MOST POPULATE",@"MOST POPULATE");
         label1.font = HTFONTSIZE(kFontSize16);
         label1.textColor = kBlackColor;
         label1.backgroundColor = kClearColor;
         
         UILabel *label2 = [[[UILabel alloc] initWithFrame:CGRectMake(220,4,90,40)] autorelease];
-        label2.text = @"MORE";
+        label2.text = NSLocalizedString(@"MORE",@"MORE");
         label2.font = HTFONTSIZE(kFontSize14);
         label2.textColor = kGrayColor;
         label2.backgroundColor = kClearColor;

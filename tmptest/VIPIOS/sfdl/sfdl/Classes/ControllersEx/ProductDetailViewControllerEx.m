@@ -53,7 +53,7 @@
 {
     [super viewDidLoad];
     [[self showShare] showRight];
-    [self setTitleContent:@"PRODUCT"];
+    [self setTitleContent:NSLocalizedString(@"PRODUCT",@"PRODUCT")];
     [self.scrollView removeFromSuperview];
     [self.content loadHTMLString:@"<html></html>" baseURL:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendRequestToGetCompanyServer) name:@"sendRequestToGetCompanyServer" object:nil];
@@ -141,7 +141,7 @@
 {
     if (self.response && [self.response.videoUrl length] > 0) {
         BaseWebViewController *webController = [[[BaseWebViewController alloc] init] autorelease];
-        webController.title = @"VIDEO";
+        webController.title = NSLocalizedString(@"VIDEO",@"VIDEO");
         webController.requestURL = self.response.videoUrl;
         [self.navigationController hidesBottomBarWhenPushed];
         [self.navigationController pushViewController:webController animated:YES];
@@ -173,7 +173,7 @@
     button.frame = CGRectMake(160, -40, 160, 30);
     button.backgroundColor = kLightGrayColor;
     [button setTitleColor:kWhiteColor forState:UIControlStateNormal];
-    [button setTitle:@"Feautres" forState:UIControlStateNormal];
+    [button setTitle:NSLocalizedString(@"Feautres",@"Feautres") forState:UIControlStateNormal];
     [button addTarget:self action:@selector(featureAction:) forControlEvents:UIControlEventTouchUpInside];
     self.featureButton = button;
     [_content.scrollView addSubview:button];
@@ -181,7 +181,7 @@
     button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0, -40, 160, 30);
     button.backgroundColor = kLightGrayColor;
-    [button setTitle:@"Description" forState:UIControlStateNormal];
+    [button setTitle:NSLocalizedString(@"Description",@"Description") forState:UIControlStateNormal];
     [button setTitleColor:kWhiteColor forState:UIControlStateNormal];
     [button addTarget:self action:@selector(descriptionAction:) forControlEvents:UIControlEventTouchUpInside];
     self.descButton = button;
@@ -203,7 +203,7 @@
     if ([self.response.feature length] == 0) {
         return;
     }
-    [self.content loadHTMLString:self.response.feature baseURL:nil];
+    [self.content loadHTMLString:self.response.others baseURL:nil];
     [self.featureButton setBackgroundImage:[UIImage imageWithColor:kOrangeColor size:CGSizeMake(19, 19)] forState:UIControlStateNormal];
     [self.descButton setBackgroundImage:[UIImage imageWithColor:kLightGrayColor size:CGSizeMake(19, 19)] forState:UIControlStateNormal];
 }
@@ -309,8 +309,8 @@
     typeof(self) blockSelf = self;
     if ([[[AppDelegate sharedAppDelegate] rootController] aboutResponse]) {
         blockSelf.aboutResponse = [[[AppDelegate sharedAppDelegate] rootController] aboutResponse];
-        blockSelf.telLabel.text = [NSString stringWithFormat:@"Tel : <font size=14 color=black>%@ </font>", [blockSelf.aboutResponse companyTelephone]];
-        blockSelf.emailLabel.text = [NSString stringWithFormat:@"E-mail : <font size=14 color=black>%@ </font>", [blockSelf.aboutResponse email]];
+        blockSelf.telLabel.text = [NSString stringWithFormat:@"%@: <font size=14 color=black>%@ </font>",NSLocalizedString(@"Tel","Tel"), [blockSelf.aboutResponse companyTelephone]];
+        blockSelf.emailLabel.text = [NSString stringWithFormat:@"%@: <font size=14 color=black>%@ </font>",NSLocalizedString(@"E-mail","E-mail"), [blockSelf.aboutResponse email]];
         return;
     }
     [[[AppDelegate sharedAppDelegate] rootController] sendRequestToGetCompanyServer];
@@ -324,7 +324,7 @@
         DEBUGLOG(@"success conent %@", content);
         blockSelf.response = [[[ProductDetailResponse alloc] initWithJsonString:content] autorelease];
         [blockSelf.cycleView reloadData];
-        blockSelf.belongLabel.text = [NSString stringWithFormat:@"Belongs to: <font size=14 color=black>%@ </font>",blockSelf.response.productTypeName];
+        blockSelf.belongLabel.text = [NSString stringWithFormat:@"%@: <font size=14 color=black>%@ </font>",NSLocalizedString(@"Belongs to","Belongs to"),blockSelf.response.productTypeName];
         [blockSelf descriptionAction:blockSelf.descButton];
         [blockSelf dealWithVideo];
     };

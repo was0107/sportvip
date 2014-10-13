@@ -163,6 +163,11 @@
 
 @end
 
+@interface CheckVersionRequest : ListRequestBase
+
+
+@end
+
 
 /*
  *server

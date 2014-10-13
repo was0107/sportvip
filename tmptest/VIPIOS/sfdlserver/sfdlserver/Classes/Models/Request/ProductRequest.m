@@ -105,3 +105,26 @@
 }
 @end
 
+
+@implementation CheckVersionRequest
+
+- (NSMutableArray *) keyArrays
+{
+    NSMutableArray *array =  [NSMutableArray arrayWithObjects:@"os",@"type", nil];
+    [array addObjectsFromArray: [super keyArrays]];
+    return array;
+}
+
+- (NSMutableArray *) valueArrays
+{
+    NSMutableArray *array =   [NSMutableArray arrayWithObjects:@"2",@"1", nil];
+    [array addObjectsFromArray: [super valueArrays]];
+    return array;
+}
+
+- (NSString *) methodString
+{
+    return @"getLatestVersion";
+}
+
+@end

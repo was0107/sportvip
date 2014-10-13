@@ -46,7 +46,7 @@
 {
     [super viewDidLoad];
 //    self.secondTitleLabel.text = @"Leave Message";
-    [self setTitleContent:@"LEAVE MESSAGE"];
+    [self setTitleContent:NSLocalizedString(@"LEAVE MESSAGE","LEAVE MESSAGE")];
 
     [self.scrollView addSubview:self.geneset];
     [self.scrollView addSubview:self.prime];

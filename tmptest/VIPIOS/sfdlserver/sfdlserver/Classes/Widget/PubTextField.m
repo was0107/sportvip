@@ -6,7 +6,7 @@
 #import "UITextField+DelegateBlocks.h"
 #import "UIView+extend.h"
 
-#define kIndexLabelWidth         40.0f
+#define kIndexLabelWidth         55.0f
 #define kIndexLabelHeight        20.0f
 #define kIndexLabelLeftPadding   4.0f
 #define kIndexLabelRightPadding  24.0f
@@ -33,7 +33,7 @@
     [_indexLabel release];
     [_fieldBackground release];
     [_pubTextField release];
-    self.textViewShouldReturen = nil;
+    
     [super dealloc];
 }
 
@@ -60,13 +60,19 @@
         
         [self addSubview:[self fieldBackground]];
         [self addSubview:[self indexLabel]];
-        [self addSubview:[self pubTextField]];
-        self.pubTextField.placeholder = [NSString stringWithFormat:@" %@",placeHolder];
+        
+        if (frame.size.height > kPubTextFieldHeight) {
+            [self addSubview:[self pubTextView]];
+        } else {
+            self.pubTextField.placeholder = [NSString stringWithFormat:@" %@",placeHolder];
+            
+            [self.pubTextField useBlocksForDelegate];
+            [self initialBlocks];
+            
+            [self addSubview:[self pubTextField]];
+        }
         self.indexLabel.text = indexTile;
         self.fieldStyle = pubFieldStyle;
-        
-        [self.pubTextField useBlocksForDelegate];
-        [self initialBlocks];
         
         //        if (IS_IOS_7_OR_GREATER)
         {
@@ -75,6 +81,30 @@
     }
     
     return self;
+}
+
+
+- (void) setEditable:(BOOL) flag
+{
+    self.pubTextField.enabled = flag;
+    self.pubTextView.editable = flag;
+}
+
+
+- (UITextView *) pubTextView
+{
+    if (!_pubTextView) {
+        _pubTextView = [[UITextView alloc] initWithFrame:CGRectMake(self.bounds.origin.x + kIndexLabelLeftPadding + kIndexLabelWidth + kIndexLabelRightPadding, self.bounds.origin.y + kIndexLabelTopPadding, kTextFieldWidth, self.bounds.size.height - 2*kIndexLabelTopPadding)];
+        //        _pubTextView.layer.cornerRadius = 2.0f;
+        //        _pubTextView.layer.borderColor = [kBlueColor CGColor];
+        //        _pubTextView.layer.borderWidth = 1.0f;
+        _pubTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
+        _pubTextView.autocorrectionType = UITextAutocorrectionTypeNo;
+        _pubTextView.textColor = kBlackColor;
+        _pubTextView.font = HTFONTSIZE(kSystemFontSize16);
+        _pubTextView.delegate = self;
+    }
+    return _pubTextView ;
 }
 
 - (UITextField *)pubTextField
@@ -104,7 +134,8 @@
     [self.indexLabel sizeToFit];
     CGFloat max = self.indexLabel.width;
     [self setMaxWidth:max];
-    [self.pubTextField setFrameY:10];
+    [self.pubTextField setFrameY:(IS_IOS_7_OR_GREATER) ? 1 : 10];
+    
     
 }
 - (void) setMaxWidth:(CGFloat)maxWidth
@@ -265,6 +296,11 @@
     [self.pubTextField onShouldReturn:^BOOL(UITextField *textField) {
         return YES;
     }];
+}
+
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text; {
+    return YES;
 }
 
 @end

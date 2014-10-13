@@ -1085,7 +1085,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "97617F28-BAD9-4F20-AC70-D8EED620C65B";
+				PROVISIONING_PROFILE = "90B1C7D9-2EC4-4272-95D7-D7231B602524";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../PrettyUtility/\"/**";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -1099,8 +1099,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Guoyan Geng (SGL9K9F566)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Haibo Liu (4RT4T5V272)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Singoo Information Technology Co., Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai Singoo Information Technology Co., Ltd.";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sfdlserver/sfdlserver-Prefix.pch";
 				INFOPLIST_FILE = "sfdlserver/sfdlserver-Info.plist";
@@ -1113,7 +1113,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "97617F28-BAD9-4F20-AC70-D8EED620C65B";
+				PROVISIONING_PROFILE = "90B1C7D9-2EC4-4272-95D7-D7231B602524";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../PrettyUtility/\"/**";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;

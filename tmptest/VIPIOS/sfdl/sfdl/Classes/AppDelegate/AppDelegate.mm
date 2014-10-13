@@ -7,8 +7,13 @@
 //
 
 #import "AppDelegate.h"
+#import "ProductRequest.h"
+#import "ProductResponse.h"
 
-@interface AppDelegate()
+NSString *updateURL = nil;
+
+
+@interface AppDelegate()<UIAlertViewDelegate>
 
 @end
 
@@ -101,6 +106,37 @@
 
     
     
+}
+
+
+- (void) checkVersion
+{
+    idBlock successedBlock = ^(id content){
+        DEBUGLOG(@"success conent %@", content);
+        CheckVersionResponse *response = [[CheckVersionResponse alloc] initWithJsonString:content];
+        if ([response isNeedToTip]) {
+            updateURL = response.download_url;
+            UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"Update" message:@"Detecte a new version" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Upgrade", nil] autorelease];
+            [alertView show];
+        };
+    };
+    
+    idBlock failedBlock = ^(id content){
+        DEBUGLOG(@"failed content %@", content);
+    };
+    
+    idBlock errBlock = ^(id content){
+        DEBUGLOG(@"error content %@", content);
+    };
+    CheckVersionRequest *request = [[[CheckVersionRequest alloc] init] autorelease];
+    [WASBaseServiceFace serviceWithMethod:[request URLString] body:[request toJsonString] onSuc:successedBlock onFailed:failedBlock onError:errBlock];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (1 == buttonIndex) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:updateURL]];
+    }
 }
 
 

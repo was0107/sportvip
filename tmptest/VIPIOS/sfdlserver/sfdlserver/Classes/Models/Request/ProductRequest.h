@@ -30,5 +30,8 @@
 @end
 
 
+@interface CheckVersionRequest : ListRequestBase
+
+@end
 
 

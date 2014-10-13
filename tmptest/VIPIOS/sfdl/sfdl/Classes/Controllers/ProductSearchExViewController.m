@@ -45,7 +45,7 @@
 {
     [super viewDidLoad];
 //    self.secondTitleLabel.text = @"Product Search";
-    [self setTitleContent:@"PRODUCT SEARCH"];
+    [self setTitleContent:NSLocalizedString(@"PRODUCT SEARCH",@"PRODUCT SEARCH")];
 
     _contentDictionary = [[NSMutableDictionary alloc] init];
     [self sendRequestToGetCondictionServer];
@@ -86,7 +86,7 @@
             ProperListItem *propsItem = [_contentDictionary objectForKey:kIntToString(indexPath.row)];
             cell.subLabel.text = propsItem.propertyListValue;
         } else {
-            cell.subLabel.text = @"请选择";
+            cell.subLabel.text = NSLocalizedString(@"Choose",@"Choose");
         }
         return cell;
     };
@@ -146,7 +146,7 @@
 - (void) sendRequestToServer
 {
     __unsafe_unretained ProductSearchExViewController *blockSelf = self;
-    [SVProgressHUD showWithStatus:@"正在提交..."];
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"Submiting...",@"Submiting...")];
     idBlock successedBlock = ^(id content){
         DEBUGLOG(@"success conent %@", content);
         blockSelf.productResponse = [[ProductResponse alloc] initWithJsonString:content];
@@ -193,7 +193,7 @@
     UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 64)] autorelease];
     view.backgroundColor = kClearColor;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setTitle:@"Submit" forState:UIControlStateNormal];
+    [button setTitle:NSLocalizedString(@"SUBMIT",@"SUBMIT") forState:UIControlStateNormal];
     [button addTarget:self action:@selector(showTeachers:) forControlEvents:UIControlEventTouchUpInside];
     [CreateObject addTargetEfection:button];
     button.frame = CGRectMake(20, 10, 280, 44);

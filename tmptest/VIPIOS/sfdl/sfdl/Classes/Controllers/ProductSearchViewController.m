@@ -28,7 +28,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.secondTitleLabel.text = @"Product Search";
+    [self setTitleContent:NSLocalizedString(@"Product Search",@"Product Search")];
+
     [self.scrollView addSubview:self.geneset];
     [self.scrollView addSubview:self.prime];
     [self.scrollView addSubview:self.standby];

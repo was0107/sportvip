@@ -31,8 +31,7 @@
     [super viewDidLoad];
     [[self showType] showRight];
 //    self.secondTitleLabel.text = @"News";
-    [self setTitleContent:@"NEWS"];
-
+    [self setTitleContent:NSLocalizedString(@"NEWS","NEWS")];
 }
 
 - (CGRect)tableViewFrame

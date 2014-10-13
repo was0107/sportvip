@@ -38,7 +38,7 @@
     [super viewDidLoad];
     [[self showType] showRight];
 //    self.secondTitleLabel.text = @"Contact Us";
-    [self setTitleContent:@"CONTACT US"];
+    [self setTitleContent:NSLocalizedString(@"CONTACT US","CONTACT US")];
 
     [self.tableView removeFromSuperview];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendRequestToGetCompanyServer) name:@"sendRequestToGetCompanyServer" object:nil];

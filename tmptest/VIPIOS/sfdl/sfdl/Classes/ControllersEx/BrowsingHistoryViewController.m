@@ -29,7 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setTitleContent:@"BROWSING HISTORY"];
+    [self setTitleContent:NSLocalizedString(@"BROWSING HISTORY",@"BROWSING HISTORY")];
 
     // Do any additional setup after loading the view.
 }

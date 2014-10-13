@@ -27,3 +27,10 @@
 
 @end
 
+@interface CheckVersionResponse : ListResponseBase
+
+@property (nonatomic, copy) NSString *version, *download_url;
+
+- (BOOL) isNeedToTip;
+
+@end

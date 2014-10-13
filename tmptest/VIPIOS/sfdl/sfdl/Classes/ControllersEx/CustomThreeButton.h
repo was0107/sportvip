@@ -12,6 +12,7 @@
 @interface CustomColumButton : UIButton
 @property (nonatomic, copy) NSString *imageString, *title;
 @property (nonatomic, assign) id content;
+@property (nonatomic, retain) UILabel     *theLabel;
 
 @end
 

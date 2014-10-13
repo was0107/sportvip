@@ -12,7 +12,6 @@
 
 @interface CustomColumButton()
 @property (nonatomic, retain) UIImageView *theImageView;
-@property (nonatomic, retain) UILabel     *theLabel;
 
 @end
 

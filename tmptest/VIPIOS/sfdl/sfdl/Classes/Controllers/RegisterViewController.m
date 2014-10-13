@@ -55,9 +55,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self setTitleContent:@"CREATE ACCOUNT"];
-    [[[self showRight] rightButton] setTitle:@"Login" forState:UIControlStateNormal];
+    [self setTitleContent:NSLocalizedString(@"CREATE ACCOUNT",@"CREATE ACCOUNT")];
+
+    [[[self showRight] rightButton] setTitle:NSLocalizedString(@"Login",@"Login") forState:UIControlStateNormal];
 
     
     self.scrollView = [[[UIKeyboardAvoidingScrollView alloc] initWithFrame:CGRectMake(0,  0, 320.0, kContentBoundsHeight-44)] autorelease];
@@ -93,7 +93,10 @@
 {
     if (!_memberIDTextField) {
         __unsafe_unretained RegisterViewController *safeSelf = self;
-        _memberIDTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0, 10 + 0* kPubTextFieldHeight2  + kImageStartAt , 320, kPubTextFieldHeight) indexTitle:@"Name:" placeHolder:@"Member ID" pubTextFieldStyle:PubTextFieldStyleTop];
+        _memberIDTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0, 10 + 0* kPubTextFieldHeight2  + kImageStartAt , 320, kPubTextFieldHeight)
+                                                      indexTitle:NSLocalizedString(@"Name:",@"Name:")
+                                                     placeHolder:NSLocalizedString(@"Name",@"Name")
+                                               pubTextFieldStyle:PubTextFieldStyleTop];
         _memberIDTextField.autoLayout = YES;
         _memberIDTextField.pubTextField.returnKeyType = UIReturnKeyNext;
         _memberIDTextField.pubTextField.keyboardType = UIKeyboardTypeDefault;
@@ -110,7 +113,10 @@
 {
     if (!_pwdTextField) {
         __weak RegisterViewController *safeSelf = self;
-        _pwdTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  10 + 1 * kPubTextFieldHeight2  + kImageStartAt, 320, kPubTextFieldHeight) indexTitle:@"Password:" placeHolder:@"Password" pubTextFieldStyle:PubTextFieldStyleBottom];
+        _pwdTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  10 + 1 * kPubTextFieldHeight2  + kImageStartAt, 320, kPubTextFieldHeight)
+                                                 indexTitle:NSLocalizedString(@"Password:",@"Password:")
+                                                placeHolder:NSLocalizedString(@"Password",@"Password")
+                                          pubTextFieldStyle:PubTextFieldStyleBottom];
         _pwdTextField.autoLayout = YES;
         _pwdTextField.pubTextField.returnKeyType = UIReturnKeyNext;
         _pwdTextField.pubTextField.secureTextEntry = YES;
@@ -127,8 +133,11 @@
 - (PubTextField *)titleTextField
 {
     if (!_titleTextField) {
-        __weak RegisterViewController *safeSelf = self;
-        _titleTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  10 + 2 * kPubTextFieldHeight2  + kImageStartAt, 320, kPubTextFieldHeight) indexTitle:@"Repeat Password:" placeHolder:@"Title" pubTextFieldStyle:PubTextFieldStyleBottom];
+        __unsafe_unretained RegisterViewController *safeSelf = self;
+        _titleTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  10 + 2 * kPubTextFieldHeight2  + kImageStartAt, 320, kPubTextFieldHeight)
+                                                   indexTitle:NSLocalizedString(@"Repeat Password:",@"Repeat Password:")
+                                                  placeHolder:NSLocalizedString(@"Repeat Password",@"Repeat Password")
+                                            pubTextFieldStyle:PubTextFieldStyleBottom];
         _titleTextField.autoLayout = YES;
         _titleTextField.pubTextField.returnKeyType = UIReturnKeyNext;
         _titleTextField.pubTextField.secureTextEntry = YES;
@@ -145,7 +154,7 @@
 {
     if (!_emailTextField) {
         __unsafe_unretained RegisterViewController *safeSelf = self;
-        _emailTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0, 10 + 3 * kPubTextFieldHeight2  + kImageStartAt , 320, kPubTextFieldHeight) indexTitle:@"Email:" placeHolder:@"Current Email" pubTextFieldStyle:PubTextFieldStyleTop];
+        _emailTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0, 10 + 3 * kPubTextFieldHeight2  + kImageStartAt , 320, kPubTextFieldHeight) indexTitle:@"Email:" placeHolder:@"Email" pubTextFieldStyle:PubTextFieldStyleTop];
         _emailTextField.autoLayout = YES;
         _emailTextField.pubTextField.returnKeyType = UIReturnKeyDone;
         _emailTextField.pubTextField.keyboardType = UIKeyboardTypeDefault;
@@ -166,7 +175,7 @@
         _confirmButton.backgroundColor = kClearColor;
         [_confirmButton.titleLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
         [CreateObject addTargetEfection:_confirmButton];
-        [_confirmButton setTitle:@"SUBMIT" forState:UIControlStateNormal];
+        [_confirmButton setTitle:NSLocalizedString(@"SUBMIT",@"SUBMIT") forState:UIControlStateNormal];
         [_confirmButton addTarget:self action:@selector(confirmButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     
@@ -205,18 +214,18 @@
 //    }
 //
     if (![IdentifierValidator isValid:IdentifierTypePassword value:_memberIDTextField.pubTextField.text]) {
-        [SVProgressHUD showErrorWithStatus:@"请输入正确的用户名"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Please enter the correct user name",@"Please enter the correct user name")];
         return NO;
     }
     
     if (![_pwdTextField.pubTextField.text isEqualToString:_titleTextField.pubTextField.text]) {
-        [SVProgressHUD showErrorWithStatus:@"两次输入密码不一致"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"The two input password does not match",@"The two input password does not match")];
         [_pwdTextField becomeFirstResponder];
         return NO;
     }
     
     if (![IdentifierValidator isValid:IdentifierTypeEmail value:_emailTextField.pubTextField.text]) {
-        [SVProgressHUD showErrorWithStatus:@"请输入正确的邮箱"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Please enter a valid mailbox",@"Please enter a valid mailbox")];
         [_emailTextField becomeFirstResponder];
         return NO;
     }
@@ -292,13 +301,13 @@
         return;
     }
     
-    [SVProgressHUD showWithStatus:@"正在注册..."];
+    [SVProgressHUD showWithStatus:@"Registing..."];
     [self.confirmButton setEnabled:NO];
     __unsafe_unretained RegisterViewController *safeSelf = self;
     
     idBlock succBlock = ^(id content){
         DEBUGLOG(@"succ content %@", content);
-        [SVProgressHUD showSuccessWithStatus:@"请等待后台审核或是联系客服!"];
+        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Please wait for the audit , or contact customer service!",@"Please wait for the audit , or contact customer service!")];
 //        [safeSelf requestServerForLogin];
     };
     
@@ -309,7 +318,7 @@
     };
     idBlock errBlock = ^(id content){
         DEBUGLOG(@"failed content %@", content);
-        [SVProgressHUD showErrorWithStatus:@"注册失败"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Registe failed",@"Registe failed")];
         [safeSelf.confirmButton setEnabled:YES];
     };
 
@@ -318,7 +327,7 @@
     }
     
     self.request.email    = self.emailTextField.pubTextField.text;
-    self.request.username    = self.memberIDTextField.pubTextField.text;
+    self.request.username = self.memberIDTextField.pubTextField.text;
     self.request.password = self.pwdTextField.pubTextField.text;
     [WASBaseServiceFace serviceWithMethod:[self.request URLString] body:[self.request toJsonString] onSuc:succBlock onFailed:failedBlock onError:errBlock];
 }
@@ -336,7 +345,13 @@
         [UserDefaultsManager saveUserName:_memberIDTextField.pubTextField.text];
         [safeSelf.confirmButton setEnabled:YES];
         [SVProgressHUD dismiss];
-        [safeSelf.navigationController popToRootViewControllerAnimated:YES];
+//        [safeSelf.navigationController popToRootViewControllerAnimated:YES];
+        Class class = NSClassFromString(@"UserCenterViewController");
+        if (class) {
+            BaseTitleViewController *controllerTemp = [[[class alloc] init] autorelease];
+            [[[[AppDelegate sharedAppDelegate] rootController] getSelectedViewController] pushViewController:controllerTemp animated:YES];
+        }
+
     };
     
     idBlock failedBlock = ^(id content){
@@ -346,7 +361,7 @@
     };
     idBlock errBlock = ^(id content){
         DEBUGLOG(@"failed content %@", content);
-        [SVProgressHUD showErrorWithStatus:@"注册失败"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Registe failed",@"Registe failed")];
         [safeSelf.confirmButton setEnabled:YES];
     };
     
