@@ -88,7 +88,7 @@
     if (!_belongLabel) {
         _belongLabel = [[UILabel alloc] initWithFrame:CGRectMake(220, 8, 90, 30)];
 //        _belongLabel.text = [NSString stringWithFormat:@"Belongs to:<font size=14 color=black>%@ </font>", @""];
-        _belongLabel.textColor = kBlackColor;
+        _belongLabel.textColor = kGrayColor;
         _belongLabel.font = HTFONTSIZE(kFontSize12);
         _belongLabel.numberOfLines = 2;
         _belongLabel.lineBreakMode = RTTextLineBreakModeCharWrapping;
@@ -102,7 +102,7 @@
     if (!_telLabel) {
         _telLabel = [[UILabel alloc] initWithFrame:CGRectMake(220, 38, 90, 30)];
 //        _telLabel.text = [NSString stringWithFormat:@"Telf jdoj fodj fdof jfdjj %@ ", @""];
-        _telLabel.textColor = kBlackColor;
+        _telLabel.textColor = kGrayColor;
         _telLabel.font = HTFONTSIZE(kFontSize12);
         _telLabel.numberOfLines = 2;
         _telLabel.lineBreakMode = RTTextLineBreakModeCharWrapping;
@@ -118,7 +118,7 @@
     if (!_emailLabel) {
         _emailLabel = [[UILabel alloc] initWithFrame:CGRectMake(220, 68, 90, 18)];
 //        _emailLabel.text = [NSString stringWithFormat:@"E-mail:font size=14 color=black%@</font>", @""];
-        _emailLabel.textColor = kBlackColor;
+        _emailLabel.textColor = kGrayColor;
         _emailLabel.font = HTFONTSIZE(kFontSize12);
         _emailLabel.lineBreakMode = RTTextLineBreakModeCharWrapping;
         _emailLabel.backgroundColor = [UIColor clearColor];
@@ -336,7 +336,7 @@
     typeof(self) blockSelf = self;
     if ([[[AppDelegate sharedAppDelegate] rootController] aboutResponse]) {
         blockSelf.aboutResponse = [[[AppDelegate sharedAppDelegate] rootController] aboutResponse];
-//        blockSelf.telLabel.text = [blockSelf.aboutResponse companyTelephone];
+        blockSelf.telLabel.text = [blockSelf.aboutResponse companyTelephone];
         //[NSString stringWithFormat:@"%@: <font size=14 color=black>%@ </font>",NSLocalizedString(@"Tel","Tel"), [blockSelf.aboutResponse companyTelephone]];
         blockSelf.emailLabel.text = [blockSelf.aboutResponse email];
         //[NSString stringWithFormat:@"%@: <font size=14 color=black>%@ </font>",NSLocalizedString(@"E-mail","E-mail"), [blockSelf.aboutResponse email]];
