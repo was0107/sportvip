@@ -121,7 +121,7 @@
     self.tableView.sectionHeaderBlock = ^( UITableView *tableView, NSInteger section){
         UIView *headerview = nil;
         headerview = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 52)] autorelease];
-        headerview.backgroundColor = kClearColor;
+        headerview.backgroundColor = blockSelf.view.backgroundColor;
         UILabel *titL = [[[UILabel alloc] initWithFrame:CGRectMake(0, 8, 320, 36)] autorelease];
         titL.text = [NSString stringWithFormat:@"    %@",self.sectionTitle];
         titL.textColor = kBlackColor;
