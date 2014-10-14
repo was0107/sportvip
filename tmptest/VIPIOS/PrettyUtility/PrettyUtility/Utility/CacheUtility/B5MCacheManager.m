@@ -2,7 +2,7 @@
 //  B5MCacheManager.m
 //  comb5mios
 //
-//  Created by allen.wang on 6/11/12.
+//  Created by micker on 6/11/12.
 //  Copyright (c) 2012 b5m. All rights reserved.
 //
 

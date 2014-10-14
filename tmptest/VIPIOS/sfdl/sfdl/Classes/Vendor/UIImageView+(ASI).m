@@ -2,7 +2,7 @@
 //  UIImageView+(ASI).m
 //  comb5mios
 //
-//  Created by allen.wang on 7/23/12.
+//  Created by micker on 7/23/12.
 //  Copyright (c) 2012 b5m. All rights reserved.
 //
 #import <AssetsLibrary/AssetsLibrary.h>

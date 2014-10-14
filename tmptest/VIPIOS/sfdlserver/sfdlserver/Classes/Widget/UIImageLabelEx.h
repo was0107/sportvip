@@ -3,7 +3,7 @@
 //  sport
 //
 //  Created by Erlang on 14-6-2.
-//  Copyright (c) 2014年 allen.wang. All rights reserved.
+//  Copyright (c) 2014年 micker. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

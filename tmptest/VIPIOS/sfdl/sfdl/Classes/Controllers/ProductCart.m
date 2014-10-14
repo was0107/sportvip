@@ -2,8 +2,8 @@
 //  ProductCart.m
 //  sfdl
 //
-//  Created by allen.wang on 6/26/14.
-//  Copyright (c) 2014 allen.wang. All rights reserved.
+//  Created by micker on 6/26/14.
+//  Copyright (c) 2014 micker. All rights reserved.
 //
 
 #import "ProductCart.h"

@@ -2,7 +2,7 @@
 //  B5MEncrept.m
 //  comb5mios
 //
-//  Created by allen.wang on 9/15/12.
+//  Created by micker on 9/15/12.
 //  Copyright (c) 2012 b5m. All rights reserved.
 //
 

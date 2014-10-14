@@ -2,8 +2,8 @@
 //  ListRequestBase.m
 //  b5mappsejieios
 //
-//  Created by allen.wang on 12/27/12.
-//  Copyright (c) 2012 allen.wang. All rights reserved.
+//  Created by micker on 12/27/12.
+//  Copyright (c) 2012 micker. All rights reserved.
 //
 
 #import "ListRequestBase.h"

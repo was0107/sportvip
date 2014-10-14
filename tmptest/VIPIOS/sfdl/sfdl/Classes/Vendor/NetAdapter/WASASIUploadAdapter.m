@@ -2,7 +2,7 @@
 //  WASASIUploadAdapter.m
 //  b5mappsejieios
 //
-//  Created by allen.wang on 1/18/13.
+//  Created by micker on 1/18/13.
 //  Copyright (c) 2013 B5M. All rights reserved.
 //
 

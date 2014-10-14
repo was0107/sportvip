@@ -2,7 +2,7 @@
 //  CustomSelectControl.h
 //  Discount
 //
-//  Created by allen.wang on 7/3/13.
+//  Created by micker on 7/3/13.
 //  Copyright (c) 2013 Apple. All rights reserved.
 //
 

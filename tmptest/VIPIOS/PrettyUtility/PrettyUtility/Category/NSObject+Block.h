@@ -2,7 +2,7 @@
 //  NSObject+Block.h
 //  comb5mios
 //
-//  Created by allen.wang on 6/28/12.
+//  Created by micker on 6/28/12.
 //  Copyright (c) 2012 b5m. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  BaseTableViewCell.h
 //  Discount
 //
-//  Created by allen.wang on 5/29/13.
+//  Created by micker on 5/29/13.
 //  Copyright (c) 2013 Apple. All rights reserved.
 //
 

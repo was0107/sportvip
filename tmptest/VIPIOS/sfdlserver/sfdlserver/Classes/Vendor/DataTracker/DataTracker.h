@@ -3,7 +3,7 @@
 //  comb5mios
 //
 //  Created by Jarry on 12-10-16.
-//  Copyright (c) 2012年 b5m. All rights reserved.
+//  Copyright (c) 2012年 micker. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

@@ -2,7 +2,7 @@
 //  UIView+BaseKit.h
 //  comb5mios
 //
-//  Created by allen.wang on 9/24/12.
+//  Created by micker on 9/24/12.
 //  Copyright (c) 2012 b5m. All rights reserved.
 //
 

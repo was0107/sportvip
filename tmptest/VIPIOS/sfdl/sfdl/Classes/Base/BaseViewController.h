@@ -2,7 +2,7 @@
 //  BaseViewController.h
 //  Discount
 //
-//  Created by allen.wang on 5/27/13.
+//  Created by micker on 5/27/13.
 //  Copyright (c) 2013 Apple. All rights reserved.
 //
 

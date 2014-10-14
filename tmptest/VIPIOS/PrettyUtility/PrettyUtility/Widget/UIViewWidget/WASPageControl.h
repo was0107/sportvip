@@ -2,7 +2,7 @@
 //  WASPageControl.h
 //  b5mUtility
 //
-//  Created by allen.wang on 12/17/12.
+//  Created by micker on 12/17/12.
 //  Copyright (c) 2012 b5m. All rights reserved.
 //
 

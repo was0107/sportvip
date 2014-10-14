@@ -2,7 +2,7 @@
 //  CheckUpdate.h
 //  PrettyUtility
 //
-//  Created by allen.wang on 5/16/14.
+//  Created by micker on 5/16/14.
 //  Copyright (c) 2014 B5M. All rights reserved.
 //
 

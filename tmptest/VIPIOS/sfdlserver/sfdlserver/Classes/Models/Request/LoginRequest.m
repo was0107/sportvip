@@ -3,7 +3,7 @@
 //  taoappios
 //
 //  Created by Eason on 5/14/13.
-//  Copyright (c) 2013 allen.wang. All rights reserved.
+//  Copyright (c) 2013 micker. All rights reserved.
 //
 
 #import "LoginRequest.h"

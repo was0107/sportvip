@@ -2,8 +2,8 @@
 //  NewsTableViewCellEx.m
 //  sfdl
 //
-//  Created by boguang on 14-9-16.
-//  Copyright (c) 2014年 allen.wang. All rights reserved.
+//  Created by micker on 14-9-16.
+//  Copyright (c) 2014年 micker. All rights reserved.
 //
 
 #import "NewsTableViewCellEx.h"

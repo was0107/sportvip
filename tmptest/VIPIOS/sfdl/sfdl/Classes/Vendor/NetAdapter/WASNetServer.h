@@ -2,7 +2,7 @@
 //  WASNetServer.h
 //  comb5mios
 //
-//  Created by allen.wang on 8/21/12.
+//  Created by micker on 8/21/12.
 //  Copyright (c) 2012 b5m. All rights reserved.
 //
 

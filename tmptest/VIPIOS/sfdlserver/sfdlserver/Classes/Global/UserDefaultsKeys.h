@@ -3,7 +3,7 @@
 //  comb5mios
 //
 //  Created by zengbin on 12-6-14.
-//  Copyright (c) 2012年 b5m. All rights reserved.
+//  Copyright (c) 2012年 micker. All rights reserved.
 //
 
 #ifndef comb5mios_UserDefaultsKeys_h

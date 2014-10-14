@@ -2,8 +2,8 @@
 //  AppDelegate.m
 //  sport
 //
-//  Created by allen.wang on 4/15/14.
-//  Copyright (c) 2014 allen.wang. All rights reserved.
+//  Created by micker on 4/15/14.
+//  Copyright (c) 2014 micker. All rights reserved.
 //
 
 #import "AppDelegate.h"

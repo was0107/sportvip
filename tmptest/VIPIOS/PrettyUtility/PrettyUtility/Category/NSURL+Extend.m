@@ -2,7 +2,7 @@
 //  NSURL+Extend.m
 //  comb5mios
 //
-//  Created by allen.wang on 8/6/12.
+//  Created by micker on 8/6/12.
 //  Copyright (c) 2012 b5m. All rights reserved.
 //
 

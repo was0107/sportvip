@@ -2,7 +2,7 @@
 //  B5MPreprocessorMacros.h
 //  b5mUtility
 //
-//  Created by allen.wang on 10/30/12.
+//  Created by micker on 10/30/12.
 //  Copyright (c) 2012 b5m. All rights reserved.
 //
 

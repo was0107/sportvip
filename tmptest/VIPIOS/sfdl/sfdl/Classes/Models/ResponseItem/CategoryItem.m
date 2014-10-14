@@ -2,8 +2,8 @@
 //  CategoryItem.m
 //  sport
 //
-//  Created by allen.wang on 5/19/14.
-//  Copyright (c) 2014 allen.wang. All rights reserved.
+//  Created by micker on 5/19/14.
+//  Copyright (c) 2014 micker. All rights reserved.
 //
 
 #import "CategoryItem.h"

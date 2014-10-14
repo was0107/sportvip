@@ -2,7 +2,7 @@
 //  BaseCarousel.m
 //  PrettyUtility
 //
-//  Created by allen.wang on 1/6/13.
+//  Created by micker on 1/6/13.
 //  Copyright (c) 2013 B5M. All rights reserved.
 //
 

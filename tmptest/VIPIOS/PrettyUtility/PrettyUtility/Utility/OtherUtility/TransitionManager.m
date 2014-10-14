@@ -3,7 +3,7 @@
 //  comb5mios
 //
 //  Created by Jarry Zhu on 12-6-18.
-//  Copyright (c) 2012年 b5m. All rights reserved.
+//  Copyright (c) 2012年 micker. All rights reserved.
 //
 
 #import "TransitionManager.h"

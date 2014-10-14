@@ -2,7 +2,7 @@
 //  main.m
 //  sfdlserver
 //
-//  Created by allen.wang on 7/31/14.
+//  Created by micker on 7/31/14.
 //  Copyright (c) 2014 mcms. All rights reserved.
 //
 

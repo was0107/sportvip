@@ -2,8 +2,8 @@
 //  ProductDetailViewControllerEx.m
 //  sfdl
 //
-//  Created by boguang on 14-9-22.
-//  Copyright (c) 2014年 allen.wang. All rights reserved.
+//  Created by micker on 14-9-22.
+//  Copyright (c) 2014年 micker. All rights reserved.
 //
 
 #import "ProductDetailViewControllerEx.h"
@@ -268,14 +268,14 @@
 {
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,320, 167)];
     imageView.image = [UIImage imageNamed:@"icon"];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
     if (index >= 0 && index < [[self.response imagesArray] count]) {
         
         NSString * pictureItem = [[self.response imagesArray] objectAtIndex:index];
         [imageView setImageWithURL:[NSURL URLWithString:pictureItem]
                   placeholderImage:[UIImage imageNamed:kImageDefault]
                            success:^(UIImage *image){
-                               UIImage * image1 = [image imageScaledToSizeEx:CGSizeMake(320, 165)];
-                               imageView.image = image1;
+                               imageView.image = image;
                            }
                            failure:^(NSError *error){
                                imageView.image = [UIImage imageNamed:kImageDefault];

@@ -3,7 +3,7 @@
 //  sfdl
 //
 //  Created by Erlang on 14-6-28.
-//  Copyright (c) 2014年 allen.wang. All rights reserved.
+//  Copyright (c) 2014年 micker. All rights reserved.
 //
 
 #import "CustomLeftImageButton.h"

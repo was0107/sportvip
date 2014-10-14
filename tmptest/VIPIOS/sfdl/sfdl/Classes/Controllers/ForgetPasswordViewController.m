@@ -2,8 +2,8 @@
 //  ForgetPasswordViewController.m
 //  sfdl
 //
-//  Created by allen.wang on 7/1/14.
-//  Copyright (c) 2014 allen.wang. All rights reserved.
+//  Created by micker on 7/1/14.
+//  Copyright (c) 2014 micker. All rights reserved.
 //
 
 #import "ForgetPasswordViewController.h"
