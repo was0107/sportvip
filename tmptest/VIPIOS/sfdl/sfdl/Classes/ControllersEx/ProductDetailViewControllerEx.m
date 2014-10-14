@@ -322,7 +322,7 @@
     [self.videoImageView setImageWithURL:[NSURL URLWithString:self.response.videoImg]
               placeholderImage:[UIImage imageNamed:kImageDefault]
                        success:^(UIImage *image){
-                           UIImage * image1 = [image imageScaledToSizeEx:CGSizeMake(144, 77)];
+                           UIImage * image1 = [image imageScaledToSizeEx:CGSizeMake(135, 72)];
                            _videoImageView.image = image1;
                        }
                        failure:^(NSError *error){
