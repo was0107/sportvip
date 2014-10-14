@@ -299,6 +299,8 @@
         return NO;
     }
     if ([self.emailTextField.pubTextField.text  length] == 0) {
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Please enter the normal E-mail",@"Please enter the normal E-mail")];
+        [_emailTextField.pubTextField becomeFirstResponder];
         return NO;
     }
     return YES;
