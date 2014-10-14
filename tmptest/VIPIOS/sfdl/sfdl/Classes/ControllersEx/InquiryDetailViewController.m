@@ -62,10 +62,10 @@
     [self.scrollView addSubview:self.toTextField];
     [self.scrollView addSubview:self.subjectTextField];
     [self.scrollView addSubview:self.messageTextField];
-    [self.scrollView addSubview:self.pictureTextField];
+//    [self.scrollView addSubview:self.pictureTextField];
     [self.scrollView addSubview:self.codeTextField];
     
-    [self.scrollView setContentSize:CGSizeMake(320, 50 + 13 * kPubTextFieldHeight2  + kImageStartAt)];
+    [self.scrollView setContentSize:CGSizeMake(320, 50 + 10 * kPubTextFieldHeight2  + kImageStartAt)];
     [self.view addSubview:self.scrollView];
     
     [self sendRequestToServer];
@@ -169,7 +169,7 @@
 {
     if (!_codeTextField) {
         __unsafe_unretained typeof(self) safeSelf = self;
-        _codeTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  10 + 9.5 * kPubTextFieldHeight2  + kImageStartAt, 320, kPubTextFieldHeight) indexTitle:@"Progress:" placeHolder:@"" pubTextFieldStyle:PubTextFieldStyleBottom];
+        _codeTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0,  10 + 6.5 * kPubTextFieldHeight2  + kImageStartAt - 2, 320, kPubTextFieldHeight) indexTitle:@"Progress:" placeHolder:@"" pubTextFieldStyle:PubTextFieldStyleBottom];
         [_codeTextField setEditable:NO];
         _codeTextField.indexLabel.textAlignment = NSTextAlignmentRight;
         _codeTextField.pubTextField.returnKeyType = UIReturnKeyDone;

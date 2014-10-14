@@ -53,7 +53,7 @@
 {
     if (!_phoneTextField) {
         __block typeof(self) safeSelf = self;
-        _phoneTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0, 10 + kImageStartAt, 320, 40) indexTitle:@"Name:" placeHolder:@"Member ID or Email" pubTextFieldStyle:PubTextFieldStyleTop];
+        _phoneTextField = [[PubTextField alloc] initWithFrame:CGRectMake(0, 10 + kImageStartAt, 320, 40) indexTitle:@"Name:" placeHolder:@"Name" pubTextFieldStyle:PubTextFieldStyleTop];
         _phoneTextField.pubTextField.returnKeyType = UIReturnKeyNext;
         _phoneTextField.pubTextField.frame = CGRectMake(0, 0, 250, 40);
         _phoneTextField.autoLayout = YES;
@@ -169,7 +169,7 @@
         DEBUGLOG(@"check failed.");
         return;
     }
-    [SVProgressHUD showWithStatus:@"正在登录..."];
+    [SVProgressHUD showWithStatus:@"Logining..."];
     [self.confirmButton setEnabled:NO];
 
     __block typeof(self) safeSelf = self;
@@ -198,7 +198,7 @@
     };
     idBlock errBlock = ^(id content){
         DEBUGLOG(@"failed content %@", content);
-        [SVProgressHUD showErrorWithStatus:@"登录失败"];
+        [SVProgressHUD showErrorWithStatus:@"Login Failed"];
         [safeSelf.confirmButton setEnabled:YES];
 //        EnquiryListViewController *controller = [[[EnquiryListViewController alloc] init] autorelease];
 //        [controller setHidesBottomBarWhenPushed:YES];
