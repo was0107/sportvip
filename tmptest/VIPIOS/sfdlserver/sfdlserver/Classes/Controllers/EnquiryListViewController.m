@@ -99,16 +99,17 @@
         cell.rightLabel.text = [item.sendTime substringWithRange:NSMakeRange(11, 5)];
         cell.subRightLabel.text = [item.sendTime substringToIndex:10];
         cell.content = item;
-        
+        UIImageView *imageView = (UIImageView *)cell.backgroundView;
         if (![item isItemReaded]) {
-            cell.backgroundView.backgroundColor = kRedColor;
+            imageView.backgroundColor = kRedColor;
+            cell.contentView.backgroundColor = kRedColor;
             cell.topLabel.textColor = kWhiteColor;
             cell.subLabel.textColor = kWhiteColor;
             cell.rightLabel.textColor = kWhiteColor;
             cell.subRightLabel.textColor = kWhiteColor;
         }
         else {
-            cell.backgroundView.backgroundColor = kClearColor;
+            cell.contentView.backgroundColor = kWhiteColor;
             cell.topLabel.textColor = kGrayColor;
             cell.subLabel.textColor = kGrayColor;
             cell.rightLabel.textColor = kGrayColor;
@@ -137,7 +138,7 @@
     self.tableView.cellSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         EnquiryItem *item = [blockSelf.response at:indexPath.row ];
-        item.readFlag = kEmptyString;
+        item.readFlag = @"1";
         ViewEnquiryViewContrller *controller = [[[ViewEnquiryViewContrller alloc] init] autorelease];
         controller.item = item;
         [blockSelf.navigationController hidesBottomBarWhenPushed];

@@ -512,7 +512,7 @@
 
 - (BOOL) isItemReaded
 {
-    return[self.readFlag isEqualToString:@"1"];
+    return [self.readFlag isEqualToString:@"1"];
 }
 
 @end
