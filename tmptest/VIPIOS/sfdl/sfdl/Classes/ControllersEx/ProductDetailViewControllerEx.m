@@ -20,7 +20,7 @@
 @property (nonatomic, retain) AboutUsResponse       *aboutResponse;
 @property (nonatomic, retain) UIWebView             *content;
 @property (nonatomic, retain) UILabel               *productLabel;
-@property (nonatomic, retain) RTLabel               *belongLabel,*telLabel,*emailLabel;
+@property (nonatomic, retain) UILabel               *belongLabel,*telLabel,*emailLabel;
 @property (nonatomic, retain) UIImageView           *videoImageView;
 @property (nonatomic, retain) UIButton              *descButton, *featureButton;
 @property (nonatomic, retain) UIView                *topView, *bottomView;
@@ -83,24 +83,28 @@
     self.topView = headerview;
 }
 
-- (RTLabel *) belongLabel
+- (UILabel *) belongLabel
 {
     if (!_belongLabel) {
-        _belongLabel = [[RTLabel alloc] initWithFrame:CGRectMake(160, 8, 150, 30)];
-        _belongLabel.text = [NSString stringWithFormat:@"Belongs to:<font size=14 color=black>%@ </font>", @""];
-        _belongLabel.textColor = kOrangeColor;
+        _belongLabel = [[UILabel alloc] initWithFrame:CGRectMake(220, 8, 90, 30)];
+//        _belongLabel.text = [NSString stringWithFormat:@"Belongs to:<font size=14 color=black>%@ </font>", @""];
+        _belongLabel.textColor = kBlackColor;
+        _belongLabel.font = HTFONTSIZE(kFontSize12);
+        _belongLabel.numberOfLines = 2;
         _belongLabel.lineBreakMode = RTTextLineBreakModeCharWrapping;
         _belongLabel.backgroundColor = [UIColor whiteColor];
     }
     return _belongLabel;
 }
 
-- (RTLabel *) telLabel
+- (UILabel *) telLabel
 {
     if (!_telLabel) {
-        _telLabel = [[RTLabel alloc] initWithFrame:CGRectMake(160, 38, 150, 30)];
-        _telLabel.text = [NSString stringWithFormat:@"Tel:<font size=14 color=black>%@</font>", @""];
-        _telLabel.textColor = kOrangeColor;
+        _telLabel = [[UILabel alloc] initWithFrame:CGRectMake(220, 38, 90, 30)];
+//        _telLabel.text = [NSString stringWithFormat:@"Telf jdoj fodj fdof jfdjj %@ ", @""];
+        _telLabel.textColor = kBlackColor;
+        _telLabel.font = HTFONTSIZE(kFontSize12);
+        _telLabel.numberOfLines = 2;
         _telLabel.lineBreakMode = RTTextLineBreakModeCharWrapping;
         _telLabel.backgroundColor = [UIColor clearColor];
         UIGestureRecognizer *gesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(telGesture:)] autorelease];
@@ -109,12 +113,13 @@
     return _telLabel;
 }
 
-- (RTLabel *) emailLabel
+- (UILabel *) emailLabel
 {
     if (!_emailLabel) {
-        _emailLabel = [[RTLabel alloc] initWithFrame:CGRectMake(160, 68, 150, 18)];
-        _emailLabel.text = [NSString stringWithFormat:@"E-mail:<font size=14 color=black>%@</font>", @""];
-        _emailLabel.textColor = kOrangeColor;
+        _emailLabel = [[UILabel alloc] initWithFrame:CGRectMake(220, 68, 90, 18)];
+//        _emailLabel.text = [NSString stringWithFormat:@"E-mail:font size=14 color=black%@</font>", @""];
+        _emailLabel.textColor = kBlackColor;
+        _emailLabel.font = HTFONTSIZE(kFontSize12);
         _emailLabel.lineBreakMode = RTTextLineBreakModeCharWrapping;
         _emailLabel.backgroundColor = [UIColor clearColor];
         UIGestureRecognizer *gesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(emailGesture:)] autorelease];
@@ -153,7 +158,7 @@
     UIView *headerview = [[[UIView alloc] initWithFrame:CGRectMake(0, -143, 320, 93)] autorelease];
     headerview.backgroundColor = kWhiteColor;
     
-    UIImageView *imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(8, 8, 135, 77)] autorelease];
+    UIImageView *imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(8, 8, 135, 72)] autorelease];
     imageView.layer.cornerRadius = 3.0f;
     [imageView.layer setMasksToBounds:YES];
     imageView.image = [UIImage imageNamed:@"icon"];
@@ -161,6 +166,28 @@
     UIGestureRecognizer *gesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(videoGesture:)] autorelease];
     [imageView addGestureRecognizer:gesture];
     [headerview addSubview:imageView];
+    
+    UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(152, 8, 66, 20)] autorelease];
+    label.backgroundColor = kClearColor;
+    label.font = HTFONTSIZE(kFontSize12);
+    label.textColor = kOrangeColor;
+    label.text = @"Belongs to:";
+    [headerview addSubview:label];
+    
+    
+    label = [[[UILabel alloc] initWithFrame:CGRectMake(152, 38, 66, 20)] autorelease];
+    label.backgroundColor = kClearColor;
+    label.font = HTFONTSIZE(kFontSize12);
+    label.textColor = kOrangeColor;
+    label.text = @"Telphone:";
+    [headerview addSubview:label];
+    
+    label = [[[UILabel alloc] initWithFrame:CGRectMake(152, 68, 66, 14)] autorelease];
+    label.backgroundColor = kClearColor;
+    label.font = HTFONTSIZE(kFontSize12);
+    label.textColor = kOrangeColor;
+    label.text = @"E-mail:";
+    [headerview addSubview:label];
 
     [headerview addSubview:[self belongLabel]];
     [headerview addSubview:[self telLabel]];
@@ -309,8 +336,10 @@
     typeof(self) blockSelf = self;
     if ([[[AppDelegate sharedAppDelegate] rootController] aboutResponse]) {
         blockSelf.aboutResponse = [[[AppDelegate sharedAppDelegate] rootController] aboutResponse];
-        blockSelf.telLabel.text = [NSString stringWithFormat:@"%@: <font size=14 color=black>%@ </font>",NSLocalizedString(@"Tel","Tel"), [blockSelf.aboutResponse companyTelephone]];
-        blockSelf.emailLabel.text = [NSString stringWithFormat:@"%@: <font size=14 color=black>%@ </font>",NSLocalizedString(@"E-mail","E-mail"), [blockSelf.aboutResponse email]];
+//        blockSelf.telLabel.text = [blockSelf.aboutResponse companyTelephone];
+        //[NSString stringWithFormat:@"%@: <font size=14 color=black>%@ </font>",NSLocalizedString(@"Tel","Tel"), [blockSelf.aboutResponse companyTelephone]];
+        blockSelf.emailLabel.text = [blockSelf.aboutResponse email];
+        //[NSString stringWithFormat:@"%@: <font size=14 color=black>%@ </font>",NSLocalizedString(@"E-mail","E-mail"), [blockSelf.aboutResponse email]];
         return;
     }
     [[[AppDelegate sharedAppDelegate] rootController] sendRequestToGetCompanyServer];
@@ -324,7 +353,8 @@
         DEBUGLOG(@"success conent %@", content);
         blockSelf.response = [[[ProductDetailResponse alloc] initWithJsonString:content] autorelease];
         [blockSelf.cycleView reloadData];
-        blockSelf.belongLabel.text = [NSString stringWithFormat:@"%@: <font size=14 color=black>%@ </font>",NSLocalizedString(@"Belongs to","Belongs to"),blockSelf.response.productTypeName];
+        blockSelf.belongLabel.text = blockSelf.response.productTypeName;
+        //[NSString stringWithFormat:@"%@: <font size=14 color=black>%@ </font>",NSLocalizedString(@"Belongs to","Belongs to"),blockSelf.response.productTypeName];
         [blockSelf descriptionAction:blockSelf.descButton];
         [blockSelf dealWithVideo];
     };
