@@ -816,6 +816,7 @@
 				ORGANIZATIONNAME = mcms;
 				TargetAttributes = {
 					DD28C8BE198A424700177D00 = {
+						DevelopmentTeam = VLE5T9YJS4;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1006,8 +1007,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Haibo Liu (4RT4T5V272)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Haibo Liu (4RT4T5V272)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1025,7 +1026,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "90B1C7D9-2EC4-4272-95D7-D7231B602524";
+				PROVISIONING_PROFILE = "6c9401cf-a12b-4c9b-b173-1f4c5a82688a";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1046,8 +1047,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Haibo Liu (4RT4T5V272)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Haibo Liu (4RT4T5V272)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Singoo Information Technology Co., Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai Singoo Information Technology Co., Ltd.";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1058,7 +1059,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				PROVISIONING_PROFILE = "90B1C7D9-2EC4-4272-95D7-D7231B602524";
+				PROVISIONING_PROFILE = "6c9401cf-a12b-4c9b-b173-1f4c5a82688a";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1071,8 +1072,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sfdlserver/sfdlserver-Prefix.pch";
 				INFOPLIST_FILE = "sfdlserver/sfdlserver-Info.plist";
@@ -1085,7 +1086,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "97617F28-BAD9-4F20-AC70-D8EED620C65B";
+				PROVISIONING_PROFILE = "6c9401cf-a12b-4c9b-b173-1f4c5a82688a";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../PrettyUtility/\"/**";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -1099,8 +1100,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Singoo Information Technology Co., Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai Singoo Information Technology Co., Ltd.";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sfdlserver/sfdlserver-Prefix.pch";
 				INFOPLIST_FILE = "sfdlserver/sfdlserver-Info.plist";
@@ -1113,7 +1114,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "97617F28-BAD9-4F20-AC70-D8EED620C65B";
+				PROVISIONING_PROFILE = "6c9401cf-a12b-4c9b-b173-1f4c5a82688a";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../PrettyUtility/\"/**";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;

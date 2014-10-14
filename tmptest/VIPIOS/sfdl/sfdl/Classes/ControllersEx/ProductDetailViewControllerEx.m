@@ -153,7 +153,7 @@
     UIView *headerview = [[[UIView alloc] initWithFrame:CGRectMake(0, -143, 320, 93)] autorelease];
     headerview.backgroundColor = kWhiteColor;
     
-    UIImageView *imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(8, 8, 144, 77)] autorelease];
+    UIImageView *imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(8, 8, 135, 77)] autorelease];
     imageView.layer.cornerRadius = 3.0f;
     [imageView.layer setMasksToBounds:YES];
     imageView.image = [UIImage imageNamed:@"icon"];
