@@ -1754,6 +1754,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/sfdl/Classes/Vendor/Umeng",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7878902a-b265-4bb3-9bb0-518dd169705b";
@@ -1788,6 +1789,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/sfdl/Classes/Vendor/Umeng",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7878902a-b265-4bb3-9bb0-518dd169705b";
